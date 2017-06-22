@@ -1,0 +1,25 @@
+{
+  "name": "dibk-wizard-framework",
+  "version": "1.0.0",
+  "description": "Wizard rendering framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
+  },
+  "keywords": [
+    "wizard",
+    "framework",
+    "react",
+    "dibk"
+  ],
+  "author": "Kristoffer Brabrand <kristoffer@brabrand.no>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/netliferesearch/dibk-wizard-framework/issues"
+  },
+  "homepage": "https://github.com/netliferesearch/dibk-wizard-framework#readme"
+}
