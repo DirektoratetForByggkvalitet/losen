@@ -10,12 +10,20 @@
     "dev": "webpack --watch",
     "add-build": "git add dist"
   },
-  "pre-commit": ["build", "add-build"],
+  "pre-commit": [
+    "build",
+    "add-build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
   },
-  "keywords": ["wizard", "framework", "react", "dibk"],
+  "keywords": [
+    "wizard",
+    "framework",
+    "react",
+    "dibk"
+  ],
   "author": "Netlife Research",
   "private": true,
   "license": "MIT",
@@ -26,10 +34,11 @@
   "dependencies": {
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
-    "lodash": "^4.17.4",
+    "invariant": "^2.2.2",
+    "lodash.set": "^4.3.2",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
     "react-router": "^4.1.1",
+    "react": "^15.6.1",
     "uuid": "^3.1.0"
   },
   "peerDependencies": {
