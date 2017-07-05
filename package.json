@@ -7,7 +7,7 @@
     "test": "yarn run lint:js",
     "lint:js": "eslint . --ext .jsx,.js --ignore-pattern dist",
     "build": "NODE_ENV=production webpack -p",
-    "dev": "webpack --watch",
+    "dev": "webpack --watch"
   },
   "pre-commit": [
     "test",
