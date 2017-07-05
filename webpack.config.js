@@ -7,6 +7,8 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
+        library: 'dibk-wizard-framework',
+        libraryTarget: 'commonjs2'
     },
     module: {
         rules: [
