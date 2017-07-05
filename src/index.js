@@ -1,1 +1,1 @@
-export Wizard from './components/Wizard'
+export Wizard from './components/Wizard';

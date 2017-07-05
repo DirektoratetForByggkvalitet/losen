@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Checkbox = ({ type }) => <div>Block type Checkbox</div>;
+const Checkbox = () => <div>Block type Checkbox</div>;
 
 export default Checkbox;
 
 Checkbox.defaultProps = {
-  type: "",
+  type: '',
 };
 
 Checkbox.propTypes = {

@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Missing = ({ type }) =>
-  <div>
+  (<div>
     Block missing: {type}
-  </div>;
+  </div>);
 
 export default Missing;
 
 Missing.defaultProps = {
-  type: "",
+  type: '',
 };
 
 Missing.propTypes = {
