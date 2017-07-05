@@ -10,7 +10,7 @@
     "dev": "webpack --watch"
   },
   "pre-commit": [
-    "test",
+    "test"
   ],
   "repository": {
     "type": "git",
