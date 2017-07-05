@@ -7,11 +7,11 @@ import Page from './Page';
 export default class Wizard extends Component {
   static propTypes = {
     schema: PropTypes.array,
-  }
+  };
 
   static defaultProps = {
     schema: '',
-  }
+  };
 
   constructor(props, context = {}) {
     super(props, context);

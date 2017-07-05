@@ -9,7 +9,7 @@ const Missing = ({ type }) =>
 export default Missing;
 
 Missing.defaultProps = {
-  type: '',
+  type: 'No type',
 };
 
 Missing.propTypes = {

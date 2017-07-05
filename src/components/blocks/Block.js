@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RadioBlock from './Radio';
-import ChechboxBlock from './Checkbox';
+import ChechboxBlock from './checkbox/Checkbox';
 import MissingBlock from './Missing';
 
 const components = {
