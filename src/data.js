@@ -2,20 +2,32 @@ import React from 'react'
 
 import Page from './components/Page'
 
-export const test = (
-    <Page title='My first page'>
-        <Page title='Nesten page not allowed' />
-        <Page title='Nesten page not allowed' />
-    </Page>
-)
+/*export const test = data => (
+    <div>
+        <Page introduction>
+            <div>Noe tekst her...</div>
+            ...et par spørsmål
+        </Page>
+        <Page title='My first page'>
+            <Input
+                type="text"
+                key="foo.bar"
+                description="Fjasebengel er en fin type bengel"
+                required
+            />
 
-/*export default [
+
+        </Page>
+    </div>
+)*/
+
+export default [
     page({
         title: 'My first page',
         children: [
             page({ title: 'Nested pages ain\'t cool, man...' }),
             conditional({
-                predicate: data => someProperty,
+                predicate: data => data.utilizedArea > 100,
                 children: [
                     question({
                         title: 'Liker du katter?',
@@ -28,13 +40,8 @@ export const test = (
                             }
                         })
                     }),
-
                 ]
             }),
-            conditional({
-                predicate: ({ goodGuy }) => ,
-                children: [
-
-        ]
-    })
-]*/
+        ],
+    }),
+]
