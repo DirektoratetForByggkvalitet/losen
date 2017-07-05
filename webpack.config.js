@@ -10,6 +10,10 @@ module.exports = {
         library: 'dibk-wizard-framework',
         libraryTarget: 'commonjs2'
     },
+    externals: {
+        react: true,
+        'react-dom': true,
+    },
     module: {
         rules: [
             {
