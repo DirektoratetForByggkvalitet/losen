@@ -8,7 +8,7 @@ export default function Page({ title, children }) {
       <h2>
         {title}
       </h2>
-      {children.map(block => <Block block={block} type={block['@type']} />)}
+      {children.map(({ ...rest }) => <Block {...rest} />)}
     </div>
   );
 }
