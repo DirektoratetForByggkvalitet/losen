@@ -6,8 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack -p",
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "add-build": "git add dist"
   },
+  "pre-commit": [
+    "build",
+    "add-build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
@@ -42,6 +47,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "pre-commit": "^1.2.2",
     "webpack": "^3.0.0"
   }
 }
