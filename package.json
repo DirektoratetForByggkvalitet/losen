@@ -11,6 +11,7 @@
     "add-build": "git add dist"
   },
   "pre-commit": [
+    "test",
     "build",
     "add-build"
   ],

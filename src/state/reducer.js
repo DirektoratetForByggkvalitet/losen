@@ -1,21 +1,21 @@
-import set from 'lodash.set'
+import set from 'lodash.set';
 
-import { SET_DATA } from './actions'
+import { SET_DATA } from './actions';
 
-const initialState = {}
+const initialState = {};
 
-export default function stateReducer (state = initialState, action) {
-    const {type, payload} = action
+export default function stateReducer(state = initialState, action) {
+  const { type, payload } = action;
 
-    switch (type) {
-        case SET_DATA:
-            return set(
-                { ...state },
-                payload.key,
-                payload.value
-            )
+  switch (type) {
+    case SET_DATA:
+      return set(
+        { ...state },
+        payload.key,
+        payload.value,
+      );
 
-        default:
-            return state
-    }
+    default:
+      return state;
+  }
 }

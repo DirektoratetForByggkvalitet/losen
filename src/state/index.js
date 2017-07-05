@@ -1,4 +1,4 @@
-export actions from './actions'
-export reducer from './reducer'
+export actions from './actions';
+export reducer from './reducer';
 
-export const NAME = '@WIZARD_STATE'
+export const NAME = '@WIZARD_STATE';

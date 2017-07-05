@@ -1,3 +1,3 @@
-export * as state from './state'
+export * as state from './state';
 
-export Wizard from './components/Wizard'
+export Wizard from './components/Wizard';
