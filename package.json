@@ -17,12 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
   },
-  "keywords": [
-    "wizard",
-    "framework",
-    "react",
-    "dibk"
-  ],
+  "keywords": ["wizard", "framework", "react", "dibk"],
   "author": "Kristoffer Brabrand <kristoffer@brabrand.no>",
   "license": "MIT",
   "bugs": {
