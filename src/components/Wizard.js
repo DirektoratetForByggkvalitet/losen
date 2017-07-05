@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Wizard (props) {
+export default function Wizard ({ config }) {
     return (
         <div>Fjasebengel</div>
     )
