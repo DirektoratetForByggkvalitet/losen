@@ -8,12 +8,9 @@
     "lint:js": "eslint . --ext .jsx,.js --ignore-pattern dist",
     "build": "NODE_ENV=production webpack -p",
     "dev": "webpack --watch",
-    "add-build": "git add dist"
   },
   "pre-commit": [
     "test",
-    "build",
-    "add-build"
   ],
   "repository": {
     "type": "git",
@@ -38,8 +35,11 @@
     "invariant": "^2.2.2",
     "lodash.set": "^4.3.2",
     "prop-types": "^15.5.10",
-    "react-router": "^4.1.1",
     "react": "^15.6.1",
+    "react-autobind": "^1.0.6",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "redux": "^3.7.1",
     "uuid": "^3.1.0"
   },
   "peerDependencies": {

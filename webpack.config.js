@@ -11,6 +11,8 @@ module.exports = {
   externals: {
     react: true,
     'react-dom': true,
+    redux: true,
+    'react-redux': true,
   },
   module: {
     rules: [

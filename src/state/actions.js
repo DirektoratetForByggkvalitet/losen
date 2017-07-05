@@ -1,6 +1,4 @@
-import { NAME } from '.';
-
-export const SET_DATA = `${NAME}/SET`;
+export const SET_DATA = 'SET_DATA';
 
 export function setData(key, value) {
   return {
