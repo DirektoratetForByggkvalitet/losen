@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectOption from './SelectOption';
 
-import { H4 } from '../../../primitives/Heading';
+import { H3 } from '../../../primitives/Heading';
 
 const Select = props =>
   (<div>
-    <H4>
+    <H3>
       {props.heading}
-    </H4>
+    </H3>
     <p>
       {props.text}
     </p>
