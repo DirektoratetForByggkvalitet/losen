@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RadioInput from './RadioInput';
+// import { H3 } from '../../../primitives/Heading';
 
 const Radio = props =>
   (<div>
@@ -14,7 +15,13 @@ const Radio = props =>
 
 export default Radio;
 
+Radio.defaultProps = {
+  //  heading: '',
+  text: '',
+};
+
 Radio.propTypes = {
-  text: PropTypes.string.isRequired,
+  //  heading: PropTypes.string,
+  text: PropTypes.string,
   suggestedAnswer: PropTypes.array.isRequired,
 };

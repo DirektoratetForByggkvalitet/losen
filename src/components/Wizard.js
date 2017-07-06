@@ -28,10 +28,11 @@ export default class Wizard extends Component {
 
     return (
       <StyledWizard>
-        {schema.map(item => (
+        {schema.map(props => (
           <Page
             title="Page"
             children={item.children}
+            {...props}
             styles={styles}
           />
         ))}
