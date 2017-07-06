@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import RadioBlock from './Radio';
+import RadioBlock from './radio/Radio';
 import ChechboxBlock from './checkbox/Checkbox';
 import MissingBlock from './Missing';
 
