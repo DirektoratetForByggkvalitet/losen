@@ -7,6 +7,8 @@ import defaultStyles from '../styles';
 
 import StyledWizard from '../primitives/Wizard';
 
+import { H1 } from '../primitives/Heading';
+
 export default class Wizard extends Component {
   static propTypes = {
     schema: PropTypes.array,
@@ -38,6 +40,7 @@ export default class Wizard extends Component {
 
     return (
       <StyledWizard>
+        <H1>Burde du få deg katt?</H1>
         {schema.map(props => (
           <Page
             title="Page"

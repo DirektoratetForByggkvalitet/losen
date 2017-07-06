@@ -4,6 +4,7 @@ import autobind from 'react-autobind';
 
 import CheckboxInput from './CheckboxInput';
 import { H3 } from '../../../primitives/Heading';
+import { H4 as Question } from '../../../primitives/Heading';
 
 export default class Checkbox extends Component {
   static defaultProps = {
@@ -36,9 +37,9 @@ export default class Checkbox extends Component {
         <H3>
           {heading}
         </H3>
-        <p>
+        <Question>
           {text}
-        </p>
+        </Question>
 
         <div>
           {suggestedAnswer.map(option =>

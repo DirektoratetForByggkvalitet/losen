@@ -4,8 +4,7 @@ import defaultStyles from '../styles';
 import { injectStyles } from '../utils';
 
 const Label = injectStyles(styled.label`
-  padding: ${({ styles }) => styles.padding.large};
-  text-transform: uppercase;
+  display: block;
 `);
 
 Label.defaultProps = {

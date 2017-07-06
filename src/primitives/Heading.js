@@ -28,3 +28,9 @@ export const H3 = injectStyles(styled.h3`
 `);
 
 H3.defaultProps = { ...defaultProps, small: false };
+
+export const H4 = injectStyles(styled.h4`
+  margin-bottom: 0;
+`);
+
+H4.defaultProps = { ...defaultProps, small: false };
