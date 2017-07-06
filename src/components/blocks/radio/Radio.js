@@ -24,10 +24,10 @@ export default class Radio extends Component {
     autobind(this);
   }
 
-  handleChange = (property, value) => (e) => {
+  handleChange = property => (e) => {
     const { setData } = this.props;
     this.state.checked = e.target.value;
-    setData(`${property}.${value}`, e.target.value);
+    setData(`${property}`, e.target.value);
   };
 
   render() {
@@ -48,7 +48,7 @@ export default class Radio extends Component {
               key={`${property}:${option.value}`}
               {...option}
               checked={this.state.checked}
-              onChange={this.handleChange(property, option.value)}
+              onChange={this.handleChange(property)}
             />),
           )}
         </div>
