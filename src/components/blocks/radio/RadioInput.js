@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CheckboxInput = props =>
-  // TODO: When we have an id replace with x
-  (<label htmlFor="x">
-    <input id="radio1" name="radio" type="radio" />
-    {props.text}
-  </label>);
+import Label from '../../../primitives/Label';
 
-export default CheckboxInput;
+const RadioInput = ({ key, text, value, checked, onChange }) =>
+  (<Label htmlFor={key}>
+    <input type="radio" id={key} value={value} checked={checked === value} onChange={onChange} />
+    {text}
+  </Label>);
 
-CheckboxInput.propTypes = {
+export default RadioInput;
+
+RadioInput.defaultProps = {
+  onChange: () => {},
+};
+
+RadioInput.propTypes = {
+  key: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.string.isRequired,
+  checked: PropTypes.string.isRequired,
 };

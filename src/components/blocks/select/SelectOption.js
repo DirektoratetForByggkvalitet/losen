@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CheckboxInput = props =>
+const SelectOption = props =>
   (<option value={props.value}>
     {props.text}
   </option>);
 
-export default CheckboxInput;
+export default SelectOption;
 
-CheckboxInput.propTypes = {
+SelectOption.propTypes = {
   text: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
 };
