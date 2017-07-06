@@ -1,7 +1,11 @@
 export default {
+  font: {
+    primary: 'Open Sans',
+    secondary: 'Altis',
+  },
   color: {
-    primary: 'hotpink',
-    secondary: 'lightpink',
+    primary: '#00757F',
+    secondary: 'white',
   },
   padding: {
     small: '2px',

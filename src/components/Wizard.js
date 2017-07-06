@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Page from './Page';
 import defaultStyles from '../styles';
 
+import StyledWizard from '../primitives/Wizard';
+
 export default class Wizard extends Component {
   static propTypes = {
     schema: PropTypes.array,
@@ -25,7 +27,7 @@ export default class Wizard extends Component {
     const { schema, styles } = this.props;
 
     return (
-      <div>
+      <StyledWizard>
         {schema.map(item => (
           <Page
             title="Page"
@@ -33,7 +35,7 @@ export default class Wizard extends Component {
             styles={styles}
           />
         ))}
-      </div>
+      </StyledWizard>
     );
   }
 }
