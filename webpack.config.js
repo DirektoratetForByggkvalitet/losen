@@ -13,6 +13,7 @@ module.exports = {
     'react-dom': true,
     redux: true,
     'react-redux': true,
+    'styled-components': true,
   },
   module: {
     rules: [
