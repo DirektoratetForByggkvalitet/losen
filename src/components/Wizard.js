@@ -26,13 +26,7 @@ export default class Wizard extends Component {
 
     return (
       <div>
-        {schema.map(item => (
-          <Page
-            title="Page"
-            children={item.children}
-            styles={styles}
-          />
-        ))}
+        {schema.map(({ ...rest }) => <Page {...rest} styles={styles} />)}
       </div>
     );
   }

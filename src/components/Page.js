@@ -7,7 +7,9 @@ import { H2 } from '../primitives/Heading';
 export default function Page({ title, children }) {
   return (
     <div>
-      <H2>{title}</H2>
+      <H2>
+        {title}
+      </H2>
 
       {children.map(props => <Block {...props} />)}
     </div>
