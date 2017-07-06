@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function injectStyles(Component) {
+export default function injectStyles(Component) {
   function StyledComponent(props, { styles }) {
     return <Component {...props} styles={styles} />;
   }
@@ -12,5 +12,3 @@ export function injectStyles(Component) {
 
   return StyledComponent;
 }
-
-export function foo() {}
