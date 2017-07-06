@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash.merge';
 import { connect } from 'react-redux';
+import autobind from 'react-autobind';
 
 import Page from './Page';
+import Navigation from './Navigation';
 import defaultStyles from '../styles';
 import reduceWizard from '../utils/reduce-wizard';
 
@@ -24,18 +26,46 @@ class Wizard extends Component {
     styles: PropTypes.object,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 0,
+      result: false,
+    };
+    autobind(this);
+  }
+
   getChildContext() {
     return {
       styles: merge({}, defaultStyles, this.props.styles),
     };
   }
 
+  nextPage() {
+    this.setState({
+      page: this.state.page + 1,
+    });
+  }
+
+  previousPage() {
+    this.setState({
+      page: this.state.page - 1,
+    });
+  }
+
   render() {
     const { schema } = this.props;
-
     return (
       <StyledWizard>
-        {schema.map(props => <Page key={props.heading} {...props} />)}
+        <Page
+          heading={schema[this.state.page].heading}
+          children={schema[this.state.page].children}
+        />
+        <Navigation
+          page={this.state.page}
+          nextPage={this.nextPage}
+          previousPage={this.previousPage}
+        />
       </StyledWizard>
     );
   }
