@@ -7,8 +7,11 @@ import { H4 } from '../../../primitives/Heading';
 const Select = props =>
   (<div>
     <H4>
-      {props.text}
+      {props.heading}
     </H4>
+    <p>
+      {props.text}
+    </p>
     <select>
       {props.suggestedAnswer.map(option => <SelectOption key={option.value} {...option} />)}
     </select>
@@ -16,7 +19,13 @@ const Select = props =>
 
 export default Select;
 
+Select.defaultProps = {
+  text: '',
+  heading: '',
+};
+
 Select.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  heading: PropTypes.string,
   suggestedAnswer: PropTypes.array.isRequired,
 };

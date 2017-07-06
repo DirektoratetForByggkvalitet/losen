@@ -35,7 +35,7 @@ class Wizard extends Component {
 
     return (
       <StyledWizard>
-        {schema.map(props => <Page key={props.title} {...props} />)}
+        {schema.map(props => <Page key={props.heading} {...props} />)}
       </StyledWizard>
     );
   }
