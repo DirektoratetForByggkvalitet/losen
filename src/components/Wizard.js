@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import merge from 'lodash.merge';
 
-// import invariantWizardContext from '../utils';
 import Page from './Page';
 import defaultStyles from '../styles';
 
@@ -15,16 +15,26 @@ export default class Wizard extends Component {
 
   static defaultProps = {
     schema: '',
-    styles: defaultStyles,
+    styles: {},
   };
 
-  constructor(props, context = {}) {
-    super(props, context);
-    // invariantWizardContext(context)
+  static childContextTypes = {
+    styles: PropTypes.object,
   }
 
+  getChildContext() {
+    return {
+      styles: merge(
+        {},
+        defaultStyles,
+        this.props.styles,
+      ),
+    };
+  }
+
+
   render() {
-    const { schema, styles } = this.props;
+    const { schema } = this.props;
 
     return (
       <StyledWizard>
@@ -33,7 +43,6 @@ export default class Wizard extends Component {
             title="Page"
             children={props.children}
             {...props}
-            styles={styles}
           />
         ))}
       </StyledWizard>

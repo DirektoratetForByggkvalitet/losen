@@ -1,10 +1,16 @@
-import invariant from 'invariant';
-import { NAME as STATE_NAME } from './state';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function invariantWizardContext(context) {
-  invariant(
-    context[STATE_NAME],
-    `[Wizard Framework] Could not find required \`${STATE_NAME}\` object.
-    Redux <Provider> needs to exist in the component ancestry with the wizard framework stores provided.`,
-  );
+export function injectStyles(Component) {
+  function StyledComponent(props, { styles }) {
+    return <Component {...props} styles={styles} />;
+  }
+
+  StyledComponent.contextTypes = {
+    styles: PropTypes.object,
+  };
+
+  return StyledComponent;
 }
+
+export function foo() {}
