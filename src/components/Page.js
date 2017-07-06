@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Block from './blocks/Block';
+import { H2 } from '../primitives/Heading';
 
 export default function Page({ title, children }) {
   return (
     <div>
-      <h2>
-        {title}
-      </h2>
-      {children.map(({ ...rest }) => <Block {...rest} />)}
+      <H2>{title}</H2>
+
+      {children.map(props => <Block {...props} />)}
     </div>
   );
 }

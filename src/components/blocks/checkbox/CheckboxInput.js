@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CheckboxInput = ({ key, text, onChange }) =>
-  // TODO: When we have an id replace with x
-  (<label htmlFor={key}>
+import Label from '../../../primitives/Label';
+
+const CheckboxInput = ({ key, text, onChange }) => (
+  <Label htmlFor={key}>
     <input type="checkbox" id={key} onChange={onChange} />
     {text}
-  </label>);
+  </Label>
+);
 
 export default CheckboxInput;
 

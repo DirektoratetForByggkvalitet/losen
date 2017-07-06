@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 
 // import invariantWizardContext from '../utils';
 import Page from './Page';
+import defaultStyles from '../styles';
 
 export default class Wizard extends Component {
   static propTypes = {
     schema: PropTypes.array,
+    styles: PropTypes.object,
   };
 
   static defaultProps = {
     schema: '',
+    styles: defaultStyles,
   };
 
   constructor(props, context = {}) {
@@ -19,11 +22,17 @@ export default class Wizard extends Component {
   }
 
   render() {
-    const { schema } = this.props;
+    const { schema, styles } = this.props;
 
     return (
       <div>
-        {schema.map(item => <Page title="Page" children={item.children} />)}
+        {schema.map(item => (
+          <Page
+            title="Page"
+            children={item.children}
+            styles={styles}
+          />
+        ))}
       </div>
     );
   }
