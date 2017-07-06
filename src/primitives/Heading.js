@@ -19,3 +19,10 @@ export const H2 = styled.h2`
 `;
 
 H2.defaultProps = { ...defaultProps, small: false };
+
+export const H3 = styled.h3`
+  font-size: ${props => (props.small ? '16px' : '20px')};
+  color: ${({ styles }) => styles.color.primary};
+`;
+
+H3.defaultProps = { ...defaultProps, small: false };
