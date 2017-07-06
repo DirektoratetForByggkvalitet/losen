@@ -31,7 +31,7 @@ export default class Wizard extends Component {
         {schema.map(props => (
           <Page
             title="Page"
-            children={item.children}
+            children={props.children}
             {...props}
             styles={styles}
           />
