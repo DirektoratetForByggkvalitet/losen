@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import Block from './blocks/Block';
 import { H2 } from '../primitives/Heading';
 
-export default function Page({ title, children }) {
+export default function Page({ heading, children }) {
   return (
     <div>
       <H2>
-        {title}
+        {heading}
       </H2>
 
       {children.map(props => <Block {...props} />)}
@@ -17,10 +17,10 @@ export default function Page({ title, children }) {
 }
 
 Page.defaultProps = {
-  title: 'Page',
+  heading: 'Page',
 };
 
 Page.propTypes = {
-  title: PropTypes.string,
+  heading: PropTypes.string,
   children: PropTypes.array.isRequired,
 };
