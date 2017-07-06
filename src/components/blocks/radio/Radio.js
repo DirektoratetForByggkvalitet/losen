@@ -46,6 +46,7 @@ export default class Radio extends Component {
           {suggestedAnswer.map(option =>
             (<RadioInput
               key={`${property}:${option.value}`}
+              id={`${property}:${option.value}`}
               {...option}
               checked={this.state.checked}
               onChange={this.handleChange(property)}
