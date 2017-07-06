@@ -10,7 +10,7 @@ const Select = props =>
       {props.text}
     </H4>
     <select>
-      {props.suggestedAnswer.map(({ ...rest }) => <SelectOption {...rest} />)}
+      {props.suggestedAnswer.map(option => <SelectOption key={option.value} {...option} />)}
     </select>
   </div>);
 
