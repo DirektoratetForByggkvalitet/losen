@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { injectStyles } from '../utils';
+import injectStyles from '../utils/inject-styles';
 
 export const H1 = injectStyles(styled.h1`
   font-family: ${({ styles }) => styles.font.secondary};
@@ -18,10 +18,6 @@ export const H3 = injectStyles(styled.h3`
   color: ${({ styles }) => styles.color.primary};
 `);
 
-H3.defaultProps = { ...defaultProps, small: false };
-
 export const H4 = injectStyles(styled.h4`
   margin-bottom: 0;
 `);
-
-H4.defaultProps = { ...defaultProps, small: false };
