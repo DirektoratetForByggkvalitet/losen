@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import merge from 'lodash.merge';
 import { connect } from 'react-redux';
+import autobind from 'react-autobind';
 
 import Page from './Page';
+import Navigation from './Navigation';
 import defaultStyles from '../styles';
 import reduceWizard from '../utils/reduce-wizard';
 
 import StyledWizard from '../primitives/Wizard';
-
-import { H1 } from '../primitives/Heading';
 
 class Wizard extends Component {
   static propTypes = {
@@ -24,32 +24,48 @@ class Wizard extends Component {
 
   static childContextTypes = {
     styles: PropTypes.object,
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 0,
+      result: false,
+    };
+    autobind(this);
   }
 
   getChildContext() {
     return {
-      styles: merge(
-        {},
-        defaultStyles,
-        this.props.styles,
-      ),
+      styles: merge({}, defaultStyles, this.props.styles),
     };
   }
 
+  nextPage() {
+    this.setState({
+      page: this.state.page + 1,
+    });
+  }
+
+  previousPage() {
+    this.setState({
+      page: this.state.page - 1,
+    });
+  }
 
   render() {
     const { schema } = this.props;
-
     return (
       <StyledWizard>
-        <H1>Burde du få deg katt?</H1>
-        {schema.map(props => (
-          <Page
-            title="Page"
-            children={props.children}
-            {...props}
-          />
-        ))}
+        <Page
+          heading={schema[this.state.page].heading}
+          children={schema[this.state.page].children}
+        />
+        <Navigation
+          page={this.state.page}
+          nextPage={this.nextPage}
+          previousPage={this.previousPage}
+        />
       </StyledWizard>
     );
   }

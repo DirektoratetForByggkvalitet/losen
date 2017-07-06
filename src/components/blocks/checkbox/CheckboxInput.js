@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import Label from '../../../primitives/Label';
 
-const CheckboxInput = ({ key, text, onChange }) =>
-  (<Label htmlFor={key}>
-    <input type="checkbox" id={key} onChange={onChange} />
+const CheckboxInput = ({ id, text, onChange }) =>
+  (<Label htmlFor={id}>
+    <input type="checkbox" id={id} onChange={onChange} />
     {text}
   </Label>);
 
@@ -16,7 +16,7 @@ CheckboxInput.defaultProps = {
 };
 
 CheckboxInput.propTypes = {
-  key: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   onChange: PropTypes.func,
 };

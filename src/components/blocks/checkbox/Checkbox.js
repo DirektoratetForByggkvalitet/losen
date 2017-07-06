@@ -44,6 +44,7 @@ export default class Checkbox extends Component {
           {suggestedAnswer.map(option =>
             (<CheckboxInput
               key={`${property}:${option.value}`}
+              id={`${property}:${option.value}`}
               {...option}
               onChange={this.handleChange(property, option.value)}
             />),
