@@ -26,7 +26,7 @@ export default class Wizard extends Component {
 
     return (
       <div>
-        {schema.map(({ ...rest }) => <Page {...rest} styles={styles} />)}
+        {schema.map(pages => <Page {...pages} styles={styles} />)}
       </div>
     );
   }
