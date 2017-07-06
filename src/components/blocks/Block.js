@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import RadioBlock from './radio/Radio';
-import ChechboxBlock from './checkbox/Checkbox';
-import MissingBlock from './Missing';
+import Radio from './radio/Radio';
+import Checkbox from './checkbox/Checkbox';
+import Select from './select/Select';
+import Missing from './Missing';
 
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
 const components = {
-  Radio: RadioBlock,
-  Checkbox: ChechboxBlock,
+  Radio,
+  Checkbox,
+  Select,
 };
 
 export function PureBlock(props) {
@@ -22,7 +24,7 @@ export function PureBlock(props) {
     return <SpecificBlock {...props} />;
   }
 
-  return <MissingBlock type={props.type} />;
+  return <Missing type={props.type} />;
 }
 
 PureBlock.propTypes = {
