@@ -7,21 +7,15 @@
     "test": "yarn run lint:js",
     "lint:js": "eslint . --ext .jsx,.js --ignore-pattern dist",
     "build": "NODE_ENV=production webpack -p",
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "start": "yarn run dev"
   },
-  "pre-commit": [
-    "test"
-  ],
+  "pre-commit": ["test"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
   },
-  "keywords": [
-    "wizard",
-    "framework",
-    "react",
-    "dibk"
-  ],
+  "keywords": ["wizard", "framework", "react", "dibk"],
   "author": "Netlife Research",
   "private": true,
   "license": "MIT",
