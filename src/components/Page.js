@@ -11,7 +11,7 @@ export default function Page({ heading, children }) {
         {heading}
       </H2>
 
-      {children.map(props => <Block {...props} />)}
+      {children.map(block => <Block key={block.property} {...block} />)}
     </div>
   );
 }
