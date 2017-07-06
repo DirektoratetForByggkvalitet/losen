@@ -7,6 +7,7 @@ import Radio from './radio/Radio';
 import Checkbox from './checkbox/Checkbox';
 import Select from './select/Select';
 import Missing from './Missing';
+import Number from './Number';
 
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
@@ -15,6 +16,7 @@ const components = {
   Radio,
   Checkbox,
   Select,
+  Number,
 };
 
 export function PureBlock(props) {
