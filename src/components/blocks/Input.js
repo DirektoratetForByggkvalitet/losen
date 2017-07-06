@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Radio = () => <div>Block type Radio</div>;
+const Radio = () => <p>text</p>;
 
 export default Radio;
 

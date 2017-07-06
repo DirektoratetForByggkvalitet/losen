@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioBlock from './Radio';
+import RadioBlock from './radio/Radio';
 import ChechboxBlock from './checkbox/Checkbox';
 import MissingBlock from './Missing';
 
