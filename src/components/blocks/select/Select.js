@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SelectOption from './SelectOption';
 
+import { H4 } from '../../../primitives/Heading';
+
 const Select = props =>
   (<div>
-    <p>
+    <H4>
       {props.text}
-    </p>
+    </H4>
     <select>
       {props.suggestedAnswer.map(({ ...rest }) => <SelectOption {...rest} />)}
     </select>

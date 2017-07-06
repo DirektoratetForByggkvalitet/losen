@@ -41,12 +41,14 @@
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "redux": "^3.7.1",
-    "styled-components": "^2.1.1",
-    "uuid": "^3.1.0"
+    "styled-components": "^2.1.1"
   },
   "peerDependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "styled-components": "^2.1.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

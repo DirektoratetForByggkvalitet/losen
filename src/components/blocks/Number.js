@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { H4 } from '../../primitives/Heading';
+
 const Number = props =>
   (<div>
-    <p>
+    <H4>
       {props.text}
-    </p>
+    </H4>
     <input
       type="number"
       placeholder={props.placeholder}
