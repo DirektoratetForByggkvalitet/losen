@@ -41,7 +41,7 @@ export default class Checkbox extends Component {
         </p>
 
         <div>
-          {suggestedAnswer.map(option =>
+          {suggestedAnswer && suggestedAnswer.map(option =>
             (<CheckboxInput
               key={`${property}:${option.value}`}
               id={`${property}:${option.value}`}

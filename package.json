@@ -8,7 +8,9 @@
     "lint": "eslint . --ext .jsx,.js --ignore-pattern dist",
     "build": "NODE_ENV=production webpack -p",
     "dev": "webpack --watch",
-    "start": "yarn run dev"
+    "start": "yarn run dev",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "pre-commit": [
     "lint"
@@ -46,11 +48,12 @@
   "peerDependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "styled-components": "^2.1.1",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.1"
+    "redux": "^3.7.1",
+    "styled-components": "^2.1.1"
   },
   "devDependencies": {
+    "@storybook/react": "^3.1.8",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-jest": "^20.0.3",
@@ -66,6 +69,7 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
     "pre-commit": "^1.2.2",
+    "react-dom": "^15.6.1",
     "webpack": "^3.0.0"
   },
   "eslintConfig": {
