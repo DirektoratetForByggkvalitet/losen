@@ -1,5 +1,9 @@
 import { NAME } from '../../state';
-import { filterSchemaNodes } from '../reduce-wizard';
+
+import {
+  filterSchemaNodes,
+  reduceBranches,
+} from '../reduce-wizard';
 
 describe('reduce-wizard', () => {
   describe('#filterSchemaNodes', () => {
@@ -41,6 +45,24 @@ describe('reduce-wizard', () => {
 
       expect(filtered).toHaveLength(1);
       expect(filtered).toHaveProperty('0.title', 'Floppo');
+    });
+  });
+
+  describe('#reduceBranches', () => {
+    it('does nothing with non-branches', () => {
+      const state = { [NAME]: { foo: 'bar' } };
+
+      const filtered = [{
+        type: 'Input',
+      }, {
+        type: 'Branch',
+        test: ({ foo }) => foo === 'bar',
+        branchTruthy: [{ type: 'Checkbox' }],
+        branchFalsy: [{ type: 'Input' }],
+      }].reduce(reduceBranches(state), []);
+
+      expect(filtered).toHaveLength(2);
+      expect(filtered).toHaveProperty('1.type', 'Checkbox');
     });
   });
 });
