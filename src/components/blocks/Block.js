@@ -12,6 +12,8 @@ import Number from './Number';
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
+import Block from '../../primitives/Block';
+
 const components = {
   Radio,
   Checkbox,
@@ -23,7 +25,11 @@ export function PureBlock(props) {
   const SpecificBlock = components[props.type];
 
   if (SpecificBlock) {
-    return <SpecificBlock {...props} />;
+    return (
+      <Block>
+        <SpecificBlock {...props} />
+      </Block>
+    );
   }
 
   return <Missing type={props.type} />;

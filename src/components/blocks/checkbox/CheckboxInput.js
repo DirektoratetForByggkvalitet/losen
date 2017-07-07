@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../../../primitives/Label';
+import { Checkbox as Input } from '../../../primitives/Input';
 
 const CheckboxInput = ({ id, text, onChange }) =>
   (<Label htmlFor={id}>
-    <input type="checkbox" id={id} onChange={onChange} />
+    <Input type="checkbox" id={id} onChange={onChange} />
     {text}
   </Label>);
 
