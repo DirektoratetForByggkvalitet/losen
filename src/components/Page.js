@@ -5,22 +5,21 @@ import Block from './blocks/Block';
 import { H2 } from '../primitives/Heading';
 import Main from '../primitives/grid/Main';
 
-export default function Page({ heading, children }) {
+export default function Page({ title, children = [] }) {
   return (
     <Main>
-      <H2>
-        {heading}
-      </H2>
+      <H2>{title}</H2>
+
       {children.map(block => <Block key={block.property} {...block} />)}
     </Main>
   );
 }
 
 Page.defaultProps = {
-  heading: 'Page',
+  title: 'Missing page title',
 };
 
 Page.propTypes = {
-  heading: PropTypes.string,
+  title: PropTypes.string,
   children: PropTypes.array.isRequired,
 };

@@ -59,15 +59,13 @@ class Wizard extends Component {
 
   render() {
     const { schema } = this.props;
+
     return (
       <StyledWizard>
         <Grid>
           <Heading />
           <Aside>Menu</Aside>
-          <Page
-            heading={schema[this.state.page].heading}
-            children={schema[this.state.page].children}
-          />
+          <Page {...schema[this.state.page]} />
           <Navigation
             page={this.state.page}
             nextPage={this.nextPage}
