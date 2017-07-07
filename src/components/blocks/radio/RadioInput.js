@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../../../primitives/Label';
+import { Radio as Input } from '../../../primitives/Input';
+
 
 const RadioInput = ({ text, id, value, checked, onChange }) =>
   (<Label htmlFor={id}>
-    <input type="radio" id={id} value={value} checked={checked === value} onChange={onChange} />
+    <Input type="radio" id={id} value={value} checked={checked === value} onChange={onChange} />
     {text}
   </Label>);
 
