@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { storiesOf } from '@storybook/react'; /* eslint import/no-extraneous-dependencies: 0 */
+/* eslint-disable */
+import { storiesOf } from '@storybook/react';
+/* eslint-enable */
 
 import Welcome from './Welcome';
 import Page from './Page';
