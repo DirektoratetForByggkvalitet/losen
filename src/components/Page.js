@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import Block from './blocks/Block';
 import { H2 } from '../primitives/Heading';
+import Main from '../primitives/grid/Main';
 
 export default function Page({ heading, children }) {
   return (
-    <div>
+    <Main>
       <H2>
         {heading}
       </H2>
-
       {children.map(block => <Block key={block.property} {...block} />)}
-    </div>
+    </Main>
   );
 }
 

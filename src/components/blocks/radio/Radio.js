@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 
 import RadioInput from './RadioInput';
-import { H3, H4 } from '../../../primitives/Heading';
+import { H3 } from '../../../primitives/Heading';
 
 export default class Radio extends Component {
   static defaultProps = {
@@ -38,9 +38,9 @@ export default class Radio extends Component {
         <H3>
           {heading}
         </H3>
-        <H4>
+        <p>
           {text}
-        </H4>
+        </p>
 
         <div>
           {suggestedAnswer.map(option =>
