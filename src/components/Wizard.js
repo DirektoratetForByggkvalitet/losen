@@ -10,6 +10,9 @@ import Heading from './Heading';
 import defaultStyles from '../styles';
 import reduceWizard from '../utils/reduce-wizard';
 
+import Aside from '../primitives/grid/Aside';
+import Footer from '../primitives/grid/Footer';
+import Grid from '../primitives/grid/Grid';
 import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
@@ -58,16 +61,20 @@ class Wizard extends Component {
     const { schema } = this.props;
     return (
       <StyledWizard>
-        <Heading />
-        <Page
-          heading={schema[this.state.page].heading}
-          children={schema[this.state.page].children}
-        />
-        <Navigation
-          page={this.state.page}
-          nextPage={this.nextPage}
-          previousPage={this.previousPage}
-        />
+        <Grid>
+          <Heading />
+          <Aside>Menu</Aside>
+          <Page
+            heading={schema[this.state.page].heading}
+            children={schema[this.state.page].children}
+          />
+          <Navigation
+            page={this.state.page}
+            nextPage={this.nextPage}
+            previousPage={this.previousPage}
+          />
+          <Footer>Your footer here</Footer>
+        </Grid>
       </StyledWizard>
     );
   }

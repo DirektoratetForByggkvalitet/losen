@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../primitives/Button';
+import Nav from '../primitives/grid/Navigation';
 
 const FIRST_PAGE = 0;
 export default function Navigation({ page, nextPage, previousPage }) {
   if (page === FIRST_PAGE) {
     return (
-      <div>
+      <Nav>
         <Button onClick={nextPage}>Neste</Button>
-      </div>
+      </Nav>
     );
   }
   return (
-    <div>
+    <Nav>
       <Button onClick={previousPage}>Forrige</Button>
       <Button onClick={nextPage}>Neste</Button>
-    </div>
+    </Nav>
   );
 }
 
