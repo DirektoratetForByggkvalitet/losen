@@ -13,6 +13,7 @@ const Button = injectStyles(styled.button`
   appearance: none;
   color: #fff;
   background: ${({ styles }) => styles.color.primary};
+  font-family: ${({ styles }) => styles.font.primary};
   &:before, &:after {
     content: " ";
     display: inline-block;

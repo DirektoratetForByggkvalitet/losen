@@ -64,7 +64,7 @@ class Wizard extends Component {
       <StyledWizard>
         <Grid>
           <Heading />
-          <Aside>Menu</Aside>
+          <Aside>Burde du skaffe deg katt? Hvem vet</Aside>
           <Page {...schema[this.state.page]} />
           <Navigation
             page={this.state.page}

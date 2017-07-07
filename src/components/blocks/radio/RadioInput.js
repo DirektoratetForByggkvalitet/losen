@@ -6,10 +6,12 @@ import { Radio as Input } from '../../../primitives/Input';
 
 
 const RadioInput = ({ text, id, value, checked, onChange }) =>
-  (<Label htmlFor={id}>
+  (<div>
     <Input type="radio" id={id} value={value} checked={checked === value} onChange={onChange} />
-    {text}
-  </Label>);
+    <Label htmlFor={id}>
+      {text}
+    </Label>
+  </div>);
 
 export default RadioInput;
 

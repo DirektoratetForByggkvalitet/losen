@@ -5,10 +5,12 @@ import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
 
 const CheckboxInput = ({ id, text, onChange }) =>
-  (<Label htmlFor={id}>
+  (<div>
     <Input type="checkbox" id={id} onChange={onChange} />
-    {text}
-  </Label>);
+    <Label htmlFor={id}>
+      {text}
+    </Label>
+  </div>);
 
 export default CheckboxInput;
 

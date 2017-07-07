@@ -1,4 +1,7 @@
 export default {
+  logo: {
+    url: 'https://dibk.no/Frontend/assets/images/dibk_logo_mob.svg',
+  },
   font: {
     primary: 'Open Sans',
     secondary: 'Altis',

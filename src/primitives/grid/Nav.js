@@ -4,7 +4,8 @@ import injectStyles from '../../utils/inject-styles';
 
 const Nav = injectStyles(styled.nav`
   padding: 20px;
-  background-color: #00757f;
+  background-color: #072938;
+  color: white;
   grid-area: header;
 `);
 

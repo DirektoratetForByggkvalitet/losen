@@ -8,7 +8,7 @@ const Grid = injectStyles(styled.div`
                         "aside main"
                         "aside navigation"
                         "footer footer";
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 300px 1fr;
   grid-template-rows: 60px 1fr 80px 60px;
   min-height: 100vh;
   @media screen and (max-width: 600px) {
