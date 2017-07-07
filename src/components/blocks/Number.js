@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { H3 } from '../../primitives/Heading';
+import { NumberInput as Input } from '../../primitives/Input';
 
 const Number = props =>
   (<div>
@@ -11,7 +12,7 @@ const Number = props =>
     <p>
       {props.text}
     </p>
-    <input
+    <Input
       type="number"
       placeholder={props.placeholder}
       step="1"
