@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const Button = injectStyles(styled.button`
-  margin: 10px;
+  margin-right: 10px;
   padding: 12px 18px 13px;
   font-size: 22px;
   cursor: pointer;

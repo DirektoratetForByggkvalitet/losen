@@ -62,8 +62,8 @@ class Wizard extends Component {
 
     return (
       <StyledWizard>
+        <Heading />
         <Grid>
-          <Heading />
           <Aside>Burde du skaffe deg katt? Hvem vet</Aside>
           <Page {...schema[this.state.page]} />
           <Navigation
@@ -71,8 +71,10 @@ class Wizard extends Component {
             nextPage={this.nextPage}
             previousPage={this.previousPage}
           />
-          <Footer>Your footer here</Footer>
         </Grid>
+        <Footer>
+          <div>Your footer here</div>
+        </Footer>
       </StyledWizard>
     );
   }
