@@ -14,7 +14,7 @@ export const Checkbox = injectStyles(styled.input`
       height: 1em;
       background: white;
       margin-right: 10px;
-      border: 2px solid #aaa;
+      border: 1px solid #aaa;
     }
     &:hover::before {
       border-color: ${({ styles }) => styles.color.primary};
@@ -38,7 +38,7 @@ export const Radio = injectStyles(styled.input`
       background: white;
       margin-right: 10px;
       border-radius: 50%;
-      border: 2px solid #aaa;
+      border: 1px solid #aaa;
     }
     &:hover::before {
       border-color: ${({ styles }) => styles.color.primary};
@@ -47,4 +47,11 @@ export const Radio = injectStyles(styled.input`
   &:checked + label:before {
     background: ${({ styles }) => styles.color.primary};
   }
+`);
+
+export const NumberInput = injectStyles(styled.input`
+  font-size: 1em;
+  padding: 0.5em;
+  width: 100px;
+  border: 1px solid #aaa;
 `);
