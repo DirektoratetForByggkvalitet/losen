@@ -2,7 +2,7 @@
 
 import { NAME } from '../state';
 
-const filterSchemaNodes = state => (node) => {
+export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
     return true;
   }
@@ -10,7 +10,7 @@ const filterSchemaNodes = state => (node) => {
   return !node.hidden || !node.hidden(state[NAME]);
 };
 
-const reduceBranches = state => (res, node) => {
+export const reduceBranches = state => (res, node) => {
   if (node.type !== 'Branch') {
     return [...res, node];
   }
@@ -25,7 +25,7 @@ const reduceBranches = state => (res, node) => {
   ]);
 };
 
-const mapWizardChildren = (state, depth) => (node) => {
+export const mapWizardChildren = (state, depth) => (node) => {
   if (!Array.isArray(node.children)) {
     return node;
   }
@@ -36,7 +36,7 @@ const mapWizardChildren = (state, depth) => (node) => {
   };
 };
 
-const liftChildrenBranchPages = (res, node) => {
+export const liftChildrenBranchPages = (res, node) => {
   if (!Array.isArray(node.children) || !node.children.length) {
     return [...res, node];
   }
