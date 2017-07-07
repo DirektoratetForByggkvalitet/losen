@@ -8,14 +8,14 @@ export default function Navigation({ page, nextPage, previousPage }) {
   if (page === FIRST_PAGE) {
     return (
       <Nav>
-        <Button onClick={nextPage}>Neste</Button>
+        <Button next onClick={nextPage}>Neste</Button>
       </Nav>
     );
   }
   return (
     <Nav>
       <Button onClick={previousPage}>Forrige</Button>
-      <Button onClick={nextPage}>Neste</Button>
+      <Button next onClick={nextPage}>Neste</Button>
     </Nav>
   );
 }
