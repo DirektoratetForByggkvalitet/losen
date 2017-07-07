@@ -6,6 +6,7 @@ import autobind from 'react-autobind';
 
 import Page from './Page';
 import Navigation from './Navigation';
+import Heading from './Heading';
 import defaultStyles from '../styles';
 import reduceWizard from '../utils/reduce-wizard';
 
@@ -57,6 +58,7 @@ class Wizard extends Component {
     const { schema } = this.props;
     return (
       <StyledWizard>
+        <Heading />
         <Page
           heading={schema[this.state.page].heading}
           children={schema[this.state.page].children}
