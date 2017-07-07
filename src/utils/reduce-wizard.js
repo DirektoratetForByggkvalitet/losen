@@ -25,23 +25,31 @@ export const reduceBranches = state => (res, node) => {
   ]);
 };
 
-export const mapWizardChildren = (state, depth) => (node) => {
+export const mapWizardChildren = state => (node) => {
   if (!Array.isArray(node.children)) {
     return node;
   }
 
   return {
     ...node,
-    children: reduceWizard(node.children, state, depth + 1),
+    children: reduceWizard(node.children, state),
   };
 };
 
 export const liftChildrenBranchPages = (res, node) => {
+  // We've got a result page already. Skip the rest
+  if (res.length && res[res.length - 1].type === 'Result') {
+    return res;
+  }
+
+  // If the node has no children, there'll be no pages to hoist
   if (!Array.isArray(node.children) || !node.children.length) {
     return [...res, node];
   }
 
-  if (node.children[node.children.length - 1].type === 'Page') {
+  // Hoist result page if the last child of this page is a result
+  // page (mening it's a dead end)
+  if (node.children[node.children.length - 1].type === 'Result') {
     return [
       ...res,
       node,
@@ -49,13 +57,14 @@ export const liftChildrenBranchPages = (res, node) => {
     ];
   }
 
+  // Page with regular pages (not a dead end)
   return [...res, node];
 };
 
-export default function reduceWizard(schema, state, depth = 0) {
+export default function reduceWizard(schema, state) {
   return schema
     .filter(filterSchemaNodes(state))
     .reduce(reduceBranches(state), [])
-    .map(mapWizardChildren(state, depth))
+    .map(mapWizardChildren(state))
     .reduce(liftChildrenBranchPages, []);
 }

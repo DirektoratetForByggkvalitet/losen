@@ -1,22 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Block from './blocks/Block';
 import { H2 } from '../primitives/Heading';
+import Main from '../primitives/grid/Main';
 
-export default function Result({ title, text }) {
+export default function Result({ title, children = [] }) {
   return (
-    <div>
+    <Main>
       <H2>{title}</H2>
-      <div>{text}</div>
-    </div>
+
+      {children.map(block => <Block key={block.property} {...block} />)}
+    </Main>
   );
 }
 
 Result.defaultProps = {
-  text: '',
+  title: 'Missing page title',
 };
 
 Result.propTypes = {
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string,
+  title: PropTypes.string,
+  children: PropTypes.array.isRequired,
 };

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import autobind from 'react-autobind';
 
 import Page from './Page';
+import Result from './Result';
 import Navigation from './Navigation';
 import Heading from './Heading';
 import defaultStyles from '../styles';
@@ -59,13 +60,20 @@ class Wizard extends Component {
 
   render() {
     const { schema } = this.props;
+    const page = schema[this.state.page];
 
     return (
       <StyledWizard>
         <Heading />
         <Grid>
           <Aside>Burde du skaffe deg katt? Hvem vet</Aside>
-          <Page {...schema[this.state.page]} />
+
+          {page.type === 'Result' ? (
+            <Result {...page} />
+          ) : (
+            <Page {...page} />
+          )}
+
           <Navigation
             page={this.state.page}
             nextPage={this.nextPage}
