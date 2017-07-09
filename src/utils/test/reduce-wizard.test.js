@@ -17,9 +17,16 @@ describe('reduce-wizard', () => {
           { type: 'Input', hidden: ({ foo }) => foo === 'bar' },
           {
             type: 'Branch',
-            test: ({ bar }) => bar === 'baz',
-            branchTruthy: [{ type: 'Input' }],
-            branchFalsy: [{ type: 'Result', title: 'The end' }],
+            branches: [
+              {
+                test: ({ bar }) => bar === 'baz',
+                children: [{ type: 'Input' }],
+              },
+              {
+                test: ({ bar }) => bar !== 'baz',
+                children: [{ type: 'Result', title: 'The end' }],
+              },
+            ],
           },
         ],
       },
@@ -109,36 +116,34 @@ describe('reduce-wizard', () => {
       expect(filtered).toEqual(raw);
     });
 
-    it('replaces the branch node with the children of the correct branch when test returns true', () => {
-      const state = { [NAME]: { foo: 'bar' } };
-
+    it('replaces the branch node with the children of the correct branch', () => {
       const raw = [{
         type: 'Input',
       }, {
         type: 'Branch',
-        test: ({ foo }) => foo === 'bar',
-        branchTruthy: [{ type: 'Checkbox' }],
-        branchFalsy: [{ type: 'Input' }],
+        branches: [
+          {
+            test: ({ foo }) => foo === 'bar',
+            children: [{ type: 'Checkbox' }],
+          },
+          {
+            test: ({ foo }) => foo === 'baz',
+            children: [{ type: 'Input' }],
+          },
+        ],
       }];
 
-      const filtered = raw.reduce(reduceBranches(state), []);
-      expect(filtered).toEqual([raw[0], ...raw[1].branchTruthy]);
-    });
+      expect(
+        raw.reduce(reduceBranches({ [NAME]: { foo: 'bar' } }), []),
+      ).toEqual([raw[0], ...raw[1].branches[0].children]);
 
-    it('replaces the branch node with the children of the correct branch when test returns false', () => {
-      const state = { [NAME]: { foo: 'bar' } };
+      expect(
+        raw.reduce(reduceBranches({ [NAME]: { foo: 'baz' } }), []),
+      ).toEqual([raw[0], ...raw[1].branches[1].children]);
 
-      const raw = [{
-        type: 'Input',
-      }, {
-        type: 'Branch',
-        test: ({ foo }) => foo !== 'bar',
-        branchTruthy: [{ type: 'Checkbox' }],
-        branchFalsy: [{ type: 'Input' }],
-      }];
-
-      const filtered = raw.reduce(reduceBranches(state), []);
-      expect(filtered).toEqual([raw[0], ...raw[1].branchFalsy]);
+      expect(
+        raw.reduce(reduceBranches({ [NAME]: { foo: 'ban' } }), []),
+      ).toEqual([raw[0]]);
     });
   });
 

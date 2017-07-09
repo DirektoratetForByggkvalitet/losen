@@ -15,14 +15,15 @@ export const reduceBranches = state => (res, node) => {
     return [...res, node];
   }
 
-  return ([
-    ...res,
-    ...reduceWizard((
-      node.test(state[NAME])
-      ? node.branchTruthy
-      : node.branchFalsy
-    ), state),
-  ]);
+  const selectedBranch = node.branches.find(
+    branch => branch.test(state[NAME]),
+  );
+
+  if (selectedBranch) {
+    return [...res, ...selectedBranch.children];
+  }
+
+  return res;
 };
 
 export const mapWizardChildren = state => (node) => {
