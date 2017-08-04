@@ -66,19 +66,19 @@ class Wizard extends Component {
       <StyledWizard>
         <Grid>
           <Header />
-            <Aside>Burde du skaffe deg katt?</Aside>
+          <Aside>Burde du skaffe deg katt?</Aside>
 
-            {page.type === 'Result' ? (
-              <Result {...page} />
-            ) : (
-              <Page {...page} />
-            )}
+          {page.type === 'Result' ? (
+            <Result {...page} />
+          ) : (
+            <Page {...page} />
+          )}
 
-            <Navigation
-              page={this.state.page}
-              nextPage={this.nextPage}
-              previousPage={this.previousPage}
-            />
+          <Navigation
+            page={this.state.page}
+            nextPage={this.nextPage}
+            previousPage={this.previousPage}
+          />
           <Footer>
             <div>Your footer here</div>
           </Footer>

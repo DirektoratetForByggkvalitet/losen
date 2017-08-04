@@ -10,14 +10,15 @@ export const Checkbox = injectStyles(styled.input`
       content: ' ';
       display: inline-block;
       vertical-align: middle;
-      width: 1em;
-      height: 1em;
+      width: 0.6em;
+      height: 0.6em;
       background: white;
       margin-right: 10px;
-      border: 1px solid #aaa;
+      border: 0.3em solid white;
+      box-shadow: 0 0 0 0.1em #666;
     }
     &:hover::before {
-      border-color: ${({ styles }) => styles.color.primary};
+      background: ${({ styles }) => styles.color.primary};
     }
   }
   &:checked + label:before {
@@ -33,15 +34,16 @@ export const Radio = injectStyles(styled.input`
       content: ' ';
       display: inline-block;
       vertical-align: middle;
-      width: 1em;
-      height: 1em;
+      width: 0.6em;
+      height: 0.6em;
       background: white;
       margin-right: 10px;
       border-radius: 50%;
-      border: 1px solid #aaa;
+      border: 0.3em solid white;
+      box-shadow: 0 0 0 0.1em #666;
     }
     &:hover::before {
-      border-color: ${({ styles }) => styles.color.primary};
+      background: ${({ styles }) => styles.color.primary};
     }
   }
   &:checked + label:before {
@@ -53,5 +55,5 @@ export const NumberInput = injectStyles(styled.input`
   font-size: 1em;
   padding: 0.5em;
   width: 100px;
-  border: 1px solid #aaa;
+  border: 1px solid #666;
 `);
