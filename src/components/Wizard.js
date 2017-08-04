@@ -7,13 +7,13 @@ import autobind from 'react-autobind';
 import Page from './Page';
 import Result from './Result';
 import Navigation from './Navigation';
-import Heading from './Heading';
+import Header from './Header';
 import defaultStyles from '../styles';
 import reduceWizard from '../utils/reduce-wizard';
 
+import Grid from '../primitives/grid/Grid';
 import Aside from '../primitives/grid/Aside';
 import Footer from '../primitives/grid/Footer';
-import Grid from '../primitives/grid/Grid';
 import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
@@ -64,25 +64,25 @@ class Wizard extends Component {
 
     return (
       <StyledWizard>
-        <Heading />
         <Grid>
-          <Aside>Burde du skaffe deg katt? Hvem vet</Aside>
+          <Header />
+            <Aside>Burde du skaffe deg katt?</Aside>
 
-          {page.type === 'Result' ? (
-            <Result {...page} />
-          ) : (
-            <Page {...page} />
-          )}
+            {page.type === 'Result' ? (
+              <Result {...page} />
+            ) : (
+              <Page {...page} />
+            )}
 
-          <Navigation
-            page={this.state.page}
-            nextPage={this.nextPage}
-            previousPage={this.previousPage}
-          />
+            <Navigation
+              page={this.state.page}
+              nextPage={this.nextPage}
+              previousPage={this.previousPage}
+            />
+          <Footer>
+            <div>Your footer here</div>
+          </Footer>
         </Grid>
-        <Footer>
-          <div>Your footer here</div>
-        </Footer>
       </StyledWizard>
     );
   }

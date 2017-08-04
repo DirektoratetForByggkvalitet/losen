@@ -1,8 +1,8 @@
 import React from 'react';
-import Nav from '../primitives/grid/Nav';
+import Header from '../primitives/grid/Header';
 
 export default function Heading() {
-  return (<Nav>
+  return (<Header>
     <div><a href="/">Your logo here</a></div>
-  </Nav>);
+  </Header>);
 }
