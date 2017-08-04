@@ -61,6 +61,54 @@ describe('reduce-wizard', () => {
     ]);
   });
 
+  it('filters out children nodes correctly', () => {
+    const wizard = [
+      {
+        type: 'Page',
+        children: [
+          {
+            type: 'Branch',
+            branches: [
+              {
+                test: () => true,
+                children: [
+                  { type: 'Input' },
+                  { type: 'Radio', hidden: ({ foo }) => !foo },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      { type: 'Result', title: 'Foobar' },
+    ];
+
+    expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
+      {
+        type: 'Page',
+        children: [
+          { type: 'Input' },
+        ],
+      },
+      { type: 'Result', title: 'Foobar' },
+    ]);
+
+    expect(reduceWizard(wizard, {
+      [NAME]: {
+        foo: 'bar',
+      },
+    })).toEqual([
+      {
+        type: 'Page',
+        children: [
+          { type: 'Input' },
+          wizard[0].children[0].branches[0].children[1],
+        ],
+      },
+      { type: 'Result', title: 'Foobar' },
+    ]);
+  });
+
   describe('#filterSchemaNodes', () => {
     it('does not filter out nodes missing the hidden property', () => {
       const raw = [{

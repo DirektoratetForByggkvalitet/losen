@@ -64,8 +64,8 @@ export const liftChildrenBranchPages = (res, node) => {
 
 export default function reduceWizard(schema, state) {
   return schema
-    .filter(filterSchemaNodes(state))
     .reduce(reduceBranches(state), [])
+    .filter(filterSchemaNodes(state))
     .map(mapWizardChildren(state))
     .reduce(liftChildrenBranchPages, []);
 }
