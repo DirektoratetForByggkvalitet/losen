@@ -6,7 +6,6 @@ import autobind from 'react-autobind';
 
 import Page from './Page';
 import Result from './Result';
-import Navigation from './Navigation';
 import Header from './Header';
 import defaultStyles from '../styles';
 import reduceWizard from '../utils/reduce-wizard';
@@ -67,18 +66,19 @@ class Wizard extends Component {
         <Grid>
           <Header />
           <Aside>Burde du skaffe deg katt?</Aside>
-
-          {page.type === 'Result' ? (
-            <Result {...page} />
-          ) : (
-            <Page {...page} />
-          )}
-
-          <Navigation
-            page={this.state.page}
-            nextPage={this.nextPage}
-            previousPage={this.previousPage}
-          />
+          {page.type === 'Result'
+            ? <Result
+              nextPage={this.nextPage}
+              previousPage={this.previousPage}
+              pageid={this.state.page}
+              {...page}
+            />
+            : <Page
+              nextPage={this.nextPage}
+              previousPage={this.previousPage}
+              pageid={this.state.page}
+              {...page}
+            />}
           <Footer>
             <div>Your footer here</div>
           </Footer>
