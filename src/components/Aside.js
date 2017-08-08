@@ -10,7 +10,7 @@ export default function Aside(tableOfContents) {
   for (const key in tableOfContents) {
     /* eslint-enable */
     if (Object.prototype.hasOwnProperty.call(tableOfContents, key)) {
-      toc.push(<AsideItem key={key} id={key} title={tableOfContents[key].title} />);
+      toc.push(<AsideItem key={key} id={key} title={tableOfContents[key].title} done={false} />);
     }
   }
   return (

@@ -17,5 +17,5 @@ export default {
   },
   size: {
     blockWidth: '800px',
-  }
+  },
 };
