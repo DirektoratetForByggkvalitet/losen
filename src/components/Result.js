@@ -6,15 +6,14 @@ import Navigation from './Navigation';
 import { H2 } from '../primitives/Heading';
 import Main from '../primitives/grid/Main';
 
-export default function Result({ nextPage, previousPage, title, children = [], pageid }) {
+export default function Result({ previousPage, title, children = [], pageid }) {
   return (
     <Main>
       <H2>
         {title}
       </H2>
-
       {children.map(block => <Block key={block.property} {...block} />)}
-      <Navigation page={pageid} nextPage={nextPage} previousPage={previousPage} />
+      <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
   );
 }
@@ -27,6 +26,5 @@ Result.propTypes = {
   title: PropTypes.string,
   children: PropTypes.array.isRequired,
   pageid: PropTypes.number.isRequired,
-  nextPage: PropTypes.func.isRequired,
   previousPage: PropTypes.func.isRequired,
 };

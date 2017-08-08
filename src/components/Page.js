@@ -7,13 +7,19 @@ import { H2 } from '../primitives/Heading';
 import Main from '../primitives/grid/Main';
 
 export default function Page({ nextPage, previousPage, title, children = [], pageid }) {
+  let navigation = (
+    <Navigation page={pageid} hasPrevious previousPage={previousPage} hasNext nextPage={nextPage} />
+  );
+  if (pageid === 0) {
+    navigation = <Navigation page={pageid} hasNext nextPage={nextPage} />;
+  }
   return (
     <Main>
       <H2>
         {title}
       </H2>
       {children.map(block => <Block key={block.property} {...block} />)}
-      <Navigation page={pageid} nextPage={nextPage} previousPage={previousPage} />
+      {navigation}
     </Main>
   );
 }
