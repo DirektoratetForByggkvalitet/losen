@@ -4,25 +4,27 @@ import merge from 'lodash.merge';
 import { connect } from 'react-redux';
 import autobind from 'react-autobind';
 
-import Page from './Page';
-import Result from './Result';
-import Header from './Header';
+import Aside from './Aside';
 import defaultStyles from '../styles';
+import Header from './Header';
+import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
+import Result from './Result';
 
 import Grid from '../primitives/grid/Grid';
-import Aside from '../primitives/grid/Aside';
 import Footer from '../primitives/grid/Footer';
 import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
   static propTypes = {
     schema: PropTypes.array,
+    tableOfContents: PropTypes.array,
     styles: PropTypes.object,
   };
 
   static defaultProps = {
     schema: '',
+    tableOfContents: '',
     styles: {},
   };
 
@@ -58,14 +60,14 @@ class Wizard extends Component {
   }
 
   render() {
-    const { schema } = this.props;
+    const { schema, tableOfContents } = this.props;
     const page = schema[this.state.page];
 
     return (
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside>Burde du skaffe deg katt?</Aside>
+          <Aside {...tableOfContents} />
           {page.type === 'Result'
             ? <Result
               nextPage={this.nextPage}
@@ -89,6 +91,7 @@ class Wizard extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
+  tableOfContents: props.schema,
   schema: reduceWizard(props.schema, state),
 });
 
