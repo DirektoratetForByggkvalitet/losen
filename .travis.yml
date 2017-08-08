@@ -4,7 +4,12 @@ cache:
 node_js: 8
 env:
   - CXX=g++-4.8
-script: yarn test
+script: yarn test && yarn build-storybook
 notifications:
   email:
     on_success: never
+deploy:
+  provider: firebase
+  skip_cleanup: true
+  token:
+    secure: hl5r6gkhOJZRQdFtF0qbuabYHqr+mfXf6okxYZ95tESJu2BgvC2gd7/ZehDi32/bXgy+QLS0KOHW5VELTg91tcDx3mDiLKS/PvR4aiHiMAQWOvTiG67yXTJk1z0xdRqKuxpUR4WXxtMYOSPJw1nwUOSrdTL/XKYW6XjR/pwOJPnqW1DE3nWw/S2bd0KDsQjv7kDwed/V3fyTtTMDOngi6clZA3M2jGWsd7et6tm/vSRB3aGrmvu/VQGOsQcnInJHoDiiTGY/DUQTBxyO7TANsxhROJCC6Ok6uAHC/cALuFCB3GjR4F+bYAnrfx2V5hq2wleov30Hbec0HOPMfnx74+KUcA8jQdUdwqcGi850CVpLAnbMIezAeue+TBljWTxhqmlBu6KXEFUAjdWSwXZhkRM8rUFgrCGt6wKD/f+EJKUE5gpQsyiYdia35bhPeiKanS0oBsPY1QVUquqi5IWSGtDB+MmQ3ifORO101/h0WJHeSgxDo33h0tjGp7ej49zdb0wiE/b2eUrWIN71V6stPszSV4O/j4UJuIFgE+IpigIPAiBI7X0awbrOIQfn2eY6WLwm9TJfKVaJsjdMRnQyNL8YEtLpkPT9l22NCRG1O6ZDv7ePeQ44vXoPOqcDYXpdDvYAcw1x81nYJKaIOPzO37jsRFwOrXjAp6oyFkpSyBk=
