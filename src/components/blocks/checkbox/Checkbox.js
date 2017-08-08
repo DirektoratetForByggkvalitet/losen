@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 
 import CheckboxInput from './CheckboxInput';
-import { H3 } from '../../../primitives/Heading';
 
 export default class Checkbox extends Component {
   static defaultProps = {
@@ -11,8 +10,6 @@ export default class Checkbox extends Component {
     text: '',
   };
   static propTypes = {
-    heading: PropTypes.string,
-    text: PropTypes.string,
     suggestedAnswer: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
@@ -29,19 +26,12 @@ export default class Checkbox extends Component {
   };
 
   render() {
-    const { heading, text, suggestedAnswer, property } = this.props;
+    const { suggestedAnswer, property } = this.props;
 
     return (
       <div>
-        <H3>
-          {heading}
-        </H3>
-        <p>
-          {text}
-        </p>
-
-        <div>
-          {suggestedAnswer && suggestedAnswer.map(option =>
+        {suggestedAnswer &&
+          suggestedAnswer.map(option =>
             (<CheckboxInput
               key={`${property}:${option.value}`}
               id={`${property}:${option.value}`}
@@ -49,7 +39,6 @@ export default class Checkbox extends Component {
               onChange={this.handleChange(property, option.value)}
             />),
           )}
-        </div>
       </div>
     );
   }

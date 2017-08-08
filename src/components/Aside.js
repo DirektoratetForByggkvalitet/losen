@@ -34,5 +34,5 @@ Aside.defaultProps = {
 
 Aside.propTypes = {
   setPage: PropTypes.func.isRequired,
-  tableOfContents: PropTypes.object.isRequired,
+  tableOfContents: PropTypes.array.isRequired,
 };

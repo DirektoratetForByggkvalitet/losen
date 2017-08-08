@@ -13,6 +13,7 @@ import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
 import Block from '../../primitives/Block';
+import { H3 } from '../../primitives/Heading';
 
 const components = {
   Radio,
@@ -27,7 +28,15 @@ export function PureBlock(props) {
   if (SpecificBlock) {
     return (
       <Block>
-        <SpecificBlock {...props} />
+        <div>
+          <H3>
+            {props.heading}
+          </H3>
+          <p>
+            {props.text}
+          </p>
+          <SpecificBlock {...props} />
+        </div>
       </Block>
     );
   }
@@ -35,8 +44,15 @@ export function PureBlock(props) {
   return <Missing type={props.type} />;
 }
 
+PureBlock.defaultProps = {
+  heading: 'No heading',
+  text: '',
+};
+
 PureBlock.propTypes = {
   type: PropTypes.string.isRequired,
+  heading: PropTypes.string,
+  text: PropTypes.string,
 };
 
 const ConnectedBlock = connect(

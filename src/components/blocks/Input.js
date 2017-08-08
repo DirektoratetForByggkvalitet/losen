@@ -1,14 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Radio = () => <p>text</p>;
+const Input = () => <input type="text" />;
 
-export default Radio;
-
-Radio.defaultProps = {
-  type: '',
-};
-
-Radio.propTypes = {
-  type: PropTypes.string,
-};
+export default Input;
