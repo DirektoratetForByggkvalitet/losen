@@ -14,6 +14,7 @@ const Button = injectStyles(styled.button`
   color: #fff;
   background: ${({ styles }) => styles.color.primary};
   font-family: ${({ styles }) => styles.font.primary};
+  margin-right: ${props => props.next ? '0' : 'auto'};
   &:before, &:after {
     content: " ";
     display: inline-block;

@@ -15,4 +15,7 @@ export default {
     medium: '5px',
     large: '8px',
   },
+  size: {
+    blockWidth: '800px',
+  }
 };
