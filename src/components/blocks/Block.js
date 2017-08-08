@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Radio from './radio/Radio';
+import Bool from './bool/Bool';
 import Checkbox from './checkbox/Checkbox';
-import Select from './select/Select';
 import Missing from './Missing';
 import Number from './Number';
+import Radio from './radio/Radio';
+import Select from './select/Select';
 
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
@@ -16,10 +17,11 @@ import Block from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
 
 const components = {
-  Radio,
+  Bool,
   Checkbox,
-  Select,
   Number,
+  Radio,
+  Select,
 };
 
 export function PureBlock(props) {
