@@ -7,9 +7,12 @@ export default function AsideItem({ setPage, id, done, title }) {
     mark = '✅';
   }
   return (
-    <div>
-      {id} <p>{title}</p> {mark}
-      <button onClick={() => setPage(id)}>Endre svar</button>
+    <div data-id={id}>
+      <p>
+        {title}
+        <button onClick={() => setPage(id)}>Endre svar</button>
+      </p>
+      <span>{mark}</span>
     </div>
   );
 }
