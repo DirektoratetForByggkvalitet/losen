@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function AsideItem(props) {
-  let done = '❌';
-  if (props.done) {
-    done = '✅';
+export default function AsideItem({ setPage, id, done, title }) {
+  let mark = '❌';
+  if (done) {
+    mark = '✅';
   }
   return (
     <div>
-      {props.id} <p>{props.title}</p> {done}
-      <a href="/">Endre svar</a>
+      {id} <p>{title}</p> {mark}
+      <button onClick={() => setPage(id)}>Endre svar</button>
     </div>
   );
 }
@@ -23,4 +23,5 @@ AsideItem.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
   done: PropTypes.bool,
+  setPage: PropTypes.func.isRequired,
 };

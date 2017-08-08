@@ -47,6 +47,12 @@ class Wizard extends Component {
     };
   }
 
+  setPage(number) {
+    this.setState({
+      page: number,
+    });
+  }
+
   nextPage() {
     this.setState({
       page: this.state.page + 1,
@@ -67,7 +73,7 @@ class Wizard extends Component {
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside {...tableOfContents} />
+          <Aside setPage={this.setPage} tableOfContents={tableOfContents} />
           {page.type === 'Result'
             ? <Result
               nextPage={this.nextPage}
