@@ -52,6 +52,7 @@ export const Radio = injectStyles(styled.input`
 `);
 
 export const NumberInput = injectStyles(styled.input`
+  font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
   width: 100px;
