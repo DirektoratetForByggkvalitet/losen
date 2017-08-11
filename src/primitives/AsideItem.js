@@ -4,7 +4,6 @@ import injectStyles from '../utils/inject-styles';
 
 const Aside = injectStyles(styled.aside`
   background: ${props => props.active ? '#fff' : '#000'};
-  margin: 20px 0;
   background: ${props => props.active ? '#efefef' : '#fff'};
   display: flex;
   transition: background 0.1s ease-in-out;

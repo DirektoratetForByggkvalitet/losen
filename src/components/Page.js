@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Block from './blocks/Block';
 import Navigation from './Navigation';
 import { H2 } from '../primitives/Heading';
+import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
 
 export default function Page({ nextPage, previousPage, title, children = [], pageid, lead }) {
@@ -18,9 +19,9 @@ export default function Page({ nextPage, previousPage, title, children = [], pag
       <H2>
         {title}
       </H2>
-      <p>
+      <Lead>
         {lead}
-      </p>
+      </Lead>
       {children.map(block => <Block key={block.property} {...block} />)}
       {navigation}
     </Main>
