@@ -17,15 +17,14 @@ import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
   static propTypes = {
-    schema: PropTypes.array,
-    tableOfContents: PropTypes.array,
+    wizard: PropTypes.object,
     styles: PropTypes.object,
   };
 
   static defaultProps = {
-    schema: '',
-    tableOfContents: '',
+    wizard: '',
     styles: {},
+    schema: '',
   };
 
   static childContextTypes = {
@@ -66,14 +65,14 @@ class Wizard extends Component {
   }
 
   render() {
-    const { schema, tableOfContents } = this.props;
-    const page = schema[this.state.page];
+    const { wizard } = this.props;
+    const page = wizard.schema[this.state.page];
 
     return (
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside setPage={this.setPage} tableOfContents={tableOfContents} />
+          <Aside setPage={this.setPage} tableOfContents={wizard.schema} />
           {page.type === 'Result'
             ? <Result previousPage={this.previousPage} pageid={this.state.page} {...page} />
             : <Page
@@ -83,7 +82,9 @@ class Wizard extends Component {
               {...page}
             />}
           <Footer>
-            <div>Your footer here</div>
+            <div>
+              {wizard.meta.footer}
+            </div>
           </Footer>
         </Grid>
       </StyledWizard>
@@ -92,8 +93,8 @@ class Wizard extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  tableOfContents: props.schema,
-  schema: reduceWizard(props.schema, state),
+  tableOfContents: props.wizard,
+  schema: reduceWizard(props.wizard.schema, state),
 });
 
 export default connect(mapStateToProps)(Wizard);
