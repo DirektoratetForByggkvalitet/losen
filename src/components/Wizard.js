@@ -47,7 +47,20 @@ class Wizard extends Component {
     };
   }
 
-  setPage(page) {
+  // @todo Consider finding a more elegant way for scrolling..?
+  setPage(page, property = null) {
+    if (property) {
+      setImmediate(() => {
+        const element = document.getElementById(property);
+
+        if (!element) {
+          return;
+        }
+
+        window.scroll(0, element.offsetTop);
+      });
+    }
+
     this.setState({ page });
   }
 

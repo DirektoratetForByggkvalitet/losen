@@ -41,7 +41,7 @@ export function PureBlock(props) {
 
   if (SpecificBlock) {
     return (
-      <Block>
+      <Block id={props.property}>
         <div>
           <H3>
             {props.heading}
@@ -67,6 +67,7 @@ PureBlock.propTypes = {
   type: PropTypes.string.isRequired,
   heading: PropTypes.string,
   text: PropTypes.string,
+  property: PropTypes.string.isRequired,
 };
 
 const ConnectedBlock = connect(
