@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import get from 'lodash.get';
 
-import Bool from './bool/Bool';
 import Checkbox from './checkbox/Checkbox';
 import Missing from './Missing';
 import Number from './Number';
@@ -16,16 +16,28 @@ import { NAME } from '../../state';
 import Block from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
 
-const components = {
-  Bool,
-  Checkbox,
-  Number,
-  Radio,
-  Select,
-};
+function getBlock(type) {
+  switch (type) {
+    case 'Radio':
+    case 'Bool':
+      return Radio;
+
+    case 'Checkbox':
+      return Checkbox;
+
+    case 'Number':
+      return Number;
+
+    case 'Select':
+      return Select;
+
+    default:
+      return null;
+  }
+}
 
 export function PureBlock(props) {
-  const SpecificBlock = components[props.type];
+  const SpecificBlock = getBlock(props.type);
 
   if (SpecificBlock) {
     return (
@@ -58,7 +70,10 @@ PureBlock.propTypes = {
 };
 
 const ConnectedBlock = connect(
-  state => ({ data: state[NAME] }),
+  (state, props) => ({
+    data: state[NAME],
+    currentValue: get(state[NAME], props.property),
+  }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);
 

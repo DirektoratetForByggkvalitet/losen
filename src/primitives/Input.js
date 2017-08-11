@@ -26,7 +26,9 @@ export const Checkbox = injectStyles(styled.input`
   }
 `);
 
-export const Radio = injectStyles(styled.input`
+export const Radio = injectStyles(styled.input.attrs({
+  type: 'radio',
+})`
   display: none;
   + label {
     cursor: pointer;

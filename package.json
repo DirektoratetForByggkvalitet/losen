@@ -12,12 +12,19 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "pre-commit": ["lint"],
+  "pre-commit": [
+    "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
   },
-  "keywords": ["wizard", "framework", "react", "dibk"],
+  "keywords": [
+    "wizard",
+    "framework",
+    "react",
+    "dibk"
+  ],
   "author": "Netlife Research",
   "private": true,
   "license": "MIT",
@@ -28,6 +35,7 @@
   "dependencies": {
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
+    "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.0",
     "lodash.set": "^4.3.2",
     "prop-types": "^15.5.10",

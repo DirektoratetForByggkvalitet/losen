@@ -8,11 +8,14 @@ export default class Radio extends Component {
   static defaultProps = {
     heading: '',
     text: '',
+    currentValue: undefined,
   };
+
   static propTypes = {
     suggestedAnswer: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
+    currentValue: PropTypes.any,
   };
 
   constructor(props) {
@@ -21,26 +24,29 @@ export default class Radio extends Component {
     autobind(this);
   }
 
-  handleChange = property => (e) => {
+  handleChange = (property, value) => () => {
+    console.log('yo');
+
     const { setData } = this.props;
-    this.state.checked = e.target.value;
-    setData(`${property}`, e.target.value);
+    this.state.checked = value;
+    setData(`${property}`, value);
   };
 
   render() {
-    const { suggestedAnswer, property } = this.props;
+    const { currentValue, suggestedAnswer, property } = this.props;
 
     return (
       <div>
-        {suggestedAnswer.map(option =>
-          (<RadioInput
+        {suggestedAnswer.map(option => (
+          <RadioInput
+            name={property}
             key={`${property}:${option.value}`}
             id={`${property}:${option.value}`}
             {...option}
-            checked={this.state.checked}
-            onChange={this.handleChange(property)}
-          />),
-        )}
+            checked={currentValue === option.value}
+            onChange={this.handleChange(property, option.value)}
+          />
+        ))}
       </div>
     );
   }
