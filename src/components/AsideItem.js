@@ -8,10 +8,10 @@ export default function AsideItem({ setPage, id, done, title, active }) {
     mark = '✅';
   }
   return (
-    <StyledAsideItem data-id={id} active={active}>
+    <StyledAsideItem data-id={id} active={active} onClick={() => setPage(id)}>
       <p>
         {title}
-        <button onClick={() => setPage(id)}>Endre svar</button>
+        <span>Endre svar</span>
       </p>
       <span>{mark}</span>
     </StyledAsideItem>
