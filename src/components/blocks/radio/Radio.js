@@ -25,8 +25,6 @@ export default class Radio extends Component {
   }
 
   handleChange = (property, value) => () => {
-    console.log('yo');
-
     const { setData } = this.props;
     this.state.checked = value;
     setData(`${property}`, value);
