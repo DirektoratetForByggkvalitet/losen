@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AsideStyle from '../primitives/grid/Aside';
 import AsideItem from './AsideItem';
 
-export default function Aside({ setPage, tableOfContents }) {
+export default function Aside({ page, setPage, tableOfContents }) {
   const toc = [];
   /* eslint-disable */
   for (const key in tableOfContents) {
@@ -17,6 +17,7 @@ export default function Aside({ setPage, tableOfContents }) {
           title={tableOfContents[key].title}
           setPage={setPage}
           done={false}
+          active={key === page.toString()}
         />,
       );
     }
@@ -30,9 +31,11 @@ export default function Aside({ setPage, tableOfContents }) {
 
 Aside.defaultProps = {
   title: 'Missing page title',
+  page: 0,
 };
 
 Aside.propTypes = {
   setPage: PropTypes.func.isRequired,
   tableOfContents: PropTypes.array.isRequired,
+  page: PropTypes.number,
 };

@@ -72,7 +72,7 @@ class Wizard extends Component {
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside setPage={this.setPage} tableOfContents={wizard.schema} />
+          <Aside page={this.state.page} setPage={this.setPage} tableOfContents={wizard.schema} />
           {page.type === 'Result'
             ? <Result previousPage={this.previousPage} pageid={this.state.page} {...page} />
             : <Page
