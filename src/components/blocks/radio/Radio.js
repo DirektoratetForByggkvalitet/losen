@@ -20,13 +20,11 @@ export default class Radio extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { checked: '' };
     autobind(this);
   }
 
   handleChange = (property, value) => () => {
     const { setData } = this.props;
-    this.state.checked = value;
     setData(`${property}`, value);
   };
 
