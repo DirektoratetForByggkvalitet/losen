@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import StyledAsideItem from '../primitives/AsideItem';
 
 export default function AsideItem({ setPage, id, done, title, active }) {
-  let mark = '❌';
+  let mark = ' ';
   if (done) {
     mark = '✅';
   }

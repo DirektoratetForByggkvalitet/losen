@@ -38,7 +38,7 @@ export const Radio = injectStyles(styled.input.attrs({
     border-radius: 5px;
     transition: box-shadow 0.1s ease-in-out;
     &:hover {
-      box-shadow: 0 0 5px ${({ styles }) => styles.color.primary};
+      box-shadow: 0 0 5px ${({ styles }) => styles.color.secondary};
     }
     &:before {
       content: ' ';

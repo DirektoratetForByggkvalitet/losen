@@ -10,7 +10,7 @@ export const H1 = injectStyles(styled.h1`
 export const H2 = injectStyles(styled.h2`
   font-family: ${({ styles }) => styles.font.secondary};
   font-size: ${props => props.small ? '20px' : '36px'};
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 `);
 
 export const H3 = injectStyles(styled.h3`
