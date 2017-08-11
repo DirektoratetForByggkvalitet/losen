@@ -18,15 +18,14 @@ import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
   static propTypes = {
-    wizard: PropTypes.object,
+    wizard: PropTypes.object.isRequired,
+    schema: PropTypes.array.isRequired,
     styles: PropTypes.object,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   static defaultProps = {
-    wizard: '',
     styles: {},
-    schema: '',
   };
 
   static childContextTypes = {
@@ -53,13 +52,13 @@ class Wizard extends Component {
   }
 
   getCurrentIndex() {
-    return Math.max(0, this.props.wizard.schema.findIndex(
+    return Math.max(0, this.props.schema.findIndex(
       ({ id }) => id === this.state.page,
     ));
   }
 
   changePage(distance) {
-    const schema = this.props.wizard.schema;
+    const schema = this.props.schema;
     const pageIndex = this.getCurrentIndex();
 
     const newIndex = pageIndex + distance;
@@ -78,7 +77,7 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1)
 
   render() {
-    const { wizard, wizard: { schema = [] }, tableOfContents } = this.props;
+    const { wizard, schema, tableOfContents } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
