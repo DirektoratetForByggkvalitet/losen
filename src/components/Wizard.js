@@ -87,7 +87,15 @@ class Wizard extends Component {
           <Header />
           <Aside page={page.id} setPage={this.setPage} tableOfContents={tableOfContents} />
           {page.type === 'Result'
-            ? <Result previousPage={this.previousPage} pageid={page.id} {...page} />
+            ? (
+              <Result
+                {...page}
+                previousPage={this.previousPage}
+                pageid={page.id}
+                wizard={wizard}
+                setPage={this.setPage}
+              />
+            )
             : <Page
               nextPage={this.nextPage}
               previousPage={this.previousPage}

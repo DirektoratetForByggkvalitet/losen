@@ -1,12 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Block from './blocks/Block';
-import Navigation from './Navigation';
+import { getErrorPages } from '../utils/reducers';
+
 import { H2 } from '../primitives/Heading';
 import Main from '../primitives/grid/Main';
+import Block from './blocks/Block';
+import Navigation from './Navigation';
+import ErrorResult from './ErrorResult';
 
-export default function Result({ previousPage, title, children = [], pageid, lead }) {
+function Result({
+  errorPages,
+  previousPage,
+  title,
+  children = [],
+  pageid,
+  lead,
+  setPage,
+}) {
+  if (errorPages.length) {
+    return <ErrorResult errorPages={errorPages} setPage={setPage} />;
+  }
+
   return (
     <Main>
       <H2>
@@ -33,4 +49,14 @@ Result.propTypes = {
   children: PropTypes.array,
   pageid: PropTypes.number.isRequired,
   previousPage: PropTypes.func.isRequired,
+  errorPages: PropTypes.array.isRequired,
+  wizard: PropTypes.object.isRequired, // eslint-disable-line react/no-unused-prop-types
+  setPage: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state, { wizard }) => ({
+  errorPages: getErrorPages(wizard.schema, state),
+});
+
+
+export default connect(mapStateToProps)(Result);

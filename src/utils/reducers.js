@@ -50,3 +50,19 @@ export function getPages(schema, state) {
     };
   });
 }
+
+export function getErrorPages(schema, state) {
+  const pages = getValidatedSchema(schema, state);
+
+  return pages.reduce((res, { id, title, type, children }) => ([
+    ...res,
+    {
+      id,
+      type,
+      title,
+      errorNodes: children.filter(
+        ({ errors }) => errors.length,
+      ).map(({ property, heading, errors }) => ({ property, heading, errors })),
+    },
+  ]), []).filter(({ errorNodes }) => errorNodes.length);
+}
