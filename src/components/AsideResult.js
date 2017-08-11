@@ -16,6 +16,6 @@ AsideResult.defaultProps = {
 
 AsideResult.propTypes = {
   active: PropTypes.bool,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   setPage: PropTypes.func.isRequired,
 };

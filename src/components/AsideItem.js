@@ -4,9 +4,11 @@ import StyledAsideItem from '../primitives/AsideItem';
 
 export default function AsideItem({ setPage, id, done, title, active }) {
   let mark = ' ';
+
   if (done) {
     mark = '✅';
   }
+
   return (
     <StyledAsideItem data-id={id} active={active} onClick={() => setPage(id)}>
       <p>
@@ -26,7 +28,7 @@ AsideItem.defaultProps = {
 
 AsideItem.propTypes = {
   active: PropTypes.bool,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string,
   done: PropTypes.bool,
   setPage: PropTypes.func.isRequired,

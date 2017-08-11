@@ -6,29 +6,29 @@ import AsideItem from './AsideItem';
 import AsideResult from './AsideResult';
 
 // @todo Use a more robust id for the page
-export default function Aside({ page: currentPage, setPage, tableOfContents }) {
+export default function Aside({ page: currentPage = {}, setPage, tableOfContents }) {
   return (
     <StyledAside>
-      {tableOfContents.map((page, index) => (
+      {tableOfContents.map(page => (
         page.type === 'Result'
         ? (
           <AsideResult
-            key={index} // eslint-disable-line react/no-array-index-key
-            id={index}
+            key={page.id}
+            id={page.id}
             title={page.title}
             setPage={setPage}
             done={!page.errors}
-            active={index.key === currentPage.toString()}
+            active={page.id === currentPage}
           />
         )
         : (
           <AsideItem
-            key={index} // eslint-disable-line react/no-array-index-key
-            id={index}
+            key={page.id} // eslint-disable-line react/no-array-index-key
+            id={page.id}
             title={page.title}
             setPage={setPage}
             done={!page.errors}
-            active={index.key === currentPage.toString()}
+            active={page.id === currentPage}
           />
         )
       ))}

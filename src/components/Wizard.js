@@ -48,39 +48,51 @@ class Wizard extends Component {
     };
   }
 
-  setPage(number) {
+  setPage(page) {
+    this.setState({ page });
+  }
+
+  getCurrentIndex() {
+    return Math.max(0, this.props.wizard.schema.findIndex(
+      ({ id }) => id === this.state.page,
+    ));
+  }
+
+  changePage(distance) {
+    const schema = this.props.wizard.schema;
+    const pageIndex = this.getCurrentIndex();
+
+    const newIndex = pageIndex + distance;
+
+    if (newIndex >= schema.length || newIndex < 0) {
+      return;
+    }
+
     this.setState({
-      page: number,
+      page: schema[newIndex].id,
     });
   }
 
-  nextPage() {
-    this.setState({
-      page: this.state.page + 1,
-    });
-  }
+  nextPage = () => this.changePage(1)
 
-  previousPage() {
-    this.setState({
-      page: this.state.page - 1,
-    });
-  }
+  previousPage = () => this.changePage(-1)
 
   render() {
-    const { wizard, tableOfContents } = this.props;
-    const page = wizard.schema[this.state.page];
+    const { wizard, wizard: { schema = [] }, tableOfContents } = this.props;
+    const pageIndex = this.getCurrentIndex();
+    const page = schema[pageIndex];
 
     return (
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside page={this.state.page} setPage={this.setPage} tableOfContents={tableOfContents} />
+          <Aside page={page.id} setPage={this.setPage} tableOfContents={tableOfContents} />
           {page.type === 'Result'
-            ? <Result previousPage={this.previousPage} pageid={this.state.page} {...page} />
+            ? <Result previousPage={this.previousPage} pageid={page.id} {...page} />
             : <Page
               nextPage={this.nextPage}
               previousPage={this.previousPage}
-              pageid={this.state.page}
+              pageid={page.id}
               {...page}
             />}
           <Footer>

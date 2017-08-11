@@ -11,15 +11,6 @@ const Aside = injectStyles(styled.aside`
     cursor: pointer;
     background: #efefef;
   }
-  &::before {
-    content: attr(data-id);
-    color: ${props => props.active ? '#fff' : 'inherit'};
-    background: ${props => props.active ? ({ styles }) => styles.color.primary : '#fff'};
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    transition: background 0.1s ease-in-out;
-  }
   &:hover::before {
     background: ${props => props.active ? ({ styles }) => styles.color.primary : '#efefef'};
   }
