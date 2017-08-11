@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const Button = injectStyles(styled.button`
-  margin-right: 10px;
   padding: 12px 18px 13px;
   font-size: 22px;
   cursor: pointer;
@@ -12,10 +11,12 @@ const Button = injectStyles(styled.button`
   border-radius: 0;
   appearance: none;
   color: #fff;
-  background: ${({ styles }) => styles.color.primary};
+  background: ${({ styles }) => styles.color.secondary};
   font-family: ${({ styles }) => styles.font.primary};
   margin-right: ${props => props.next ? '0' : 'auto'};
   margin-left: ${props => props.next ? 'auto' : '0'};
+  margin-bottom: 10px;
+  transition: background 0.1s ease-in-out;
   &:before, &:after {
     content: " ";
     display: inline-block;
@@ -35,7 +36,10 @@ const Button = injectStyles(styled.button`
     margin-left: 1em;
   }
   &:hover {
-    opacity: 0.8;
+    background: ${({ styles }) => styles.color.secondary};
+  }
+  &:hover::before, &:hover::after {
+    border-color: yellow;
   }
 `);
 

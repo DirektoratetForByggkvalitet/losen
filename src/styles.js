@@ -1,6 +1,7 @@
 export default {
   logo: {
-    url: 'url("https://dibk.no/Frontend/assets/images/dibk_logo_mob.svg")',
+    default: 'url("https://dibk.no/Frontend/assets/images/dibk_logo_mob.svg")',
+    mobile: 'url("https://dibk.no/Frontend/assets/images/DiBk_logo_rgb.svg")',
   },
   font: {
     primary: 'Open Sans',
@@ -16,7 +17,8 @@ export default {
     large: '8px',
   },
   size: {
-    blockWidth: '800px',
+    blockWidth: '700px',
     asideWidth: '300px',
+    headerHeight: '75px',
   },
 };

@@ -32,17 +32,26 @@ export const Radio = injectStyles(styled.input.attrs({
   display: none;
   + label {
     cursor: pointer;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    transition: box-shadow 0.1s ease-in-out;
+    &:hover {
+      box-shadow: 0 0 5px ${({ styles }) => styles.color.primary};
+    }
     &:before {
       content: ' ';
       display: inline-block;
       vertical-align: middle;
-      width: 0.6em;
-      height: 0.6em;
+      width: 0.5em;
+      height: 0.5em;
       background: white;
       margin-right: 10px;
       border-radius: 50%;
       border: 0.3em solid white;
       box-shadow: 0 0 0 0.1em #666;
+      transition: background 0.1s ease-in-out;
     }
     &:hover::before {
       background: ${({ styles }) => styles.color.primary};
