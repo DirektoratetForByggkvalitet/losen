@@ -26,7 +26,7 @@ AsideItem.defaultProps = {
 
 AsideItem.propTypes = {
   active: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string,
   done: PropTypes.bool,
   setPage: PropTypes.func.isRequired,

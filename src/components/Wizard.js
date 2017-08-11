@@ -9,6 +9,7 @@ import defaultStyles from '../styles';
 import Header from './Header';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
+import { getPages } from '../utils/reducers';
 import Result from './Result';
 
 import Grid from '../primitives/grid/Grid';
@@ -19,6 +20,7 @@ class Wizard extends Component {
   static propTypes = {
     wizard: PropTypes.object,
     styles: PropTypes.object,
+    tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   static defaultProps = {
@@ -65,14 +67,14 @@ class Wizard extends Component {
   }
 
   render() {
-    const { wizard } = this.props;
+    const { wizard, tableOfContents } = this.props;
     const page = wizard.schema[this.state.page];
 
     return (
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside page={this.state.page} setPage={this.setPage} tableOfContents={wizard.schema} />
+          <Aside page={this.state.page} setPage={this.setPage} tableOfContents={tableOfContents} />
           {page.type === 'Result'
             ? <Result previousPage={this.previousPage} pageid={this.state.page} {...page} />
             : <Page
@@ -93,7 +95,7 @@ class Wizard extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  tableOfContents: props.wizard,
+  tableOfContents: getPages(props.wizard.schema, state),
   schema: reduceWizard(props.wizard.schema, state),
 });
 

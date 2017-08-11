@@ -1,31 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AsideStyle from '../primitives/grid/Aside';
+import StyledAside from '../primitives/grid/Aside';
 import AsideItem from './AsideItem';
 
-export default function Aside({ page, setPage, tableOfContents }) {
-  const toc = [];
-  /* eslint-disable */
-  for (const key in tableOfContents) {
-    /* eslint-enable */
-    if (Object.prototype.hasOwnProperty.call(tableOfContents, key)) {
-      toc.push(
-        <AsideItem
-          key={key}
-          id={key}
-          title={tableOfContents[key].title}
-          setPage={setPage}
-          done={false}
-          active={key === page.toString()}
-        />,
-      );
-    }
-  }
+// @todo Use a more robust id for the page
+export default function Aside({ page: currentPage, setPage, tableOfContents }) {
   return (
-    <AsideStyle>
-      {toc}
-    </AsideStyle>
+    <StyledAside>
+      {tableOfContents.map((page, index) => (
+        <AsideItem
+          key={index} // eslint-disable-line react/no-array-index-key
+          id={index}
+          title={page.title}
+          setPage={setPage}
+          done={!page.errors}
+          active={index.key === currentPage.toString()}
+        />
+      ))}
+    </StyledAside>
   );
 }
 

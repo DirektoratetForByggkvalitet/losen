@@ -24,12 +24,13 @@ export default function Result({ previousPage, title, children = [], pageid, lea
 Result.defaultProps = {
   title: 'Missing page title',
   lead: '',
+  children: [],
 };
 
 Result.propTypes = {
   title: PropTypes.string,
   lead: PropTypes.string,
-  children: PropTypes.array.isRequired,
+  children: PropTypes.array,
   pageid: PropTypes.number.isRequired,
   previousPage: PropTypes.func.isRequired,
 };
