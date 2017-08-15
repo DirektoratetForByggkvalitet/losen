@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import StyledAside from '../primitives/grid/Aside';
+import { H1 } from '../primitives/Heading';
 import AsideItem from './AsideItem';
 import AsideResult from './AsideResult';
 
@@ -9,6 +10,7 @@ import AsideResult from './AsideResult';
 export default function Aside({ page: currentPage = {}, setPage, tableOfContents }) {
   return (
     <StyledAside>
+      <H1 small>Tittel på veiviseren</H1>
       {tableOfContents.map(page => (
         page.type === 'Result'
         ? (

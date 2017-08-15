@@ -8,6 +8,8 @@ export const P = injectStyles(styled.p`
 `);
 
 export const Lead = injectStyles(styled.p`
+  font-family: ${({ styles }) => styles.font.secondary};
+  font-weight: 300;
   font-size: 20px;
   margin: 0 0 40px;
 `);

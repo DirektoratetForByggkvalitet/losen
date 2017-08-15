@@ -6,6 +6,14 @@ export const Checkbox = injectStyles(styled.input`
   display: none;
   + label {
     cursor: pointer;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    transition: box-shadow 0.1s ease-in-out;
+    &:hover {
+      box-shadow: 0 0 5px ${({ styles }) => styles.color.dark};
+    }
     &:before {
       content: ' ';
       display: inline-block;
@@ -16,13 +24,14 @@ export const Checkbox = injectStyles(styled.input`
       margin-right: 10px;
       border: 0.3em solid white;
       box-shadow: 0 0 0 0.1em #666;
+      transition: background 0.1s ease-in-out;
     }
     &:hover::before {
-      background: ${({ styles }) => styles.color.primary};
+      background: ${({ styles }) => styles.color.light};
     }
   }
   &:checked + label:before {
-    background: ${({ styles }) => styles.color.primary};
+    background: ${({ styles }) => styles.color.light};
   }
 `);
 
@@ -38,7 +47,7 @@ export const Radio = injectStyles(styled.input.attrs({
     border-radius: 5px;
     transition: box-shadow 0.1s ease-in-out;
     &:hover {
-      box-shadow: 0 0 5px ${({ styles }) => styles.color.secondary};
+      box-shadow: 0 0 5px ${({ styles }) => styles.color.dark};
     }
     &:before {
       content: ' ';
@@ -54,11 +63,11 @@ export const Radio = injectStyles(styled.input.attrs({
       transition: background 0.1s ease-in-out;
     }
     &:hover::before {
-      background: ${({ styles }) => styles.color.primary};
+      background: ${({ styles }) => styles.color.light};
     }
   }
   &:checked + label:before {
-    background: ${({ styles }) => styles.color.primary};
+    background: ${({ styles }) => styles.color.light};
   }
 `);
 

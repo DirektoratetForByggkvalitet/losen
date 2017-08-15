@@ -97,7 +97,7 @@ class Wizard extends Component {
     return (
       <StyledWizard>
         <Grid>
-          <Header />
+          <Header title={wizard.meta.title} />
           <Aside page={page.id} setPage={this.setPage} tableOfContents={tableOfContents} />
           {page.type === 'Result'
             ? (

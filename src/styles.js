@@ -8,8 +8,9 @@ export default {
     secondary: 'Altis',
   },
   color: {
-    primary: '#00757F',
-    secondary: '#072938',
+    light: '#00757F',
+    dark: '#072938',
+    gray: '#f2f1f0',
   },
   padding: {
     small: '2px',

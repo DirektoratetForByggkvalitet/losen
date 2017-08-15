@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Aside = injectStyles(styled.aside`
+const AsideItem = injectStyles(styled.div`
   background: ${props => props.active ? '#fff' : '#000'};
   background: ${props => props.active ? '#efefef' : '#fff'};
   display: flex;
@@ -12,7 +12,7 @@ const Aside = injectStyles(styled.aside`
     background: #efefef;
   }
   &:hover::before {
-    background: ${props => props.active ? ({ styles }) => styles.color.primary : '#efefef'};
+    background: ${props => props.active ? ({ styles }) => styles.color.light : '#efefef'};
   }
   p {
     flex-grow: 1;
@@ -21,7 +21,7 @@ const Aside = injectStyles(styled.aside`
   }
   span {
     text-decoration: underline;
-    color: ${({ styles }) => styles.color.primary};
+    color: ${({ styles }) => styles.color.light};
     font-size: 1em;
     font-weight: normal;
     display: block;
@@ -29,4 +29,4 @@ const Aside = injectStyles(styled.aside`
   }
 `);
 
-export default Aside;
+export default AsideItem;

@@ -13,7 +13,7 @@ export default function ErrorResult({ errorPages, setPage }) {
       {errorPages.map(page => (
         <div>
           {page.errorNodes.map(node => (
-            <button onClick={() => setPage(page.id, node.property)} style={{ display: 'block', width: '100%', 'margin-bottom': '1rem' }}>
+            <button onClick={() => setPage(page.id, node.property)}>
               <p><strong>{page.title} - {node.heading}</strong></p>
               {node.errors.map(error => <div>{JSON.stringify(error)}</div>)}
             </button>
