@@ -7,12 +7,12 @@ export const Checkbox = injectStyles(styled.input`
   + label {
     cursor: pointer;
     background: white;
-    border: 1px solid #ccc;
+    box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
     padding: 10px;
     border-radius: 5px;
-    transition: box-shadow 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     &:hover {
-      box-shadow: 0 0 5px ${({ styles }) => styles.color.dark};
+      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
     }
     &:before {
       content: ' ';
@@ -21,13 +21,10 @@ export const Checkbox = injectStyles(styled.input`
       width: 0.6em;
       height: 0.6em;
       background: white;
-      margin-right: 10px;
+      margin-right: 1em;
       border: 0.3em solid white;
-      box-shadow: 0 0 0 0.1em #666;
+      box-shadow: 0 0 0 0.1em ${({ styles }) => styles.color.dark};
       transition: background 0.1s ease-in-out;
-    }
-    &:hover::before {
-      background: ${({ styles }) => styles.color.light};
     }
   }
   &:checked + label:before {
@@ -42,12 +39,12 @@ export const Radio = injectStyles(styled.input.attrs({
   + label {
     cursor: pointer;
     background: white;
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    transition: box-shadow 0.1s ease-in-out;
+    box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
+    transition: all 0.1s ease-in-out;
     &:hover {
-      box-shadow: 0 0 5px ${({ styles }) => styles.color.dark};
+      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
     }
     &:before {
       content: ' ';
@@ -56,14 +53,11 @@ export const Radio = injectStyles(styled.input.attrs({
       width: 0.5em;
       height: 0.5em;
       background: white;
-      margin-right: 10px;
+      margin-right: 1em;
       border-radius: 50%;
       border: 0.3em solid white;
-      box-shadow: 0 0 0 0.1em #666;
+      box-shadow: 0 0 0 0.1em ${({ styles }) => styles.color.dark};
       transition: background 0.1s ease-in-out;
-    }
-    &:hover::before {
-      background: ${({ styles }) => styles.color.light};
     }
   }
   &:checked + label:before {
@@ -76,5 +70,5 @@ export const NumberInput = injectStyles(styled.input`
   font-size: 1em;
   padding: 0.5em;
   width: 100px;
-  border: 1px solid #666;
+  border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);

@@ -11,7 +11,7 @@ export default function Aside({ page: currentPage = {}, setPage, tableOfContents
   return (
     <StyledAside>
       <H1 small>Burde du skaffe deg katt veivisertittel over to linjer?</H1>
-      {tableOfContents.map(page => (
+      {tableOfContents.map((page, index) => (
         page.type === 'Result'
         ? (
           <AsideResult
@@ -27,6 +27,7 @@ export default function Aside({ page: currentPage = {}, setPage, tableOfContents
           <AsideItem
             key={page.id} // eslint-disable-line react/no-array-index-key
             id={page.id}
+            index={index + 1}
             title={page.title}
             setPage={setPage}
             done={!page.errors}

@@ -8,7 +8,7 @@ const Button = injectStyles(styled.button`
   text-transform: uppercase;
   font-size: 18px;
   letter-spacing: 1px;
-  color: #fff;
+  color: white;
   background: ${({ styles }) => styles.color.light};
   min-width: 30%;
   padding: 12px 18px 13px;

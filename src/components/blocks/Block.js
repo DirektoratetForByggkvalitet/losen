@@ -15,6 +15,7 @@ import { NAME } from '../../state';
 
 import Block from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
+import { P } from '../../primitives/Paragraphs';
 
 function getBlock(type) {
   switch (type) {
@@ -46,9 +47,9 @@ export function PureBlock(props) {
           <H3>
             {props.heading}
           </H3>
-          <p>
+          <P>
             {props.text}
-          </p>
+          </P>
           <SpecificBlock {...props} />
         </div>
       </Block>

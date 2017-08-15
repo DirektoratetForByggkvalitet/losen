@@ -10,7 +10,9 @@ export default {
   color: {
     light: '#00757F',
     dark: '#072938',
-    gray: '#f2f1f0',
+    lightgray: '#f2f1f0',
+    darkgray: '#afaba8',
+    red: '#9d312f',
   },
   padding: {
     small: '2px',

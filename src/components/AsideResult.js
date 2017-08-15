@@ -5,6 +5,7 @@ import StyledAsideItem from '../primitives/AsideItem';
 export default function AsideResult({ setPage, id, active }) {
   return (
     <StyledAsideItem data-id={id} active={active} onClick={() => setPage(id)}>
+      <div>&nbsp;</div>
       <p>
         Vis resultat
       </p>
