@@ -48,7 +48,7 @@ const Button = injectStyles(styled.button`
     background: ${({ styles }) => styles.color.dark};
   }
   &:hover::before, &:hover::after {
-    animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.5s linear infinite;
+    animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.8s linear infinite;
   }
   @media screen and (max-width: 900px) {
     min-width: 45%;

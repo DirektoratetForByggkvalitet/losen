@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import StyledAsideItem from '../primitives/AsideItem';
 
 export default function AsideItem({ setPage, id, done, title, active, index }) {
-
   return (
     <StyledAsideItem active={active} done={done} onClick={() => setPage(id)}>
       <div>{index}</div>

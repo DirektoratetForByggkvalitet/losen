@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { H2 } from '../primitives/Heading';
+import { Lead } from '../primitives/Paragraphs';
+import Main from '../primitives/grid/Main';
 
 export default function ErrorResult({ errorPages, setPage }) {
   return (
-    <div>
-      <h2>Fett. Du kom til slutten <span role="img" aria-label="victory emoji">✌️</span></h2>
-      <p>
+    <Main>
+      <H2>Fett. Du kom til slutten <span role="img" aria-label="victory emoji">✌️</span></H2>
+      <Lead>
         <em>...men du ække helt ferdig ennå.</em> Nedenfor er noen ting du må
         fikse før du kan få et ordentlig resultat i denne veiviseren.
-      </p>
+      </Lead>
 
       {errorPages.map(page => (
         <div>
@@ -20,7 +23,7 @@ export default function ErrorResult({ errorPages, setPage }) {
           ))}
         </div>
       ))}
-    </div>
+    </Main>
   );
 }
 
