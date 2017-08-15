@@ -7,7 +7,7 @@ const Logo = injectStyles(styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     background: ${({ styles }) => styles.logo.mobile} no-repeat;
   }
 `);

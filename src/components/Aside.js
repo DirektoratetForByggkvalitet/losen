@@ -10,7 +10,7 @@ import AsideResult from './AsideResult';
 export default function Aside({ page: currentPage = {}, setPage, tableOfContents }) {
   return (
     <StyledAside>
-      <H1 small>Tittel på veiviseren</H1>
+      <H1 small>Burde du skaffe deg katt veivisertittel over to linjer?</H1>
       {tableOfContents.map(page => (
         page.type === 'Result'
         ? (

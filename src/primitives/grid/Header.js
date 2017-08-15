@@ -23,7 +23,7 @@ const Nav = injectStyles(styled.nav`
   div {
     text-align: right;
   }
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
     display: flex;
     a {
       max-width: ${({ styles }) => styles.size.headerHeight};

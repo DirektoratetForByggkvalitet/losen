@@ -20,10 +20,15 @@ const Button = injectStyles(styled.button`
   margin-right: ${props => props.next ? '0' : 'auto'};
   margin-left: ${props => props.next ? 'auto' : '0'};
   margin-bottom: 10px;
+  position: relative;
   transition: background 0.1s ease-in-out;
   &:before, &:after {
     content: " ";
     display: inline-block;
+    position: absolute;
+    left: ${props => props.next ? 'auto' : '1em'};
+    right: ${props => props.next ? '1em' : 'auto'};
+    top: calc(50% - 0.4rem);
     width: 0.5rem;
     height: 0.5rem;
     vertical-align: middle;
@@ -43,7 +48,32 @@ const Button = injectStyles(styled.button`
     background: ${({ styles }) => styles.color.dark};
   }
   &:hover::before, &:hover::after {
-    border-color: yellow;
+    animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.5s linear infinite;
+  }
+  @media screen and (max-width: 900px) {
+    min-width: 45%;
+  }
+  @keyframes pushnext {
+    0% {
+      transform: rotate(45deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(45deg) translate3d(2px, -2px, 0);
+    }
+    100% {
+      transform: rotate(45deg) translate3d(0, 0, 0);
+    }
+  }
+  @keyframes pushprev {
+    0% {
+      transform: rotate(-135deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-135deg) translate3d(-2px, 2px, 0);
+    }
+    100% {
+      transform: rotate(-135deg) translate3d(0, 0, 0);
+    }
   }
 `);
 
