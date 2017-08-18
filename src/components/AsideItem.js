@@ -4,7 +4,7 @@ import StyledAsideItem from '../primitives/AsideItem';
 
 export default function AsideItem({ setPage, id, done, title, active, index }) {
   return (
-    <StyledAsideItem active={active} done={done} onClick={() => setPage(id)}>
+    <StyledAsideItem active={active} done={done} onClick={() => setPage(id)} tabIndex="0">
       <div>
         {index}
       </div>
