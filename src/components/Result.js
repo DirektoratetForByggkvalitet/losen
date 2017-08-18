@@ -10,17 +10,16 @@ import Block from './blocks/Block';
 import Navigation from './Navigation';
 import ErrorResult from './ErrorResult';
 
-function Result({
-  errorPages,
-  previousPage,
-  title,
-  children = [],
-  pageid,
-  lead,
-  setPage,
-}) {
+function Result({ errorPages, previousPage, title, children = [], pageid, lead, setPage }) {
   if (errorPages.length) {
-    return <ErrorResult errorPages={errorPages} setPage={setPage} />;
+    return (
+      <ErrorResult
+        errorPages={errorPages}
+        setPage={setPage}
+        page={pageid}
+        previousPage={previousPage}
+      />
+    );
   }
 
   return (
@@ -57,6 +56,5 @@ Result.propTypes = {
 const mapStateToProps = (state, { wizard }) => ({
   errorPages: getErrorPages(wizard.schema, state),
 });
-
 
 export default connect(mapStateToProps)(Result);

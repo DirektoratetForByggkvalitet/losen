@@ -5,7 +5,9 @@ import StyledAsideItem from '../primitives/AsideItem';
 export default function AsideItem({ setPage, id, done, title, active, index }) {
   return (
     <StyledAsideItem active={active} done={done} onClick={() => setPage(id)}>
-      <div>{index}</div>
+      <div>
+        {index}
+      </div>
       <p>
         {title}
         <span>Endre svar</span>
