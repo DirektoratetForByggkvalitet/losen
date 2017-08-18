@@ -7,34 +7,33 @@ import AsideItem from './AsideItem';
 import AsideResult from './AsideResult';
 
 // @todo Use a more robust id for the page
-export default function Aside({ page: currentPage = {}, setPage, tableOfContents }) {
+export default function Aside({ page: currentPage = {}, setPage, tableOfContents, title }) {
   return (
     <StyledAside>
-      <H1 small>Burde du skaffe deg katt veivisertittel over to linjer?</H1>
-      {tableOfContents.map((page, index) => (
-        page.type === 'Result'
-        ? (
-          <AsideResult
-            key={page.id}
-            id={page.id}
-            title={page.title}
-            setPage={setPage}
-            done={!page.errors}
-            active={page.id === currentPage}
-          />
-        )
-        : (
-          <AsideItem
-            key={page.id} // eslint-disable-line react/no-array-index-key
-            id={page.id}
-            index={index + 1}
-            title={page.title}
-            setPage={setPage}
-            done={!page.errors}
-            active={page.id === currentPage}
-          />
-        )
-      ))}
+      <H1 small>
+        {title}
+      </H1>
+      {tableOfContents.map(
+        (page, index) =>
+          page.type === 'Result'
+            ? <AsideResult
+              key={page.id}
+              id={page.id}
+              title={page.title}
+              setPage={setPage}
+              done={!page.errors}
+              active={page.id === currentPage}
+            />
+            : <AsideItem
+              key={page.id} // eslint-disable-line react/no-array-index-key
+              id={page.id}
+              index={index + 1}
+              title={page.title}
+              setPage={setPage}
+              done={!page.errors}
+              active={page.id === currentPage}
+            />,
+      )}
     </StyledAside>
   );
 }
@@ -48,4 +47,5 @@ Aside.propTypes = {
   setPage: PropTypes.func.isRequired,
   tableOfContents: PropTypes.array.isRequired,
   page: PropTypes.number,
+  title: PropTypes.string,
 };
