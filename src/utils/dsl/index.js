@@ -95,6 +95,28 @@ export function buildNeq({ field, value }) {
   };
 }
 
+export function buildBetween({ field, value }) {
+  return (state) => {
+    const fieldValue = get(state, field);
+    const [lower, upper] = value;
+
+    if (fieldValue >= lower && fieldValue <= upper) {
+      return ({ valid: true, errors: [] });
+    }
+
+    return ({ valid: false, errors: [[{ field }, 'må være mellom', value[0], 'og', value[1]]] });
+  };
+}
+
+export function buildRequired({ field }) {
+  return (state) => {
+    if (get(state, field) !== undefined) {
+      return ({ valid: true, errors: [] });
+    }
+
+    return ({ valid: false, errors: [[{ field }, 'er påkrevd']] });
+  };
+}
 
 export function buildValidatorForSimpleExpression(expression) {
   return (state) => {
@@ -111,6 +133,10 @@ export function buildValidatorForSimpleExpression(expression) {
         return buildEq(expression)(state);
       case 'neq':
         return buildNeq(expression)(state);
+      case 'between':
+        return buildBetween(expression)(state);
+      case 'required':
+        return buildRequired(expression)(state);
       default:
         return { valid: false, errors: [] };
     }

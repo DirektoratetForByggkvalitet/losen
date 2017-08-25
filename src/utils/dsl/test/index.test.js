@@ -1,9 +1,6 @@
 import parse, {
   getValue,
-  buildGt,
-  buildGte,
-  buildLt,
-  buildLte,
+  buildValidatorForSimpleExpression,
 } from '..';
 
 const stateData = {
@@ -29,9 +26,13 @@ describe('DSL parser', () => {
     });
   });
 
-  describe('buildGt', () => {
+  describe('greater than', () => {
     describe('with simple value', () => {
-      const validatorFunc = buildGt({ field: 'numberOfAnimals', value: 3 });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'gt',
+        value: 3,
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være større enn', 3]] });
@@ -44,7 +45,11 @@ describe('DSL parser', () => {
     });
 
     describe('with field reference as value', () => {
-      const validatorFunc = buildGt({ field: 'numberOfAnimals', value: { field: 'love.cats' } });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'gt',
+        value: { field: 'love.cats' },
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({
@@ -67,9 +72,13 @@ describe('DSL parser', () => {
     });
   });
 
-  describe('buildGte', () => {
+  describe('greater than or equal', () => {
     describe('with simple value', () => {
-      const validatorFunc = buildGte({ field: 'numberOfAnimals', value: 3 });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'gte',
+        value: 3,
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({
@@ -85,7 +94,11 @@ describe('DSL parser', () => {
     });
 
     describe('with field reference as value', () => {
-      const validatorFunc = buildGte({ field: 'numberOfAnimals', value: { field: 'love.cats' } });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'gte',
+        value: { field: 'love.cats' },
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({
@@ -111,9 +124,13 @@ describe('DSL parser', () => {
     });
   });
 
-  describe('buildLt', () => {
+  describe('less than', () => {
     describe('with simple value', () => {
-      const validatorFunc = buildLt({ field: 'numberOfAnimals', value: 3 });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'lt',
+        value: 3,
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({
@@ -137,7 +154,11 @@ describe('DSL parser', () => {
     });
 
     describe('with field reference as value', () => {
-      const validatorFunc = buildLt({ field: 'numberOfAnimals', value: { field: 'love.cats' } });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'lt',
+        value: { field: 'love.cats' },
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({
@@ -166,9 +187,13 @@ describe('DSL parser', () => {
     });
   });
 
-  describe('buildLte', () => {
+  describe('less than or equal', () => {
     describe('with simple value', () => {
-      const validatorFunc = buildLte({ field: 'numberOfAnimals', value: 3 });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'lte',
+        value: 3,
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 4 })).toEqual({
@@ -184,7 +209,11 @@ describe('DSL parser', () => {
     });
 
     describe('with field reference as value', () => {
-      const validatorFunc = buildLte({ field: 'numberOfAnimals', value: { field: 'love.cats' } });
+      const validatorFunc = buildValidatorForSimpleExpression({
+        field: 'numberOfAnimals',
+        operator: 'lte',
+        value: { field: 'love.cats' },
+      });
 
       it('returns error when condition is not met', () => {
         expect(validatorFunc({
@@ -210,6 +239,49 @@ describe('DSL parser', () => {
     });
   });
 
+  describe('between values (in range)', () => {
+    const validatorFunc = buildValidatorForSimpleExpression({
+      field: 'numberOfAnimals',
+      operator: 'between',
+      value: [3, 5],
+    });
+
+    it('returns error when condition is not met', () => {
+      expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({
+        valid: false,
+        errors: [[{ field: 'numberOfAnimals' }, 'må være mellom', 3, 'og', 5]],
+      });
+
+      expect(validatorFunc({ numberOfAnimals: 6 })).toEqual({
+        valid: false,
+        errors: [[{ field: 'numberOfAnimals' }, 'må være mellom', 3, 'og', 5]],
+      });
+    });
+
+    it('succeeds when condition is met', () => {
+      expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({ valid: true, errors: [] });
+      expect(validatorFunc({ numberOfAnimals: 4 })).toEqual({ valid: true, errors: [] });
+      expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({ valid: true, errors: [] });
+    });
+  });
+
+  describe('required', () => {
+    const validatorFunc = buildValidatorForSimpleExpression({
+      field: 'numberOfAnimals',
+      operator: 'required',
+    });
+
+    it('returns error when condition is not met', () => {
+      expect(validatorFunc({ })).toEqual({
+        valid: false,
+        errors: [[{ field: 'numberOfAnimals' }, 'er påkrevd']],
+      });
+    });
+
+    it('succeeds when condition is met', () => {
+      expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({ valid: true, errors: [] });
+    });
+  });
 
   it('throws error on invalid expression', () => {
     expect(() => parse({
