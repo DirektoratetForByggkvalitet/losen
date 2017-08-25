@@ -18,10 +18,10 @@ export function buildGt({ field, value }) {
     }
 
     if (typeof value === 'object' && value.field) {
-      return ({ valid: false, errors: [`${field} må være større enn ${value.field}`] });
+      return ({ valid: false, errors: [[{ field }, 'må være større enn', { field: value.field }]] });
     }
 
-    return ({ valid: false, errors: [`${field} må være større enn ${value}`] });
+    return ({ valid: false, errors: [[{ field }, 'må være større enn', value]] });
   };
 }
 
@@ -32,10 +32,10 @@ export function buildLt({ field, value }) {
     }
 
     if (typeof value === 'object' && value.field) {
-      return ({ valid: false, errors: [`${field} må være mindre enn ${value.field}`] });
+      return ({ valid: false, errors: [[{ field }, 'må være mindre enn', { field: value.field }]] });
     }
 
-    return ({ valid: false, errors: [`${field} må være mindre enn ${value}`] });
+    return ({ valid: false, errors: [[{ field }, 'må være mindre enn', value]] });
   };
 }
 
@@ -46,10 +46,10 @@ export function buildGte({ field, value }) {
     }
 
     if (typeof value === 'object' && value.field) {
-      return ({ valid: false, errors: [`${field} må være større enn eller lik ${value.field}`] });
+      return ({ valid: false, errors: [[{ field }, 'må være større enn eller lik', { field: value.field }]] });
     }
 
-    return ({ valid: false, errors: [`${field} må være større enn eller lik ${value}`] });
+    return ({ valid: false, errors: [[{ field }, 'må være større enn eller lik', value]] });
   };
 }
 
@@ -60,10 +60,10 @@ export function buildLte({ field, value }) {
     }
 
     if (typeof value === 'object' && value.field) {
-      return ({ valid: false, errors: [`${field} må være mindre enn eller lik ${value.field}`] });
+      return ({ valid: false, errors: [[{ field }, 'må være mindre enn eller lik', { field: value.field }]] });
     }
 
-    return ({ valid: false, errors: [`${field} må være mindre enn eller lik ${value}`] });
+    return ({ valid: false, errors: [[{ field }, 'må være mindre enn eller lik', value]] });
   };
 }
 
@@ -74,10 +74,10 @@ export function buildEq({ field, value }) {
     }
 
     if (typeof value === 'object' && value.field) {
-      return ({ valid: false, errors: [`${field} må være lik ${value.field}`] });
+      return ({ valid: false, errors: [[{ field }, 'må være lik', { field: value.field }]] });
     }
 
-    return ({ valid: false, errors: [`${field} må være lik ${value}`] });
+    return ({ valid: false, errors: [[{ field }, 'må være lik', value]] });
   };
 }
 
@@ -88,10 +88,10 @@ export function buildNeq({ field, value }) {
     }
 
     if (typeof value === 'object' && value.field) {
-      return ({ valid: false, errors: [`${field} må være ulik ${value.field}`] });
+      return ({ valid: false, errors: [[{ field }, 'må være ulik', { field: value.field }]] });
     }
 
-    return ({ valid: false, errors: [`${field} må være ulik ${value}`] });
+    return ({ valid: false, errors: [[{ field }, 'må være ulik', value]] });
   };
 }
 

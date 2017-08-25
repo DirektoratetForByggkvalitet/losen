@@ -34,8 +34,8 @@ describe('DSL parser', () => {
       const validatorFunc = buildGt({ field: 'numberOfAnimals', value: 3 });
 
       it('returns error when condition is not met', () => {
-        expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({ valid: false, errors: ['numberOfAnimals må være større enn 3'] });
-        expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({ valid: false, errors: ['numberOfAnimals må være større enn 3'] });
+        expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være større enn', 3]] });
+        expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være større enn', 3]] });
       });
 
       it('succeeds when condition is met', () => {
@@ -50,12 +50,12 @@ describe('DSL parser', () => {
         expect(validatorFunc({
           numberOfAnimals: 2,
           love: { cats: 3 },
-        })).toEqual({ valid: false, errors: ['numberOfAnimals må være større enn love.cats'] });
+        })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være større enn', { field: 'love.cats' }]] });
 
         expect(validatorFunc({
           numberOfAnimals: 3,
           love: { cats: 3 },
-        })).toEqual({ valid: false, errors: ['numberOfAnimals må være større enn love.cats'] });
+        })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være større enn', { field: 'love.cats' }]] });
       });
 
       it('succeeds when condition is met', () => {
@@ -74,9 +74,7 @@ describe('DSL parser', () => {
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være større enn eller lik 3',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være større enn eller lik', 3]],
         });
       });
 
@@ -95,9 +93,7 @@ describe('DSL parser', () => {
           love: { cats: 3 },
         })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være større enn eller lik love.cats',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være større enn eller lik', { field: 'love.cats' }]],
         });
       });
 
@@ -122,15 +118,11 @@ describe('DSL parser', () => {
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være mindre enn 3',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være mindre enn', 3]],
         });
         expect(validatorFunc({ numberOfAnimals: 4 })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være mindre enn 3',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være mindre enn', 3]],
         });
       });
 
@@ -153,9 +145,7 @@ describe('DSL parser', () => {
           love: { cats: 2 },
         })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være mindre enn love.cats',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være mindre enn', { field: 'love.cats' }]],
         });
 
         expect(validatorFunc({
@@ -163,9 +153,7 @@ describe('DSL parser', () => {
           love: { cats: 3 },
         })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være mindre enn love.cats',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være mindre enn', { field: 'love.cats' }]],
         });
       });
 
@@ -185,9 +173,7 @@ describe('DSL parser', () => {
       it('returns error when condition is not met', () => {
         expect(validatorFunc({ numberOfAnimals: 4 })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være mindre enn eller lik 3',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være mindre enn eller lik', 3]],
         });
       });
 
@@ -206,9 +192,7 @@ describe('DSL parser', () => {
           love: { cats: 2 },
         })).toEqual({
           valid: false,
-          errors: [
-            'numberOfAnimals må være mindre enn eller lik love.cats',
-          ],
+          errors: [[{ field: 'numberOfAnimals' }, 'må være mindre enn eller lik', { field: 'love.cats' }]],
         });
       });
 
