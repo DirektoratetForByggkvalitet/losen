@@ -1,6 +1,7 @@
-import parse, {
+import {
   getValue,
   buildValidatorForSimpleExpression,
+  buildValidatorForComplexExpression,
 } from '..';
 
 const stateData = {
@@ -279,13 +280,77 @@ describe('DSL parser', () => {
     });
 
     it('succeeds when condition is met', () => {
-      expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({ valid: true, errors: [] });
+      expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({
+        valid: true,
+        errors: [],
+      });
     });
   });
 
-  it('throws error on invalid expression', () => {
-    expect(() => parse({
-      type: 'and',
-    })).toThrow();
+  describe('validateComplexExpression', () => {
+    describe('or expression', () => {
+      const validatorFunc = buildValidatorForComplexExpression({
+        type: 'or',
+        clauses: [
+          { field: 'love.cats', operator: 'eq', value: true },
+          { field: 'allergic', operator: 'eq', value: true },
+        ],
+      });
+
+      it('returns error when conditions is not met', () => {
+        expect(validatorFunc({ love: { snakes: true } })).toEqual({
+          errors: {
+            errors: [
+              [{ field: 'love.cats' }, 'må være lik', true],
+              [{ field: 'allergic' }, 'må være lik', true],
+            ],
+            operator: 'or',
+          },
+          valid: false,
+        });
+      });
+
+      it('succeeds when conditions is met', () => {
+        expect(validatorFunc({ love: { cats: true } })).toEqual({
+          errors: {
+            errors: [],
+            operator: 'or',
+          },
+          valid: true,
+        });
+      });
+    });
+
+    describe('and expression', () => {
+      const validatorFunc = buildValidatorForComplexExpression({
+        type: 'and',
+        clauses: [
+          { field: 'love.cats', operator: 'eq', value: true },
+          { field: 'allergic', operator: 'eq', value: false },
+        ],
+      });
+
+      it('returns error when conditions is not met', () => {
+        expect(validatorFunc({ love: { cats: true } })).toEqual({
+          errors: {
+            errors: [
+              [{ field: 'allergic' }, 'må være lik', false],
+            ],
+            operator: 'and',
+          },
+          valid: false,
+        });
+      });
+
+      it('succeeds when conditions is met', () => {
+        expect(validatorFunc({ love: { cats: true }, allergic: false })).toEqual({
+          errors: {
+            errors: [],
+            operator: 'and',
+          },
+          valid: true,
+        });
+      });
+    });
   });
 });

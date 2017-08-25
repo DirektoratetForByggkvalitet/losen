@@ -148,6 +148,17 @@ export function buildValidatorForComplexExpression(expression) {
     const validationResult = buildValidatorFunction(clause)(state);
     let valid;
 
+    // If we're dealing with an or expression and the result is true
+    if (expression.type === 'or' && (validationResult.valid || res.valid)) {
+      return {
+        valid: true,
+        errors: {
+          operator: expression.type,
+          errors: [],
+        },
+      };
+    }
+
     if (expression.type === 'and') {
       valid = res.valid && validationResult.valid;
     } else if (expression.type === 'or') {
@@ -156,12 +167,30 @@ export function buildValidatorForComplexExpression(expression) {
 
     return {
       valid,
-      errors: [
+      errors: {
         ...res.errors,
-        validationResult.errors,
-      ],
+        errors: (
+          !validationResult.valid
+          ? [
+            ...res.errors.errors,
+            ...validationResult.errors,
+          ]
+          : res.errors.errors
+        ),
+      },
     };
-  }, { valid: true, errors: [] });
+  }, {
+    /**
+     * Start with valid being true for and expressions to avoid the
+     * result always being false, and with false for or expressions
+     * to avoid the result always being true 🤓
+     */
+    valid: expression.type === 'and',
+    errors: {
+      operator: expression.type,
+      errors: [],
+    },
+  });
 }
 
 export function buildValidatorFunction(expression) {
