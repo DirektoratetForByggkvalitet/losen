@@ -343,7 +343,87 @@ describe('DSL parser', () => {
       });
 
       it('succeeds when conditions is met', () => {
-        expect(validatorFunc({ love: { cats: true }, allergic: false })).toEqual({
+        expect(validatorFunc({
+          love: { cats: true },
+          allergic: false,
+        })).toEqual({
+          errors: {
+            errors: [],
+            operator: 'and',
+          },
+          valid: true,
+        });
+      });
+    });
+
+    describe('nested expression', () => {
+      /**
+       * numberOfAnimals < 4 && (love.snakes || (love.cats && !allergic))
+       */
+      const validatorFunc = buildValidatorForComplexExpression({
+        type: 'and',
+        clauses: [
+          { field: 'numberOfAnimals', operator: 'lt', value: 4 },
+          {
+            type: 'or',
+            clauses: [
+              { field: 'love.snakes', operator: 'eq', value: true },
+              {
+                type: 'and',
+                clauses: [
+                  { field: 'love.cats', operator: 'eq', value: true },
+                  { field: 'allergic', operator: 'eq', value: false },
+                ],
+              },
+            ],
+          },
+        ],
+      });
+
+      it('returns error when conditions is not met', () => {
+        expect(validatorFunc({ numberOfAnimals: 4 })).toEqual({
+          errors: {
+            errors: [
+              [{ field: 'numberOfAnimals' }, 'må være mindre enn', 4],
+              {
+                errors: [
+                  [{ field: 'love.snakes' }, 'må være lik', true],
+                  {
+                    errors: [
+                      [{ field: 'love.cats' }, 'må være lik', true],
+                      [{ field: 'allergic' }, 'må være lik', false],
+                    ],
+                    operator: 'and',
+                  },
+                ],
+                operator: 'or',
+              },
+            ],
+            operator: 'and',
+          },
+          valid: false,
+        });
+
+        expect(validatorFunc({
+          love: { cats: true },
+          allergic: false,
+        })).toEqual({
+          errors: {
+            errors: [
+              [{ field: 'numberOfAnimals' }, 'må være mindre enn', 4],
+            ],
+            operator: 'and',
+          },
+          valid: false,
+        });
+      });
+
+      it('succeeds when conditions is met', () => {
+        expect(validatorFunc({
+          numberOfAnimals: 2,
+          love: { cats: true },
+          allergic: false,
+        })).toEqual({
           errors: {
             errors: [],
             operator: 'and',

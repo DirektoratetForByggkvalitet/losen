@@ -167,17 +167,21 @@ export function buildValidatorForComplexExpression(expression) {
 
     return {
       valid,
-      errors: {
-        ...res.errors,
-        errors: (
-          !validationResult.valid
-          ? [
+      errors: (
+        validationResult.valid
+        ? res.errors
+        : {
+          ...res.errors,
+          errors: [
             ...res.errors.errors,
-            ...validationResult.errors,
-          ]
-          : res.errors.errors
-        ),
-      },
+            ...(
+              Array.isArray(validationResult.errors)
+              ? validationResult.errors
+              : [validationResult.errors]
+            ),
+          ],
+        }
+      ),
     };
   }, {
     /**
