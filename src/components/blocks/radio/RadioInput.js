@@ -8,7 +8,7 @@ const RadioInput = ({ id, text, name, value, checked, onChange }) =>
   (<div>
     <Input type="radio" name={name} value={value} checked={checked} />
 
-    <Label htmlFor={id} onChange={onChange}>
+    <Label htmlFor={id} onClick={onChange}>
       {text}
     </Label>
   </div>);
