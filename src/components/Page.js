@@ -37,7 +37,7 @@ Page.propTypes = {
   title: PropTypes.string,
   lead: PropTypes.string,
   children: PropTypes.array.isRequired,
-  pageid: PropTypes.number.isRequired,
+  pageid: PropTypes.string.isRequired,
   nextPage: PropTypes.func.isRequired,
   previousPage: PropTypes.func.isRequired,
 };

@@ -2,17 +2,27 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Aside = injectStyles(styled.aside`
-  background: ${props => props.active ? '#fff' : '#000'};
-  background: ${props => props.active ? '#efefef' : '#fff'};
+const AsideItem = injectStyles(styled.div`
+  background: ${props => props.active ? ({ styles }) => styles.color.lightgray : 'white'};
   display: flex;
   transition: background 0.1s ease-in-out;
   &:hover {
     cursor: pointer;
-    background: #efefef;
+    background: ${({ styles }) => styles.color.lightgray};
   }
-  &:hover::before {
-    background: ${props => props.active ? ({ styles }) => styles.color.primary : '#efefef'};
+  div {
+    color: ${props => props.active ? 'white' : 'inherit'};
+    background: ${props => props.active ? ({ styles }) => styles.color.dark : 'white'};
+    display: flex;
+    width: 2.4em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.1s ease-in-out;
+    overflow: hidden;
+  }
+  &:hover div {
+    background: ${props => props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
   }
   p {
     flex-grow: 1;
@@ -21,7 +31,7 @@ const Aside = injectStyles(styled.aside`
   }
   span {
     text-decoration: underline;
-    color: ${({ styles }) => styles.color.primary};
+    color: ${({ styles }) => styles.color.light};
     font-size: 1em;
     font-weight: normal;
     display: block;
@@ -29,4 +39,4 @@ const Aside = injectStyles(styled.aside`
   }
 `);
 
-export default Aside;
+export default AsideItem;

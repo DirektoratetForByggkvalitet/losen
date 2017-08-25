@@ -4,8 +4,9 @@ import StyledAsideItem from '../primitives/AsideItem';
 
 export default function AsideResult({ setPage, id, active }) {
   return (
-    <StyledAsideItem data-id={id} active={active} onClick={() => setPage(id)}>
-      <p>RESULTAT <span style={{ display: 'inline' }} role="img" aria-label="100 points emoji">💯</span></p>
+    <StyledAsideItem data-id={id} active={active} onClick={() => setPage(id)} tabIndex="0">
+      <div>&nbsp;</div>
+      <p>Vis resultat</p>
     </StyledAsideItem>
   );
 }

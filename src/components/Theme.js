@@ -30,9 +30,7 @@ class Theme extends Component {
   }
 
   render() {
-    return (
-      <p>Make this a theme decorator for wizard somehow</p>
-    );
+    return <p>Make this a theme decorator for wizard somehow</p>;
   }
 }
 

@@ -4,21 +4,14 @@ import PropTypes from 'prop-types';
 import Label from '../../../primitives/Label';
 import { Radio as Input } from '../../../primitives/Input';
 
-
-const RadioInput = ({ id, text, name, value, checked, onChange }) => (
-  <div>
-    <Input
-      type="radio"
-      name={name}
-      value={value}
-      checked={checked}
-    />
+const RadioInput = ({ id, text, name, value, checked, onChange }) =>
+  (<div>
+    <Input type="radio" name={name} value={value} checked={checked} />
 
     <Label htmlFor={id} onClick={onChange}>
       {text}
     </Label>
-  </div>
-);
+  </div>);
 
 export default RadioInput;
 

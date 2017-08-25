@@ -3,23 +3,32 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const Button = injectStyles(styled.button`
+  font-family: ${({ styles }) => styles.font.secondary};
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: white;
+  background: ${({ styles }) => styles.color.light};
+  min-width: 30%;
   padding: 12px 18px 13px;
-  font-size: 22px;
   cursor: pointer;
   user-select: none;
   border: 0 none;
   border-radius: 0;
   appearance: none;
-  color: #fff;
-  background: ${({ styles }) => styles.color.secondary};
-  font-family: ${({ styles }) => styles.font.primary};
   margin-right: ${props => props.next ? '0' : 'auto'};
   margin-left: ${props => props.next ? 'auto' : '0'};
   margin-bottom: 10px;
+  position: relative;
   transition: background 0.1s ease-in-out;
   &:before, &:after {
     content: " ";
     display: inline-block;
+    position: absolute;
+    left: ${props => props.next ? 'auto' : '1em'};
+    right: ${props => props.next ? '1em' : 'auto'};
+    top: calc(50% - 0.4rem);
     width: 0.5rem;
     height: 0.5rem;
     vertical-align: middle;
@@ -36,10 +45,35 @@ const Button = injectStyles(styled.button`
     margin-left: 1em;
   }
   &:hover {
-    background: ${({ styles }) => styles.color.secondary};
+    background: ${({ styles }) => styles.color.dark};
   }
   &:hover::before, &:hover::after {
-    border-color: yellow;
+    animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.8s linear infinite;
+  }
+  @media screen and (max-width: 900px) {
+    min-width: 45%;
+  }
+  @keyframes pushnext {
+    0% {
+      transform: rotate(45deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(45deg) translate3d(2px, -2px, 0);
+    }
+    100% {
+      transform: rotate(45deg) translate3d(0, 0, 0);
+    }
+  }
+  @keyframes pushprev {
+    0% {
+      transform: rotate(-135deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-135deg) translate3d(-2px, 2px, 0);
+    }
+    100% {
+      transform: rotate(-135deg) translate3d(0, 0, 0);
+    }
   }
 `);
 

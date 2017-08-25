@@ -65,9 +65,7 @@ class Wizard extends Component {
   }
 
   getCurrentIndex() {
-    return Math.max(0, this.props.schema.findIndex(
-      ({ id }) => id === this.state.page,
-    ));
+    return Math.max(0, this.props.schema.findIndex(({ id }) => id === this.state.page));
   }
 
   changePage(distance) {
@@ -85,30 +83,32 @@ class Wizard extends Component {
     });
   }
 
-  nextPage = () => this.changePage(1)
+  nextPage = () => this.changePage(1);
 
-  previousPage = () => this.changePage(-1)
+  previousPage = () => this.changePage(-1);
 
   render() {
     const { wizard, schema, tableOfContents } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
-
     return (
       <StyledWizard>
         <Grid>
           <Header />
-          <Aside page={page.id} setPage={this.setPage} tableOfContents={tableOfContents} />
+          <Aside
+            page={page.id}
+            setPage={this.setPage}
+            title={wizard.meta.title}
+            tableOfContents={tableOfContents}
+          />
           {page.type === 'Result'
-            ? (
-              <Result
-                {...page}
-                previousPage={this.previousPage}
-                pageid={page.id}
-                wizard={wizard}
-                setPage={this.setPage}
-              />
-            )
+            ? <Result
+              {...page}
+              previousPage={this.previousPage}
+              pageid={page.id}
+              wizard={wizard}
+              setPage={this.setPage}
+            />
             : <Page
               nextPage={this.nextPage}
               previousPage={this.previousPage}

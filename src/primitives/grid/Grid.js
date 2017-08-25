@@ -12,7 +12,7 @@ const Grid = injectStyles(styled.div`
   grid-gap: 30px;
   min-height: 100vh;
   justify-content: center;
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 700px) {
           grid-template-areas: "header"
                                "aside"
                                "main"
