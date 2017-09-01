@@ -67,6 +67,7 @@ export function PureBlock(props) {
           <P>
             {props.text}
           </P>
+          {props.image ? <img src={props.image.url} alt={props.image.alt} /> : null}
           <SpecificBlock {...props} />
         </div>
       </Block>
@@ -79,6 +80,7 @@ export function PureBlock(props) {
 PureBlock.defaultProps = {
   heading: 'No heading',
   text: '',
+  image: {},
 };
 
 PureBlock.propTypes = {
@@ -86,6 +88,7 @@ PureBlock.propTypes = {
   heading: PropTypes.string,
   text: PropTypes.string,
   property: PropTypes.string.isRequired,
+  image: PropTypes.object,
 };
 
 const ConnectedBlock = connect(
