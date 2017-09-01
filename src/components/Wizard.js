@@ -91,6 +91,7 @@ class Wizard extends Component {
     const { wizard, schema, tableOfContents } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
+
     return (
       <StyledWizard>
         <Grid>
