@@ -21,6 +21,10 @@ import Block from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
 import { P } from '../../primitives/Paragraphs';
 
+const HtmlToReactParser = require('html-to-react').Parser;
+
+const htmlToReactParser = new HtmlToReactParser();
+
 function getBlock(type) {
   switch (type) {
     case 'Radio':
@@ -55,6 +59,7 @@ function getBlock(type) {
 
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
+  const parsedHtml = htmlToReactParser.parse(props.text);
   if (props.type === 'Image' || props.type === 'Text') {
     return <SpecificBlock {...props} />;
   } else if (SpecificBlock) {
@@ -65,7 +70,7 @@ export function PureBlock(props) {
             {props.heading}
           </H3>
           <P>
-            {props.text}
+            {parsedHtml}
           </P>
           {props.image ? <img src={props.image.url} alt={props.image.alt} /> : null}
           <SpecificBlock {...props} />
