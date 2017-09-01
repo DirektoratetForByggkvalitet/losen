@@ -19,6 +19,7 @@ const AsideItem = injectStyles(styled.div`
     justify-content: center;
     transition: background 0.1s ease-in-out;
     overflow: hidden;
+    ${props => props.done ? 'border-right: 5px solid hotpink' : ''}
   }
   &:hover div {
     background: ${props => props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};

@@ -58,6 +58,7 @@ export function validateSimpleExpression(expression) {
 
       break;
 
+    case 'not':
     case 'required':
       return true;
 

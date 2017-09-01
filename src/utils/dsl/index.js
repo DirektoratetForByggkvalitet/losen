@@ -118,6 +118,16 @@ export function buildRequired({ field }) {
   };
 }
 
+export function buildNot({ field }) {
+  return (state) => {
+    if (!get(state, field)) {
+      return ({ valid: true, errors: [] });
+    }
+
+    return ({ valid: false, errors: [[{ field }, 'skal være usann']] });
+  };
+}
+
 export function buildValidatorForSimpleExpression(expression) {
   return (state) => {
     switch (expression.operator) {
@@ -137,6 +147,8 @@ export function buildValidatorForSimpleExpression(expression) {
         return buildBetween(expression)(state);
       case 'required':
         return buildRequired(expression)(state);
+      case 'not':
+        return buildNot(expression)(state);
       default:
         return { valid: false, errors: [] };
     }

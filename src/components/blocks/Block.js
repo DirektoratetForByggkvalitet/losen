@@ -64,16 +64,16 @@ export function PureBlock(props) {
     return <SpecificBlock {...props} />;
   } else if (SpecificBlock) {
     return (
-      <Block id={props.property}>
+      <Block id={props.property} disabled={props.disabled}>
         <div>
-          <H3>
-            {props.heading}
-          </H3>
-          <P>
-            {parsedHtml}
-          </P>
+          <H3>{props.heading}</H3>
+          <P>{parsedHtml}</P>
+
           {props.image ? <img src={props.image.url} alt={props.image.alt} /> : null}
+
           <SpecificBlock {...props} />
+
+          {props.disabled && <div style={{ color: 'deeppink' }}>{JSON.stringify(props.errors)}</div>}
         </div>
       </Block>
     );
@@ -86,6 +86,7 @@ PureBlock.defaultProps = {
   heading: 'No heading',
   text: '',
   image: {},
+  errors: [],
 };
 
 PureBlock.propTypes = {
@@ -94,12 +95,15 @@ PureBlock.propTypes = {
   text: PropTypes.string,
   property: PropTypes.string.isRequired,
   image: PropTypes.object,
+  disabled: PropTypes.bool.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.object),
 };
 
 const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
     currentValue: get(state[NAME], props.property),
+    disabled: Array.isArray(props.errors) && props.errors.length > 0,
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);

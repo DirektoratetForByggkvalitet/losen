@@ -9,20 +9,19 @@ import { NAME } from '../state';
  * @param string property
  * @param object state
  */
-function validateNode(property, state) {
-  if (!property) {
+export function validateNode(node, state) {
+  if (!node.property) {
     return [];
   }
 
+  const errors = [];
+
   // Checks for fields that are required but not provided
-  if (typeof get(state[NAME], property) === 'undefined') {
-    return [{ type: 'required' }];
+  if (typeof get(state[NAME], node.property) === 'undefined') {
+    errors.push({ type: 'required' });
   }
 
-  // @todo Implement type checks
-  // @todo Implement logical tests
-
-  return [];
+  return errors;
 }
 
 export function getValidatedSchema(schema, state) {
@@ -32,7 +31,7 @@ export function getValidatedSchema(schema, state) {
     ...page,
     children: (page.children || []).map(node => ({
       ...node,
-      errors: validateNode(node.property, state),
+      errors: validateNode(node, state),
     })),
   }));
 }

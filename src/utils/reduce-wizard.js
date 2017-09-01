@@ -1,5 +1,6 @@
 /* eslint no-use-before-define: 0 */
 
+import parseExpression from './dsl';
 import { NAME } from '../state';
 
 export const filterSchemaNodes = state => (node) => {
@@ -7,7 +8,13 @@ export const filterSchemaNodes = state => (node) => {
     return true;
   }
 
-  return !node.hidden || !node.hidden(state[NAME]);
+  // if no expression is specified that could hide this node, exit now
+  if (!node.hidden) {
+    return true;
+  }
+
+  // parse and test expression. if result is falsy, we're not hiding
+  return !parseExpression(node.hidden)(state[NAME]).valid;
 };
 
 export const reduceBranches = state => (res, node) => {
@@ -16,7 +23,7 @@ export const reduceBranches = state => (res, node) => {
   }
 
   const selectedBranch = node.branches.find(
-    branch => branch.test(state[NAME]),
+    branch => parseExpression(branch.test)(state[NAME]).valid,
   );
 
   if (selectedBranch) {
@@ -27,12 +34,18 @@ export const reduceBranches = state => (res, node) => {
 };
 
 export const mapWizardChildren = state => (node) => {
+  const errors = node.disabled ? parseExpression(node.disabled)(state[NAME]).errors : [];
+
   if (!Array.isArray(node.children)) {
-    return node;
+    return {
+      ...node,
+      errors,
+    };
   }
 
   return {
     ...node,
+    errors,
     children: reduceWizard(node.children, state),
   };
 };
