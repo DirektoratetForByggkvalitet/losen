@@ -46,7 +46,7 @@ export function getPages(schema, state) {
     return {
       ...rest,
       errors: errorCount,
-      completed: false,
+      completed: !errorCount,
     };
   });
 }
