@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import StyledAside from '../primitives/grid/Aside';
 import { H1 } from '../primitives/Heading';
+import Button from '../primitives/ToggleButton';
 import AsideItem from './AsideItem';
 import AsideResult from './AsideResult';
 
@@ -30,7 +31,7 @@ export default class Aside extends Component {
 
     return (
       <div>
-        <button onClick={this.toggleToc}>{tocExpanded ? 'Skjul' : 'Vis'} innholdsfortegnelse</button>
+        <Button onClick={this.toggleToc}>{tocExpanded ? 'Vis' : 'Skjul'} innholdsfortegnelse</Button>
 
         <StyledAside tocExpanded={tocExpanded}>
           <H1 small>
