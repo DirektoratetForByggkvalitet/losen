@@ -21,7 +21,8 @@ export default {
   },
   size: {
     blockWidth: '700px',
-    asideWidth: '300px',
+    asideWidth: '360px',
     headerHeight: '75px',
+    mobileContentWidth: '88%',
   },
 };

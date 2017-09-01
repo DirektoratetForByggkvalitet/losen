@@ -9,7 +9,6 @@ const Grid = injectStyles(styled.div`
                        "footer footer";
   grid-template-columns: ${({ styles }) => styles.size.asideWidth} 1fr;
   grid-template-rows: ${({ styles }) => styles.size.headerHeight} 1fr 60px;
-  grid-gap: 30px;
   min-height: 100vh;
   justify-content: center;
   @media screen and (max-width: 700px) {
@@ -21,8 +20,7 @@ const Grid = injectStyles(styled.div`
           grid-template-rows: ${({ styles }) => styles.size.headerHeight}
                               auto
                               1fr
-                              80px
-                              60px;
+                              80px;
           grid-gap: 0;
       }
   }

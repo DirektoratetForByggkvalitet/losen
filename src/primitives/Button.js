@@ -51,7 +51,8 @@ const Button = injectStyles(styled.button`
     animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.8s linear infinite;
   }
   @media screen and (max-width: 900px) {
-    min-width: 45%;
+    min-width: 48%;
+    text-align: ${props => props.next ? 'left' : 'right'};
   }
   @keyframes pushnext {
     0% {

@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledAsideItem from '../primitives/AsideItem';
+import { AsideResult as StyledAsideResult } from '../primitives/AsideButton';
 
 export default function AsideResult({ setPage, id, active }) {
   return (
-    <StyledAsideItem data-id={id} active={active} onClick={() => setPage(id)} tabIndex="0">
-      <div>&nbsp;</div>
-      <p>Vis resultat</p>
-    </StyledAsideItem>
+    <StyledAsideResult data-id={id} active={active} onClick={() => setPage(id)} tabIndex="0">
+      Vis resultat
+    </StyledAsideResult>
   );
 }
 

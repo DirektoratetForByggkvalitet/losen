@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { H2 } from '../primitives/Heading';
+import { H2, H3 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
 import Navigation from './Navigation';
@@ -19,6 +19,9 @@ export default function ErrorResult({ errorPages, setPage, pageid, previousPage 
         ordentlig resultat i denne veiviseren.
       </Lead>
 
+      <H3>
+        Husk å fylle ut:
+      </H3>
       {errorPages.map(page =>
         (<div>
           {page.errorNodes.map(node =>

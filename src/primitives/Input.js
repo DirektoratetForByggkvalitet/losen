@@ -23,11 +23,11 @@ export const Checkbox = injectStyles(styled.input`
       background: white;
       margin-right: 1em;
       border: 0.3em solid white;
-      box-shadow: 0 0 0 2px ${({ styles }) => styles.color.darkgray};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
       transition: all 0.1s ease-in-out;
     }
     &:hover::before {
-      box-shadow: 0 0 0 2px ${({ styles }) => styles.color.dark};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
     }
   }
   &:checked + label:before {
@@ -60,11 +60,11 @@ export const Radio = injectStyles(styled.input.attrs({
       margin-right: 1em;
       border-radius: 50%;
       border: 0.3em solid white;
-      box-shadow: 0 0 0 2px ${({ styles }) => styles.color.darkgray};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
       transition: all 0.1s ease-in-out;
     }
     &:hover::before {
-      box-shadow: 0 0 0 2px ${({ styles }) => styles.color.dark};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
     }
   }
   &:checked + label:before {
