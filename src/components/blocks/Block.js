@@ -55,7 +55,7 @@ function getBlock(type) {
 
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
-  if (props.type === 'Image') {
+  if (props.type === 'Image' || props.type === 'Text') {
     return <SpecificBlock {...props} />;
   } else if (SpecificBlock) {
     return (
