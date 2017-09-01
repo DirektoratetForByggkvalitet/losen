@@ -9,7 +9,7 @@ export default function Heading() {
         <Logo />
       </a>
       <div>
-        <button>= Menytoggle på mobil</button>
+        ¯\_(ツ)_/¯
       </div>
     </Header>
   );

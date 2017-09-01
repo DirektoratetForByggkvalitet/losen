@@ -14,16 +14,39 @@ const AsideItem = injectStyles(styled.div`
     color: ${props => props.active ? 'white' : 'inherit'};
     background: ${props => props.active ? ({ styles }) => styles.color.dark : 'white'};
     display: flex;
-    width: 2.4em;
+    min-width: 2.4em;
     align-items: center;
     justify-content: center;
-    text-align: center;
     transition: background 0.1s ease-in-out;
     overflow: hidden;
   }
   &:hover div {
     background: ${props => props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
   }
+  ${props => (
+    props.done
+    ? `
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 0.7em;
+        height: 0.4em;
+        border-left: 3px solid ${({ styles }) => styles.color.light};
+        border-bottom: 3px solid ${({ styles }) => styles.color.light};
+        transform: rotate(-45deg);
+        flex-shrink: 0;
+      }
+    `
+    : `
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 0.7em;
+        height: 0.4em;
+        flex-shrink: 0;
+      } 
+    `
+  )}
   p {
     flex-grow: 1;
     font-weight: bold;
