@@ -10,6 +10,7 @@ export default class Input extends Component {
     min: 0,
     max: Number.MAX_SAFE_INTEGER,
     step: 1,
+    currentValue: '',
   }
 
   static propTypes = {
@@ -20,6 +21,7 @@ export default class Input extends Component {
     placeholder: PropTypes.string,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
+    currentValue: PropTypes.any,
   }
 
   handleChange = (e) => {
@@ -36,7 +38,14 @@ export default class Input extends Component {
   }
 
   render() {
-    const { placeholder, min, max, type, step } = this.props;
+    const {
+      currentValue,
+      placeholder,
+      min,
+      max,
+      type,
+      step,
+    } = this.props;
 
     return (
       <StyledInput
@@ -46,6 +55,7 @@ export default class Input extends Component {
         step={step}
         placeholder={placeholder}
         onChange={this.handleChange}
+        value={currentValue}
       />
     );
   }

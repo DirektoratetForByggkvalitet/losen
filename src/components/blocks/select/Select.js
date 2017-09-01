@@ -1,31 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SelectOption from './SelectOption';
 
 import { H3 } from '../../../primitives/Heading';
 
-const Select = props =>
-  (<div>
-    <H3>
-      {props.heading}
-    </H3>
-    <p>
-      {props.text}
-    </p>
-    <select>
-      {props.suggestedAnswer.map(option => <SelectOption key={option.value} {...option} />)}
-    </select>
-  </div>);
+export default class Select extends Component {
+  static defaultProps = {
+    text: '',
+    heading: '',
+    currentValue: null,
+  };
 
-export default Select;
+  static propTypes = {
+    text: PropTypes.string,
+    heading: PropTypes.string,
+    suggestedAnswer: PropTypes.array.isRequired,
+    currentValue: PropTypes.any,
+    setData: PropTypes.func.isRequired,
+    property: PropTypes.string.isRequired,
+  };
 
-Select.defaultProps = {
-  text: '',
-  heading: '',
-};
+  handleChange = e => this.props.setData(this.props.property, e.target.value)
 
-Select.propTypes = {
-  text: PropTypes.string,
-  heading: PropTypes.string,
-  suggestedAnswer: PropTypes.array.isRequired,
-};
+  render() {
+    const {
+      currentValue,
+      suggestedAnswer,
+      heading,
+      text,
+    } = this.props;
+
+    return (
+      <div>
+        <H3>{heading}</H3>
+        <p>{text}</p>
+
+        <select value={currentValue} onChange={this.handleChange}>
+          {suggestedAnswer.map(option => (
+            <SelectOption
+              {...option}
+              key={option.value}
+            />
+          ))}
+        </select>
+      </div>
+    );
+  }
+}
