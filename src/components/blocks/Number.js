@@ -1,27 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NumberInput as Input } from '../../primitives/Input';
+import Input from './Input';
 
-const Number = props =>
-  (<div>
+export default function Number({ minimum, maximum, ...props }) {
+  return (
     <Input
+      {...props}
       type="number"
-      placeholder={props.placeholder}
-      step="1"
-      min={props.minimum}
-      max={props.maximum}
+      step={1}
+      min={minimum}
+      max={maximum}
     />
-  </div>);
-
-export default Number;
-
-Number.defaultProps = {
-  placeholder: '',
-};
+  );
+}
 
 Number.propTypes = {
-  placeholder: PropTypes.string,
   minimum: PropTypes.number.isRequired,
   maximum: PropTypes.number.isRequired,
 };
