@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Image = props =>
   (<figure>
-    <img src={props.image} alt={props.text} />
+    <img src={props.image.url} alt={props.image.alt} />
     <figcaption>
       {props.text}
     </figcaption>
@@ -12,6 +12,6 @@ const Image = props =>
 export default Image;
 
 Image.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired,
 };
