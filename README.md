@@ -9,4 +9,4 @@ We use [Storybook](https://github.com/storybooks/storybook) to document the comp
 The Storybook is hosted on Firebase at [dibk-storybook](https://dibk-storybook.firebaseapp.com/).
 
 ## Figma sketches
-Sketches in figma can be found [here](figma.com/file/eV0GHYZtiS9OWgcyoihwlc/DiBK-veiviser-(Ansvarsrett)).
+Sketches in figma can be found [here](https://www.figma.com/file/eV0GHYZtiS9OWgcyoihwlc/DiBK-veiviser-(Ansvarsrett)).
