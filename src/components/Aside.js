@@ -6,24 +6,25 @@ import { H1 } from '../primitives/Heading';
 import Button from '../primitives/ToggleButton';
 import AsideItem from './AsideItem';
 import AsideResult from './AsideResult';
+import ResetFormButton from './ResetFormButton';
 
 // @todo Use a more robust id for the page
 export default class Aside extends Component {
   static defaultProps = {
     title: 'Missing page title',
     page: 0,
-  }
+  };
 
   static propTypes = {
     page: PropTypes.string,
     setPage: PropTypes.func.isRequired,
     tableOfContents: PropTypes.array.isRequired,
     title: PropTypes.string,
-  }
+  };
 
-  state = { tocExpanded: true }
+  state = { tocExpanded: true };
 
-  toggleToc = () => this.setState({ tocExpanded: !this.state.tocExpanded })
+  toggleToc = () => this.setState({ tocExpanded: !this.state.tocExpanded });
 
   render() {
     const { page: currentPage = {}, setPage, tableOfContents, title } = this.props;
@@ -31,7 +32,9 @@ export default class Aside extends Component {
 
     return (
       <div>
-        <Button onClick={this.toggleToc}>{tocExpanded ? 'Vis' : 'Skjul'} innholdsfortegnelse</Button>
+        <Button onClick={this.toggleToc}>
+          {tocExpanded ? 'Vis' : 'Skjul'} innholdsfortegnelse
+        </Button>
 
         <StyledAside tocExpanded={tocExpanded}>
           <H1 small>
@@ -58,6 +61,7 @@ export default class Aside extends Component {
                   active={page.id === currentPage}
                 />,
           )}
+          <ResetFormButton />
         </StyledAside>
       </div>
     );
