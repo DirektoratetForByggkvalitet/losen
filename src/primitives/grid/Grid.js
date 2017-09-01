@@ -19,10 +19,11 @@ const Grid = injectStyles(styled.div`
                                "footer";
           grid-template-columns: 100%;
           grid-template-rows: ${({ styles }) => styles.size.headerHeight}
-                              60px
+                              auto
                               1fr
                               80px
                               60px;
+          grid-gap: 0;
       }
   }
 `);

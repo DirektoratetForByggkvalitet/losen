@@ -85,7 +85,6 @@ export const TextInput = injectStyles(styled.input`
   font-size: 1em;
   padding: 0.5em;
   min-width: 40%;
-  background: lime;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);
 
@@ -95,6 +94,5 @@ export const Textarea = injectStyles(styled.textarea`
   padding: 0.5em;
   width: 100%;
   height: 5em;
-  background: lime;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);

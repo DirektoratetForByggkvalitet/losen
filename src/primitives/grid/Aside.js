@@ -5,13 +5,16 @@ import injectStyles from '../../utils/inject-styles';
 const Aside = injectStyles(styled.aside`
   grid-area: aside;
   padding: 0 20px;
-
   ${props => (
     props.tocExpanded
     ? `@media screen and (max-width: 700px) {
       display: none;
     }` : ''
   )}
+  @media screen and (max-width: 700px) {
+    max-width: 80%;
+    margin: 0 auto;
+  }
 `);
 
 export default Aside;
