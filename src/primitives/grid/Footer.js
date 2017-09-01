@@ -5,7 +5,7 @@ import injectStyles from '../../utils/inject-styles';
 const Footer = injectStyles(styled.footer`
   grid-area: footer;
   padding: 20px;
-  background-color: #d7d4d1;
+  background-color: white;
 `);
 
 export default Footer;
