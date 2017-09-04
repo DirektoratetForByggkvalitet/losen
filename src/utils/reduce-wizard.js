@@ -36,7 +36,11 @@ export const reduceBranches = state => (res, node) => {
 export const mapWizardChildren = state => (node) => {
   const errors = node.disabled ? parseExpression(node.disabled)(state[NAME]).errors : [];
 
-  if (!Array.isArray(node.children)) {
+  if (node.type === 'Result') {
+    return node;
+  }
+
+  if (!node.children) {
     return {
       ...node,
       errors,
@@ -45,7 +49,6 @@ export const mapWizardChildren = state => (node) => {
 
   return {
     ...node,
-    errors,
     children: reduceWizard(node.children, state),
   };
 };

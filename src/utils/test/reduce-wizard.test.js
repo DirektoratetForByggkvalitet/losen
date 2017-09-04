@@ -14,16 +14,16 @@ describe('reduce-wizard', () => {
         type: 'Page',
         children: [
           { type: 'Input' },
-          { type: 'Input', hidden: ({ foo }) => foo === 'bar' },
+          { type: 'Input', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
           {
             type: 'Branch',
             branches: [
               {
-                test: ({ bar }) => bar === 'baz',
+                test: { field: 'foo', operator: 'eq', value: 'baz' },
                 children: [{ type: 'Input' }],
               },
               {
-                test: ({ bar }) => bar !== 'baz',
+                test: { field: 'foo', operator: 'neq', value: 'baz' },
                 children: [{ type: 'Result', title: 'The end' }],
               },
             ],
@@ -37,8 +37,8 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input' },
-          wizard[0].children[1],
+          { type: 'Input', errors: [] },
+          { ...wizard[0].children[1], errors: [] },
         ],
       },
       { title: 'The end', type: 'Result' },
@@ -53,11 +53,10 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input' },
-          { type: 'Input' },
+          { type: 'Input', errors: [] },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', title: 'The end' },
     ]);
   });
 
@@ -70,10 +69,10 @@ describe('reduce-wizard', () => {
             type: 'Branch',
             branches: [
               {
-                test: () => true,
+                test: { field: 'foo', operator: 'required' },
                 children: [
                   { type: 'Input' },
-                  { type: 'Radio', hidden: ({ foo }) => !foo },
+                  { type: 'Radio', hidden: { field: 'foo', operator: 'not' } },
                 ],
               },
             ],
@@ -83,11 +82,12 @@ describe('reduce-wizard', () => {
       { type: 'Result', title: 'Foobar' },
     ];
 
-    expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
+    expect(reduceWizard(wizard, { [NAME]: { foo: 'test' } })).toEqual([
       {
         type: 'Page',
         children: [
-          { type: 'Input' },
+          { type: 'Input', errors: [] },
+          { ...wizard[0].children[0].branches[0].children[1], errors: [] },
         ],
       },
       { type: 'Result', title: 'Foobar' },
@@ -101,8 +101,8 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input' },
-          wizard[0].children[0].branches[0].children[1],
+          { type: 'Input', errors: [] },
+          { ...wizard[0].children[0].branches[0].children[1], errors: [] },
         ],
       },
       { type: 'Result', title: 'Foobar' },
@@ -113,24 +113,24 @@ describe('reduce-wizard', () => {
     it('does not filter out nodes missing the hidden property', () => {
       const raw = [{
         type: 'Input',
-        hidden: () => true,
+        hidden: { field: 'foo', operator: 'eq', value: 'test' },
       }, {
         type: 'Input',
       }];
 
-      const filtered = raw.filter(filterSchemaNodes({}));
+      const filtered = raw.filter(filterSchemaNodes({ [NAME]: { foo: 'test' } }));
       expect(filtered).toEqual([raw[1]]);
     });
 
     it('does not filter out Branch nodes', () => {
       const raw = [{
         type: 'Branch',
-        hidden: () => true,
+        hidden: { field: 'foo', operator: 'eq', value: 'test' },
       }, {
         type: 'Input',
       }];
 
-      const filtered = raw.filter(filterSchemaNodes({}));
+      const filtered = raw.filter(filterSchemaNodes({ [NAME]: { foo: 'test' } }));
       expect(filtered).toEqual(raw);
     });
 
@@ -140,11 +140,11 @@ describe('reduce-wizard', () => {
       const raw = [{
         type: 'Input',
         title: 'Fjasebengel',
-        hidden: ({ foo }) => foo === 'bar',
+        hidden: { field: 'foo', operator: 'eq', value: 'bar' },
       }, {
         type: 'Input',
         title: 'Floppo',
-        hidden: ({ foo }) => foo !== 'bar',
+        hidden: { field: 'foo', operator: 'neq', value: 'bar' },
       }];
 
       const filtered = raw.filter(filterSchemaNodes(state));
@@ -171,11 +171,11 @@ describe('reduce-wizard', () => {
         type: 'Branch',
         branches: [
           {
-            test: ({ foo }) => foo === 'bar',
+            test: { field: 'foo', operator: 'eq', value: 'bar' },
             children: [{ type: 'Checkbox' }],
           },
           {
-            test: ({ foo }) => foo === 'baz',
+            test: { field: 'foo', operator: 'eq', value: 'baz' },
             children: [{ type: 'Input' }],
           },
         ],
@@ -204,26 +204,28 @@ describe('reduce-wizard', () => {
             type: 'Stuff',
             children: [
               { type: 'Input' },
-              { type: 'Radio', hidden: () => true },
+              { type: 'Radio', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
               { type: 'Checkbox' },
             ],
           },
           { type: 'Input' },
-          { type: 'Radio', hidden: () => true },
+          { type: 'Radio', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
         ],
       };
 
-      expect(mapWizardChildren({})(node)).toEqual({
+      expect(mapWizardChildren(
+        { [NAME]: { foo: 'bar' } },
+      )(node)).toEqual({
         type: 'Shit',
         children: [
           {
             type: 'Stuff',
             children: [
-              { type: 'Input' },
-              { type: 'Checkbox' },
+              { type: 'Input', errors: [] },
+              { type: 'Checkbox', errors: [] },
             ],
           },
-          { type: 'Input' },
+          { type: 'Input', errors: [] },
         ],
       });
     });
