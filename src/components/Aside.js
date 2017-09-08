@@ -6,7 +6,7 @@ import { H1 } from '../primitives/Heading';
 import Button from '../primitives/ToggleButton';
 import AsideItem from './AsideItem';
 import AsideResult from './AsideResult';
-import ResetFormButton from './ResetFormButton';
+import AsideReset from './AsideReset';
 
 // @todo Use a more robust id for the page
 export default class Aside extends Component {
@@ -61,7 +61,7 @@ export default class Aside extends Component {
                   active={page.id === currentPage}
                 />,
           )}
-          <ResetFormButton />
+          <AsideReset />
         </StyledAside>
       </div>
     );

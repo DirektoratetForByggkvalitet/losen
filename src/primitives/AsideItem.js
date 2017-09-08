@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const AsideItem = injectStyles(styled.div`
-  background: ${props => props.active ? ({ styles }) => styles.color.lightgray : 'white'};
+  background: ${props => (props.active ? ({ styles }) => styles.color.lightgray : 'white')};
   display: flex;
   transition: background 0.1s ease-in-out;
   &:hover {
@@ -11,22 +11,23 @@ const AsideItem = injectStyles(styled.div`
     background: ${({ styles }) => styles.color.lightgray};
   }
   div {
-    color: ${props => props.active ? 'white' : 'inherit'};
-    background: ${props => props.active ? ({ styles }) => styles.color.dark : 'white'};
+    color: ${props => (props.active ? 'white' : 'inherit')};
+    background: ${props => (props.active ? ({ styles }) => styles.color.dark : 'white')};
     display: flex;
     min-width: 2.4em;
     align-items: center;
     justify-content: center;
     transition: background 0.1s ease-in-out;
     overflow: hidden;
-    ${props => props.done ? 'border-right: 5px solid hotpink' : ''}
+    ${props => (props.done ? 'border-right: 5px solid hotpink' : '')};
   }
   &:hover div {
-    background: ${props => props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
+    background: ${props =>
+    props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
   }
-  ${props => (
+  ${props =>
     props.done
-    ? `
+      ? `
       &::after {
         content: "";
         display: inline-block;
@@ -38,17 +39,15 @@ const AsideItem = injectStyles(styled.div`
         flex-shrink: 0;
       }
     `
-    : `
+      : `
       &::after {
         content: "";
         display: inline-block;
         width: 0.7em;
         height: 0.4em;
         flex-shrink: 0;
-      } 
-    `
-  )}
-  p {
+      }
+    `} p {
     flex-grow: 1;
     font-weight: bold;
     padding: 0 20px;
