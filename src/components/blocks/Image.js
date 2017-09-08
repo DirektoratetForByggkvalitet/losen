@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Figure from '../../primitives/Figure';
+
 const Image = props =>
-  (<figure>
+  (<Figure>
     <img src={props.image.url} alt={props.image.alt} />
     <figcaption>
       {props.text}
     </figcaption>
-  </figure>);
+  </Figure>);
 
 export default Image;
 

@@ -12,7 +12,8 @@ export default {
     dark: '#072938',
     lightgray: '#f2f1f0',
     darkgray: '#afaba8',
-    red: '#9d312f',
+    red: '#d12133',
+    oldred: '#9d312f',
   },
   padding: {
     small: '2px',

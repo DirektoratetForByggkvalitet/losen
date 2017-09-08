@@ -13,13 +13,15 @@ import Radio from './radio/Radio';
 import Select from './select/Select';
 import Text from './Text';
 import Textarea from './Textarea';
+import ErrorIcon from '../graphics/ErrorIcon';
 
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
-import Block from '../../primitives/Block';
+import { SpecificBlock as StyledBlock } from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
 import { P } from '../../primitives/Paragraphs';
+import { ErrorMessage } from '../../primitives/Errors';
 
 const HtmlToReactParser = require('html-to-react').Parser;
 
@@ -64,7 +66,7 @@ export function PureBlock(props) {
     return <SpecificBlock {...props} />;
   } else if (SpecificBlock) {
     return (
-      <Block id={props.property} disabled={props.disabled}>
+      <StyledBlock id={props.property} disabled={props.disabled}>
         <div>
           <H3>{props.heading}</H3>
           <P>{parsedHtml}</P>
@@ -73,9 +75,14 @@ export function PureBlock(props) {
 
           <SpecificBlock {...props} />
 
-          {props.disabled && <div style={{ color: 'deeppink' }}>{JSON.stringify(props.errors)}</div>}
+          {props.disabled &&
+            <ErrorMessage>
+              <ErrorIcon />
+              {JSON.stringify(props.errors)}
+            </ErrorMessage>
+          }
         </div>
-      </Block>
+      </StyledBlock>
     );
   }
 

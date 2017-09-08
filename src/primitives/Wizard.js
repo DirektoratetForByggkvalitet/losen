@@ -11,6 +11,15 @@ const Wizard = injectStyles(styled.div`
   * {
     box-sizing: border-box;
   }
+  img {
+    max-width: 100%;
+  }
+  a {
+    color: ${({ styles }) => styles.color.light};
+    &:hover {
+      color: ${({ styles }) => styles.color.dark};
+    }
+  }
 `);
 
 export default Wizard;

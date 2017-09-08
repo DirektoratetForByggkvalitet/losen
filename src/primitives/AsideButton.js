@@ -16,7 +16,7 @@ export const AsideResult = injectStyles(styled.div`
   border: 0 none;
   border-radius: 0;
   appearance: none;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-right: ${props => props.next ? '0' : 'auto'};
   margin-left: ${props => props.next ? 'auto' : '0'};
   margin-bottom: 10px;
