@@ -18,6 +18,7 @@ function Result({ errorPages, previousPage, title, children = [], pageid, lead, 
         setPage={setPage}
         page={pageid}
         previousPage={previousPage}
+        children={children}
       />
     );
   }

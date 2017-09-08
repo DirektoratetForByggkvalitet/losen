@@ -4,8 +4,9 @@ import { H2, H3 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
 import Navigation from './Navigation';
+import Block from './blocks/Block';
 
-export default function ErrorResult({ errorPages, setPage, pageid, previousPage }) {
+export default function ErrorResult({ errorPages, setPage, pageid, previousPage, children }) {
   return (
     <Main>
       <H2>
@@ -19,9 +20,7 @@ export default function ErrorResult({ errorPages, setPage, pageid, previousPage 
         ordentlig resultat i denne veiviseren.
       </Lead>
 
-      <H3>
-        Husk å fylle ut:
-      </H3>
+      <H3>Husk å fylle ut:</H3>
       {errorPages.map(page =>
         (<div>
           {page.errorNodes.map(node =>
@@ -40,14 +39,19 @@ export default function ErrorResult({ errorPages, setPage, pageid, previousPage 
           )}
         </div>),
       )}
+      {children.map(block => <Block key={block.property} {...block} />)}
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
   );
 }
 
+ErrorResult.defaultProps = {
+  children: [],
+};
 ErrorResult.propTypes = {
   errorPages: PropTypes.array.isRequired,
   setPage: PropTypes.func.isRequired,
   pageid: PropTypes.string.isRequired,
   previousPage: PropTypes.func.isRequired,
+  children: PropTypes.array,
 };
