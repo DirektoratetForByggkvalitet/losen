@@ -15,6 +15,7 @@ import Text from './Text';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
+import ImageComponent from '../helper/Image';
 
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
@@ -67,7 +68,7 @@ export function PureBlock(props) {
             {props.heading}
           </H3>
           <Html text={props.text} />
-          {props.image ? <img src={props.image.url} alt={props.image.alt} /> : null}
+          <ImageComponent image={props.image} />
 
           <SpecificBlock {...props} />
 
