@@ -9,11 +9,7 @@ export default function stateReducer(state = initialState, action) {
 
   switch (type) {
     case SET_DATA:
-      return set(
-        { ...state },
-        payload.key,
-        payload.value,
-      );
+      return set({ ...state }, payload.key, payload.value);
 
     default:
       return state;
