@@ -14,18 +14,15 @@ import Select from './select/Select';
 import Text from './Text';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
+import Html from '../helper/Html';
+import ImageComponent from '../helper/Image';
 
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
 import { SpecificBlock as StyledBlock } from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
-import { P } from '../../primitives/Paragraphs';
 import { ErrorMessage } from '../../primitives/Errors';
-
-const HtmlToReactParser = require('html-to-react').Parser;
-
-const htmlToReactParser = new HtmlToReactParser();
 
 function getBlock(type) {
   switch (type) {
@@ -61,17 +58,17 @@ function getBlock(type) {
 
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
-  const parsedHtml = htmlToReactParser.parse(props.text);
   if (props.type === 'Image' || props.type === 'Text') {
     return <SpecificBlock {...props} />;
   } else if (SpecificBlock) {
     return (
       <StyledBlock id={props.property} disabled={props.disabled}>
         <div>
-          <H3>{props.heading}</H3>
-          <P>{parsedHtml}</P>
-
-          {props.image ? <img src={props.image.url} alt={props.image.alt} /> : null}
+          <H3>
+            {props.heading}
+          </H3>
+          <Html text={props.text} />
+          <ImageComponent image={props.image} />
 
           <SpecificBlock {...props} />
 

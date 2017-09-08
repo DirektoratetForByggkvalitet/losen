@@ -10,7 +10,10 @@ function AsideReset(props) {
   return (
     <StyledAsideReset
       onClick={() => {
-        props.resetData();
+        /* eslint no-alert: 0 */
+        if (confirm('Sikker på at du vil slette all data?')) {
+          props.resetData();
+        }
       }}
     >
       Start på nytt
