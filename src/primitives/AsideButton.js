@@ -25,6 +25,9 @@ export const AsideResult = injectStyles(styled.div`
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  &:hover {
+    background: ${({ styles }) => styles.color.dark};
+  }
 `);
 
 export const AsideReset = injectStyles(styled.button`
@@ -45,9 +48,13 @@ export const AsideReset = injectStyles(styled.button`
   margin-left: ${props => props.next ? 'auto' : '0'};
   margin-bottom: 10px;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  &:hover {
+    border-color: ${({ styles }) => styles.color.dark};
+    color: ${({ styles }) => styles.color.dark};
+  }
 `);
 

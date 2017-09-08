@@ -48,7 +48,7 @@ const AsideItem = injectStyles(styled.div`
         border: none;
       } 
     `
-  }
+}
   p {
     flex-grow: 1;
     font-weight: bold;

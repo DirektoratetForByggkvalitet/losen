@@ -5,6 +5,8 @@ import injectStyles from '../utils/inject-styles';
 export const Checkbox = injectStyles(styled.input`
   display: none;
   + label {
+    display: flex;
+    align-items: flex-start;
     cursor: pointer;
     background: white;
     box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
@@ -18,6 +20,7 @@ export const Checkbox = injectStyles(styled.input`
       content: ' ';
       display: inline-block;
       vertical-align: middle;
+      min-width: 0.6em;
       width: 0.6em;
       height: 0.6em;
       background: white;
@@ -29,9 +32,23 @@ export const Checkbox = injectStyles(styled.input`
     &:hover::before {
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
     }
+    div {
+      margin-right: 30px;
+    }
+    img {
+      max-width: 200px;
+    }
   }
   &:checked + label:before {
     background: ${({ styles }) => styles.color.light};
+  }
+  &:checked + label{
+    box-shadow: 
+      0 0 0 1px ${({ styles }) => styles.color.dark},
+      0 0 4px 0 ${({ styles }) => styles.color.dark};
+    &::before {
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    }
   }
 `);
 
@@ -40,6 +57,8 @@ export const Radio = injectStyles(styled.input.attrs({
 })`
   display: none;
   + label {
+    display: flex;
+    align-items: flex-start;
     cursor: pointer;
     box-sizing: border-box;
     background: white;
@@ -52,10 +71,11 @@ export const Radio = injectStyles(styled.input.attrs({
     }
     &:before {
       content: ' ';
-      display: inline-block;
+      display: block;
       vertical-align: middle;
-      width: 0.5em;
-      height: 0.5em;
+      min-width: 0.6em;
+      width: 0.6em;
+      height: 0.6em;
       background: white;
       margin-right: 1em;
       border-radius: 50%;
@@ -66,9 +86,23 @@ export const Radio = injectStyles(styled.input.attrs({
     &:hover::before {
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
     }
+    div {
+      margin-right: 30px;
+    }
+    img {
+      max-width: 200px;
+    }
   }
   &:checked + label:before {
     background: ${({ styles }) => styles.color.light};
+  }
+  &:checked + label{
+    box-shadow: 
+      0 0 0 1px ${({ styles }) => styles.color.dark},
+      0 0 4px 0 ${({ styles }) => styles.color.dark};
+    &::before {
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    }
   }
 `);
 
@@ -78,6 +112,10 @@ export const NumberInput = injectStyles(styled.input`
   padding: 0.5em;
   width: 100px;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
+  &::placeholder {
+    font-color: inherit;
+    opacity: 0.6;
+  }
 `);
 
 export const TextInput = injectStyles(styled.input`
@@ -86,6 +124,10 @@ export const TextInput = injectStyles(styled.input`
   padding: 0.5em;
   min-width: 40%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
+  &::placeholder {
+    font-color: inherit;
+    opacity: 0.6;
+  }
 `);
 
 export const Textarea = injectStyles(styled.textarea`
@@ -95,4 +137,8 @@ export const Textarea = injectStyles(styled.textarea`
   width: 100%;
   height: 5em;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
+  &::placeholder {
+    font-color: inherit;
+    opacity: 0.6;
+  }
 `);

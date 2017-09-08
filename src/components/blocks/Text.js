@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { TextBlock } from '../../primitives/Block';
 import { H3 } from '../../primitives/Heading';
-import { P } from '../../primitives/Paragraphs';
 
 const HtmlToReactParser = require('html-to-react').Parser;
 
@@ -14,7 +13,7 @@ const Text = (props) => {
   return (
     <TextBlock>
       <H3>{props.heading}</H3>
-      <P>{reactElement}</P>
+      <div>{reactElement}</div>
     </TextBlock>
   );
 };

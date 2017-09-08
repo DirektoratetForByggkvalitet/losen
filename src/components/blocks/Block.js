@@ -77,8 +77,7 @@ export function PureBlock(props) {
 
           {props.disabled &&
             <ErrorMessage>
-              <ErrorIcon />
-              {JSON.stringify(props.errors)}
+              <ErrorIcon /> {JSON.stringify(props.errors)}
             </ErrorMessage>
           }
         </div>
