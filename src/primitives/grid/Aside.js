@@ -8,13 +8,12 @@ const Aside = injectStyles(styled.aside`
   margin: 0 30px;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
-  ${props => (
+  ${props =>
     props.tocExpanded
-    ? `@media screen and (max-width: 700px) {
+      ? `@media screen and (max-width: 700px) {
       display: none;
-    }` : ''
-  )}
-  @media screen and (max-width: 700px) {
+    }`
+      : ''} @media screen and (max-width: 700px) {
     max-width: ${({ styles }) => styles.size.mobileContentWidth};
     margin: 0 auto;
     padding: 20px;

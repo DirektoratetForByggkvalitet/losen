@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const AsideItem = injectStyles(styled.div`
-  background: ${props => props.active ? ({ styles }) => styles.color.lightgray : 'white'};
+  background: ${props => (props.active ? ({ styles }) => styles.color.lightgray : 'white')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,8 +13,8 @@ const AsideItem = injectStyles(styled.div`
     background: ${({ styles }) => styles.color.lightgray};
   }
   div {
-    color: ${props => props.active ? 'white' : 'inherit'};
-    background: ${props => props.active ? ({ styles }) => styles.color.dark : 'white'};
+    color: ${props => (props.active ? 'white' : 'inherit')};
+    background: ${props => (props.active ? ({ styles }) => styles.color.dark : 'white')};
     display: flex;
     align-self: stretch;
     min-width: 2.4em;
@@ -24,7 +24,8 @@ const AsideItem = injectStyles(styled.div`
     overflow: hidden;
   }
   &:hover div {
-    background: ${props => props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
+    background: ${props =>
+    props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
   }
   &::after {
     content: " ";
@@ -37,12 +38,12 @@ const AsideItem = injectStyles(styled.div`
   }
   ${props =>
     props.done
-    ? `
+      ? `
       &::after {
         transform: rotate(-45deg);
       }
     `
-    : `
+      : `
       &::after {
         border: none;
       } 
