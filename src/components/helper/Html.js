@@ -8,11 +8,7 @@ const htmlToReactParser = new HtmlToReactParser();
 export default function Html({ text }) {
   if (text) {
     const parsedHtml = htmlToReactParser.parse(text);
-    return (
-      <div>
-        {parsedHtml}
-      </div>
-    );
+    return <p>{parsedHtml}</p>;
   }
   return null;
 }
