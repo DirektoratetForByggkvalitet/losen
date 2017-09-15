@@ -12,6 +12,7 @@ import Number from './Number';
 import Radio from './radio/Radio';
 import Select from './select/Select';
 import Text from './Text';
+import Data from './Data';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -51,6 +52,9 @@ function getBlock(type) {
     case 'Textarea':
       return Textarea;
 
+    case 'Data':
+      return Data;
+
     default:
       return null;
   }
@@ -58,25 +62,23 @@ function getBlock(type) {
 
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
-  if (props.type === 'Image' || props.type === 'Text') {
+  if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
     return <SpecificBlock {...props} />;
   } else if (SpecificBlock) {
     return (
       <StyledBlock id={props.property} disabled={props.disabled}>
         <div>
-          <H3>
-            {props.heading}
-          </H3>
+          <H3>{props.heading}</H3>
           <Html text={props.text} />
           <ImageComponent image={props.image} />
 
           <SpecificBlock {...props} />
 
-          {props.disabled &&
+          {props.disabled && (
             <ErrorMessage>
               <ErrorIcon /> {JSON.stringify(props.errors)}
             </ErrorMessage>
-          }
+          )}
         </div>
       </StyledBlock>
     );

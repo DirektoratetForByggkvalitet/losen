@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getErrorPages } from '../utils/reducers';
 
 import { H2 } from '../primitives/Heading';
+import { SpecificBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Block from './blocks/Block';
 import Navigation from './Navigation';
@@ -25,13 +26,11 @@ function Result({ errorPages, previousPage, title, children = [], pageid, lead, 
 
   return (
     <Main>
-      <H2>
-        {title}
-      </H2>
-      <p>
-        {lead}
-      </p>
-      {children.map(block => <Block key={block.property} {...block} />)}
+      <H2>{title}</H2>
+      <p>{lead}</p>
+      <SpecificBlock>
+        {children.map(block => <Block key={block.property} {...block} />)}
+      </SpecificBlock>
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
   );
