@@ -17,7 +17,7 @@ export const H2 = injectStyles(styled.h2`
 export const H3 = injectStyles(styled.h3`
   font-family: ${({ styles }) => styles.font.primary};
   font-size: ${props => (props.small ? '16px' : '20px')};
-  margin: 0 0 6px;
+  margin: 0 0 10px;
 `);
 
 export const H4 = injectStyles(styled.h4`

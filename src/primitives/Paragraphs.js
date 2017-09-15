@@ -5,6 +5,7 @@ import injectStyles from '../utils/inject-styles';
 export const P = injectStyles(styled.p`
   font-size: inherit;
   margin: 0 0 20px;
+  max-width: 600px;
 `);
 
 export const Lead = injectStyles(styled.p`
