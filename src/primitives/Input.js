@@ -52,7 +52,7 @@ export const Checkbox = injectStyles(styled.input`
     background: ${({ styles }) => styles.color.light};
   }
   &:checked + label {
-    box-shadow: 
+    box-shadow:
       0 0 0 1px ${({ styles }) => styles.color.dark},
       0 0 4px 0 ${({ styles }) => styles.color.dark};
     &::before {
@@ -60,7 +60,7 @@ export const Checkbox = injectStyles(styled.input`
     }
   }
   &:checked:focus + label {
-    box-shadow: 
+    box-shadow:
       0 0 0 1px ${({ styles }) => styles.color.dark},
       0 0 6px 1px ${({ styles }) => styles.color.dark};
     &::before {
@@ -120,7 +120,7 @@ export const Radio = injectStyles(styled.input.attrs({
     background: ${({ styles }) => styles.color.light};
   }
   &:checked + label {
-    box-shadow: 
+    box-shadow:
       0 0 0 1px ${({ styles }) => styles.color.dark},
       0 0 4px 0 ${({ styles }) => styles.color.dark};
     &::before {
@@ -128,7 +128,7 @@ export const Radio = injectStyles(styled.input.attrs({
     }
   }
   &:checked:focus + label {
-    box-shadow: 
+    box-shadow:
       0 0 0 1px ${({ styles }) => styles.color.dark},
       0 0 6px 1px ${({ styles }) => styles.color.dark};
     &::before {
@@ -154,7 +154,7 @@ export const TextInput = injectStyles(styled.input`
   font-size: 1em;
   padding: 0.5em;
   min-width: 40%;
-  border: 1px solid ${({ styles }) => styles.color.darkgray};
+  border: 1px solid ${({ styles, validation: { error } = {} }) => error ? styles.color.red : styles.color.darkgray};
   &::placeholder {
     font-color: inherit;
     opacity: 0.6;

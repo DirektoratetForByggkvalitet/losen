@@ -8,6 +8,66 @@ import reduceWizard, {
 } from '../reduce-wizard';
 
 describe('reduce-wizard', () => {
+  it.only('leaves groups in place', () => {
+    const wizard = [
+      {
+        type: 'Page',
+        children: [
+          { type: 'Radio' },
+          {
+            type: 'Group',
+            children: [
+              { type: 'Input' },
+              { type: 'Input', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
+              {
+                type: 'Branch',
+                branches: [
+                  {
+                    test: { field: 'foo', operator: 'eq', value: 'bar' },
+                    children: [
+                      { type: 'Input', hidden: { field: 'foo', operator: 'neq', value: 'bar' } },
+                      { type: 'Result', title: 'The other end' },
+                    ],
+                  },
+                  {
+                    children: [{ type: 'Result', title: 'The end' }],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      { type: 'Result', title: 'Foobar' },
+    ];
+
+    expect(reduceWizard(wizard, { [NAME]: { foo: 'bar' } })).toEqual([
+      {
+        type: 'Page',
+        children: [
+          { type: 'Radio', errors: [], errorDescription: '' },
+          {
+            type: 'Group',
+            children: [
+              {
+                type: 'Input',
+                errors: [],
+                errorDescription: '',
+              },
+              {
+                type: 'Input',
+                hidden: { field: 'foo', operator: 'neq', value: 'bar' },
+                errors: [],
+                errorDescription: '',
+              },
+            ],
+          },
+        ],
+      },
+      { title: 'The other end', type: 'Result' },
+    ]);
+  });
+
   it('reduces wizard correctly based on state data', () => {
     const wizard = [
       {
@@ -37,8 +97,8 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input', errors: [] },
-          { ...wizard[0].children[1], errors: [] },
+          { type: 'Input', errors: [], errorDescription: '' },
+          { ...wizard[0].children[1], errors: [], errorDescription: '' },
         ],
       },
       { title: 'The end', type: 'Result' },
@@ -53,7 +113,7 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input', errors: [] },
+          { type: 'Input', errors: [], errorDescription: '' },
         ],
       },
       { type: 'Result', title: 'The end' },
@@ -86,8 +146,16 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input', errors: [] },
-          { ...wizard[0].children[0].branches[0].children[1], errors: [] },
+          {
+            type: 'Input',
+            errors: [],
+            errorDescription: '',
+          },
+          {
+            ...wizard[0].children[0].branches[0].children[1],
+            errors: [],
+            errorDescription: '',
+          },
         ],
       },
       { type: 'Result', title: 'Foobar' },
@@ -101,8 +169,16 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input', errors: [] },
-          { ...wizard[0].children[0].branches[0].children[1], errors: [] },
+          {
+            type: 'Input',
+            errors: [],
+            errorDescription: '',
+          },
+          {
+            ...wizard[0].children[0].branches[0].children[1],
+            errors: [],
+            errorDescription: '',
+          },
         ],
       },
       { type: 'Result', title: 'Foobar' },
@@ -221,11 +297,11 @@ describe('reduce-wizard', () => {
           {
             type: 'Stuff',
             children: [
-              { type: 'Input', errors: [] },
-              { type: 'Checkbox', errors: [] },
+              { type: 'Input', errors: [], errorDescription: '' },
+              { type: 'Checkbox', errors: [], errorDescription: '' },
             ],
           },
-          { type: 'Input', errors: [] },
+          { type: 'Input', errors: [], errorDescription: '' },
         ],
       });
     });

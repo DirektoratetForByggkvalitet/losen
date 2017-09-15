@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getErrorPages } from '../utils/reducers';
+import { getErrorPages } from '../utils/selectors';
 
 import { H2 } from '../primitives/Heading';
 import { SpecificBlock } from '../primitives/Block';

@@ -8,7 +8,7 @@ import Aside from './Aside';
 import Header from './Header';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
-import { getPages } from '../utils/reducers';
+import { getPages, getNodeTitles } from '../utils/selectors';
 import track from '../utils/tracking';
 import Result from './Result';
 
@@ -125,9 +125,13 @@ class Wizard extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  tableOfContents: getPages(props.wizard.schema, state),
-  schema: reduceWizard(props.wizard.schema, state),
-});
+const mapStateToProps = (state, props) => {
+  const nodeTitles = getNodeTitles(props.wizard.schema);
+
+  return {
+    tableOfContents: getPages(props.wizard.schema, state),
+    schema: reduceWizard(props.wizard.schema, state, nodeTitles),
+  };
+};
 
 export default connect(mapStateToProps)(Wizard);

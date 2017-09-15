@@ -9,6 +9,7 @@ export default class Radio extends Component {
     heading: '',
     text: '',
     currentValue: undefined,
+    disabled: false,
   };
 
   static propTypes = {
@@ -16,6 +17,7 @@ export default class Radio extends Component {
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     currentValue: PropTypes.any,
+    disabled: PropTypes.bool,
   };
 
   constructor(props) {
@@ -29,7 +31,7 @@ export default class Radio extends Component {
   };
 
   render() {
-    const { currentValue, suggestedAnswer, property } = this.props;
+    const { currentValue, suggestedAnswer, property, disabled } = this.props;
 
     return (
       <div>
@@ -38,10 +40,11 @@ export default class Radio extends Component {
             key={`${property}:${option.value}`}
             id={`${property}:${option.value}`}
             {...option}
+            disabled={disabled}
             checked={currentValue === option.value}
-            onChange={this.handleChange(property, option.value)}
-          />
-        ))}
+            onChange={!disabled && this.handleChange(property, option.value)}
+          />),
+        )}
       </div>
     );
   }

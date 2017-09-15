@@ -65,3 +65,19 @@ export function getErrorPages(schema, state) {
     },
   ]), []).filter(({ errorNodes }) => errorNodes.length);
 }
+
+export function getNodeTitles(schema) {
+  return schema.reduce((res, node) => ({
+    ...res,
+    ...(node.property ? { [node.property]: node.heading || node.property } : {}),
+    ...(node.children ? getNodeTitles(node.children) : {}),
+    ...(node.branches ? node.branches.reduce((branchesRes, branch) => ({
+      ...branchesRes,
+      ...getNodeTitles(branch.children),
+    }), {}) : {}),
+  }), {});
+}
+
+export function getNodeTitle(schema, property) {
+  return getNodeTitle(schema)[property] || property;
+}

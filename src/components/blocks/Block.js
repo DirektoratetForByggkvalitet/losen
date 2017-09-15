@@ -62,29 +62,51 @@ function getBlock(type) {
 
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
+
   if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
     return <SpecificBlock {...props} />;
-  } else if (SpecificBlock) {
+  }
+
+  if (props.type === 'Group') {
     return (
-      <StyledBlock id={props.property} disabled={props.disabled}>
-        <div>
-          <H3>{props.heading}</H3>
-          <Html text={props.text} />
-          <ImageComponent image={props.image} />
+      <StyledBlock>
+        <H3>{props.heading}</H3>
+        <Html text={props.text} />
 
-          <SpecificBlock {...props} />
-
-          {props.disabled && (
-            <ErrorMessage>
-              <ErrorIcon /> {JSON.stringify(props.errors)}
-            </ErrorMessage>
-          )}
-        </div>
+        {props.children.map(block => <ConnectedBlock grouped key={block.property} {...block} />)}
       </StyledBlock>
     );
   }
 
-  return <Missing type={props.type} />;
+  if (!SpecificBlock) {
+    return <Missing type={props.type} />;
+  }
+
+  return (
+    <StyledBlock id={props.property} disabled={props.disabled}>
+      <div>
+        <H3>{props.heading}</H3>
+        <Html text={props.text} />
+        <ImageComponent image={props.image} />
+
+        <SpecificBlock
+          {...{
+            ...props,
+            validation: (props.currentValue && props.validator ? {
+              error: !(new RegExp(props.validator.pattern)).test(props.currentValue),
+              message: props.validator.error,
+            } : {}),
+          }}
+        />
+
+        {props.disabled && (
+          <ErrorMessage>
+            <ErrorIcon /> {props.errorDescription}
+          </ErrorMessage>
+        )}
+      </div>
+    </StyledBlock>
+  );
 }
 
 PureBlock.defaultProps = {
@@ -92,6 +114,11 @@ PureBlock.defaultProps = {
   text: '',
   image: {},
   errors: [],
+  errorDescription: null,
+  children: [],
+  grouped: false,
+  validator: false,
+  currentValue: undefined,
 };
 
 PureBlock.propTypes = {
@@ -100,15 +127,28 @@ PureBlock.propTypes = {
   text: PropTypes.string,
   property: PropTypes.string.isRequired,
   image: PropTypes.object,
+  grouped: PropTypes.bool,
   disabled: PropTypes.bool.isRequired,
   errors: PropTypes.arrayOf(PropTypes.object),
+  errorDescription: PropTypes.string,
+  children: PropTypes.arrayOf(PropTypes.object),
+  currentValue: PropTypes.any,
+  validator: PropTypes.shape({
+    error: PropTypes.string.isRequired,
+    pattern: PropTypes.string.isRequired,
+  }),
 };
 
 const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
     currentValue: get(state[NAME], props.property),
-    disabled: Array.isArray(props.errors) && props.errors.length > 0,
+    disabled: (
+      props.errors && (
+        (Array.isArray(props.errors) && props.errors.length > 0)
+        || (props.errors.errors && props.errors.errors.length > 0)
+      )
+    ),
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);

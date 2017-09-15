@@ -2,6 +2,7 @@
 
 import parseExpression from './dsl';
 import { NAME } from '../state';
+import vocalizeErrors from './vocalize-errors';
 
 export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
@@ -33,7 +34,7 @@ export const reduceBranches = state => (res, node) => {
   return res;
 };
 
-export const mapWizardChildren = state => (node) => {
+export const mapWizardChildren = (state, nodeTitles) => (node) => {
   const errors = node.disabled ? parseExpression(node.disabled)(state[NAME]).errors : [];
 
   if (node.type === 'Result') {
@@ -44,12 +45,13 @@ export const mapWizardChildren = state => (node) => {
     return {
       ...node,
       errors,
+      errorDescription: vocalizeErrors(errors, nodeTitles),
     };
   }
 
   return {
     ...node,
-    children: reduceWizard(node.children, state),
+    children: reduceWizard(node.children, state, nodeTitles),
   };
 };
 
@@ -78,10 +80,10 @@ export const liftChildrenBranchPages = (res, node) => {
   return [...res, node];
 };
 
-export default function reduceWizard(schema, state) {
+export default function reduceWizard(schema, state, nodeTitles) {
   return schema
     .reduce(reduceBranches(state), [])
     .filter(filterSchemaNodes(state))
-    .map(mapWizardChildren(state))
+    .map(mapWizardChildren(state, nodeTitles))
     .reduce(liftChildrenBranchPages, []);
 }

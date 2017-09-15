@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import ErrorIcon from '../graphics/ErrorIcon';
 import { TextInput as StyledInput } from '../../primitives/Input';
+import { ErrorMessage } from '../../primitives/Errors';
 
 export default class Input extends Component {
   static defaultProps = {
@@ -11,6 +13,8 @@ export default class Input extends Component {
     max: Number.MAX_SAFE_INTEGER,
     step: 1,
     currentValue: '',
+    validation: {},
+    disabled: false,
   }
 
   static propTypes = {
@@ -22,6 +26,11 @@ export default class Input extends Component {
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     currentValue: PropTypes.any,
+    validation: PropTypes.shape({
+      error: PropTypes.bool.isRequired,
+      message: PropTypes.string.isRequired,
+    }),
+    disabled: PropTypes.bool,
   }
 
   handleChange = (e) => {
@@ -45,18 +54,28 @@ export default class Input extends Component {
       max,
       type,
       step,
+      validation,
+      disabled,
     } = this.props;
 
     return (
-      <StyledInput
-        type={type}
-        min={min}
-        max={max}
-        step={step}
-        placeholder={placeholder}
-        onChange={this.handleChange}
-        value={currentValue}
-      />
+      <div>
+        <StyledInput
+          type={type}
+          min={min}
+          max={max}
+          step={step}
+          placeholder={placeholder}
+          onChange={this.handleChange}
+          value={currentValue}
+          validation={validation}
+          disabled={disabled}
+        />
+
+        {validation.error && <ErrorMessage>
+          <ErrorIcon /> {validation.message}
+        </ErrorMessage>}
+      </div>
     );
   }
 }
