@@ -10,7 +10,6 @@ export default function Navigation({ hasPrevious, previousPage, hasNext, nextPag
       Neste
     </Button>
   );
-
   return (
     <Nav>
       {hasPrevious && previous}

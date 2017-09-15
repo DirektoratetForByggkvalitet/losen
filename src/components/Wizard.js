@@ -111,6 +111,7 @@ class Wizard extends Component {
                 nextPage={this.nextPage}
                 previousPage={this.previousPage}
                 pageid={page.id}
+                firstPage={schema[0].id === page.id}
                 {...page}
               />
             )}

@@ -7,21 +7,25 @@ import { H2 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
 
-export default function Page({ nextPage, previousPage, title, children = [], pageid, lead }) {
+export default function Page({
+  nextPage,
+  previousPage,
+  title,
+  children = [],
+  pageid,
+  firstPage,
+  lead,
+}) {
   let navigation = (
     <Navigation page={pageid} hasPrevious previousPage={previousPage} hasNext nextPage={nextPage} />
   );
-  if (pageid === 0) {
+  if (firstPage) {
     navigation = <Navigation page={pageid} hasNext nextPage={nextPage} />;
   }
   return (
     <Main>
-      <H2>
-        {title}
-      </H2>
-      <Lead>
-        {lead}
-      </Lead>
+      <H2>{title}</H2>
+      <Lead>{lead}</Lead>
       {children.map(block => <Block key={block.property} {...block} />)}
       {navigation}
     </Main>
@@ -40,4 +44,5 @@ Page.propTypes = {
   pageid: PropTypes.string.isRequired,
   nextPage: PropTypes.func.isRequired,
   previousPage: PropTypes.func.isRequired,
+  firstPage: PropTypes.bool.isRequired,
 };
