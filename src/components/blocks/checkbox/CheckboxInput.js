@@ -5,21 +5,18 @@ import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
 import { H4 } from '../../../primitives/Heading';
 
-const CheckboxInput = ({ id, text, onChange, heading, image }) =>
-  (<div>
+const CheckboxInput = ({ id, text, onChange, heading, image }) => (
+  <div>
     <Input type="checkbox" id={id} onChange={onChange} />
     <Label htmlFor={id}>
       <div>
-        {heading
-          ? <H4>
-            {heading}
-          </H4>
-          : null}
+        {heading ? <H4>{heading}</H4> : null}
         {text}
       </div>
       {image ? <img src={image.url} alt={image.alt} /> : null}
     </Label>
-  </div>);
+  </div>
+);
 
 export default CheckboxInput;
 

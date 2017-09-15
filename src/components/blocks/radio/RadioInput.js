@@ -5,22 +5,19 @@ import Label from '../../../primitives/Label';
 import { Radio as Input } from '../../../primitives/Input';
 import { H4 } from '../../../primitives/Heading';
 
-const RadioInput = ({ id, text, name, value, checked, onChange, heading, image }) =>
-  (<div>
-    <Input type="radio" name={name} value={value} checked={checked} />
+const RadioInput = ({ id, text, value, checked, onChange, heading, image }) => (
+  <div>
+    <Input type="radio" name={id} value={value} checked={checked} />
 
     <Label htmlFor={id} onClick={onChange}>
       <div>
-        {heading
-          ? <H4>
-            {heading}
-          </H4>
-          : null}
+        {heading ? <H4>{heading}</H4> : null}
         {text}
       </div>
       {image ? <img src={image.url} alt={image.alt} /> : null}
     </Label>
-  </div>);
+  </div>
+);
 
 export default RadioInput;
 
@@ -41,5 +38,4 @@ RadioInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.any.isRequired,
   checked: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
 };
