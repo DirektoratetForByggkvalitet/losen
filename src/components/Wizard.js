@@ -9,6 +9,7 @@ import Header from './Header';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
 import { getPages } from '../utils/reducers';
+import track from '../utils/tracking';
 import Result from './Result';
 
 import Grid from '../primitives/grid/Grid';
@@ -34,6 +35,11 @@ class Wizard extends Component {
       result: false,
     };
     autobind(this);
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.page !== prevState.page) {
+      track(this.props.schema.filter(item => item.id === this.state.page)[0].title);
+    }
   }
 
   // @todo Consider finding a more elegant way for scrolling..?
@@ -92,24 +98,24 @@ class Wizard extends Component {
               title={wizard.meta.title}
               tableOfContents={tableOfContents}
             />
-            {page.type === 'Result'
-              ? <Result
+            {page.type === 'Result' ? (
+              <Result
                 {...page}
                 previousPage={this.previousPage}
                 pageid={page.id}
                 wizard={wizard}
                 setPage={this.setPage}
               />
-              : <Page
+            ) : (
+              <Page
                 nextPage={this.nextPage}
                 previousPage={this.previousPage}
                 pageid={page.id}
                 {...page}
-              />}
+              />
+            )}
             <Footer>
-              <div>
-                {wizard.meta.footer}
-              </div>
+              <div>{wizard.meta.footer}</div>
             </Footer>
           </Grid>
         </StyledWizard>
