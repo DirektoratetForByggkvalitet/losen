@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const Checkbox = injectStyles(styled.input`
-  display: none;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
   + label {
     display: flex;
     align-items: flex-start;
@@ -39,13 +41,28 @@ export const Checkbox = injectStyles(styled.input`
       max-width: 200px;
     }
   }
+  &:focus + label,
+  + label:hover {
+    box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
+    &::before {
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    }
+  }
   &:checked + label:before {
     background: ${({ styles }) => styles.color.light};
   }
-  &:checked + label{
+  &:checked + label {
     box-shadow: 
       0 0 0 1px ${({ styles }) => styles.color.dark},
       0 0 4px 0 ${({ styles }) => styles.color.dark};
+    &::before {
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    }
+  }
+  &:checked:focus + label {
+    box-shadow: 
+      0 0 0 1px ${({ styles }) => styles.color.dark},
+      0 0 6px 1px ${({ styles }) => styles.color.dark};
     &::before {
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
     }
@@ -55,7 +72,9 @@ export const Checkbox = injectStyles(styled.input`
 export const Radio = injectStyles(styled.input.attrs({
   type: 'radio',
 })`
-  display: none;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
   + label {
     display: flex;
     align-items: flex-start;
@@ -66,9 +85,6 @@ export const Radio = injectStyles(styled.input.attrs({
     border-radius: 5px;
     box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
     transition: all 0.1s ease-in-out;
-    &:hover {
-      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-    }
     &:before {
       content: ' ';
       display: block;
@@ -83,23 +99,38 @@ export const Radio = injectStyles(styled.input.attrs({
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
       transition: all 0.1s ease-in-out;
     }
-    &:hover::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-    }
     div {
       margin-right: 30px;
     }
     img {
       max-width: 200px;
     }
+    p {
+      margin-bottom: 0;
+    }
+  }
+  &:focus + label,
+  + label:hover {
+    box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
+    &::before {
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    }
   }
   &:checked + label:before {
     background: ${({ styles }) => styles.color.light};
   }
-  &:checked + label{
+  &:checked + label {
     box-shadow: 
       0 0 0 1px ${({ styles }) => styles.color.dark},
       0 0 4px 0 ${({ styles }) => styles.color.dark};
+    &::before {
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    }
+  }
+  &:checked:focus + label {
+    box-shadow: 
+      0 0 0 1px ${({ styles }) => styles.color.dark},
+      0 0 6px 1px ${({ styles }) => styles.color.dark};
     &::before {
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
     }
