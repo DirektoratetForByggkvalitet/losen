@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import merge from 'lodash.merge';
 import { connect } from 'react-redux';
 import autobind from 'react-autobind';
 
+import StyleProvider from './StyleProvider';
 import Aside from './Aside';
-import defaultStyles from '../styles';
 import Header from './Header';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
@@ -28,10 +27,6 @@ class Wizard extends Component {
     styles: {},
   };
 
-  static childContextTypes = {
-    styles: PropTypes.object,
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -39,12 +34,6 @@ class Wizard extends Component {
       result: false,
     };
     autobind(this);
-  }
-
-  getChildContext() {
-    return {
-      styles: merge({}, defaultStyles, this.props.styles),
-    };
   }
 
   // @todo Consider finding a more elegant way for scrolling..?
@@ -88,41 +77,43 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1);
 
   render() {
-    const { wizard, schema, tableOfContents } = this.props;
+    const { wizard, styles, schema, tableOfContents } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
     return (
-      <StyledWizard>
-        <Grid>
-          <Header />
-          <Aside
-            page={page.id}
-            setPage={this.setPage}
-            title={wizard.meta.title}
-            tableOfContents={tableOfContents}
-          />
-          {page.type === 'Result'
-            ? <Result
-              {...page}
-              previousPage={this.previousPage}
-              pageid={page.id}
-              wizard={wizard}
+      <StyleProvider styles={styles}>
+        <StyledWizard>
+          <Grid>
+            <Header />
+            <Aside
+              page={page.id}
               setPage={this.setPage}
+              title={wizard.meta.title}
+              tableOfContents={tableOfContents}
             />
-            : <Page
-              nextPage={this.nextPage}
-              previousPage={this.previousPage}
-              pageid={page.id}
-              {...page}
-            />}
-          <Footer>
-            <div>
-              {wizard.meta.footer}
-            </div>
-          </Footer>
-        </Grid>
-      </StyledWizard>
+            {page.type === 'Result'
+              ? <Result
+                {...page}
+                previousPage={this.previousPage}
+                pageid={page.id}
+                wizard={wizard}
+                setPage={this.setPage}
+              />
+              : <Page
+                nextPage={this.nextPage}
+                previousPage={this.previousPage}
+                pageid={page.id}
+                {...page}
+              />}
+            <Footer>
+              <div>
+                {wizard.meta.footer}
+              </div>
+            </Footer>
+          </Grid>
+        </StyledWizard>
+      </StyleProvider>
     );
   }
 }
