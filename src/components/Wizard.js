@@ -11,7 +11,6 @@ import reduceWizard from '../utils/reduce-wizard';
 import { getPages } from '../utils/reducers';
 import track from '../utils/tracking';
 import Result from './Result';
-import ScrollToTop from './helper/ScrollToTop';
 
 import Grid from '../primitives/grid/Grid';
 import Footer from '../primitives/grid/Footer';
@@ -55,6 +54,8 @@ class Wizard extends Component {
 
         window.scroll(0, element.offsetTop);
       });
+    } else {
+      window.scrollTo(0, 0);
     }
 
     this.setState({ page });
@@ -74,9 +75,7 @@ class Wizard extends Component {
       return;
     }
 
-    this.setState({
-      page: schema[newIndex].id,
-    });
+    this.setPage(schema[newIndex].id);
   }
 
   nextPage = () => this.changePage(1);
@@ -90,39 +89,37 @@ class Wizard extends Component {
 
     return (
       <StyleProvider styles={styles}>
-        <ScrollToTop page={page.id}>
-          <StyledWizard>
-            <Grid>
-              <Header />
-              <Aside
-                page={page.id}
+        <StyledWizard>
+          <Grid>
+            <Header />
+            <Aside
+              page={page.id}
+              setPage={this.setPage}
+              title={wizard.meta.title}
+              tableOfContents={tableOfContents}
+            />
+            {page.type === 'Result' ? (
+              <Result
+                {...page}
+                previousPage={this.previousPage}
+                pageid={page.id}
+                wizard={wizard}
                 setPage={this.setPage}
-                title={wizard.meta.title}
-                tableOfContents={tableOfContents}
               />
-              {page.type === 'Result' ? (
-                <Result
-                  {...page}
-                  previousPage={this.previousPage}
-                  pageid={page.id}
-                  wizard={wizard}
-                  setPage={this.setPage}
-                />
-              ) : (
-                <Page
-                  nextPage={this.nextPage}
-                  previousPage={this.previousPage}
-                  pageid={page.id}
-                  firstPage={schema[0].id === page.id}
-                  {...page}
-                />
-              )}
-              <Footer>
-                <div>{wizard.meta.footer}</div>
-              </Footer>
-            </Grid>
-          </StyledWizard>
-        </ScrollToTop>
+            ) : (
+              <Page
+                nextPage={this.nextPage}
+                previousPage={this.previousPage}
+                pageid={page.id}
+                firstPage={schema[0].id === page.id}
+                {...page}
+              />
+            )}
+            <Footer>
+              <div>{wizard.meta.footer}</div>
+            </Footer>
+          </Grid>
+        </StyledWizard>
       </StyleProvider>
     );
   }
