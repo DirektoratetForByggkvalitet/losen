@@ -54,6 +54,8 @@ class Wizard extends Component {
 
         window.scroll(0, element.offsetTop);
       });
+    } else {
+      window.scrollTo(0, 0);
     }
 
     this.setState({ page });
@@ -73,9 +75,7 @@ class Wizard extends Component {
       return;
     }
 
-    this.setState({
-      page: schema[newIndex].id,
-    });
+    this.setPage(schema[newIndex].id);
   }
 
   nextPage = () => this.changePage(1);
