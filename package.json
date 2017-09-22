@@ -39,6 +39,7 @@
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.0",
     "lodash.set": "^4.3.2",
+    "lodash.setwith": "^4.3.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-autobind": "^1.0.6",
