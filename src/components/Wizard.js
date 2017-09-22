@@ -104,6 +104,7 @@ class Wizard extends Component {
                 previousPage={this.previousPage}
                 pageid={page.id}
                 wizard={wizard}
+                schema={schema}
                 setPage={this.setPage}
               />
             ) : (
@@ -125,12 +126,12 @@ class Wizard extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const nodeTitles = getNodeTitles(props.wizard.schema);
+const mapStateToProps = (state, { wizard }) => {
+  const nodeTitles = getNodeTitles(wizard.schema);
 
   return {
-    tableOfContents: getPages(props.wizard.schema, state),
-    schema: reduceWizard(props.wizard.schema, state, nodeTitles),
+    tableOfContents: getPages(wizard.schema, state),
+    schema: reduceWizard(wizard.schema, state, nodeTitles),
   };
 };
 

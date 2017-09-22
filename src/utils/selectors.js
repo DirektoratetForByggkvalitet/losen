@@ -81,3 +81,7 @@ export function getNodeTitles(schema) {
 export function getNodeTitle(schema, property) {
   return getNodeTitle(schema)[property] || property;
 }
+
+export function getNodeValue(property, state) {
+  return get(state[NAME], property);
+}

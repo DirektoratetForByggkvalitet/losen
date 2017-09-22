@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { H2, H3 } from '../primitives/Heading';
+import { H2 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
 import Navigation from './Navigation';
-import Block from './blocks/Block';
+import Summary from './Summary';
 
-export default function ErrorResult({ errorPages, setPage, pageid, previousPage, children }) {
+export default function ErrorResult({ schema, setPage, pageid, previousPage }) {
   return (
     <Main>
       <H2>
@@ -16,30 +16,12 @@ export default function ErrorResult({ errorPages, setPage, pageid, previousPage,
         </span>
       </H2>
       <Lead>
-        <em>...men du ække helt ferdig ennå.</em> Nedenfor er noen ting du må fikse før du kan få et
-        ordentlig resultat i denne veiviseren.
+        <em>...men du ække helt ferdig ennå.</em> Nedenfor er noen ting du må fikse
+        før du kan få et ordentlig resultat i denne veiviseren.
       </Lead>
 
-      <H3>Husk å fylle ut:</H3>
-      {errorPages.map(page =>
-        (<div>
-          {page.errorNodes.map(node =>
-            (<button onClick={() => setPage(page.id, node.property)}>
-              <p>
-                <strong>
-                  {page.title} - {node.heading}
-                </strong>
-              </p>
-              {node.errors.map(error =>
-                (<div>
-                  {JSON.stringify(error)}
-                </div>),
-              )}
-            </button>),
-          )}
-        </div>),
-      )}
-      {children.map(block => <Block key={block.property} {...block} />)}
+      <Summary setPage={setPage} pages={schema} />
+
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
   );
@@ -47,11 +29,11 @@ export default function ErrorResult({ errorPages, setPage, pageid, previousPage,
 
 ErrorResult.defaultProps = {
   children: [],
+  schema: [],
 };
 ErrorResult.propTypes = {
-  errorPages: PropTypes.array.isRequired,
   setPage: PropTypes.func.isRequired,
   pageid: PropTypes.string.isRequired,
   previousPage: PropTypes.func.isRequired,
-  children: PropTypes.array,
+  schema: PropTypes.arrayOf(PropTypes.object),
 };

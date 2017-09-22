@@ -10,16 +10,25 @@ import Main from '../primitives/grid/Main';
 import Block from './blocks/Block';
 import Navigation from './Navigation';
 import ErrorResult from './ErrorResult';
+import Summary from './Summary';
 
-function Result({ errorPages, previousPage, title, children = [], pageid, lead, setPage }) {
+function Result({
+  errorPages,
+  previousPage,
+  title,
+  children = [],
+  pageid,
+  lead,
+  setPage,
+  schema,
+}) {
   if (errorPages.length) {
     return (
       <ErrorResult
-        errorPages={errorPages}
+        schema={schema}
         setPage={setPage}
         page={pageid}
         previousPage={previousPage}
-        children={children}
       />
     );
   }
@@ -28,19 +37,17 @@ function Result({ errorPages, previousPage, title, children = [], pageid, lead, 
     <Main>
       <H2>{title}</H2>
       <p>{lead}</p>
+
+      <Summary setPage={setPage} pages={schema} />
+
       <SpecificBlock>
         {children.map(block => <Block key={block.property} {...block} />)}
       </SpecificBlock>
+
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
   );
 }
-
-Result.defaultProps = {
-  title: 'Missing page title',
-  lead: '',
-  children: [],
-};
 
 Result.propTypes = {
   title: PropTypes.string,
@@ -49,8 +56,15 @@ Result.propTypes = {
   pageid: PropTypes.number.isRequired,
   previousPage: PropTypes.func.isRequired,
   errorPages: PropTypes.array.isRequired,
-  wizard: PropTypes.object.isRequired, // eslint-disable-line react/no-unused-prop-types
+  schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
+};
+
+Result.defaultProps = {
+  title: 'Missing page title',
+  lead: '',
+  children: [],
+  schema: [],
 };
 
 const mapStateToProps = (state, { wizard }) => ({
