@@ -30,6 +30,7 @@ function Result({
         setPage={setPage}
         page={pageid}
         previousPage={previousPage}
+        errorPages={errorPages}
       />
     );
   }

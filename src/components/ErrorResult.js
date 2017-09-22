@@ -7,7 +7,7 @@ import { SpecificBlock } from '../primitives/Block';
 import Navigation from './Navigation';
 import Summary from './Summary';
 
-export default function ErrorResult({ schema, setPage, pageid, previousPage }) {
+export default function ErrorResult({ errorPages, schema, setPage, pageid, previousPage }) {
   return (
     <Main>
       <H2>
@@ -22,7 +22,7 @@ export default function ErrorResult({ schema, setPage, pageid, previousPage }) {
       </Lead>
 
       <SpecificBlock>
-        <Summary setPage={setPage} pages={schema} />
+        <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
       </SpecificBlock>
 
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />
@@ -34,7 +34,9 @@ ErrorResult.defaultProps = {
   children: [],
   schema: [],
 };
+
 ErrorResult.propTypes = {
+  errorPages: PropTypes.array.isRequired,
   setPage: PropTypes.func.isRequired,
   pageid: PropTypes.string.isRequired,
   previousPage: PropTypes.func.isRequired,
