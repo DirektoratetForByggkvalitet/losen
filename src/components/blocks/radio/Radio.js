@@ -35,16 +35,20 @@ export default class Radio extends Component {
 
     return (
       <div>
-        {suggestedAnswer.map(option => (
-          <RadioInput
-            key={`${property}:${option.value}`}
-            id={`${property}:${option.value}`}
-            {...option}
-            disabled={disabled}
-            checked={currentValue === option.value}
-            onChange={!disabled && this.handleChange(property, option.value)}
-          />),
-        )}
+        {suggestedAnswer.map((option) => {
+          const isDisabled = disabled || option.disabled;
+
+          return (
+            <RadioInput
+              key={`${property}:${option.value}`}
+              id={`${property}:${option.value}`}
+              {...option}
+              disabled={isDisabled}
+              checked={currentValue === option.value}
+              onChange={!isDisabled && this.handleChange(property, option.value)}
+            />
+          );
+        })}
       </div>
     );
   }
