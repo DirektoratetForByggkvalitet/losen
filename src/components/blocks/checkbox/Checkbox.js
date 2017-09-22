@@ -33,15 +33,19 @@ export default class Checkbox extends Component {
     return (
       <div>
         {suggestedAnswer &&
-          suggestedAnswer.map(option =>
-            (<CheckboxInput
-              disabled={disabled}
-              key={`${property}:${option.value}`}
-              id={`${property}:${option.value}`}
-              {...option}
-              onChange={!disabled && this.handleChange(property, option.value)}
-            />),
-          )}
+          suggestedAnswer.map((option) => {
+            const isDisabled = disabled || option.disabled;
+
+            return (
+              <CheckboxInput
+                disabled={isDisabled}
+                key={`${property}:${option.value}`}
+                id={`${property}:${option.value}`}
+                {...option}
+                onChange={!isDisabled && this.handleChange(property, option.value)}
+              />
+            );
+          })}
       </div>
     );
   }

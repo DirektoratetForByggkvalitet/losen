@@ -6,6 +6,7 @@ export const Checkbox = injectStyles(styled.input`
   position: absolute;
   opacity: 0;
   z-index: -1;
+
   + label {
     display: flex;
     align-items: flex-start;
@@ -15,9 +16,7 @@ export const Checkbox = injectStyles(styled.input`
     padding: 10px;
     border-radius: 5px;
     transition: all 0.1s ease-in-out;
-    &:hover {
-      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-    }
+
     &:before {
       content: ' ';
       display: inline-block;
@@ -31,40 +30,55 @@ export const Checkbox = injectStyles(styled.input`
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
       transition: all 0.1s ease-in-out;
     }
-    &:hover::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-    }
+
     div {
       margin-right: 30px;
     }
+
     img {
       max-width: 200px;
     }
   }
-  &:focus + label,
-  + label:hover {
-    box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-    &::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+
+  :disabled + label {
+    opacity: 0.4;
+  }
+
+  :not(:disabled) {
+    + label {
+      &:hover {
+        box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
+      }
+      &:hover::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
     }
-  }
-  &:checked + label:before {
-    background: ${({ styles }) => styles.color.light};
-  }
-  &:checked + label {
-    box-shadow:
-      0 0 0 1px ${({ styles }) => styles.color.dark},
-      0 0 4px 0 ${({ styles }) => styles.color.dark};
-    &::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+
+    &:focus + label,
+    + label:hover {
+      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
     }
-  }
-  &:checked:focus + label {
-    box-shadow:
-      0 0 0 1px ${({ styles }) => styles.color.dark},
-      0 0 6px 1px ${({ styles }) => styles.color.dark};
-    &::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    &:checked + label:before {
+      background: ${({ styles }) => styles.color.light};
+    }
+    &:checked + label {
+      box-shadow:
+        0 0 0 1px ${({ styles }) => styles.color.dark},
+        0 0 4px 0 ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
+    }
+    &:checked:focus + label {
+      box-shadow:
+        0 0 0 1px ${({ styles }) => styles.color.dark},
+        0 0 6px 1px ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
     }
   }
 `);
@@ -75,6 +89,7 @@ export const Radio = injectStyles(styled.input.attrs({
   position: absolute;
   opacity: 0;
   z-index: -1;
+
   + label {
     display: flex;
     align-items: flex-start;
@@ -85,6 +100,7 @@ export const Radio = injectStyles(styled.input.attrs({
     border-radius: 5px;
     box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
     transition: all 0.1s ease-in-out;
+
     &:before {
       content: ' ';
       display: block;
@@ -99,6 +115,7 @@ export const Radio = injectStyles(styled.input.attrs({
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
       transition: all 0.1s ease-in-out;
     }
+
     div {
       margin-right: 30px;
     }
@@ -109,30 +126,37 @@ export const Radio = injectStyles(styled.input.attrs({
       margin-bottom: 0;
     }
   }
-  &:focus + label,
-  + label:hover {
-    box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-    &::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+
+  :disabled + label {
+    opacity: 0.4;
+  }
+
+  :not(:disabled) {
+    &:focus + label,
+    + label:hover {
+      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
     }
-  }
-  &:checked + label:before {
-    background: ${({ styles }) => styles.color.light};
-  }
-  &:checked + label {
-    box-shadow:
-      0 0 0 1px ${({ styles }) => styles.color.dark},
-      0 0 4px 0 ${({ styles }) => styles.color.dark};
-    &::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    &:checked + label:before {
+      background: ${({ styles }) => styles.color.light};
     }
-  }
-  &:checked:focus + label {
-    box-shadow:
-      0 0 0 1px ${({ styles }) => styles.color.dark},
-      0 0 6px 1px ${({ styles }) => styles.color.dark};
-    &::before {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+    &:checked + label {
+      box-shadow:
+        0 0 0 1px ${({ styles }) => styles.color.dark},
+        0 0 4px 0 ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
+    }
+    &:checked:focus + label {
+      box-shadow:
+        0 0 0 1px ${({ styles }) => styles.color.dark},
+        0 0 6px 1px ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
     }
   }
 `);

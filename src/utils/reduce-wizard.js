@@ -55,6 +55,34 @@ export const mapWizardChildren = (state, nodeTitles) => (node) => {
   };
 };
 
+export const reduceSuggestedAnswers = state => (node) => {
+  if (!node.suggestedAnswer) {
+    return node;
+  }
+
+  return {
+    ...node,
+    suggestedAnswer: node.suggestedAnswer
+      .filter(({ hidden }) => {
+        if (hidden === undefined) {
+          return true;
+        }
+
+        return !parseExpression(hidden)(state[NAME]).valid;
+      })
+      .map((option) => {
+        if (option.disabled === undefined) {
+          return option;
+        }
+
+        return {
+          ...option,
+          disabled: !parseExpression(option.disabled)(state[NAME]).valid,
+        };
+      }),
+  };
+};
+
 export const liftChildrenBranchPages = (res, node) => {
   // We've got a result page already. Skip the rest
   if (res.length && res[res.length - 1].type === 'Result') {
@@ -85,5 +113,6 @@ export default function reduceWizard(schema, state, nodeTitles) {
     .reduce(reduceBranches(state), [])
     .filter(filterSchemaNodes(state))
     .map(mapWizardChildren(state, nodeTitles))
+    .map(reduceSuggestedAnswers(state))
     .reduce(liftChildrenBranchPages, []);
 }
