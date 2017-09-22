@@ -21,6 +21,7 @@ function Result({
   lead,
   setPage,
   schema,
+  summary,
 }) {
   if (errorPages.length) {
     return (
@@ -38,9 +39,9 @@ function Result({
       <H2>{title}</H2>
       <p>{lead}</p>
 
-      <Summary setPage={setPage} pages={schema} />
-
       <SpecificBlock>
+        {summary ? <Summary setPage={setPage} pages={schema} /> : null}
+
         {children.map(block => <Block key={block.property} {...block} />)}
       </SpecificBlock>
 
@@ -51,6 +52,7 @@ function Result({
 
 Result.propTypes = {
   title: PropTypes.string,
+  summary: PropTypes.bool,
   lead: PropTypes.string,
   children: PropTypes.array,
   pageid: PropTypes.number.isRequired,
@@ -65,6 +67,7 @@ Result.defaultProps = {
   lead: '',
   children: [],
   schema: [],
+  summary: true,
 };
 
 const mapStateToProps = (state, { wizard }) => ({

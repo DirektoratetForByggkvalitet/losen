@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { H2 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
+import { SpecificBlock } from '../primitives/Block';
 import Navigation from './Navigation';
 import Summary from './Summary';
 
@@ -20,7 +21,9 @@ export default function ErrorResult({ schema, setPage, pageid, previousPage }) {
         før du kan få et ordentlig resultat i denne veiviseren.
       </Lead>
 
-      <Summary setPage={setPage} pages={schema} />
+      <SpecificBlock>
+        <Summary setPage={setPage} pages={schema} />
+      </SpecificBlock>
 
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
