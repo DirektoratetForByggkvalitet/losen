@@ -1,10 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  entry: [path.join(__dirname, 'src', 'index.js')],
+  entry: {
+    bundle: path.join(__dirname, 'src', 'index.js'),
+    cli: path.join(__dirname, 'src', 'cli.js'),
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     library: 'dibk-wizard-framework',
     libraryTarget: 'commonjs2',
   },

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Wizard rendering framework",
   "main": "dist/bundle.js",
+  "bin": {
+    "dibk-wizard-framework": "./dist/cli.js"
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint . --cache --cache-location=.cache/eslint --ext .jsx,.js --ignore-path .gitignore",
