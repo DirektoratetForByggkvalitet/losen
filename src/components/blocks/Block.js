@@ -64,7 +64,7 @@ export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
 
   if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
-    return <SpecificBlock {...props} />;
+    return <SpecificBlock grouped={props.grouped} {...props} />;
   }
 
   if (props.type === 'Group') {
@@ -83,11 +83,10 @@ export function PureBlock(props) {
   }
 
   return (
-    <StyledBlock id={props.property} disabled={props.disabled}>
+    <StyledBlock id={props.property} grouped={props.grouped} disabled={props.disabled}>
       <div>
         <H3>{props.heading}</H3>
         <Html text={props.text} />
-        <ImageComponent image={props.image} />
 
         <SpecificBlock
           {...{
@@ -104,6 +103,7 @@ export function PureBlock(props) {
             <ErrorIcon /> {props.errorDescription}
           </ErrorMessage>
         )}
+        <ImageComponent image={props.image} />
       </div>
     </StyledBlock>
   );

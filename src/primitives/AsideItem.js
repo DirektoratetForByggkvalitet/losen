@@ -47,7 +47,8 @@ const AsideItem = injectStyles(styled.div`
       &::after {
         border: none;
       }
-    `} p {
+    `} 
+  p {
     flex-grow: 1;
     font-weight: bold;
     padding: 0 20px;

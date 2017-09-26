@@ -13,7 +13,7 @@ const Text = (props) => {
   return (
     <TextBlock>
       <H3>{props.heading}</H3>
-      <div>{reactElement}</div>
+      <p>{reactElement}</p>
     </TextBlock>
   );
 };

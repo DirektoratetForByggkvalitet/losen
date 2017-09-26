@@ -4,13 +4,13 @@ import injectStyles from '../utils/inject-styles';
 
 const Figure = injectStyles(styled.figure`
   padding: 0;
-  margin: 20px 33px 30px;
+  margin: 0 33px 30px;
   max-width: ${({ styles }) => styles.size.blockWidth};
-  img {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
-  }
   figcaption {
     font-style: italic;
+  }
+  @media screen and (max-width: 700px) {
+    margin: 0 auto 30px;
   }
 `);
 
