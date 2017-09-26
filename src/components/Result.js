@@ -41,7 +41,7 @@ function Result({
       <p>{lead}</p>
 
       <SpecificBlock>
-        {summary ? <Summary setPage={setPage} pages={schema} /> : null}
+        {summary ? <Summary errorPages={errorPages} setPage={setPage} pages={schema} /> : null}
 
         {children.map(block => <Block key={block.property} {...block} />)}
       </SpecificBlock>
