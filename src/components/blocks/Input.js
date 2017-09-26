@@ -15,7 +15,8 @@ export default class Input extends Component {
     currentValue: '',
     validation: {},
     disabled: false,
-  }
+    update: () => {},
+  };
 
   static propTypes = {
     type: PropTypes.string,
@@ -31,10 +32,11 @@ export default class Input extends Component {
       message: PropTypes.string.isRequired,
     }),
     disabled: PropTypes.bool,
-  }
+    update: PropTypes.func,
+  };
 
   handleChange = (e) => {
-    const { type, step, property, setData } = this.props;
+    const { type, step, property, setData, update } = this.props;
     let value = e.target.value;
 
     if (type === 'number' && step >= 1) {
@@ -43,20 +45,12 @@ export default class Input extends Component {
       value = parseFloat(value);
     }
 
+    update(value);
     setData(property, value);
-  }
+  };
 
   render() {
-    const {
-      currentValue,
-      placeholder,
-      min,
-      max,
-      type,
-      step,
-      validation,
-      disabled,
-    } = this.props;
+    const { currentValue, placeholder, min, max, type, step, validation, disabled } = this.props;
 
     return (
       <div>
@@ -72,9 +66,11 @@ export default class Input extends Component {
           disabled={disabled}
         />
 
-        {validation.error && <ErrorMessage>
-          <ErrorIcon /> {validation.message}
-        </ErrorMessage>}
+        {validation.error && (
+          <ErrorMessage>
+            <ErrorIcon /> {validation.message}
+          </ErrorMessage>
+        )}
       </div>
     );
   }

@@ -13,6 +13,7 @@ import Radio from './radio/Radio';
 import Select from './select/Select';
 import Text from './Text';
 import Data from './Data';
+import FetchOrg from './FetchOrg';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -55,6 +56,9 @@ function getBlock(type) {
     case 'Data':
       return Data;
 
+    case 'FetchOrg':
+      return FetchOrg;
+
     default:
       return null;
   }
@@ -91,10 +95,13 @@ export function PureBlock(props) {
         <SpecificBlock
           {...{
             ...props,
-            validation: (props.currentValue && props.validator ? {
-              error: !(new RegExp(props.validator.pattern)).test(props.currentValue),
-              message: props.validator.error,
-            } : {}),
+            validation:
+              props.currentValue && props.validator
+                ? {
+                  error: !new RegExp(props.validator.pattern).test(props.currentValue),
+                  message: props.validator.error,
+                }
+                : {},
           }}
         />
 
@@ -134,22 +141,23 @@ PureBlock.propTypes = {
   errorDescription: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.object),
   currentValue: PropTypes.any,
-  validator: PropTypes.oneOf([false, PropTypes.shape({
-    error: PropTypes.string.isRequired,
-    pattern: PropTypes.string.isRequired,
-  })]),
+  validator: PropTypes.oneOf([
+    false,
+    PropTypes.shape({
+      error: PropTypes.string.isRequired,
+      pattern: PropTypes.string.isRequired,
+    }),
+  ]),
 };
 
 const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
     currentValue: get(state[NAME], props.property),
-    disabled: (
-      props.errors && (
-        (Array.isArray(props.errors) && props.errors.length > 0)
-        || (props.errors.errors && props.errors.errors.length > 0)
-      )
-    ),
+    disabled:
+      props.errors &&
+      ((Array.isArray(props.errors) && props.errors.length > 0) ||
+        (props.errors.errors && props.errors.errors.length > 0)),
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);
