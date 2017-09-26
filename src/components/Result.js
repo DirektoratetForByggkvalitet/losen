@@ -11,6 +11,7 @@ import Block from './blocks/Block';
 import Navigation from './Navigation';
 import ErrorResult from './ErrorResult';
 import Summary from './Summary';
+import ExportData from './ExportData';
 
 function Result({
   errorPages,
@@ -22,6 +23,8 @@ function Result({
   setPage,
   schema,
   summary,
+  exports,
+  exporter,
 }) {
   if (errorPages.length) {
     return (
@@ -41,6 +44,8 @@ function Result({
       <p>{lead}</p>
 
       <SpecificBlock>
+        {exporter && exports[exporter] && <ExportData exporter={exports[exporter]} />}
+
         {summary ? <Summary errorPages={errorPages} setPage={setPage} pages={schema} /> : null}
 
         {children.map(block => <Block key={block.property} {...block} />)}
@@ -52,6 +57,8 @@ function Result({
 }
 
 Result.propTypes = {
+  exports: PropTypes.objectOf(PropTypes.func),
+  exporter: PropTypes.string,
   title: PropTypes.string,
   summary: PropTypes.bool,
   lead: PropTypes.string,
@@ -69,6 +76,8 @@ Result.defaultProps = {
   children: [],
   schema: [],
   summary: true,
+  exports: {},
+  exporter: null,
 };
 
 const mapStateToProps = (state, { wizard }) => ({
