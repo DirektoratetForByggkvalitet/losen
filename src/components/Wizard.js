@@ -20,12 +20,14 @@ class Wizard extends Component {
   static propTypes = {
     wizard: PropTypes.object.isRequired,
     schema: PropTypes.array.isRequired,
+    exports: PropTypes.objectOf(PropTypes.func),
     styles: PropTypes.object,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   static defaultProps = {
     styles: {},
+    exports: {},
   };
 
   constructor(props) {
@@ -36,6 +38,7 @@ class Wizard extends Component {
     };
     autobind(this);
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
       track(this.props.schema.filter(item => item.id === this.state.page)[0].title);
@@ -83,7 +86,7 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1);
 
   render() {
-    const { wizard, styles, schema, tableOfContents } = this.props;
+    const { wizard, styles, schema, tableOfContents, exports } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
@@ -106,6 +109,7 @@ class Wizard extends Component {
                 wizard={wizard}
                 schema={schema}
                 setPage={this.setPage}
+                exports={exports}
               />
             ) : (
               <Page

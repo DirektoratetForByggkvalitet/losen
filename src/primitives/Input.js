@@ -190,7 +190,7 @@ export const Textarea = injectStyles(styled.textarea`
   font-size: 1em;
   padding: 0.5em;
   width: 100%;
-  height: 5em;
+  min-height: 5em;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
     font-color: inherit;

@@ -3,3 +3,5 @@ dist
 storybook-static
 .cache
 .DS_Store
+yarn-error.log
+yarn.lock

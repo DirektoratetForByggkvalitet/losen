@@ -4,6 +4,13 @@ import reduceWizard from './reduce-wizard';
 import { NAME } from '../state';
 
 /**
+ * Get wizard data
+ */
+export function getData(state) {
+  return state[NAME] || {};
+}
+
+/**
  * Validates a node and returns an array of errors (if any)
  *
  * @param string property
@@ -16,8 +23,13 @@ export function validateNode(node, state) {
 
   const errors = [];
 
+  // Image and text isn't stored, so no value is required
+  if (['Image', 'Text'].includes(node.type)) {
+    return errors;
+  }
+
   // Checks for fields that are required but not provided
-  if (typeof get(state[NAME], node.property) === 'undefined') {
+  if (typeof get(getData(state), node.property) === 'undefined') {
     errors.push({ type: 'required' });
   }
 
@@ -83,5 +95,5 @@ export function getNodeTitle(schema, property) {
 }
 
 export function getNodeValue(property, state) {
-  return get(state[NAME], property);
+  return get(getData(state), property);
 }

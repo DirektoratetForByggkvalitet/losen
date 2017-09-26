@@ -9,12 +9,14 @@ export default class Checkbox extends Component {
     heading: '',
     text: '',
     disabled: false,
+    currentValue: {},
   };
   static propTypes = {
     suggestedAnswer: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
+    currentValue: PropTypes.any,
   };
 
   constructor(props) {
@@ -28,7 +30,12 @@ export default class Checkbox extends Component {
   };
 
   render() {
-    const { suggestedAnswer, property, disabled } = this.props;
+    const {
+      suggestedAnswer,
+      property,
+      disabled,
+      currentValue,
+    } = this.props;
 
     return (
       <div>
@@ -41,6 +48,7 @@ export default class Checkbox extends Component {
                 disabled={isDisabled}
                 key={`${property}:${option.value}`}
                 id={`${property}:${option.value}`}
+                checked={currentValue[option.value]}
                 name={property}
                 {...option}
                 onChange={!isDisabled && this.handleChange(property, option.value)}

@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Textarea as StyledTextarea } from '../../primitives/Input';
 
-const Textarea = props => <StyledTextarea placeholder={props.placeholder} />;
+export default class Textarea extends Component {
+  static defaultProps = {
+    placeholder: '',
+    setData: () => {},
+    currentValue: '',
+  }
 
-export default Textarea;
+  static propTypes = {
+    property: PropTypes.string.isRequired,
+    setData: PropTypes.func,
+    placeholder: PropTypes.string,
+    currentValue: PropTypes.string,
+  }
 
-Textarea.defaultProps = {
-  placeholder: '',
-};
+  handleChange = (e) => {
+    const { property, setData } = this.props;
+    const value = e.target.value;
 
-Textarea.propTypes = {
-  placeholder: PropTypes.string,
-};
+    setData(property, value);
+  }
+
+  render() {
+    const { placeholder, currentValue } = this.props;
+
+    return (
+      <StyledTextarea
+        placeholder={placeholder}
+        value={currentValue}
+        onChange={this.handleChange}
+      />
+    );
+  }
+}

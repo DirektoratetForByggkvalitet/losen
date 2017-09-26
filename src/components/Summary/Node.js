@@ -23,7 +23,7 @@ function NodeSummary({
   if (type === 'Group') {
     return (
       <div>
-        {children.map(node => <NodeSummary {...node} />)}
+        {children.map(node => <ConnectedNodeSummary {...node} />)}
       </div>
     );
   }
@@ -58,8 +58,10 @@ NodeSummary.defaultProps = {
   errorDescription: '',
 };
 
-const mapStateToProps = (state, { property }) => ({
-  value: getNodeValue(property, state),
+const mapStateToProps = (state, props) => ({
+  value: getNodeValue(props.property, state),
 });
 
-export default connect(mapStateToProps)(NodeSummary);
+const ConnectedNodeSummary = connect(mapStateToProps)(NodeSummary);
+
+export default ConnectedNodeSummary;
