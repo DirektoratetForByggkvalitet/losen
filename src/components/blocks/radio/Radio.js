@@ -42,6 +42,7 @@ export default class Radio extends Component {
             <RadioInput
               key={`${property}:${option.value}`}
               id={`${property}:${option.value}`}
+              name={property}
               {...option}
               disabled={isDisabled}
               checked={currentValue === option.value}

@@ -5,9 +5,9 @@ import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
 import { H4 } from '../../../primitives/Heading';
 
-const CheckboxInput = ({ id, text, onChange, heading, image, disabled }) => (
+const CheckboxInput = ({ id, name, text, onChange, heading, image, disabled }) => (
   <div>
-    <Input type="checkbox" id={id} onChange={onChange} disabled={disabled} />
+    <Input type="checkbox" name={name} id={id} onChange={onChange} disabled={disabled} />
 
     <Label htmlFor={id}>
       <div>
@@ -34,4 +34,5 @@ CheckboxInput.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };

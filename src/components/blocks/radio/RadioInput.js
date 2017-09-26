@@ -8,7 +8,7 @@ import { P } from '../../../primitives/Paragraphs';
 
 const RadioInput = ({ id, text, name, value, checked, onChange, heading, image, disabled }) => (
   <div>
-    <Input type="radio" name={name} value={value} checked={checked} disabled={disabled} />
+    <Input type="radio" name={name} id={id} value={value} checked={checked} disabled={disabled} />
 
     <Label htmlFor={id} onClick={onChange}>
       <div>
@@ -37,6 +37,7 @@ RadioInput.defaultProps = {
 
 RadioInput.propTypes = {
   id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   heading: PropTypes.string,
   image: PropTypes.object,
@@ -44,5 +45,4 @@ RadioInput.propTypes = {
   value: PropTypes.any.isRequired,
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
 };

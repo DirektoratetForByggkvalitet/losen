@@ -41,6 +41,7 @@ export default class Checkbox extends Component {
                 disabled={isDisabled}
                 key={`${property}:${option.value}`}
                 id={`${property}:${option.value}`}
+                name={property}
                 {...option}
                 onChange={!isDisabled && this.handleChange(property, option.value)}
               />
