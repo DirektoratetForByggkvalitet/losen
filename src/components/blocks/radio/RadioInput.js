@@ -33,6 +33,8 @@ RadioInput.defaultProps = {
 RadioInput.defaultProps = {
   heading: '',
   image: {},
+  checked: false,
+  disabled: false,
 };
 
 RadioInput.propTypes = {
@@ -43,6 +45,6 @@ RadioInput.propTypes = {
   image: PropTypes.object,
   onChange: PropTypes.func,
   value: PropTypes.any.isRequired,
-  checked: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
 };

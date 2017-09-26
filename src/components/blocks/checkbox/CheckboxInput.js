@@ -25,6 +25,7 @@ CheckboxInput.defaultProps = {
   heading: '',
   image: {},
   checked: false,
+  disabled: false,
   onChange: () => {},
 };
 
@@ -34,7 +35,7 @@ CheckboxInput.propTypes = {
   image: PropTypes.object,
   onChange: PropTypes.func,
   checked: PropTypes.bool,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   text: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };

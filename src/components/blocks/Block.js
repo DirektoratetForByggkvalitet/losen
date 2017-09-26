@@ -116,6 +116,7 @@ PureBlock.defaultProps = {
   errors: [],
   errorDescription: null,
   children: [],
+  disabled: false,
   grouped: false,
   validator: false,
   currentValue: undefined,
@@ -128,15 +129,15 @@ PureBlock.propTypes = {
   property: PropTypes.string.isRequired,
   image: PropTypes.object,
   grouped: PropTypes.bool,
-  disabled: PropTypes.bool.isRequired,
+  disabled: PropTypes.bool,
   errors: PropTypes.arrayOf(PropTypes.object),
   errorDescription: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.object),
   currentValue: PropTypes.any,
-  validator: PropTypes.shape({
+  validator: PropTypes.oneOf([false, PropTypes.shape({
     error: PropTypes.string.isRequired,
     pattern: PropTypes.string.isRequired,
-  }),
+  })]),
 };
 
 const ConnectedBlock = connect(
