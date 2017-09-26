@@ -63,10 +63,6 @@ function getBlock(type) {
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
 
-  if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
-    return <SpecificBlock {...props} />;
-  }
-
   if (props.type === 'Group') {
     return (
       <StyledBlock>
@@ -80,6 +76,10 @@ export function PureBlock(props) {
 
   if (!SpecificBlock) {
     return <Missing type={props.type} />;
+  }
+
+  if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
+    return <SpecificBlock {...props} />;
   }
 
   return (
