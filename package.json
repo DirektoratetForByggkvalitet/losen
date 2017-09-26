@@ -4,7 +4,7 @@
   "description": "Wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
-    "dibk-wizard-framework": "./dist/cli.js"
+    "dibk-wizard-framework": "./bin/cli.js"
   },
   "scripts": {
     "test": "jest",
