@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getNodeValue } from '../../utils/selectors';
-import Value from './Value';
+import DefaultValueSummary from './value';
+import FetchOrg from './value/FetchOrg';
 
 const ignoreNodes = ['Text', 'Image'];
+const overrideValueSummary = { FetchOrg };
 
 function NodeSummary({
   type,
@@ -28,11 +30,13 @@ function NodeSummary({
     );
   }
 
+  const ValueSummary = overrideValueSummary[type] || DefaultValueSummary;
+
   return (
     <div>
       <h4>{heading} [{property}]</h4>
 
-      <Value value={value} />
+      <ValueSummary value={value} />
 
       {errors.length ? <div style={{ color: 'magenta' }}>{errorDescription}</div> : null}
     </div>
