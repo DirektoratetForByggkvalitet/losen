@@ -12,7 +12,7 @@ const rules = [
 
 module.exports = [
   {
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: path.join(__dirname, 'src', 'web', 'index.js'),
     output: {
       path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',
@@ -30,10 +30,13 @@ module.exports = [
   },
   {
     target: 'node',
-    entry: path.join(__dirname, 'src', 'cli.js'),
+    entry: {
+      cli: path.join(__dirname, 'src', 'cli', 'index.js'),
+      validate: path.join(__dirname, 'src', 'cli', 'validate.js'),
+    },
     output: {
       path: path.join(__dirname, 'dist'),
-      filename: 'cli.js',
+      filename: '[name].js',
     },
     module: { rules },
   },
