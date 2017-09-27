@@ -1,32 +1,40 @@
 const path = require('path');
 
-module.exports = {
-  entry: {
-    bundle: path.join(__dirname, 'src', 'index.js'),
-    cli: path.join(__dirname, 'src', 'cli.js'),
+const rules = [
+  {
+    test: /\.js$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+      loader: 'babel-loader',
+    },
   },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
-    library: 'dibk-wizard-framework',
-    libraryTarget: 'commonjs2',
+];
+
+module.exports = [
+  {
+    entry: path.join(__dirname, 'src', 'index.js'),
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: 'bundle.js',
+      library: 'dibk-wizard-framework',
+      libraryTarget: 'commonjs2',
+    },
+    externals: {
+      react: true,
+      'react-dom': true,
+      redux: true,
+      'react-redux': true,
+      'styled-components': true,
+    },
+    module: { rules },
   },
-  externals: {
-    react: true,
-    'react-dom': true,
-    redux: true,
-    'react-redux': true,
-    'styled-components': true,
+  {
+    target: 'node',
+    entry: path.join(__dirname, 'src', 'cli.js'),
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: 'cli.js',
+    },
+    module: { rules },
   },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
-};
+];
