@@ -2,6 +2,7 @@ import { existsSync } from 'fs';
 
 import program from 'commander';
 import { version } from '../../package.json';
+import validateSchema from '../shared/utils/validator';
 
 program
   .version(version)
@@ -15,5 +16,8 @@ if (!existsSync(schema)) {
   process.exit(1);
 }
 
-
-console.log('🌈');
+if (validateSchema(schema)) {
+  console.log('🌈');
+} else {
+  console.log('⛈');
+}
