@@ -14,9 +14,9 @@ export default function SchemaIntro() {
 
       <H2>Prior art</H2>
       <p>
-        Everything is based on something. When designing the schema and mental concepts around the wizard framework we've
-        had the traditional text-based role playing games in mind in which you have a dialogue tree where the answers you
-        give and choices you make determines how the game progress.
+        Everything is based on something. When designing the schema and mental models upon which the wizard framework is
+        built, we've had the traditional text-based role playing games in mind. More specificly the way you interact with
+        it through anwering questions that determines how the game progress.
       </p>
 
       <H2>The algorithm</H2>

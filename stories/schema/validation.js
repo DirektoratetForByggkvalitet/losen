@@ -21,8 +21,7 @@ export default function SchemaValidation() {
         <code>node_modules/.bin</code> in your project like this when standing in the project root:
       </p>
 
-      <pre>{`
-$ ./node_modules/.bin/dibk-wizard-framework validate ./path/to/schema.js
+      <pre>{`$ ./node_modules/.bin/dibk-wizard-framework validate ./path/to/schema.js
 Schema is valid
 `}
       </pre>
