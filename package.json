@@ -14,7 +14,7 @@
     "dev": "webpack --watch",
     "start": "npm run dev",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -s ./public"
   },
   "pre-commit": [
     "lint"
