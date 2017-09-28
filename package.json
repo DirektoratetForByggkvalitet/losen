@@ -83,12 +83,14 @@
     "parser": "babel-eslint",
     "extends": "airbnb",
     "rules": {
+      "max-len": 0,
       "no-return-assign": 0,
       "no-confusing-arrow": 0,
       "react/forbid-prop-types": 0,
       "react/jsx-filename-extension": 0,
       "react/no-children-prop": 0,
-      "jsx-a11y/accessible-emoji": 0
+      "jsx-a11y/accessible-emoji": 0,
+      "react/no-unescaped-entities": 0
     },
     "env": {
       "jest": true,
