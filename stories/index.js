@@ -7,13 +7,13 @@ import { storiesOf } from '@storybook/react';
 import Welcome from './Welcome';
 import Page from './Page';
 import Branch from './Branch';
-import Navigation from '../src/components/Navigation';
-import Number from '../src/components/blocks/Number';
-import Missing from '../src/components/blocks/Missing';
-import Input from '../src/components/blocks/Input';
-import Select from '../src/components/blocks/select/Select';
-import Radio from '../src/components/blocks/radio/Radio';
-import Checkbox from '../src/components/blocks/checkbox/Checkbox';
+import Navigation from '../src/web/components/Navigation';
+import Number from '../src/web/components/blocks/Number';
+import Missing from '../src/web/components/blocks/Missing';
+import Input from '../src/web/components/blocks/Input';
+import Select from '../src/web/components/blocks/select/Select';
+import Radio from '../src/web/components/blocks/radio/Radio';
+import Checkbox from '../src/web/components/blocks/checkbox/Checkbox';
 
 storiesOf('Welcome', module).add('', () => <Welcome />);
 
