@@ -6,6 +6,8 @@ import { getNodeValue } from '../../utils/selectors';
 import DefaultValueSummary from './value';
 import FetchOrg from './value/FetchOrg';
 
+import { H4 } from '../../primitives/Heading';
+
 const ignoreNodes = ['Text', 'Image'];
 const overrideValueSummary = { FetchOrg };
 
@@ -34,10 +36,8 @@ function NodeSummary({
 
   return (
     <div>
-      <h4>{heading} [{property}]</h4>
-
+      <H4>{heading}</H4>
       <ValueSummary value={value} />
-
       {errors.length ? <div style={{ color: 'magenta' }}>{errorDescription}</div> : null}
     </div>
   );

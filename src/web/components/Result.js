@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { getErrorPages } from '../utils/selectors';
 
 import { H2 } from '../primitives/Heading';
+import { Lead } from '../primitives/Paragraphs';
 import { SpecificBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Block from './blocks/Block';
@@ -41,14 +42,16 @@ function Result({
   return (
     <Main>
       <H2>{title}</H2>
-      <p>{lead}</p>
+      <Lead>{lead}</Lead>
 
       <SpecificBlock>
-        {exporter && exports[exporter] && <ExportData exporter={exports[exporter]} />}
 
         {summary ? <Summary errorPages={errorPages} setPage={setPage} pages={schema} /> : null}
 
         {children.map(block => <Block key={block.property} {...block} />)}
+
+        {exporter && exports[exporter] && <ExportData exporter={exports[exporter]} />}
+
       </SpecificBlock>
 
       <Navigation page={pageid} hasPrevious previousPage={previousPage} />

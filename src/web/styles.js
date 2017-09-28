@@ -10,7 +10,8 @@ export default {
   color: {
     light: '#00757F',
     dark: '#072938',
-    lightgray: '#f2f1f0',
+    warmgray3: '#f2f1f0',
+    warmgray2: '#e5e3e1',
     darkgray: '#afaba8',
     red: '#d12133',
     oldred: '#9d312f',

@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const AsideItem = injectStyles(styled.div`
-  background: ${props => (props.active ? ({ styles }) => styles.color.lightgray : 'white')};
+  background: ${props => (props.active ? ({ styles }) => styles.color.warmgray3 : 'white')};
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.1s ease-in-out;
   &:hover {
     cursor: pointer;
-    background: ${({ styles }) => styles.color.lightgray};
+    background: ${({ styles }) => styles.color.warmgray3};
   }
   div {
     color: ${props => (props.active ? 'white' : 'inherit')};
@@ -25,7 +25,20 @@ const AsideItem = injectStyles(styled.div`
   }
   &:hover div {
     background: ${props =>
-    props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.lightgray};
+    props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.warmgray3};
+  }
+  p {
+    flex-grow: 1;
+    font-weight: bold;
+    padding: 0 20px;
+  }
+  span {
+    text-decoration: underline;
+    color: ${({ styles }) => styles.color.light};
+    font-size: 1em;
+    font-weight: normal;
+    display: block;
+    padding: 0;
   }
   &::after {
     content: " ";
@@ -42,25 +55,18 @@ const AsideItem = injectStyles(styled.div`
       &::after {
         transform: rotate(-45deg);
       }
+      span {
+        display: block;
+      }
     `
       : `
       &::after {
         border: none;
       }
+      span {
+        display: none;
+      }
     `} 
-  p {
-    flex-grow: 1;
-    font-weight: bold;
-    padding: 0 20px;
-  }
-  span {
-    text-decoration: underline;
-    color: ${({ styles }) => styles.color.light};
-    font-size: 1em;
-    font-weight: normal;
-    display: block;
-    padding: 0;
-  }
 `);
 
 export default AsideItem;
