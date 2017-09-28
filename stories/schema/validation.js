@@ -15,14 +15,14 @@ export default function SchemaValidation() {
         the example. Perform <code>npm run validate</code> to check the schema.
       </p>
 
-      <H2>Validator CLI</H2>
+      <H2>Validator CLI [WIP]</H2>
       <p>
         In order to use the validator directly, call the bin file installed in
         <code>node_modules/.bin</code> in your project like this when standing in the project root:
       </p>
 
       <pre>{`$ ./node_modules/.bin/dibk-wizard-framework validate ./path/to/schema.js
-Schema is valid
+Schema is valid 🌈
 `}
       </pre>
     </div>

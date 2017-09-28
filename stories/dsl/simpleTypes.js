@@ -29,39 +29,42 @@ export default function DslSimpleTypes() {
   }
 }`}</pre>
 
-      <H2>gt</H2>
+      <hr />
+
+      <H2>The expression types</H2>
+      <H3>gt</H3>
       <p>Expression describing a greater than comparison.</p>
       <pre>{'{ field: \'some.field\', operartor: \'gt\', value: 3 }'}</pre>
 
-      <H2>lt</H2>
+      <H3>lt</H3>
       <p>Expression describing a less than comparison.</p>
       <pre>{'{ field: \'some.field\', operartor: \'lt\', value: 3 }'}</pre>
 
-      <H2>gte</H2>
+      <H3>gte</H3>
       <p>Expression describing a greater than or equal comparison.</p>
       <pre>{'{ field: \'some.field\', operartor: \'gte\', value: 3 }'}</pre>
 
-      <H2>lte</H2>
+      <H3>lte</H3>
       <p>Expression describing a less than or equal comparison.</p>
       <pre>{'{ field: \'some.field\', operartor: \'lte\', value: 3 }'}</pre>
 
-      <H2>eq</H2>
+      <H3>eq</H3>
       <p>Expression describing a equality check.</p>
       <pre>{'{ field: \'some.field\', operartor: \'eq\', value: \'apekatt\' }'}</pre>
 
-      <H2>between</H2>
-      <p>Expression describing a range check, the value being between two values.</p>
-      <pre>{'{ field: \'some.field\', operartor: \'between\', value: [3, 6] }'}</pre>
-
-      <H2>neq</H2>
+      <H3>neq</H3>
       <p>Expression describing a not equal comparison.</p>
       <pre>{'{ field: \'some.field\', operartor: \'eq\', value: true }'}</pre>
 
-      <H2>required</H2>
+      <H3>between</H3>
+      <p>Expression describing a range check, the value being between two values.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'between\', value: [3, 6] }'}</pre>
+
+      <H3>required</H3>
       <p>Expression describing a required value, meaning that the field exists.</p>
       <pre>{'{ field: \'some.field\', operartor: \'required\' }'}</pre>
 
-      <H2>not</H2>
+      <H3>not</H3>
       <p>Expression describing a check for a property that must have a falsy value.</p>
       <pre>{'{ field: \'some.field\', operartor: \'not\' }'}</pre>
     </div>
