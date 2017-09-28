@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --cache --cache-location=.cache/eslint --ext .jsx,.js --ignore-path .gitignore",
+    "lint": "eslint . --cache --cache-location=.cache/eslint --ext .jsx,.js",
     "build": "NODE_ENV=production webpack -p",
     "dev": "webpack --watch",
     "start": "npm run dev",
