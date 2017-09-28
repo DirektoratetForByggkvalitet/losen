@@ -16,6 +16,8 @@ export default class FetchSG extends Component {
     disabled: PropTypes.bool,
     heading: PropTypes.string,
     text: PropTypes.string,
+    currentValue: PropTypes.any,
+    invalidapproval: PropTypes.string,
   };
 
   static defaultProps = {
@@ -23,6 +25,8 @@ export default class FetchSG extends Component {
     disabled: false,
     heading: '',
     text: '',
+    currentValue: undefined,
+    invalidapproval: '',
   };
 
   constructor(props) {
@@ -52,7 +56,16 @@ export default class FetchSG extends Component {
         this.updateData(data, orgid);
       })
       .catch((error) => {
-        this.updateData(false, orgid);
+        console.log('YTOYOYOYO');
+        const { property, setData } = this.props;
+        setData(property, {
+          orgid,
+          name: '',
+          status: '',
+          validApprovalAreas: '',
+          data: false,
+        });
+        this.setState({ loading: false });
         // eslint-disable-next-line no-console
         console.log(`There is an error fetching from SG: ${error.message}`);
       });
@@ -60,59 +73,43 @@ export default class FetchSG extends Component {
 
   updateData(data, orgid) {
     const { property, setData } = this.props;
-    if (data) {
-      const status = get(data, 'dibk-sgdata.status');
-      const validApprovalAreas = get(data, 'dibk-sgdata.valid_approval_areas');
-      setData(property, {
-        orgid,
-        status,
-        validApprovalAreas,
-        data: true,
-        fetch: false,
-      });
-    } else {
-      setData(property, {
-        orgid,
-        status: '',
-        validApprovalAreas: '',
-        data: false,
-        fetch: false,
-      });
-    }
+    const status = get(data, 'dibk-sgdata.status');
+    const validApprovalAreas = get(data, 'dibk-sgdata.valid_approval_areas');
+    const name = get(data, 'dibk-sgdata.enterprise.name');
+    setData(property, {
+      orgid,
+      name,
+      status,
+      validApprovalAreas,
+      data: true,
+    });
     this.setState({ loading: false });
   }
 
-  update(value) {
-    const { property, setData } = this.props;
-    if (value.toString().length === 9) {
-      this.setState({ loading: true });
-      this.fetchData(value);
-    } else {
-      setData(property, { data: false });
-    }
-  }
-
   render() {
-    /* TODO: Has to be triggered by changes to FetchOrg */
-    const { disabled, property, heading, text } = this.props;
+    const { disabled, property, heading, text, invalidapproval } = this.props;
     const { loading } = this.state;
     return (
       <div>
         {get(this.props, 'currentValue.fetch')}
         <StyledBlock id={property} disabled={disabled}>
           {loading && <H3>Laster inn data...</H3>}
-          {get(this.props, 'currentValue.data', false) && (
-            <div>
-              <H3>
-                <VariableText text={heading} />
-              </H3>
-              <VariableText text={text} />
-              <ApprovalAreas areas={get(this.props, 'currentValue.validApprovalAreas')} />
-            </div>
-          )}
-          {!get(this.props, 'currentValue.data', false) && (
-            <H3>Vi fant ikke godkjenningen din i systemet vårt</H3>
-          )}
+          {!loading &&
+            get(this.props, 'currentValue.data', false) && (
+              <div>
+                <H3>
+                  <VariableText text={heading} data={this.props.currentValue} />
+                </H3>
+                <VariableText text={text} data={this.props.currentValue} />
+                <ApprovalAreas
+                  areas={get(this.props, 'currentValue.validApprovalAreas')}
+                />
+              </div>
+            )}
+          {!loading &&
+            !get(this.props, 'currentValue.data', false) && (
+              <H3>{invalidapproval}</H3>
+            )}
         </StyledBlock>
       </div>
     );

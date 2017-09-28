@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function ApprovalAreas({ areas }) {
-  if (!areas) {
+  if (areas === undefined || areas.length === 0) {
     return null;
   }
   return (
