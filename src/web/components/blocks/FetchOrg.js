@@ -16,12 +16,12 @@ export default class FetchOrg extends Component {
     information: PropTypes.string,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
-    currentValue: PropTypes.string,
+    currentValue: PropTypes.object,
   };
 
   static defaultProps = {
     information: '',
-    currentValue: '',
+    currentValue: {},
   };
 
   constructor(props) {

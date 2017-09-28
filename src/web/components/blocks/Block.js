@@ -14,6 +14,7 @@ import Select from './select/Select';
 import Text from './Text';
 import Data from './Data';
 import FetchOrg from './FetchOrg';
+import FetchSG from './FetchSG';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -59,6 +60,9 @@ function getBlock(type) {
     case 'FetchOrg':
       return FetchOrg;
 
+    case 'FetchSG':
+      return FetchSG;
+
     default:
       return null;
   }
@@ -82,7 +86,12 @@ export function PureBlock(props) {
     return <Missing type={props.type} />;
   }
 
-  if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
+  if (
+    props.type === 'Image' ||
+    props.type === 'Text' ||
+    props.type === 'Data' ||
+    props.type === 'FetchSG'
+  ) {
     return <SpecificBlock grouped={props.grouped} {...props} />;
   }
 
