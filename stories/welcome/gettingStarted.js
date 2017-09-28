@@ -14,10 +14,10 @@ export default function Welcome() {
 
       <H2>Installation</H2>
       <p>
-        When you've got hold of the example wizard, you need to install the dependencies by running <code>npm install</code>
-        before you can start the dev mode by running `npm start`. At this point the browser should open and you should
-        see something wizard-like. In case you don't, you probably have some sort of error message in the terminal window
-        where you performed the `npm start` command.
+        When you've got hold of the example wizard, you need to install the dependencies by
+        running <code>npm install</code> before you can start the dev mode by running <code>npm start</code>. At
+        this point the browser should open and you should see something wizard-like. In case you don't, you probably
+        have some sort of error message in the terminal window where you performed the <code>npm start</code> command.
       </p>
 
       <H2>"The schema"</H2>

@@ -83,9 +83,9 @@ export default function SchemaIntro() {
       </div>
 
       <p>
-        Given that the user said yes, the property <code>continue</code> is <em>true</em>
-        and the branch test will evaluate to true. The schema will be reduced to the following
-        before it's rendered:
+        Given that the user said yes, the property <code>continue</code> is
+        <em>true</em> and the branch test will evaluate to true. The schema will be reduced
+        to the following before it's rendered:
       </p>
 
       <pre>{`[

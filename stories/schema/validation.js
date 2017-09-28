@@ -17,8 +17,8 @@ export default function SchemaValidation() {
 
       <H2>Validator CLI</H2>
       <p>
-        In order to use the validator directly, call the bin file installed in <code>node_modules/.bin</code>
-        in your project like this when standing in the project root:
+        In order to use the validator directly, call the bin file installed in
+        <code>node_modules/.bin</code> in your project like this when standing in the project root:
       </p>
 
       <pre>{`

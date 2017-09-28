@@ -1,0 +1,18 @@
+body {
+    font-family: "Source Sans Pro";
+    font-size: 18px;
+}
+
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+code, pre {
+    background: #f5f5f5;
+    padding: 2px 4px;
+}
+
+pre {
+    padding: 4px;
+}

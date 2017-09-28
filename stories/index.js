@@ -8,7 +8,8 @@ import Navigation from '../src/web/components/Navigation';
 import StyleProvider from '../src/web/components/StyleProvider';
 
 addDecorator(storyFn => (
-  <div style={{ width: '100%', maxWidth: '750px', margin: '0 auto' }}>
+  <div className="container">
+    <link href="/storybook.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet" />
 
     <StyleProvider styles={{ font: { primary: 'Source Sans Pro', secondary: 'Source Sans Pro' } }}>
