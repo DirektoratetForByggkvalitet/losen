@@ -33,16 +33,6 @@ storiesOf('DSL', module)
   .add('Complex types', require('./dsl/complexTypes').default)
   .add('Parsing', require('./dsl/parsing').default);
 
-storiesOf('Wizard block elements', module)
-  .add('Page', require('./wizardBlockElements/page').default)
-  .add('Branch', require('./wizardBlockElements/branch').default)
-  .add('Checkbox', require('./wizardBlockElements/checkbox').default)
-  .add('Radio', require('./wizardBlockElements/radio').default)
-  .add('Select', require('./wizardBlockElements/select').default)
-  .add('Input', require('./wizardBlockElements/input').default)
-  .add('Missing', require('./wizardBlockElements/missing').default)
-  .add('Number', require('./wizardBlockElements/number').default);
-
 storiesOf('Visual primitives', module)
   .add('Intro', () => <div>Interesting stuff about 🌈 and 💅</div>);
 
