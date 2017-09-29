@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash.get';
+import template from 'lodash.template';
 
 export default function VariableText({ text, data }) {
   if (!text) {
     return null;
   }
-  const match = text.match(/\{[\S]+\}/g);
-  const result = text.replace(match[0], get(data, match[0].slice(1, -1)));
+  const compiled = template(text);
+
   // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{ __html: result }} />;
+  return <div dangerouslySetInnerHTML={{ __html: compiled(data) }} />;
 }
 
 VariableText.defaultProps = {
