@@ -16,19 +16,12 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
   },
-  "keywords": [
-    "wizard",
-    "framework",
-    "react",
-    "dibk"
-  ],
+  "keywords": ["wizard", "framework", "react", "dibk"],
   "author": "Netlife Research",
   "private": true,
   "license": "MIT",
@@ -91,7 +84,8 @@
       "react/jsx-filename-extension": 0,
       "react/no-children-prop": 0,
       "jsx-a11y/accessible-emoji": 0,
-      "react/no-unescaped-entities": 0
+      "react/no-unescaped-entities": 0,
+      "no-template-curly-in-string": 0
     },
     "env": {
       "jest": true,

@@ -56,7 +56,6 @@ export default class FetchSG extends Component {
         this.updateData(data, orgid);
       })
       .catch((error) => {
-        console.log('YTOYOYOYO');
         const { property, setData } = this.props;
         setData(property, {
           orgid,
