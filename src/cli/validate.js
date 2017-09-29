@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import { existsSync, readFileSync } from 'fs';
 
 import chalk from 'chalk';
