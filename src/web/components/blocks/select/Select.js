@@ -9,6 +9,7 @@ export default class Select extends Component {
     text: '',
     heading: '',
     currentValue: '',
+    defaultOption: '',
   };
 
   static propTypes = {
@@ -16,6 +17,7 @@ export default class Select extends Component {
     currentValue: PropTypes.any,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
+    defaultOption: PropTypes.string,
   };
 
   handleChange = (e) => {
@@ -26,13 +28,15 @@ export default class Select extends Component {
   };
 
   render() {
-    const { currentValue, suggestedAnswer } = this.props;
-
+    const { currentValue, suggestedAnswer, defaultOption } = this.props;
+    const text = defaultOption || 'Velg fra listen';
     return (
       <select value={currentValue} onChange={this.handleChange}>
-        <SelectOption text="Velg fra listen" value={NULL_VALUE} />
+        <SelectOption text={text} value={NULL_VALUE} />
 
-        {suggestedAnswer.map(option => <SelectOption {...option} key={option.value} />)}
+        {suggestedAnswer.map(option => (
+          <SelectOption {...option} key={option.value} />
+        ))}
       </select>
     );
   }
