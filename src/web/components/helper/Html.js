@@ -7,7 +7,7 @@ export default function Html({ text }) {
   }
 
   // eslint-disable-next-line react/no-danger
-  return <div dangerouslySetInnerHTML={{ __html: text }} />;
+  return <p dangerouslySetInnerHTML={{ __html: text }} />;
 }
 
 Html.defaultProps = {

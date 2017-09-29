@@ -4,23 +4,22 @@ import injectStyles from '../utils/inject-styles';
 
 export const PageSummary = injectStyles(styled.div` 
   border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
-  padding: 0 0 30px;
+  padding: 20px 24px 20px;
   margin-bottom: 20px;
+  background: rgba(137, 174, 196, 0.15);
+  &:nth-child(even) {
+    background: rgba(0, 117, 127, 0.06);
+  }
   ${props =>
     props.error
       ? `
-      border-left: 20px solid ${({ styles }) => styles.color.red};
-      padding-left: 1em;
+      border-left: 10px solid ${props.styles.color.red};
+      padding-left: 2em;
     ` : `
-      border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
+      border: none;
     `}
 `);
 
-export const Lead = injectStyles(styled.p`
-  font-family: ${({ styles }) => styles.font.secondary};
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 1.5;
-  margin: 16px 0 40px;
-  max-width: ${({ styles }) => styles.size.blockWidth};
+export const NodeSummary = injectStyles(styled.div` 
+  margin-bottom: 20px;
 `);

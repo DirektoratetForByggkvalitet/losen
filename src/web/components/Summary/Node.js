@@ -7,6 +7,10 @@ import DefaultValueSummary from './value';
 import FetchOrg from './value/FetchOrg';
 
 import { H4 } from '../../primitives/Heading';
+import { ErrorMessage } from '../../primitives/Errors';
+import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
+
+import ErrorIcon from '../graphics/ErrorIcon';
 
 const ignoreNodes = ['Text', 'Image'];
 const overrideValueSummary = { FetchOrg };
@@ -35,11 +39,11 @@ function NodeSummary({
   const ValueSummary = overrideValueSummary[type] || DefaultValueSummary;
 
   return (
-    <div>
+    <StyledNodeSummary>
       <H4>{heading}</H4>
       <ValueSummary value={value} />
-      {errors.length ? <div style={{ color: 'magenta' }}>{errorDescription}</div> : null}
-    </div>
+      {errors.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}
+    </StyledNodeSummary>
   );
 }
 
