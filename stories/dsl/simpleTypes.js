@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, H2 } from '../../src/web/primitives/Heading';
+import { H1, H2, H3 } from '../../src/web/primitives/Heading';
 
 export default function DslSimpleTypes() {
   return (
@@ -11,29 +11,62 @@ export default function DslSimpleTypes() {
         to the expression. Each of the types is described in detail below.
       </p>
 
-      <H2>gt</H2>
-      <p>Expression describing a greater than</p>
+      <H2>Field reference as expression value</H2>
+      <p>
+        The comparisons can reference fields for the value to compara agains by using a "field
+        reference". The field reference is an object with a field property, like this:
+      </p>
 
-      <H2>lt</H2>
-      <p>Expression describing a less than</p>
+      <H3>Example of comparing against a scalar value</H3>
+      <pre>{'{ field: \'some.field\', operator: \'gt\', value: 4 }'}</pre>
 
-      <H2>gte</H2>
-      <p>Expression describing a greater than or equal</p>
+      <H3>Example of comparing agains another field</H3>
+      <pre>{`{
+  field: 'some.field',
+  operator: 'gt',
+  value: {
+    field: 'some.other.field'
+  }
+}`}</pre>
 
-      <H2>lte</H2>
-      <p>Expression describing a less than or equal</p>
+      <hr />
 
-      <H2>eq</H2>
-      <p>Expression describing a equal</p>
+      <H2>The expression types</H2>
+      <H3>gt</H3>
+      <p>Expression describing a greater than comparison.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'gt\', value: 3 }'}</pre>
 
-      <H2>between</H2>
-      <p>Expression describing a between two values</p>
+      <H3>lt</H3>
+      <p>Expression describing a less than comparison.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'lt\', value: 3 }'}</pre>
 
-      <H2>neq</H2>
-      <p>Expression describing a not equal</p>
+      <H3>gte</H3>
+      <p>Expression describing a greater than or equal comparison.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'gte\', value: 3 }'}</pre>
 
-      <H2>required</H2>
-      <p>Expression describing a required, meaning that the field exists</p>
+      <H3>lte</H3>
+      <p>Expression describing a less than or equal comparison.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'lte\', value: 3 }'}</pre>
+
+      <H3>eq</H3>
+      <p>Expression describing a equality check.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'eq\', value: \'apekatt\' }'}</pre>
+
+      <H3>neq</H3>
+      <p>Expression describing a not equal comparison.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'eq\', value: true }'}</pre>
+
+      <H3>between</H3>
+      <p>Expression describing a range check, the value being between two values.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'between\', value: [3, 6] }'}</pre>
+
+      <H3>required</H3>
+      <p>Expression describing a required value, meaning that the field exists.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'required\' }'}</pre>
+
+      <H3>not</H3>
+      <p>Expression describing a check for a property that must have a falsy value.</p>
+      <pre>{'{ field: \'some.field\', operartor: \'not\' }'}</pre>
     </div>
   );
 }

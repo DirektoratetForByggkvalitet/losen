@@ -14,22 +14,22 @@ export default function SchemaIntro() {
 
       <H2>Prior art</H2>
       <p>
-        Everything is based on something. When designing the schema and mental concepts around the wizard framework we've
-        had the traditional text-based role playing games in mind in which you have a dialogue tree where the answers you
-        give and choices you make determines how the game progress.
+        Everything is based on something. When designing the schema and mental models upon which the wizard framework is
+        built, we've had the traditional text-based role playing games in mind. More specificly the way you interact with
+        it through anwering questions that determines how the game progress.
       </p>
 
       <H2>The algorithm</H2>
       <p>
         The algorithm is based around the idea that the branches and fields contains rules that dictates whether or not
-        the path is active or not. The rules is built as checks against the data provided by the user, and when a part of
+        the path is active or not. The rules are built as checks against the data provided by the user, and when a part of
         the tree (the wizard) is deemed not active, it's removed and will no longer be visible to the user – unless the
         user input changes in such a way that it should be visible. An example is shown below.
       </p>
       <div>
         <H3>An example schema</H3>
         <p>
-          The schema contains a yes/no question, and a branch with one branch where the children should just show
+          The schema below contains a yes/no question, and a branch with one branch where the children should just show
           if the user said yes to the first question.
         </p>
 
@@ -83,9 +83,9 @@ export default function SchemaIntro() {
       </div>
 
       <p>
-        Given that the user said yes, the property <code>continue</code> is <em>true</em>
-        and the branch test will evaluate to true. The schema will be reduced to the following
-        before it's rendered:
+        Given that the user said yes, the property <code>continue</code> is
+        <em>true</em> and the branch test will evaluate to true. The schema will be reduced
+        to the following before it's rendered:
       </p>
 
       <pre>{`[

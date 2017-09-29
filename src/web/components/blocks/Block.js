@@ -14,6 +14,7 @@ import Select from './select/Select';
 import Text from './Text';
 import Data from './Data';
 import FetchOrg from './FetchOrg';
+import FetchSG from './FetchSG';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -59,6 +60,9 @@ function getBlock(type) {
     case 'FetchOrg':
       return FetchOrg;
 
+    case 'FetchSG':
+      return FetchSG;
+
     default:
       return null;
   }
@@ -73,7 +77,9 @@ export function PureBlock(props) {
         <H3>{props.heading}</H3>
         <Html text={props.text} />
 
-        {props.children.map(block => <ConnectedBlock grouped key={block.property} {...block} />)}
+        {props.children.map(block => (
+          <ConnectedBlock grouped key={block.property} {...block} />
+        ))}
       </StyledBlock>
     );
   }
@@ -82,12 +88,21 @@ export function PureBlock(props) {
     return <Missing type={props.type} />;
   }
 
-  if (props.type === 'Image' || props.type === 'Text' || props.type === 'Data') {
+  if (
+    props.type === 'Image' ||
+    props.type === 'Text' ||
+    props.type === 'Data' ||
+    props.type === 'FetchSG'
+  ) {
     return <SpecificBlock grouped={props.grouped} {...props} />;
   }
 
   return (
-    <StyledBlock id={props.property} grouped={props.grouped} disabled={props.disabled}>
+    <StyledBlock
+      id={props.property}
+      grouped={props.grouped}
+      disabled={props.disabled}
+    >
       <div>
         <H3>{props.heading}</H3>
         <Html text={props.text} />
@@ -98,7 +113,9 @@ export function PureBlock(props) {
             validation:
               props.currentValue && props.validator
                 ? {
-                  error: !new RegExp(props.validator.pattern).test(props.currentValue),
+                  error: !new RegExp(props.validator.pattern).test(
+                    props.currentValue,
+                  ),
                   message: props.validator.error,
                 }
                 : {},
@@ -137,7 +154,7 @@ PureBlock.propTypes = {
   image: PropTypes.object,
   grouped: PropTypes.bool,
   disabled: PropTypes.bool,
-  errors: PropTypes.arrayOf(PropTypes.object),
+  errors: PropTypes.arrayOf(PropTypes.any),
   errorDescription: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.object),
   currentValue: PropTypes.any,

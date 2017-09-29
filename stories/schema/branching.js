@@ -15,17 +15,17 @@ export default function SchemaBranching() {
 
       <H2>Key concepts</H2>
       <ul>
-        <li>The tests decide which branch will be chosen</li>
+        <li>The tests decide which branch will be shown</li>
+        <li>The first branch test that returns a truthy value will be used</li>
         <li>One or no branches will be selected</li>
-        <li>The first branch test that returns a truthy value will be chosen</li>
       </ul>
 
       <H2>Branching anatomy</H2>
       <p>
         A <em>Branch</em> node is not represented in the user interface, and the user will
-        never have to deal with the branching it self. It's an implementation detail in the
+        never have to deal with the branching itself. It's an implementation detail in the
         algorithm. As a consequence of this, the branch has no text, heading or any other
-        properties than the <code>branches</code>. It looks like this:
+        properties than <code>branches</code>. It looks like this:
       </p>
 
       <pre>{`{
@@ -44,7 +44,7 @@ export default function SchemaBranching() {
       ]
     }
   ]
-}`}</pre>.
+}`}</pre>
 
       <H2>The test</H2>
       <p>

@@ -9,26 +9,19 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint . --cache --cache-location=.cache/eslint --ext .jsx,.js --ignore-path .gitignore",
+    "lint": "eslint . --cache --cache-location=.cache/eslint --ext .jsx,.js",
     "build": "NODE_ENV=production webpack -p",
     "dev": "webpack --watch",
     "start": "npm run dev",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -s ./public -p 6006",
+    "build-storybook": "build-storybook -s ./public"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
   },
-  "keywords": [
-    "wizard",
-    "framework",
-    "react",
-    "dibk"
-  ],
+  "keywords": ["wizard", "framework", "react", "dibk"],
   "author": "Netlife Research",
   "private": true,
   "license": "MIT",
@@ -44,6 +37,7 @@
     "lodash.merge": "^4.6.0",
     "lodash.set": "^4.3.2",
     "lodash.setwith": "^4.3.2",
+    "lodash.template": "^4.4.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-autobind": "^1.0.6",
@@ -90,7 +84,8 @@
       "react/jsx-filename-extension": 0,
       "react/no-children-prop": 0,
       "jsx-a11y/accessible-emoji": 0,
-      "react/no-unescaped-entities": 0
+      "react/no-unescaped-entities": 0,
+      "no-template-curly-in-string": 0
     },
     "env": {
       "jest": true,

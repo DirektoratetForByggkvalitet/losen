@@ -1,11 +1,10 @@
 import { existsSync } from 'fs';
 
 import program from 'commander';
-import { version } from '../../package.json';
 import validateSchema from '../shared/utils/validator';
 
 program
-  .version(version)
+  .version('1.0.0')
   .description('Wizard schema validator')
   .parse(process.argv);
 

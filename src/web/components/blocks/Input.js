@@ -28,8 +28,8 @@ export default class Input extends Component {
     property: PropTypes.string.isRequired,
     currentValue: PropTypes.any,
     validation: PropTypes.shape({
-      error: PropTypes.bool.isRequired,
-      message: PropTypes.string.isRequired,
+      error: PropTypes.bool,
+      message: PropTypes.string,
     }),
     disabled: PropTypes.bool,
     update: PropTypes.func,
