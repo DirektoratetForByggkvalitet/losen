@@ -8,7 +8,7 @@ export const P = injectStyles(styled.p`
   max-width: 600px;
 `);
 
-export const Lead = injectStyles(styled.p`
+export const Lead = injectStyles(styled.div`
   font-family: ${({ styles }) => styles.font.secondary};
   font-weight: 300;
   font-size: 20px;
