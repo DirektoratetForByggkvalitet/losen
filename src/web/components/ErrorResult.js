@@ -7,8 +7,9 @@ import { MainButton as Button } from '../primitives/Button';
 import Main from '../primitives/grid/Main';
 import { SpecificBlock } from '../primitives/Block';
 import Summary from './Summary';
+import Block from './blocks/Block';
 
-export default function ErrorResult({ errorPages, schema, setPage }) {
+export default function ErrorResult({ errorPages, schema, setPage, children }) {
   return (
     <Main>
       <H2>
@@ -39,6 +40,8 @@ export default function ErrorResult({ errorPages, schema, setPage }) {
           <Button>Send</Button>
         </div>
       </SpecificBlock>
+
+      {children.map(block => <Block key={block.property} {...block} />)}
     </Main>
   );
 }
@@ -49,6 +52,7 @@ ErrorResult.defaultProps = {
 };
 
 ErrorResult.propTypes = {
+  children: PropTypes.array,
   errorPages: PropTypes.array.isRequired,
   setPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
