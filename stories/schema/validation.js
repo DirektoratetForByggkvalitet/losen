@@ -15,16 +15,24 @@ export default function SchemaValidation() {
         the example. Perform <code>npm run validate</code> to check the schema.
       </p>
 
-      <H2>Validator CLI [WIP]</H2>
+      <H2>Validator CLI</H2>
       <p>
         In order to use the validator directly, call the bin file installed in
         <code>node_modules/.bin</code> in your project like this when standing in the project root:
       </p>
 
       <pre>{`$ ./node_modules/.bin/dibk-wizard-framework validate ./path/to/schema.js
-Schema is valid 🌈
+🌈  The schema is ok
 `}
       </pre>
+
+      or in case something is wrong with your schema, it'll look more like this 👇
+
+      <pre>{`./node_modules/.bin/dibk-wizard-framework validate ./src/api/cat.json
+🚒  There seems to be something wrong with your schema 👇
+
+schema.3.children.0:
+Group is missing the text property`}</pre>
     </div>
   );
 }
