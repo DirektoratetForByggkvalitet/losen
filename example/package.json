@@ -21,7 +21,7 @@
     "lint:js": "eslint . --ext .jsx,.js --ignore-pattern build",
     "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy",
-    "validate": "dibk-wizard-framework validate src/api/cat.js"
+    "validate": "dibk-wizard-framework validate src/api/cat.json"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

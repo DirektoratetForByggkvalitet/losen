@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import { Wizard, StyleProvider } from 'dibk-wizard-framework';
 import store from './store';
-import cat from './api/cat';
+import cat from './api/cat.json';
 import Intro from './pages/Intro';
 
 import dataExport from './exports/data-export';
