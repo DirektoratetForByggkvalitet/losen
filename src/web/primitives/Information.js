@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Information = injectStyles(styled.p`
+const Information = injectStyles(styled.div`
   svg {
     width: 1.2em;
     height: 1.2em;
@@ -10,7 +10,7 @@ const Information = injectStyles(styled.p`
     vertical-align: middle;
     color: black;
   }
-  p {
+  div {
     display: inline;
   }
 `);
