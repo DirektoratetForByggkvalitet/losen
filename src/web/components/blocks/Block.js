@@ -77,7 +77,9 @@ export function PureBlock(props) {
         <H3>{props.heading}</H3>
         <Html text={props.text} />
 
-        {props.children.map(block => <ConnectedBlock grouped key={block.property} {...block} />)}
+        {props.children.map(block => (
+          <ConnectedBlock grouped key={block.property} {...block} />
+        ))}
       </StyledBlock>
     );
   }
@@ -96,7 +98,11 @@ export function PureBlock(props) {
   }
 
   return (
-    <StyledBlock id={props.property} grouped={props.grouped} disabled={props.disabled}>
+    <StyledBlock
+      id={props.property}
+      grouped={props.grouped}
+      disabled={props.disabled}
+    >
       <div>
         <H3>{props.heading}</H3>
         <Html text={props.text} />
@@ -107,7 +113,9 @@ export function PureBlock(props) {
             validation:
               props.currentValue && props.validator
                 ? {
-                  error: !new RegExp(props.validator.pattern).test(props.currentValue),
+                  error: !new RegExp(props.validator.pattern).test(
+                    props.currentValue,
+                  ),
                   message: props.validator.error,
                 }
                 : {},
@@ -146,7 +154,7 @@ PureBlock.propTypes = {
   image: PropTypes.object,
   grouped: PropTypes.bool,
   disabled: PropTypes.bool,
-  errors: PropTypes.arrayOf(PropTypes.object),
+  errors: PropTypes.arrayOf(PropTypes.any),
   errorDescription: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.object),
   currentValue: PropTypes.any,
