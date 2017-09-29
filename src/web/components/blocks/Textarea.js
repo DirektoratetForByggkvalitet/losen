@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Html from '../helper/Html';
+import SummaryDetails from './SummaryDetails';
 import { Textarea as StyledTextarea } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
@@ -12,6 +13,8 @@ export default class Textarea extends Component {
     setData: () => {},
     currentValue: '',
     information: '',
+    details: '',
+    summary: '',
   };
 
   static propTypes = {
@@ -20,6 +23,8 @@ export default class Textarea extends Component {
     placeholder: PropTypes.string,
     currentValue: PropTypes.string,
     information: PropTypes.string,
+    details: PropTypes.string,
+    summary: PropTypes.string,
   };
 
   handleChange = (e) => {
@@ -30,7 +35,13 @@ export default class Textarea extends Component {
   };
 
   render() {
-    const { placeholder, currentValue, information } = this.props;
+    const {
+      placeholder,
+      currentValue,
+      information,
+      summary,
+      details,
+    } = this.props;
 
     return (
       <div>
@@ -45,6 +56,7 @@ export default class Textarea extends Component {
             <Html text={information} />
           </Information>
         )}
+        {summary && <SummaryDetails summary={summary} details={details} />}
       </div>
     );
   }
