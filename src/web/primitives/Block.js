@@ -13,6 +13,7 @@ export const SpecificBlock = injectStyles(styled.div`
   box-shadow: ${props => props.grouped ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.21)'};
   p {
     margin-top: 0;
+    font-weight: 300;
   }
   ${props =>
     props.grouped

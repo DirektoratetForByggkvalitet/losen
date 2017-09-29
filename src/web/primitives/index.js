@@ -1,7 +1,7 @@
 export AsideButton from './AsideButton';
 export AsideItem from './AsideItem';
 export Block from './Block';
-export Button from './Button';
+export * as Button from './Button';
 export Errors from './Errors';
 export Figure from './Figure';
 export * as Grid from './grid';

@@ -16,7 +16,7 @@ export default function ApprovalAreas({ areas }) {
       </thead>
       <tbody>
         {areas.map(area => (
-          <tr>
+          <tr key={area.function}>
             <td>{area.function}</td>
             <td>{area.subject_area}</td>
             <td>{area.grade}</td>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Block from './blocks/Block';
 import Navigation from './Navigation';
+import Html from './helper/Html';
 import { H2 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
@@ -17,7 +18,13 @@ export default function Page({
   lead,
 }) {
   let navigation = (
-    <Navigation page={pageid} hasPrevious previousPage={previousPage} hasNext nextPage={nextPage} />
+    <Navigation
+      page={pageid}
+      hasPrevious
+      previousPage={previousPage}
+      hasNext
+      nextPage={nextPage}
+    />
   );
   if (firstPage) {
     navigation = <Navigation page={pageid} hasNext nextPage={nextPage} />;
@@ -25,7 +32,9 @@ export default function Page({
   return (
     <Main>
       <H2>{title}</H2>
-      <Lead>{lead}</Lead>
+      <Lead>
+        <Html text={lead} />
+      </Lead>
       {children.map(block => <Block key={block.property} {...block} />)}
       {navigation}
     </Main>
