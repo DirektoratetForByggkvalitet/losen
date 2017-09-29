@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { H3 } from '../../primitives/Heading';
+import { SmallButton as Button } from '../../primitives/Button';
 import { PageSummary as StyledPageSummary } from '../../primitives/Summary';
 
 import NodeSummary from './Node';
@@ -9,7 +10,7 @@ export default function PageSummary({ goToPage, error, title, children }) {
   return (
     <StyledPageSummary error={error}>
       <H3 small>{title}</H3>
-      <button onClick={goToPage}>Endre</button>
+      <Button onClick={goToPage}>Endre</Button>
       {children.map(node => <NodeSummary {...node} />)}
     </StyledPageSummary>
   );

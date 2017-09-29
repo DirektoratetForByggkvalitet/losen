@@ -2,7 +2,47 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Button = injectStyles(styled.button`
+export const MainButton = injectStyles(styled.button`
+  font-family: ${({ styles }) => styles.font.secondary};
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: white;
+  background: ${({ styles }) => styles.color.light};
+  min-width: 30%;
+  padding: 12px 18px 13px;
+  cursor: pointer;
+  user-select: none;
+  border: 0 none;
+  border-radius: 0;
+  appearance: none;
+  margin-bottom: 10px;
+  position: relative;
+  transition: background 0.1s ease-in-out;
+  @media screen and (max-width: 900px) {
+    min-width: 48%;
+  }
+`);
+
+export const SmallButton = injectStyles(styled.button`
+  font-family: ${({ styles }) => styles.font.primary};
+  font-size: 1em;
+  color: white;
+  background: ${({ styles }) => styles.color.light};
+  padding: 6px 16px 7px;
+  cursor: pointer;
+  user-select: none;
+  border: 0 none;
+  border-radius: 0;
+  appearance: none;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  position: relative;
+  transition: background 0.1s ease-in-out;
+`);
+
+export const NavButton = injectStyles(styled.button`
   font-family: ${({ styles }) => styles.font.secondary};
   font-weight: 300;
   text-transform: uppercase;
@@ -77,5 +117,3 @@ const Button = injectStyles(styled.button`
     }
   }
 `);
-
-export default Button;
