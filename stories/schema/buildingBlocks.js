@@ -48,7 +48,7 @@ export default function SchemaBuildingBlocks() {
       <H3>Properties</H3>
       <ul>
         <li><code>title</code>: The title of the page. <strong>Required</strong></li>
-        <li><code>lead</code>: A subtitle or lead text for the page. <strong>Required</strong></li>
+        <li><code>lead</code>: A subtitle or lead text for the page.</li>
         <li><code>exporter</code>: Which exporter to use. Refers to the exports object prop passed to the Wizard component.</li>
         <li>
           <code>children</code>: An array of nodes to show for this result page. The nodes can be of any type except
@@ -82,7 +82,6 @@ export default function SchemaBuildingBlocks() {
         <li><code>property</code>: The path to where the value for this node is stored in the data object. <strong>Required</strong></li>
         <li><code>heading</code>: The label for this input field. <strong>Required</strong></li>
         <li>
-          <li><code>property</code>: The path to where the value for this node is stored in the data object. <strong>Required</strong></li>
           <code>test</code>: A logical test that must evaluate to a true in order for the field to be available. If the test
           evaluates to a falsy value, the field will still show, but it will be disabled and a message will explain what prerequisites
           has not been met.
@@ -95,7 +94,8 @@ export default function SchemaBuildingBlocks() {
       <H4>Properties</H4>
       <ul>
 
-        <li><code>text</code>: Additional description that follows the heading for the answer.</li>
+        <li><code>text</code>: Additional description that follows the heading for the answer. <strong>Required</strong></li>
+        <li><code>value</code>: Option value. What is set in the data object, not visible to the user. <strong>Required</strong></li>
         <li>
           <code>image</code>: Image to show with description. If a values is passed, the following structure is expected:
           <pre>{`{
@@ -103,7 +103,6 @@ export default function SchemaBuildingBlocks() {
   alt: 'alternative text'
 }`}</pre>
         </li>
-        <li><code>value</code>: Option value. What is set in the data object, not visible to the user. <strong>Required</strong></li>
       </ul>
 
       <H3>Checkbox</H3>
@@ -112,7 +111,7 @@ export default function SchemaBuildingBlocks() {
       <H4>Properties</H4>
       <ul>
         <li><code>text</code>: The text to follow the heading for this input field.</li>
-        <li><code>suggestedAnswer</code>: An array of <em>Answer</em> nodes. Options that the user can select.</li>
+        <li><code>suggestedAnswer</code>: An array of <em>Answer</em> nodes. Options that the user can select. <strong>Required</strong></li>
       </ul>
 
       <H3>Radio</H3>

@@ -11893,15 +11893,15 @@ exports.validateExpression = validateExpression;
  */
 function validateSimpleExpression(expression) {
   if (expression.type) {
-    throw new Error('Expected simple expression. Got ' + expression.type + ' expression: ' + expression);
+    throw new Error('Expected simple expression. Got ' + expression.type + ' expression: ' + JSON.stringify(expression));
   }
 
   if (!expression.operator) {
-    throw new Error('Expression has no operator property: ' + expression);
+    throw new Error('Expression has no operator property: ' + JSON.stringify(expression));
   }
 
   if (!expression.field) {
-    throw new Error('Expression is missing field property: ' + expression);
+    throw new Error('Expression is missing field property: ' + JSON.stringify(expression));
   }
 
   switch (expression.operator) {
@@ -11912,7 +11912,7 @@ function validateSimpleExpression(expression) {
     case 'eq':
     case 'neq':
       if (!expression.value) {
-        throw new Error('Operator ' + expression.operator + ' expects a value property: ' + expression);
+        throw new Error('Operator ' + expression.operator + ' expects a value property: ' + JSON.stringify(expression));
       }
 
       if (_typeof(expression.value) === 'object' && !expression.value.field) {
@@ -11924,20 +11924,20 @@ function validateSimpleExpression(expression) {
     // Validate range expression
     case 'between':
       if (!expression.value) {
-        throw new Error('Expression with operator ' + expression.operator + ' must have a value property: ' + expression);
+        throw new Error('Expression with operator ' + expression.operator + ' must have a value property: ' + JSON.stringify(expression));
       }
 
       if (!Array.isArray(expression.value)) {
-        throw new Error('Expression with operator ' + expression.operator + ' must have an array as the value property: ' + expression);
+        throw new Error('Expression with operator ' + expression.operator + ' must have an array as the value property: ' + JSON.stringify(expression));
       }
 
       if (expression.value.length !== 2) {
-        throw new Error('Expression with operator ' + expression.operator + ' expects an array containing two values. Got ' + expression.value.length + ': ' + expression);
+        throw new Error('Expression with operator ' + expression.operator + ' expects an array containing two values. Got ' + expression.value.length + ': ' + JSON.stringify(expression));
       }
 
       expression.value.forEach(function (number) {
         if (isNaN(parseFloat(number))) {
-          throw new Error('Expression with operator ' + expression.operator + ' expected a range of two numbers. ' + number + ' is not a valid number: ' + expression);
+          throw new Error('Expression with operator ' + expression.operator + ' expected a range of two numbers. ' + number + ' is not a valid number: ' + JSON.stringify(expression));
         }
       });
 
@@ -11948,7 +11948,7 @@ function validateSimpleExpression(expression) {
       return true;
 
     default:
-      throw new Error('Unknown operator ' + expression.operator + ': ' + expression);
+      throw new Error('Unknown operator ' + expression.operator + ': ' + JSON.stringify(expression));
   }
 
   return true;

@@ -1,6 +1,6 @@
 /* eslint no-use-before-define: 0 */
 
-import parseExpression from './dsl';
+import parseExpression from '../../shared/utils/dsl';
 import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
 

@@ -1,5 +1,6 @@
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 
+import chalk from 'chalk';
 import program from 'commander';
 import validateSchema from '../shared/utils/validator';
 
@@ -15,8 +16,26 @@ if (!existsSync(schema)) {
   process.exit(1);
 }
 
-if (validateSchema(schema)) {
-  console.log('🌈');
+let schemaDefinition;
+
+try {
+  schemaDefinition = JSON.parse(
+    readFileSync(schema, { encoding: 'UTF-8' }),
+  );
+} catch (e) {
+  console.log('Unable to parse the schema file. Make sure its valid JSON');
+  process.exit(1);
+}
+
+const errors = validateSchema(schemaDefinition);
+
+if (!errors.length) {
+  console.log('🌈  The schema is ok');
 } else {
-  console.log('⛈');
+  console.log('🚒  There seems to be something wrong with your schema 👇\n');
+  errors.forEach(({ path = [], error }) => {
+    console.log(chalk`{red.bold ${path.join('.')}}:
+${error}
+`);
+  });
 }
