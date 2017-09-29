@@ -9,7 +9,6 @@ import { Lead } from '../primitives/Paragraphs';
 import { SpecificBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Block from './blocks/Block';
-import Navigation from './Navigation';
 import ErrorResult from './ErrorResult';
 import Summary from './Summary';
 import ExportData from './ExportData';
@@ -45,16 +44,15 @@ function Result({
       <Lead>{lead}</Lead>
 
       <SpecificBlock>
-
-        {summary ? <Summary errorPages={errorPages} setPage={setPage} pages={schema} /> : null}
+        {summary ? (
+          <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
+        ) : null}
 
         {children.map(block => <Block key={block.property} {...block} />)}
 
-        {exporter && exports[exporter] && <ExportData exporter={exports[exporter]} />}
-
+        {exporter &&
+          exports[exporter] && <ExportData exporter={exports[exporter]} />}
       </SpecificBlock>
-
-      <Navigation page={pageid} hasPrevious previousPage={previousPage} />
     </Main>
   );
 }
