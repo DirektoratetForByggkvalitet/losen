@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
 import { H4 } from '../../../primitives/Heading';
+import { P } from '../../../primitives/Paragraphs';
 
 const CheckboxInput = ({ id, name, checked, text, onChange, heading, image, disabled }) => (
   <div>
@@ -11,8 +12,12 @@ const CheckboxInput = ({ id, name, checked, text, onChange, heading, image, disa
 
     <Label htmlFor={id}>
       <div>
-        {heading ? <H4>{heading}</H4> : null}
-        {text}
+        {heading
+          ? <H4>
+            {heading}
+          </H4>
+          : null}
+        <P>{text}</P>
       </div>
       {image ? <img src={image.url} alt={image.alt} /> : null}
     </Label>

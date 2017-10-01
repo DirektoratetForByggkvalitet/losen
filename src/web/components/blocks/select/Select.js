@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SelectOption from './SelectOption';
 
+import { Select as StyledSelect } from '../../../primitives/Input';
+
 const NULL_VALUE = '({[NULL]})';
 
 export default class Select extends Component {
@@ -31,13 +33,13 @@ export default class Select extends Component {
     const { currentValue, suggestedAnswer, defaultOption } = this.props;
     const text = defaultOption || 'Velg fra listen';
     return (
-      <select value={currentValue} onChange={this.handleChange}>
+      <StyledSelect value={currentValue} onChange={this.handleChange}>
         <SelectOption text={text} value={NULL_VALUE} />
 
         {suggestedAnswer.map(option => (
           <SelectOption {...option} key={option.value} />
         ))}
-      </select>
+      </StyledSelect>
     );
   }
 }

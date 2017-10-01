@@ -6,7 +6,7 @@ import { getNodeValue } from '../../utils/selectors';
 import DefaultValueSummary from './value';
 import FetchOrg from './value/FetchOrg';
 
-import { H4 } from '../../primitives/Heading';
+import { H5 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 
@@ -40,7 +40,7 @@ function NodeSummary({
 
   return (
     <StyledNodeSummary>
-      <H4>{heading}</H4>
+      <H5>{heading}</H5>
       <ValueSummary value={value} />
       {errors.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}
     </StyledNodeSummary>

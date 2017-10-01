@@ -20,6 +20,9 @@ export const MainButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
+  &:hover {
+    background: ${({ styles }) => styles.color.dark};
+  }
   @media screen and (max-width: 900px) {
     min-width: 48%;
   }
@@ -27,7 +30,7 @@ export const MainButton = injectStyles(styled.button`
 
 export const SmallButton = injectStyles(styled.button`
   font-family: ${({ styles }) => styles.font.primary};
-  font-size: 1em;
+  font-size: 16px;
   color: white;
   background: ${({ styles }) => styles.color.light};
   padding: 6px 16px 7px;
@@ -40,6 +43,9 @@ export const SmallButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
+  &:hover {
+    background: ${({ styles }) => styles.color.dark};
+  }
 `);
 
 export const NavButton = injectStyles(styled.button`

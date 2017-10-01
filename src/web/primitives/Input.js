@@ -34,9 +34,11 @@ export const Checkbox = injectStyles(styled.input`
     div {
       margin-right: 30px;
     }
-
     img {
       max-width: 200px;
+    }
+    p {
+      margin-bottom: 0;
     }
   }
 
@@ -159,6 +161,16 @@ export const Radio = injectStyles(styled.input.attrs({
       }
     }
   }
+  @media screen and (max-width: 900px) {
+    + label {
+      flex-wrap: wrap;
+      img {
+        width: 100%;
+        margin-top: 1em;
+        display: block;
+      }
+    }
+  }
 `);
 
 export const NumberInput = injectStyles(styled.input`
@@ -196,4 +208,12 @@ export const Textarea = injectStyles(styled.textarea`
     font-color: inherit;
     opacity: 0.6;
   }
+`);
+
+export const Select = injectStyles(styled.select`
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.5em;
+  width: 100px;
+  border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);

@@ -2,21 +2,38 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-export const PageSummary = injectStyles(styled.div` 
-  border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
-  padding: 20px 24px 20px;
+export const PageSummary = injectStyles(styled.div`
+  padding: 0 0 20px;
   margin-bottom: 20px;
-  background: rgba(137, 174, 196, 0.15);
-  &:nth-child(even) {
-    background: rgba(0, 117, 127, 0.06);
+  background: white;
+  line-height: 2;
+  h4 {
+    padding: 0.2em 0;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    margin: 0 0 0 auto;
+  }
+  > div {
+    padding: 0 0 20px;
+    line-height: 1.4;
   }
   ${props =>
     props.error
       ? `
-      border-left: 10px solid ${props.styles.color.red};
-      padding-left: 2em;
+      h4 {
+        color: ${props.styles.color.red};
+        border-bottom: 1px solid ${props.styles.color.red};
+      }
+      button {
+        background: ${props.styles.color.red};
+      }
     ` : `
-      border: none;
+      h4 {
+        border-bottom: 1px solid ${props.styles.color.warmgray3};
+      }
     `}
 `);
 

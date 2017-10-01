@@ -10,7 +10,7 @@ const Information = injectStyles(styled.div`
     vertical-align: middle;
     color: black;
   }
-  div {
+  div, p {
     display: inline;
   }
 `);
