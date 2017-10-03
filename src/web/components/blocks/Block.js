@@ -134,7 +134,7 @@ export function PureBlock(props) {
 }
 
 PureBlock.defaultProps = {
-  heading: 'No heading',
+  heading: '',
   text: '',
   image: {},
   errors: [],

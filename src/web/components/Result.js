@@ -36,6 +36,7 @@ function Result({
         page={pageid}
         previousPage={previousPage}
         errorPages={errorPages}
+        children={children}
       />
     );
   }

@@ -7,8 +7,9 @@ import { MainButton as Button } from '../primitives/Button';
 import Main from '../primitives/grid/Main';
 import { SpecificBlock } from '../primitives/Block';
 import Summary from './Summary';
+import Block from './blocks/Block';
 
-export default function ErrorResult({ errorPages, schema, setPage }) {
+export default function ErrorResult({ errorPages, schema, setPage, children }) {
   return (
     <Main>
       <H2>
@@ -20,6 +21,8 @@ export default function ErrorResult({ errorPages, schema, setPage }) {
 
       <SpecificBlock>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
+        {children.map(block => <Block key={block.property} {...block} />)}
+
         <div style={{ background: '#f0f2cb', marginBottom: '20px', padding: '20px', fontStyle: 'italic' }}>
           <Input type="checkbox" placeholder="E-post" />
           Ansvarlig kontrollerende erklærer uavhengighet, jf. SAK10 § 14-1, og vil redegjøre for endringer som kan påvirke uavhengigheten jf. SAK10 §12-5
@@ -50,6 +53,7 @@ ErrorResult.defaultProps = {
 };
 
 ErrorResult.propTypes = {
+  children: PropTypes.array,
   errorPages: PropTypes.array.isRequired,
   setPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
