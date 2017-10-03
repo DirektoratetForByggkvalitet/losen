@@ -8,7 +8,7 @@ const Information = injectStyles(styled.div`
     height: 1.2em;
     display: inline-block;
     vertical-align: middle;
-    color: black;
+    margin-right: 0.25em;
   }
   div, p {
     display: inline;

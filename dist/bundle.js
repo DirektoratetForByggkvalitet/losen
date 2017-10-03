@@ -103,7 +103,7 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports = __webpack_require__(59)();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 2 */
@@ -164,7 +164,7 @@ exports.H5 = exports.H4 = exports.H3 = exports.H2 = exports.H1 = undefined;
 
 var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: ', ';\n  font-weight: ', ';\n'], ['\n  font-family: ', ';\n  font-size: ', ';\n  font-weight: ', ';\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: ', ';\n  margin: 0 0 10px;\n'], ['\n  font-family: ', ';\n  font-size: ', ';\n  margin: 0 0 10px;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: ', ';\n  font-weight: 300;\n  margin: 0 0 6px;\n'], ['\n  font-family: ', ';\n  font-size: ', ';\n  font-weight: 300;\n  margin: 0 0 6px;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: ', ';\n  margin: 0 0 6px;\n'], ['\n  font-family: ', ';\n  font-size: ', ';\n  margin: 0 0 6px;\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: 1em;\n  margin: 0;\n'], ['\n  font-family: ', ';\n  font-size: 1em;\n  margin: 0;\n']);
 
 var _styledComponents = __webpack_require__(2);
@@ -216,6 +216,138 @@ var H5 = exports.H5 = (0, _injectStyles2.default)(_styledComponents2.default.h5(
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Select = exports.Textarea = exports.TextInput = exports.NumberInput = exports.Radio = exports.Checkbox = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    background: white;\n    box-shadow: 0 0 1px ', ';\n    padding: 10px;\n    border-radius: 5px;\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: inline-block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    + label {\n      &:hover {\n        box-shadow: 0 0 6px ', ';\n      }\n      &:hover::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n'], ['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    background: white;\n    box-shadow: 0 0 1px ', ';\n    padding: 10px;\n    border-radius: 5px;\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: inline-block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    + label {\n      &:hover {\n        box-shadow: 0 0 6px ', ';\n      }\n      &:hover::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    box-sizing: border-box;\n    background: white;\n    padding: 10px;\n    border-radius: 5px;\n    box-shadow: 0 0 1px ', ';\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border-radius: 50%;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n  @media screen and (max-width: 900px) {\n    + label {\n      flex-wrap: wrap;\n      img {\n        width: 100%;\n        margin-top: 1em;\n        display: block;\n      }\n    }\n  }\n'], ['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    box-sizing: border-box;\n    background: white;\n    padding: 10px;\n    border-radius: 5px;\n    box-shadow: 0 0 1px ', ';\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border-radius: 50%;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n  @media screen and (max-width: 900px) {\n    + label {\n      flex-wrap: wrap;\n      img {\n        width: 100%;\n        margin-top: 1em;\n        display: block;\n      }\n    }\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 30%;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 30%;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 40%;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 40%;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100%;\n  min-height: 6em;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100%;\n  min-height: 6em;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 30%;\n  border: 1px solid ', ';\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 30%;\n  border: 1px solid ', ';\n']);
+
+var _styledComponents = __webpack_require__(2);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _injectStyles = __webpack_require__(3);
+
+var _injectStyles2 = _interopRequireDefault(_injectStyles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Checkbox = exports.Checkbox = (0, _injectStyles2.default)(_styledComponents2.default.input(_templateObject, function (_ref) {
+  var styles = _ref.styles;
+  return styles.color.dark;
+}, function (_ref2) {
+  var styles = _ref2.styles;
+  return styles.color.darkgray;
+}, function (_ref3) {
+  var styles = _ref3.styles;
+  return styles.color.dark;
+}, function (_ref4) {
+  var styles = _ref4.styles;
+  return styles.color.dark;
+}, function (_ref5) {
+  var styles = _ref5.styles;
+  return styles.color.dark;
+}, function (_ref6) {
+  var styles = _ref6.styles;
+  return styles.color.dark;
+}, function (_ref7) {
+  var styles = _ref7.styles;
+  return styles.color.light;
+}, function (_ref8) {
+  var styles = _ref8.styles;
+  return styles.color.dark;
+}, function (_ref9) {
+  var styles = _ref9.styles;
+  return styles.color.dark;
+}, function (_ref10) {
+  var styles = _ref10.styles;
+  return styles.color.dark;
+}, function (_ref11) {
+  var styles = _ref11.styles;
+  return styles.color.dark;
+}, function (_ref12) {
+  var styles = _ref12.styles;
+  return styles.color.dark;
+}, function (_ref13) {
+  var styles = _ref13.styles;
+  return styles.color.dark;
+}));
+
+var Radio = exports.Radio = (0, _injectStyles2.default)(_styledComponents2.default.input.attrs({
+  type: 'radio'
+})(_templateObject2, function (_ref14) {
+  var styles = _ref14.styles;
+  return styles.color.dark;
+}, function (_ref15) {
+  var styles = _ref15.styles;
+  return styles.color.darkgray;
+}, function (_ref16) {
+  var styles = _ref16.styles;
+  return styles.color.dark;
+}, function (_ref17) {
+  var styles = _ref17.styles;
+  return styles.color.dark;
+}, function (_ref18) {
+  var styles = _ref18.styles;
+  return styles.color.light;
+}, function (_ref19) {
+  var styles = _ref19.styles;
+  return styles.color.dark;
+}, function (_ref20) {
+  var styles = _ref20.styles;
+  return styles.color.dark;
+}, function (_ref21) {
+  var styles = _ref21.styles;
+  return styles.color.dark;
+}, function (_ref22) {
+  var styles = _ref22.styles;
+  return styles.color.dark;
+}, function (_ref23) {
+  var styles = _ref23.styles;
+  return styles.color.dark;
+}, function (_ref24) {
+  var styles = _ref24.styles;
+  return styles.color.dark;
+}));
+
+var NumberInput = exports.NumberInput = (0, _injectStyles2.default)(_styledComponents2.default.input(_templateObject3, function (_ref25) {
+  var styles = _ref25.styles;
+  return styles.color.darkgray;
+}));
+
+var TextInput = exports.TextInput = (0, _injectStyles2.default)(_styledComponents2.default.input(_templateObject4, function (_ref26) {
+  var styles = _ref26.styles,
+      _ref26$validation = _ref26.validation;
+  _ref26$validation = _ref26$validation === undefined ? {} : _ref26$validation;
+  var error = _ref26$validation.error;
+  return error ? styles.color.red : styles.color.darkgray;
+}));
+
+var Textarea = exports.Textarea = (0, _injectStyles2.default)(_styledComponents2.default.textarea(_templateObject5, function (_ref27) {
+  var styles = _ref27.styles;
+  return styles.color.darkgray;
+}));
+
+var Select = exports.Select = (0, _injectStyles2.default)(_styledComponents2.default.select(_templateObject6, function (_ref28) {
+  var styles = _ref28.styles;
+  return styles.color.darkgray;
+}));
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports) {
 
 var g;
@@ -242,7 +374,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -432,142 +564,10 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Select = exports.Textarea = exports.TextInput = exports.NumberInput = exports.Radio = exports.Checkbox = undefined;
-
-var _templateObject = _taggedTemplateLiteral(['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    background: white;\n    box-shadow: 0 0 1px ', ';\n    padding: 10px;\n    border-radius: 5px;\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: inline-block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    + label {\n      &:hover {\n        box-shadow: 0 0 6px ', ';\n      }\n      &:hover::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n'], ['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    background: white;\n    box-shadow: 0 0 1px ', ';\n    padding: 10px;\n    border-radius: 5px;\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: inline-block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    + label {\n      &:hover {\n        box-shadow: 0 0 6px ', ';\n      }\n      &:hover::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    box-sizing: border-box;\n    background: white;\n    padding: 10px;\n    border-radius: 5px;\n    box-shadow: 0 0 1px ', ';\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border-radius: 50%;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n  @media screen and (max-width: 900px) {\n    + label {\n      flex-wrap: wrap;\n      img {\n        width: 100%;\n        margin-top: 1em;\n        display: block;\n      }\n    }\n  }\n'], ['\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n\n  + label {\n    display: flex;\n    align-items: flex-start;\n    cursor: pointer;\n    box-sizing: border-box;\n    background: white;\n    padding: 10px;\n    border-radius: 5px;\n    box-shadow: 0 0 1px ', ';\n    transition: all 0.1s ease-in-out;\n\n    &:before {\n      content: \' \';\n      display: block;\n      vertical-align: middle;\n      min-width: 0.6em;\n      width: 0.6em;\n      height: 0.6em;\n      background: white;\n      margin-right: 1em;\n      border-radius: 50%;\n      border: 0.3em solid white;\n      box-shadow: 0 0 0 1px ', ';\n      transition: all 0.1s ease-in-out;\n    }\n\n    div {\n      margin-right: 30px;\n    }\n    img {\n      max-width: 200px;\n    }\n    p {\n      margin-bottom: 0;\n    }\n  }\n\n  :disabled + label {\n    opacity: 0.4;\n  }\n\n  :not(:disabled) {\n    &:focus + label,\n    + label:hover {\n      box-shadow: 0 0 6px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked + label:before {\n      background: ', ';\n    }\n    &:checked + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 4px 0 ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n    &:checked:focus + label {\n      box-shadow:\n        0 0 0 1px ', ',\n        0 0 6px 1px ', ';\n      &::before {\n        box-shadow: 0 0 0 1px ', ';\n      }\n    }\n  }\n  @media screen and (max-width: 900px) {\n    + label {\n      flex-wrap: wrap;\n      img {\n        width: 100%;\n        margin-top: 1em;\n        display: block;\n      }\n    }\n  }\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100px;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100px;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 40%;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  min-width: 40%;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100%;\n  min-height: 5em;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100%;\n  min-height: 5em;\n  border: 1px solid ', ';\n  &::placeholder {\n    font-color: inherit;\n    opacity: 0.6;\n  }\n']),
-    _templateObject6 = _taggedTemplateLiteral(['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100px;\n  border: 1px solid ', ';\n'], ['\n  font-family: inherit;\n  font-size: 1em;\n  padding: 0.5em;\n  width: 100px;\n  border: 1px solid ', ';\n']);
-
-var _styledComponents = __webpack_require__(2);
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _injectStyles = __webpack_require__(3);
-
-var _injectStyles2 = _interopRequireDefault(_injectStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var Checkbox = exports.Checkbox = (0, _injectStyles2.default)(_styledComponents2.default.input(_templateObject, function (_ref) {
-  var styles = _ref.styles;
-  return styles.color.dark;
-}, function (_ref2) {
-  var styles = _ref2.styles;
-  return styles.color.darkgray;
-}, function (_ref3) {
-  var styles = _ref3.styles;
-  return styles.color.dark;
-}, function (_ref4) {
-  var styles = _ref4.styles;
-  return styles.color.dark;
-}, function (_ref5) {
-  var styles = _ref5.styles;
-  return styles.color.dark;
-}, function (_ref6) {
-  var styles = _ref6.styles;
-  return styles.color.dark;
-}, function (_ref7) {
-  var styles = _ref7.styles;
-  return styles.color.light;
-}, function (_ref8) {
-  var styles = _ref8.styles;
-  return styles.color.dark;
-}, function (_ref9) {
-  var styles = _ref9.styles;
-  return styles.color.dark;
-}, function (_ref10) {
-  var styles = _ref10.styles;
-  return styles.color.dark;
-}, function (_ref11) {
-  var styles = _ref11.styles;
-  return styles.color.dark;
-}, function (_ref12) {
-  var styles = _ref12.styles;
-  return styles.color.dark;
-}, function (_ref13) {
-  var styles = _ref13.styles;
-  return styles.color.dark;
-}));
-
-var Radio = exports.Radio = (0, _injectStyles2.default)(_styledComponents2.default.input.attrs({
-  type: 'radio'
-})(_templateObject2, function (_ref14) {
-  var styles = _ref14.styles;
-  return styles.color.dark;
-}, function (_ref15) {
-  var styles = _ref15.styles;
-  return styles.color.darkgray;
-}, function (_ref16) {
-  var styles = _ref16.styles;
-  return styles.color.dark;
-}, function (_ref17) {
-  var styles = _ref17.styles;
-  return styles.color.dark;
-}, function (_ref18) {
-  var styles = _ref18.styles;
-  return styles.color.light;
-}, function (_ref19) {
-  var styles = _ref19.styles;
-  return styles.color.dark;
-}, function (_ref20) {
-  var styles = _ref20.styles;
-  return styles.color.dark;
-}, function (_ref21) {
-  var styles = _ref21.styles;
-  return styles.color.dark;
-}, function (_ref22) {
-  var styles = _ref22.styles;
-  return styles.color.dark;
-}, function (_ref23) {
-  var styles = _ref23.styles;
-  return styles.color.dark;
-}, function (_ref24) {
-  var styles = _ref24.styles;
-  return styles.color.dark;
-}));
-
-var NumberInput = exports.NumberInput = (0, _injectStyles2.default)(_styledComponents2.default.input(_templateObject3, function (_ref25) {
-  var styles = _ref25.styles;
-  return styles.color.darkgray;
-}));
-
-var TextInput = exports.TextInput = (0, _injectStyles2.default)(_styledComponents2.default.input(_templateObject4, function (_ref26) {
-  var styles = _ref26.styles,
-      _ref26$validation = _ref26.validation;
-  _ref26$validation = _ref26$validation === undefined ? {} : _ref26$validation;
-  var error = _ref26$validation.error;
-  return error ? styles.color.red : styles.color.darkgray;
-}));
-
-var Textarea = exports.Textarea = (0, _injectStyles2.default)(_styledComponents2.default.textarea(_templateObject5, function (_ref27) {
-  var styles = _ref27.styles;
-  return styles.color.darkgray;
-}));
-
-var Select = exports.Select = (0, _injectStyles2.default)(_styledComponents2.default.select(_templateObject6, function (_ref28) {
-  var styles = _ref28.styles;
-  return styles.color.darkgray;
-}));
 
 /***/ }),
 /* 9 */
@@ -645,7 +645,7 @@ var SpecificBlock = exports.SpecificBlock = (0, _injectStyles2.default)(_styledC
 }, function (props) {
   return props.grouped ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.21)';
 }, function (props) {
-  return props.grouped ? '\n      h3 {\n        font-size: 20px;\n      }\n    ' : '\n      h3 {\n        font-size: 24px;\n      }\n  ';
+  return props.grouped ? '\n      h3 {\n        font-size: 18px;\n      }\n    ' : '\n      h3 {\n        font-size: 22px;\n      }\n  ';
 }, function (props) {
   return props.grouped ? '20px 0' : '20px';
 }));
@@ -707,11 +707,90 @@ Html.propTypes = {
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.NavButton = exports.SmallButton = exports.MainButton = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n  }\n'], ['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: 16px;\n  color: white;\n  background: ', ';\n  padding: 6px 16px 7px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n'], ['\n  font-family: ', ';\n  font-size: 16px;\n  color: white;\n  background: ', ';\n  padding: 6px 16px 7px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-right: ', ';\n  margin-left: ', ';\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:before, &:after {\n    content: " ";\n    display: inline-block;\n    position: absolute;\n    left: ', ';\n    right: ', ';\n    top: calc(50% - 0.4rem);\n    width: 0.5rem;\n    height: 0.5rem;\n    vertical-align: middle;\n    transform: ', ';\n    border: 3px solid white;\n    border-width: 3px 3px 0 0;\n  }\n  &:before {\n    display: ', ';\n    margin-right: 1em;\n  }\n  &:after {\n    display: ', ';\n    margin-left: 1em;\n  }\n  &:hover {\n    background: ', ';\n  }\n  &:hover::before, &:hover::after {\n    animation: ', ' 0.8s linear infinite;\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n    text-align: ', ';\n  }\n  @keyframes pushnext {\n    0% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(45deg) translate3d(2px, -2px, 0);\n    }\n    100% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n  }\n  @keyframes pushprev {\n    0% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(-135deg) translate3d(-2px, 2px, 0);\n    }\n    100% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n  }\n'], ['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-right: ', ';\n  margin-left: ', ';\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:before, &:after {\n    content: " ";\n    display: inline-block;\n    position: absolute;\n    left: ', ';\n    right: ', ';\n    top: calc(50% - 0.4rem);\n    width: 0.5rem;\n    height: 0.5rem;\n    vertical-align: middle;\n    transform: ', ';\n    border: 3px solid white;\n    border-width: 3px 3px 0 0;\n  }\n  &:before {\n    display: ', ';\n    margin-right: 1em;\n  }\n  &:after {\n    display: ', ';\n    margin-left: 1em;\n  }\n  &:hover {\n    background: ', ';\n  }\n  &:hover::before, &:hover::after {\n    animation: ', ' 0.8s linear infinite;\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n    text-align: ', ';\n  }\n  @keyframes pushnext {\n    0% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(45deg) translate3d(2px, -2px, 0);\n    }\n    100% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n  }\n  @keyframes pushprev {\n    0% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(-135deg) translate3d(-2px, 2px, 0);\n    }\n    100% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n  }\n']);
+
+var _styledComponents = __webpack_require__(2);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _injectStyles = __webpack_require__(3);
+
+var _injectStyles2 = _interopRequireDefault(_injectStyles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var MainButton = exports.MainButton = (0, _injectStyles2.default)(_styledComponents2.default.button(_templateObject, function (_ref) {
+  var styles = _ref.styles;
+  return styles.font.secondary;
+}, function (_ref2) {
+  var styles = _ref2.styles;
+  return styles.color.light;
+}, function (_ref3) {
+  var styles = _ref3.styles;
+  return styles.color.dark;
+}));
+
+var SmallButton = exports.SmallButton = (0, _injectStyles2.default)(_styledComponents2.default.button(_templateObject2, function (_ref4) {
+  var styles = _ref4.styles;
+  return styles.font.primary;
+}, function (_ref5) {
+  var styles = _ref5.styles;
+  return styles.color.light;
+}, function (_ref6) {
+  var styles = _ref6.styles;
+  return styles.color.dark;
+}));
+
+var NavButton = exports.NavButton = (0, _injectStyles2.default)(_styledComponents2.default.button(_templateObject3, function (_ref7) {
+  var styles = _ref7.styles;
+  return styles.font.secondary;
+}, function (_ref8) {
+  var styles = _ref8.styles;
+  return styles.color.light;
+}, function (props) {
+  return props.next ? '0' : 'auto';
+}, function (props) {
+  return props.next ? 'auto' : '0';
+}, function (props) {
+  return props.next ? 'auto' : '1em';
+}, function (props) {
+  return props.next ? '1em' : 'auto';
+}, function (props) {
+  return props.next ? 'rotate(45deg)' : 'rotate(-135deg)';
+}, function (props) {
+  return props.next ? 'none' : 'inline-block';
+}, function (props) {
+  return props.next ? 'inline-block' : 'none';
+}, function (_ref9) {
+  var styles = _ref9.styles;
+  return styles.color.dark;
+}, function (props) {
+  return props.next ? 'pushnext' : 'pushprev';
+}, function (props) {
+  return props.next ? 'left' : 'right';
+}));
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
 module.exports = __webpack_require__(60);
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -1646,10 +1725,10 @@ function get(object, path, defaultValue) {
 
 module.exports = get;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1668,7 +1747,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _styles = __webpack_require__(28);
+var _styles = __webpack_require__(29);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -1701,7 +1780,7 @@ ErrorIcon.defaultProps = {
 };
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1712,7 +1791,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.NAME = exports.reducer = exports.actions = undefined;
 
-var _actions2 = __webpack_require__(16);
+var _actions2 = __webpack_require__(17);
 
 var _actions3 = _interopRequireDefault(_actions2);
 
@@ -1727,7 +1806,7 @@ exports.reducer = _reducer3.default;
 var NAME = exports.NAME = '@WIZARD_STATE';
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1755,7 +1834,7 @@ function resetData() {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1789,85 +1868,6 @@ var ErrorMessage = exports.ErrorMessage = (0, _injectStyles2.default)(_styledCom
 var ErrorMessageAlt = exports.ErrorMessageAlt = (0, _injectStyles2.default)(_styledComponents2.default.p(_templateObject2, function (_ref2) {
   var styles = _ref2.styles;
   return styles.font.secondary;
-}));
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.NavButton = exports.SmallButton = exports.MainButton = undefined;
-
-var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n  }\n'], ['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: 16px;\n  color: white;\n  background: ', ';\n  padding: 6px 16px 7px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n'], ['\n  font-family: ', ';\n  font-size: 16px;\n  color: white;\n  background: ', ';\n  padding: 6px 16px 7px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin: 0 auto;\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:hover {\n    background: ', ';\n  }\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-right: ', ';\n  margin-left: ', ';\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:before, &:after {\n    content: " ";\n    display: inline-block;\n    position: absolute;\n    left: ', ';\n    right: ', ';\n    top: calc(50% - 0.4rem);\n    width: 0.5rem;\n    height: 0.5rem;\n    vertical-align: middle;\n    transform: ', ';\n    border: 3px solid white;\n    border-width: 3px 3px 0 0;\n  }\n  &:before {\n    display: ', ';\n    margin-right: 1em;\n  }\n  &:after {\n    display: ', ';\n    margin-left: 1em;\n  }\n  &:hover {\n    background: ', ';\n  }\n  &:hover::before, &:hover::after {\n    animation: ', ' 0.8s linear infinite;\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n    text-align: ', ';\n  }\n  @keyframes pushnext {\n    0% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(45deg) translate3d(2px, -2px, 0);\n    }\n    100% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n  }\n  @keyframes pushprev {\n    0% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(-135deg) translate3d(-2px, 2px, 0);\n    }\n    100% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n  }\n'], ['\n  font-family: ', ';\n  font-weight: 300;\n  text-transform: uppercase;\n  font-size: 18px;\n  letter-spacing: 1px;\n  color: white;\n  background: ', ';\n  min-width: 30%;\n  padding: 12px 18px 13px;\n  cursor: pointer;\n  user-select: none;\n  border: 0 none;\n  border-radius: 0;\n  appearance: none;\n  margin-right: ', ';\n  margin-left: ', ';\n  margin-bottom: 10px;\n  position: relative;\n  transition: background 0.1s ease-in-out;\n  &:before, &:after {\n    content: " ";\n    display: inline-block;\n    position: absolute;\n    left: ', ';\n    right: ', ';\n    top: calc(50% - 0.4rem);\n    width: 0.5rem;\n    height: 0.5rem;\n    vertical-align: middle;\n    transform: ', ';\n    border: 3px solid white;\n    border-width: 3px 3px 0 0;\n  }\n  &:before {\n    display: ', ';\n    margin-right: 1em;\n  }\n  &:after {\n    display: ', ';\n    margin-left: 1em;\n  }\n  &:hover {\n    background: ', ';\n  }\n  &:hover::before, &:hover::after {\n    animation: ', ' 0.8s linear infinite;\n  }\n  @media screen and (max-width: 900px) {\n    min-width: 48%;\n    text-align: ', ';\n  }\n  @keyframes pushnext {\n    0% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(45deg) translate3d(2px, -2px, 0);\n    }\n    100% {\n      transform: rotate(45deg) translate3d(0, 0, 0);\n    }\n  }\n  @keyframes pushprev {\n    0% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n    50% {\n      transform: rotate(-135deg) translate3d(-2px, 2px, 0);\n    }\n    100% {\n      transform: rotate(-135deg) translate3d(0, 0, 0);\n    }\n  }\n']);
-
-var _styledComponents = __webpack_require__(2);
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _injectStyles = __webpack_require__(3);
-
-var _injectStyles2 = _interopRequireDefault(_injectStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var MainButton = exports.MainButton = (0, _injectStyles2.default)(_styledComponents2.default.button(_templateObject, function (_ref) {
-  var styles = _ref.styles;
-  return styles.font.secondary;
-}, function (_ref2) {
-  var styles = _ref2.styles;
-  return styles.color.light;
-}, function (_ref3) {
-  var styles = _ref3.styles;
-  return styles.color.dark;
-}));
-
-var SmallButton = exports.SmallButton = (0, _injectStyles2.default)(_styledComponents2.default.button(_templateObject2, function (_ref4) {
-  var styles = _ref4.styles;
-  return styles.font.primary;
-}, function (_ref5) {
-  var styles = _ref5.styles;
-  return styles.color.light;
-}, function (_ref6) {
-  var styles = _ref6.styles;
-  return styles.color.dark;
-}));
-
-var NavButton = exports.NavButton = (0, _injectStyles2.default)(_styledComponents2.default.button(_templateObject3, function (_ref7) {
-  var styles = _ref7.styles;
-  return styles.font.secondary;
-}, function (_ref8) {
-  var styles = _ref8.styles;
-  return styles.color.light;
-}, function (props) {
-  return props.next ? '0' : 'auto';
-}, function (props) {
-  return props.next ? 'auto' : '0';
-}, function (props) {
-  return props.next ? 'auto' : '1em';
-}, function (props) {
-  return props.next ? '1em' : 'auto';
-}, function (props) {
-  return props.next ? 'rotate(45deg)' : 'rotate(-135deg)';
-}, function (props) {
-  return props.next ? 'none' : 'inline-block';
-}, function (props) {
-  return props.next ? 'inline-block' : 'none';
-}, function (_ref9) {
-  var styles = _ref9.styles;
-  return styles.color.dark;
-}, function (props) {
-  return props.next ? 'pushnext' : 'pushprev';
-}, function (props) {
-  return props.next ? 'left' : 'right';
 }));
 
 /***/ }),
@@ -1924,15 +1924,15 @@ exports.getNodeTitles = getNodeTitles;
 exports.getNodeTitle = getNodeTitle;
 exports.getNodeValue = getNodeValue;
 
-var _lodash = __webpack_require__(13);
+var _lodash = __webpack_require__(14);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _reduceWizard = __webpack_require__(43);
+var _reduceWizard = __webpack_require__(44);
 
 var _reduceWizard2 = _interopRequireDefault(_reduceWizard);
 
-var _state = __webpack_require__(15);
+var _state = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2151,7 +2151,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 }
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 23 */
@@ -2263,6 +2263,51 @@ exports.default = Label;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Value = exports.NodeSummary = exports.PageSummary = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  padding: 0 0 20px;\n  margin-bottom: 6px;\n  background: white;\n  line-height: 2;\n  border-bottom: 1px solid ', ';\n  h3 {\n    padding: 0.2em 0;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n  }\n  button {\n    margin: 0 0 0 auto;\n  }\n  > div {\n    line-height: 1.4;\n  }\n  ', '\n'], ['\n  padding: 0 0 20px;\n  margin-bottom: 6px;\n  background: white;\n  line-height: 2;\n  border-bottom: 1px solid ', ';\n  h3 {\n    padding: 0.2em 0;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n  }\n  button {\n    margin: 0 0 0 auto;\n  }\n  > div {\n    line-height: 1.4;\n  }\n  ', '\n']),
+    _templateObject2 = _taggedTemplateLiteral([' \n  margin-bottom: 20px;\n  h5 {\n    font-weight: 300;\n  }\n'], [' \n  margin-bottom: 20px;\n  h5 {\n    font-weight: 300;\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral([' \n  color: ', ';\n  font-weight: ', ';\n  font-style: ', ';\n'], [' \n  color: ', ';\n  font-weight: ', ';\n  font-style: ', ';\n']);
+
+var _styledComponents = __webpack_require__(2);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _injectStyles = __webpack_require__(3);
+
+var _injectStyles2 = _interopRequireDefault(_injectStyles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var PageSummary = exports.PageSummary = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject, function (_ref) {
+  var styles = _ref.styles;
+  return styles.color.warmgray3;
+}, function (props) {
+  return props.error ? '\n      h3 {\n        color: ' + props.styles.color.red + ';\n      }\n      button {\n        background: ' + props.styles.color.red + ';\n      }\n    ' : '\n      h3 {\n        color: inherit;\n      }\n    ';
+}));
+
+var NodeSummary = exports.NodeSummary = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject2));
+
+var Value = exports.Value = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject3, function (props) {
+  return props.missing ? props.styles.color.red : 'black';
+}, function (props) {
+  return props.missing ? 'normal' : 'bold';
+}, function (props) {
+  return props.missing ? 'italic' : 'normal';
+}));
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -2325,10 +2370,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2352,7 +2397,7 @@ var _lodash = __webpack_require__(61);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _styles = __webpack_require__(28);
+var _styles = __webpack_require__(29);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -2407,7 +2452,7 @@ StyleProvider.childContextTypes = {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2428,6 +2473,9 @@ exports.default = {
   color: {
     light: '#00757F',
     dark: '#072938',
+    bluegreen: '#54acb8',
+    lightorange: '#faefdf',
+    lightgreen: '#f0f2cb',
     warmgray3: '#f2f1f0',
     warmgray2: '#e5e3e1',
     darkgray: '#afaba8',
@@ -2448,7 +2496,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2482,7 +2530,7 @@ var Aside = (0, _injectStyles2.default)(_styledComponents2.default.aside(_templa
 exports.default = Aside;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2517,7 +2565,7 @@ var Button = (0, _injectStyles2.default)(_styledComponents2.default.button(_temp
 exports.default = Button;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2580,13 +2628,13 @@ var AsideItem = (0, _injectStyles2.default)(_styledComponents2.default.div(_temp
 exports.default = AsideItem;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2630,7 +2678,7 @@ var Nav = (0, _injectStyles2.default)(_styledComponents2.default.nav(_templateOb
 exports.default = Nav;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2665,7 +2713,7 @@ var Logo = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateO
 exports.default = Logo;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2687,11 +2735,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(8);
 
-var _redux = __webpack_require__(32);
+var _redux = __webpack_require__(33);
 
-var _lodash = __webpack_require__(13);
+var _lodash = __webpack_require__(14);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -2703,7 +2751,7 @@ var _Image = __webpack_require__(71);
 
 var _Image2 = _interopRequireDefault(_Image);
 
-var _Input = __webpack_require__(37);
+var _Input = __webpack_require__(38);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -2711,7 +2759,7 @@ var _Missing = __webpack_require__(72);
 
 var _Missing2 = _interopRequireDefault(_Missing);
 
-var _Number = __webpack_require__(38);
+var _Number = __webpack_require__(39);
 
 var _Number2 = _interopRequireDefault(_Number);
 
@@ -2727,23 +2775,23 @@ var _Text = __webpack_require__(77);
 
 var _Text2 = _interopRequireDefault(_Text);
 
-var _Data = __webpack_require__(39);
+var _Data = __webpack_require__(78);
 
 var _Data2 = _interopRequireDefault(_Data);
 
-var _FetchOrg = __webpack_require__(78);
+var _FetchOrg = __webpack_require__(79);
 
 var _FetchOrg2 = _interopRequireDefault(_FetchOrg);
 
-var _FetchSG = __webpack_require__(79);
+var _FetchSG = __webpack_require__(80);
 
 var _FetchSG2 = _interopRequireDefault(_FetchSG);
 
-var _Textarea = __webpack_require__(84);
+var _Textarea = __webpack_require__(85);
 
 var _Textarea2 = _interopRequireDefault(_Textarea);
 
-var _ErrorIcon = __webpack_require__(14);
+var _ErrorIcon = __webpack_require__(15);
 
 var _ErrorIcon2 = _interopRequireDefault(_ErrorIcon);
 
@@ -2751,19 +2799,19 @@ var _Html = __webpack_require__(11);
 
 var _Html2 = _interopRequireDefault(_Html);
 
-var _Image3 = __webpack_require__(87);
+var _Image3 = __webpack_require__(88);
 
 var _Image4 = _interopRequireDefault(_Image3);
 
-var _actions = __webpack_require__(16);
+var _actions = __webpack_require__(17);
 
-var _state = __webpack_require__(15);
+var _state = __webpack_require__(16);
 
 var _Block = __webpack_require__(10);
 
 var _Heading = __webpack_require__(4);
 
-var _Errors = __webpack_require__(17);
+var _Errors = __webpack_require__(18);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2847,7 +2895,7 @@ function PureBlock(props) {
       null,
       _react2.default.createElement(
         _Heading.H3,
-        null,
+        { small: true },
         props.heading
       ),
       _react2.default.createElement(_Html2.default, { text: props.text }),
@@ -2913,7 +2961,7 @@ var ConnectedBlock = (0, _reactRedux.connect)(function (state, props) {
 exports.default = ConnectedBlock;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2952,7 +3000,7 @@ exports.default = Figure;
 */
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2972,13 +3020,13 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _ErrorIcon = __webpack_require__(14);
+var _ErrorIcon = __webpack_require__(15);
 
 var _ErrorIcon2 = _interopRequireDefault(_ErrorIcon);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
-var _Errors = __webpack_require__(17);
+var _Errors = __webpack_require__(18);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3095,7 +3143,7 @@ Input.propTypes = {
 };
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3117,7 +3165,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Input = __webpack_require__(37);
+var _Input = __webpack_require__(38);
 
 var _Input2 = _interopRequireDefault(_Input);
 
@@ -3144,61 +3192,6 @@ Number.propTypes = {
 };
 
 /***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(1);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _Heading = __webpack_require__(4);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Data = function Data(_ref) {
-  var heading = _ref.heading,
-      currentValue = _ref.currentValue;
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      _Heading.H3,
-      null,
-      heading
-    ),
-    _react2.default.createElement(
-      'p',
-      null,
-      currentValue
-    )
-  );
-};
-
-exports.default = Data;
-
-
-Data.defaultProps = {
-  currentValue: '',
-  heading: ''
-};
-
-Data.propTypes = {
-  currentValue: _propTypes2.default.string,
-  heading: _propTypes2.default.string
-};
-
-/***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3209,7 +3202,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  svg {\n    width: 1.2em;\n    height: 1.2em;\n    display: inline-block;\n    vertical-align: middle;\n    color: black;\n  }\n  div, p {\n    display: inline;\n  }\n'], ['\n  svg {\n    width: 1.2em;\n    height: 1.2em;\n    display: inline-block;\n    vertical-align: middle;\n    color: black;\n  }\n  div, p {\n    display: inline;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  margin: 0;\n  dt {\n    font-weight: 300;\n  }\n  dd {\n    margin: 0 0 20px;\n    font-weight: bold;\n  }\n'], ['\n  margin: 0;\n  dt {\n    font-weight: 300;\n  }\n  dd {\n    margin: 0 0 20px;\n    font-weight: bold;\n  }\n']);
+
+var _styledComponents = __webpack_require__(2);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _injectStyles = __webpack_require__(3);
+
+var _injectStyles2 = _interopRequireDefault(_injectStyles);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var DL = (0, _injectStyles2.default)(_styledComponents2.default.dl(_templateObject));
+
+exports.default = DL;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  svg {\n    width: 1.2em;\n    height: 1.2em;\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 0.25em;\n  }\n  div, p {\n    display: inline;\n  }\n'], ['\n  svg {\n    width: 1.2em;\n    height: 1.2em;\n    display: inline-block;\n    vertical-align: middle;\n    margin-right: 0.25em;\n  }\n  div, p {\n    display: inline;\n  }\n']);
 
 var _styledComponents = __webpack_require__(2);
 
@@ -3228,7 +3250,7 @@ var Information = (0, _injectStyles2.default)(_styledComponents2.default.div(_te
 exports.default = Information;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /**
@@ -3247,7 +3269,7 @@ module.exports = reInterpolate;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3279,7 +3301,7 @@ var Navigation = (0, _injectStyles2.default)(_styledComponents2.default.main(_te
 exports.default = Navigation;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3294,13 +3316,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 exports.default = reduceWizard;
 
-var _dsl = __webpack_require__(44);
+var _dsl = __webpack_require__(45);
 
 var _dsl2 = _interopRequireDefault(_dsl);
 
-var _state = __webpack_require__(15);
+var _state = __webpack_require__(16);
 
-var _vocalizeErrors = __webpack_require__(90);
+var _vocalizeErrors = __webpack_require__(91);
 
 var _vocalizeErrors2 = _interopRequireDefault(_vocalizeErrors);
 
@@ -3417,7 +3439,7 @@ function reduceWizard(schema, state, nodeTitles) {
 }
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3448,11 +3470,11 @@ exports.buildValidatorForComplexExpression = buildValidatorForComplexExpression;
 exports.buildValidatorFunction = buildValidatorFunction;
 exports.default = parse;
 
-var _lodash = __webpack_require__(13);
+var _lodash = __webpack_require__(14);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _validator = __webpack_require__(89);
+var _validator = __webpack_require__(90);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3718,7 +3740,7 @@ function parse(expression) {
 }
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3740,7 +3762,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Page = __webpack_require__(94);
+var _Page = __webpack_require__(95);
 
 var _Page2 = _interopRequireDefault(_Page);
 
@@ -3780,39 +3802,6 @@ Summary.propTypes = {
 Summary.defaultProps = {
   pages: []
 };
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.NodeSummary = exports.PageSummary = undefined;
-
-var _templateObject = _taggedTemplateLiteral(['\n  padding: 0 0 20px;\n  margin-bottom: 20px;\n  background: white;\n  line-height: 2;\n  h4 {\n    padding: 0.2em 0;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n  }\n  button {\n    margin: 0 0 0 auto;\n  }\n  > div {\n    padding: 0 0 20px;\n    line-height: 1.4;\n  }\n  ', '\n'], ['\n  padding: 0 0 20px;\n  margin-bottom: 20px;\n  background: white;\n  line-height: 2;\n  h4 {\n    padding: 0.2em 0;\n    margin-bottom: 20px;\n    display: flex;\n    justify-content: space-between;\n  }\n  button {\n    margin: 0 0 0 auto;\n  }\n  > div {\n    padding: 0 0 20px;\n    line-height: 1.4;\n  }\n  ', '\n']),
-    _templateObject2 = _taggedTemplateLiteral([' \n  margin-bottom: 20px;\n'], [' \n  margin-bottom: 20px;\n']);
-
-var _styledComponents = __webpack_require__(2);
-
-var _styledComponents2 = _interopRequireDefault(_styledComponents);
-
-var _injectStyles = __webpack_require__(3);
-
-var _injectStyles2 = _interopRequireDefault(_injectStyles);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var PageSummary = exports.PageSummary = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject, function (props) {
-  return props.error ? '\n      h4 {\n        color: ' + props.styles.color.red + ';\n        border-bottom: 1px solid ' + props.styles.color.red + ';\n      }\n      button {\n        background: ' + props.styles.color.red + ';\n      }\n    ' : '\n      h4 {\n        border-bottom: 1px solid ' + props.styles.color.warmgray3 + ';\n      }\n    ';
-}));
-
-var NodeSummary = exports.NodeSummary = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject2));
 
 /***/ }),
 /* 47 */
@@ -3892,7 +3881,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  background-color: white;\n  background-image: linear-gradient(164deg, rgba(137, 174, 196, 0.34), white, rgba(0, 117, 127, 0.19));\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  font-family: ', ';\n  * {\n    box-sizing: border-box;\n  }\n  img {\n    max-width: 100%;\n  }\n  a {\n    color: ', ';\n    &:hover {\n      color: ', ';\n    }\n  }\n'], ['\n  background-color: white;\n  background-image: linear-gradient(164deg, rgba(137, 174, 196, 0.34), white, rgba(0, 117, 127, 0.19));\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  font-family: ', ';\n  * {\n    box-sizing: border-box;\n  }\n  img {\n    max-width: 100%;\n  }\n  a {\n    color: ', ';\n    &:hover {\n      color: ', ';\n    }\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  background-color: white;\n  background-image: linear-gradient(164deg, rgba(137, 174, 196, 0.34), white, rgba(0, 117, 127, 0.19));\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  font-family: ', ';\n  * {\n    box-sizing: border-box;\n    &:focus {\n      outline-color: ', ';\n    }\n  }\n  img {\n    max-width: 100%;\n  }\n  a {\n    color: ', ';\n    &:hover {\n      color: ', ';\n    }\n  }\n'], ['\n  background-color: white;\n  background-image: linear-gradient(164deg, rgba(137, 174, 196, 0.34), white, rgba(0, 117, 127, 0.19));\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  font-family: ', ';\n  * {\n    box-sizing: border-box;\n    &:focus {\n      outline-color: ', ';\n    }\n  }\n  img {\n    max-width: 100%;\n  }\n  a {\n    color: ', ';\n    &:hover {\n      color: ', ';\n    }\n  }\n']);
 
 var _styledComponents = __webpack_require__(2);
 
@@ -3911,9 +3900,12 @@ var Wizard = (0, _injectStyles2.default)(_styledComponents2.default.div(_templat
   return styles.font.primary;
 }, function (_ref2) {
   var styles = _ref2.styles;
-  return styles.color.light;
+  return styles.color.bluegreen;
 }, function (_ref3) {
   var styles = _ref3.styles;
+  return styles.color.light;
+}, function (_ref4) {
+  var styles = _ref4.styles;
   return styles.color.dark;
 }));
 
@@ -3931,7 +3923,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.dsl = exports.Primitives = exports.StyleProvider = exports.Wizard = exports.state = undefined;
 
-var _state2 = __webpack_require__(15);
+var _state2 = __webpack_require__(16);
 
 var _state = _interopRequireWildcard(_state2);
 
@@ -3939,15 +3931,15 @@ var _Wizard2 = __webpack_require__(53);
 
 var _Wizard3 = _interopRequireDefault(_Wizard2);
 
-var _StyleProvider2 = __webpack_require__(27);
+var _StyleProvider2 = __webpack_require__(28);
 
 var _StyleProvider3 = _interopRequireDefault(_StyleProvider2);
 
-var _primitives = __webpack_require__(99);
+var _primitives = __webpack_require__(100);
 
 var _Primitives = _interopRequireWildcard(_primitives);
 
-var _dsl2 = __webpack_require__(44);
+var _dsl2 = __webpack_require__(45);
 
 var _dsl = _interopRequireWildcard(_dsl2);
 
@@ -3980,7 +3972,7 @@ var _lodash = __webpack_require__(52);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _actions = __webpack_require__(16);
+var _actions = __webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4998,7 +4990,7 @@ function setWith(object, path, value, customizer) {
 
 module.exports = setWith;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
 /* 53 */
@@ -5023,13 +5015,13 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(8);
 
-var _reactAutobind = __webpack_require__(12);
+var _reactAutobind = __webpack_require__(13);
 
 var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
 
-var _StyleProvider = __webpack_require__(27);
+var _StyleProvider = __webpack_require__(28);
 
 var _StyleProvider2 = _interopRequireDefault(_StyleProvider);
 
@@ -5045,17 +5037,17 @@ var _Page = __webpack_require__(68);
 
 var _Page2 = _interopRequireDefault(_Page);
 
-var _reduceWizard = __webpack_require__(43);
+var _reduceWizard = __webpack_require__(44);
 
 var _reduceWizard2 = _interopRequireDefault(_reduceWizard);
 
 var _selectors = __webpack_require__(20);
 
-var _tracking = __webpack_require__(91);
+var _tracking = __webpack_require__(92);
 
 var _tracking2 = _interopRequireDefault(_tracking);
 
-var _Result = __webpack_require__(92);
+var _Result = __webpack_require__(93);
 
 var _Result2 = _interopRequireDefault(_Result);
 
@@ -5499,7 +5491,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(7)))
 
 /***/ }),
 /* 56 */
@@ -5517,7 +5509,7 @@ exports.clearImmediate = clearImmediate;
 
 var emptyFunction = __webpack_require__(21);
 var invariant = __webpack_require__(22);
-var warning = __webpack_require__(26);
+var warning = __webpack_require__(27);
 var assign = __webpack_require__(57);
 
 var ReactPropTypesSecret = __webpack_require__(23);
@@ -6049,7 +6041,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
   return ReactPropTypes;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 57 */
@@ -6164,7 +6156,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(22);
-  var warning = __webpack_require__(26);
+  var warning = __webpack_require__(27);
   var ReactPropTypesSecret = __webpack_require__(23);
   var loggedTypeFailures = {};
 }
@@ -6213,7 +6205,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
 module.exports = checkPropTypes;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 59 */
@@ -8569,7 +8561,7 @@ function stubFalse() {
 
 module.exports = merge;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(62)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(62)(module)))
 
 /***/ }),
 /* 62 */
@@ -8620,13 +8612,13 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Aside = __webpack_require__(29);
+var _Aside = __webpack_require__(30);
 
 var _Aside2 = _interopRequireDefault(_Aside);
 
 var _Heading = __webpack_require__(4);
 
-var _ToggleButton = __webpack_require__(30);
+var _ToggleButton = __webpack_require__(31);
 
 var _ToggleButton2 = _interopRequireDefault(_ToggleButton);
 
@@ -8758,7 +8750,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _AsideItem = __webpack_require__(31);
+var _AsideItem = __webpack_require__(32);
 
 var _AsideItem2 = _interopRequireDefault(_AsideItem);
 
@@ -8877,11 +8869,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(8);
 
-var _redux = __webpack_require__(32);
+var _redux = __webpack_require__(33);
 
-var _actions = __webpack_require__(16);
+var _actions = __webpack_require__(17);
 
 var _AsideButton = __webpack_require__(24);
 
@@ -8926,11 +8918,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(33);
+var _Header = __webpack_require__(34);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Logo = __webpack_require__(34);
+var _Logo = __webpack_require__(35);
 
 var _Logo2 = _interopRequireDefault(_Logo);
 
@@ -8976,11 +8968,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Block = __webpack_require__(35);
+var _Block = __webpack_require__(36);
 
 var _Block2 = _interopRequireDefault(_Block);
 
-var _Navigation = __webpack_require__(88);
+var _Navigation = __webpack_require__(89);
 
 var _Navigation2 = _interopRequireDefault(_Navigation);
 
@@ -9076,7 +9068,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactAutobind = __webpack_require__(12);
+var _reactAutobind = __webpack_require__(13);
 
 var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
 
@@ -9185,7 +9177,7 @@ var _Label = __webpack_require__(25);
 
 var _Label2 = _interopRequireDefault(_Label);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
 var _Heading = __webpack_require__(4);
 
@@ -9269,7 +9261,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Figure = __webpack_require__(36);
+var _Figure = __webpack_require__(37);
 
 var _Figure2 = _interopRequireDefault(_Figure);
 
@@ -9361,7 +9353,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactAutobind = __webpack_require__(12);
+var _reactAutobind = __webpack_require__(13);
 
 var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
 
@@ -9470,7 +9462,7 @@ var _Label = __webpack_require__(25);
 
 var _Label2 = _interopRequireDefault(_Label);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
 var _Heading = __webpack_require__(4);
 
@@ -9567,7 +9559,7 @@ var _SelectOption = __webpack_require__(76);
 
 var _SelectOption2 = _interopRequireDefault(_SelectOption);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9734,6 +9726,61 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _Heading = __webpack_require__(4);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Data = function Data(_ref) {
+  var heading = _ref.heading,
+      currentValue = _ref.currentValue;
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      _Heading.H4,
+      null,
+      heading
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      currentValue
+    )
+  );
+};
+
+exports.default = Data;
+
+
+Data.defaultProps = {
+  currentValue: '',
+  heading: ''
+};
+
+Data.propTypes = {
+  currentValue: _propTypes2.default.string,
+  heading: _propTypes2.default.string
+};
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -9746,29 +9793,29 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactAutobind = __webpack_require__(12);
+var _reactAutobind = __webpack_require__(13);
 
 var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
 
-var _lodash = __webpack_require__(13);
+var _lodash = __webpack_require__(14);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _Number = __webpack_require__(38);
+var _Number = __webpack_require__(39);
 
 var _Number2 = _interopRequireDefault(_Number);
 
-var _Data = __webpack_require__(39);
-
-var _Data2 = _interopRequireDefault(_Data);
-
 var _Heading = __webpack_require__(4);
 
-var _ErrorIcon = __webpack_require__(14);
+var _Datalist = __webpack_require__(40);
+
+var _Datalist2 = _interopRequireDefault(_Datalist);
+
+var _ErrorIcon = __webpack_require__(15);
 
 var _ErrorIcon2 = _interopRequireDefault(_ErrorIcon);
 
-var _Information = __webpack_require__(40);
+var _Information = __webpack_require__(41);
 
 var _Information2 = _interopRequireDefault(_Information);
 
@@ -9874,10 +9921,43 @@ var FetchOrg = function (_Component) {
         (0, _lodash2.default)(this.props, 'currentValue.data', false) && _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_Data2.default, { heading: 'Firmaets navn', currentValue: (0, _lodash2.default)(this.props, 'currentValue.name') }),
-          _react2.default.createElement(_Data2.default, { heading: 'Postnummer', currentValue: (0, _lodash2.default)(this.props, 'currentValue.postcode') }),
-          _react2.default.createElement(_Data2.default, { heading: 'Poststed', currentValue: (0, _lodash2.default)(this.props, 'currentValue.postplace') }),
-          _react2.default.createElement(_Data2.default, { heading: 'Postboks', currentValue: (0, _lodash2.default)(this.props, 'currentValue.address') }),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _Datalist2.default,
+            null,
+            _react2.default.createElement(
+              'dt',
+              null,
+              'Firmaets navn'
+            ),
+            _react2.default.createElement(
+              'dd',
+              null,
+              (0, _lodash2.default)(this.props, 'currentValue.name')
+            ),
+            _react2.default.createElement(
+              'dt',
+              null,
+              'Adresse'
+            ),
+            _react2.default.createElement(
+              'dd',
+              null,
+              (0, _lodash2.default)(this.props, 'currentValue.address')
+            ),
+            _react2.default.createElement(
+              'dt',
+              null,
+              'Postnummer- og sted'
+            ),
+            _react2.default.createElement(
+              'dd',
+              null,
+              (0, _lodash2.default)(this.props, 'currentValue.postcode'),
+              ' ',
+              (0, _lodash2.default)(this.props, 'currentValue.postplace')
+            )
+          ),
           _react2.default.createElement(
             _Information2.default,
             null,
@@ -9906,7 +9986,7 @@ FetchOrg.defaultProps = {
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9926,15 +10006,15 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactAutobind = __webpack_require__(12);
+var _reactAutobind = __webpack_require__(13);
 
 var _reactAutobind2 = _interopRequireDefault(_reactAutobind);
 
-var _lodash = __webpack_require__(13);
+var _lodash = __webpack_require__(14);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
-var _ApprovalAreas = __webpack_require__(80);
+var _ApprovalAreas = __webpack_require__(81);
 
 var _ApprovalAreas2 = _interopRequireDefault(_ApprovalAreas);
 
@@ -9942,7 +10022,7 @@ var _Heading = __webpack_require__(4);
 
 var _Block = __webpack_require__(10);
 
-var _VariableText = __webpack_require__(81);
+var _VariableText = __webpack_require__(82);
 
 var _VariableText2 = _interopRequireDefault(_VariableText);
 
@@ -10100,7 +10180,7 @@ FetchSG.defaultProps = {
 };
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10186,7 +10266,7 @@ ApprovalAreas.propTypes = {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10205,7 +10285,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _lodash = __webpack_require__(82);
+var _lodash = __webpack_require__(83);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -10235,7 +10315,7 @@ VariableText.propTypes = {
 };
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -10246,8 +10326,8 @@ VariableText.propTypes = {
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-var reInterpolate = __webpack_require__(41),
-    templateSettings = __webpack_require__(83);
+var reInterpolate = __webpack_require__(42),
+    templateSettings = __webpack_require__(84);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -11371,10 +11451,10 @@ var attempt = baseRest(function(func, args) {
 
 module.exports = template;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -11385,7 +11465,7 @@ module.exports = template;
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-var reInterpolate = __webpack_require__(41);
+var reInterpolate = __webpack_require__(42);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -11658,10 +11738,10 @@ function escape(string) {
 
 module.exports = templateSettings;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11685,17 +11765,17 @@ var _Html = __webpack_require__(11);
 
 var _Html2 = _interopRequireDefault(_Html);
 
-var _SummaryDetails = __webpack_require__(85);
+var _SummaryDetails = __webpack_require__(86);
 
 var _SummaryDetails2 = _interopRequireDefault(_SummaryDetails);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
-var _ErrorIcon = __webpack_require__(14);
+var _ErrorIcon = __webpack_require__(15);
 
 var _ErrorIcon2 = _interopRequireDefault(_ErrorIcon);
 
-var _Information = __webpack_require__(40);
+var _Information = __webpack_require__(41);
 
 var _Information2 = _interopRequireDefault(_Information);
 
@@ -11785,7 +11865,7 @@ Textarea.propTypes = {
 };
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11808,7 +11888,7 @@ var _Html = __webpack_require__(11);
 
 var _Html2 = _interopRequireDefault(_Html);
 
-var _details = __webpack_require__(86);
+var _details = __webpack_require__(87);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11834,7 +11914,7 @@ SumamryDetails.propTypes = {
 };
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11865,7 +11945,7 @@ var Details = exports.Details = (0, _injectStyles2.default)(_styledComponents2.d
 var Summary = exports.Summary = (0, _injectStyles2.default)(_styledComponents2.default.summary(_templateObject2));
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11904,7 +11984,7 @@ Image.propTypes = {
 };
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11923,9 +12003,9 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Button = __webpack_require__(18);
+var _Button = __webpack_require__(12);
 
-var _Navigation = __webpack_require__(42);
+var _Navigation = __webpack_require__(43);
 
 var _Navigation2 = _interopRequireDefault(_Navigation);
 
@@ -11970,7 +12050,7 @@ Navigation.propTypes = {
 };
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12098,7 +12178,7 @@ function validateExpression(expression) {
 }
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12139,7 +12219,7 @@ function vocalizeErrors(errors, nodeTitles) {
 }
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12157,7 +12237,7 @@ function track(name) {
 }
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12173,7 +12253,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(8);
 
 var _propTypes = __webpack_require__(1);
 
@@ -12187,23 +12267,27 @@ var _Paragraphs = __webpack_require__(9);
 
 var _Block = __webpack_require__(10);
 
+var _Input = __webpack_require__(5);
+
+var _Button = __webpack_require__(12);
+
 var _Main = __webpack_require__(19);
 
 var _Main2 = _interopRequireDefault(_Main);
 
-var _Block2 = __webpack_require__(35);
+var _Block2 = __webpack_require__(36);
 
 var _Block3 = _interopRequireDefault(_Block2);
 
-var _ErrorResult = __webpack_require__(93);
+var _ErrorResult = __webpack_require__(94);
 
 var _ErrorResult2 = _interopRequireDefault(_ErrorResult);
 
-var _Summary = __webpack_require__(45);
+var _Summary = __webpack_require__(46);
 
 var _Summary2 = _interopRequireDefault(_Summary);
 
-var _ExportData = __webpack_require__(98);
+var _ExportData = __webpack_require__(99);
 
 var _ExportData2 = _interopRequireDefault(_ExportData);
 
@@ -12253,7 +12337,64 @@ function Result(_ref) {
       children.map(function (block) {
         return _react2.default.createElement(_Block3.default, _extends({ key: block.property }, block));
       }),
-      exporter && exports[exporter] && _react2.default.createElement(_ExportData2.default, { exporter: exports[exporter] })
+      exporter && exports[exporter] && _react2.default.createElement(_ExportData2.default, { exporter: exports[exporter] }),
+      _react2.default.createElement(
+        'div',
+        { style: { background: '#f0f2cb', marginBottom: '20px', padding: '20px', fontStyle: 'italic' } },
+        _react2.default.createElement(_Input.TextInput, { type: 'checkbox', placeholder: 'E-post' }),
+        'Ansvarlig kontrollerende erkl\xE6rer uavhengighet, jf. SAK10 \xA7 14-1, og vil redegj\xF8re for endringer som kan p\xE5virke uavhengigheten jf. SAK10 \xA712-5'
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h4',
+          null,
+          'Ved \xE5 sende inn denne erkl\xE6ringen bekrefter du at:'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            '1)'
+          ),
+          ' Foretaket er kjent med reglene om straff og sanksjoner i plan- og bygningsloven kap. 32 og at det kan medf\xF8re reaksjoner dersom det gis uriktige opplysninger.'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            '2)'
+          ),
+          ' Foretaket forplikter seg til \xE5 stille med n\xF8dvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.'
+        )
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { style: { maxWidth: '700px', padding: '20px' } },
+      _react2.default.createElement(
+        _Heading.H2,
+        null,
+        'Send erkl\xE6ringen til'
+      ),
+      _react2.default.createElement(
+        'p',
+        null,
+        'Hvis du \xF8nsker erkl\xE6ringen tilsendt en annen epost enn kontaktperson i firma, m\xE5 du skrive inn adressen her'
+      ),
+      _react2.default.createElement(_Input.TextInput, { type: 'text', placeholder: 'E-post' }),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement(
+        _Button.MainButton,
+        null,
+        'Send'
+      )
     )
   );
 }
@@ -12292,7 +12433,7 @@ var mapStateToProps = function mapStateToProps(state, _ref2) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Result);
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12313,11 +12454,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _Heading = __webpack_require__(4);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
 var _Paragraphs = __webpack_require__(9);
 
-var _Button = __webpack_require__(18);
+var _Button = __webpack_require__(12);
 
 var _Main = __webpack_require__(19);
 
@@ -12325,7 +12466,7 @@ var _Main2 = _interopRequireDefault(_Main);
 
 var _Block = __webpack_require__(10);
 
-var _Summary = __webpack_require__(45);
+var _Summary = __webpack_require__(46);
 
 var _Summary2 = _interopRequireDefault(_Summary);
 
@@ -12342,12 +12483,12 @@ function ErrorResult(_ref) {
     _react2.default.createElement(
       _Heading.H2,
       null,
-      'Se over og fullf\xF8r'
+      'Du har ikke svart p\xE5 alle sp\xF8rsm\xE5lene'
     ),
     _react2.default.createElement(
       _Paragraphs.Lead,
       null,
-      'Les n\xF8ye gjennom f\xF8r du fortsetter. N\xE5r du trykker fullf\xF8r vil du motta erkl\xE6ringen p\xE5 epost. Den m\xE5 du skrive ut, signere og sende videre til ansvarlig s\xF8ker. Ansvarlig s\xF8ker vil sende erkl\xE6ringen videre til kommunen sammen med sin gjennomf\xF8ringsplan.'
+      'Du m\xE5 fullf\xF8re alle stegene i veiviseren for \xE5 f\xE5 et resultat. Under ser du hvilke sp\xF8rsm\xE5l som mangler svar. Hvis du \xF8nsker \xE5 endre noe, kan du klikke deg inn p\xE5 hvert steg i oppsummeringen nedenfor.'
     ),
     _react2.default.createElement(
       _Block.SpecificBlock,
@@ -12355,7 +12496,7 @@ function ErrorResult(_ref) {
       _react2.default.createElement(_Summary2.default, { errorPages: errorPages, setPage: setPage, pages: schema }),
       _react2.default.createElement(
         'div',
-        { style: { background: '#faefdf', marginBottom: '20px', padding: '20px', fontStyle: 'italic' } },
+        { style: { background: '#f0f2cb', marginBottom: '20px', padding: '20px', fontStyle: 'italic' } },
         _react2.default.createElement(_Input.TextInput, { type: 'checkbox', placeholder: 'E-post' }),
         'Ansvarlig kontrollerende erkl\xE6rer uavhengighet, jf. SAK10 \xA7 14-1, og vil redegj\xF8re for endringer som kan p\xE5virke uavhengigheten jf. SAK10 \xA712-5'
       ),
@@ -12363,37 +12504,52 @@ function ErrorResult(_ref) {
         'div',
         null,
         _react2.default.createElement(
-          'p',
+          'h4',
           null,
-          'Foretaket er kjent med reglene om straff og sanksjoner i plan- og bygningsloven kap. 32 og at det kan medf\xF8re reaksjoner dersom det gis uriktige opplysninger.'
+          'Ved \xE5 sende inn denne erkl\xE6ringen bekrefter du at:'
         ),
         _react2.default.createElement(
           'p',
           null,
-          'Foretaket forplikter seg til \xE5 stille med n\xF8dvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.'
+          _react2.default.createElement(
+            'strong',
+            null,
+            '1)'
+          ),
+          ' Foretaket er kjent med reglene om straff og sanksjoner i plan- og bygningsloven kap. 32 og at det kan medf\xF8re reaksjoner dersom det gis uriktige opplysninger.'
+        ),
+        _react2.default.createElement(
+          'p',
+          null,
+          _react2.default.createElement(
+            'strong',
+            null,
+            '2)'
+          ),
+          ' Foretaket forplikter seg til \xE5 stille med n\xF8dvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.'
         )
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { style: { maxWidth: '700px', padding: '20px' } },
+      _react2.default.createElement(
+        _Heading.H2,
+        null,
+        'Send erkl\xE6ringen til'
       ),
       _react2.default.createElement(
-        'div',
-        { style: { background: '#f0f2cb', padding: '20px' } },
-        _react2.default.createElement(
-          _Heading.H2,
-          null,
-          'Send erkl\xE6ringen til'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          'Hvis du \xF8nsker erkl\xE6ringen tilsendt en annen epost enn kontaktperson i firma, m\xE5 du skrive inn adressen her'
-        ),
-        _react2.default.createElement(_Input.TextInput, { type: 'text', placeholder: 'E-post' }),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          _Button.MainButton,
-          null,
-          'Send'
-        )
+        'p',
+        null,
+        'Hvis du \xF8nsker erkl\xE6ringen tilsendt en annen epost enn kontaktperson i firma, m\xE5 du skrive inn adressen her'
+      ),
+      _react2.default.createElement(_Input.TextInput, { type: 'text', placeholder: 'E-post' }),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement('br', null),
+      _react2.default.createElement(
+        _Button.MainButton,
+        null,
+        'Send'
       )
     )
   );
@@ -12411,7 +12567,7 @@ ErrorResult.propTypes = {
 };
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12432,11 +12588,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _Heading = __webpack_require__(4);
 
-var _Button = __webpack_require__(18);
+var _Button = __webpack_require__(12);
 
-var _Summary = __webpack_require__(46);
+var _Summary = __webpack_require__(26);
 
-var _Node = __webpack_require__(95);
+var _Node = __webpack_require__(96);
 
 var _Node2 = _interopRequireDefault(_Node);
 
@@ -12452,7 +12608,7 @@ function PageSummary(_ref) {
     _Summary.PageSummary,
     { error: error },
     _react2.default.createElement(
-      _Heading.H4,
+      _Heading.H3,
       null,
       title,
       ' ',
@@ -12481,7 +12637,7 @@ PageSummary.defaultProps = {
 };
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12499,25 +12655,25 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(8);
 
 var _selectors = __webpack_require__(20);
 
-var _value = __webpack_require__(96);
+var _value = __webpack_require__(97);
 
 var _value2 = _interopRequireDefault(_value);
 
-var _FetchOrg = __webpack_require__(97);
+var _FetchOrg = __webpack_require__(98);
 
 var _FetchOrg2 = _interopRequireDefault(_FetchOrg);
 
 var _Heading = __webpack_require__(4);
 
-var _Errors = __webpack_require__(17);
+var _Errors = __webpack_require__(18);
 
-var _Summary = __webpack_require__(46);
+var _Summary = __webpack_require__(26);
 
-var _ErrorIcon = __webpack_require__(14);
+var _ErrorIcon = __webpack_require__(15);
 
 var _ErrorIcon2 = _interopRequireDefault(_ErrorIcon);
 
@@ -12600,7 +12756,7 @@ var ConnectedNodeSummary = (0, _reactRedux.connect)(mapStateToProps)(NodeSummary
 exports.default = ConnectedNodeSummary;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12622,6 +12778,8 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _Summary = __webpack_require__(26);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Value(_ref) {
@@ -12629,9 +12787,9 @@ function Value(_ref) {
 
   if (value === undefined) {
     return _react2.default.createElement(
-      'div',
-      { style: { color: '#888', fontStyle: 'italic' } },
-      'M\xE5 fylles ut'
+      _Summary.Value,
+      { missing: true },
+      '* M\xE5 fylles ut'
     );
   }
 
@@ -12642,9 +12800,9 @@ function Value(_ref) {
 
     if (!values.length) {
       return _react2.default.createElement(
-        'div',
-        { style: { color: '#888', fontStyle: 'italic' } },
-        'M\xE5 fylles ut'
+        _Summary.Value,
+        { missing: true },
+        '* M\xE5 fylles ut'
       );
     }
 
@@ -12653,14 +12811,14 @@ function Value(_ref) {
 
     if (!commaSeparated.length) {
       return _react2.default.createElement(
-        'div',
+        _Summary.Value,
         null,
         lastOne
       );
     }
 
     return _react2.default.createElement(
-      'div',
+      _Summary.Value,
       null,
       commaSeparated.join(', '),
       ' og ',
@@ -12670,7 +12828,7 @@ function Value(_ref) {
   }
 
   return _react2.default.createElement(
-    'div',
+    _Summary.Value,
     null,
     value
   );
@@ -12685,7 +12843,7 @@ Value.defaultProps = {
 };
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12704,6 +12862,10 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _Datalist = __webpack_require__(40);
+
+var _Datalist2 = _interopRequireDefault(_Datalist);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function FetchOrgSummary(_ref) {
@@ -12716,13 +12878,8 @@ function FetchOrgSummary(_ref) {
       postplace = _ref$value.postplace;
 
   return _react2.default.createElement(
-    'dl',
+    _Datalist2.default,
     null,
-    _react2.default.createElement(
-      'dt',
-      null,
-      'Organisasjonsnummer'
-    ),
     _react2.default.createElement(
       'dd',
       null,
@@ -12731,7 +12888,7 @@ function FetchOrgSummary(_ref) {
     _react2.default.createElement(
       'dt',
       null,
-      'Selskapsnavn'
+      'Firmaets navn'
     ),
     _react2.default.createElement(
       'dd',
@@ -12751,7 +12908,7 @@ function FetchOrgSummary(_ref) {
     _react2.default.createElement(
       'dt',
       null,
-      'Posnummer- og sted'
+      'Postnummer- og sted'
     ),
     _react2.default.createElement(
       'dd',
@@ -12784,7 +12941,7 @@ FetchOrgSummary.defaultProps = {
 };
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12804,11 +12961,11 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(8);
 
-var _Input = __webpack_require__(8);
+var _Input = __webpack_require__(5);
 
-var _Button = __webpack_require__(18);
+var _Button = __webpack_require__(12);
 
 var _Button2 = _interopRequireDefault(_Button);
 
@@ -12898,7 +13055,7 @@ var mapStateToProps = function mapStateToProps(state, _ref2) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(ExportData);
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12913,7 +13070,7 @@ var _AsideButton2 = __webpack_require__(24);
 
 var _AsideButton3 = _interopRequireDefault(_AsideButton2);
 
-var _AsideItem2 = __webpack_require__(31);
+var _AsideItem2 = __webpack_require__(32);
 
 var _AsideItem3 = _interopRequireDefault(_AsideItem2);
 
@@ -12921,19 +13078,19 @@ var _Block2 = __webpack_require__(10);
 
 var _Block3 = _interopRequireDefault(_Block2);
 
-var _Button2 = __webpack_require__(18);
+var _Button2 = __webpack_require__(12);
 
 var _Button = _interopRequireWildcard(_Button2);
 
-var _Errors2 = __webpack_require__(17);
+var _Errors2 = __webpack_require__(18);
 
 var _Errors3 = _interopRequireDefault(_Errors2);
 
-var _Figure2 = __webpack_require__(36);
+var _Figure2 = __webpack_require__(37);
 
 var _Figure3 = _interopRequireDefault(_Figure2);
 
-var _grid = __webpack_require__(100);
+var _grid = __webpack_require__(101);
 
 var _Grid = _interopRequireWildcard(_grid);
 
@@ -12945,7 +13102,7 @@ var _Paragraphs2 = __webpack_require__(9);
 
 var _Paragraphs = _interopRequireWildcard(_Paragraphs2);
 
-var _Input2 = __webpack_require__(8);
+var _Input2 = __webpack_require__(5);
 
 var _Input3 = _interopRequireDefault(_Input2);
 
@@ -12953,11 +13110,11 @@ var _Label2 = __webpack_require__(25);
 
 var _Label3 = _interopRequireDefault(_Label2);
 
-var _Logo2 = __webpack_require__(34);
+var _Logo2 = __webpack_require__(35);
 
 var _Logo3 = _interopRequireDefault(_Logo2);
 
-var _ToggleButton2 = __webpack_require__(30);
+var _ToggleButton2 = __webpack_require__(31);
 
 var _ToggleButton3 = _interopRequireDefault(_ToggleButton2);
 
@@ -12985,7 +13142,7 @@ exports.ToggleButton = _ToggleButton3.default;
 exports.Wizard = _Wizard3.default;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12996,7 +13153,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Navigation = exports.Main = exports.Header = exports.Grid = exports.Footer = exports.Aside = undefined;
 
-var _Aside2 = __webpack_require__(29);
+var _Aside2 = __webpack_require__(30);
 
 var _Aside3 = _interopRequireDefault(_Aside2);
 
@@ -13008,7 +13165,7 @@ var _Grid2 = __webpack_require__(47);
 
 var _Grid3 = _interopRequireDefault(_Grid2);
 
-var _Header2 = __webpack_require__(33);
+var _Header2 = __webpack_require__(34);
 
 var _Header3 = _interopRequireDefault(_Header2);
 
@@ -13016,7 +13173,7 @@ var _Main2 = __webpack_require__(19);
 
 var _Main3 = _interopRequireDefault(_Main2);
 
-var _Navigation2 = __webpack_require__(42);
+var _Navigation2 = __webpack_require__(43);
 
 var _Navigation3 = _interopRequireDefault(_Navigation2);
 

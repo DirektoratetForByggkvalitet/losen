@@ -4,10 +4,11 @@ import injectStyles from '../utils/inject-styles';
 
 export const PageSummary = injectStyles(styled.div`
   padding: 0 0 20px;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
   background: white;
   line-height: 2;
-  h4 {
+  border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
+  h3 {
     padding: 0.2em 0;
     margin-bottom: 20px;
     display: flex;
@@ -17,26 +18,33 @@ export const PageSummary = injectStyles(styled.div`
     margin: 0 0 0 auto;
   }
   > div {
-    padding: 0 0 20px;
     line-height: 1.4;
   }
   ${props =>
     props.error
       ? `
-      h4 {
+      h3 {
         color: ${props.styles.color.red};
-        border-bottom: 1px solid ${props.styles.color.red};
       }
       button {
         background: ${props.styles.color.red};
       }
     ` : `
-      h4 {
-        border-bottom: 1px solid ${props.styles.color.warmgray3};
+      h3 {
+        color: inherit;
       }
     `}
 `);
 
 export const NodeSummary = injectStyles(styled.div` 
   margin-bottom: 20px;
+  h5 {
+    font-weight: 300;
+  }
+`);
+
+export const Value = injectStyles(styled.div` 
+  color: ${props => props.missing ? props.styles.color.red : 'black'};
+  font-weight: ${props => props.missing ? 'normal' : 'bold'};
+  font-style: ${props => props.missing ? 'italic' : 'normal'};
 `);

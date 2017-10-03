@@ -10,6 +10,9 @@ const Wizard = injectStyles(styled.div`
   font-family: ${({ styles }) => styles.font.primary};
   * {
     box-sizing: border-box;
+    &:focus {
+      outline-color: ${({ styles }) => styles.color.bluegreen};
+    }
   }
   img {
     max-width: 100%;

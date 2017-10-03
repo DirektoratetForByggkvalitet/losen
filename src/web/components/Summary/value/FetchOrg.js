@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import DL from '../../../primitives/Datalist';
+
 export default function FetchOrgSummary({
   value: {
     orgid,
@@ -11,19 +13,18 @@ export default function FetchOrgSummary({
   } = {},
 }) {
   return (
-    <dl>
-      <dt>Organisasjonsnummer</dt>
+    <DL>
       <dd>{orgid}</dd>
 
-      <dt>Selskapsnavn</dt>
+      <dt>Firmaets navn</dt>
       <dd>{name}</dd>
 
       <dt>Adresse</dt>
       <dd>{address}</dd>
 
-      <dt>Posnummer- og sted</dt>
+      <dt>Postnummer- og sted</dt>
       <dd>{postcode} {postplace}</dd>
-    </dl>
+    </DL>
   );
 }
 

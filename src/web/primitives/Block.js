@@ -19,12 +19,12 @@ export const SpecificBlock = injectStyles(styled.div`
     props.grouped
       ? `
       h3 {
-        font-size: 20px;
+        font-size: 18px;
       }
     `
       : `
       h3 {
-        font-size: 24px;
+        font-size: 22px;
       }
   `} 
   @media screen and (max-width: 700px) {

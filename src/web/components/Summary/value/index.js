@@ -1,29 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Value as StyledValue } from '../../../primitives/Summary';
+
 export default function Value({ value }) {
   if (value === undefined) {
-    return <div style={{ color: '#888', fontStyle: 'italic' }}>Må fylles ut</div>;
+    return <StyledValue missing>* Må fylles ut</StyledValue>;
   }
 
   if (typeof value === 'object') {
     const values = Object.keys(value).filter(key => value[key]);
 
     if (!values.length) {
-      return <div style={{ color: '#888', fontStyle: 'italic' }}>Må fylles ut</div>;
+      return <StyledValue missing>* Må fylles ut</StyledValue>;
     }
 
     const commaSeparated = values.slice(0, -1);
     const lastOne = values.slice(-1)[0];
 
     if (!commaSeparated.length) {
-      return <div>{lastOne}</div>;
+      return <StyledValue>{lastOne}</StyledValue>;
     }
 
-    return <div>{commaSeparated.join(', ')} og {lastOne}.</div>;
+    return <StyledValue>{commaSeparated.join(', ')} og {lastOne}.</StyledValue>;
   }
 
-  return <div>{value}</div>;
+  return <StyledValue>{value}</StyledValue>;
 }
 
 Value.propTypes = {

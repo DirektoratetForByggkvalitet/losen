@@ -4,8 +4,8 @@ import autobind from 'react-autobind';
 import get from 'lodash.get';
 
 import Number from './Number';
-import Data from './Data';
 import { H3 } from '../../primitives/Heading';
+import DL from '../../primitives/Datalist';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
 import Html from '../helper/Html';
@@ -85,10 +85,17 @@ export default class FetchOrg extends Component {
         {loading && <H3>Laster inn data...</H3>}
         {get(this.props, 'currentValue.data', false) && (
           <div>
-            <Data heading={'Firmaets navn'} currentValue={get(this.props, 'currentValue.name')} />
-            <Data heading={'Postnummer'} currentValue={get(this.props, 'currentValue.postcode')} />
-            <Data heading={'Poststed'} currentValue={get(this.props, 'currentValue.postplace')} />
-            <Data heading={'Postboks'} currentValue={get(this.props, 'currentValue.address')} />
+            <br />
+            <DL>
+              <dt>Firmaets navn</dt>
+              <dd>{get(this.props, 'currentValue.name')}</dd>
+
+              <dt>Adresse</dt>
+              <dd>{get(this.props, 'currentValue.address')}</dd>
+
+              <dt>Postnummer- og sted</dt>
+              <dd>{get(this.props, 'currentValue.postcode')} {get(this.props, 'currentValue.postplace')}</dd>
+            </DL>
             <Information>
               <ErrorIcon triangleFill={'black'} />
               <Html text={information} />

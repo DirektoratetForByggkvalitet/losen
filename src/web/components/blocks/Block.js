@@ -104,7 +104,7 @@ export function PureBlock(props) {
       disabled={props.disabled}
     >
       <div>
-        <H3>{props.heading}</H3>
+        <H3 small>{props.heading}</H3>
         <Html text={props.text} />
 
         <SpecificBlock

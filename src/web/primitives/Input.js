@@ -177,7 +177,7 @@ export const NumberInput = injectStyles(styled.input`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
-  width: 100px;
+  min-width: 30%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
     font-color: inherit;
@@ -202,7 +202,7 @@ export const Textarea = injectStyles(styled.textarea`
   font-size: 1em;
   padding: 0.5em;
   width: 100%;
-  min-height: 5em;
+  min-height: 6em;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
     font-color: inherit;
@@ -214,6 +214,6 @@ export const Select = injectStyles(styled.select`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
-  width: 100px;
+  min-width: 30%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);
