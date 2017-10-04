@@ -1,6 +1,6 @@
 {
   "name": "dibk-wizard-framework",
-  "version": "1.0.0",
+  "version": "0.2.1",
   "description": "Wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -14,7 +14,8 @@
     "dev": "webpack --watch",
     "start": "npm run dev",
     "storybook": "start-storybook -s ./public -p 6006",
-    "build-storybook": "build-storybook -s ./public"
+    "build-storybook": "build-storybook -s ./public",
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "pre-commit": [
     "lint"
@@ -29,16 +30,26 @@
     "react",
     "dibk"
   ],
-  "author": "Netlife Research",
-  "private": true,
+  "contributors": [
+    {
+      "name": "Kristoffer Brabrand",
+      "email": "kristoffer@brabrand.no"
+    },
+    {
+      "name": "Anders Olsen Sandvik",
+      "email": "anders.olsen.sandvik@netlife.com"
+    },
+    {
+      "name": "Elise Jakobsen",
+      "email": "hei@elisejakob.no"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/netliferesearch/dibk-wizard-framework/issues"
   },
   "homepage": "https://github.com/netliferesearch/dibk-wizard-framework#readme",
   "dependencies": {
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.2",
     "chalk": "^2.1.0",
     "commander": "^2.11.0",
     "lodash.get": "^4.4.2",
@@ -63,6 +74,8 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.2.11",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^20.0.3",
