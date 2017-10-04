@@ -24,7 +24,7 @@ export function validateNode(node, state) {
   const errors = [];
 
   // Image and text isn't stored, so no value is required
-  if (['Image', 'Text'].includes(node.type)) {
+  if (['Image', 'Text', 'Group'].includes(node.type)) {
     return errors;
   }
 

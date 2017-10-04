@@ -1963,7 +1963,7 @@ function validateNode(node, state) {
   var errors = [];
 
   // Image and text isn't stored, so no value is required
-  if (['Image', 'Text'].includes(node.type)) {
+  if (['Image', 'Text', 'Group'].includes(node.type)) {
     return errors;
   }
 
@@ -12980,8 +12980,6 @@ var _Input = __webpack_require__(5);
 
 var _Button = __webpack_require__(12);
 
-var _Button2 = _interopRequireDefault(_Button);
-
 var _selectors = __webpack_require__(20);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -13024,7 +13022,7 @@ var ExportData = function (_Component) {
 
       if (!open) {
         return _react2.default.createElement(
-          _Button2.default,
+          _Button.MainButton,
           { onClick: this.showExportData },
           'GIMME DAT JSON \uD83E\uDD13'
         );
@@ -13033,17 +13031,15 @@ var ExportData = function (_Component) {
       var json = JSON.stringify(data, null, 2);
       var lines = json.split(/\n/).length;
 
-      return _react2.default.createElement(
-        _Input.Textarea,
-        {
-          rows: lines,
-          innerRef: function innerRef(textarea) {
-            return _this2.textarea = textarea;
-          },
-          onClick: this.selectText
+      return _react2.default.createElement(_Input.Textarea, {
+        rows: lines,
+        innerRef: function innerRef(textarea) {
+          return _this2.textarea = textarea;
         },
-        json
-      );
+        onClick: this.selectText,
+        value: json,
+        'read-only': true
+      });
     }
   }]);
 

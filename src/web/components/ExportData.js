@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Textarea } from '../primitives/Input';
-import Button from '../primitives/Button';
+import { MainButton } from '../primitives/Button';
 import { getData } from '../utils/selectors';
 
 class ExportData extends Component {
@@ -25,7 +25,7 @@ class ExportData extends Component {
     const { open } = this.state;
 
     if (!open) {
-      return <Button onClick={this.showExportData}>GIMME DAT JSON 🤓</Button>;
+      return <MainButton onClick={this.showExportData}>GIMME DAT JSON 🤓</MainButton>;
     }
 
     const json = JSON.stringify(data, null, 2);
@@ -36,7 +36,9 @@ class ExportData extends Component {
         rows={lines}
         innerRef={textarea => this.textarea = textarea}
         onClick={this.selectText}
-      >{json}</Textarea>
+        value={json}
+        read-only
+      />
     );
   }
 }
