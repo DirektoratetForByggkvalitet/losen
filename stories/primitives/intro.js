@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function PrimtiviesIntro() {
+export default function PrimitivesIntro() {
   return <div>Apekatter</div>;
 }
