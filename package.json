@@ -1,6 +1,6 @@
 {
   "name": "dibk-wizard-framework",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -44,7 +44,7 @@
       "email": "hei@elisejakob.no"
     }
   ],
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENCE.md",
   "bugs": {
     "url": "https://github.com/netliferesearch/dibk-wizard-framework/issues"
   },

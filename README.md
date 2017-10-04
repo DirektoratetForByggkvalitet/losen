@@ -12,4 +12,4 @@ See the storybook documentation for an introduction to how to build a wizard wit
 Tests are written with jest, and can be run with `npm run test`.
 
 ## Licence
-MIT licenced. See [LICENSE](https://github.com/netliferesearch/dibk-wizard-framework/blob/master/LICENCE.md) file.
+See [LICENSE](https://github.com/netliferesearch/dibk-wizard-framework/blob/master/LICENCE.md) file.
