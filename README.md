@@ -1,12 +1,15 @@
 # DiBK wizard framework
 [![Build Status](https://travis-ci.com/netliferesearch/dibk-wizard-framework.svg?token=FNwbLhwtPg2ioyJfu4Yu&branch=master)](https://travis-ci.com/netliferesearch/dibk-wizard-framework)
 
-Wizard framework for DiBK should be described here...
+The wizard framework contains the logic and building blocks necessary to building wizards large and small.
 
+We use [Storybook](https://github.com/storybooks/storybook) to document the components. The Storybook is hosted on Firebase at [dibk-storybook](https://dibk-storybook.firebaseapp.com/).
 
-## Storybook
-We use [Storybook](https://github.com/storybooks/storybook) to document the components.
-The Storybook is hosted on Firebase at [dibk-storybook](https://dibk-storybook.firebaseapp.com/).
+## Building a wizard
+See the storybook documentation for an introduction to how to build a wizard with the framework.
 
-## Figma sketches
-Sketches in figma can be found [here](https://www.figma.com/file/eV0GHYZtiS9OWgcyoihwlc/DiBK-veiviser-(Ansvarsrett)).
+## Tests
+Tests are written with jest, and can be run with `npm run test`.
+
+## Licence
+MIT licenced. See [LICENSE](https://github.com/netliferesearch/dibk-wizard-framework/blob/master/LICENCE.md) file.
