@@ -1,6 +1,6 @@
 {
   "name": "dibk-wizard-framework",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -50,8 +50,6 @@
   },
   "homepage": "https://github.com/netliferesearch/dibk-wizard-framework#readme",
   "dependencies": {
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.2",
     "chalk": "^2.1.0",
     "commander": "^2.11.0",
     "lodash.get": "^4.4.2",
@@ -76,6 +74,8 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.2.11",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^20.0.3",
