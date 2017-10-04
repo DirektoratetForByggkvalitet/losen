@@ -1,6 +1,6 @@
 {
   "name": "dibk-wizard-framework",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -15,7 +15,7 @@
     "start": "npm run dev",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
-    "prepublish": "npm run lint && npm run test && npm run build"
+    "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
   "pre-commit": [
     "lint"
@@ -31,9 +31,18 @@
     "dibk"
   ],
   "contributors": [
-    { "name": "Kristoffer Brabrand", "email": "kristoffer@brabrand.no" },
-    { "name": "Anders Olsen Sandvik", "email": "anders.olsen.sandvik@netlife.com" },
-    { "name": "Elise Jakobsen", "email": "hei@elisejakob.no" }
+    {
+      "name": "Kristoffer Brabrand",
+      "email": "kristoffer@brabrand.no"
+    },
+    {
+      "name": "Anders Olsen Sandvik",
+      "email": "anders.olsen.sandvik@netlife.com"
+    },
+    {
+      "name": "Elise Jakobsen",
+      "email": "hei@elisejakob.no"
+    }
   ],
   "license": "MIT",
   "bugs": {
