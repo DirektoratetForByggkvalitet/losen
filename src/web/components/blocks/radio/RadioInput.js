@@ -19,7 +19,7 @@ const RadioInput = ({ id, text, name, value, checked, onChange, heading, image, 
           : null}
         <P>{text}</P>
       </div>
-      {image ? <img src={image.url} alt={image.alt} /> : null}
+      {image && image.url ? <img src={image.url} alt={image.alt} /> : null}
     </Label>
   </div>
 );

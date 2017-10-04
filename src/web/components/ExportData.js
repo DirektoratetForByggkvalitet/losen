@@ -25,20 +25,23 @@ class ExportData extends Component {
     const { open } = this.state;
 
     if (!open) {
-      return <MainButton onClick={this.showExportData}>GIMME DAT JSON 🤓</MainButton>;
+      return <MainButton onClick={this.showExportData}>Vis data</MainButton>;
     }
 
     const json = JSON.stringify(data, null, 2);
     const lines = json.split(/\n/).length;
 
     return (
-      <Textarea
-        rows={lines}
-        innerRef={textarea => this.textarea = textarea}
-        onClick={this.selectText}
-        value={json}
-        read-only
-      />
+      <div>
+        <Textarea
+          rows={lines}
+          innerRef={textarea => this.textarea = textarea}
+          onClick={this.selectText}
+          value={json}
+          read-only
+        />
+        <MainButton>Ta med dataen til altinn</MainButton>
+      </div>
     );
   }
 }

@@ -618,7 +618,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TextBlock = exports.SpecificBlock = undefined;
 
-var _templateObject = _taggedTemplateLiteral(['\nborder: ', ';\npadding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', '\n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n'], ['\nborder: ', ';\npadding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', '\n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n  padding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', '\n  ', '\n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n'], ['\n  padding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', '\n  ', '\n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  padding: 30px 33px 36px;\n  margin: 20px 0;\n  max-width: ', ';\n  p {\n    margin: 1em 0;\n    line-height: 1.6;\n    max-width: 600px;\n  }\n  @media screen and (max-width: 700px) {\n    padding: 20px 0;\n  }\n'], ['\n  padding: 30px 33px 36px;\n  margin: 20px 0;\n  max-width: ', ';\n  p {\n    margin: 1em 0;\n    line-height: 1.6;\n    max-width: 600px;\n  }\n  @media screen and (max-width: 700px) {\n    padding: 20px 0;\n  }\n']);
 
 var _styledComponents = __webpack_require__(2);
@@ -634,8 +634,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var SpecificBlock = exports.SpecificBlock = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject, function (props) {
-  return props.groupedSimple ? '9px dashed hotpink' : 'none';
-}, function (props) {
   return props.grouped ? '20px 24px 20px' : '30px 33px 36px';
 }, function (_ref) {
   var styles = _ref.styles;
@@ -648,6 +646,8 @@ var SpecificBlock = exports.SpecificBlock = (0, _injectStyles2.default)(_styledC
   return props.grouped ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.21)';
 }, function (props) {
   return props.grouped ? '\n      h3 {\n        font-size: 18px;\n      }\n    ' : '\n      h3 {\n        font-size: 22px;\n      }\n  ';
+}, function (props) {
+  return props.groupedSimple ? '\n      padding: 0;\n      background: none;\n      &:nth-child(even) {\n        background: none;\n      }\n    ' : ' ';
 }, function (props) {
   return props.grouped ? '20px 0' : '20px';
 }));
@@ -9485,6 +9485,7 @@ var RadioInput = function RadioInput(_ref) {
       heading = _ref.heading,
       image = _ref.image,
       disabled = _ref.disabled;
+
   return _react2.default.createElement(
     'div',
     null,
@@ -9506,7 +9507,7 @@ var RadioInput = function RadioInput(_ref) {
           text
         )
       ),
-      image ? _react2.default.createElement('img', { src: image.url, alt: image.alt }) : null
+      image && image.url ? _react2.default.createElement('img', { src: image.url, alt: image.alt }) : null
     )
   );
 };
@@ -11930,8 +11931,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Summary = exports.Details = undefined;
 
-var _templateObject = _taggedTemplateLiteral(['margin-top: 40px;'], ['margin-top: 40px;']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  color: blue;\n  text-decoration: underline;\n'], ['\n  color: blue;\n  text-decoration: underline;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  margin-top: 40px;\n  h4 {\n    margin-bottom: 0;\n  }\n'], ['\n  margin-top: 40px;\n  h4 {\n    margin-bottom: 0;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  cursor: pointer;\n  color: ', ';\n  text-decoration: underline;\n'], ['\n  cursor: pointer;\n  color: ', ';\n  text-decoration: underline;\n']);
 
 var _styledComponents = __webpack_require__(2);
 
@@ -11947,7 +11948,10 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var Details = exports.Details = (0, _injectStyles2.default)(_styledComponents2.default.details(_templateObject));
 
-var Summary = exports.Summary = (0, _injectStyles2.default)(_styledComponents2.default.summary(_templateObject2));
+var Summary = exports.Summary = (0, _injectStyles2.default)(_styledComponents2.default.summary(_templateObject2, function (_ref) {
+  var styles = _ref.styles;
+  return styles.color.light;
+}));
 
 /***/ }),
 /* 88 */
@@ -12340,68 +12344,78 @@ function Result(_ref) {
       _Block.SpecificBlock,
       null,
       summary ? _react2.default.createElement(_Summary2.default, { errorPages: errorPages, setPage: setPage, pages: schema }) : null,
-      children.map(function (block) {
-        return _react2.default.createElement(_Block3.default, _extends({ key: block.property }, block));
-      }),
-      exporter && exports[exporter] && _react2.default.createElement(_ExportData2.default, { exporter: exports[exporter] }),
-      _react2.default.createElement(
-        'div',
-        { style: { background: '#f0f2cb', marginBottom: '20px', padding: '20px', fontStyle: 'italic' } },
-        _react2.default.createElement(_Input.TextInput, { type: 'checkbox', placeholder: 'E-post' }),
-        'Ansvarlig kontrollerende erkl\xE6rer uavhengighet, jf. SAK10 \xA7 14-1, og vil redegj\xF8re for endringer som kan p\xE5virke uavhengigheten jf. SAK10 \xA712-5'
-      ),
-      _react2.default.createElement(
+      exporter ? _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
-          'h4',
-          null,
-          'Ved \xE5 sende inn denne erkl\xE6ringen bekrefter du at:'
+          'div',
+          { style: { background: '#f0f2cb', marginBottom: '20px', padding: '20px', fontStyle: 'italic' } },
+          _react2.default.createElement(_Input.TextInput, { type: 'checkbox', placeholder: 'E-post' }),
+          'Ansvarlig kontrollerende erkl\xE6rer uavhengighet, jf. SAK10 \xA7 14-1, og vil redegj\xF8re for endringer som kan p\xE5virke uavhengigheten jf. SAK10 \xA712-5'
         ),
         _react2.default.createElement(
-          'p',
+          'div',
           null,
           _react2.default.createElement(
-            'strong',
+            'h4',
             null,
-            '1)'
+            'Ved \xE5 sende inn denne erkl\xE6ringen bekrefter du at:'
           ),
-          ' Foretaket er kjent med reglene om straff og sanksjoner i plan- og bygningsloven kap. 32 og at det kan medf\xF8re reaksjoner dersom det gis uriktige opplysninger.'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
           _react2.default.createElement(
-            'strong',
+            _Paragraphs.P,
             null,
-            '2)'
+            _react2.default.createElement(
+              'strong',
+              null,
+              '1)'
+            ),
+            ' Foretaket er kjent med reglene om straff og sanksjoner i plan- og bygningsloven kap. 32 og at det kan medf\xF8re reaksjoner dersom det gis uriktige opplysninger.'
           ),
-          ' Foretaket forplikter seg til \xE5 stille med n\xF8dvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.'
+          _react2.default.createElement(
+            _Paragraphs.P,
+            null,
+            _react2.default.createElement(
+              'strong',
+              null,
+              '2)'
+            ),
+            ' Foretaket forplikter seg til \xE5 stille med n\xF8dvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.'
+          )
         )
-      )
+      ) : null
     ),
-    _react2.default.createElement(
+    exporter ? _react2.default.createElement(
       'div',
       { style: { maxWidth: '700px', padding: '20px' } },
       _react2.default.createElement(
         _Heading.H2,
         null,
-        'Send erkl\xE6ringen til'
+        'Send inn erkl\xE6ringen'
       ),
       _react2.default.createElement(
-        'p',
+        _Paragraphs.P,
         null,
-        'Hvis du \xF8nsker erkl\xE6ringen tilsendt en annen epost enn kontaktperson i firma, m\xE5 du skrive inn adressen her'
+        'Skjemaet sendes inn via altinn.no. Klikk p\xE5 knappen under for \xE5 kopiere data fra skjemaet. Dette kan s\xE5 limes direkte inn i skjemaet p\xE5 altinn. Du skal ogs\xE5 ideelt sett kunne f\xE5 dette tilsendt p\xE5 e-post, men det har vi ikke st\xF8tte for enn\xE5.'
       ),
-      _react2.default.createElement(_Input.TextInput, { type: 'text', placeholder: 'E-post' }),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement('br', null),
+      exporter && exports[exporter] && _react2.default.createElement(_ExportData2.default, { exporter: exports[exporter] })
+    ) : _react2.default.createElement(
+      'div',
+      { style: { maxWidth: '700px', padding: '20px' } },
       _react2.default.createElement(
-        _Button.MainButton,
+        _Heading.H2,
         null,
-        'Send'
-      )
-    )
+        'Hva kan du gj\xF8re? Veien videre'
+      ),
+      _react2.default.createElement(
+        _Paragraphs.P,
+        null,
+        'Du har ikke det som skal til for \xE5 skaffe deg katt. Greit nok. Men hva kan du gj\xF8re med det? DiBK vet sikkert svaret! G\xE5 til DiBK sine nettsider! Sjekk ut en annen veiviser! Lenker her?'
+      ),
+      exporter && exports[exporter] && _react2.default.createElement(_ExportData2.default, { exporter: exports[exporter] })
+    ),
+    children.map(function (block) {
+      return _react2.default.createElement(_Block3.default, _extends({ key: block.property }, block));
+    })
   );
 }
 
@@ -12510,64 +12524,7 @@ function ErrorResult(_ref) {
       _react2.default.createElement(_Summary2.default, { errorPages: errorPages, setPage: setPage, pages: schema }),
       children.map(function (block) {
         return _react2.default.createElement(_Block3.default, _extends({ key: block.property }, block));
-      }),
-      _react2.default.createElement(
-        'div',
-        { style: { background: '#f0f2cb', marginBottom: '20px', padding: '20px', fontStyle: 'italic' } },
-        _react2.default.createElement(_Input.TextInput, { type: 'checkbox', placeholder: 'E-post' }),
-        'Ansvarlig kontrollerende erkl\xE6rer uavhengighet, jf. SAK10 \xA7 14-1, og vil redegj\xF8re for endringer som kan p\xE5virke uavhengigheten jf. SAK10 \xA712-5'
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'h4',
-          null,
-          'Ved \xE5 sende inn denne erkl\xE6ringen bekrefter du at:'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          _react2.default.createElement(
-            'strong',
-            null,
-            '1)'
-          ),
-          ' Foretaket er kjent med reglene om straff og sanksjoner i plan- og bygningsloven kap. 32 og at det kan medf\xF8re reaksjoner dersom det gis uriktige opplysninger.'
-        ),
-        _react2.default.createElement(
-          'p',
-          null,
-          _react2.default.createElement(
-            'strong',
-            null,
-            '2)'
-          ),
-          ' Foretaket forplikter seg til \xE5 stille med n\xF8dvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.'
-        )
-      )
-    ),
-    _react2.default.createElement(
-      'div',
-      { style: { maxWidth: '700px', padding: '20px' } },
-      _react2.default.createElement(
-        _Heading.H2,
-        null,
-        'Send erkl\xE6ringen til'
-      ),
-      _react2.default.createElement(
-        'p',
-        null,
-        'Hvis du \xF8nsker erkl\xE6ringen tilsendt en annen epost enn kontaktperson i firma, m\xE5 du skrive inn adressen her'
-      ),
-      _react2.default.createElement(_Input.TextInput, { type: 'text', placeholder: 'E-post' }),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement('br', null),
-      _react2.default.createElement(
-        _Button.MainButton,
-        null,
-        'Send'
-      )
+      })
     )
   );
 }
@@ -13029,22 +12986,31 @@ var ExportData = function (_Component) {
         return _react2.default.createElement(
           _Button.MainButton,
           { onClick: this.showExportData },
-          'GIMME DAT JSON \uD83E\uDD13'
+          'Vis data'
         );
       }
 
       var json = JSON.stringify(data, null, 2);
       var lines = json.split(/\n/).length;
 
-      return _react2.default.createElement(_Input.Textarea, {
-        rows: lines,
-        innerRef: function innerRef(textarea) {
-          return _this2.textarea = textarea;
-        },
-        onClick: this.selectText,
-        value: json,
-        'read-only': true
-      });
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_Input.Textarea, {
+          rows: lines,
+          innerRef: function innerRef(textarea) {
+            return _this2.textarea = textarea;
+          },
+          onClick: this.selectText,
+          value: json,
+          'read-only': true
+        }),
+        _react2.default.createElement(
+          _Button.MainButton,
+          null,
+          'Ta med dataen til altinn'
+        )
+      );
     }
   }]);
 

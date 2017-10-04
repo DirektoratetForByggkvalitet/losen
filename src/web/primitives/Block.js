@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const SpecificBlock = injectStyles(styled.div`
-border: ${props => props.groupedSimple ? '9px dashed hotpink' : 'none'};
-padding: ${props => props.grouped ? '20px 24px 20px' : '30px 33px 36px'};
+  padding: ${props => props.grouped ? '20px 24px 20px' : '30px 33px 36px'};
   margin: 20px 0;
   max-width: ${({ styles }) => styles.size.blockWidth};
   background: ${props => props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white'};
@@ -16,18 +15,22 @@ padding: ${props => props.grouped ? '20px 24px 20px' : '30px 33px 36px'};
     margin-top: 0;
     font-weight: 300;
   }
-  ${props =>
-    props.grouped
-      ? `
-      h3 {
-        font-size: 18px;
-      }
-    `
-      : `
-      h3 {
-        font-size: 22px;
-      }
-  `}
+  
+  ${props => props.grouped ? `
+  h3 {
+    font-size: 18px;
+  }` : `
+  h3 {
+    font-size: 22px;
+  }`}
+
+  ${props => props.groupedSimple ? `
+  padding: 0;
+  background: none;
+  &:nth-child(even) {
+    background: none;
+  }` : ' '}
+  
   @media screen and (max-width: 700px) {
     padding: ${props => props.grouped ? '20px 0' : '20px'};
   }
