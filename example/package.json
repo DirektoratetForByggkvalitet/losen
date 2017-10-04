@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "dibk-wizard-framework": "netliferesearch/dibk-wizard-framework",
+    "dibk-wizard-framework": "^0.1.0",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
