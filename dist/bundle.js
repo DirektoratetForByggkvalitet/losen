@@ -618,7 +618,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.TextBlock = exports.SpecificBlock = undefined;
 
-var _templateObject = _taggedTemplateLiteral(['\n  padding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', ' \n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n'], ['\n  padding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', ' \n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n']),
+var _templateObject = _taggedTemplateLiteral(['\nborder: ', ';\npadding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', '\n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n'], ['\nborder: ', ';\npadding: ', ';\n  margin: 20px 0;\n  max-width: ', ';\n  background: ', ';\n  &:nth-child(even) {\n    background: ', ';\n  }\n  box-shadow: ', ';\n  p {\n    margin-top: 0;\n    font-weight: 300;\n  }\n  ', '\n  @media screen and (max-width: 700px) {\n    padding: ', ';\n  }\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  padding: 30px 33px 36px;\n  margin: 20px 0;\n  max-width: ', ';\n  p {\n    margin: 1em 0;\n    line-height: 1.6;\n    max-width: 600px;\n  }\n  @media screen and (max-width: 700px) {\n    padding: 20px 0;\n  }\n'], ['\n  padding: 30px 33px 36px;\n  margin: 20px 0;\n  max-width: ', ';\n  p {\n    margin: 1em 0;\n    line-height: 1.6;\n    max-width: 600px;\n  }\n  @media screen and (max-width: 700px) {\n    padding: 20px 0;\n  }\n']);
 
 var _styledComponents = __webpack_require__(2);
@@ -634,6 +634,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var SpecificBlock = exports.SpecificBlock = (0, _injectStyles2.default)(_styledComponents2.default.div(_templateObject, function (props) {
+  return props.groupedSimple ? '9px dashed hotpink' : 'none';
+}, function (props) {
   return props.grouped ? '20px 24px 20px' : '30px 33px 36px';
 }, function (_ref) {
   var styles = _ref.styles;
@@ -2387,7 +2389,7 @@ function PureBlock(props) {
       ),
       _react2.default.createElement(_Html2.default, { text: props.text }),
       props.children.map(function (block) {
-        return _react2.default.createElement(ConnectedBlock, _extends({ grouped: true, key: block.property }, block));
+        return _react2.default.createElement(ConnectedBlock, _extends({ grouped: true, simple: props.simple, key: block.property }, block));
       })
     );
   }
@@ -2405,6 +2407,7 @@ function PureBlock(props) {
     {
       id: props.property,
       grouped: props.grouped,
+      groupedSimple: props.simple,
       disabled: props.disabled
     },
     _react2.default.createElement(
@@ -2443,6 +2446,7 @@ PureBlock.defaultProps = {
   children: [],
   disabled: false,
   grouped: false,
+  simple: false,
   validator: false,
   currentValue: undefined
 };
@@ -2454,6 +2458,7 @@ PureBlock.propTypes = {
   property: _propTypes2.default.string.isRequired,
   image: _propTypes2.default.object,
   grouped: _propTypes2.default.bool,
+  simple: _propTypes2.default.bool,
   disabled: _propTypes2.default.bool,
   errors: _propTypes2.default.arrayOf(_propTypes2.default.any),
   errorDescription: _propTypes2.default.string,

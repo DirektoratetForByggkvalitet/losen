@@ -35,7 +35,8 @@ storiesOf('DSL', module)
   .add('Parsing', require('./dsl/parsing').default);
 
 storiesOf('Visual primitives', module)
-  .add('Intro', () => <div>Interesting stuff about 🌈 and 💅</div>);
+  .add('Intro', require('./primitives/intro').default)
+  .add('Buttons', require('./primitives/buttons').default);
 
 storiesOf('Navigation', module)
   .add('with Next', () => <Navigation page={0} />)
