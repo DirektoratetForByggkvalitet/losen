@@ -3,21 +3,11 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import get from 'lodash.get';
 
-import ApprovalAreas from '../ApprovalAreas';
-import { H3 } from '../../primitives/Heading';
-import { SpecificBlock as StyledBlock } from '../../primitives/Block';
-import VariableText from '../helper/VariableText';
-
 export default class FetchSG extends Component {
   static propTypes = {
     source: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-    heading: PropTypes.string,
-    text: PropTypes.string,
-    currentValue: PropTypes.any,
-    invalidapproval: PropTypes.string,
   };
 
   static defaultProps = {
@@ -86,8 +76,10 @@ export default class FetchSG extends Component {
   }
 
   render() {
-    const { disabled, property, heading, text, invalidapproval } = this.props;
-    const { loading } = this.state;
+    // const { disabled, property, heading, text, invalidapproval } = this.props;
+    // const { loading } = this.state;
+    return <h1>fetchsg not longer a block remove from api</h1>;
+    /*
     return (
       <div>
         {get(this.props, 'currentValue.fetch')}
@@ -112,5 +104,6 @@ export default class FetchSG extends Component {
         </StyledBlock>
       </div>
     );
+    */
   }
 }
