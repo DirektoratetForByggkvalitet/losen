@@ -63,6 +63,7 @@ export default function SchemaBuildingBlocks() {
       <ul>
         <li><code>heading</code>: The heading for the group. <strong>Required.</strong></li>
         <li><code>text</code>: A description for the group to follow the <em>heading</em></li>
+        <li><code>simple</code>: Show as a simple group, with less spacing</li>
         <li><code>children</code>: An array of nodes. Any type except page. <strong>Required</strong></li>
       </ul>
 
