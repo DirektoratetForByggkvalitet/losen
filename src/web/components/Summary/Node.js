@@ -42,7 +42,8 @@ function NodeSummary({
     <StyledNodeSummary>
       <H5>{heading}</H5>
       <ValueSummary value={value} />
-      {errors.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}
+      {errors.validation.error ? <ErrorMessage><ErrorIcon />{errors.validation.message}</ErrorMessage> : null}
+      {errors.disabled.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}
     </StyledNodeSummary>
   );
 }

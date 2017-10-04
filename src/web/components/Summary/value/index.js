@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Value as StyledValue } from '../../../primitives/Summary';
 
 export default function Value({ value }) {
-  if (value === undefined) {
+  if (value === undefined || value === null) {
     return <StyledValue missing>* Må fylles ut</StyledValue>;
   }
 
@@ -12,7 +12,7 @@ export default function Value({ value }) {
     const values = Object.keys(value).filter(key => value[key]);
 
     if (!values.length) {
-      return <StyledValue missing>* Må fylles ut</StyledValue>;
+      return <StyledValue>Ingen valgt</StyledValue>;
     }
 
     const commaSeparated = values.slice(0, -1);

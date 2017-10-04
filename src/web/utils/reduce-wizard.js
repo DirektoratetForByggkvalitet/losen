@@ -3,6 +3,7 @@
 import parseExpression from '../../shared/utils/dsl';
 import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
+import { getNodeValue } from './selectors';
 
 export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
@@ -35,7 +36,24 @@ export const reduceBranches = state => (res, node) => {
 };
 
 export const mapWizardChildren = (state, nodeTitles) => (node) => {
-  const errors = node.disabled ? parseExpression(node.disabled)(state[NAME]).errors : [];
+  const currentValue = node.property ? getNodeValue(node.property, state) : undefined;
+
+  const errors = { disabled: [], validation: {} };
+
+  if (node.disabled) {
+    errors.disabled = parseExpression(node.disabled)(state[NAME]).errors;
+  }
+
+  if (node.validator) {
+    errors.validation = {
+      error: !new RegExp(node.validator.pattern).test(`${currentValue}`),
+      message: node.validator.error,
+    };
+  }
+
+  if (!['Image', 'Text', 'Group', 'Checkbox'].includes(node.type)) {
+    errors.required = currentValue === undefined;
+  }
 
   if (node.type === 'Result') {
     return node;
@@ -44,8 +62,9 @@ export const mapWizardChildren = (state, nodeTitles) => (node) => {
   if (!node.children) {
     return {
       ...node,
+      currentValue,
       errors,
-      errorDescription: vocalizeErrors(errors, nodeTitles),
+      errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
     };
   }
 

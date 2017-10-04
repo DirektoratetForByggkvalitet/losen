@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import get from 'lodash.get';
 
 import Checkbox from './checkbox/Checkbox';
 import Image from './Image';
@@ -173,11 +172,10 @@ PureBlock.propTypes = {
 const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
-    currentValue: get(state[NAME], props.property),
     disabled:
-      props.errors &&
-      ((Array.isArray(props.errors) && props.errors.length > 0) ||
-        (props.errors.errors && props.errors.errors.length > 0)),
+      props.errors && props.errors.disabled &&
+      ((Array.isArray(props.errors.disabled) && props.errors.disabled.length > 0) ||
+        (props.errors.disabled.errors && props.errors.disabled.errors.length > 0)),
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);

@@ -27,10 +27,12 @@ export default class Input extends Component {
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     currentValue: PropTypes.any,
-    validation: PropTypes.shape({
-      error: PropTypes.bool,
-      message: PropTypes.string,
-    }),
+    errors: PropTypes.shape({
+      validation: PropTypes.shape({
+        error: PropTypes.bool,
+        message: PropTypes.string,
+      }),
+    }).isRequired,
     disabled: PropTypes.bool,
     update: PropTypes.func,
   };
@@ -45,30 +47,45 @@ export default class Input extends Component {
       value = parseFloat(value);
     }
 
+    if (type === 'number' && isNaN(value)) {
+      value = undefined;
+    }
+
     update(value);
     setData(property, value);
   };
 
   render() {
-    const { currentValue, placeholder, min, max, type, step, validation, disabled } = this.props;
+    const {
+      currentValue,
+      placeholder,
+      min,
+      max,
+      type,
+      step,
+      errors,
+      disabled,
+    } = this.props;
 
     return (
       <div>
         <StyledInput
           type={type}
-          min={min}
-          max={max}
-          step={step}
           placeholder={placeholder}
           onChange={this.handleChange}
           value={currentValue}
-          validation={validation}
+          validation={errors.validation}
           disabled={disabled}
+          {...(type === 'number' ? {
+            min,
+            max,
+            step,
+          } : {})}
         />
 
-        {validation.error && (
+        {errors.validation.error && (
           <ErrorMessage>
-            <ErrorIcon /> {validation.message}
+            <ErrorIcon /> {errors.validation.message}
           </ErrorMessage>
         )}
       </div>

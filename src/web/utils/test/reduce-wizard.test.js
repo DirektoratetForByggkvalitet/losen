@@ -45,19 +45,26 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Radio', errors: [], errorDescription: '' },
+          {
+            currentValue: undefined,
+            type: 'Radio',
+            errors: { disabled: [], validation: {}, required: true },
+            errorDescription: '',
+          },
           {
             type: 'Group',
             children: [
               {
+                currentValue: undefined,
                 type: 'Input',
-                errors: [],
+                errors: { disabled: [], validation: {}, required: true },
                 errorDescription: '',
               },
               {
+                currentValue: undefined,
                 type: 'Input',
                 hidden: { field: 'foo', operator: 'neq', value: 'bar' },
-                errors: [],
+                errors: { disabled: [], validation: {}, required: true },
                 errorDescription: '',
               },
             ],

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import get from 'lodash.get';
 
-import Number from './Number';
+import Input from './Input';
 import { H3 } from '../../primitives/Heading';
 import DL from '../../primitives/Datalist';
 import ErrorIcon from '../graphics/ErrorIcon';
@@ -47,6 +47,7 @@ export default class FetchOrg extends Component {
     const postplace = get(data, 'data[0].forretningsadresse.poststed');
     const address = get(data, 'data[0].forretningsadresse.adresse');
     this.setState({ loading: false });
+
     setData(property, {
       orgid,
       name,
@@ -59,7 +60,7 @@ export default class FetchOrg extends Component {
 
   update(value) {
     const { property, setData } = this.props;
-    if (value.toString().length === 9) {
+    if (value && value.toString().length === 9) {
       this.setState({ loading: true });
       this.fetchData(value);
     } else {
@@ -72,15 +73,13 @@ export default class FetchOrg extends Component {
     const { information, property, setData } = this.props;
     return (
       <div>
-        <Number
+        <Input
           {...this.props}
           currentValue={get(this.props, 'currentValue.orgid')}
           setData={(unused, value) => {
             setData(property, { orgid: value });
           }}
           update={this.update}
-          minimum={0}
-          maximum={999999999}
         />
         {loading && <H3>Laster inn data...</H3>}
         {get(this.props, 'currentValue.data', false) && (

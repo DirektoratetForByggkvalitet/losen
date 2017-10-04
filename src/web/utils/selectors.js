@@ -10,49 +10,22 @@ export function getData(state) {
   return state[NAME] || {};
 }
 
-/**
- * Validates a node and returns an array of errors (if any)
- *
- * @param string property
- * @param object state
- */
-export function validateNode(node, state) {
-  if (!node.property) {
-    return [];
-  }
+export function getNodeErrors(node) {
+  const errors = { validation: {}, disabled: [], ...node.errors };
 
-  const errors = [];
-
-  // Image and text isn't stored, so no value is required
-  if (['Image', 'Text', 'Group'].includes(node.type)) {
-    return errors;
-  }
-
-  // Checks for fields that are required but not provided
-  if (typeof get(getData(state), node.property) === 'undefined') {
-    errors.push({ type: 'required' });
-  }
-
-  return errors;
-}
-
-export function getValidatedSchema(schema, state) {
-  const pages = reduceWizard(schema, state);
-
-  return pages.map(page => ({
-    ...page,
-    children: (page.children || []).map(node => ({
-      ...node,
-      errors: validateNode(node, state),
-    })),
-  }));
+  return (
+    errors.disabled.length
+    + (errors.required ? 1 : 0)
+    + (errors.validation.error ? 1 : 0)
+    + (node.children || []).reduce((sum, child) => sum + getNodeErrors(child), 0)
+  );
 }
 
 export function getPages(schema, state) {
-  const pages = getValidatedSchema(schema, state);
+  const pages = reduceWizard(schema, state);
 
-  return pages.map(({ children, ...rest }) => {
-    const errorCount = children.reduce((res, node) => res + node.errors.length, 0);
+  return pages.map(({ children = [], ...rest }) => {
+    const errorCount = children.reduce((res, node) => res + getNodeErrors(node), 0);
 
     return {
       ...rest,
@@ -63,17 +36,21 @@ export function getPages(schema, state) {
 }
 
 export function getErrorPages(schema, state) {
-  const pages = getValidatedSchema(schema, state);
+  const pages = reduceWizard(schema, state);
 
-  return pages.reduce((res, { id, title, type, children }) => ([
+  return pages.reduce((res, { id, title, type, children = [] }) => ([
     ...res,
     {
       id,
       type,
       title,
-      errorNodes: children.filter(
-        ({ errors }) => errors.length,
-      ).map(({ property, heading, errors }) => ({ property, heading, errors })),
+      errorNodes: children
+        .filter(node => getNodeErrors(node) > 0)
+        .map(({
+          property,
+          heading,
+          errors,
+        }) => ({ property, heading, errors })),
     },
   ]), []).filter(({ errorNodes }) => errorNodes.length);
 }
