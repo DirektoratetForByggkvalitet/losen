@@ -10,16 +10,23 @@ import StyleProvider from '../../src/web/components/StyleProvider';
 addDecorator(storyFn => (
   <div className="container">
     <link href="/storybook.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i"
+      rel="stylesheet"
+    />
 
-    <StyleProvider styles={{ font: { primary: 'Source Sans Pro', secondary: 'Source Sans Pro' } }}>
+    <StyleProvider
+      styles={{
+        font: { primary: 'Source Sans Pro', secondary: 'Source Sans Pro' },
+      }}
+    >
       {storyFn()}
     </StyleProvider>
   </div>
 ));
 
 storiesOf('Welcome', module)
-  .add('to the wizard framework', require('./welcome').default)
+  .add('to the Losen framework', require('./welcome').default)
   .add('Getting started', require('./welcome/gettingStarted').default);
 
 storiesOf('Schema', module)
