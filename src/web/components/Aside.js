@@ -30,8 +30,6 @@ export default class Aside extends Component {
     const { page: currentPage = {}, setPage, tableOfContents, heading } = this.props;
     const { tocExpanded } = this.state;
 
-    console.log(this.props);
-
     return (
       <div>
         <Button onClick={this.toggleToc}>
