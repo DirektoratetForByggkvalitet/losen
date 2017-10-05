@@ -89,7 +89,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
     };
   }
 
-  if (!['Image', 'Text', 'Group', 'Checkbox'].includes(node.type)) {
+  if (!node.optional && !['Image', 'Text', 'Group'].includes(node.type)) {
     errors.required = currentValue === undefined;
   }
 

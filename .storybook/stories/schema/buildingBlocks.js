@@ -87,6 +87,7 @@ export default function SchemaBuildingBlocks() {
           evaluates to a falsy value, the field will still show, but it will be disabled and a message will explain what prerequisites
           has not been met.
         </li>
+        <li><code>optional</code>: Mark input as optional. By default all fields are required.</li>
       </ul>
 
       <H3>Answer</H3>
