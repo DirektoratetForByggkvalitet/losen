@@ -4,13 +4,7 @@ import PropTypes from 'prop-types';
 import DL from '../../../primitives/Datalist';
 
 export default function FetchOrgSummary({
-  value: {
-    orgid,
-    name,
-    address,
-    postcode,
-    postplace,
-  } = {},
+  value: { orgid, name, address, postcode, postplace } = {},
 }) {
   return (
     <DL>
@@ -23,14 +17,16 @@ export default function FetchOrgSummary({
       <dd>{address}</dd>
 
       <dt>Postnummer- og sted</dt>
-      <dd>{postcode} {postplace}</dd>
+      <dd>
+        {postcode} {postplace}
+      </dd>
     </DL>
   );
 }
 
 FetchOrgSummary.propTypes = {
   value: PropTypes.shape({
-    orgid: PropTypes.number,
+    orgid: PropTypes.string,
     name: PropTypes.string,
     address: PropTypes.string,
     postcode: PropTypes.string,
