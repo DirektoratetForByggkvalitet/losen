@@ -98,6 +98,7 @@ export function PureBlock(props) {
 
   return (
     <StyledBlock
+      data-id={props.id}
       id={props.property}
       grouped={props.grouped}
       groupedSimple={props.simple}
@@ -134,6 +135,7 @@ export function PureBlock(props) {
 }
 
 PureBlock.defaultProps = {
+  id: null,
   heading: '',
   text: '',
   image: {},
@@ -148,6 +150,7 @@ PureBlock.defaultProps = {
 };
 
 PureBlock.propTypes = {
+  id: PropTypes.string,
   type: PropTypes.string.isRequired,
   heading: PropTypes.string,
   text: PropTypes.string,

@@ -18,7 +18,7 @@ import ExportData from './ExportData';
 function Result({
   errorPages,
   previousPage,
-  title,
+  heading,
   children = [],
   pageid,
   lead,
@@ -43,7 +43,7 @@ function Result({
 
   return (
     <Main>
-      <H2>{title}</H2>
+      <H2>{heading}</H2>
       <Lead>
         <Html text={lead} />
       </Lead>
@@ -117,7 +117,7 @@ function Result({
 Result.propTypes = {
   exports: PropTypes.objectOf(PropTypes.func),
   exporter: PropTypes.string,
-  title: PropTypes.string,
+  heading: PropTypes.string,
   summary: PropTypes.bool,
   lead: PropTypes.string,
   children: PropTypes.array,
@@ -129,7 +129,7 @@ Result.propTypes = {
 };
 
 Result.defaultProps = {
-  title: 'Missing page title',
+  heading: 'Missing page heading',
   lead: '',
   children: [],
   schema: [],

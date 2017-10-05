@@ -10,16 +10,9 @@ import StyleProvider from '../../src/web/components/StyleProvider';
 addDecorator(storyFn => (
   <div className="container">
     <link href="/storybook.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Mono:300,400" rel="stylesheet" />
 
-    <StyleProvider
-      styles={{
-        font: { primary: 'Source Sans Pro', secondary: 'Source Sans Pro' },
-      }}
-    >
+    <StyleProvider styles={{ font: { primary: 'Source Sans Pro', secondary: 'Source Sans Pro' } }}>
       {storyFn()}
     </StyleProvider>
   </div>
@@ -33,7 +26,8 @@ storiesOf('Schema', module)
   .add('Intro', require('./schema/intro').default)
   .add('The building blocks', require('./schema/buildingBlocks').default)
   .add('Branching', require('./schema/branching').default)
-  .add('Validation', require('./schema/validation').default);
+  .add('Validation', require('./schema/validation').default)
+  .add('Translating', require('./schema/translating').default);
 
 storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)

@@ -3,8 +3,8 @@ import parseExpression from '../dsl';
 const inputRequiredProperties = ['property', 'heading'];
 
 const requiredProperties = {
-  Page: ['title', 'lead', 'children'],
-  Result: ['title'],
+  Page: ['heading', 'lead', 'children'],
+  Result: ['heading'],
   Group: ['heading', 'children'],
   Answer: ['text', 'value'],
   Image: ['image'],
@@ -21,9 +21,9 @@ const requiredProperties = {
 /**
  * Validate that the metadata is ok
  */
-function validateMeta({ title }) {
-  if (!title) {
-    return [{ path: 'meta', error: 'Missing title in meta' }];
+function validateMeta({ heading }) {
+  if (!heading) {
+    return [{ path: 'meta', error: 'Missing heading in meta' }];
   }
 
   return [];

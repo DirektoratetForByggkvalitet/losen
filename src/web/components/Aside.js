@@ -11,7 +11,7 @@ import AsideReset from './AsideReset';
 // @todo Use a more robust id for the page
 export default class Aside extends Component {
   static defaultProps = {
-    title: 'Missing page title',
+    heading: 'Missing page heading',
     page: 0,
   };
 
@@ -19,7 +19,7 @@ export default class Aside extends Component {
     page: PropTypes.string,
     setPage: PropTypes.func.isRequired,
     tableOfContents: PropTypes.array.isRequired,
-    title: PropTypes.string,
+    heading: PropTypes.string,
   };
 
   state = { tocExpanded: true };
@@ -27,8 +27,10 @@ export default class Aside extends Component {
   toggleToc = () => this.setState({ tocExpanded: !this.state.tocExpanded });
 
   render() {
-    const { page: currentPage = {}, setPage, tableOfContents, title } = this.props;
+    const { page: currentPage = {}, setPage, tableOfContents, heading } = this.props;
     const { tocExpanded } = this.state;
+
+    console.log(this.props);
 
     return (
       <div>
@@ -38,7 +40,7 @@ export default class Aside extends Component {
 
         <StyledAside tocExpanded={tocExpanded}>
           <H1 small>
-            {title}
+            {heading}
           </H1>
           {tableOfContents.map(
             (page, index) =>
@@ -46,7 +48,7 @@ export default class Aside extends Component {
                 ? <AsideResult
                   key={page.id}
                   id={page.id}
-                  title={page.title}
+                  heading={page.heading}
                   setPage={setPage}
                   done={!page.errors}
                   active={page.id === currentPage}
@@ -55,7 +57,7 @@ export default class Aside extends Component {
                   key={page.id} // eslint-disable-line react/no-array-index-key
                   id={page.id}
                   index={index + 1}
-                  title={page.title}
+                  heading={page.heading}
                   setPage={setPage}
                   done={!page.errors}
                   active={page.id === currentPage}

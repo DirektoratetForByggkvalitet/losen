@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyledAsideItem from '../primitives/AsideItem';
 
-export default function AsideItem({ setPage, id, done, title, active, index }) {
+export default function AsideItem({ setPage, id, done, heading, active, index }) {
   return (
     <StyledAsideItem active={active} done={done} onClick={() => setPage(id)} tabIndex="0">
       <div>
         {index}
       </div>
       <p>
-        {title}
+        {heading}
         <span>Endre svar</span>
       </p>
     </StyledAsideItem>
@@ -17,7 +17,7 @@ export default function AsideItem({ setPage, id, done, title, active, index }) {
 }
 
 AsideItem.defaultProps = {
-  title: 'TITLE MISSING',
+  heading: 'TITLE MISSING',
   done: false,
   active: false,
 };
@@ -26,7 +26,7 @@ AsideItem.propTypes = {
   active: PropTypes.bool,
   index: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  title: PropTypes.string,
+  heading: PropTypes.string,
   done: PropTypes.bool,
   setPage: PropTypes.func.isRequired,
 };

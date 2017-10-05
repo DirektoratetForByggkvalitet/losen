@@ -11,7 +11,7 @@ import Main from '../primitives/grid/Main';
 export default function Page({
   nextPage,
   previousPage,
-  title,
+  heading,
   children = [],
   pageid,
   firstPage,
@@ -31,7 +31,7 @@ export default function Page({
   }
   return (
     <Main>
-      <H2>{title}</H2>
+      <H2>{heading}</H2>
       <Lead>
         <Html text={lead} />
       </Lead>
@@ -42,12 +42,12 @@ export default function Page({
 }
 
 Page.defaultProps = {
-  title: 'Missing page title',
+  heading: 'Missing page heading',
   lead: '',
 };
 
 Page.propTypes = {
-  title: PropTypes.string,
+  heading: PropTypes.string,
   lead: PropTypes.string,
   children: PropTypes.array.isRequired,
   pageid: PropTypes.string.isRequired,

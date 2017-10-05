@@ -23,11 +23,21 @@ class Wizard extends Component {
     exports: PropTypes.objectOf(PropTypes.func),
     styles: PropTypes.object,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
+    translations: PropTypes.objectOf(PropTypes.shape({
+      heading: PropTypes.string,
+      description: PropTypes.string,
+      tooltips: PropTypes.string,
+      image: PropTypes.shape({
+        small: PropTypes.string.isRequired,
+        large: PropTypes.string.isRequired,
+      }),
+    })),
   };
 
   static defaultProps = {
     styles: {},
     exports: {},
+    translations: {},
   };
 
   constructor(props) {
@@ -41,7 +51,7 @@ class Wizard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
-      track(this.props.schema.filter(item => item.id === this.state.page)[0].title);
+      track(this.props.schema.filter(item => item.id === this.state.page)[0].heading);
     }
   }
 
@@ -98,7 +108,7 @@ class Wizard extends Component {
             <Aside
               page={page.id}
               setPage={this.setPage}
-              title={wizard.meta.title}
+              heading={wizard.meta.title}
               tableOfContents={tableOfContents}
             />
             {page.type === 'Result' ? (
@@ -130,12 +140,12 @@ class Wizard extends Component {
   }
 }
 
-const mapStateToProps = (state, { wizard }) => {
-  const nodeTitles = getNodeTitles(wizard.schema);
+const mapStateToProps = (state, { wizard, translations }) => {
+  const nodeTitles = getNodeTitles(wizard.schema, translations);
 
   return {
-    tableOfContents: getPages(wizard.schema, state),
-    schema: reduceWizard(wizard.schema, state, nodeTitles),
+    tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
+    schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
   };
 };
 

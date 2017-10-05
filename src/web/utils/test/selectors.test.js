@@ -3,7 +3,7 @@ import {
 } from '../selectors';
 
 describe('state selectors', () => {
-  it('gets titles for nodes in schema', () => {
+  it('gets headings for nodes in schema', () => {
     const wizard = [
       {
         type: 'Page',
@@ -20,7 +20,7 @@ describe('state selectors', () => {
           },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', heading: 'Foobar' },
     ];
 
     expect(getNodeTitles(wizard)).toEqual({

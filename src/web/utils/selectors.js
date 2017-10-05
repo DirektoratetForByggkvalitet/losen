@@ -21,8 +21,8 @@ export function getNodeErrors(node) {
   );
 }
 
-export function getPages(schema, state) {
-  const pages = reduceWizard(schema, state);
+export function getPages(schema, state, nodeTitles, translations) {
+  const pages = reduceWizard(schema, state, nodeTitles, translations);
 
   return pages.map(({ children = [], ...rest }) => {
     const errorCount = children.reduce((res, node) => res + getNodeErrors(node), 0);
@@ -38,12 +38,12 @@ export function getPages(schema, state) {
 export function getErrorPages(schema, state) {
   const pages = reduceWizard(schema, state);
 
-  return pages.reduce((res, { id, title, type, children = [] }) => ([
+  return pages.reduce((res, { id, heading: pageHeading, type, children = [] }) => ([
     ...res,
     {
       id,
       type,
-      title,
+      heading: pageHeading,
       errorNodes: children
         .filter(node => getNodeErrors(node) > 0)
         .map(({
@@ -55,20 +55,22 @@ export function getErrorPages(schema, state) {
   ]), []).filter(({ errorNodes }) => errorNodes.length);
 }
 
-export function getNodeTitles(schema) {
+export function getNodeTitles(schema, translations) {
   return schema.reduce((res, node) => ({
     ...res,
-    ...(node.property ? { [node.property]: node.heading || node.property } : {}),
-    ...(node.children ? getNodeTitles(node.children) : {}),
+    ...(node.property ? {
+      [node.property]: (
+        (node.id && get(translations, `['${node.id}'].heading`))
+        || node.heading
+        || node.property
+      ),
+    } : {}),
+    ...(node.children ? getNodeTitles(node.children, translations) : {}),
     ...(node.branches ? node.branches.reduce((branchesRes, branch) => ({
       ...branchesRes,
-      ...getNodeTitles(branch.children),
+      ...getNodeTitles(branch.children, translations),
     }), {}) : {}),
   }), {});
-}
-
-export function getNodeTitle(schema, property) {
-  return getNodeTitle(schema)[property] || property;
 }
 
 export function getNodeValue(property, state) {

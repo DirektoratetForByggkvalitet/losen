@@ -6,10 +6,10 @@ import { PageSummary as StyledPageSummary } from '../../primitives/Summary';
 
 import NodeSummary from './Node';
 
-export default function PageSummary({ goToPage, error, title, children }) {
+export default function PageSummary({ goToPage, error, heading, children }) {
   return (
     <StyledPageSummary error={error}>
-      <H3>{title} <Button onClick={goToPage}>Endre svar</Button></H3>
+      <H3>{heading} <Button onClick={goToPage}>Endre svar</Button></H3>
       {children.map(node => <NodeSummary {...node} />)}
     </StyledPageSummary>
   );
@@ -17,7 +17,7 @@ export default function PageSummary({ goToPage, error, title, children }) {
 
 PageSummary.propTypes = {
   goToPage: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
   children: PropTypes.array,
   error: PropTypes.bool,
 };

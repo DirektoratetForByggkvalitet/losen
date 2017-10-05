@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const SpecificBlock = injectStyles(styled.div`
+  position: relative;
   padding: ${props => props.grouped ? '20px 24px 20px' : '30px 33px 36px'};
   margin: 20px 0;
   max-width: ${({ styles }) => styles.size.blockWidth};
@@ -15,7 +16,7 @@ export const SpecificBlock = injectStyles(styled.div`
     margin-top: 0;
     font-weight: 300;
   }
-  
+
   ${props => props.grouped ? `
   h3 {
     font-size: 18px;
@@ -30,7 +31,7 @@ export const SpecificBlock = injectStyles(styled.div`
   &:nth-child(even) {
     background: none;
   }` : ' '}
-  
+
   @media screen and (max-width: 700px) {
     padding: ${props => props.grouped ? '20px 0' : '20px'};
   }

@@ -5,6 +5,44 @@ import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
 import { getNodeValue } from './selectors';
 
+export function translateNode(node, translations) {
+  if (!node.id) {
+    return node;
+  }
+
+  if (!translations[node.id]) {
+    return node;
+  }
+
+  const translation = translations[node.id];
+  const result = {};
+
+  if (translation.heading) {
+    if (node.type === 'Answer' && !translation.description) {
+      result.text = translation.heading;
+    } else {
+      result.heading = translation.heading;
+    }
+  }
+
+  if (translation.description) {
+    if (['Result', 'Page'].includes(node.type)) {
+      result.lead = translation.description;
+    } else {
+      result.text = translation.description;
+    }
+  }
+
+  if (translation.image) {
+    result.image = {
+      url: translation.image.large,
+      alt: `Illustrasjon for ${result.heading || node.heading}`,
+    };
+  }
+
+  return result;
+}
+
 export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
     return true;
@@ -35,7 +73,7 @@ export const reduceBranches = state => (res, node) => {
   return res;
 };
 
-export const mapWizardChildren = (state, nodeTitles) => (node) => {
+export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node) => {
   const currentValue = node.property ? getNodeValue(node.property, state) : undefined;
 
   const errors = { disabled: [], validation: {} };
@@ -55,13 +93,19 @@ export const mapWizardChildren = (state, nodeTitles) => (node) => {
     errors.required = currentValue === undefined;
   }
 
+  const translatedProps = translateNode(node, translations);
+
   if (node.type === 'Result') {
-    return node;
+    return {
+      ...node,
+      ...translatedProps,
+    };
   }
 
   if (!node.children) {
     return {
       ...node,
+      ...translatedProps,
       currentValue,
       errors,
       errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
@@ -70,11 +114,12 @@ export const mapWizardChildren = (state, nodeTitles) => (node) => {
 
   return {
     ...node,
-    children: reduceWizard(node.children, state, nodeTitles),
+    ...translatedProps,
+    children: reduceWizard(node.children, state, nodeTitles, translations),
   };
 };
 
-export const reduceSuggestedAnswers = state => (node) => {
+export const reduceSuggestedAnswers = (state, translations) => (node) => {
   if (!node.suggestedAnswer) {
     return node;
   }
@@ -89,16 +134,11 @@ export const reduceSuggestedAnswers = state => (node) => {
 
         return !parseExpression(hidden)(state[NAME]).valid;
       })
-      .map((option) => {
-        if (option.disabled === undefined) {
-          return option;
-        }
-
-        return {
-          ...option,
-          disabled: !parseExpression(option.disabled)(state[NAME]).valid,
-        };
-      }),
+      .map(option => ({
+        ...option,
+        ...translateNode(option, translations),
+        disabled: option.disabled && !parseExpression(option.disabled)(state[NAME]).valid,
+      })),
   };
 };
 
@@ -127,11 +167,11 @@ export const liftChildrenBranchPages = (res, node) => {
   return [...res, node];
 };
 
-export default function reduceWizard(schema, state, nodeTitles) {
+export default function reduceWizard(schema, state, nodeTitles, translations = {}) {
   return schema
     .reduce(reduceBranches(state), [])
     .filter(filterSchemaNodes(state))
-    .map(mapWizardChildren(state, nodeTitles))
-    .map(reduceSuggestedAnswers(state))
+    .map(mapWizardChildren(state, nodeTitles, translations))
+    .map(reduceSuggestedAnswers(state, translations))
     .reduce(liftChildrenBranchPages, []);
 }

@@ -26,11 +26,11 @@ describe('reduce-wizard', () => {
                     test: { field: 'foo', operator: 'eq', value: 'bar' },
                     children: [
                       { type: 'Input', hidden: { field: 'foo', operator: 'neq', value: 'bar' } },
-                      { type: 'Result', title: 'The other end' },
+                      { type: 'Result', heading: 'The other end' },
                     ],
                   },
                   {
-                    children: [{ type: 'Result', title: 'The end' }],
+                    children: [{ type: 'Result', heading: 'The end' }],
                   },
                 ],
               },
@@ -38,7 +38,7 @@ describe('reduce-wizard', () => {
           },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', heading: 'Foobar' },
     ];
 
     expect(reduceWizard(wizard, { [NAME]: { foo: 'bar' } })).toEqual([
@@ -71,7 +71,7 @@ describe('reduce-wizard', () => {
           },
         ],
       },
-      { title: 'The other end', type: 'Result' },
+      { heading: 'The other end', type: 'Result' },
     ]);
   });
 
@@ -91,13 +91,13 @@ describe('reduce-wizard', () => {
               },
               {
                 test: { field: 'foo', operator: 'neq', value: 'baz' },
-                children: [{ type: 'Result', title: 'The end' }],
+                children: [{ type: 'Result', heading: 'The end' }],
               },
             ],
           },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', heading: 'Foobar' },
     ];
 
     expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
@@ -108,7 +108,7 @@ describe('reduce-wizard', () => {
           { ...wizard[0].children[1], errors: [], errorDescription: '' },
         ],
       },
-      { title: 'The end', type: 'Result' },
+      { heading: 'The end', type: 'Result' },
     ]);
 
     expect(reduceWizard(wizard, {
@@ -123,7 +123,7 @@ describe('reduce-wizard', () => {
           { type: 'Input', errors: [], errorDescription: '' },
         ],
       },
-      { type: 'Result', title: 'The end' },
+      { type: 'Result', heading: 'The end' },
     ]);
   });
 
@@ -146,7 +146,7 @@ describe('reduce-wizard', () => {
           },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', heading: 'Foobar' },
     ];
 
     expect(reduceWizard(wizard, { [NAME]: { foo: 'test' } })).toEqual([
@@ -165,7 +165,7 @@ describe('reduce-wizard', () => {
           },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', heading: 'Foobar' },
     ]);
 
     expect(reduceWizard(wizard, {
@@ -188,7 +188,7 @@ describe('reduce-wizard', () => {
           },
         ],
       },
-      { type: 'Result', title: 'Foobar' },
+      { type: 'Result', heading: 'Foobar' },
     ]);
   });
 
@@ -222,11 +222,11 @@ describe('reduce-wizard', () => {
 
       const raw = [{
         type: 'Input',
-        title: 'Fjasebengel',
+        heading: 'Fjasebengel',
         hidden: { field: 'foo', operator: 'eq', value: 'bar' },
       }, {
         type: 'Input',
-        title: 'Floppo',
+        heading: 'Floppo',
         hidden: { field: 'foo', operator: 'neq', value: 'bar' },
       }];
 
@@ -321,7 +321,7 @@ describe('reduce-wizard', () => {
           type: 'Page',
           children: [
             { type: 'Input' },
-            { type: 'Result', title: 'Hey yo' },
+            { type: 'Result', heading: 'Hey yo' },
           ],
         },
       ];
@@ -331,7 +331,7 @@ describe('reduce-wizard', () => {
           type: 'Page',
           children: [{ type: 'Input' }],
         },
-        { type: 'Result', title: 'Hey yo' },
+        { type: 'Result', heading: 'Hey yo' },
       ]);
     });
   });
