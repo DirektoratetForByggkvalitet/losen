@@ -46,7 +46,9 @@ export default class Radio extends Component {
               {...option}
               disabled={isDisabled}
               checked={currentValue === option.value}
-              onChange={!isDisabled && this.handleChange(property, option.value)}
+              onChange={
+                !isDisabled && this.handleChange(property, option.value)
+              }
             />
           );
         })}
