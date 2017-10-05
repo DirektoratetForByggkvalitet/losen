@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 
 import { Value as StyledValue } from '../../../primitives/Summary';
 
-export default function Value({ value }) {
-  if (value === undefined || value === null) {
+export default function Value({ value, node }) {
+  if (!node.optional && [null, undefined, ''].includes(value)) {
     return <StyledValue missing>* Må fylles ut</StyledValue>;
   }
 
   if (typeof value === 'object') {
     const values = Object.keys(value).filter(key => value[key]);
 
-    if (!values.length) {
+    if (!node.optional && !values.length) {
+      return <StyledValue missing>* Må fylles ut</StyledValue>;
+    } else if (!values.length) {
       return <StyledValue>Ingen valgt</StyledValue>;
     }
 
@@ -30,6 +32,7 @@ export default function Value({ value }) {
 
 Value.propTypes = {
   value: PropTypes.any,
+  node: PropTypes.object.isRequired,
 };
 
 Value.defaultProps = {

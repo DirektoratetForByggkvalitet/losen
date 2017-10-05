@@ -89,8 +89,10 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
     };
   }
 
-  if (!node.optional && !['Image', 'Text', 'Group'].includes(node.type)) {
-    errors.required = currentValue === undefined;
+  if (!node.optional && !['Image', 'Text', 'Group', 'Checkbox'].includes(node.type)) {
+    errors.required = [null, undefined, ''].includes(currentValue);
+  } else if (!node.optional && node.type === 'Checkbox') {
+    errors.required = !currentValue || !Object.values(currentValue).filter(v => v).length;
   }
 
   const translatedProps = translateNode(node, translations);

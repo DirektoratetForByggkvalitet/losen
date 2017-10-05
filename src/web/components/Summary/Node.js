@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import { getNodeValue } from '../../utils/selectors';
 import DefaultValueSummary from './value';
 import FetchOrg from './value/FetchOrg';
 
@@ -15,15 +13,17 @@ import ErrorIcon from '../graphics/ErrorIcon';
 const ignoreNodes = ['Text', 'Image'];
 const overrideValueSummary = { FetchOrg };
 
-function NodeSummary({
-  type,
-  heading,
-  property,
-  children,
-  value,
-  errors,
-  errorDescription,
-}) {
+export default function NodeSummary({ node }) {
+  const {
+    type,
+    heading,
+    property,
+    children,
+    errors,
+    errorDescription,
+    currentValue,
+  } = node;
+
   if (ignoreNodes.includes(type) || property === undefined) {
     return null;
   }
@@ -31,7 +31,7 @@ function NodeSummary({
   if (type === 'Group') {
     return (
       <div>
-        {children.map(node => <ConnectedNodeSummary {...node} />)}
+        {children.map(child => <NodeSummary value={child.currentValue} node={child} />)}
       </div>
     );
   }
@@ -41,7 +41,7 @@ function NodeSummary({
   return (
     <StyledNodeSummary>
       <H5>{heading}</H5>
-      <ValueSummary value={value} />
+      <ValueSummary value={currentValue} node={node} />
       {errors.validation.error ? <ErrorMessage><ErrorIcon />{errors.validation.message}</ErrorMessage> : null}
       {errors.disabled.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}
     </StyledNodeSummary>
@@ -49,28 +49,22 @@ function NodeSummary({
 }
 
 NodeSummary.propTypes = {
-  type: PropTypes.string.isRequired,
-  heading: PropTypes.string,
-  property: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.object),
-  value: PropTypes.any,
-  errors: PropTypes.array,
-  errorDescription: PropTypes.string,
+  node: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    heading: PropTypes.string,
+    property: PropTypes.string,
+    children: PropTypes.arrayOf(PropTypes.object),
+    currentValue: PropTypes.any,
+    errors: PropTypes.object,
+    errorDescription: PropTypes.string,
+  }).isRequired,
 };
 
 NodeSummary.defaultProps = {
   heading: '',
   property: '',
   children: [],
-  value: undefined,
-  errors: [],
+  currentValue: undefined,
+  errors: {},
   errorDescription: '',
 };
-
-const mapStateToProps = (state, props) => ({
-  value: getNodeValue(props.property, state),
-});
-
-const ConnectedNodeSummary = connect(mapStateToProps)(NodeSummary);
-
-export default ConnectedNodeSummary;
