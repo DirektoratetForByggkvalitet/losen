@@ -17,19 +17,12 @@
     "build-storybook": "build-storybook -s ./public",
     "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/losen.git"
   },
-  "keywords": [
-    "wizard",
-    "framework",
-    "react",
-    "dibk"
-  ],
+  "keywords": ["wizard", "framework", "react", "dibk"],
   "contributors": [
     {
       "name": "Kristoffer Brabrand",
@@ -37,7 +30,7 @@
     },
     {
       "name": "Anders Olsen Sandvik",
-      "email": "anders.olsen.sandvik@netlife.com"
+      "email": "anders.sandvik@netlife.com"
     },
     {
       "name": "Elise Jakobsen",
