@@ -1,11 +1,11 @@
 {
-  "name": "dibk-wizard-framework",
+  "name": "losen",
   "version": "0.4.0",
-  "description": "Wizard rendering framework",
+  "description": "Losen - a flexible wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
-    "dibk-wizard-framework": "./bin/cli.js",
-    "dibk-wizard-framework-validate": "./bin/validate.js"
+    "losen": "./bin/cli.js",
+    "losen-validate": "./bin/validate.js"
   },
   "scripts": {
     "test": "jest",
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/netliferesearch/dibk-wizard-framework.git"
+    "url": "git+https://github.com/netliferesearch/losen.git"
   },
   "keywords": [
     "wizard",
@@ -46,9 +46,9 @@
   ],
   "license": "SEE LICENSE IN LICENCE.md",
   "bugs": {
-    "url": "https://github.com/netliferesearch/dibk-wizard-framework/issues"
+    "url": "https://github.com/netliferesearch/losen/issues"
   },
-  "homepage": "https://github.com/netliferesearch/dibk-wizard-framework#readme",
+  "homepage": "https://github.com/netliferesearch/losen#readme",
   "dependencies": {
     "chalk": "^2.1.0",
     "commander": "^2.11.0",
