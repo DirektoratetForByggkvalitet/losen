@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import get from 'lodash.get';
 
+import checkStatus from '../../../shared/checkstatus';
 import Input from './Input';
 import { H3 } from '../../primitives/Heading';
 import DL from '../../primitives/Datalist';
@@ -44,7 +45,8 @@ export default class FetchOrg extends Component {
   }
 
   fetchOrgData(orgid) {
-    fetch(`${this.props.source}%27${orgid}%27`)
+    const id = orgid.toString().replace(/\s/g, '');
+    fetch(`${this.props.source}%27${id}%27`)
       .then(response => response.json())
       .then((data) => {
         this.updateOrgData(data, orgid);
@@ -71,16 +73,15 @@ export default class FetchOrg extends Component {
   }
 
   fetchSGData(orgid) {
-    fetch(`${this.props.SGsource}${orgid}.json`)
-      .then(response => response.json())
+    const id = orgid.toString().replace(/\s/g, '');
+    fetch(`${this.props.SGsource}${id}.json`)
+      .then(checkStatus)
       .then((data) => {
         this.updateSGData(data);
       })
       .catch((error) => {
         const { property, setData } = this.props;
         setData(property, {
-          orgid,
-          name: '',
           status: '',
           validApprovalAreas: '',
           dataSG: false,
@@ -106,12 +107,12 @@ export default class FetchOrg extends Component {
 
   update(value) {
     const { property, setData } = this.props;
-    if (value && value.toString().length === 9) {
+    if (value && value.toString().replace(/\s/g, '').length === 9) {
       this.setState({ loadingOrg: true, loadingSG: true });
       this.fetchOrgData(value);
       this.fetchSGData(value);
     } else {
-      setData(property, { dataOrg: false });
+      setData(property, { dataOrg: false, dataSG: false });
     }
   }
 
