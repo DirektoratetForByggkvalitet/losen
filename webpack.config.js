@@ -16,7 +16,7 @@ module.exports = [
     output: {
       path: path.join(__dirname, 'dist'),
       filename: 'bundle.js',
-      library: 'dibk-wizard-framework',
+      library: 'losen',
       libraryTarget: 'commonjs2',
     },
     externals: {
