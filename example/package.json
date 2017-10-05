@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "dibk-wizard-framework": "^0.1.0",
+    "losen": "^0.4.0",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -21,7 +21,7 @@
     "lint:js": "eslint . --ext .jsx,.js --ignore-pattern build",
     "eject": "react-scripts eject",
     "deploy": "npm run build && firebase deploy",
-    "validate": "dibk-wizard-framework validate src/api/cat.json"
+    "validate": "losen validate src/api/cat.json"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

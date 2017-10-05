@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import { Wizard, StyleProvider } from 'dibk-wizard-framework';
+import { Wizard, StyleProvider } from 'losen';
 import store from './store';
 import cat from './api/cat.json';
 import Intro from './pages/Intro';

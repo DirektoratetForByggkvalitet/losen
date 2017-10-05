@@ -1,7 +1,7 @@
 /* globals window */
 
 import { createStore, combineReducers, compose } from 'redux';
-import { state } from 'dibk-wizard-framework';
+import { state } from 'losen';
 import { persistStore, autoRehydrate } from 'redux-persist';
 
 /**

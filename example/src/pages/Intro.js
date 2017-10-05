@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { IntroMain } from '../primitives/IntroMain';
-import { Primitives } from 'dibk-wizard-framework';
+import { Primitives } from 'losen';
 
 export default function Intro({ close }) {
   return (

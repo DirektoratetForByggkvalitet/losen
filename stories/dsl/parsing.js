@@ -14,7 +14,7 @@ export default function DslParsing() {
 
       <H2>Parse your own expressions</H2>
       <pre>{`
-import { dsl } from 'dibk-wizard-framework';
+import { dsl } from 'losen';
 
 const expression = { field: 'some.field', operator: 'gt', value: 4 };
 const data = { some: { field: 8 } };

@@ -1,5 +1,8 @@
-# DiBK wizard framework
-[![Build Status](https://travis-ci.com/netliferesearch/dibk-wizard-framework.svg?token=FNwbLhwtPg2ioyJfu4Yu&branch=master)](https://travis-ci.com/netliferesearch/dibk-wizard-framework)
+# Losen - a flexible wizard framework
+> From Norwegian _los_: a pilot (person who guides ships in and out of a harbour)
+
+[![Build Status](https://travis-ci.com/netliferesearch/losen.svg?token=FNwbLhwtPg2ioyJfu4Yu&branch=master)](https://travis-ci.com/netliferesearch/losen)
+
 
 The wizard framework contains the logic and building blocks necessary to building wizards large and small.
 
@@ -12,4 +15,4 @@ See the storybook documentation for an introduction to how to build a wizard wit
 Tests are written with jest, and can be run with `npm run test`.
 
 ## Licence
-See [LICENSE](https://github.com/netliferesearch/dibk-wizard-framework/blob/master/LICENCE.md) file.
+See [LICENSE](https://github.com/netliferesearch/losen/blob/master/LICENCE.md) file.
