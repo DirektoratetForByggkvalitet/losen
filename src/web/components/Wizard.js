@@ -5,7 +5,6 @@ import autobind from 'react-autobind';
 
 import StyleProvider from './StyleProvider';
 import Aside from './Aside';
-import Header from './Header';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
 import { getPages, getNodeTitles } from '../utils/selectors';
@@ -13,7 +12,6 @@ import track from '../utils/tracking';
 import Result from './Result';
 
 import Grid from '../primitives/grid/Grid';
-import Footer from '../primitives/grid/Footer';
 import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
@@ -104,7 +102,6 @@ class Wizard extends Component {
       <StyleProvider styles={styles}>
         <StyledWizard>
           <Grid>
-            <Header />
             <Aside
               page={page.id}
               setPage={this.setPage}
@@ -130,9 +127,6 @@ class Wizard extends Component {
                 {...page}
               />
             )}
-            <Footer>
-              <div>{wizard.meta.footer}</div>
-            </Footer>
           </Grid>
         </StyledWizard>
       </StyleProvider>

@@ -7,7 +7,6 @@ export default function Intro({ close }) {
   return (
     <Primitives.Wizard>
       <IntroMain>
-        <header className="temp">(her kommer det såklart en header lik den i selve veiviseren)</header>
         <Primitives.Heading.H1>Burde du skaffe deg katt?</Primitives.Heading.H1>
         <Primitives.Paragraphs.P>
           Dette er en veiviser for deg som vil finne ut om du er kvalifisert til å skaffe den en søt og uskyldig(?) liten katt. Det vil si om du kan ta ansvar for de delene av arbeidet som en katt vil kreve av deg, og at du står ansvarlig for at arbeidet utføres riktig. Vi hjelper deg også å lage en erklæring for ansvarsrett som du kan skrive ut, signere og sende til ansvarlig søker, men det er i en annen veiviser.<br />
