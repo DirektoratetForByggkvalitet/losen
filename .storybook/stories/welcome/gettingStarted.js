@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, H2, H3 } from '../../src/web/primitives/Heading';
+import { H1, H2, H3 } from '../../../src/web/primitives/Heading';
 
 export default function Welcome() {
   return (
@@ -8,7 +8,7 @@ export default function Welcome() {
       <H1>Getting started</H1>
       <p>
         In order to get your wizard up and running, the easiest way to go about it is to grab the example
-        repo from <a href="https://github.com/netliferesearch/dibk-wizard-framework/tree/master/example">github</a>.
+        repo from <a href="https://github.com/netliferesearch/losen/tree/master/example">github</a>.
         The example is a working wizard, where data handling, JSON export, offline storage and all is set up for you.
       </p>
 

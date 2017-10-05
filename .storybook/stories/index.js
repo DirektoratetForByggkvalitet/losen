@@ -4,8 +4,8 @@ import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react';
 /* eslint-enable */
 
-import Navigation from '../src/web/components/Navigation';
-import StyleProvider from '../src/web/components/StyleProvider';
+import Navigation from '../../src/web/components/Navigation';
+import StyleProvider from '../../src/web/components/StyleProvider';
 
 addDecorator(storyFn => (
   <div className="container">

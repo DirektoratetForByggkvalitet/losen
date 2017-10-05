@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1, H2 } from '../../src/web/primitives/Heading';
+import { H1, H2 } from '../../../src/web/primitives/Heading';
 
 export default function DslParsing() {
   return (
@@ -9,7 +9,7 @@ export default function DslParsing() {
       <p>
         The logical expressions is parsed as part of the wizard flow logic, but if you want to use
         the dsl parser to build functions from logical expressions you can do so by importing it
-        from the <code>dibk-wizard-framework</code>.
+        from the <code>losen</code>.
       </p>
 
       <H2>Parse your own expressions</H2>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { H1 } from '../../src/web/primitives/Heading';
+import { H1 } from '../../../src/web/primitives/Heading';
 
 export default function Welcome() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import { MainButton, NavButton, SmallButton } from '../../src/web/primitives/Button';
-import { H1 } from '../../src/web/primitives/Heading';
+import { MainButton, NavButton, SmallButton } from '../../../src/web/primitives/Button';
+import { H1 } from '../../../src/web/primitives/Heading';
 
 export default function PrimitivesIntro() {
   return (<div>
