@@ -1,7 +1,7 @@
 # Losen - a flexible wizard framework
 > From Norwegian _los_: a pilot (person who guides ships in and out of a harbour)
 
-[![Build Status](https://travis-ci.com/netliferesearch/losen.svg?token=FNwbLhwtPg2ioyJfu4Yu&branch=master)](https://travis-ci.com/netliferesearch/losen)
+[![Build Status](https://travis-ci.org/netliferesearch/losen.svg?branch=master)](https://travis-ci.com/netliferesearch/losen)
 
 
 The wizard framework contains the logic and building blocks necessary to building wizards large and small.
