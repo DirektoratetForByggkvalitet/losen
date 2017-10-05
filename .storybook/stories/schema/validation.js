@@ -10,8 +10,8 @@ export default function SchemaValidation() {
         Since the schema has a lot of properties and quite a few things can go awry. To make it
         a little easier to find out if the schema is OK, the wizard framework provides a CLI
         tool that can be used to validate the schema. The
-        <a href="https://github.com/netliferesearch/losen/tree/master/example">example wizard</a>
-        contains an npm script (<code>validate</code>) that validates the schema that comes with
+         <a href="https://github.com/netliferesearch/losen/tree/master/example">example wizard</a>
+         contains an npm script (<code>validate</code>) that validates the schema that comes with
         the example. Perform <code>npm run validate</code> to check the schema.
       </p>
 
