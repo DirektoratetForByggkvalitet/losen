@@ -82,7 +82,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
     errors.disabled = parseExpression(node.disabled)(state[NAME]).errors;
   }
 
-  if (node.validator) {
+  if (node.validator && currentValue) {
     errors.validation = {
       error: !new RegExp(node.validator.pattern).test(`${currentValue}`),
       message: node.validator.error,
