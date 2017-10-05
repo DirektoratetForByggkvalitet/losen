@@ -19,11 +19,19 @@ export default class FetchOrg extends Component {
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     currentValue: PropTypes.object,
+    SGsource: PropTypes.string,
+    SGheading: PropTypes.string,
+    SGtext: PropTypes.string,
+    invalidapproval: PropTypes.string,
   };
 
   static defaultProps = {
     information: '',
     currentValue: {},
+    SGsource: '',
+    invalidapproval: '',
+    SGheading: '',
+    SGtext: '',
   };
 
   constructor(props) {
@@ -63,10 +71,7 @@ export default class FetchOrg extends Component {
   }
 
   fetchSGData(orgid) {
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    // TODO: Put source in api
-    // Old value `${proxyurl}${this.props.source}${orgid}.json`
-    fetch(`${proxyurl}https://sgregister.dibk.no/api/enterprises/${orgid}.json`)
+    fetch(`${this.props.SGsource}${orgid}.json`)
       .then(response => response.json())
       .then((data) => {
         this.updateSGData(data);
@@ -106,14 +111,13 @@ export default class FetchOrg extends Component {
       this.fetchOrgData(value);
       this.fetchSGData(value);
     } else {
-      // TODO: Handle reset of SG data better
       setData(property, { dataOrg: false });
     }
   }
 
   render() {
     const { loadingOrg, loadingSG } = this.state;
-    const { information, property, setData } = this.props;
+    const { information, property, setData, SGheading, SGtext } = this.props;
     return (
       <div>
         <Input
@@ -148,35 +152,23 @@ export default class FetchOrg extends Component {
           </div>
         )}
         <div>
-          {get(this.props, 'currentValue.fetch')}
+          {get(this.props, 'currentValue.fetchSG', false)}
           <div>
             {loadingSG && <H3>Laster inn data...</H3>}
             {!loadingSG &&
               get(this.props, 'currentValue.dataSG', false) && (
                 <div>
                   <H3>
-                    {/* TODO: putt hardcoded text into api */}
                     <VariableText
-                      text={
-                        '${name} er registrert med sentral godkjenning for følgende områder'
-                      }
+                      text={SGheading}
                       data={this.props.currentValue}
                     />
                   </H3>
-                  <VariableText
-                    text={
-                      'Godkjenningen er til ${status.approval_period_to} og viser hvilke fagområder firmaet har kompetanse på. Du kan likevel erklære ansvar for ansvarsområder som ligger utenfor den sentrale godkjenningen hvis firmaet ditt har nødvendig kunnskap og erfaring fra også det området.'
-                    }
-                    data={this.props.currentValue}
-                  />
+                  <VariableText text={SGtext} data={this.props.currentValue} />
                   <ApprovalAreas
                     areas={get(this.props, 'currentValue.validApprovalAreas')}
                   />
                 </div>
-              )}
-            {!loadingSG &&
-              !get(this.props, 'currentValue.dataSG', false) && (
-                <H3>Kunne ikke finne </H3>
               )}
           </div>
         </div>

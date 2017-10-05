@@ -13,7 +13,6 @@ import Select from './select/Select';
 import Text from './Text';
 import Data from './Data';
 import FetchOrg from './FetchOrg';
-import FetchSG from './FetchSG';
 import Textarea from './Textarea';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -59,9 +58,6 @@ function getBlock(type) {
     case 'FetchOrg':
       return FetchOrg;
 
-    case 'FetchSG':
-      return FetchSG;
-
     default:
       return null;
   }
@@ -77,7 +73,12 @@ export function PureBlock(props) {
         <Html text={props.text} />
 
         {props.children.map(block => (
-          <ConnectedBlock grouped simple={props.simple} key={block.property} {...block} />
+          <ConnectedBlock
+            grouped
+            simple={props.simple}
+            key={block.property}
+            {...block}
+          />
         ))}
       </StyledBlock>
     );
@@ -90,8 +91,7 @@ export function PureBlock(props) {
   if (
     props.type === 'Image' ||
     props.type === 'Text' ||
-    props.type === 'Data' ||
-    props.type === 'FetchSG'
+    props.type === 'Data'
   ) {
     return <SpecificBlock grouped={props.grouped} {...props} />;
   }
@@ -173,9 +173,12 @@ const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
     disabled:
-      props.errors && props.errors.disabled &&
-      ((Array.isArray(props.errors.disabled) && props.errors.disabled.length > 0) ||
-        (props.errors.disabled.errors && props.errors.disabled.errors.length > 0)),
+      props.errors &&
+      props.errors.disabled &&
+      ((Array.isArray(props.errors.disabled) &&
+        props.errors.disabled.length > 0) ||
+        (props.errors.disabled.errors &&
+          props.errors.disabled.errors.length > 0)),
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);
