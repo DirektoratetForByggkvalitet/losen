@@ -25,9 +25,10 @@ const RadioInput = ({
       value={value}
       checked={checked}
       disabled={disabled}
+      onChange={onChange}
     />
 
-    <Label htmlFor={id} onClick={onChange}>
+    <Label htmlFor={id}>
       <div>
         {heading ? <H4>{heading}</H4> : null}
         <P>{text}</P>
