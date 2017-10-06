@@ -5,6 +5,8 @@ import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
 import { getNodeValue } from './selectors';
 
+const nonInteractiveTypes = ['Image', 'Text', 'Group', 'Table'];
+
 export function translateNode(node, translations) {
   if (!node.id) {
     return node;
@@ -116,7 +118,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
     };
   }
 
-  if (!node.optional && !['Image', 'Text', 'Group', 'Checkbox'].includes(node.type)) {
+  if (!node.optional && ![...nonInteractiveTypes, 'Checkbox'].includes(node.type)) {
     errors.required = [null, undefined, ''].includes(currentValue);
   } else if (!node.optional && node.type === 'Checkbox') {
     errors.required = !currentValue || !Object.values(currentValue).filter(v => v).length;

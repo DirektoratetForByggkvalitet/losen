@@ -172,8 +172,8 @@ PureBlock.propTypes = {
   errorDescription: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.object),
   currentValue: PropTypes.any,
-  validator: PropTypes.oneOf([
-    false,
+  validator: PropTypes.oneOfType([
+    PropTypes.bool,
     PropTypes.shape({
       error: PropTypes.string.isRequired,
       pattern: PropTypes.string.isRequired,
