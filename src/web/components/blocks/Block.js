@@ -14,6 +14,7 @@ import Text from './Text';
 import Data from './Data';
 import FetchOrg from './FetchOrg';
 import Textarea from './Textarea';
+import Table from './Table';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
 import ImageComponent from '../helper/Image';
@@ -57,6 +58,9 @@ function getBlock(type) {
 
     case 'FetchOrg':
       return FetchOrg;
+
+    case 'Table':
+      return Table;
 
     default:
       return null;

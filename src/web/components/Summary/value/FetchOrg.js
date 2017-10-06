@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Value as StyledValue } from '../../../primitives/Summary';
 import DL from '../../../primitives/Datalist';
 
 export default function FetchOrgSummary({
   value: { orgid, name, address, postcode, postplace } = {},
 }) {
+  if (!orgid) {
+    return <StyledValue missing>* Må fylles ut</StyledValue>;
+  }
+
   return (
     <DL>
       <dd>{orgid}</dd>
