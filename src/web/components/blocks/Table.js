@@ -19,16 +19,18 @@ TableCell.propTypes = {
 export default function Table({ cells }) {
   return (
     <table>
-      {cells.map(row => (
-        <tr>
-          {row.map((cell) => {
-            const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
-            const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
+      <tbody>
+        {cells.map(row => (
+          <tr>
+            {row.map((cell) => {
+              const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
+              const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
-            return <Cell {...cellProps}><Html text={cell.text} /></Cell>;
-          })}
-        </tr>
-      ))}
+              return <Cell {...cellProps}><Html text={cell.text} /></Cell>;
+            })}
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 }

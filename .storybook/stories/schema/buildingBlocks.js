@@ -14,9 +14,7 @@ export default function SchemaBuildingBlocks() {
         required in order to determine what type of node it is.
       </p>
       <p>
-        <code>id</code>: Needed in order to be able to provide a reliable way for translating texts in the wizard. This is
-        not a wizard framework core feature, and is handled outside the framework itself, but the function for merging
-        translations into the schema is provided from the wizard framework.
+        <code>id</code>: Needed in order to map texts passed as the value for the translation prop to the Wizard component.
       </p>
       <p>
         Also, the <code>hidden</code> property is available for all input and output types, as well as Select/Checkbox/Radio
@@ -95,7 +93,6 @@ export default function SchemaBuildingBlocks() {
 
       <H4>Properties</H4>
       <ul>
-
         <li><code>text</code>: Additional description that follows the heading for the answer. <strong>Required</strong></li>
         <li><code>value</code>: Option value. What is set in the data object, not visible to the user. <strong>Required</strong></li>
         <li>
@@ -105,6 +102,20 @@ export default function SchemaBuildingBlocks() {
   alt: 'alternative text'
 }`}</pre>
         </li>
+        <li>
+          <code>messages</code>: Array of <code>Message</code> nodes that can show on an Answer. The first message with either
+          no test, or a test that yields a truthy value will be returned. No more than one message will be rendered.
+        </li>
+      </ul>
+
+      <H3>Message</H3>
+      <p>Message for <code>Answer</code> that is shown if test is truthy.</p>
+
+      <H4>Property</H4>
+      <ul>
+        <li><code>text</code>: Message to show on the Answer node. <strong>Required</strong></li>
+        <li><code>warning</code>: Boolean indicating whether or not this is a warning. By default messages are not warnings</li>
+        <li><code>test</code>: A logical test used to determine whether or not to show this message</li>
       </ul>
 
       <H3>Checkbox</H3>

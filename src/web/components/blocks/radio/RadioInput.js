@@ -16,27 +16,37 @@ const RadioInput = ({
   heading,
   image,
   disabled,
-}) => (
-  <div>
-    <Input
-      type="radio"
-      name={name}
-      id={id}
-      value={value}
-      checked={checked}
-      disabled={disabled}
-      onChange={onChange}
-    />
+  messages,
+}) => {
+  const message = messages.length && messages[0]
 
-    <Label htmlFor={id}>
-      <div>
-        {heading ? <H4>{heading}</H4> : null}
-        <P>{text}</P>
-      </div>
-      {image && image.url ? <img src={image.url} alt={image.alt} /> : null}
-    </Label>
-  </div>
-);
+  return (
+    <div>
+      <Input
+        type="radio"
+        name={name}
+        id={id}
+        value={value}
+        checked={checked}
+        disabled={disabled}
+        onChange={onChange}
+      />
+
+      <Label htmlFor={id}>
+        <div>
+          <div>
+            {heading ? <H4>{heading}</H4> : null}
+            {message ? (
+              <div style={message.warning ? { color: 'red' } : {}}>{message.message}</div>
+            ) : null}
+          </div>
+          <P>{text}</P>
+        </div>
+        {image && image.url ? <img src={image.url} alt={image.alt} /> : null}
+      </Label>
+    </div>
+  );
+}
 
 export default RadioInput;
 
@@ -50,6 +60,7 @@ RadioInput.defaultProps = {
   image: {},
   checked: false,
   disabled: false,
+  messages: [],
 };
 
 RadioInput.propTypes = {
@@ -62,4 +73,5 @@ RadioInput.propTypes = {
   value: PropTypes.any.isRequired,
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
+  messages: PropTypes.arrayOf(PropTypes.object),
 };

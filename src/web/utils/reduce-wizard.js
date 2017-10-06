@@ -72,6 +72,14 @@ export const parseTableCells = state => (node) => {
   };
 };
 
+/**
+ * Parse option messages. Can be used if you need to have a message show on
+ * an option depending on some data in your state
+ */
+export const parseOptionMessages = state => (node) => {
+
+}
+
 export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
     return true;
@@ -168,6 +176,13 @@ export const reduceOptions = (state, translations) => (node) => {
       .map(option => ({
         ...option,
         ...translateNode(option, translations),
+        messages: (option.messages || []).filter((message) => {
+          if (!message.test) {
+            return true;
+          }
+
+          return parseExpression(message.test)(state[NAME]).valid;
+        }).slice(0, 1),
         disabled: option.disabled && !parseExpression(option.disabled)(state[NAME]).valid,
       })),
   };
