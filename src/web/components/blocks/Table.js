@@ -9,8 +9,12 @@ function TableHeader(props) {
 }
 
 function TableCell(props) {
-  return <td {...props} />;
+  return <td {...props} style={{ backgroundColor: props.inactive ? 'lightpink' : 'lightblue' }} />;
 }
+
+TableCell.propTypes = {
+  inactive: PropTypes.bool.isRequired,
+};
 
 export default function Table({ cells }) {
   return (
@@ -18,7 +22,7 @@ export default function Table({ cells }) {
       {cells.map(row => (
         <tr>
           {row.map((cell) => {
-            const cellProps = pick(cell, ['colspan', 'rowspan']);
+            const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
             const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
             return <Cell {...cellProps}><Html text={cell.text} /></Cell>;
@@ -35,8 +39,8 @@ Table.propTypes = {
       PropTypes.shape({
         type: PropTypes.oneOf(['Heading', 'Cell']).isRequired,
         text: PropTypes.string.isRequired,
-        colspan: PropTypes.number,
-        rowspan: PropTypes.number,
+        colSpan: PropTypes.number,
+        rowSpan: PropTypes.number,
       }),
     ),
   ).isRequired,

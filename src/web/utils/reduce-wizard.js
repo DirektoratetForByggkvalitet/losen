@@ -43,6 +43,33 @@ export function translateNode(node, translations) {
   return result;
 }
 
+/**
+ * Parse tests for cells in (the dynamic) Table in order to set the invalid
+ * property on cells that that has a test that does not evaluate to a truthy
+ * result
+ */
+export const parseTableCells = state => (node) => {
+  if (node.type !== 'Table') {
+    return node;
+  }
+
+  return {
+    ...node,
+    cells: (node.cells || []).map(row => (row || row).map((cell) => {
+      let inactive = false;
+
+      if (cell.test) {
+        inactive = !parseExpression(cell.test)(state[NAME]).valid;
+      }
+
+      return {
+        ...cell,
+        inactive,
+      };
+    })),
+  };
+};
+
 export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
     return true;
@@ -173,6 +200,7 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
   return schema
     .reduce(reduceBranches(state), [])
     .filter(filterSchemaNodes(state))
+    .map(parseTableCells(state))
     .map(mapWizardChildren(state, nodeTitles, translations))
     .map(reduceSuggestedAnswers(state, translations))
     .reduce(liftChildrenBranchPages, []);
