@@ -26,6 +26,9 @@ export const MainButton = injectStyles(styled.button`
   @media screen and (max-width: 900px) {
     min-width: 48%;
   }
+  @media print {
+      display none;
+  }
 `);
 
 export const SecondaryButton = injectStyles(styled.button`
@@ -52,6 +55,9 @@ export const SecondaryButton = injectStyles(styled.button`
   @media screen and (max-width: 900px) {
     min-width: 48%;
   }
+  @media print {
+      display none;
+  }
 `);
 
 export const SmallButton = injectStyles(styled.button`
@@ -72,6 +78,9 @@ export const SmallButton = injectStyles(styled.button`
   &:hover {
     background: ${({ styles }) => styles.color.dark};
   }
+  @media print {
+      display none;
+  }
 `);
 
 export const NavButton = injectStyles(styled.button`
@@ -89,42 +98,45 @@ export const NavButton = injectStyles(styled.button`
   border: 0 none;
   border-radius: 0;
   appearance: none;
-  margin-right: ${props => props.next ? '0' : 'auto'};
-  margin-left: ${props => props.next ? 'auto' : '0'};
+  margin-right: ${props => (props.next ? '0' : 'auto')};
+  margin-left: ${props => (props.next ? 'auto' : '0')};
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
-  &:before, &:after {
-    content: " ";
+  &:before,
+  &:after {
+    content: ' ';
     display: inline-block;
     position: absolute;
-    left: ${props => props.next ? 'auto' : '1em'};
-    right: ${props => props.next ? '1em' : 'auto'};
+    left: ${props => (props.next ? 'auto' : '1em')};
+    right: ${props => (props.next ? '1em' : 'auto')};
     top: calc(50% - 0.4rem);
     width: 0.5rem;
     height: 0.5rem;
     vertical-align: middle;
-    transform: ${props => props.next ? 'rotate(45deg)' : 'rotate(-135deg)'};
+    transform: ${props => (props.next ? 'rotate(45deg)' : 'rotate(-135deg)')};
     border: 2px solid white;
     border-width: 2px 2px 0 0;
   }
   &:before {
-    display: ${props => props.next ? 'none' : 'inline-block'};
+    display: ${props => (props.next ? 'none' : 'inline-block')};
     margin-right: 1em;
   }
   &:after {
-    display: ${props => props.next ? 'inline-block' : 'none'};
+    display: ${props => (props.next ? 'inline-block' : 'none')};
     margin-left: 1em;
   }
   &:hover {
     background: ${({ styles }) => styles.color.dark};
   }
-  &:hover::before, &:hover::after {
-    animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.8s linear infinite;
+  &:hover::before,
+  &:hover::after {
+    animation: ${props => (props.next ? 'pushnext' : 'pushprev')} 0.8s linear
+      infinite;
   }
   @media screen and (max-width: 900px) {
     min-width: 48%;
-    text-align: ${props => props.next ? 'left' : 'right'};
+    text-align: ${props => (props.next ? 'left' : 'right')};
   }
   @keyframes pushnext {
     0% {
