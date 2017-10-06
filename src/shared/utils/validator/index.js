@@ -21,8 +21,8 @@ const requiredProperties = {
 /**
  * Validate that the metadata is ok
  */
-function validateMeta({ heading }) {
-  if (!heading) {
+function validateMeta({ title }) {
+  if (!title) {
     return [{ path: ['meta'], error: 'Missing heading in meta' }];
   }
 
