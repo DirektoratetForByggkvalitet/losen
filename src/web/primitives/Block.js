@@ -11,7 +11,7 @@ export const SpecificBlock = injectStyles(styled.div`
   &:nth-child(even) {
     background: ${props => props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd'};
   }
-  box-shadow: ${props => props.grouped ? 'none' : '0 2px 4px rgba(0, 0, 0, 0.21)'};
+  box-shadow: ${props => props.grouped ? 'none' : '0 2px 3px rgba(0, 0, 0, 0.18)'};
   p {
     margin-top: 0;
     font-weight: 300;

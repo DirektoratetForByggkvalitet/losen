@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { resetData } from '../state/actions';
-import { AsideReset as StyledAsideReset } from '../primitives/AsideButton';
+import { SecondaryButton as StyledAsideReset } from '../primitives/Button';
 
 function AsideReset(props) {
   return (

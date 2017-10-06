@@ -31,11 +31,13 @@ const AsideItem = injectStyles(styled.div`
     flex-grow: 1;
     font-weight: bold;
     padding: 0 20px;
+    line-height: 1.3;
   }
   span {
     text-decoration: underline;
     color: ${({ styles }) => styles.color.light};
-    font-size: 1em;
+    font-size: 14px;
+    line-height: 1.8;
     font-weight: normal;
     display: block;
     padding: 0;
@@ -46,14 +48,14 @@ const AsideItem = injectStyles(styled.div`
     height: 0.4em;
     margin: 0.7em;
     flex-shrink: 0;
-    border-left: 3px solid ${({ styles }) => styles.color.light};
-    border-bottom: 3px solid ${({ styles }) => styles.color.light};
+    border-left: 4px solid ${({ styles }) => styles.color.light};
+    border-bottom: 4px solid ${({ styles }) => styles.color.light};
   }
   ${props =>
     props.done
       ? `
       &::after {
-        transform: rotate(-45deg);
+        transform: rotate(-46deg);
       }
       span {
         display: block;
@@ -67,6 +69,9 @@ const AsideItem = injectStyles(styled.div`
         display: none;
       }
     `} 
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
 `);
 
 export default AsideItem;

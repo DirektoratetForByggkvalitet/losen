@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AsideResult as StyledAsideResult } from '../primitives/AsideButton';
+import { MainButton as StyledAsideResult } from '../primitives/Button';
 
 export default function AsideResult({ setPage, id, active }) {
   return (
