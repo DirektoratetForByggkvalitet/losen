@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import pick from 'lodash.pick';
 
+import Html from '../helper/Html';
+
 function TableHeader(props) {
   return <th {...props} />;
 }
@@ -19,7 +21,7 @@ export default function Table({ cells }) {
             const cellProps = pick(cell, ['colspan', 'rowspan']);
             const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
-            return <Cell {...cellProps}>{cell.text}</Cell>;
+            return <Cell {...cellProps}><Html text={cell.text} /></Cell>;
           })}
         </tr>
       ))}
