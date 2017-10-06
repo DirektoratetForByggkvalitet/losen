@@ -117,8 +117,15 @@ export default class FetchOrg extends Component {
   }
 
   render() {
-    const { loadingOrg, loadingSG } = this.state;
-    const { information, property, setData, SGheading, SGtext } = this.props;
+    const { loadingSG } = this.state;
+    const {
+      information,
+      property,
+      setData,
+      SGheading,
+      SGtext,
+      invalidapproval,
+    } = this.props;
     return (
       <div>
         <Input
@@ -129,7 +136,6 @@ export default class FetchOrg extends Component {
           }}
           update={this.update}
         />
-        {loadingOrg && <H3>Laster inn data...</H3>}
         {get(this.props, 'currentValue.dataOrg', false) && (
           <div>
             <br />
@@ -171,6 +177,9 @@ export default class FetchOrg extends Component {
                   />
                 </div>
               )}
+            {!loadingSG &&
+              !get(this.props, 'currentValue.dataSG', false) &&
+              get(this.props, 'orgid', false) && <H3>{invalidapproval}</H3>}
           </div>
         </div>
       </div>
