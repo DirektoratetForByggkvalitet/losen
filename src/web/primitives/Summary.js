@@ -8,6 +8,9 @@ export const PageSummary = injectStyles(styled.div`
   background: white;
   line-height: 2;
   border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
+  &:last-of-type {
+    border-bottom: none;
+  }
   h3 {
     padding: 0.2em 0;
     margin-bottom: 20px;
@@ -45,6 +48,6 @@ export const NodeSummary = injectStyles(styled.div`
 
 export const Value = injectStyles(styled.div` 
   color: ${props => props.missing ? props.styles.color.red : 'black'};
-  font-weight: ${props => props.missing ? 'normal' : 'bold'};
+  font-weight: ${props => props.missing ? '300' : 'bold'};
   font-style: ${props => props.missing ? 'italic' : 'normal'};
 `);

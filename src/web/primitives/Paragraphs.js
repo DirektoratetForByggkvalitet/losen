@@ -11,8 +11,8 @@ export const P = injectStyles(styled.p`
 export const Lead = injectStyles(styled.div`
   font-family: ${({ styles }) => styles.font.secondary};
   font-weight: 300;
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 22px;
+  line-height: 1.36;
   margin: 16px 0 40px;
   max-width: ${({ styles }) => styles.size.blockWidth};
 `);

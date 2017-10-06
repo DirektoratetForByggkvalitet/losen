@@ -6,6 +6,7 @@ export const Checkbox = injectStyles(styled.input`
   position: absolute;
   opacity: 0;
   z-index: -1;
+  line-height: 1.4;
 
   + label {
     display: flex;
@@ -16,6 +17,7 @@ export const Checkbox = injectStyles(styled.input`
     padding: 10px;
     border-radius: 5px;
     transition: all 0.1s ease-in-out;
+    position: relative;
 
     &:before {
       content: ' ';
@@ -40,6 +42,9 @@ export const Checkbox = injectStyles(styled.input`
     p {
       margin-bottom: 0;
     }
+    h4, p {
+      line-height: 1.4;
+    }
   }
 
   :disabled + label {
@@ -56,15 +61,28 @@ export const Checkbox = injectStyles(styled.input`
       }
     }
 
-    &:focus + label,
     + label:hover {
       box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
     }
-    &:checked + label:before {
-      background: ${({ styles }) => styles.color.light};
+    &:focus + label {
+      box-shadow: 0 0 6px ${({ styles }) => styles.color.light};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
+    }
+    &:checked + label:after {
+      content: " ";
+      position: absolute;
+      left: 0.7em;
+      top: 0.7em;
+      width: 0.7em;
+      height: 0.4em;
+      transform: rotate(-46deg);
+      border-left: 4px solid ${({ styles }) => styles.color.light};
+      border-bottom: 4px solid ${({ styles }) => styles.color.light};
     }
     &:checked + label {
       box-shadow:
@@ -77,7 +95,7 @@ export const Checkbox = injectStyles(styled.input`
     &:checked:focus + label {
       box-shadow:
         0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 6px 1px ${({ styles }) => styles.color.dark};
+        0 0 6px 1px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
@@ -127,6 +145,9 @@ export const Radio = injectStyles(styled.input.attrs({
     p {
       margin-bottom: 0;
     }
+    h4, p {
+      line-height: 1.4;
+    }
   }
 
   :disabled + label {
@@ -134,9 +155,14 @@ export const Radio = injectStyles(styled.input.attrs({
   }
 
   :not(:disabled) {
-    &:focus + label,
     + label:hover {
       box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
+      &::before {
+        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+      }
+    }
+    &:focus + label {
+      box-shadow: 0 0 6px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
@@ -155,7 +181,7 @@ export const Radio = injectStyles(styled.input.attrs({
     &:checked:focus + label {
       box-shadow:
         0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 6px 1px ${({ styles }) => styles.color.dark};
+        0 0 6px 1px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
@@ -177,7 +203,7 @@ export const NumberInput = injectStyles(styled.input`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
-  min-width: 30%;
+  min-width: 20%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
     font-color: inherit;
@@ -214,6 +240,6 @@ export const Select = injectStyles(styled.select`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
-  min-width: 30%;
+  min-width: 20%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);

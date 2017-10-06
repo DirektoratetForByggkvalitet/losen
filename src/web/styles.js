@@ -4,8 +4,8 @@ export default {
     mobile: 'url("https://dibk.no/Frontend/assets/images/DiBk_logo_rgb.svg")',
   },
   font: {
-    primary: 'Open Sans',
-    secondary: 'Altis',
+    primary: '"Open Sans", arial, sans-serif',
+    secondary: '"Altis", "Open Sans", arial, sans-serif',
   },
   color: {
     light: '#00757F',
@@ -26,7 +26,7 @@ export default {
   },
   size: {
     blockWidth: '700px',
-    asideWidth: '360px',
+    navWidth: '360px',
     headerHeight: '75px',
     mobileContentWidth: '88%',
   },

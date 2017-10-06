@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-export const AsideResult = injectStyles(styled.div`
-  font-family: inherit;
+export const NavResult = injectStyles(styled.div`
+  font-family: ${({ styles }) => styles.font.secondary};
   font-size: 1em;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
   color: white;
   background: ${({ styles }) => styles.color.light};
@@ -17,8 +17,8 @@ export const AsideResult = injectStyles(styled.div`
   border-radius: 0;
   appearance: none;
   margin-top: 30px;
-  margin-right: ${props => props.next ? '0' : 'auto'};
-  margin-left: ${props => props.next ? 'auto' : '0'};
+  margin-right: ${props => (props.next ? '0' : 'auto')};
+  margin-left: ${props => (props.next ? 'auto' : '0')};
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
@@ -30,10 +30,10 @@ export const AsideResult = injectStyles(styled.div`
   }
 `);
 
-export const AsideReset = injectStyles(styled.button`
-  font-family: inherit;
+export const NavReset = injectStyles(styled.button`
+  font-family: ${({ styles }) => styles.font.secondary};
   font-size: 1em;
-  font-weight: bold;
+  font-weight: normal;
   text-align: center;
   color: ${({ styles }) => styles.color.light};
   background: white;
@@ -41,11 +41,11 @@ export const AsideReset = injectStyles(styled.button`
   padding: 12px 18px 13px;
   cursor: pointer;
   user-select: none;
-  border: 1px solid ${({ styles }) => styles.color.light};
+  border: 1px solid ${({ styles }) => styles.color.warmgray2};
   border-radius: 0;
   appearance: none;
-  margin-right: ${props => props.next ? '0' : 'auto'};
-  margin-left: ${props => props.next ? 'auto' : '0'};
+  margin-right: ${props => (props.next ? '0' : 'auto')};
+  margin-left: ${props => (props.next ? 'auto' : '0')};
   margin-bottom: 10px;
   position: relative;
   transition: all 0.1s ease-in-out;
@@ -53,8 +53,6 @@ export const AsideReset = injectStyles(styled.button`
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   &:hover {
-    border-color: ${({ styles }) => styles.color.dark};
-    color: ${({ styles }) => styles.color.dark};
+    background: ${({ styles }) => styles.color.warmgray2};
   }
 `);
-

@@ -11,10 +11,10 @@ export const MainButton = injectStyles(styled.button`
   color: white;
   background: ${({ styles }) => styles.color.light};
   min-width: 30%;
-  padding: 12px 18px 13px;
+  padding: 15px 20px 16px;
   cursor: pointer;
   user-select: none;
-  border: 0 none;
+  border: none;
   border-radius: 0;
   appearance: none;
   margin-bottom: 10px;
@@ -25,6 +25,38 @@ export const MainButton = injectStyles(styled.button`
   }
   @media screen and (max-width: 900px) {
     min-width: 48%;
+  }
+  @media print {
+      display none;
+  }
+`);
+
+export const SecondaryButton = injectStyles(styled.button`
+  font-family: ${({ styles }) => styles.font.secondary};
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: ${({ styles }) => styles.color.light};
+  background: white;
+  min-width: 30%;
+  padding: 15px 20px 16px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid ${({ styles }) => styles.color.warmgray2};
+  border-radius: 0;
+  appearance: none;
+  margin-bottom: 10px;
+  position: relative;
+  transition: background 0.1s ease-in-out;
+  &:hover {
+    background: ${({ styles }) => styles.color.warmgray2};
+  }
+  @media screen and (max-width: 900px) {
+    min-width: 48%;
+  }
+  @media print {
+      display none;
   }
 `);
 
@@ -46,6 +78,9 @@ export const SmallButton = injectStyles(styled.button`
   &:hover {
     background: ${({ styles }) => styles.color.dark};
   }
+  @media print {
+      display none;
+  }
 `);
 
 export const NavButton = injectStyles(styled.button`
@@ -57,48 +92,51 @@ export const NavButton = injectStyles(styled.button`
   color: white;
   background: ${({ styles }) => styles.color.light};
   min-width: 30%;
-  padding: 12px 18px 13px;
+  padding: 15px 20px 16px;
   cursor: pointer;
   user-select: none;
   border: 0 none;
   border-radius: 0;
   appearance: none;
-  margin-right: ${props => props.next ? '0' : 'auto'};
-  margin-left: ${props => props.next ? 'auto' : '0'};
+  margin-right: ${props => (props.next ? '0' : 'auto')};
+  margin-left: ${props => (props.next ? 'auto' : '0')};
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
-  &:before, &:after {
-    content: " ";
+  &:before,
+  &:after {
+    content: ' ';
     display: inline-block;
     position: absolute;
-    left: ${props => props.next ? 'auto' : '1em'};
-    right: ${props => props.next ? '1em' : 'auto'};
+    left: ${props => (props.next ? 'auto' : '1em')};
+    right: ${props => (props.next ? '1em' : 'auto')};
     top: calc(50% - 0.4rem);
     width: 0.5rem;
     height: 0.5rem;
     vertical-align: middle;
-    transform: ${props => props.next ? 'rotate(45deg)' : 'rotate(-135deg)'};
-    border: 3px solid white;
-    border-width: 3px 3px 0 0;
+    transform: ${props => (props.next ? 'rotate(45deg)' : 'rotate(-135deg)')};
+    border: 2px solid white;
+    border-width: 2px 2px 0 0;
   }
   &:before {
-    display: ${props => props.next ? 'none' : 'inline-block'};
+    display: ${props => (props.next ? 'none' : 'inline-block')};
     margin-right: 1em;
   }
   &:after {
-    display: ${props => props.next ? 'inline-block' : 'none'};
+    display: ${props => (props.next ? 'inline-block' : 'none')};
     margin-left: 1em;
   }
   &:hover {
     background: ${({ styles }) => styles.color.dark};
   }
-  &:hover::before, &:hover::after {
-    animation: ${props => props.next ? 'pushnext' : 'pushprev'} 0.8s linear infinite;
+  &:hover::before,
+  &:hover::after {
+    animation: ${props => (props.next ? 'pushnext' : 'pushprev')} 0.8s linear
+      infinite;
   }
   @media screen and (max-width: 900px) {
     min-width: 48%;
-    text-align: ${props => props.next ? 'left' : 'right'};
+    text-align: ${props => (props.next ? 'left' : 'right')};
   }
   @keyframes pushnext {
     0% {

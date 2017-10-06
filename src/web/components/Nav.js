@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import StyledAside from '../primitives/grid/Aside';
+import StyledNav from '../primitives/grid/Nav';
 import { H1 } from '../primitives/Heading';
 import Button from '../primitives/ToggleButton';
-import AsideItem from './AsideItem';
-import AsideResult from './AsideResult';
-import AsideReset from './AsideReset';
+import NavItem from './NavItem';
+import NavResult from './NavResult';
+import NavReset from './NavReset';
 
 // @todo Use a more robust id for the page
-export default class Aside extends Component {
+export default class Nav extends Component {
   static defaultProps = {
     heading: 'Missing page heading',
     page: 0,
@@ -27,7 +27,12 @@ export default class Aside extends Component {
   toggleToc = () => this.setState({ tocExpanded: !this.state.tocExpanded });
 
   render() {
-    const { page: currentPage = {}, setPage, tableOfContents, heading } = this.props;
+    const {
+      page: currentPage = {},
+      setPage,
+      tableOfContents,
+      heading,
+    } = this.props;
     const { tocExpanded } = this.state;
 
     return (
@@ -36,14 +41,12 @@ export default class Aside extends Component {
           {tocExpanded ? 'Vis' : 'Skjul'} innholdsfortegnelse
         </Button>
 
-        <StyledAside tocExpanded={tocExpanded}>
-          <H1 small>
-            {heading}
-          </H1>
+        <StyledNav tocExpanded={tocExpanded}>
+          <H1 small>{heading}</H1>
           {tableOfContents.map(
             (page, index) =>
-              page.type === 'Result'
-                ? <AsideResult
+              page.type === 'Result' ? (
+                <NavResult
                   key={page.id}
                   id={page.id}
                   heading={page.heading}
@@ -51,7 +54,8 @@ export default class Aside extends Component {
                   done={!page.errors}
                   active={page.id === currentPage}
                 />
-                : <AsideItem
+              ) : (
+                <NavItem
                   key={page.id} // eslint-disable-line react/no-array-index-key
                   id={page.id}
                   index={index + 1}
@@ -59,10 +63,11 @@ export default class Aside extends Component {
                   setPage={setPage}
                   done={!page.errors}
                   active={page.id === currentPage}
-                />,
+                />
+              ),
           )}
-          <AsideReset />
-        </StyledAside>
+          <NavReset />
+        </StyledNav>
       </div>
     );
   }

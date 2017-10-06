@@ -8,6 +8,7 @@ const Figure = injectStyles(styled.figure`
   max-width: ${({ styles }) => styles.size.blockWidth};
   figcaption {
     font-style: italic;
+    font-size: 14px;
   }
   @media screen and (max-width: 700px) {
     margin: 0 auto 30px;

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import autobind from 'react-autobind';
 
 import StyleProvider from './StyleProvider';
-import Aside from './Aside';
+import Nav from './Nav';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
 import { getPages, getNodeTitles } from '../utils/selectors';
@@ -21,15 +21,17 @@ class Wizard extends Component {
     exports: PropTypes.objectOf(PropTypes.func),
     styles: PropTypes.object,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
-    translations: PropTypes.objectOf(PropTypes.shape({
-      heading: PropTypes.string,
-      description: PropTypes.string,
-      tooltips: PropTypes.string,
-      image: PropTypes.shape({
-        small: PropTypes.string.isRequired,
-        large: PropTypes.string.isRequired,
+    translations: PropTypes.objectOf(
+      PropTypes.shape({
+        heading: PropTypes.string,
+        description: PropTypes.string,
+        tooltips: PropTypes.string,
+        image: PropTypes.shape({
+          small: PropTypes.string.isRequired,
+          large: PropTypes.string.isRequired,
+        }),
       }),
-    })),
+    ),
   };
 
   static defaultProps = {
@@ -49,7 +51,10 @@ class Wizard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
-      track(this.props.schema.filter(item => item.id === this.state.page)[0].heading);
+      track(
+        this.props.schema.filter(item => item.id === this.state.page)[0]
+          .heading,
+      );
     }
   }
 
@@ -73,7 +78,10 @@ class Wizard extends Component {
   }
 
   getCurrentIndex() {
-    return Math.max(0, this.props.schema.findIndex(({ id }) => id === this.state.page));
+    return Math.max(
+      0,
+      this.props.schema.findIndex(({ id }) => id === this.state.page),
+    );
   }
 
   changePage(distance) {
@@ -102,7 +110,7 @@ class Wizard extends Component {
       <StyleProvider styles={styles}>
         <StyledWizard>
           <Grid>
-            <Aside
+            <Nav
               page={page.id}
               setPage={this.setPage}
               heading={wizard.meta.title}

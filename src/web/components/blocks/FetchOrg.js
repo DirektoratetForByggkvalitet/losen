@@ -39,8 +39,7 @@ export default class FetchOrg extends Component {
     super(props);
     autobind(this);
     this.state = {
-      loadingOrg: false,
-      loadingSG: false,
+      loading: false,
     };
   }
 
@@ -59,7 +58,6 @@ export default class FetchOrg extends Component {
     const postcode = get(data, 'data[0].forretningsadresse.postnummer');
     const postplace = get(data, 'data[0].forretningsadresse.poststed');
     const address = get(data, 'data[0].forretningsadresse.adresse');
-    this.setState({ loadingOrg: false });
 
     setData(property, {
       ...this.props.currentValue,
@@ -86,7 +84,7 @@ export default class FetchOrg extends Component {
           validApprovalAreas: '',
           dataSG: false,
         });
-        this.setState({ loadingSG: false });
+        this.setState({ loading: false });
         // eslint-disable-next-line no-console
         console.log(`There is an error fetching from SG: ${error.message}`);
       });
@@ -108,7 +106,7 @@ export default class FetchOrg extends Component {
   update(value) {
     const { property, setData } = this.props;
     if (value && value.toString().replace(/\s/g, '').length === 9) {
-      this.setState({ loadingOrg: true, loadingSG: true });
+      this.setState({ loading: true });
       this.fetchOrgData(value);
       this.fetchSGData(value);
     } else {
@@ -117,8 +115,15 @@ export default class FetchOrg extends Component {
   }
 
   render() {
-    const { loadingOrg, loadingSG } = this.state;
-    const { information, property, setData, SGheading, SGtext } = this.props;
+    const { loading } = this.state;
+    const {
+      information,
+      property,
+      setData,
+      SGheading,
+      SGtext,
+      invalidapproval,
+    } = this.props;
     return (
       <div>
         <Input
@@ -129,7 +134,6 @@ export default class FetchOrg extends Component {
           }}
           update={this.update}
         />
-        {loadingOrg && <H3>Laster inn data...</H3>}
         {get(this.props, 'currentValue.dataOrg', false) && (
           <div>
             <br />
@@ -155,8 +159,8 @@ export default class FetchOrg extends Component {
         <div>
           {get(this.props, 'currentValue.fetchSG', false)}
           <div>
-            {loadingSG && <H3>Laster inn data...</H3>}
-            {!loadingSG &&
+            {loading && <H3>Laster inn data...</H3>}
+            {!loading &&
               get(this.props, 'currentValue.dataSG', false) && (
                 <div>
                   <H3>
@@ -171,6 +175,9 @@ export default class FetchOrg extends Component {
                   />
                 </div>
               )}
+            {!loading &&
+              !get(this.props, 'currentValue.dataSG', false) &&
+              get(this.props, 'orgid', false) && <H3>{invalidapproval}</H3>}
           </div>
         </div>
       </div>
