@@ -100,6 +100,7 @@ export function PureBlock(props) {
     <StyledBlock
       data-id={props.id}
       id={props.property}
+      debug={!!window.location.search.match('debug')}
       grouped={props.grouped}
       groupedSimple={props.simple}
       disabled={props.disabled}

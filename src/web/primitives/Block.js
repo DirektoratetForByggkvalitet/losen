@@ -17,6 +17,19 @@ export const SpecificBlock = injectStyles(styled.div`
     font-weight: 300;
   }
 
+  ${props => props.debug ? `
+  :before {
+    content: attr(data-id);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: deeppink;
+    color: white;
+    padding: 2px;
+    font-size: 12px;
+  }` : ''}
+
   ${props => props.grouped ? `
   h3 {
     font-size: 18px;
