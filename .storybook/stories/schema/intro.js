@@ -43,7 +43,7 @@ export default function SchemaIntro() {
         type: 'Radio',
         property: 'continue',
         heading: 'Do you want to continue?',
-        suggestedAnswer: [
+        options: [
           {
             type: 'Answer',
             text: 'Yes',
@@ -98,7 +98,7 @@ export default function SchemaIntro() {
         type: 'Radio',
         property: 'continue',
         heading: 'Do you want to continue?',
-        suggestedAnswer: [
+        options: [
           {
             type: 'Answer',
             text: 'Yes',

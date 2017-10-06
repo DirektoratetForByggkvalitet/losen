@@ -13,7 +13,7 @@ export default class Radio extends Component {
   };
 
   static propTypes = {
-    suggestedAnswer: PropTypes.array.isRequired,
+    options: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     currentValue: PropTypes.any,
@@ -31,11 +31,11 @@ export default class Radio extends Component {
   };
 
   render() {
-    const { currentValue, suggestedAnswer, property, disabled } = this.props;
+    const { currentValue, options, property, disabled } = this.props;
 
     return (
       <div>
-        {suggestedAnswer.map((option) => {
+        {options.map((option) => {
           const isDisabled = disabled || option.disabled;
 
           return (

@@ -13,7 +13,7 @@
 			"type": "Radio",
 			"heading": "Er du glad i katter?",
 			"text": "Svar helt ærlig. Dette er viktig både for katten og deg.",
-			"suggestedAnswer": [{
+			"options": [{
 				"type": "Answer",
 				"text": "Ja",
 				"value": "ja"
@@ -39,7 +39,7 @@
 						"property": "living.type",
 						"type": "Radio",
 						"heading": "Hvor bor du?",
-						"suggestedAnswer": [{
+						"options": [{
 							"type": "Answer",
 							"text": "Hybel",
 							"value": "hybel"
@@ -84,7 +84,7 @@
 								"value": "annet"
 							}]
 						},
-						"suggestedAnswer": [{
+						"options": [{
 							"type": "Answer",
 							"text": "1",
 							"value": "1"
@@ -164,7 +164,7 @@
 								"value": "annet"
 							}]
 						},
-						"suggestedAnswer": [{
+						"options": [{
 							"type": "Answer",
 							"text": "Ja",
 							"value": "ja"
@@ -188,7 +188,7 @@
 								"value": "nei"
 							}]
 						},
-						"suggestedAnswer": [{
+						"options": [{
 							"type": "Answer",
 							"text": "Ja",
 							"value": "ja"
@@ -234,7 +234,7 @@
 						"operator": "lt",
 						"value": 4
 					},
-					"suggestedAnswer": [{
+					"options": [{
 						"type": "Answer",
 						"text": "Brun",
 						"value": "brun"
@@ -291,7 +291,7 @@
 				"property": "cuddle.fur",
 				"type": "Radio",
 				"heading": "Hva slags pels liker du å kose med?",
-				"suggestedAnswer": [{
+				"options": [{
 					"type": "Answer",
 					"text": "Langhåret",
 					"value": "langharet"
@@ -305,7 +305,7 @@
 			"property": "preferences.predator",
 			"type": "Checkbox",
 			"heading": "Trenger du en katt som kan fange ekle dyr i huset ditt?",
-			"suggestedAnswer": [{
+			"options": [{
 				"type": "Answer",
 				"text": "Edderkopp",
 				"value": "edderkopp"
@@ -351,7 +351,7 @@
 			"type": "Radio",
 			"heading": "Hvilken av disse kattene foretrekker du?",
 			"text": "<a href=\"https://no.wikipedia.org/wiki/Kattefamilien\" target=\"_blank\">Les mer om katter</a>",
-			"suggestedAnswer": [{
+			"options": [{
 				"type": "Answer",
 				"heading": "Kjempesøt babykatt",
 				"text": "Denne katten er så liten at du kan ha den i lomma. Den er også kjempesøt og kjempeuskyldig. Det kan hende den bæsjer i senga di. Ingen vet hvor stor den blir, eller om den noensinne blir voksen.",
@@ -432,7 +432,7 @@
 			"type": "Radio",
 			"heading": "Hvilken tiltaksklasse er jobben?",
 			"text": "<a href=\"/somewhere\">Les mer om tiltaksklasser</a>",
-			"suggestedAnswer": [{
+			"options": [{
 				"type": "Answer",
 				"heading": "Tiltaksklasse 1",
 				"text": "Som regel vil alt arbeid med oppføring av eneboliger, tomannsboliger og rekkehus komme inn under tiltaksklasse 1. Deler av utførelsen av større boligbygninger innitil 3 etasjer kan også være tiltaksklasse 1. Likevel kan det hende at noe av arbeidet er spesielt vanskelig og må settes til tiltaksklasse 2 eller 3. ",
@@ -469,7 +469,7 @@
 			"property": "samsvar.sende",
 			"type": "Checkbox",
 			"heading": "Hvilken samsvarserklæring skal du sende?",
-			"suggestedAnswer": [{
+			"options": [{
 				"type": "Answer",
 				"heading": "1 Rammetillatelse",
 				"text": "Det første steget i en byggesak er en søknad om rammetillatelse. Her beskrives det hva man skal bygge, endre eller utbedre.",

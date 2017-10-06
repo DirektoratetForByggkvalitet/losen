@@ -12,7 +12,7 @@ export default class Checkbox extends Component {
     currentValue: {},
   };
   static propTypes = {
-    suggestedAnswer: PropTypes.array.isRequired,
+    options: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
     disabled: PropTypes.bool,
@@ -31,7 +31,7 @@ export default class Checkbox extends Component {
 
   render() {
     const {
-      suggestedAnswer,
+      options,
       property,
       disabled,
       currentValue,
@@ -39,8 +39,8 @@ export default class Checkbox extends Component {
 
     return (
       <div>
-        {suggestedAnswer &&
-          suggestedAnswer.map((option) => {
+        {options &&
+          options.map((option) => {
             const isDisabled = disabled || option.disabled;
 
             return (

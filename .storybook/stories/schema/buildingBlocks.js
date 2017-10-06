@@ -113,7 +113,7 @@ export default function SchemaBuildingBlocks() {
       <H4>Properties</H4>
       <ul>
         <li><code>text</code>: The text to follow the heading for this input field.</li>
-        <li><code>suggestedAnswer</code>: An array of <em>Answer</em> nodes. Options that the user can select. <strong>Required</strong></li>
+        <li><code>options</code>: An array of <em>Answer</em> nodes. Options that the user can select. <strong>Required</strong></li>
       </ul>
 
       <H3>Radio</H3>

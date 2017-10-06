@@ -150,14 +150,14 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
   };
 };
 
-export const reduceSuggestedAnswers = (state, translations) => (node) => {
-  if (!node.suggestedAnswer) {
+export const reduceOptions = (state, translations) => (node) => {
+  if (!node.options) {
     return node;
   }
 
   return {
     ...node,
-    suggestedAnswer: node.suggestedAnswer
+    options: node.options
       .filter(({ hidden }) => {
         if (hidden === undefined) {
           return true;
@@ -204,6 +204,6 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
     .filter(filterSchemaNodes(state))
     .map(parseTableCells(state))
     .map(mapWizardChildren(state, nodeTitles, translations))
-    .map(reduceSuggestedAnswers(state, translations))
+    .map(reduceOptions(state, translations))
     .reduce(liftChildrenBranchPages, []);
 }

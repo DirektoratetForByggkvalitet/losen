@@ -15,7 +15,7 @@ export default class Select extends Component {
   };
 
   static propTypes = {
-    suggestedAnswer: PropTypes.array.isRequired,
+    options: PropTypes.array.isRequired,
     currentValue: PropTypes.any,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
@@ -30,13 +30,13 @@ export default class Select extends Component {
   };
 
   render() {
-    const { currentValue, suggestedAnswer, defaultOption } = this.props;
+    const { currentValue, options, defaultOption } = this.props;
     const text = defaultOption || 'Velg fra listen';
     return (
       <StyledSelect value={currentValue} onChange={this.handleChange}>
         <SelectOption text={text} value={NULL_VALUE} />
 
-        {suggestedAnswer.map(option => (
+        {options.map(option => (
           <SelectOption {...option} key={option.value} />
         ))}
       </StyledSelect>

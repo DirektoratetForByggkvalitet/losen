@@ -10,9 +10,9 @@ const requiredProperties = {
   Image: ['image'],
   Text: ['text'],
   Branch: ['branches'],
-  Checkbox: [...inputRequiredProperties, 'suggestedAnswer'],
-  Radio: [...inputRequiredProperties, 'suggestedAnswer'],
-  Select: [...inputRequiredProperties, 'suggestedAnswer'],
+  Checkbox: [...inputRequiredProperties, 'options'],
+  Radio: [...inputRequiredProperties, 'options'],
+  Select: [...inputRequiredProperties, 'options'],
   Input: inputRequiredProperties,
   Number: inputRequiredProperties,
   TextArea: inputRequiredProperties,
@@ -117,11 +117,11 @@ function validateNode(node, path, ancestors) {
   }
 
   // Recurse over the options
-  if (node.suggestedAnswer) {
-    node.suggestedAnswer.forEach((option, index) => {
+  if (node.options) {
+    node.options.forEach((option, index) => {
       errors = [
         ...errors,
-        ...validateNode(option, [...path, 'suggestedAnswer', index], [...ancestors, node]),
+        ...validateNode(option, [...path, 'options', index], [...ancestors, node]),
       ];
     });
   }
