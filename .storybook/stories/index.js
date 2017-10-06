@@ -33,6 +33,7 @@ storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)
   .add('Simple types', require('./dsl/simpleTypes').default)
   .add('Complex types', require('./dsl/complexTypes').default)
+  .add('Custom errors', require('./dsl/customErrors').default)
   .add('Parsing', require('./dsl/parsing').default);
 
 storiesOf('Visual primitives', module)

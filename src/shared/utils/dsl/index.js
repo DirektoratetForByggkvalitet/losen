@@ -11,10 +11,14 @@ export function getValue(value, state) {
   return value;
 }
 
-export function buildGt({ field, value }) {
+export function buildGt({ field, value, errorMessage }) {
   return (state) => {
     if (get(state, field) > getValue(value, state)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     if (typeof value === 'object' && value.field) {
@@ -25,10 +29,14 @@ export function buildGt({ field, value }) {
   };
 }
 
-export function buildLt({ field, value }) {
+export function buildLt({ field, value, errorMessage }) {
   return (state) => {
     if (get(state, field) < getValue(value, state)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     if (typeof value === 'object' && value.field) {
@@ -39,10 +47,14 @@ export function buildLt({ field, value }) {
   };
 }
 
-export function buildGte({ field, value }) {
+export function buildGte({ field, value, errorMessage }) {
   return (state) => {
     if (get(state, field) >= getValue(value, state)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     if (typeof value === 'object' && value.field) {
@@ -56,10 +68,14 @@ export function buildGte({ field, value }) {
   };
 }
 
-export function buildLte({ field, value }) {
+export function buildLte({ field, value, errorMessage }) {
   return (state) => {
     if (get(state, field) <= getValue(value, state)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     if (typeof value === 'object' && value.field) {
@@ -73,10 +89,14 @@ export function buildLte({ field, value }) {
   };
 }
 
-export function buildEq({ field, value }) {
+export function buildEq({ field, value, errorMessage }) {
   return (state) => {
     if (get(state, field) === getValue(value, state)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     if (typeof value === 'object' && value.field) {
@@ -87,10 +107,14 @@ export function buildEq({ field, value }) {
   };
 }
 
-export function buildNeq({ field, value }) {
+export function buildNeq({ field, value, errorMessage }) {
   return (state) => {
     if (get(state, field) !== getValue(value, state)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     if (typeof value === 'object' && value.field) {
@@ -101,7 +125,7 @@ export function buildNeq({ field, value }) {
   };
 }
 
-export function buildBetween({ field, value }) {
+export function buildBetween({ field, value, errorMessage }) {
   return (state) => {
     const fieldValue = get(state, field);
     const [lower, upper] = value;
@@ -110,24 +134,36 @@ export function buildBetween({ field, value }) {
       return { valid: true, errors: [] };
     }
 
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
+    }
+
     return { valid: false, errors: [[{ field }, 'må være mellom', value[0], 'og', value[1]]] };
   };
 }
 
-export function buildRequired({ field }) {
+export function buildRequired({ field, errorMessage }) {
   return (state) => {
     if (get(state, field) !== undefined) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     return { valid: false, errors: [[{ field }, 'er påkrevd']] };
   };
 }
 
-export function buildNot({ field }) {
+export function buildNot({ field, errorMessage }) {
   return (state) => {
     if (!get(state, field)) {
       return { valid: true, errors: [] };
+    }
+
+    if (errorMessage) {
+      return { valid: false, errors: [errorMessage] };
     }
 
     return { valid: false, errors: [[{ field }, 'skal være usann']] };
@@ -167,6 +203,7 @@ export function buildValidatorForComplexExpression(expression) {
       (res, clause) => {
         const validationResult = buildValidatorFunction(clause)(state);
         let valid;
+        let errors;
 
         // If we're dealing with an or expression and the result is true
         if (expression.type === 'or' && (validationResult.valid || res.valid)) {
@@ -185,9 +222,10 @@ export function buildValidatorForComplexExpression(expression) {
           valid = res.valid || validationResult.valid;
         }
 
-        return {
-          valid,
-          errors: validationResult.valid
+        if (expression.errorMessage) {
+          errors = [expression.errorMessage];
+        } else {
+          errors = validationResult.valid
             ? res.errors
             : {
               ...res.errors,
@@ -197,8 +235,10 @@ export function buildValidatorForComplexExpression(expression) {
                   ? validationResult.errors
                   : [validationResult.errors]),
               ],
-            },
-        };
+            };
+        }
+
+        return { valid, errors };
       },
       {
         /**

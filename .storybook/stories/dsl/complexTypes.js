@@ -14,8 +14,24 @@ export default function DslComplexTypes() {
       <H2>and</H2>
       <p>Logical and. All clauses must yield a truthy value.</p>
 
+      <pre>{`{
+  type: 'and',
+  clauses: [
+    { field: 'myField', operator: 'gt', value: { field: 'yourField' } },
+    { field: 'myField', operator: 'ls', value: 1000 }
+  ]
+`}</pre>
+
       <H2>or</H2>
       <p>Logical or. At least one of the clauses must yield a truthy value.</p>
+
+      <pre>{`{
+  type: 'or',
+  clauses: [
+    { field: 'myField', operator: 'eq', value: '🦄 ' },
+    { field: 'myField', operator: 'eq', value: '🌈 ' }
+  ]
+`}</pre>
     </div>
   );
 }

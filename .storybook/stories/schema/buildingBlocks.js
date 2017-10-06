@@ -172,6 +172,44 @@ export default function SchemaBuildingBlocks() {
       <ul>
         <li><code>text</code>: Additional description that follows the heading for the answer. <strong>Required</strong></li>
       </ul>
+
+      <H3>Table</H3>
+      <p>
+        Sometimes, the need for presenting complex information in the form of a matrix arise. The <em>Table</em> features a way
+        of visualizing multiple dimensions with dynamic state that reacts to user wizard input through a dynamic structure and
+        flexible tests to mark cells as active/inactive.
+      </p>
+
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>cells</code>: A two-dimensional array of rows/cols. The cols are table cells with properties for a cell. The
+          structure looks like this 👇. <strong>Required</strong>
+
+          <pre>{`[
+  [
+    {
+      // Possible types: Heading (th) and Cell (td) - REQUIRED
+      type: 'Heading',
+
+      // How many columns this cell spans
+      colspan: 2,
+
+      // How many rows this cell spans
+      rowspan: 2,
+
+      // The text in the cell. HTML is ok - REQUIRED
+      text: 'Something interesting<br/>in this cell',
+
+      // DSL expression used to determine if this cell is active
+      test: { field: 'property.to.test', operator: 'gt', value: 2 }
+    },
+    {...}
+  ],
+  [...]
+]`}</pre>
+        </li>
+      </ul>
     </div>
   );
 }

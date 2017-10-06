@@ -2,6 +2,7 @@ import {
   getValue,
   buildValidatorForSimpleExpression,
   buildValidatorForComplexExpression,
+  buildValidatorFunction,
 } from '..';
 
 const stateData = {
@@ -429,6 +430,68 @@ describe('DSL parser', () => {
             operator: 'and',
           },
           valid: true,
+        });
+      });
+    });
+
+    describe('custom error message', () => {
+      it('is returned on simple expression error', () => {
+        const validatorFunc = buildValidatorFunction({
+          field: 'numberOfAnimals',
+          operator: 'lt',
+          errorMessage: ['👮 : More than four animals is a no-go.. 🐍  🐶  🐒  🐔'],
+          value: 4,
+        });
+
+        expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({
+          valid: false,
+          errors: [['👮 : More than four animals is a no-go.. 🐍  🐶  🐒  🐔']],
+        });
+      });
+
+      it('is returned on complex expression error', () => {
+        const validatorFunc = buildValidatorFunction({
+          type: 'and',
+          clauses: [
+            { field: 'love.cats', operator: 'eq', value: true },
+            { field: 'allergic', operator: 'eq', value: false },
+          ],
+          errorMessage: ['👮 : Something is wrong, but I won\'t say what 😜'],
+        });
+
+        expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({
+          valid: false,
+          errors: [['👮 : Something is wrong, but I won\'t say what 😜']],
+        });
+      });
+
+      it('is returned on nested expression error', () => {
+        const validatorFunc = buildValidatorFunction({
+          type: 'and',
+          clauses: [
+            {
+              field: 'love.cats',
+              operator: 'eq',
+              value: true,
+            },
+            {
+              field: 'allergic',
+              operator: 'eq',
+              value: false,
+              errorMessage: ['You can\'t get a cat if you\'re allergic 😬'],
+            },
+          ],
+        });
+
+        expect(validatorFunc({ numberOfAnimals: 5 })).toEqual({
+          errors: {
+            errors: [
+              [{ field: 'love.cats' }, 'må være lik', true],
+              ['You can\'t get a cat if you\'re allergic 😬'],
+            ],
+            operator: 'and',
+          },
+          valid: false,
         });
       });
     });
