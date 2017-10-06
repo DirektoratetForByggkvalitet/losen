@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { resetData } from '../state/actions';
-import { SecondaryButton as StyledAsideReset } from '../primitives/Button';
+import { SecondaryButton as StyledNavReset } from '../primitives/Button';
 
-function AsideReset(props) {
+function NavReset(props) {
   return (
-    <StyledAsideReset
+    <StyledNavReset
       onClick={() => {
         /* eslint no-alert: 0 */
         if (confirm('Sikker på at du vil slette all data?')) {
@@ -17,12 +17,14 @@ function AsideReset(props) {
       }}
     >
       Start på nytt
-    </StyledAsideReset>
+    </StyledNavReset>
   );
 }
 
-AsideReset.propTypes = {
+NavReset.propTypes = {
   resetData: PropTypes.func.isRequired,
 };
 
-export default connect(null, dispatch => bindActionCreators({ resetData }, dispatch))(AsideReset);
+export default connect(null, dispatch =>
+  bindActionCreators({ resetData }, dispatch),
+)(NavReset);

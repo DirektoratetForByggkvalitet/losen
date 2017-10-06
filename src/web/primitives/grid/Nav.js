@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import injectStyles from '../../utils/inject-styles';
 
-const Aside = injectStyles(styled.aside`
-  grid-area: aside;
+const Nav = injectStyles(styled.nav`
+  grid-area: nav;
   padding: 30px 20px 20px;
   margin: 0 30px;
   background: white;
@@ -23,4 +23,4 @@ const Aside = injectStyles(styled.aside`
   }
 `);
 
-export default Aside;
+export default Nav;

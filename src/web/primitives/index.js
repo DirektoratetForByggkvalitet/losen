@@ -1,5 +1,5 @@
-export AsideButton from './AsideButton';
-export AsideItem from './AsideItem';
+export NavButton from './NavButton';
+export NavItem from './NavItem';
 export Block from './Block';
 export * as Button from './Button';
 export Errors from './Errors';

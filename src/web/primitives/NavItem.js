@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const AsideItem = injectStyles(styled.div`
-  background: ${props => (props.active ? ({ styles }) => styles.color.warmgray3 : 'white')};
+const NavItem = injectStyles(styled.div`
+  background: ${props =>
+    props.active ? ({ styles }) => styles.color.warmgray3 : 'white'};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +15,8 @@ const AsideItem = injectStyles(styled.div`
   }
   div {
     color: ${props => (props.active ? 'white' : 'inherit')};
-    background: ${props => (props.active ? ({ styles }) => styles.color.dark : 'white')};
+    background: ${props =>
+    props.active ? ({ styles }) => styles.color.dark : 'white'};
     display: flex;
     align-self: stretch;
     min-width: 2.4em;
@@ -25,7 +27,9 @@ const AsideItem = injectStyles(styled.div`
   }
   &:hover div {
     background: ${props =>
-    props.active ? ({ styles }) => styles.color.dark : ({ styles }) => styles.color.warmgray3};
+    props.active
+      ? ({ styles }) => styles.color.dark
+      : ({ styles }) => styles.color.warmgray3};
   }
   p {
     flex-grow: 1;
@@ -43,7 +47,7 @@ const AsideItem = injectStyles(styled.div`
     padding: 0;
   }
   &::after {
-    content: " ";
+    content: ' ';
     width: 0.7em;
     height: 0.4em;
     margin: 0.7em;
@@ -68,10 +72,9 @@ const AsideItem = injectStyles(styled.div`
       span {
         display: none;
       }
-    `} 
-  &:last-of-type {
+    `} &:last-of-type {
     margin-bottom: 30px;
   }
 `);
 
-export default AsideItem;
+export default NavItem;
