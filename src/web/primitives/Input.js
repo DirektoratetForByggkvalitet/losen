@@ -61,7 +61,7 @@ export const Checkbox = injectStyles(styled.input`
       }
     }
 
-    label:hover {
+    + label:hover {
       box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
@@ -155,7 +155,7 @@ export const Radio = injectStyles(styled.input.attrs({
   }
 
   :not(:disabled) {
-    label:hover {
+    + label:hover {
       box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
@@ -203,7 +203,7 @@ export const NumberInput = injectStyles(styled.input`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
-  min-width: 30%;
+  min-width: 20%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
     font-color: inherit;
@@ -240,6 +240,6 @@ export const Select = injectStyles(styled.select`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
-  min-width: 30%;
+  min-width: 20%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
 `);
