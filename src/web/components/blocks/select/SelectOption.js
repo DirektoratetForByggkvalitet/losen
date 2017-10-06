@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SelectOption = props =>
-  (<option value={props.value}>
-    {props.text}
-  </option>);
-
-export default SelectOption;
+export default function SelectOption({ value, text }) {
+  return (
+    <option value={value}>
+      {text}
+    </option>
+  );
+}
 
 SelectOption.propTypes = {
   text: PropTypes.string.isRequired,

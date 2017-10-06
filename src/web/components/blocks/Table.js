@@ -16,17 +16,22 @@ TableCell.propTypes = {
   inactive: PropTypes.bool.isRequired,
 };
 
+/* eslint-disable react/no-array-index-key */
 export default function Table({ cells }) {
   return (
     <table>
       <tbody>
-        {cells.map(row => (
-          <tr>
-            {row.map((cell) => {
+        {cells.map((row, rowKey) => (
+          <tr key={rowKey}>
+            {row.map((cell, cellKey) => {
               const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
               const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
-              return <Cell {...cellProps}><Html text={cell.text} /></Cell>;
+              return (
+                <Cell {...cellProps} key={cellKey}>
+                  <Html text={cell.text} />
+                </Cell>
+              );
             })}
           </tr>
         ))}

@@ -6,7 +6,7 @@ import { Radio as Input } from '../../../primitives/Input';
 import { H4 } from '../../../primitives/Heading';
 import { P } from '../../../primitives/Paragraphs';
 
-const RadioInput = ({
+export default function RadioInput({
   id,
   text,
   name,
@@ -17,8 +17,8 @@ const RadioInput = ({
   image,
   disabled,
   messages,
-}) => {
-  const message = messages.length && messages[0]
+}) {
+  const message = messages.length && messages[0];
 
   return (
     <div>
@@ -32,7 +32,7 @@ const RadioInput = ({
         onChange={onChange}
       />
 
-      <Label htmlFor={id}>
+      <Label htmlFor={id} warning={message.warning}>
         <div>
           <div>
             {heading ? <H4>{heading}</H4> : null}
@@ -48,13 +48,8 @@ const RadioInput = ({
   );
 }
 
-export default RadioInput;
-
 RadioInput.defaultProps = {
   onChange: () => {},
-};
-
-RadioInput.defaultProps = {
   heading: '',
   text: '',
   image: {},

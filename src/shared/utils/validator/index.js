@@ -1,15 +1,15 @@
 import parseExpression from '../dsl';
 
-const inputRequiredProperties = ['property', 'heading'];
+const inputRequiredProperties = ['id', 'property', 'heading'];
 
 const requiredProperties = {
-  Page: ['heading', 'lead', 'children'],
-  Result: ['heading'],
-  Group: ['heading', 'children'],
-  Answer: ['text', 'value'],
-  Image: ['image'],
-  Text: ['text'],
-  Branch: ['branches'],
+  Page: ['id', 'heading', 'lead', 'children'],
+  Result: ['id', 'heading'],
+  Group: ['id', 'heading', 'children'],
+  Answer: ['id', 'text', 'value'],
+  Image: ['id', 'image'],
+  Text: ['id', 'text'],
+  Branch: ['id', 'branches'],
   Checkbox: [...inputRequiredProperties, 'options'],
   Radio: [...inputRequiredProperties, 'options'],
   Select: [...inputRequiredProperties, 'options'],
@@ -23,7 +23,7 @@ const requiredProperties = {
  */
 function validateMeta({ heading }) {
   if (!heading) {
-    return [{ path: 'meta', error: 'Missing heading in meta' }];
+    return [{ path: ['meta'], error: 'Missing heading in meta' }];
   }
 
   return [];
