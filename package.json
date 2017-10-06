@@ -54,6 +54,7 @@
     "commander": "^2.11.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.0",
+    "lodash.pick": "^4.4.0",
     "lodash.set": "^4.3.2",
     "lodash.setwith": "^4.3.2",
     "lodash.template": "^4.4.0",
