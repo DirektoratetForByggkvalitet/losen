@@ -8,7 +8,7 @@ const Grid = injectStyles(styled.div`
   grid-template-columns: ${({ styles }) => styles.size.navWidth} 1fr;
   grid-template-rows: 1fr;
   min-height: 100vh;
-  max-width: calc(${({ styles }) => styles.size.asideWidth} + 800px);
+  max-width: 1200px;
   margin: 0 auto;
   @media screen and (max-width: 700px) {
           grid-template-areas: "nav"
@@ -17,6 +17,11 @@ const Grid = injectStyles(styled.div`
           grid-template-rows: auto
                               1fr;
       }
+  }
+  @media print {
+          grid-template-areas: "nav main";
+          grid-template-columns: 0 1fr;
+          grid-template-rows: 1fr;
   }
 `);
 

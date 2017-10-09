@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import DefaultValueSummary from './value';
 import FetchOrg from './value/FetchOrg';
 
-import { H5 } from '../../primitives/Heading';
+import { H3 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 
@@ -40,7 +40,7 @@ export default function NodeSummary({ node }) {
 
   return (
     <StyledNodeSummary>
-      <H5>{heading}</H5>
+      <H3>{heading}</H3>
       <ValueSummary value={currentValue} node={node} />
       {errors.validation.error ? <ErrorMessage><ErrorIcon />{errors.validation.message}</ErrorMessage> : null}
       {errors.disabled.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}

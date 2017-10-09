@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Label from '../../../primitives/Label';
 import { Radio as Input } from '../../../primitives/Input';
-import { H4 } from '../../../primitives/Heading';
+import { H3 } from '../../../primitives/Heading';
 import { P } from '../../../primitives/Paragraphs';
 
 export default function RadioInput({
@@ -35,7 +35,7 @@ export default function RadioInput({
       <Label htmlFor={id} warning={message.warning}>
         <div>
           <div>
-            {heading ? <H4>{heading}</H4> : null}
+            {heading ? <H3>{heading}</H3> : null}
             {message ? (
               <div style={message.warning ? { color: 'red' } : {}}>{message.message}</div>
             ) : null}

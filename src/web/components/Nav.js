@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import StyledNav from '../primitives/grid/Nav';
-import { H1 } from '../primitives/Heading';
+import { P } from '../primitives/Paragraphs';
 import Button from '../primitives/ToggleButton';
 import NavItem from './NavItem';
 import NavResult from './NavResult';
@@ -42,7 +42,7 @@ export default class Nav extends Component {
         </Button>
 
         <StyledNav tocExpanded={tocExpanded}>
-          <H1 small>{heading}</H1>
+          <P>{heading}</P>
           {tableOfContents.map(
             (page, index) =>
               page.type === 'Result' ? (

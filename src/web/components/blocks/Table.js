@@ -9,7 +9,7 @@ function TableHeader(props) {
 }
 
 function TableCell(props) {
-  return <td {...props} style={{ backgroundColor: props.inactive ? 'lightpink' : 'lightblue' }} />;
+  return <td {...props} style={{ background: props.inactive ? 'repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px)' : 'rgba(0, 255, 0, 0.1)', color: props.inactive ? 'rgb(245, 0, 0)' : 'rgb(0, 125, 0)', fontWeight: 'bold' }} />;
 }
 
 TableCell.propTypes = {

@@ -23,7 +23,7 @@ import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
 import { SpecificBlock as StyledBlock } from '../../primitives/Block';
-import { H3 } from '../../primitives/Heading';
+import { H2 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 
 function getBlock(type) {
@@ -73,7 +73,7 @@ export function PureBlock(props) {
   if (props.type === 'Group') {
     return (
       <StyledBlock>
-        <H3>{props.heading}</H3>
+        <H2>{props.heading}</H2>
         <Html text={props.text} />
 
         {props.children.map(block => (
@@ -108,9 +108,10 @@ export function PureBlock(props) {
       grouped={props.grouped}
       groupedSimple={props.simple}
       disabled={props.disabled}
+      type={props.type}
     >
       <div>
-        <H3 small>{props.heading}</H3>
+        <H2>{props.heading}</H2>
         <Html text={props.text} />
 
         <SpecificBlock

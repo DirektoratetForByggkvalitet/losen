@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Block from './blocks/Block';
 import Navigation from './Navigation';
 import Html from './helper/Html';
-import { H2 } from '../primitives/Heading';
+import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import Main from '../primitives/grid/Main';
 
@@ -31,7 +31,7 @@ export default function Page({
   }
   return (
     <Main>
-      <H2>{heading}</H2>
+      <H1>{heading}</H1>
       <Lead>
         <Html text={lead} />
       </Lead>

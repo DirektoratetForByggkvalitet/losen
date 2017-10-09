@@ -16,10 +16,3 @@ const Figure = injectStyles(styled.figure`
 `);
 
 export default Figure;
-
-/*
-  background: #ECF2F6;
-  &:nth-child(odd) {
-    background: #DBE8F0;
-  }
-*/

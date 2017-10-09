@@ -6,7 +6,7 @@ export const SpecificBlock = injectStyles(styled.div`
   position: relative;
   padding: ${props => props.grouped ? '20px 24px 20px' : '30px 33px 36px'};
   margin: 20px 0;
-  max-width: ${({ styles }) => styles.size.blockWidth};
+  width: 100%;
   background: ${props => props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white'};
   &:nth-child(even) {
     background: ${props => props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd'};
@@ -31,29 +31,61 @@ export const SpecificBlock = injectStyles(styled.div`
   }` : ''}
 
   ${props => props.grouped ? `
-  h3 {
+  h2 {
     font-size: 18px;
-  }` : `
-  h3 {
-    font-size: 22px;
-  }`}
+    margin-bottom: 4px;
+  }` : ' '}
 
   ${props => props.groupedSimple ? `
+  margin-top: 36px;
   padding: 0;
   background: none;
   &:nth-child(even) {
     background: none;
   }` : ' '}
 
+  ${props => (props.type === 'Table') ? `
+  table {
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid ${props.styles.color.darkgray};
+    border-collapse: collapse;
+    th, td {
+      border: 1px solid ${props.styles.color.darkgray};
+      padding: 10px;
+    }
+    th > *,
+    td > * {
+      vertical-align: middle;
+      margin: 0;
+      line-height: 1.3;
+    }
+    td {
+      background: lime;
+    }
+  }
+  ` : ' '}
+
   @media screen and (max-width: 700px) {
     padding: ${props => props.grouped ? '20px 0' : '20px'};
+    ${props => props.groupedSimple ? `
+    margin-top: 24px;
+    padding: 0;
+    ` : ' '}
+  }
+
+  @media print {
+    box-shadow: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 `);
 
 export const TextBlock = injectStyles(styled.div`
   padding: 30px 33px 36px;
   margin: 20px 0;
-  max-width: ${({ styles }) => styles.size.blockWidth};
+  width: 100%;
   p {
     margin: 1em 0;
     line-height: 1.6;

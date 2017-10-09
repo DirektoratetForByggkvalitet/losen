@@ -23,9 +23,9 @@ export const Checkbox = injectStyles(styled.input`
       content: ' ';
       display: inline-block;
       vertical-align: middle;
-      min-width: 0.6em;
-      width: 0.6em;
-      height: 0.6em;
+      min-width: 10px;
+      width: 10px;
+      height: 10px;
       background: white;
       margin-right: 1em;
       border: 0.3em solid white;
@@ -42,8 +42,9 @@ export const Checkbox = injectStyles(styled.input`
     p {
       margin-bottom: 0;
     }
-    h4, p {
-      line-height: 1.4;
+    h3 {
+      font-size: 18px;
+      margin-bottom: 0;
     }
   }
 
@@ -76,10 +77,10 @@ export const Checkbox = injectStyles(styled.input`
     &:checked + label:after {
       content: " ";
       position: absolute;
-      left: 0.7em;
-      top: 0.7em;
-      width: 0.7em;
-      height: 0.4em;
+      left: 12px;
+      top: 12px;
+      width: 11px;
+      height: 6px;
       transform: rotate(-46deg);
       border-left: 4px solid ${({ styles }) => styles.color.light};
       border-bottom: 4px solid ${({ styles }) => styles.color.light};
@@ -125,9 +126,9 @@ export const Radio = injectStyles(styled.input.attrs({
       content: ' ';
       display: block;
       vertical-align: middle;
-      min-width: 0.6em;
-      width: 0.6em;
-      height: 0.6em;
+      min-width: 10px;
+      width: 10px;
+      height: 10px;
       background: white;
       margin-right: 1em;
       border-radius: 50%;
@@ -145,8 +146,9 @@ export const Radio = injectStyles(styled.input.attrs({
     p {
       margin-bottom: 0;
     }
-    h4, p {
-      line-height: 1.4;
+    h3 {
+      font-size: 18px;
+      margin-bottom: 0;
     }
   }
 

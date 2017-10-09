@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Table from '../primitives/Table';
+
 export default function ApprovalAreas({ areas }) {
   if (areas === undefined || areas.length === 0) {
     return null;
   }
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
           <th>FUNKSJON</th>
@@ -23,7 +25,7 @@ export default function ApprovalAreas({ areas }) {
           </tr>
         ))}
       </tbody>
-    </table>
+    </Table>
   );
 }
 

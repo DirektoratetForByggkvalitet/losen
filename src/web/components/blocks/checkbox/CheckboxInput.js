@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
-import { H4 } from '../../../primitives/Heading';
+import { H3 } from '../../../primitives/Heading';
 import { P } from '../../../primitives/Paragraphs';
 
 export default function CheckboxInput({
@@ -26,9 +26,9 @@ export default function CheckboxInput({
       <Label htmlFor={id} warning={message.warning}>
         <div>
           {heading
-            ? <H4>
+            ? <H3>
               {heading}
-            </H4>
+            </H3>
             : null}
           <P>{text}</P>
         </div>

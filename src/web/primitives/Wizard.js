@@ -8,7 +8,7 @@ const Wizard = injectStyles(styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: ${({ styles }) => styles.font.primary};
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   * {
     box-sizing: border-box;
@@ -24,6 +24,10 @@ const Wizard = injectStyles(styled.div`
     &:hover {
       color: ${({ styles }) => styles.color.dark};
     }
+  }
+  @media print {
+    background-image: none;
+    background-color: white;
   }
 `);
 

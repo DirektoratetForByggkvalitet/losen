@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { H4 } from '../../primitives/Heading';
+import { H3 } from '../../primitives/Heading';
 
 const Data = ({ heading, currentValue }) => (
   <div>
-    <H4>{heading}</H4>
+    <H3>{heading}</H3>
     <p>{currentValue}</p>
   </div>
 );

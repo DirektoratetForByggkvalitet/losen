@@ -7,6 +7,8 @@ import checkStatus from '../../../shared/checkstatus';
 import Input from './Input';
 import { H3 } from '../../primitives/Heading';
 import DL from '../../primitives/Datalist';
+import Notice from '../../primitives/Notice';
+import Loading from '../../primitives/Loading';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
 import Html from '../helper/Html';
@@ -159,21 +161,21 @@ export default class FetchOrg extends Component {
         <div>
           {get(this.props, 'currentValue.fetchSG', false)}
           <div>
-            {loading && <H3>Laster inn data...</H3>}
+            {loading && <Loading>Laster inn data</Loading>}
             {!loading &&
               get(this.props, 'currentValue.dataSG', false) && (
-                <div>
+                <Notice>
                   <H3>
                     <VariableText
                       text={SGheading}
                       data={this.props.currentValue}
                     />
                   </H3>
-                  <VariableText text={SGtext} data={this.props.currentValue} />
                   <ApprovalAreas
                     areas={get(this.props, 'currentValue.validApprovalAreas')}
                   />
-                </div>
+                  <VariableText text={SGtext} data={this.props.currentValue} />
+                </Notice>
               )}
             {!loading &&
               !get(this.props, 'currentValue.dataSG', false) &&

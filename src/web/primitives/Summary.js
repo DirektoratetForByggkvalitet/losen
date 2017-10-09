@@ -11,14 +11,16 @@ export const PageSummary = injectStyles(styled.div`
   &:last-of-type {
     border-bottom: none;
   }
-  h3 {
+  h2 {
     padding: 0.2em 0;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
   }
   button {
-    margin: 0 0 0 auto;
+    min-width: 120px;
+    align-self: flex-start;
+    margin: 0 0 0 20px;
   }
   > div {
     line-height: 1.4;
@@ -26,14 +28,14 @@ export const PageSummary = injectStyles(styled.div`
   ${props =>
     props.error
       ? `
-      h3 {
+      h2 {
         color: ${props.styles.color.red};
       }
       button {
         background: ${props.styles.color.red};
       }
     ` : `
-      h3 {
+      h2 {
         color: inherit;
       }
     `}
@@ -41,8 +43,10 @@ export const PageSummary = injectStyles(styled.div`
 
 export const NodeSummary = injectStyles(styled.div` 
   margin-bottom: 20px;
-  h5 {
+  h3 {
+    font-size: 16px;
     font-weight: 300;
+    margin-bottom: 0;
   }
 `);
 

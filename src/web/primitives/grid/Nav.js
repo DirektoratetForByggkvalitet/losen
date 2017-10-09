@@ -21,6 +21,9 @@ const Nav = injectStyles(styled.nav`
   button {
     width: 100%;
   }
+  @media print {
+    display: none;
+  }
 `);
 
 export default Nav;
