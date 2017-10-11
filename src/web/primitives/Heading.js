@@ -4,9 +4,10 @@ import injectStyles from '../utils/inject-styles';
 
 export const H1 = injectStyles(styled.h1`
   font-family: ${({ styles }) => styles.font.secondary};
-  font-size: 36px;
+  font-size: 50px;
+  font-weight: 300;
   margin: 0 0 10px;
-  line-height: 1.3;
+  line-height: 1.2;
 `);
 
 export const H2 = injectStyles(styled.h2`

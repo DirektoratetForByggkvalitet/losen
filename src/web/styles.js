@@ -16,7 +16,7 @@ export default {
     warmgray3: '#f2f1f0',
     warmgray2: '#e5e3e1',
     darkgray: '#afaba8',
-    red: '#d12133',
+    red: '#c1272d',
     oldred: '#9d312f',
   },
   padding: {
