@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import pick from 'lodash.pick';
 
 import Html from '../helper/Html';
+import TableContainer from '../../primitives/TableContainer';
 
 function TableHeader(props) {
   return <th {...props} />;
@@ -19,24 +20,26 @@ TableCell.propTypes = {
 /* eslint-disable react/no-array-index-key */
 export default function Table({ cells }) {
   return (
-    <table>
-      <tbody>
-        {cells.map((row, rowKey) => (
-          <tr key={rowKey}>
-            {row.map((cell, cellKey) => {
-              const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
-              const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
+    <TableContainer>
+      <table>
+        <tbody>
+          {cells.map((row, rowKey) => (
+            <tr key={rowKey}>
+              {row.map((cell, cellKey) => {
+                const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
+                const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
-              return (
-                <Cell {...cellProps} key={cellKey}>
-                  <Html text={cell.text} />
-                </Cell>
-              );
-            })}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+                return (
+                  <Cell {...cellProps} key={cellKey}>
+                    <Html text={cell.text} />
+                  </Cell>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </TableContainer>
   );
 }
 
