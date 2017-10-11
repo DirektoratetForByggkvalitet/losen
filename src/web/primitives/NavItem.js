@@ -48,9 +48,9 @@ const NavItem = injectStyles(styled.div`
   }
   &::after {
     content: ' ';
-    width: 0.7em;
-    height: 0.4em;
-    margin: 0.7em;
+    width: 11px;
+    height: 6px;
+    margin: 13px;
     flex-shrink: 0;
     border-left: 4px solid ${({ styles }) => styles.color.light};
     border-bottom: 4px solid ${({ styles }) => styles.color.light};
@@ -72,7 +72,16 @@ const NavItem = injectStyles(styled.div`
       span {
         display: none;
       }
-    `} &:last-of-type {
+    `}
+    ${props =>
+    props.active
+      ? `
+      span {
+        display: none;
+      }
+    `
+      : ' '}
+    &:last-of-type {
     margin-bottom: 30px;
   }
 `);

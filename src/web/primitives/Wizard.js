@@ -8,7 +8,7 @@ const Wizard = injectStyles(styled.div`
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: ${({ styles }) => styles.font.primary};
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   * {
     box-sizing: border-box;

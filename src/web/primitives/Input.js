@@ -77,8 +77,8 @@ export const Checkbox = injectStyles(styled.input`
     &:checked + label:after {
       content: " ";
       position: absolute;
-      left: 12px;
-      top: 12px;
+      left: 13px;
+      top: 13px;
       width: 11px;
       height: 6px;
       transform: rotate(-46deg);
