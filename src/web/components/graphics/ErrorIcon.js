@@ -4,10 +4,14 @@ import Style from '../../styles';
 
 export default function ErrorIcon({ triangleFill, textFill }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221 221">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
       <g>
-        <path style={{ fill: triangleFill }} d="M119.4 20.2l93.64 171.17a10 10 0 0 1-8.78 14.8H17a10 10 0 0 1-8.77-14.8L101.86 20.2a10 10 0 0 1 17.54 0z" />
-        <path style={{ fill: textFill }} d="M110.88 182.3c7.78 0 13.25-4.9 13.25-12.52 0-7.64-5.47-12.68-13.25-12.68-7.92 0-13.4 5.04-13.4 12.68 0 7.63 5.48 12.52 13.4 12.52zm-10.22-38.1h20.16l2.88-68.84H97.78l2.88 68.83z" />
+        <circle style={{ fill: triangleFill }} cx="19" cy="19" r="16" />
+        <path
+          style={{ fill: textFill }}
+          d="M16.9,25.1c0-0.7,0.2-1.2,0.5-1.5s0.9-0.5,1.5-0.5c0.6,0,1.2,0.2,1.5,0.5s0.5,0.8,0.5,1.5
+            c0,0.6-0.2,1.1-0.5,1.5s-0.9,0.5-1.5,0.5c-0.7,0-1.2-0.2-1.5-0.5S16.9,25.7,16.9,25.1z M20.4,21.1h-2.9L17,9.6H21L20.4,21.1z"
+        />
       </g>
     </svg>
   );

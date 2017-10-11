@@ -10,14 +10,14 @@ export default {
   color: {
     light: '#00757F',
     dark: '#072938',
-    bluegreen: '#54acb8',
     lightorange: '#faefdf',
     lightgreen: '#f0f2cb',
     warmgray3: '#f2f1f0',
     warmgray2: '#e5e3e1',
     darkgray: '#afaba8',
-    red: '#d12133',
+    red: '#c1272d',
     oldred: '#9d312f',
+    green: '#809e3d',
   },
   padding: {
     small: '2px',
