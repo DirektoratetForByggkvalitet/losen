@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Label from '../../../primitives/Label';
+import SoftWarning from '../../../primitives/SoftWarning';
 import { Radio as Input } from '../../../primitives/Input';
 import { H3 } from '../../../primitives/Heading';
 import { P } from '../../../primitives/Paragraphs';
@@ -37,7 +38,7 @@ export default function RadioInput({
           <div>
             {heading ? <H3>{heading}</H3> : null}
             {message ? (
-              <div style={message.warning ? { color: 'red' } : {}}>{message.message}</div>
+              <SoftWarning warning={message.warning}>{message.message}</SoftWarning>
             ) : null}
           </div>
           <P>{text}</P>
