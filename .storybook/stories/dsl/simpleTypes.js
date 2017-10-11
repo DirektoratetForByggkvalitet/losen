@@ -56,7 +56,7 @@ export default function DslSimpleTypes() {
 
       <H3>neq</H3>
       <p>Expression describing a not equal comparison.</p>
-      <pre>{"{ field: 'some.field', operartor: 'eq', value: true }"}</pre>
+      <pre>{"{ field: 'some.field', operartor: 'neq', value: true }"}</pre>
 
       <H3>between</H3>
       <p>
