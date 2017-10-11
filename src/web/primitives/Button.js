@@ -3,11 +3,9 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const MainButton = injectStyles(styled.button`
-  font-family: ${({ styles }) => styles.font.secondary};
-  font-weight: 300;
-  text-transform: uppercase;
+  font-family: ${({ styles }) => styles.font.primary};
+  font-weight: normal;
   font-size: 18px;
-  letter-spacing: 1px;
   color: white;
   background: ${({ styles }) => styles.color.light};
   min-width: 30%;
@@ -32,11 +30,9 @@ export const MainButton = injectStyles(styled.button`
 `);
 
 export const SecondaryButton = injectStyles(styled.button`
-  font-family: ${({ styles }) => styles.font.secondary};
-  font-weight: 300;
-  text-transform: uppercase;
+  font-family: ${({ styles }) => styles.font.primary};
+  font-weight: normal;
   font-size: 18px;
-  letter-spacing: 1px;
   color: ${({ styles }) => styles.color.light};
   background: white;
   min-width: 30%;
@@ -84,11 +80,9 @@ export const SmallButton = injectStyles(styled.button`
 `);
 
 export const NavButton = injectStyles(styled.button`
-  font-family: ${({ styles }) => styles.font.secondary};
-  font-weight: 300;
-  text-transform: uppercase;
+  font-family: ${({ styles }) => styles.font.primary};
+  font-weight: normal;
   font-size: 18px;
-  letter-spacing: 1px;
   color: white;
   background: ${({ styles }) => styles.color.light};
   min-width: 30%;
