@@ -13,7 +13,7 @@ export default function NavItem({ setPage, id, done, heading, active, index }) {
       <div>{index}</div>
       <p>
         {heading}
-        <span>Endre svar</span>
+        {active ? '' : <span>Endre svar</span>}
       </p>
     </StyledNavItem>
   );
