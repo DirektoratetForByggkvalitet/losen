@@ -182,6 +182,7 @@ export default function SchemaBuildingBlocks() {
       <H4>Properties</H4>
       <ul>
         <li><code>text</code>: Additional description that follows the heading for the answer. <strong>Required</strong></li>
+        <li><code>warning</code>: Mark the text block as a warning. Default: false</li>
       </ul>
 
       <H3>Table</H3>

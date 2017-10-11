@@ -86,6 +86,12 @@ export const TextBlock = injectStyles(styled.div`
   padding: 30px 33px 36px;
   margin: 20px 0;
   width: 100%;
+
+  ${props => props.warning ? `
+  border: 10px solid #ff9191;
+  background: #ddd;
+  ` : ''}
+
   p {
     margin: 1em 0;
     line-height: 1.6;
