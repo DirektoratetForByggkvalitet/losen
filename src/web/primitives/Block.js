@@ -88,8 +88,32 @@ export const TextBlock = injectStyles(styled.div`
   width: 100%;
 
   ${props => props.warning ? `
-  border: 10px solid #ff9191;
+  border: 10px solid hsl(0, 100%, 50%);
   background: #ddd;
+  animation: rainbow 1s infinite;
+
+  @keyframes rainbow {
+    0% {
+      color: hsl(0, 100%, 50%);
+      border-color: hsl(0, 100%, 50%);
+    }
+    33% {
+      color: hsl(155, 66%, 50%);
+      border-color: hsl(155, 66%, 50%);
+    }
+    66% {
+      color: hsl(200, 85%, 33%);
+      border-color: hsl(200, 85%, 33%);
+    }
+    85% {
+      color: hsl(255, 100%, 50%);
+      border-color: hsl(255, 100%, 50%);
+    }
+    100% {
+      color: hsl(0, 100%, 50%);
+      border-color: hsl(0, 100%, 50%);
+    }
+  }
   ` : ''}
 
   p {
