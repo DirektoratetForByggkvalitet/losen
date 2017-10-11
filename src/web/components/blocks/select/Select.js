@@ -23,10 +23,22 @@ export default class Select extends Component {
   };
 
   handleChange = (e) => {
-    this.props.setData(
-      this.props.property,
-      e.target.value === NULL_VALUE ? undefined : e.target.value,
-    );
+    let value = e.target.value === NULL_VALUE ? undefined : e.target.value;
+    const intValue = parseInt(value, 10);
+
+    // Check if the value was supposed to be an int. It's important that we
+    // set it as a number in order for checks (gt, lt, gte, lte to work) to work
+    if (!isNaN(intValue)) {
+      const optionExists = this.props.options.find(
+        ({ value: optionValue }) => optionValue === intValue,
+      );
+
+      // If we found an option that matched the numeric value,
+      // we'll set it to the store.. Otherwise use the string
+      value = optionExists ? intValue : value;
+    }
+
+    this.props.setData(this.props.property, value);
   };
 
   render() {
