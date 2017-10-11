@@ -4,6 +4,7 @@ import pick from 'lodash.pick';
 
 import Html from '../helper/Html';
 import TableContainer from '../../primitives/TableContainer';
+import StyledTable from '../../primitives/Table';
 
 function TableHeader(props) {
   return <th {...props} />;
@@ -18,10 +19,10 @@ TableCell.propTypes = {
 };
 
 /* eslint-disable react/no-array-index-key */
-export default function Table({ cells }) {
+export default function Table({ debug, cells }) {
   return (
     <TableContainer>
-      <table>
+      <StyledTable debug={debug}>
         <tbody>
           {cells.map((row, rowKey) => (
             <tr key={rowKey}>
@@ -30,7 +31,7 @@ export default function Table({ cells }) {
                 const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
                 return (
-                  <Cell {...cellProps} key={cellKey}>
+                  <Cell data-id={cell.id} {...cellProps} key={cellKey}>
                     <Html text={cell.text} />
                   </Cell>
                 );
@@ -38,12 +39,13 @@ export default function Table({ cells }) {
             </tr>
           ))}
         </tbody>
-      </table>
+      </StyledTable>
     </TableContainer>
   );
 }
 
 Table.propTypes = {
+  debug: PropTypes.bool,
   cells: PropTypes.arrayOf(
     PropTypes.arrayOf(
       PropTypes.shape({
@@ -54,4 +56,8 @@ Table.propTypes = {
       }),
     ),
   ).isRequired,
+};
+
+Table.defaultProps = {
+  debug: false,
 };

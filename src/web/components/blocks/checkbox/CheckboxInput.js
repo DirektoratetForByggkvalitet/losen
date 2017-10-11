@@ -14,6 +14,7 @@ export default function CheckboxInput({
   onChange,
   heading,
   image,
+  debug,
   disabled,
   messages,
 }) {
@@ -23,8 +24,8 @@ export default function CheckboxInput({
     <div>
       <Input type="checkbox" name={name} id={id} onChange={onChange} disabled={disabled} checked={checked} />
 
-      <Label htmlFor={id} warning={message.warning}>
-        <div>
+      <Label htmlFor={id} warning={message.warning} debug={debug}>
+        <div data-id={id}>
           {heading
             ? <H3>
               {heading}
@@ -40,6 +41,7 @@ export default function CheckboxInput({
 
 CheckboxInput.defaultProps = {
   heading: '',
+  debug: false,
   image: {},
   checked: false,
   disabled: false,
@@ -48,6 +50,7 @@ CheckboxInput.defaultProps = {
 };
 
 CheckboxInput.propTypes = {
+  debug: PropTypes.bool,
   heading: PropTypes.string,
   id: PropTypes.string.isRequired,
   image: PropTypes.object,

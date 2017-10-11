@@ -12,6 +12,22 @@ const Table = injectStyles(styled.table`
   th, td {
     border: 1px solid ${({ styles }) => styles.color.darkgray};
     padding: 10px;
+
+    ${props => props.debug ? `
+    :hover {
+      position: relative;
+
+      :before {
+        content: attr(data-id);
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: deeppink;
+        color: white;
+        font-size: 12px;
+      }
+    }` : ''}
   }
   th > *,
   td > * {

@@ -42,6 +42,13 @@ export default function SchemaTranslating() {
     }
   }
 }`}</pre>
+
+      <H2>Finding the schema node IDs</H2>
+      <p>
+        When working with the content in the wizard, append `?debug` to the page url to show the
+        id of all the nodes in the wizard. The nodes ids will show as pink labels in the top-right
+        corner of the component.
+      </p>
     </div>
   )
 }

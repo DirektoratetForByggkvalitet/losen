@@ -72,13 +72,14 @@ export function PureBlock(props) {
 
   if (props.type === 'Group') {
     return (
-      <StyledBlock>
+      <StyledBlock data-id={props.id} debug={props.debug}>
         <H2>{props.heading}</H2>
         <Html text={props.text} />
 
         {props.children.map(block => (
           <ConnectedBlock
             grouped
+            data-id={props.id}
             simple={props.simple}
             key={block.property}
             {...block}
@@ -97,14 +98,21 @@ export function PureBlock(props) {
     props.type === 'Text' ||
     props.type === 'Data'
   ) {
-    return <SpecificBlock grouped={props.grouped} {...props} />;
+    return (
+      <SpecificBlock
+        grouped={props.grouped}
+        debug={props.debug}
+        data-id={props.id}
+        {...props}
+      />
+    );
   }
 
   return (
     <StyledBlock
       data-id={props.id}
       id={props.property}
-      debug={!!window.location.search.match('debug')}
+      debug={props.debug}
       grouped={props.grouped}
       groupedSimple={props.simple}
       disabled={props.disabled}
@@ -115,6 +123,7 @@ export function PureBlock(props) {
         <Html text={props.text} />
 
         <SpecificBlock
+          debug={props.debug}
           {...{
             ...props,
             validation:
@@ -157,6 +166,7 @@ PureBlock.defaultProps = {
 
 PureBlock.propTypes = {
   id: PropTypes.string,
+  debug: PropTypes.bool.isRequired,
   type: PropTypes.string.isRequired,
   heading: PropTypes.string,
   text: PropTypes.string,
@@ -185,6 +195,7 @@ PureBlock.propTypes = {
 const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
+    debug: window.location.search.match('debug'),
     disabled:
       props.errors &&
       props.errors.disabled &&

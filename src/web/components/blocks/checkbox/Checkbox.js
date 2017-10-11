@@ -6,12 +6,14 @@ import CheckboxInput from './CheckboxInput';
 
 export default class Checkbox extends Component {
   static defaultProps = {
+    debug: false,
     heading: '',
     text: '',
     disabled: false,
     currentValue: {},
   };
   static propTypes = {
+    debug: PropTypes.bool,
     options: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
@@ -35,6 +37,7 @@ export default class Checkbox extends Component {
       property,
       disabled,
       currentValue,
+      debug,
     } = this.props;
 
     return (
@@ -47,7 +50,8 @@ export default class Checkbox extends Component {
               <CheckboxInput
                 disabled={isDisabled}
                 key={`${property}:${option.value}`}
-                id={`${property}:${option.value}`}
+                debug={debug}
+                id={option.id}
                 checked={currentValue[option.value]}
                 name={property}
                 {...option}

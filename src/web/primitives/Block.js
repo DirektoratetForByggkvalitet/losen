@@ -26,7 +26,6 @@ export const SpecificBlock = injectStyles(styled.div`
     right: 0;
     background: deeppink;
     color: white;
-    padding: 2px;
     font-size: 12px;
   }` : ''}
 
@@ -86,6 +85,20 @@ export const TextBlock = injectStyles(styled.div`
   padding: 30px 33px 36px;
   margin: 20px 0;
   width: 100%;
+
+  ${props => props.debug ? `
+  position: relative;
+
+  :before {
+    content: attr(data-id);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: deeppink;
+    color: white;
+    font-size: 12px;
+  }` : ''}
 
   ${props => props.warning ? `
   border: 10px solid hsl(0, 100%, 50%);
