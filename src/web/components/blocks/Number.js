@@ -16,6 +16,11 @@ export default function Number({ minimum, maximum, ...props }) {
 }
 
 Number.propTypes = {
-  maximum: PropTypes.number.isRequired,
-  minimum: PropTypes.number.isRequired,
+  maximum: PropTypes.number,
+  minimum: PropTypes.number,
+};
+
+Number.defaultProps = {
+  maximum: null,
+  minimum: null,
 };

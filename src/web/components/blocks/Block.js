@@ -87,9 +87,9 @@ export function PureBlock(props) {
         {props.children.map(block => (
           <ConnectedBlock
             grouped
+            key={block.id}
             data-id={props.id}
             simple={props.simple}
-            key={block.property}
             {...block}
           />
         ))}
@@ -157,21 +157,6 @@ export function PureBlock(props) {
   );
 }
 
-PureBlock.defaultProps = {
-  children: [],
-  currentValue: undefined,
-  disabled: false,
-  errorDescription: null,
-  errors: {},
-  grouped: false,
-  heading: '',
-  id: null,
-  image: {},
-  simple: false,
-  text: '',
-  validator: false,
-};
-
 PureBlock.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object),
   currentValue: PropTypes.any,
@@ -187,7 +172,7 @@ PureBlock.propTypes = {
   heading: PropTypes.string,
   id: PropTypes.string,
   image: PropTypes.object,
-  property: PropTypes.string.isRequired,
+  property: PropTypes.string,
   simple: PropTypes.bool,
   text: PropTypes.string,
   type: PropTypes.string.isRequired,
@@ -198,6 +183,22 @@ PureBlock.propTypes = {
       pattern: PropTypes.string.isRequired,
     }),
   ]),
+};
+
+PureBlock.defaultProps = {
+  children: [],
+  currentValue: undefined,
+  disabled: false,
+  errorDescription: null,
+  errors: {},
+  grouped: false,
+  heading: '',
+  id: null,
+  image: {},
+  property: null,
+  simple: false,
+  text: '',
+  validator: false,
 };
 
 const ConnectedBlock = connect(

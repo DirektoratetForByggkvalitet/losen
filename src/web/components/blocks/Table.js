@@ -8,7 +8,7 @@ import { TD } from '../../primitives/Table';
 import TableContainer from '../../primitives/TableContainer';
 
 function TableCell(props) {
-  return <TD {...props} inactive={props.inactive} />;
+  return <TD {...props} />;
 }
 
 function TableHeader(props) {
@@ -16,19 +16,23 @@ function TableHeader(props) {
 }
 
 TableCell.propTypes = {
-  inactive: PropTypes.bool.isRequired,
+  'data-inactive': PropTypes.bool.isRequired,
 };
 
 /* eslint-disable react/no-array-index-key */
 export default function Table({ cells, debug }) {
   return (
     <TableContainer>
-      <table debug={debug}>
+      <table data-debug={debug}>
         <tbody>
           {cells.map((row, rowKey) => (
             <tr key={rowKey}>
               {row.map((cell, cellKey) => {
-                const cellProps = pick(cell, ['colSpan', 'rowSpan', 'inactive']);
+                const cellProps = {
+                  ...pick(cell, ['colSpan', 'rowSpan']),
+                  'data-inactive': cell.inactive,
+                };
+
                 const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
                 return (

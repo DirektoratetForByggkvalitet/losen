@@ -37,12 +37,15 @@ export default function RadioInput({
       <Label htmlFor={id} warning={message.warning} debug={debug}>
         <div data-id={id}>
           <div>
-            {heading ? <H3>{heading}</H3> : null}
+            {heading && !text ? heading : null}
+            {heading && text ? <H3>{heading}</H3> : null}
+
             {message ? (
               <SoftWarning warning={message.warning}>{message.message}</SoftWarning>
             ) : null}
           </div>
-          <Html text={text} />
+
+          {text ? <Html text={text} /> : null}
         </div>
         {image && image.url ? <img src={image.url} alt={image.alt} /> : null}
       </Label>

@@ -49,7 +49,7 @@ export default class Select extends Component {
     return (
       <SelectWrapper>
         <select value={currentValue} onChange={this.handleChange}>
-          <SelectOption heading={heading} value={NULL_VALUE} />
+          <option value={NULL_VALUE}>{heading}</option>
 
           {options.map(option => (
             <SelectOption debug={debug} {...option} key={option.value} />

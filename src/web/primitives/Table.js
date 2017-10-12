@@ -25,7 +25,7 @@ export const TD = injectStyles(styled.td`
   p {
     font-weight: bold;
   }
-  ${props => props.inactive ? `
+  ${props => props['data-inactive'] ? `
   background: repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px);
   p {
     font-weight: normal;

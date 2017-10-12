@@ -13,7 +13,7 @@ SelectOption.propTypes = {
   debug: PropTypes.bool,
   heading: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
 };
 
 SelectOption.defaultProps = {
