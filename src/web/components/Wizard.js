@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import autobind from 'react-autobind';
+import Modal from './helper/Modal';
 
 import StyleProvider from './StyleProvider';
 import Nav from './Nav';
@@ -21,6 +22,7 @@ class Wizard extends Component {
     exports: PropTypes.objectOf(PropTypes.func),
     styles: PropTypes.object,
     debug: PropTypes.bool,
+    showIntro: PropTypes.func,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
     translations: PropTypes.objectOf(
       PropTypes.shape({
@@ -40,6 +42,7 @@ class Wizard extends Component {
     exports: {},
     translations: {},
     debug: false,
+    showIntro: () => {},
   };
 
   constructor(props) {
@@ -104,13 +107,22 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1);
 
   render() {
-    const { wizard, styles, schema, debug, tableOfContents, exports } = this.props;
+    const {
+      wizard,
+      styles,
+      schema,
+      debug,
+      tableOfContents,
+      exports,
+      showIntro,
+    } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
     return (
       <StyleProvider styles={styles}>
         <StyledWizard>
+          <Modal showIntro={showIntro} />
           <Grid>
             <Nav
               page={page.id}

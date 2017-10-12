@@ -61,6 +61,7 @@
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
     "react-autobind": "^1.0.6",
+    "react-modal": "^3.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "redux": "^3.7.2",
@@ -75,10 +76,9 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.2.11",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-jest": "^20.0.3",
     "babel-plugin-inline-import": "^2.0.6",
     "babel-polyfill": "^6.26.0",
@@ -106,8 +106,7 @@
       "react/jsx-filename-extension": 0,
       "react/no-children-prop": 0,
       "jsx-a11y/accessible-emoji": 0,
-      "react/no-unescaped-entities": 0,
-      "no-template-curly-in-string": 0
+      "react/no-unescaped-entities": 0
     },
     "env": {
       "jest": true,
