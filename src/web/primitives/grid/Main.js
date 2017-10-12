@@ -5,9 +5,25 @@ import injectStyles from '../../utils/inject-styles';
 const Main = injectStyles(styled.main`
   grid-area: main;
   padding: 40px 30px 0;
+
   h2 {
     margin-top: 0;
   }
+
+  ${props => props.debug ? `
+  position: relative;
+
+  :before {
+    content: attr(data-id);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: deeppink;
+    color: white;
+    font-size: 12px;
+  }` : ''}
+
   @media screen and (max-width: 700px) {
     padding: 0;
     width: ${({ styles }) => styles.size.mobileContentWidth};

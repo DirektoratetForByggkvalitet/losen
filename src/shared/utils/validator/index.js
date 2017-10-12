@@ -6,7 +6,7 @@ const requiredProperties = {
   Page: ['id', 'heading', 'lead', 'children'],
   Result: ['id', 'heading'],
   Group: ['id', 'heading', 'children'],
-  Answer: ['id', 'text', 'value'],
+  Answer: ['id', 'heading', 'value'],
   Image: ['id', 'image'],
   Text: ['id', 'text'],
   Branch: ['branches'],
