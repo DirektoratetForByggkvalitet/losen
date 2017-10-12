@@ -36,7 +36,7 @@ function assertProperties(object, path, properties) {
   let errors = [];
 
   (properties || []).forEach((property) => {
-    if (!object[property]) {
+    if (typeof object[property] === 'undefined') {
       errors = [...errors, { path, error: `${object.type} is missing the ${property} property` }];
     }
   });
