@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Table from '../primitives/Table';
+import { Table } from '../primitives/Table';
 
 export default function ApprovalAreas({ areas }) {
   if (areas === undefined || areas.length === 0) {

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Table = injectStyles(styled.table`
+export const Table = injectStyles(styled.table`
   text-align: center;
   width: 100%;
   font-size: 14px;
@@ -21,4 +21,17 @@ const Table = injectStyles(styled.table`
   }
 `);
 
-export default Table;
+export const TD = injectStyles(styled.td`
+  p {
+    font-weight: bold;
+  }
+  ${props => props.inactive ? `
+  background: repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px);
+  color: ${props.styles.color.red};
+  p {
+    font-weight: lighter;
+  }
+  ` : `
+  color: ${props.styles.color.green};
+  `}
+`);
