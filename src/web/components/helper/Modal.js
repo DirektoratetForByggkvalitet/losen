@@ -21,8 +21,8 @@ class Modal extends Component {
 
   handleRestart = () => {
     this.props.resetData();
-    this.props.showIntro();
     this.setState({ showModal: false });
+    this.props.showIntro();
   };
   render() {
     /* shouldCloseOnEsc will work on next version of React Modal for UU */
