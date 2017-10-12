@@ -35,7 +35,7 @@ class Wizard extends Component {
       }),
     ),
     wizard: PropTypes.object.isRequired,
-  };
+  }
 
   static defaultProps = {
     debug: false,
@@ -43,7 +43,7 @@ class Wizard extends Component {
     showIntro: () => {},
     styles: {},
     translations: {},
-  };
+  }
 
   constructor(props) {
     super(props);

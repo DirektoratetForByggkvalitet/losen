@@ -6,18 +6,6 @@ import { TextInput as StyledInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 
 export default class Input extends Component {
-  static defaultProps = {
-    currentValue: '',
-    disabled: false,
-    max: Number.MAX_SAFE_INTEGER,
-    min: 0,
-    placeholder: '',
-    step: 1,
-    type: 'text',
-    update: () => {},
-    validation: {},
-  }
-
   static propTypes = {
     currentValue: PropTypes.any,
     disabled: PropTypes.bool,
@@ -35,6 +23,18 @@ export default class Input extends Component {
     step: PropTypes.number,
     type: PropTypes.string,
     update: PropTypes.func,
+  }
+
+  static defaultProps = {
+    currentValue: '',
+    disabled: false,
+    max: Number.MAX_SAFE_INTEGER,
+    min: 0,
+    placeholder: '',
+    step: 1,
+    type: 'text',
+    update: () => {},
+    validation: {},
   }
 
   handleChange = (e) => {

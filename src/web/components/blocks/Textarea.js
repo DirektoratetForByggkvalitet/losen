@@ -9,15 +9,6 @@ import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
 
 export default class Textarea extends Component {
-  static defaultProps = {
-    currentValue: '',
-    details: '',
-    information: '',
-    placeholder: '',
-    setData: () => {},
-    summary: '',
-  };
-
   static propTypes = {
     currentValue: PropTypes.string,
     details: PropTypes.string,
@@ -26,7 +17,16 @@ export default class Textarea extends Component {
     property: PropTypes.string.isRequired,
     setData: PropTypes.func,
     summary: PropTypes.string,
-  };
+  }
+
+  static defaultProps = {
+    currentValue: '',
+    details: '',
+    information: '',
+    placeholder: '',
+    setData: () => {},
+    summary: '',
+  }
 
   handleChange = (e) => {
     const { property, setData } = this.props;

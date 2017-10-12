@@ -4,14 +4,6 @@ import React, { Component } from 'react';
 import CheckboxInput from './CheckboxInput';
 
 export default class Checkbox extends Component {
-  static defaultProps = {
-    currentValue: {},
-    debug: false,
-    disabled: false,
-    heading: '',
-    text: '',
-  }
-
   static propTypes = {
     currentValue: PropTypes.any,
     debug: PropTypes.bool,
@@ -19,6 +11,14 @@ export default class Checkbox extends Component {
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    currentValue: {},
+    debug: false,
+    disabled: false,
+    heading: '',
+    text: '',
   }
 
   handleChange = (property, value) => e => this.props.setData(

@@ -7,14 +7,6 @@ import { SelectWrapper } from '../../../primitives/Input';
 const NULL_VALUE = '({[NULL]})';
 
 export default class Select extends Component {
-  static defaultProps = {
-    currentValue: '',
-    debug: false,
-    defaultOption: '',
-    heading: '',
-    text: '',
-  }
-
   static propTypes = {
     currentValue: PropTypes.any,
     debug: PropTypes.bool,
@@ -22,6 +14,14 @@ export default class Select extends Component {
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    currentValue: '',
+    debug: false,
+    defaultOption: '',
+    heading: '',
+    text: '',
   }
 
   handleChange = (e) => {

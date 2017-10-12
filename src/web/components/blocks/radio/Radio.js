@@ -4,14 +4,6 @@ import React, { Component } from 'react';
 import RadioInput from './RadioInput';
 
 export default class Radio extends Component {
-  static defaultProps = {
-    currentValue: undefined,
-    debug: false,
-    disabled: false,
-    heading: '',
-    text: '',
-  }
-
   static propTypes = {
     currentValue: PropTypes.any,
     debug: PropTypes.bool,
@@ -19,6 +11,14 @@ export default class Radio extends Component {
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
+  }
+
+  static defaultProps = {
+    currentValue: undefined,
+    debug: false,
+    disabled: false,
+    heading: '',
+    text: '',
   }
 
   handleChange = (property, value) => () => this.props.setData(`${property}`, value)

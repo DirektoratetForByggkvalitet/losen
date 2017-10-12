@@ -10,17 +10,17 @@ import Button from '../primitives/ToggleButton';
 import StyledNav from '../primitives/grid/Nav';
 
 export default class Nav extends Component {
-  static defaultProps = {
-    heading: 'Missing page heading',
-    page: 0,
-  };
-
   static propTypes = {
     heading: PropTypes.string,
     page: PropTypes.string,
     setPage: PropTypes.func.isRequired,
     tableOfContents: PropTypes.array.isRequired,
-  };
+  }
+
+  static defaultProps = {
+    heading: 'Missing page heading',
+    page: 0,
+  }
 
   state = { tocExpanded: true };
 

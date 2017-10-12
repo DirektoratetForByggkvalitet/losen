@@ -8,15 +8,15 @@ export default class StyleProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     styles: PropTypes.object,
-  };
+  }
 
   static defaultProps = {
     styles: {},
-  };
+  }
 
   static childContextTypes = {
     styles: PropTypes.object,
-  };
+  }
 
   getChildContext() {
     return {
