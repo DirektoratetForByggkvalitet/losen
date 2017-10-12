@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import merge from 'lodash.merge';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import defaultStyles from '../styles';
 
 export default class StyleProvider extends Component {
   static propTypes = {
-    styles: PropTypes.object,
     children: PropTypes.node.isRequired,
+    styles: PropTypes.object,
   };
 
   static defaultProps = {

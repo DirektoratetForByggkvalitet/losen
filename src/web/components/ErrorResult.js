@@ -1,13 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import Block from './blocks/Block';
+import Summary from './Summary';
+
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
-import Main from '../primitives/grid/Main';
 import { SpecificBlock } from '../primitives/Block';
-import Summary from './Summary';
-import Block from './blocks/Block';
+import Main from '../primitives/grid/Main';
 
-export default function ErrorResult({ errorPages, schema, setPage, children }) {
+export default function ErrorResult({ children, errorPages, schema, setPage }) {
   return (
     <Main>
       <H1>
@@ -33,6 +35,6 @@ ErrorResult.defaultProps = {
 ErrorResult.propTypes = {
   children: PropTypes.array,
   errorPages: PropTypes.array.isRequired,
-  setPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
+  setPage: PropTypes.func.isRequired,
 };

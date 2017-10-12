@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import PageSummary from './Page';
 
@@ -19,8 +19,8 @@ export default function Summary({ errorPages, setPage, pages }) {
 
 Summary.propTypes = {
   errorPages: PropTypes.array.isRequired,
-  setPage: PropTypes.func.isRequired,
   pages: PropTypes.array,
+  setPage: PropTypes.func.isRequired,
 };
 
 Summary.defaultProps = {

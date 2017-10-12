@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import ReactModal from 'react-modal';
-import autobind from 'react-autobind';
 
-import { resetData } from '../../state/actions';
 import { NAME } from '../../state';
+import { resetData } from '../../state/actions';
+
 import { MainButton, SecondaryButton } from '../../primitives/Button';
 
 class Modal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showModal: true,
-    };
-    autobind(this);
+  state = {
+    showModal: true,
   }
 
-  componentDidMount() {
-    this.state.showModal = false;
-  }
+  componentDidMount = () => this.state.showModal = false
 
   handleCloseModal = () => this.setState({ showModal: false });
 
@@ -52,14 +46,12 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
+  data: PropTypes.object.isRequired,
   resetData: PropTypes.func.isRequired,
   showIntro: PropTypes.func.isRequired,
-  data: PropTypes.object.isRequired,
 };
 
 export default connect(
-  state => ({
-    data: state[NAME],
-  }),
+  state => ({ data: state[NAME] }),
   dispatch => bindActionCreators({ resetData }, dispatch),
 )(Modal);

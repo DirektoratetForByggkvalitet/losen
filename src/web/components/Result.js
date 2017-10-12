@@ -1,33 +1,33 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { getErrorPages } from '../utils/selectors';
+import Block from './blocks/Block';
+import ErrorResult from './ErrorResult';
+import ExportData from './ExportData';
+import Html from './helper/Html';
+import Summary from './Summary';
 
 import { H1, H2, H3 } from '../primitives/Heading';
 import { P, Lead } from '../primitives/Paragraphs';
 import { SpecificBlock } from '../primitives/Block';
 import { TextInput as Input } from '../primitives/Input';
 import Main from '../primitives/grid/Main';
-import Block from './blocks/Block';
-import Html from './helper/Html';
-import ErrorResult from './ErrorResult';
-import Summary from './Summary';
-import ExportData from './ExportData';
 
 function Result({
-  errorPages,
-  previousPage,
-  debug,
-  heading,
   children = [],
-  pageid,
-  lead,
-  setPage,
-  schema,
-  summary,
-  exports,
+  debug,
+  errorPages,
   exporter,
+  exports,
+  heading,
+  lead,
+  pageid,
+  previousPage,
+  schema,
+  setPage,
+  summary,
 }) {
   if (errorPages.length) {
     return (
@@ -59,9 +59,9 @@ function Result({
             <div
               style={{
                 background: '#f0f2cb',
+                fontStyle: 'italic',
                 marginBottom: '20px',
                 padding: '20px',
-                fontStyle: 'italic',
               }}
             >
               <Input type="checkbox" placeholder="E-post" />
@@ -113,29 +113,29 @@ function Result({
 }
 
 Result.propTypes = {
-  exports: PropTypes.objectOf(PropTypes.func),
-  exporter: PropTypes.string,
-  heading: PropTypes.string,
-  summary: PropTypes.bool,
-  lead: PropTypes.string,
-  debug: PropTypes.bool,
   children: PropTypes.array,
+  debug: PropTypes.bool,
+  errorPages: PropTypes.array.isRequired,
+  exporter: PropTypes.string,
+  exports: PropTypes.objectOf(PropTypes.func),
+  heading: PropTypes.string,
+  lead: PropTypes.string,
   pageid: PropTypes.number.isRequired,
   previousPage: PropTypes.func.isRequired,
-  errorPages: PropTypes.array.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
+  summary: PropTypes.bool,
 };
 
 Result.defaultProps = {
+  children: [],
+  debug: false,
+  exporter: null,
+  exports: {},
   heading: 'Missing page heading',
   lead: '',
-  children: [],
   schema: [],
   summary: true,
-  exports: {},
-  exporter: null,
-  debug: false,
 };
 
 const mapStateToProps = (state, { wizard }) => ({

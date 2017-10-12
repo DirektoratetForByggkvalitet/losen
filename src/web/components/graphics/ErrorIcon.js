@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import Style from '../../styles';
 
-export default function ErrorIcon({ triangleFill, textFill }) {
+export default function ErrorIcon({ textFill, triangleFill }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
       <g>
@@ -18,11 +19,11 @@ export default function ErrorIcon({ triangleFill, textFill }) {
 }
 
 ErrorIcon.propTypes = {
-  triangleFill: PropTypes.string,
   textFill: PropTypes.string,
+  triangleFill: PropTypes.string,
 };
 
 ErrorIcon.defaultProps = {
-  triangleFill: Style.color.red,
   textFill: 'white',
+  triangleFill: Style.color.red,
 };

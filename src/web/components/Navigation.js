@@ -1,15 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import { NavButton as Button } from '../primitives/Button';
 import Nav from '../primitives/grid/Navigation';
 
-export default function Navigation({ hasPrevious, previousPage, hasNext, nextPage }) {
+export default function Navigation({ hasNext, hasPrevious, nextPage, previousPage }) {
   const previous = <Button onClick={previousPage}>Forrige</Button>;
-  const next = (
-    <Button next onClick={nextPage}>
-      Neste
-    </Button>
-  );
+  const next = <Button next onClick={nextPage}>Neste</Button>;
+
   return (
     <Nav>
       {hasPrevious && previous}

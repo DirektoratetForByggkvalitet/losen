@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { H3 } from '../../../primitives/Heading';
+import { Radio as Input } from '../../../primitives/Input';
 import Html from '../../helper/Html';
 import Label from '../../../primitives/Label';
 import SoftWarning from '../../../primitives/SoftWarning';
-import { Radio as Input } from '../../../primitives/Input';
-import { H3 } from '../../../primitives/Heading';
 
 export default function RadioInput({
-  id,
-  text,
-  name,
-  value,
   checked,
   debug,
-  onChange,
-  heading,
-  image,
   disabled,
+  heading,
+  id,
+  image,
   messages,
+  name,
+  onChange,
+  text,
+  value,
 }) {
   const message = messages.length && messages[0];
 
@@ -51,26 +51,26 @@ export default function RadioInput({
 }
 
 RadioInput.defaultProps = {
-  onChange: () => {},
-  debug: false,
-  heading: '',
-  text: '',
-  image: {},
   checked: false,
+  debug: false,
   disabled: false,
+  heading: '',
+  image: {},
   messages: [],
+  onChange: () => {},
+  text: '',
 };
 
 RadioInput.propTypes = {
-  id: PropTypes.string.isRequired,
-  debug: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  text: PropTypes.string,
-  heading: PropTypes.string,
-  image: PropTypes.object,
-  onChange: PropTypes.func,
-  value: PropTypes.any.isRequired,
   checked: PropTypes.bool,
+  debug: PropTypes.bool,
   disabled: PropTypes.bool,
+  heading: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  image: PropTypes.object,
   messages: PropTypes.arrayOf(PropTypes.object),
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  text: PropTypes.string,
+  value: PropTypes.any.isRequired,
 };

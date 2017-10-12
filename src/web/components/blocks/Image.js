@@ -3,17 +3,21 @@ import PropTypes from 'prop-types';
 
 import Figure from '../../primitives/Figure';
 
-const Image = props =>
-  (<Figure>
-    <img src={props.image.url} alt={props.image.alt} />
-    <figcaption>
-      {props.text}
-    </figcaption>
-  </Figure>);
-
-export default Image;
+export default function Image({ image: { url, alt }, text }) {
+  return (
+    <Figure>
+      <img src={url} alt={alt} />
+      <figcaption>
+        {text}
+      </figcaption>
+    </Figure>
+  );
+}
 
 Image.propTypes = {
-  image: PropTypes.object.isRequired,
+  image: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  }).isRequired,
   text: PropTypes.string.isRequired,
 };

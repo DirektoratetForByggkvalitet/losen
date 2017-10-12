@@ -1,23 +1,24 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import Block from './blocks/Block';
-import Navigation from './Navigation';
 import Html from './helper/Html';
-import Breadcrumbs from '../primitives/Breadcrumbs';
+import Navigation from './Navigation';
+
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
+import Breadcrumbs from '../primitives/Breadcrumbs';
 import Main from '../primitives/grid/Main';
 
 export default function Page({
-  nextPage,
-  previousPage,
-  heading,
   children = [],
-  pageid,
-  firstPage,
-  lead,
   debug,
+  firstPage,
+  heading,
+  lead,
+  nextPage,
+  pageid,
+  previousPage,
 }) {
   let navigation = (
     <Navigation
@@ -28,9 +29,11 @@ export default function Page({
       nextPage={nextPage}
     />
   );
+
   if (firstPage) {
     navigation = <Navigation page={pageid} hasNext nextPage={nextPage} />;
   }
+
   return (
     <Main debug={debug} data-id={pageid}>
       <Breadcrumbs><a href="/">Veivisere</a> / <a href="/">Erklæring om ansvarsrett</a></Breadcrumbs>
@@ -45,18 +48,18 @@ export default function Page({
 }
 
 Page.defaultProps = {
+  debug: false,
   heading: 'Missing page heading',
   lead: '',
-  debug: false,
 };
 
 Page.propTypes = {
+  children: PropTypes.array.isRequired,
+  debug: PropTypes.bool,
+  firstPage: PropTypes.bool.isRequired,
   heading: PropTypes.string,
   lead: PropTypes.string,
-  debug: PropTypes.bool,
-  children: PropTypes.array.isRequired,
-  pageid: PropTypes.string.isRequired,
   nextPage: PropTypes.func.isRequired,
+  pageid: PropTypes.string.isRequired,
   previousPage: PropTypes.func.isRequired,
-  firstPage: PropTypes.bool.isRequired,
 };

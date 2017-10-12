@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import Input from './Input';
 
@@ -16,6 +16,6 @@ export default function Number({ minimum, maximum, ...props }) {
 }
 
 Number.propTypes = {
-  minimum: PropTypes.number.isRequired,
   maximum: PropTypes.number.isRequired,
+  minimum: PropTypes.number.isRequired,
 };

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import SelectOption from './SelectOption';
 
 import { SelectWrapper } from '../../../primitives/Input';
@@ -8,21 +8,21 @@ const NULL_VALUE = '({[NULL]})';
 
 export default class Select extends Component {
   static defaultProps = {
-    text: '',
-    heading: '',
     currentValue: '',
-    defaultOption: '',
     debug: false,
-  };
+    defaultOption: '',
+    heading: '',
+    text: '',
+  }
 
   static propTypes = {
-    debug: PropTypes.bool,
-    options: PropTypes.array.isRequired,
     currentValue: PropTypes.any,
-    setData: PropTypes.func.isRequired,
-    property: PropTypes.string.isRequired,
+    debug: PropTypes.bool,
     defaultOption: PropTypes.string,
-  };
+    options: PropTypes.array.isRequired,
+    property: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+  }
 
   handleChange = (e) => {
     let value = e.target.value === NULL_VALUE ? undefined : e.target.value;

@@ -1,43 +1,38 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import autobind from 'react-autobind';
+import React, { Component } from 'react';
 
 import CheckboxInput from './CheckboxInput';
 
 export default class Checkbox extends Component {
   static defaultProps = {
+    currentValue: {},
     debug: false,
+    disabled: false,
     heading: '',
     text: '',
-    disabled: false,
-    currentValue: {},
-  };
-  static propTypes = {
-    debug: PropTypes.bool,
-    options: PropTypes.array.isRequired,
-    setData: PropTypes.func.isRequired,
-    property: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
-    currentValue: PropTypes.any,
-  };
-
-  constructor(props) {
-    super(props);
-    autobind(this);
   }
 
-  handleChange = (property, value) => (e) => {
-    const { setData } = this.props;
-    setData(`${property}.${value}`, e.target.checked);
-  };
+  static propTypes = {
+    currentValue: PropTypes.any,
+    debug: PropTypes.bool,
+    disabled: PropTypes.bool,
+    options: PropTypes.array.isRequired,
+    property: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+  }
+
+  handleChange = (property, value) => e => this.props.setData(
+    `${property}.${value}`,
+    e.target.checked,
+  );
 
   render() {
     const {
-      options,
-      property,
-      disabled,
       currentValue,
       debug,
+      disabled,
+      options,
+      property,
     } = this.props;
 
     return (

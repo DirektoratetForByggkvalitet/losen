@@ -1,5 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import { MainButton as StyledNavResult } from '../primitives/Button';
 
 export default function NavResult({ setPage, id, active }) {

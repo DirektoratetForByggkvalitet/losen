@@ -1,11 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { TextBlock } from '../../primitives/Block';
 import { H2 } from '../../primitives/Heading';
 import Html from '../helper/Html';
 
-const Text = ({ id, debug, heading, text, warning = false }) => (
+const Text = ({ debug, heading, id, text, warning = false }) => (
   <TextBlock warning={warning} debug={debug} data-id={id}>
     <H2>{heading}</H2>
     <Html text={text} />
@@ -13,16 +13,16 @@ const Text = ({ id, debug, heading, text, warning = false }) => (
 );
 
 Text.propTypes = {
-  id: PropTypes.string,
   debug: PropTypes.bool,
   heading: PropTypes.object.isRequired,
+  id: PropTypes.string,
   text: PropTypes.string.isRequired,
   warning: PropTypes.bool,
 };
 
 Text.defaultProps = {
-  id: null,
   debug: false,
+  id: null,
   warning: false,
 };
 

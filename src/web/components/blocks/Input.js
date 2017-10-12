@@ -1,41 +1,41 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-import ErrorIcon from '../graphics/ErrorIcon';
-import { TextInput as StyledInput } from '../../primitives/Input';
 import { ErrorMessage } from '../../primitives/Errors';
+import { TextInput as StyledInput } from '../../primitives/Input';
+import ErrorIcon from '../graphics/ErrorIcon';
 
 export default class Input extends Component {
   static defaultProps = {
-    type: 'text',
-    placeholder: '',
-    min: 0,
-    max: Number.MAX_SAFE_INTEGER,
-    step: 1,
     currentValue: '',
-    validation: {},
     disabled: false,
+    max: Number.MAX_SAFE_INTEGER,
+    min: 0,
+    placeholder: '',
+    step: 1,
+    type: 'text',
     update: () => {},
-  };
+    validation: {},
+  }
 
   static propTypes = {
-    type: PropTypes.string,
-    min: PropTypes.number,
-    max: PropTypes.number,
-    step: PropTypes.number,
-    placeholder: PropTypes.string,
-    setData: PropTypes.func.isRequired,
-    property: PropTypes.string.isRequired,
     currentValue: PropTypes.any,
+    disabled: PropTypes.bool,
     errors: PropTypes.shape({
       validation: PropTypes.shape({
         error: PropTypes.bool,
         message: PropTypes.string,
       }),
     }).isRequired,
-    disabled: PropTypes.bool,
+    max: PropTypes.number,
+    min: PropTypes.number,
+    placeholder: PropTypes.string,
+    property: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+    step: PropTypes.number,
+    type: PropTypes.string,
     update: PropTypes.func,
-  };
+  }
 
   handleChange = (e) => {
     const { type, step, property, setData, update } = this.props;
@@ -58,13 +58,13 @@ export default class Input extends Component {
   render() {
     const {
       currentValue,
-      placeholder,
-      min,
-      max,
-      type,
-      step,
-      errors,
       disabled,
+      errors,
+      max,
+      min,
+      placeholder,
+      step,
+      type,
     } = this.props;
 
     return (

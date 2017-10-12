@@ -17,41 +17,42 @@ import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
   static propTypes = {
-    wizard: PropTypes.object.isRequired,
-    schema: PropTypes.array.isRequired,
-    exports: PropTypes.objectOf(PropTypes.func),
-    styles: PropTypes.object,
     debug: PropTypes.bool,
+    exports: PropTypes.objectOf(PropTypes.func),
+    schema: PropTypes.array.isRequired,
     showIntro: PropTypes.func,
+    styles: PropTypes.object,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
     translations: PropTypes.objectOf(
       PropTypes.shape({
-        heading: PropTypes.string,
         description: PropTypes.string,
-        tooltips: PropTypes.string,
+        heading: PropTypes.string,
         image: PropTypes.shape({
           small: PropTypes.string.isRequired,
           large: PropTypes.string.isRequired,
         }),
+        tooltips: PropTypes.string,
       }),
     ),
+    wizard: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
-    styles: {},
-    exports: {},
-    translations: {},
     debug: false,
+    exports: {},
     showIntro: () => {},
+    styles: {},
+    translations: {},
   };
 
   constructor(props) {
     super(props);
-    this.state = {
-      page: 0,
-      result: false,
-    };
     autobind(this);
+  }
+
+  state = {
+    page: 0,
+    result: false,
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -92,7 +93,6 @@ class Wizard extends Component {
   changePage(distance) {
     const schema = this.props.schema;
     const pageIndex = this.getCurrentIndex();
-
     const newIndex = pageIndex + distance;
 
     if (newIndex >= schema.length || newIndex < 0) {
@@ -108,14 +108,15 @@ class Wizard extends Component {
 
   render() {
     const {
-      wizard,
-      styles,
-      schema,
       debug,
-      tableOfContents,
       exports,
+      schema,
       showIntro,
+      styles,
+      tableOfContents,
+      wizard,
     } = this.props;
+
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
@@ -163,8 +164,8 @@ const mapStateToProps = (state, { wizard, translations }) => {
 
   return {
     debug: !!window.location.search.match('debug'),
-    tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
     schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
+    tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
   };
 };
 

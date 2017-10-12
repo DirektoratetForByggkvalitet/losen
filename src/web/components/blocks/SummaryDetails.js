@@ -1,9 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import Html from '../helper/Html';
-import { Details, Summary } from '../../primitives/details';
+import React from 'react';
 
-export default function SumamryDetails({ summary, details }) {
+import { Details, Summary } from '../../primitives/details';
+import Html from '../helper/Html';
+
+export default function SummaryDetails({ summary, details }) {
   return (
     <Details>
       <Summary>{summary}</Summary>
@@ -12,7 +13,7 @@ export default function SumamryDetails({ summary, details }) {
   );
 }
 
-SumamryDetails.propTypes = {
-  summary: PropTypes.string.isRequired,
+SummaryDetails.propTypes = {
   details: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
 };

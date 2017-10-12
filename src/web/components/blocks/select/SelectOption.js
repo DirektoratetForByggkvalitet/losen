@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 export default function SelectOption({ id, value, heading, debug }) {
   return (
@@ -10,10 +10,10 @@ export default function SelectOption({ id, value, heading, debug }) {
 }
 
 SelectOption.propTypes = {
-  id: PropTypes.string.isRequired,
-  heading: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   debug: PropTypes.bool,
+  heading: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 SelectOption.defaultProps = {

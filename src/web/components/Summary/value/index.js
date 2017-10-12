@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { Value as StyledValue } from '../../../primitives/Summary';
 
@@ -40,8 +40,8 @@ export default function Value({ value, node }) {
 }
 
 Value.propTypes = {
-  value: PropTypes.any,
   node: PropTypes.object.isRequired,
+  value: PropTypes.any,
 };
 
 Value.defaultProps = {

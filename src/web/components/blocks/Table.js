@@ -1,17 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import pick from 'lodash.pick';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import Html from '../helper/Html';
-import TableContainer from '../../primitives/TableContainer';
-import { TD } from '../../primitives/Table';
 
-function TableHeader(props) {
-  return <th {...props} />;
-}
+import { TD } from '../../primitives/Table';
+import TableContainer from '../../primitives/TableContainer';
 
 function TableCell(props) {
   return <TD {...props} inactive={props.inactive} />;
+}
+
+function TableHeader(props) {
+  return <th {...props} />;
 }
 
 TableCell.propTypes = {
@@ -19,7 +20,7 @@ TableCell.propTypes = {
 };
 
 /* eslint-disable react/no-array-index-key */
-export default function Table({ debug, cells }) {
+export default function Table({ cells, debug }) {
   return (
     <TableContainer>
       <table debug={debug}>
@@ -45,17 +46,17 @@ export default function Table({ debug, cells }) {
 }
 
 Table.propTypes = {
-  debug: PropTypes.bool,
   cells: PropTypes.arrayOf(
     PropTypes.arrayOf(
       PropTypes.shape({
-        type: PropTypes.oneOf(['Heading', 'Cell']).isRequired,
-        text: PropTypes.string.isRequired,
         colSpan: PropTypes.number,
         rowSpan: PropTypes.number,
+        text: PropTypes.string.isRequired,
+        type: PropTypes.oneOf(['Heading', 'Cell']).isRequired,
       }),
     ),
   ).isRequired,
+  debug: PropTypes.bool,
 };
 
 Table.defaultProps = {

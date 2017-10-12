@@ -1,45 +1,47 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import autobind from 'react-autobind';
 import get from 'lodash.get';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
+import ApprovalAreas from '../ApprovalAreas';
 import checkStatus from '../../../shared/checkstatus';
+import Html from '../helper/Html';
 import Input from './Input';
+import VariableText from '../helper/VariableText';
+
 import { H3 } from '../../primitives/Heading';
 import DL from '../../primitives/Datalist';
-import Notice from '../../primitives/Notice';
-import Loading from '../../primitives/Loading';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
-import Html from '../helper/Html';
-import ApprovalAreas from '../ApprovalAreas';
-import VariableText from '../helper/VariableText';
+import Loading from '../../primitives/Loading';
+import Notice from '../../primitives/Notice';
 
 export default class FetchOrg extends Component {
   static propTypes = {
-    source: PropTypes.string.isRequired,
-    information: PropTypes.string,
-    setData: PropTypes.func.isRequired,
-    property: PropTypes.string.isRequired,
     currentValue: PropTypes.object,
-    SGsource: PropTypes.string,
-    SGheading: PropTypes.string,
-    SGtext: PropTypes.string,
+    information: PropTypes.string,
     invalidapproval: PropTypes.string,
-  };
+    property: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+    SGheading: PropTypes.string,
+    SGsource: PropTypes.string,
+    SGtext: PropTypes.string,
+    source: PropTypes.string.isRequired,
+  }
 
   static defaultProps = {
-    information: '',
     currentValue: {},
-    SGsource: '',
+    information: '',
     invalidapproval: '',
     SGheading: '',
+    SGsource: '',
     SGtext: '',
-  };
+  }
 
   constructor(props) {
     super(props);
     autobind(this);
+
     this.state = {
       loading: false,
     };
@@ -47,6 +49,7 @@ export default class FetchOrg extends Component {
 
   fetchOrgData(orgid) {
     const id = orgid.toString().replace(/\s/g, '');
+
     fetch(`${this.props.source}%27${id}%27`)
       .then(response => response.json())
       .then((data) => {
@@ -74,6 +77,7 @@ export default class FetchOrg extends Component {
 
   fetchSGData(orgid) {
     const id = orgid.toString().replace(/\s/g, '');
+
     fetch(`${this.props.SGsource}${id}.json`)
       .then(checkStatus)
       .then((data) => {
@@ -81,12 +85,15 @@ export default class FetchOrg extends Component {
       })
       .catch((error) => {
         const { property, setData } = this.props;
+
         setData(property, {
           status: '',
           validApprovalAreas: '',
           dataSG: false,
         });
+
         this.setState({ loading: false });
+
         // eslint-disable-next-line no-console
         console.log(`There is an error fetching from SG: ${error.message}`);
       });
@@ -94,19 +101,23 @@ export default class FetchOrg extends Component {
 
   updateSGData(data) {
     const { property, setData } = this.props;
+
     const status = get(data, 'dibk-sgdata.status');
     const validApprovalAreas = get(data, 'dibk-sgdata.valid_approval_areas');
+
     setData(property, {
       ...this.props.currentValue,
       status,
       validApprovalAreas,
       dataSG: true,
     });
+
     this.setState({ loadingSG: false });
   }
 
   update(value) {
     const { property, setData } = this.props;
+
     if (value && value.toString().replace(/\s/g, '').length === 9) {
       this.setState({ loading: true });
       this.fetchOrgData(value);
@@ -118,14 +129,16 @@ export default class FetchOrg extends Component {
 
   render() {
     const { loading } = this.state;
+
     const {
       information,
+      invalidapproval,
       property,
       setData,
       SGheading,
       SGtext,
-      invalidapproval,
     } = this.props;
+
     return (
       <div>
         <Input
@@ -136,6 +149,7 @@ export default class FetchOrg extends Component {
           }}
           update={this.update}
         />
+
         {get(this.props, 'currentValue.dataOrg', false) && (
           <div>
             <br />
@@ -158,6 +172,7 @@ export default class FetchOrg extends Component {
             </Information>
           </div>
         )}
+
         <div>
           {get(this.props, 'currentValue.fetchSG', false)}
           <div>

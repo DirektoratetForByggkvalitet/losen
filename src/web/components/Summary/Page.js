@@ -1,12 +1,13 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import { H2 } from '../../primitives/Heading';
-import { SmallButton as Button } from '../../primitives/Button';
 import { PageSummary as StyledPageSummary } from '../../primitives/Summary';
+import { SmallButton as Button } from '../../primitives/Button';
 
 import NodeSummary from './Node';
 
-export default function PageSummary({ goToPage, error, heading, children }) {
+export default function PageSummary({ children, error, goToPage, heading }) {
   return (
     <StyledPageSummary error={error}>
       <H2>{heading} <Button onClick={goToPage}>Endre svar</Button></H2>
@@ -16,10 +17,10 @@ export default function PageSummary({ goToPage, error, heading, children }) {
 }
 
 PageSummary.propTypes = {
-  goToPage: PropTypes.func.isRequired,
-  heading: PropTypes.string.isRequired,
   children: PropTypes.array,
   error: PropTypes.bool,
+  goToPage: PropTypes.func.isRequired,
+  heading: PropTypes.string.isRequired,
 };
 
 PageSummary.defaultProps = {

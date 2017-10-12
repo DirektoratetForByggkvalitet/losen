@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import template from 'lodash.template';
 
-export default function VariableText({ text, data }) {
+export default function VariableText({ data, text }) {
   if (!text) {
     return null;
   }
@@ -13,11 +13,11 @@ export default function VariableText({ text, data }) {
 }
 
 VariableText.defaultProps = {
-  text: '',
   data: {},
+  text: '',
 };
 
 VariableText.propTypes = {
-  text: PropTypes.string,
   data: PropTypes.any,
+  text: PropTypes.string,
 };

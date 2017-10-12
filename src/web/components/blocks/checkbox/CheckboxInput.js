@@ -1,22 +1,22 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import Html from '../../helper/Html';
-import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
 import { H3 } from '../../../primitives/Heading';
+import Html from '../../helper/Html';
+import Label from '../../../primitives/Label';
 
 export default function CheckboxInput({
-  id,
-  name,
   checked,
-  text,
-  onChange,
-  heading,
-  image,
   debug,
   disabled,
+  heading,
+  id,
+  image,
   messages,
+  name,
+  onChange,
+  text,
 }) {
   const message = messages.length && messages[0];
 
@@ -40,24 +40,24 @@ export default function CheckboxInput({
 }
 
 CheckboxInput.defaultProps = {
-  heading: '',
-  debug: false,
-  image: {},
   checked: false,
+  debug: false,
   disabled: false,
-  onChange: () => {},
+  heading: '',
+  image: {},
   messages: [],
+  onChange: () => {},
 };
 
 CheckboxInput.propTypes = {
+  checked: PropTypes.bool,
   debug: PropTypes.bool,
+  disabled: PropTypes.bool,
   heading: PropTypes.string,
   id: PropTypes.string.isRequired,
   image: PropTypes.object,
-  onChange: PropTypes.func,
-  checked: PropTypes.bool,
-  disabled: PropTypes.bool,
-  text: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   messages: PropTypes.arrayOf(PropTypes.object),
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  text: PropTypes.string.isRequired,
 };

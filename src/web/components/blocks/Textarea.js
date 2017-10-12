@@ -1,29 +1,30 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import Html from '../helper/Html';
 import SummaryDetails from './SummaryDetails';
+
 import { Textarea as StyledTextarea } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
 
 export default class Textarea extends Component {
   static defaultProps = {
+    currentValue: '',
+    details: '',
+    information: '',
     placeholder: '',
     setData: () => {},
-    currentValue: '',
-    information: '',
-    details: '',
     summary: '',
   };
 
   static propTypes = {
+    currentValue: PropTypes.string,
+    details: PropTypes.string,
+    information: PropTypes.string,
+    placeholder: PropTypes.string,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func,
-    placeholder: PropTypes.string,
-    currentValue: PropTypes.string,
-    information: PropTypes.string,
-    details: PropTypes.string,
     summary: PropTypes.string,
   };
 
@@ -36,11 +37,11 @@ export default class Textarea extends Component {
 
   render() {
     const {
-      placeholder,
       currentValue,
-      information,
-      summary,
       details,
+      information,
+      placeholder,
+      summary,
     } = this.props;
 
     return (

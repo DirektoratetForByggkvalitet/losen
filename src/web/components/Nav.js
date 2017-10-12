@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-import StyledNav from '../primitives/grid/Nav';
+import NavItem from './NavItem';
+import NavReset from './NavReset';
+import NavResult from './NavResult';
+
 import { P } from '../primitives/Paragraphs';
 import Button from '../primitives/ToggleButton';
-import NavItem from './NavItem';
-import NavResult from './NavResult';
-import NavReset from './NavReset';
+import StyledNav from '../primitives/grid/Nav';
 
-// @todo Use a more robust id for the page
 export default class Nav extends Component {
   static defaultProps = {
     heading: 'Missing page heading',
@@ -16,10 +16,10 @@ export default class Nav extends Component {
   };
 
   static propTypes = {
+    heading: PropTypes.string,
     page: PropTypes.string,
     setPage: PropTypes.func.isRequired,
     tableOfContents: PropTypes.array.isRequired,
-    heading: PropTypes.string,
   };
 
   state = { tocExpanded: true };
@@ -28,11 +28,12 @@ export default class Nav extends Component {
 
   render() {
     const {
+      heading,
       page: currentPage = {},
       setPage,
       tableOfContents,
-      heading,
     } = this.props;
+
     const { tocExpanded } = this.state;
 
     return (

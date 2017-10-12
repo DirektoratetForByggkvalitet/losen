@@ -1,8 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import StyledNavItem from '../primitives/NavItem';
 
-export default function NavItem({ setPage, id, done, heading, active, index }) {
+export default function NavItem({ active, done, heading, id, index, setPage }) {
   return (
     <StyledNavItem
       active={active}
@@ -20,16 +21,16 @@ export default function NavItem({ setPage, id, done, heading, active, index }) {
 }
 
 NavItem.defaultProps = {
-  heading: 'TITLE MISSING',
-  done: false,
   active: false,
+  done: false,
+  heading: 'TITLE MISSING',
 };
 
 NavItem.propTypes = {
   active: PropTypes.bool,
-  index: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  heading: PropTypes.string,
   done: PropTypes.bool,
+  heading: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   setPage: PropTypes.func.isRequired,
 };

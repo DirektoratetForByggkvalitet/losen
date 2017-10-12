@@ -1,15 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import { H3 } from '../../primitives/Heading';
 
-const Data = ({ heading, currentValue }) => (
-  <div>
-    <H3>{heading}</H3>
-    <p>{currentValue}</p>
-  </div>
-);
-
-export default Data;
+export default function Data({ heading, currentValue }) {
+  return (
+    <div>
+      <H3>{heading}</H3>
+      <p>{currentValue}</p>
+    </div>
+  );
+}
 
 Data.defaultProps = {
   currentValue: '',

@@ -1,36 +1,27 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import autobind from 'react-autobind';
+import React, { Component } from 'react';
 
 import RadioInput from './RadioInput';
 
 export default class Radio extends Component {
   static defaultProps = {
+    currentValue: undefined,
+    debug: false,
+    disabled: false,
     heading: '',
     text: '',
-    currentValue: undefined,
-    disabled: false,
-    debug: false,
-  };
-
-  static propTypes = {
-    debug: PropTypes.bool,
-    options: PropTypes.array.isRequired,
-    setData: PropTypes.func.isRequired,
-    property: PropTypes.string.isRequired,
-    currentValue: PropTypes.any,
-    disabled: PropTypes.bool,
-  };
-
-  constructor(props) {
-    super(props);
-    autobind(this);
   }
 
-  handleChange = (property, value) => () => {
-    const { setData } = this.props;
-    setData(`${property}`, value);
-  };
+  static propTypes = {
+    currentValue: PropTypes.any,
+    debug: PropTypes.bool,
+    disabled: PropTypes.bool,
+    options: PropTypes.array.isRequired,
+    property: PropTypes.string.isRequired,
+    setData: PropTypes.func.isRequired,
+  }
+
+  handleChange = (property, value) => () => this.props.setData(`${property}`, value)
 
   render() {
     const { currentValue, debug, options, property, disabled } = this.props;

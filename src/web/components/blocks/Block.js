@@ -1,31 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import React from 'react';
 
+// Components
 import Checkbox from './checkbox/Checkbox';
+import Data from './Data';
+import ErrorIcon from '../graphics/ErrorIcon';
+import FetchOrg from './FetchOrg';
+import Html from '../helper/Html';
 import Image from './Image';
+import ImageComponent from '../helper/Image';
 import Input from './Input';
 import Missing from './Missing';
 import Number from './Number';
 import Radio from './radio/Radio';
 import Select from './select/Select';
-import Text from './Text';
-import Data from './Data';
-import FetchOrg from './FetchOrg';
-import Textarea from './Textarea';
 import Table from './Table';
-import ErrorIcon from '../graphics/ErrorIcon';
-import Html from '../helper/Html';
-import ImageComponent from '../helper/Image';
+import Text from './Text';
+import Textarea from './Textarea';
 
+// State deps
 import { setData } from '../../state/actions';
 import { NAME } from '../../state';
 
+// Primitives
 import { SpecificBlock as StyledBlock } from '../../primitives/Block';
 import { H2 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 
+/**
+ * Determine which component to use based on the node type
+ *
+ * @param string type Type string from schema
+ */
 function getBlock(type) {
   switch (type) {
     case 'Radio':
@@ -150,39 +158,39 @@ export function PureBlock(props) {
 }
 
 PureBlock.defaultProps = {
-  id: null,
-  heading: '',
-  text: '',
-  image: {},
-  errors: {},
-  errorDescription: null,
   children: [],
-  disabled: false,
-  grouped: false,
-  simple: false,
-  validator: false,
   currentValue: undefined,
+  disabled: false,
+  errorDescription: null,
+  errors: {},
+  grouped: false,
+  heading: '',
+  id: null,
+  image: {},
+  simple: false,
+  text: '',
+  validator: false,
 };
 
 PureBlock.propTypes = {
-  id: PropTypes.string,
+  children: PropTypes.arrayOf(PropTypes.object),
+  currentValue: PropTypes.any,
   debug: PropTypes.bool.isRequired,
-  type: PropTypes.string.isRequired,
-  heading: PropTypes.string,
-  text: PropTypes.string,
-  property: PropTypes.string.isRequired,
-  image: PropTypes.object,
-  grouped: PropTypes.bool,
-  simple: PropTypes.bool,
   disabled: PropTypes.bool,
+  errorDescription: PropTypes.string,
   errors: PropTypes.shape({
     disabled: PropTypes.array,
     validation: PropTypes.object,
     required: PropTypes.bool,
   }),
-  errorDescription: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.object),
-  currentValue: PropTypes.any,
+  grouped: PropTypes.bool,
+  heading: PropTypes.string,
+  id: PropTypes.string,
+  image: PropTypes.object,
+  property: PropTypes.string.isRequired,
+  simple: PropTypes.bool,
+  text: PropTypes.string,
+  type: PropTypes.string.isRequired,
   validator: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.shape({
