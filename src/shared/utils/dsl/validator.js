@@ -26,7 +26,7 @@ export function validateSimpleExpression(expression) {
     case 'lte':
     case 'eq':
     case 'neq':
-      if (!expression.value) {
+      if (typeof expression.value === 'undefined') {
         throw new Error(`Operator ${expression.operator} expects a value property: ${JSON.stringify(expression)}`);
       }
 

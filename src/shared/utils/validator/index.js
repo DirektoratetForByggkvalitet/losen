@@ -9,7 +9,7 @@ const requiredProperties = {
   Answer: ['id', 'text', 'value'],
   Image: ['id', 'image'],
   Text: ['id', 'text'],
-  Branch: ['id', 'branches'],
+  Branch: ['branches'],
   Checkbox: [...inputRequiredProperties, 'options'],
   Radio: [...inputRequiredProperties, 'options'],
   Select: [...inputRequiredProperties, 'options'],

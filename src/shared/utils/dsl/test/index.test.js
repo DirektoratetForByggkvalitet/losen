@@ -95,6 +95,86 @@ describe('DSL parser', () => {
       });
     });
 
+    describe('equal to', () => {
+      describe('with simple value', () => {
+        const validatorFunc = buildValidatorForSimpleExpression({
+          field: 'numberOfAnimals',
+          operator: 'eq',
+          value: 3,
+        });
+
+        it('returns error when condition is not met', () => {
+          expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være lik', 3]] });
+        });
+
+        it('succeeds when condition is met', () => {
+          expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({ valid: true, errors: [] });
+        });
+      });
+
+      describe('with field reference as value', () => {
+        const validatorFunc = buildValidatorForSimpleExpression({
+          field: 'numberOfAnimals',
+          operator: 'eq',
+          value: { field: 'pets.cats' },
+        });
+
+        it('returns error when condition is not met', () => {
+          expect(validatorFunc({
+            numberOfAnimals: 2,
+            pets: { cats: 3 },
+          })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være lik', { field: 'pets.cats' }]] });
+        });
+
+        it('succeeds when condition is met', () => {
+          expect(validatorFunc({
+            numberOfAnimals: 3,
+            pets: { cats: 3 },
+          })).toEqual({ valid: true, errors: [] });
+        });
+      });
+    });
+
+    describe('not equal to', () => {
+      describe('with simple value', () => {
+        const validatorFunc = buildValidatorForSimpleExpression({
+          field: 'numberOfAnimals',
+          operator: 'neq',
+          value: 3,
+        });
+
+        it('returns error when condition is not met', () => {
+          expect(validatorFunc({ numberOfAnimals: 3 })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være ulik', 3]] });
+        });
+
+        it('succeeds when condition is met', () => {
+          expect(validatorFunc({ numberOfAnimals: 2 })).toEqual({ valid: true, errors: [] });
+        });
+      });
+
+      describe('with field reference as value', () => {
+        const validatorFunc = buildValidatorForSimpleExpression({
+          field: 'numberOfAnimals',
+          operator: 'neq',
+          value: { field: 'pets.cats' },
+        });
+
+        it('returns error when condition is not met', () => {
+          expect(validatorFunc({
+            numberOfAnimals: 3,
+            pets: { cats: 3 },
+          })).toEqual({ valid: false, errors: [[{ field: 'numberOfAnimals' }, 'må være ulik', { field: 'pets.cats' }]] });
+        });
+
+        it('succeeds when condition is met', () => {
+          expect(validatorFunc({
+            numberOfAnimals: 2,
+            pets: { cats: 3 },
+          })).toEqual({ valid: true, errors: [] });
+        });
+      });
+    });
+
     describe('with field reference as value', () => {
       const validatorFunc = buildValidatorForSimpleExpression({
         field: 'numberOfAnimals',

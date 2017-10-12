@@ -13,6 +13,7 @@ export default function RadioInput({
   name,
   value,
   checked,
+  debug,
   onChange,
   heading,
   image,
@@ -33,8 +34,8 @@ export default function RadioInput({
         onChange={onChange}
       />
 
-      <Label htmlFor={id} warning={message.warning}>
-        <div>
+      <Label htmlFor={id} warning={message.warning} debug={debug}>
+        <div data-id={id}>
           <div>
             {heading ? <H3>{heading}</H3> : null}
             {message ? (
@@ -51,6 +52,7 @@ export default function RadioInput({
 
 RadioInput.defaultProps = {
   onChange: () => {},
+  debug: false,
   heading: '',
   text: '',
   image: {},
@@ -61,6 +63,7 @@ RadioInput.defaultProps = {
 
 RadioInput.propTypes = {
   id: PropTypes.string.isRequired,
+  debug: PropTypes.bool,
   name: PropTypes.string.isRequired,
   text: PropTypes.string,
   heading: PropTypes.string,

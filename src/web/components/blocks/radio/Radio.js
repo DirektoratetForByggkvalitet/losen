@@ -10,9 +10,11 @@ export default class Radio extends Component {
     text: '',
     currentValue: undefined,
     disabled: false,
+    debug: false,
   };
 
   static propTypes = {
+    debug: PropTypes.bool,
     options: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
     property: PropTypes.string.isRequired,
@@ -31,7 +33,7 @@ export default class Radio extends Component {
   };
 
   render() {
-    const { currentValue, options, property, disabled } = this.props;
+    const { currentValue, debug, options, property, disabled } = this.props;
 
     return (
       <div>
@@ -41,9 +43,11 @@ export default class Radio extends Component {
           return (
             <RadioInput
               key={`${property}:${option.value}`}
-              id={`${property}:${option.value}`}
+              id={option.id}
               name={property}
               {...option}
+              debug={debug}
+              data-id={option.id}
               disabled={isDisabled}
               checked={currentValue === option.value}
               onChange={!isDisabled && this.handleChange(property, option.value)}

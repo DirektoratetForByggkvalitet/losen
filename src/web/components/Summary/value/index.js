@@ -9,7 +9,16 @@ export default function Value({ value, node }) {
   }
 
   if (typeof value === 'object') {
-    const values = Object.keys(value).filter(key => value[key]);
+    const values = Object
+      .keys(value)
+      .filter(key => value[key])
+      .map((val) => {
+        const option = (node.options || []).find(
+          ({ value: optionValue }) => optionValue === val,
+        ) || {};
+
+        return option.heading || option.text || val;
+      });
 
     if (!node.optional && !values.length) {
       return <StyledValue missing>* Må fylles ut</StyledValue>;
