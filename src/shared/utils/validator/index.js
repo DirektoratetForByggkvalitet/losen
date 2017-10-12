@@ -5,7 +5,7 @@ const inputRequiredProperties = ['id', 'property', 'heading'];
 const requiredProperties = {
   Page: ['id', 'heading', 'lead', 'children'],
   Result: ['id', 'heading'],
-  Group: ['id', 'heading', 'children'],
+  Group: ['id', 'children'],
   Answer: ['id', 'heading', 'value'],
   Image: ['id', 'image'],
   Text: ['id', 'text'],
