@@ -18,6 +18,10 @@ class Modal extends Component {
     autobind(this);
   }
 
+  componentDidMount() {
+    this.state.showModal = false;
+  }
+
   handleCloseModal = () => this.setState({ showModal: false });
 
   handleRestart = () => {
