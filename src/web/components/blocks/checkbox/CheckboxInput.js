@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Html from '../../helper/Html';
 import Label from '../../../primitives/Label';
 import { Checkbox as Input } from '../../../primitives/Input';
 import { H3 } from '../../../primitives/Heading';
-import { P } from '../../../primitives/Paragraphs';
 
 export default function CheckboxInput({
   id,
@@ -31,7 +31,7 @@ export default function CheckboxInput({
               {heading}
             </H3>
             : null}
-          <P>{text}</P>
+          <Html text={text} />
         </div>
         {image ? <img src={image.url} alt={image.alt} /> : null}
       </Label>

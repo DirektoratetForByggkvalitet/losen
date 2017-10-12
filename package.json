@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "0.9.1",
+  "version": "0.10.2",
   "description": "Losen - a flexible wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -61,6 +61,7 @@
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
     "react-autobind": "^1.0.6",
+    "react-modal": "^3.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "redux": "^3.7.2",
@@ -75,10 +76,9 @@
   },
   "devDependencies": {
     "@storybook/react": "^3.2.11",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
     "babel-jest": "^20.0.3",
     "babel-plugin-inline-import": "^2.0.6",
     "babel-polyfill": "^6.26.0",
@@ -91,6 +91,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^20.0.4",
+    "jest-cli": "^21.2.1",
     "pre-commit": "^1.2.2",
     "react-dom": "^15.6.2",
     "webpack": "^3.6.0"
@@ -106,8 +107,7 @@
       "react/jsx-filename-extension": 0,
       "react/no-children-prop": 0,
       "jsx-a11y/accessible-emoji": 0,
-      "react/no-unescaped-entities": 0,
-      "no-template-curly-in-string": 0
+      "react/no-unescaped-entities": 0
     },
     "env": {
       "jest": true,

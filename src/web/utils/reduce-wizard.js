@@ -20,11 +20,7 @@ export function translateNode(node, translations) {
   const result = {};
 
   if (translation.heading) {
-    if (node.type === 'Answer' && !translation.description) {
-      result.text = translation.heading;
-    } else {
-      result.heading = translation.heading;
-    }
+    result.heading = translation.heading;
   }
 
   if (translation.description) {
@@ -50,7 +46,7 @@ export function translateNode(node, translations) {
  * property on cells that that has a test that does not evaluate to a truthy
  * result
  */
-export const parseTableCells = state => (node) => {
+export const parseTableCells = (state, translations) => (node) => {
   if (node.type !== 'Table') {
     return node;
   }
@@ -64,8 +60,11 @@ export const parseTableCells = state => (node) => {
         inactive = !parseExpression(cell.test)(state[NAME]).valid;
       }
 
+      const translatedProps = translateNode(cell, translations);
+
       return {
         ...cell,
+        ...translatedProps,
         inactive,
       };
     })),
@@ -215,7 +214,7 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
   return schema
     .reduce(reduceBranches(state), [])
     .filter(filterSchemaNodes(state))
-    .map(parseTableCells(state))
+    .map(parseTableCells(state, translations))
     .map(mapWizardChildren(state, nodeTitles, translations))
     .map(reduceOptions(state, translations))
     .reduce(liftChildrenBranchPages, []);

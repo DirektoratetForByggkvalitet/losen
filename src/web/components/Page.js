@@ -17,6 +17,7 @@ export default function Page({
   pageid,
   firstPage,
   lead,
+  debug,
 }) {
   let navigation = (
     <Navigation
@@ -31,7 +32,7 @@ export default function Page({
     navigation = <Navigation page={pageid} hasNext nextPage={nextPage} />;
   }
   return (
-    <Main>
+    <Main debug={debug} data-id={pageid}>
       <Breadcrumbs><a href="/">Veivisere</a> / <a href="/">Erklæring om ansvarsrett</a></Breadcrumbs>
       <H1>{heading}</H1>
       <Lead>
@@ -46,11 +47,13 @@ export default function Page({
 Page.defaultProps = {
   heading: 'Missing page heading',
   lead: '',
+  debug: false,
 };
 
 Page.propTypes = {
   heading: PropTypes.string,
   lead: PropTypes.string,
+  debug: PropTypes.bool,
   children: PropTypes.array.isRequired,
   pageid: PropTypes.string.isRequired,
   nextPage: PropTypes.func.isRequired,

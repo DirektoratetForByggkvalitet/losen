@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import autobind from 'react-autobind';
+import Modal from './helper/Modal';
 
 import StyleProvider from './StyleProvider';
 import Nav from './Nav';
@@ -20,6 +21,8 @@ class Wizard extends Component {
     schema: PropTypes.array.isRequired,
     exports: PropTypes.objectOf(PropTypes.func),
     styles: PropTypes.object,
+    debug: PropTypes.bool,
+    showIntro: PropTypes.func,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
     translations: PropTypes.objectOf(
       PropTypes.shape({
@@ -38,6 +41,8 @@ class Wizard extends Component {
     styles: {},
     exports: {},
     translations: {},
+    debug: false,
+    showIntro: () => {},
   };
 
   constructor(props) {
@@ -102,13 +107,22 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1);
 
   render() {
-    const { wizard, styles, schema, tableOfContents, exports } = this.props;
+    const {
+      wizard,
+      styles,
+      schema,
+      debug,
+      tableOfContents,
+      exports,
+      showIntro,
+    } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
     return (
       <StyleProvider styles={styles}>
         <StyledWizard>
+          <Modal showIntro={showIntro} />
           <Grid>
             <Nav
               page={page.id}
@@ -120,6 +134,7 @@ class Wizard extends Component {
               <Result
                 {...page}
                 previousPage={this.previousPage}
+                debug={debug}
                 pageid={page.id}
                 wizard={wizard}
                 schema={schema}
@@ -130,6 +145,7 @@ class Wizard extends Component {
               <Page
                 nextPage={this.nextPage}
                 previousPage={this.previousPage}
+                debug={debug}
                 pageid={page.id}
                 firstPage={schema[0].id === page.id}
                 {...page}
@@ -146,6 +162,7 @@ const mapStateToProps = (state, { wizard, translations }) => {
   const nodeTitles = getNodeTitles(wizard.schema, translations);
 
   return {
+    debug: !!window.location.search.match('debug'),
     tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
     schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
   };

@@ -18,6 +18,7 @@ import ExportData from './ExportData';
 function Result({
   errorPages,
   previousPage,
+  debug,
   heading,
   children = [],
   pageid,
@@ -42,7 +43,7 @@ function Result({
   }
 
   return (
-    <Main>
+    <Main debug={debug} data-id={pageid}>
       <H1>{heading}</H1>
       <Lead>
         <Html text={lead} />
@@ -117,6 +118,7 @@ Result.propTypes = {
   heading: PropTypes.string,
   summary: PropTypes.bool,
   lead: PropTypes.string,
+  debug: PropTypes.bool,
   children: PropTypes.array,
   pageid: PropTypes.number.isRequired,
   previousPage: PropTypes.func.isRequired,
@@ -133,6 +135,7 @@ Result.defaultProps = {
   summary: true,
   exports: {},
   exporter: null,
+  debug: false,
 };
 
 const mapStateToProps = (state, { wizard }) => ({

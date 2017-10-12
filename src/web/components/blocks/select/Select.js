@@ -12,9 +12,11 @@ export default class Select extends Component {
     heading: '',
     currentValue: '',
     defaultOption: '',
+    debug: false,
   };
 
   static propTypes = {
+    debug: PropTypes.bool,
     options: PropTypes.array.isRequired,
     currentValue: PropTypes.any,
     setData: PropTypes.func.isRequired,
@@ -42,15 +44,15 @@ export default class Select extends Component {
   };
 
   render() {
-    const { currentValue, options, defaultOption } = this.props;
-    const text = defaultOption || 'Velg fra listen';
+    const { currentValue, options, defaultOption, debug } = this.props;
+    const heading = defaultOption || 'Velg fra listen';
     return (
       <SelectWrapper>
         <select value={currentValue} onChange={this.handleChange}>
-          <SelectOption text={text} value={NULL_VALUE} />
+          <SelectOption heading={heading} value={NULL_VALUE} />
 
           {options.map(option => (
-            <SelectOption {...option} key={option.value} />
+            <SelectOption debug={debug} {...option} key={option.value} />
           ))}
         </select>
       </SelectWrapper>

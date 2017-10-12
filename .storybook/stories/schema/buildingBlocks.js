@@ -93,7 +93,8 @@ export default function SchemaBuildingBlocks() {
 
       <H4>Properties</H4>
       <ul>
-        <li><code>text</code>: Additional description that follows the heading for the answer. <strong>Required</strong></li>
+        <li><code>heading</code>: The title for the option. <strong>Required</strong></li>
+        <li><code>text</code>: Additional description that follows the heading for the answer.</li>
         <li><code>value</code>: Option value. What is set in the data object, not visible to the user. <strong>Required</strong></li>
         <li>
           <code>image</code>: Image to show with description. If a values is passed, the following structure is expected:
@@ -131,7 +132,10 @@ export default function SchemaBuildingBlocks() {
       <p>Radio button group. Just like Checkbox, but only possible to select one. Properties are the same.</p>
 
       <H3>Select</H3>
-      <p>Dropdown list. Just like Radio, but with a select element and no support for image/descriptive text.</p>
+      <p>
+        Dropdown list. Just like Radio, but with a select element and no support for image/descriptive text. <code>Answer</code> nodes
+        for a select will not show the <code>text</code>, so
+      </p>
 
       <H3>Input</H3>
       <p>Regular text input field.</p>
@@ -154,6 +158,11 @@ export default function SchemaBuildingBlocks() {
 
       <H3>TextArea</H3>
       <p>A multi-line input field.</p>
+
+      <H4>Properties</H4>
+      <ul>
+        <li><code>information</code>: A notice that shows below the textarea.</li>
+      </ul>
 
       <hr />
 
