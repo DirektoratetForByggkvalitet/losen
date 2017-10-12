@@ -60,6 +60,24 @@ export const SpecificBlock = injectStyles(styled.div`
       margin: 0;
       line-height: 1.3;
     }
+    td,th {
+      ${props.debug ? `
+      :hover {
+        position: relative;
+
+        :before {
+          content: attr(data-id);
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: deeppink;
+          color: white;
+          font-size: 12px;
+        }
+      }` : ''}
+    }
+
     td {
       background: ${props.inactive ? 'lime' : 'blue'};
     }

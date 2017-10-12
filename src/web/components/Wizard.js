@@ -150,7 +150,7 @@ const mapStateToProps = (state, { wizard, translations }) => {
   const nodeTitles = getNodeTitles(wizard.schema, translations);
 
   return {
-    debug: window.location.search.match('debug'),
+    debug: !!window.location.search.match('debug'),
     tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
     schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
   };

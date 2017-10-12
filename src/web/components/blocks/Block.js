@@ -195,7 +195,7 @@ PureBlock.propTypes = {
 const ConnectedBlock = connect(
   (state, props) => ({
     data: state[NAME],
-    debug: window.location.search.match('debug'),
+    debug: !!window.location.search.match('debug'),
     disabled:
       props.errors &&
       props.errors.disabled &&
