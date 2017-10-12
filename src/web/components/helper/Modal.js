@@ -6,6 +6,7 @@ import ReactModal from 'react-modal';
 import autobind from 'react-autobind';
 
 import { resetData } from '../../state/actions';
+import { NAME } from '../../state';
 import { MainButton, SecondaryButton } from '../../primitives/Button';
 
 class Modal extends Component {
@@ -24,11 +25,14 @@ class Modal extends Component {
     this.setState({ showModal: false });
     this.props.showIntro();
   };
+
   render() {
     /* shouldCloseOnEsc will work on next version of React Modal for UU */
     return (
       <ReactModal
-        isOpen={this.state.showModal}
+        isOpen={
+          this.state.showModal && Object.keys(this.props.data).length !== 0
+        }
         contentLabel="Vil du starte på nytt?"
         role="dialog"
         shouldCloseOnEsc
@@ -46,8 +50,12 @@ class Modal extends Component {
 Modal.propTypes = {
   resetData: PropTypes.func.isRequired,
   showIntro: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
-export default connect(null, dispatch =>
-  bindActionCreators({ resetData }, dispatch),
+export default connect(
+  state => ({
+    data: state[NAME],
+  }),
+  dispatch => bindActionCreators({ resetData }, dispatch),
 )(Modal);
