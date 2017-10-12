@@ -4,7 +4,7 @@ import injectStyles from '../../utils/inject-styles';
 
 const Main = injectStyles(styled.main`
   grid-area: main;
-  padding: 40px 30px 0;
+  padding: 30px 30px 0;
   h2 {
     margin-top: 0;
   }

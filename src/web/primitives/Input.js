@@ -209,6 +209,10 @@ export const NumberInput = injectStyles(styled.input`
     font-color: inherit;
     opacity: 0.6;
   }
+  transition: border-color 0.1s ease-in-out;
+  &:hover, &:focus {
+    border-color: ${({ styles }) => styles.color.dark};
+  }
 `);
 
 export const TextInput = injectStyles(styled.input`
@@ -220,6 +224,10 @@ export const TextInput = injectStyles(styled.input`
   &::placeholder {
     font-color: inherit;
     opacity: 0.6;
+  }
+  transition: border-color 0.1s ease-in-out;
+  &:hover, &:focus {
+    border-color: ${({ styles }) => styles.color.dark};
   }
 `);
 
@@ -234,12 +242,47 @@ export const Textarea = injectStyles(styled.textarea`
     font-color: inherit;
     opacity: 0.6;
   }
+  transition: border-color 0.1s ease-in-out;
+  &:hover, &:focus {
+    border-color: ${({ styles }) => styles.color.dark};
+  }
 `);
 
-export const Select = injectStyles(styled.select`
-  font-family: inherit;
-  font-size: 1em;
-  padding: 0.5em;
-  min-width: 20%;
-  border: 1px solid ${({ styles }) => styles.color.darkgray};
+export const SelectWrapper = injectStyles(styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  &::before {
+    content: " ";
+    position: absolute;
+    right: 16px;
+    top: 36%;
+    width: 6px;
+    height: 6px;
+    transform: rotate(-45deg);
+    border-left: 2px solid ${({ styles }) => styles.color.light};
+    border-bottom: 2px solid ${({ styles }) => styles.color.light};
+  }
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 0.5em;
+    padding-right: 40px;
+    border: 1px solid ${({ styles }) => styles.color.darkgray};
+    border-radius: 0;
+    line-height: normal;
+    background: white;
+    &:focus {
+      outline-color: ${({ styles }) => styles.color.bluegreen};
+    }
+    cursor: pointer;
+    transition: border-color 0.1s ease-in-out;
+    &:hover, &:focus {
+      border-color: ${({ styles }) => styles.color.dark};
+    }
+  }
 `);

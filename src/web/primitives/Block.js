@@ -60,9 +60,6 @@ export const SpecificBlock = injectStyles(styled.div`
       margin: 0;
       line-height: 1.3;
     }
-    td {
-      background: ${props.inactive ? 'lime' : 'blue'};
-    }
   }
   ` : ' '}
 

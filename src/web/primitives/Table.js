@@ -43,11 +43,10 @@ export const TD = injectStyles(styled.td`
   }
   ${props => props.inactive ? `
   background: repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px);
-  color: ${props.styles.color.red};
   p {
-    font-weight: lighter;
+    font-weight: normal;
   }
   ` : `
-  color: ${props.styles.color.green};
+  background: rgba(0, 255, 0, 0.1);
   `}
 `);

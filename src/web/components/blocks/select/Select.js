@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SelectOption from './SelectOption';
 
-import { Select as StyledSelect } from '../../../primitives/Input';
+import { SelectWrapper } from '../../../primitives/Input';
 
 const NULL_VALUE = '({[NULL]})';
 
@@ -45,13 +45,15 @@ export default class Select extends Component {
     const { currentValue, options, defaultOption } = this.props;
     const text = defaultOption || 'Velg fra listen';
     return (
-      <StyledSelect value={currentValue} onChange={this.handleChange}>
-        <SelectOption text={text} value={NULL_VALUE} />
+      <SelectWrapper>
+        <select value={currentValue} onChange={this.handleChange}>
+          <SelectOption text={text} value={NULL_VALUE} />
 
-        {options.map(option => (
-          <SelectOption {...option} key={option.value} />
-        ))}
-      </StyledSelect>
+          {options.map(option => (
+            <SelectOption {...option} key={option.value} />
+          ))}
+        </select>
+      </SelectWrapper>
     );
   }
 }

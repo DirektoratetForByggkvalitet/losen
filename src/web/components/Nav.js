@@ -38,10 +38,11 @@ export default class Nav extends Component {
     return (
       <div>
         <Button onClick={this.toggleToc}>
-          {tocExpanded ? 'Vis' : 'Skjul'} innholdsfortegnelse
+          {tocExpanded ? 'Vis' : 'Skjul'} alle steg
         </Button>
 
         <StyledNav tocExpanded={tocExpanded}>
+          Veiviser:
           <P>{heading}</P>
           {tableOfContents.map(
             (page, index) =>
