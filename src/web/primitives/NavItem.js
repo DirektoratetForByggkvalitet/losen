@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const NavItem = injectStyles(styled.div`
+const NavItem = injectStyles(styled.a`
   background: ${props =>
     props.active ? ({ styles }) => styles.color.warmgray3 : 'white'};
   display: flex;
@@ -74,16 +74,14 @@ const NavItem = injectStyles(styled.div`
       span {
         display: none;
       }
-    `}
-    ${props =>
-    props.active
-      ? `
+    `} ${props =>
+  props.active
+    ? `
       span {
         display: none;
       }
     `
-      : ' '}
-    &:last-of-type {
+    : ' '} &:last-of-type {
     margin-bottom: 30px;
   }
 `);
