@@ -9,6 +9,7 @@ const NavItem = injectStyles(styled.a`
   align-items: center;
   justify-content: center;
   transition: background 0.1s ease-in-out;
+  color: black !important;
   &:hover {
     cursor: pointer;
     background: ${({ styles }) => styles.color.warmgray3};

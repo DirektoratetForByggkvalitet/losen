@@ -4,7 +4,7 @@ import injectStyles from '../utils/inject-styles';
 
 export const PageSummary = injectStyles(styled.div`
   padding: 0 0 20px;
-  margin: 10px 0 6px;
+  margin: 0 0 10px;
   background: white;
   line-height: 2;
   border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
@@ -13,9 +13,10 @@ export const PageSummary = injectStyles(styled.div`
   }
   h2 {
     padding: 0.2em 0;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
+    font-weight: 300;
   }
   button {
     min-width: 120px;
@@ -24,6 +25,7 @@ export const PageSummary = injectStyles(styled.div`
   }
   > div {
     line-height: 1.4;
+    max-width: 600px;
   }
   ${props =>
     props.error
@@ -39,6 +41,15 @@ export const PageSummary = injectStyles(styled.div`
         color: inherit;
       }
     `}
+  @media screen and (max-width: 900px) {
+    h2 {
+      display: block;
+    }
+    button {
+      margin: 6px 0 0;
+      display: block;
+    }
+  }
   @media print {
     font-size: 12px;
     h2 {
