@@ -4,20 +4,25 @@ import injectStyles from '../utils/inject-styles';
 
 export const SpecificBlock = injectStyles(styled.div`
   position: relative;
-  padding: ${props => props.grouped ? '20px 24px 20px' : '30px 33px 36px'};
+  padding: ${props => (props.grouped ? '20px 24px 20px' : '30px 33px 36px')};
   margin: 20px 0;
   width: 100%;
-  background: ${props => props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white'};
+  background: ${props =>
+    props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white'};
   &:nth-child(even) {
-    background: ${props => props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd'};
+    background: ${props =>
+    props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd'};
   }
-  box-shadow: ${props => props.grouped ? 'none' : '0 2px 3px rgba(0, 0, 0, 0.18)'};
+  box-shadow: ${props =>
+    props.grouped ? 'none' : '0 2px 3px rgba(0, 0, 0, 0.18)'};
   p {
     margin-top: 0;
     font-weight: 300;
   }
 
-  ${props => props.debug ? `
+  ${props =>
+    props.debug
+      ? `
   :before {
     content: attr(data-id);
     display: block;
@@ -26,24 +31,28 @@ export const SpecificBlock = injectStyles(styled.div`
     right: 0;
     background: deeppink;
     color: white;
-    font-size: 12px;
-  }` : ''}
-
-  ${props => props.grouped ? `
+    font-size: 14px;
+    padding: 2px 6px;
+  }`
+      : ''} ${props =>
+  props.grouped
+    ? `
   h2 {
     font-size: 18px;
     margin-bottom: 4px;
-  }` : ' '}
-
-  ${props => props.groupedSimple ? `
+  }`
+    : ' '} ${props =>
+  props.groupedSimple
+    ? `
   margin-top: 36px;
   padding: 0;
   background: none;
   &:nth-child(even) {
     background: none;
-  }` : ' '}
-
-  ${props => (props.type === 'Table') ? `
+  }`
+    : ' '} ${props =>
+  props.type === 'Table'
+    ? `
   table {
     text-align: center;
     width: 100%;
@@ -64,7 +73,8 @@ export const SpecificBlock = injectStyles(styled.div`
       line-height: 1.3;
     }
     td,th {
-      ${props.debug ? `
+      ${props.debug
+    ? `
       :hover {
         position: relative;
 
@@ -76,19 +86,23 @@ export const SpecificBlock = injectStyles(styled.div`
           right: 0;
           background: deeppink;
           color: white;
-          font-size: 12px;
+          font-size: 14px;
+          padding: 2px 6px;
         }
-      }` : ''}
+      }`
+    : ''}
     }
   }
-  ` : ' '}
-
-  @media screen and (max-width: 700px) {
-    padding: ${props => props.grouped ? '20px 0' : '20px'};
-    ${props => props.groupedSimple ? `
+  `
+    : ' '} @media screen and (max-width: 700px) {
+    padding: ${props => (props.grouped ? '20px 0' : '20px')};
+    ${props =>
+    props.groupedSimple
+      ? `
     margin-top: 24px;
     padding: 0;
-    ` : ' '}
+    `
+      : ' '};
   }
 
   @media print {
@@ -103,7 +117,9 @@ export const TextBlock = injectStyles(styled.div`
   margin: 20px 0;
   width: 100%;
 
-  ${props => props.debug ? `
+  ${props =>
+    props.debug
+      ? `
   position: relative;
 
   :before {
@@ -114,10 +130,10 @@ export const TextBlock = injectStyles(styled.div`
     right: 0;
     background: deeppink;
     color: white;
-    font-size: 12px;
-  }` : ''}
-
-  p {
+    font-size: 14px;
+    padding: 2px 6px;
+  }`
+      : ''} p {
     margin: 1em 0;
     line-height: 1.6;
     max-width: 600px;

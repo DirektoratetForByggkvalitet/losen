@@ -20,7 +20,8 @@ export const Label = injectStyles(styled.label`
       right: 0;
       background: deeppink;
       color: white;
-      font-size: 12px;
+      font-size: 14px;
+      padding: 2px 6px;
     }
   }`
       : ''};

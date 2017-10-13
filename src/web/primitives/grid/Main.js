@@ -9,7 +9,9 @@ const Main = injectStyles(styled.main`
     margin-top: 0;
   }
 
-  ${props => props.debug ? `
+  ${props =>
+    props.debug
+      ? `
   position: relative;
 
   :before {
@@ -20,10 +22,10 @@ const Main = injectStyles(styled.main`
     right: 0;
     background: deeppink;
     color: white;
-    font-size: 12px;
-  }` : ''}
-
-  @media screen and (max-width: 900px) {
+    font-size: 14px;
+    padding: 2px 6px;
+  }`
+      : ''} @media screen and (max-width: 900px) {
     padding: 0;
     width: ${({ styles }) => styles.size.mobileContentWidth};
     margin: 30px auto;
