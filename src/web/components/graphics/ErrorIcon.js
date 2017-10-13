@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 import Style from '../../styles';
 
 export default function ErrorIcon({ textFill, triangleFill }) {
+  let label = 'Validaringsfeil';
+  if (triangleFill === 'black') {
+    label = 'Informasjon';
+  }
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 38 38"
+      aria-label={label}
+    >
       <g>
         <circle style={{ fill: triangleFill }} cx="19" cy="19" r="16" />
         <path
