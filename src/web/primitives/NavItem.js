@@ -24,6 +24,7 @@ const NavItem = injectStyles(styled.div`
     justify-content: center;
     transition: background 0.1s ease-in-out;
     overflow: hidden;
+    max-width: 100%;
   }
   &:hover div {
     background: ${props =>
@@ -36,6 +37,7 @@ const NavItem = injectStyles(styled.div`
     font-weight: ${props => (props.active ? 'bold' : '300')};
     padding: 0 20px;
     line-height: 1.3;
+    font-size: 16px;
   }
   span {
     text-decoration: underline;

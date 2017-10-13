@@ -8,7 +8,6 @@ export const Table = injectStyles(styled.table`
   font-size: 14px;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   border-collapse: collapse;
-  margin-bottom: 10px;
   th, td {
     border: 1px solid ${({ styles }) => styles.color.darkgray};
     padding: 10px;

@@ -101,6 +101,26 @@ export const Checkbox = injectStyles(styled.input`
       }
     }
   }
+  @media screen and (max-width: 900px) {
+    + label {
+      flex-wrap: wrap;
+      &::before {
+        
+      }
+      div {
+        flex: 8;
+        div {
+          margin-right: 0;
+        }
+      }
+      img {
+        width: 100%;
+        margin: 20px auto 0;
+        display: block;
+        flex: 0 0 100%;
+      }
+    }
+  }
 `);
 
 export const Radio = injectStyles(styled.input.attrs({
@@ -190,10 +210,20 @@ export const Radio = injectStyles(styled.input.attrs({
   @media screen and (max-width: 900px) {
     + label {
       flex-wrap: wrap;
+      &::before {
+        
+      }
+      div {
+        flex: 8;
+        div {
+          margin-right: 0;
+        }
+      }
       img {
         width: 100%;
-        margin-top: 1em;
+        margin: 20px auto 0;
         display: block;
+        flex: 0 0 100%;
       }
     }
   }
@@ -228,6 +258,9 @@ export const TextInput = injectStyles(styled.input`
   transition: border-color 0.1s ease-in-out;
   &:hover, &:focus {
     border-color: ${({ styles }) => styles.color.dark};
+  }
+  @media screen and (max-width: 360px) {
+    width: 100%;
   }
 `);
 

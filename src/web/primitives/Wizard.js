@@ -26,6 +26,9 @@ const Wizard = injectStyles(styled.div`
       color: ${({ styles }) => styles.color.dark};
     }
   }
+  @media screen and (max-width: 700px) {
+    font-size: 16px;
+  }
   @media print {
     background-image: none;
     background-color: white;

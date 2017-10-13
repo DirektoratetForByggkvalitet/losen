@@ -5,8 +5,8 @@ import NavItem from './NavItem';
 import NavReset from './NavReset';
 import NavResult from './NavResult';
 
-import { P } from '../primitives/Paragraphs';
 import Button from '../primitives/ToggleButton';
+import Title from '../primitives/Title';
 import StyledNav from '../primitives/grid/Nav';
 
 export default class Nav extends Component {
@@ -43,8 +43,7 @@ export default class Nav extends Component {
         </Button>
 
         <StyledNav tocExpanded={tocExpanded}>
-          Veiviser:
-          <P>{heading}</P>
+          <Title>{heading}</Title>
           {tableOfContents.map(
             (page, index) =>
               page.type === 'Result' ? (

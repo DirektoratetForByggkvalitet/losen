@@ -15,4 +15,7 @@ export const Lead = injectStyles(styled.div`
   font-size: 22px;
   line-height: 1.36;
   margin: 16px 0 40px;
+  @media screen and (max-width: 700px) {
+    font-size: 20px;
+  }
 `);

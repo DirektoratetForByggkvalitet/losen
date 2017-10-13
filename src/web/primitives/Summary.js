@@ -4,7 +4,7 @@ import injectStyles from '../utils/inject-styles';
 
 export const PageSummary = injectStyles(styled.div`
   padding: 0 0 20px;
-  margin-bottom: 6px;
+  margin: 10px 0 6px;
   background: white;
   line-height: 2;
   border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
@@ -39,6 +39,12 @@ export const PageSummary = injectStyles(styled.div`
         color: inherit;
       }
     `}
+  @media print {
+    font-size: 12px;
+    h2 {
+      display: none;
+    }
+  }
 `);
 
 export const NodeSummary = injectStyles(styled.div` 
@@ -47,6 +53,12 @@ export const NodeSummary = injectStyles(styled.div`
     font-size: 16px;
     font-weight: 300;
     margin-bottom: 0;
+  }
+  @media print {
+    font-size: 12px;
+    h3 {
+      font-size: 12px;
+    }
   }
 `);
 

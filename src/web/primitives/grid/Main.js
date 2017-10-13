@@ -23,10 +23,11 @@ const Main = injectStyles(styled.main`
     font-size: 12px;
   }` : ''}
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 900px) {
     padding: 0;
     width: ${({ styles }) => styles.size.mobileContentWidth};
     margin: 30px auto;
+    padding: 0;
   }
 `);
 

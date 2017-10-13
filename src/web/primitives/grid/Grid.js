@@ -10,7 +10,7 @@ const Grid = injectStyles(styled.div`
   min-height: 100vh;
   max-width: 1200px;
   margin: 0 auto;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 900px) {
           grid-template-areas: "nav"
                                "main";
           grid-template-columns: 100%;

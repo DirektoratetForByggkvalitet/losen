@@ -28,8 +28,8 @@ export default {
   },
   size: {
     blockWidth: '700px',
-    navWidth: '360px',
+    navWidth: '380px',
     headerHeight: '75px',
-    mobileContentWidth: '88%',
+    mobileContentWidth: '90%',
   },
 };

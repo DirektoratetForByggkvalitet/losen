@@ -12,7 +12,7 @@ const Button = injectStyles(styled.button`
   padding: 0.5em;
   cursor: pointer;
   display: none;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 900px) {
     display: block;
   }
 `);
