@@ -5,12 +5,7 @@ import { MainButton as StyledNavResult } from '../primitives/Button';
 
 export default function NavResult({ setPage, id, active }) {
   return (
-    <StyledNavResult
-      data-id={id}
-      active={active}
-      onClick={() => setPage(id)}
-      tabIndex="0"
-    >
+    <StyledNavResult data-id={id} active={active} onClick={() => setPage(id)}>
       Vis resultat
     </StyledNavResult>
   );
