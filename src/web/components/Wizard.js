@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import autobind from 'react-autobind';
 import Modal from './helper/Modal';
 
-import StyleProvider from './StyleProvider';
+import { getPages, getNodeTitles } from '../utils/selectors';
 import Nav from './Nav';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
-import { getPages, getNodeTitles } from '../utils/selectors';
-import track from '../utils/tracking';
 import Result from './Result';
+import SkipLink from './helper/SkipLink';
+import StyleProvider from './StyleProvider';
+import track from '../utils/tracking';
 
 import Grid from '../primitives/grid/Grid';
 import StyledWizard from '../primitives/Wizard';
@@ -35,7 +36,7 @@ class Wizard extends Component {
       }),
     ),
     wizard: PropTypes.object.isRequired,
-  }
+  };
 
   static defaultProps = {
     debug: false,
@@ -43,7 +44,7 @@ class Wizard extends Component {
     showIntro: () => {},
     styles: {},
     translations: {},
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -53,7 +54,7 @@ class Wizard extends Component {
   state = {
     page: 0,
     result: false,
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
@@ -125,6 +126,7 @@ class Wizard extends Component {
         <StyledWizard>
           <Modal showIntro={showIntro} />
           <Grid>
+            <SkipLink />
             <Nav
               page={page.id}
               setPage={this.setPage}
