@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Label = injectStyles(styled.label`
+export const Label = injectStyles(styled.label`
   display: block;
   position: relative;
   margin-top: 10px;
   background: ${props => (props.warning ? 'rgba(255, 0, 0, 0.05)' : 'white')};
 
-  ${props => props.debug ? `
+  ${props =>
+    props.debug
+      ? `
   > div {
     :before {
       content: attr(data-id);
@@ -20,7 +22,17 @@ const Label = injectStyles(styled.label`
       color: white;
       font-size: 12px;
     }
-  }` : ''}
+  }`
+      : ''};
 `);
 
-export default Label;
+export const SRLabel = injectStyles(styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+`);

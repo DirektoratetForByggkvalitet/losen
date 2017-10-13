@@ -4,7 +4,7 @@ import React from 'react';
 import { Checkbox as Input } from '../../../primitives/Input';
 import { H3 } from '../../../primitives/Heading';
 import Html from '../../helper/Html';
-import Label from '../../../primitives/Label';
+import { Label } from '../../../primitives/Label';
 
 export default function CheckboxInput({
   checked,
@@ -22,15 +22,18 @@ export default function CheckboxInput({
 
   return (
     <div>
-      <Input type="checkbox" name={name} id={id} onChange={onChange} disabled={disabled} checked={checked} />
+      <Input
+        type="checkbox"
+        name={name}
+        id={id}
+        onChange={onChange}
+        disabled={disabled}
+        checked={checked}
+      />
 
       <Label htmlFor={id} warning={message.warning} debug={debug}>
         <div data-id={id}>
-          {heading
-            ? <H3>
-              {heading}
-            </H3>
-            : null}
+          {heading ? <H3>{heading}</H3> : null}
           <Html text={text} />
         </div>
         {image ? <img src={image.url} alt={image.alt} /> : null}
