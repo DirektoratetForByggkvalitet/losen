@@ -1,3 +1,5 @@
+require('babel-polyfill');
+
 export * as state from './state';
 
 export Wizard from './components/Wizard';
