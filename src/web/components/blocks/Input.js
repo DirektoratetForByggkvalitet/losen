@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { ErrorMessage } from '../../primitives/Errors';
+import { SRLabel } from '../../primitives/Label';
 import { TextInput as StyledInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 
@@ -15,6 +16,7 @@ export default class Input extends Component {
         message: PropTypes.string,
       }),
     }).isRequired,
+    heading: PropTypes.string,
     max: PropTypes.number,
     min: PropTypes.number,
     placeholder: PropTypes.string,
@@ -23,11 +25,12 @@ export default class Input extends Component {
     step: PropTypes.number,
     type: PropTypes.string,
     update: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     currentValue: '',
     disabled: false,
+    heading: '',
     max: Number.MAX_SAFE_INTEGER,
     min: 0,
     placeholder: '',
@@ -35,7 +38,7 @@ export default class Input extends Component {
     type: 'text',
     update: () => {},
     validation: {},
-  }
+  };
 
   handleChange = (e) => {
     const { type, step, property, setData, update } = this.props;
@@ -60,27 +63,42 @@ export default class Input extends Component {
       currentValue,
       disabled,
       errors,
+      heading,
       max,
       min,
       placeholder,
+      property,
       step,
       type,
     } = this.props;
-
+    let inputType = type;
+    if (inputType === 'Input') {
+      inputType = 'text';
+    }
+    let label = '';
+    if (heading) {
+      label = <SRLabel htmlFor={property}>{heading}</SRLabel>;
+    }
     return (
       <div>
+        {label}
         <StyledInput
-          type={type}
-          placeholder={placeholder}
-          onChange={this.handleChange}
-          value={currentValue}
-          validation={errors.validation}
+          aria-label={heading}
           disabled={disabled}
-          {...(type === 'number' ? {
-            min,
-            max,
-            step,
-          } : {})}
+          aria-invalid={errors.validation.error}
+          id={property}
+          onChange={this.handleChange}
+          placeholder={placeholder}
+          type={inputType}
+          validation={errors.validation}
+          value={currentValue}
+          {...(this.props.type === 'number'
+            ? {
+              min,
+              max,
+              step,
+            }
+            : {})}
         />
 
         {errors.validation.error && (

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { H3 } from '../../../primitives/Heading';
 import { Radio as Input } from '../../../primitives/Input';
 import Html from '../../helper/Html';
-import Label from '../../../primitives/Label';
+import { Label } from '../../../primitives/Label';
 import SoftWarning from '../../../primitives/SoftWarning';
 
 export default function RadioInput({
@@ -41,7 +41,9 @@ export default function RadioInput({
             {heading && text ? <H3>{heading}</H3> : null}
 
             {message ? (
-              <SoftWarning warning={message.warning}>{message.message}</SoftWarning>
+              <SoftWarning warning={message.warning}>
+                {message.message}
+              </SoftWarning>
             ) : null}
           </div>
 
