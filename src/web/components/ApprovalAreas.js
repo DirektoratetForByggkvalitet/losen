@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Table } from '../primitives/Table';
 import TableContainer from '../primitives/TableContainer';
-
+/* eslint-disable react/no-array-index-key */
 export default function ApprovalAreas({ areas }) {
   if (areas === undefined || areas.length === 0) {
     return null;
@@ -19,8 +19,8 @@ export default function ApprovalAreas({ areas }) {
           </tr>
         </thead>
         <tbody>
-          {areas.map(area => (
-            <tr key={area.function}>
+          {areas.map((area, rowKey) => (
+            <tr key={rowKey}>
               <td>{area.function}</td>
               <td>{area.subject_area}</td>
               <td>{area.grade}</td>
