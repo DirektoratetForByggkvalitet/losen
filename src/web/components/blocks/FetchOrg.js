@@ -27,7 +27,7 @@ export default class FetchOrg extends Component {
     SGsource: PropTypes.string,
     SGtext: PropTypes.string,
     source: PropTypes.string.isRequired,
-  }
+  };
 
   static defaultProps = {
     currentValue: {},
@@ -36,7 +36,7 @@ export default class FetchOrg extends Component {
     SGheading: '',
     SGsource: '',
     SGtext: '',
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -77,7 +77,6 @@ export default class FetchOrg extends Component {
 
   fetchSGData(orgid) {
     const id = orgid.toString().replace(/\s/g, '');
-
     fetch(`${this.props.SGsource}${id}.json`)
       .then(checkStatus)
       .then((data) => {
@@ -87,6 +86,7 @@ export default class FetchOrg extends Component {
         const { property, setData } = this.props;
 
         setData(property, {
+          ...this.props.currentValue,
           status: '',
           validApprovalAreas: '',
           dataSG: false,
@@ -112,7 +112,7 @@ export default class FetchOrg extends Component {
       dataSG: true,
     });
 
-    this.setState({ loadingSG: false });
+    this.setState({ loading: false });
   }
 
   update(value) {
