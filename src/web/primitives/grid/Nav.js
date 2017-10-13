@@ -8,6 +8,7 @@ const Nav = injectStyles(styled.nav`
   margin: 0 46px 0 10px;
   background: white;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
   button {
     width: 100%;
     max-width: 400px;
@@ -15,20 +16,24 @@ const Nav = injectStyles(styled.nav`
     margin-right: auto;
     display: block;
   }
-  ${props =>
-    props.tocExpanded
-      ? `@media screen and (max-width: 900px) {
-      display: none;
-    }`
-      : ''} 
   @media screen and (max-width: 900px) {
     max-width: ${({ styles }) => styles.size.mobileContentWidth};
     margin: 0 auto;
-    padding: 20px;
   }
   @media print {
     display: none;
   }
+  ${props =>
+    props.tocExpanded
+      ? `@media screen and (max-width: 900px) {
+    max-height: 0;
+    padding: 0;
+  }`
+      : ` @media screen and (max-width: 900px) {
+    max-height: 1000px;
+    transition: max-height 0.3s ease-in-out;
+  }
+  `} 
 `);
 
 export default Nav;
