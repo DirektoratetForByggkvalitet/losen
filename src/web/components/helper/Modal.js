@@ -39,9 +39,9 @@ const customStyle = {
 class Modal extends Component {
   state = {
     showModal: true,
-  }
+  };
 
-  componentDidMount = () => this.state.showModal = false
+  componentDidMount = () => (this.state.showModal = false);
 
   handleCloseModal = () => this.setState({ showModal: false });
 
@@ -55,17 +55,24 @@ class Modal extends Component {
     /* shouldCloseOnEsc will work on next version of React Modal for UU */
     return (
       <ReactModal
+        aria={{
+          labelledby: 'heading',
+          describedby: 'full_description',
+        }}
+        ariaHideApp={false}
         isOpen={
           this.state.showModal && Object.keys(this.props.data).length !== 0
         }
-        contentLabel="Vil du starte på nytt?"
         role="dialog"
-        style={customStyle}
         shouldCloseOnEsc
+        style={customStyle}
       >
-        <H1>Vil du starte på nytt?</H1>
-        <Lead>Veiviseren husker svarene fra ditt forrige besøk.</Lead>
-        <MainButton onClick={this.handleCloseModal}>Fortsett</MainButton><br />
+        <H1 id="heading">Vil du starte på nytt?</H1>
+        <Lead id="full_description">
+          Veiviseren husker svarene fra ditt forrige besøk.
+        </Lead>
+        <MainButton onClick={this.handleCloseModal}>Fortsett</MainButton>
+        <br />
         <SecondaryButton onClick={this.handleRestart}>
           Start på nytt
         </SecondaryButton>
