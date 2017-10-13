@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* eslint-disable no-console */
 
 import { existsSync, readFileSync } from 'fs';
@@ -21,9 +22,7 @@ if (!existsSync(schema)) {
 let schemaDefinition;
 
 try {
-  schemaDefinition = JSON.parse(
-    readFileSync(schema, { encoding: 'UTF-8' }),
-  );
+  schemaDefinition = JSON.parse(readFileSync(schema, { encoding: 'UTF-8' }));
 } catch (e) {
   console.log('Unable to parse the schema file. Make sure its valid JSON');
   process.exit(1);
