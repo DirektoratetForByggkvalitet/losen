@@ -8,7 +8,7 @@ export const MainButton = injectStyles(styled.button`
   font-size: 18px;
   color: white;
   background: ${({ styles }) => styles.color.light};
-  min-width: 30%;
+  min-width: 48%;
   padding: 15px 20px 16px;
   cursor: pointer;
   user-select: none;
@@ -18,11 +18,11 @@ export const MainButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
-  &:hover {
+  &:hover, &:focus {
     background: ${({ styles }) => styles.color.dark};
   }
-  @media screen and (max-width: 900px) {
-    min-width: 48%;
+  @media screen and (max-width: 400px) {
+    width: 100%;
   }
   @media print {
       display none;
@@ -35,7 +35,7 @@ export const SecondaryButton = injectStyles(styled.button`
   font-size: 18px;
   color: ${({ styles }) => styles.color.light};
   background: white;
-  min-width: 30%;
+  min-width: 48%;
   padding: 15px 20px 16px;
   cursor: pointer;
   user-select: none;
@@ -45,11 +45,11 @@ export const SecondaryButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
-  &:hover {
+  &:hover, &:focus {
     background: ${({ styles }) => styles.color.warmgray2};
   }
-  @media screen and (max-width: 900px) {
-    min-width: 48%;
+  @media screen and (max-width: 400px) {
+    width: 100%;
   }
   @media print {
       display none;
@@ -71,7 +71,7 @@ export const SmallButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
-  &:hover {
+  &:hover, &:focus {
     background: ${({ styles }) => styles.color.dark};
   }
   @media print {
@@ -120,11 +120,11 @@ export const NavButton = injectStyles(styled.button`
     display: ${props => (props.next ? 'inline-block' : 'none')};
     margin-left: 1em;
   }
-  &:hover {
+  &:hover, &:focus {
     background: ${({ styles }) => styles.color.dark};
   }
-  &:hover::before,
-  &:hover::after {
+  &:hover::before, &:focus::before,
+  &:hover::after, &:focus::after {
     animation: ${props => (props.next ? 'pushnext' : 'pushprev')} 0.8s linear
       infinite;
   }

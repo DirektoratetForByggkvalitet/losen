@@ -7,7 +7,34 @@ import ReactModal from 'react-modal';
 import { NAME } from '../../state';
 import { resetData } from '../../state/actions';
 
+import { H1 } from '../../primitives/Heading';
+import { Lead } from '../../primitives/Paragraphs';
 import { MainButton, SecondaryButton } from '../../primitives/Button';
+
+const customStyle = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  content: {
+    position: 'static',
+    maxWidth: '666px',
+    margin: '0 auto',
+    border: '1px solid #ccc',
+    background: '#fff',
+    borderRadius: '0',
+    outline: 'none',
+    padding: '40px 60px',
+    textAlign: 'center',
+  },
+};
 
 class Modal extends Component {
   state = {
@@ -33,13 +60,15 @@ class Modal extends Component {
         }
         contentLabel="Vil du starte på nytt?"
         role="dialog"
+        style={customStyle}
         shouldCloseOnEsc
       >
-        <h1>Vil du starte på nytt?</h1>
+        <H1>Vil du starte på nytt?</H1>
+        <Lead>Veiviseren husker svarene fra ditt forrige besøk.</Lead>
+        <MainButton onClick={this.handleCloseModal}>Fortsett</MainButton><br />
         <SecondaryButton onClick={this.handleRestart}>
           Start på nytt
         </SecondaryButton>
-        <MainButton onClick={this.handleCloseModal}>Behold data</MainButton>
       </ReactModal>
     );
   }

@@ -50,6 +50,9 @@ export const SpecificBlock = injectStyles(styled.div`
     font-size: 14px;
     border: 1px solid ${props.styles.color.darkgray};
     border-collapse: collapse;
+    th {
+      font-weight: inherit;
+    }
     th, td {
       border: 1px solid ${props.styles.color.darkgray};
       padding: 10px;
