@@ -7,7 +7,6 @@ import Navigation from './Navigation';
 
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
-import Breadcrumbs from '../primitives/Breadcrumbs';
 import Main from '../primitives/grid/Main';
 
 export default function Page({
@@ -36,9 +35,6 @@ export default function Page({
 
   return (
     <Main debug={debug} data-id={pageid} id="main">
-      <Breadcrumbs>
-        <a href="/">Veivisere</a> / <a href="/">Erklæring om ansvarsrett</a>
-      </Breadcrumbs>
       <H1>{heading}</H1>
       <Lead>
         <Html text={lead} />
