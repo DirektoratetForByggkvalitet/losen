@@ -26,6 +26,7 @@ import { NAME } from '../../state';
 
 // Primitives
 import { SpecificBlock as StyledBlock } from '../../primitives/Block';
+import StyledErrorBlock from '../../primitives/ErrorBlock';
 import { H2 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 
@@ -70,6 +71,9 @@ function getBlock(type) {
     case 'Table':
       return Table;
 
+    case 'Error':
+      return Table;
+
     default:
       return null;
   }
@@ -94,6 +98,25 @@ export function PureBlock(props) {
           />
         ))}
       </StyledBlock>
+    );
+  }
+
+  if (props.type === 'Error') {
+    return (
+      <StyledErrorBlock data-id={props.id} debug={props.debug}>
+        <H2>{props.heading}</H2>
+        <Html text={props.text} />
+
+        {props.children.map(block => (
+          <ConnectedBlock
+            grouped
+            key={block.id}
+            data-id={props.id}
+            simple={props.simple}
+            {...block}
+          />
+        ))}
+      </StyledErrorBlock>
     );
   }
 
