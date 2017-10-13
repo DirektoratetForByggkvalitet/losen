@@ -2,16 +2,19 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import CheckboxInput from './CheckboxInput';
+import Fieldset from '../../../primitives/Fieldset';
+import Legend from '../../../primitives/Legend';
 
 export default class Checkbox extends Component {
   static propTypes = {
     currentValue: PropTypes.any,
     debug: PropTypes.bool,
     disabled: PropTypes.bool,
+    heading: PropTypes.string,
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
-  }
+  };
 
   static defaultProps = {
     currentValue: {},
@@ -19,12 +22,10 @@ export default class Checkbox extends Component {
     disabled: false,
     heading: '',
     text: '',
-  }
+  };
 
-  handleChange = (property, value) => e => this.props.setData(
-    `${property}.${value}`,
-    e.target.checked,
-  );
+  handleChange = (property, value) => e =>
+    this.props.setData(`${property}.${value}`, e.target.checked);
 
   render() {
     const {
@@ -33,10 +34,12 @@ export default class Checkbox extends Component {
       disabled,
       options,
       property,
+      heading,
     } = this.props;
 
     return (
-      <div>
+      <Fieldset>
+        <Legend>{heading}</Legend>
         {options &&
           options.map((option) => {
             const isDisabled = disabled || option.disabled;
@@ -50,11 +53,13 @@ export default class Checkbox extends Component {
                 checked={currentValue[option.value]}
                 name={property}
                 {...option}
-                onChange={!isDisabled && this.handleChange(property, option.value)}
+                onChange={
+                  !isDisabled && this.handleChange(property, option.value)
+                }
               />
             );
           })}
-      </div>
+      </Fieldset>
     );
   }
 }

@@ -23,6 +23,7 @@ export default function CheckboxInput({
   return (
     <div>
       <Input
+        aria-label={heading}
         type="checkbox"
         name={name}
         id={id}
