@@ -35,8 +35,10 @@ export default function Page({
   }
 
   return (
-    <Main debug={debug} data-id={pageid}>
-      <Breadcrumbs><a href="/">Veivisere</a> / <a href="/">Erklæring om ansvarsrett</a></Breadcrumbs>
+    <Main debug={debug} data-id={pageid} id="main">
+      <Breadcrumbs>
+        <a href="/">Veivisere</a> / <a href="/">Erklæring om ansvarsrett</a>
+      </Breadcrumbs>
       <H1>{heading}</H1>
       <Lead>
         <Html text={lead} />

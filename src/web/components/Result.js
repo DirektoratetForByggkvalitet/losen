@@ -43,7 +43,7 @@ function Result({
   }
 
   return (
-    <Main debug={debug} data-id={pageid}>
+    <Main debug={debug} data-id={pageid} id="main">
       <H1>{heading}</H1>
       <Lead>
         <Html text={lead} />
@@ -89,7 +89,10 @@ function Result({
         <div style={{ maxWidth: '700px', padding: '20px' }}>
           <H2>For å sende inn erklæringen</H2>
           <P>
-            Du kan nå bruke informasjonen du har lagt inn til å sende inn erklæringen. Det gjøres via altinn.no. Klikk på knappen under for å kopiere med deg informasjonen herfra. Dette kan limes direkte inn i et skjema på altinn.no.
+            Du kan nå bruke informasjonen du har lagt inn til å sende inn
+            erklæringen. Det gjøres via altinn.no. Klikk på knappen under for å
+            kopiere med deg informasjonen herfra. Dette kan limes direkte inn i
+            et skjema på altinn.no.
           </P>
           {exporter &&
             exports[exporter] && <ExportData exporter={exports[exporter]} />}
