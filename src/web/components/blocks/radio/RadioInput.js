@@ -25,6 +25,7 @@ export default function RadioInput({
   return (
     <div>
       <Input
+        aria-label={heading}
         type="radio"
         name={name}
         id={id}
