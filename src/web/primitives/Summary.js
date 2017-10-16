@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const PageSummary = injectStyles(styled.div`
-  padding: 0 0 20px;
+  padding: 10px 0 20px;
   margin: 0 0 10px;
   background: white;
   line-height: 2;
-  border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
-  &:last-of-type {
-    border-bottom: none;
-  }
+  border-top: 1px solid ${({ styles }) => styles.color.warmgray3};
   h2 {
     padding: 0.2em 0;
     margin-bottom: 30px;

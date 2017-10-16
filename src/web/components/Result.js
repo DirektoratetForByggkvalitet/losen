@@ -9,11 +9,15 @@ import ExportData from './ExportData';
 import Html from './helper/Html';
 import Summary from './Summary';
 
-import { H1, H2, H3 } from '../primitives/Heading';
+import { H1, H2 } from '../primitives/Heading';
 import { P, Lead } from '../primitives/Paragraphs';
+import { MainButton } from '../primitives/Button';
 import { SpecificBlock } from '../primitives/Block';
-import { TextInput as Input } from '../primitives/Input';
 import Main from '../primitives/grid/Main';
+import Notice from '../primitives/Notice';
+import PrintForm from '../primitives/PrintForm';
+import Signature from '../primitives/Signature';
+import Export from '../primitives/Export';
 
 function Result({
   children = [],
@@ -43,72 +47,55 @@ function Result({
   }
 
   return (
-    <Main debug={debug} data-id={pageid} id="main">
-      <H1>{heading}</H1>
-      <Lead>
+    <Main result debug={debug} data-id={pageid} id="main">
+      <H1 result>{heading}</H1>
+      <Lead result>
         <Html text={lead} />
       </Lead>
 
       <SpecificBlock>
+        <H1 small>Erklæring om ansvarsrett</H1>
         {summary ? (
           <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
         ) : null}
 
         {exporter ? (
-          <div>
-            <div
-              style={{
-                background: '#f0f2cb',
-                fontStyle: 'italic',
-                marginBottom: '20px',
-                padding: '20px',
-              }}
-            >
-              <Input type="checkbox" placeholder="E-post" />
+          <PrintForm>
+            <Notice>
+              <input type="checkbox" />&nbsp;
               Ansvarlig kontrollerende erklærer uavhengighet, jf. SAK10 § 14-1,
               og vil redegjøre for endringer som kan påvirke uavhengigheten jf.
               SAK10 §12-5
-            </div>
+            </Notice>
+            <br />
             <div>
-              <H3>Ved å sende inn denne erklæringen bekrefter du at:</H3>
               <P>
-                <strong>1)</strong> Foretaket er kjent med reglene om straff og
+                <strong>Ved å sende inn denne erklæringen bekrefter du at:</strong><br />
+                1) Foretaket er kjent med reglene om straff og
                 sanksjoner i plan- og bygningsloven kap. 32 og at det kan
-                medføre reaksjoner dersom det gis uriktige opplysninger.
-              </P>
-              <P>
-                <strong>2)</strong> Foretaket forplikter seg til å stille med
+                medføre reaksjoner dersom det gis uriktige opplysninger.<br />
+                2) Foretaket forplikter seg til å stille med
                 nødvendig kompetanse i tiltaket, jf. SAK10 kap. 10 og 11.
               </P>
             </div>
-          </div>
+            <Signature>
+              <div>Dato og signatur</div>
+            </Signature>
+          </PrintForm>
         ) : null}
       </SpecificBlock>
 
       {exporter ? (
-        <div style={{ maxWidth: '700px', padding: '20px' }}>
+        <Export>
           <H2>For å sende inn erklæringen</H2>
           <P>
-            Du kan nå bruke informasjonen du har lagt inn til å sende inn
-            erklæringen. Det gjøres via altinn.no. Klikk på knappen under for å
-            kopiere med deg informasjonen herfra. Dette kan limes direkte inn i
-            et skjema på altinn.no.
+            Erklæringen er nå fylt ut og klar til å sendes inn. Du må selv skrive ut erklæringen og sende den til (adresse her!)
           </P>
+          <MainButton>Skriv ut</MainButton><br />
           {exporter &&
             exports[exporter] && <ExportData exporter={exports[exporter]} />}
-        </div>
-      ) : (
-        <div style={{ maxWidth: '700px', padding: '20px' }}>
-          <H2>Du kan ikke fullføre veiviseren</H2>
-          <P>
-            Du har ikke det som skal til for å skaffe deg katt. Greit nok. Men
-            hva kan du gjøre med det? DiBK vet sikkert svaret! Gå til DiBK sine
-            nettsider! Sjekk ut en annen veiviser! Lenker her?
-          </P>
-          {exporter &&
-            exports[exporter] && <ExportData exporter={exports[exporter]} />}
-        </div>
-      )}
+        </Export>
+      ) : null}
 
       {children.map(block => <Block key={block.property} {...block} />)}
     </Main>

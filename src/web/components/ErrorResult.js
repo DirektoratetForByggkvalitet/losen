@@ -11,7 +11,7 @@ import Main from '../primitives/grid/Main';
 
 export default function ErrorResult({ children, errorPages, schema, setPage }) {
   return (
-    <Main>
+    <Main result>
       <H1>
         Du har ikke svart på alle spørsmålene
       </H1>

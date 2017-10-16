@@ -94,8 +94,9 @@ export const SpecificBlock = injectStyles(styled.div`
     }
   }
   `
-    : ' '} @media screen and (max-width: 700px) {
-    padding: ${props => (props.grouped ? '20px 0' : '20px')};
+    : ' '} 
+  @media screen and (max-width: 700px) {
+    padding: ${props => (props.grouped ? '20px 12px' : '20px 16px')};
     ${props =>
     props.groupedSimple
       ? `

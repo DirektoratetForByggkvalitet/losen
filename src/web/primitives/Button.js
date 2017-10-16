@@ -8,7 +8,7 @@ export const MainButton = injectStyles(styled.button`
   font-size: 18px;
   color: white;
   background: ${({ styles }) => styles.color.light};
-  min-width: 48%;
+  min-width: 46%;
   padding: 15px 20px 16px;
   cursor: pointer;
   user-select: none;
@@ -35,7 +35,7 @@ export const SecondaryButton = injectStyles(styled.button`
   font-size: 18px;
   color: ${({ styles }) => styles.color.light};
   background: white;
-  min-width: 48%;
+  min-width: 46%;
   padding: 15px 20px 16px;
   cursor: pointer;
   user-select: none;

@@ -37,7 +37,7 @@ export default function CheckboxInput({
           {heading ? <H3>{heading}</H3> : null}
           <Html text={text} />
         </div>
-        {image ? <img src={image.url} alt={image.alt} /> : null}
+        {image && image.url ? <img src={image.url} alt={image.alt} /> : null}
       </Label>
     </div>
   );

@@ -8,8 +8,18 @@ export const H1 = injectStyles(styled.h1`
   font-weight: 300;
   margin: 0 0 10px;
   line-height: 1.2;
+  ${props =>
+    props.small
+      ? `
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    color: gray;
+    `
+      : ' '};
   @media screen and (max-width: 700px) {
-    font-size: 30px;
+    font-size: ${props => (props.small ? '0.9rem' : '30px')}
   }
 `);
 

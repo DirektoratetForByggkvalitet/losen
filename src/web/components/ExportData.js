@@ -31,7 +31,7 @@ class ExportData extends Component {
     const { open } = this.state;
 
     if (!open) {
-      return <MainButton onClick={this.showExportData}>Vis data</MainButton>;
+      return <MainButton onClick={this.showExportData}>Kopier svar</MainButton>;
     }
 
     const json = JSON.stringify(data, null, 2);
@@ -46,7 +46,7 @@ class ExportData extends Component {
           value={json}
           read-only
         />
-        <MainButton>Ta med dataen til altinn</MainButton>
+        <MainButton>Gå til altinn</MainButton>
       </div>
     );
   }

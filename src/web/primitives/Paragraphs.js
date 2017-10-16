@@ -18,4 +18,11 @@ export const Lead = injectStyles(styled.div`
   @media screen and (max-width: 700px) {
     font-size: 20px;
   }
+  ${props => props.result ? `
+  @media print {
+    display: none;
+  }
+  ` : `
+  
+  `}
 `);

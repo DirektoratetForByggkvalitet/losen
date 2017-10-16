@@ -14,6 +14,9 @@ const Notice = injectStyles(styled.div`
   table {
     text-align: left;
   }
+  @media print {
+    font-size: 12px;
+  }
 `);
 
 export default Notice;
