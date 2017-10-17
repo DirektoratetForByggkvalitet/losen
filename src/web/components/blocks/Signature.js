@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Signature from '../../primitives/Signature';
+import StyledSignature from '../../primitives/Signature';
 
-export default function Number() {
+export default function Signature() {
   return (
-    <Signature>
+    <StyledSignature>
       <div>Dato og signatur</div>
-    </Signature>
+    </StyledSignature>
   );
 }
