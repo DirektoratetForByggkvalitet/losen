@@ -13,6 +13,7 @@ import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import { MainButton } from '../primitives/Button';
 import { SpecificBlock } from '../primitives/Block';
+import { PrintForm } from '../primitives/PrintForm';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
 
@@ -56,7 +57,9 @@ function Result({
         {summary ? (
           <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
         ) : null}
-        {children.map(block => <Block key={block.property} {...block} />)}
+        <PrintForm>
+          {children.map(block => <Block key={block.property} {...block} />)}
+        </PrintForm>
       </SpecificBlock>
 
       {exporter ? (
