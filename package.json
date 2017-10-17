@@ -17,19 +17,12 @@
     "build-storybook": "build-storybook -s ./public",
     "prepublishOnly": "npm run lint && npm run test && npm run build"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": ["lint"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/netliferesearch/losen.git"
   },
-  "keywords": [
-    "wizard",
-    "framework",
-    "react",
-    "dibk"
-  ],
+  "keywords": ["wizard", "framework", "react", "dibk"],
   "contributors": [
     {
       "name": "Kristoffer Brabrand",
@@ -63,7 +56,7 @@
     "prop-types": "^15.6.0",
     "react": "^15.6.2",
     "react-autobind": "^1.0.6",
-    "react-modal": "^3.0.0",
+    "react-modal": "^3.0.3",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "redux": "^3.7.2",

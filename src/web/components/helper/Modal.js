@@ -52,7 +52,6 @@ class Modal extends Component {
   };
 
   render() {
-    /* shouldCloseOnEsc will work on next version of React Modal for UU */
     return (
       <ReactModal
         aria={{
@@ -65,6 +64,7 @@ class Modal extends Component {
         }
         role="dialog"
         shouldCloseOnEsc
+        onRequestClose={this.handleCloseModal}
         style={customStyle}
       >
         <H1 id="heading">Vil du starte på nytt?</H1>
