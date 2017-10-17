@@ -19,6 +19,7 @@ import Export from '../primitives/Export';
 function Result({
   children = [],
   debug,
+  end,
   errorPages,
   exporter,
   exports,
@@ -60,6 +61,7 @@ function Result({
 
       {exporter ? (
         <Export>
+          <Html text={end} />
           <MainButton>Skriv ut</MainButton>
           <br />
           {exporter &&
@@ -73,6 +75,7 @@ function Result({
 Result.propTypes = {
   children: PropTypes.array,
   debug: PropTypes.bool,
+  end: PropTypes.string,
   errorPages: PropTypes.array.isRequired,
   exporter: PropTypes.string,
   exports: PropTypes.objectOf(PropTypes.func),
@@ -88,6 +91,7 @@ Result.propTypes = {
 Result.defaultProps = {
   children: [],
   debug: false,
+  end: '',
   exporter: null,
   exports: {},
   heading: 'Missing page heading',
