@@ -15,6 +15,7 @@ import Input from './Input';
 import Missing from './Missing';
 import Number from './Number';
 import Radio from './radio/Radio';
+import Signature from './Signature';
 import Select from './select/Select';
 import Table from './Table';
 import Text from './Text';
@@ -74,6 +75,9 @@ function getBlock(type) {
     case 'Error':
       return Table;
 
+    case 'Signature':
+      return Signature;
+
     default:
       return null;
   }
@@ -127,7 +131,8 @@ export function PureBlock(props) {
   if (
     props.type === 'Image' ||
     props.type === 'Text' ||
-    props.type === 'Data'
+    props.type === 'Data' ||
+    props.type === 'Signature'
   ) {
     return (
       <SpecificBlock
