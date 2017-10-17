@@ -12,13 +12,14 @@ import Main from '../primitives/grid/Main';
 export default function ErrorResult({ children, errorPages, schema, setPage }) {
   return (
     <Main result>
-      <H1>
-        Du har ikke svart på alle spørsmålene
-      </H1>
+      {/* TODO: Move this to "api" */}
+      <H1>Du har ikke svart på alle spørsmålene</H1>
       <Lead>
-        Du må fullføre alle stegene i veiviseren for å få et resultat. Under ser du hvilke spørsmål som mangler svar. Hvis du ønsker å endre noe, kan du klikke deg inn på hvert steg i oppsummeringen nedenfor.
+        Vi kan derfor ikke gi deg svar på om firmaet ditt kan erklære ansvar. Du
+        kan se hvilke spørsmål du ikke har svart på i oppsummeringen under. Der
+        kan du også klikke deg inn på hvert steg i veiviseren for å legge til og
+        endre dine svar.
       </Lead>
-
       <SpecificBlock>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
         {children.map(block => <Block key={block.property} {...block} />)}
