@@ -3,9 +3,10 @@ import React from 'react';
 
 import { Value as StyledValue } from '../../../primitives/Summary';
 import DL from '../../../primitives/Datalist';
+import ApprovalAreas from '../../ApprovalAreas';
 
 export default function FetchOrgSummary({
-  value: { address, name, orgid, postcode, postplace } = {},
+  value: { address, name, orgid, postcode, postplace, validApprovalAreas } = {},
 }) {
   if (!orgid) {
     return <StyledValue missing>* Må fylles ut</StyledValue>;
@@ -25,6 +26,7 @@ export default function FetchOrgSummary({
       <dd>
         {postcode} {postplace}
       </dd>
+      <ApprovalAreas areas={validApprovalAreas} title />
     </DL>
   );
 }
