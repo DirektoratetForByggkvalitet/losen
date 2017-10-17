@@ -1,5 +1,6 @@
 import autobind from 'react-autobind';
 import get from 'lodash.get';
+import has from 'lodash.has';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -60,9 +61,18 @@ export default class FetchOrg extends Component {
   updateOrgData(data, orgid) {
     const { property, setData } = this.props;
     const name = get(data, 'data[0].navn');
-    const postcode = get(data, 'data[0].forretningsadresse.postnummer');
-    const postplace = get(data, 'data[0].forretningsadresse.poststed');
-    const address = get(data, 'data[0].forretningsadresse.adresse');
+    let postcode;
+    let postplace;
+    let address;
+    if (has(data, 'data[0].postadresse.adresse')) {
+      postcode = get(data, 'data[0].postadresse.postnummer');
+      postplace = get(data, 'data[0].postadresse.poststed');
+      address = get(data, 'data[0].postadresse.adresse');
+    } else {
+      postcode = get(data, 'data[0].forretningsadresse.postnummer');
+      postplace = get(data, 'data[0].forretningsadresse.poststed');
+      address = get(data, 'data[0].forretningsadresse.adresse');
+    }
 
     setData(property, {
       ...this.props.currentValue,
@@ -172,7 +182,6 @@ export default class FetchOrg extends Component {
             </Information>
           </div>
         )}
-
         <div>
           {get(this.props, 'currentValue.fetchSG', false)}
           <div>
