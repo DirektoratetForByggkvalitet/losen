@@ -14,6 +14,7 @@ export default function PrimitivesIntro() {
 
     <H2>Block group</H2>
     <SpecificBlock>
+      <H2>Heading</H2>
       <SpecificBlock grouped>
         <H2>This is a grouped block</H2>
         <p>Omnium prompta placerat in sed. Cum no congue tamquam iracundia. Oporteat periculis instructior est in, vis habeo reprimique ei.</p>
@@ -27,6 +28,7 @@ export default function PrimitivesIntro() {
 
     <H2>Simple block group</H2>
     <SpecificBlock>
+      <H2>Heading</H2>
       <SpecificBlock grouped groupedSimple>
         <H2>This is a simple grouped block</H2>
         <p>Omnium prompta placerat in sed. Cum no congue tamquam iracundia. Oporteat periculis instructior est in, vis habeo reprimique ei.</p>
@@ -41,7 +43,7 @@ export default function PrimitivesIntro() {
     <H2>Error block</H2>
     <p>An error block is basically a grouped block with custom styling.</p>
     <StyledErrorBlock>
-      <SpecificBlock grouped groupedSimple>
+      <SpecificBlock groupedSimple>
         <H2>This is an error block</H2>
       </SpecificBlock>
       <SpecificBlock grouped groupedSimple>

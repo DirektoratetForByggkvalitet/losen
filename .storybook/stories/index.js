@@ -49,10 +49,12 @@ storiesOf('Visual primitives', module)
   .add('Textarea', require('./primitives/textarea').default)
   .add('Table', require('./primitives/table').default)
   .add('Images', require('./primitives/images').default)
+  .add('Details', require('./primitives/details').default)
   .add('Errors', require('./primitives/errors').default)
   .add('Loading', require('./primitives/loading').default)
   .add('Menu', require('./primitives/menu').default)
   .add('Blocks', require('./primitives/blocks').default)
+  .add('Signature', require('./primitives/signature').default)
   ;
 
 storiesOf('Navigation', module)

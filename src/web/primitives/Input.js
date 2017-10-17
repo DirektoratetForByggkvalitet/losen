@@ -37,6 +37,7 @@ export const Checkbox = injectStyles(styled.input`
       flex: 1;
     }
     img {
+      width: 25%;
       max-width: 200px;
     }
     p {
@@ -161,6 +162,7 @@ export const Radio = injectStyles(styled.input.attrs({
       flex: 1;
     }
     img {
+      width: 25%;
       max-width: 200px;
     }
     p {

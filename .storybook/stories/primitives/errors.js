@@ -2,6 +2,8 @@ import React from 'react';
 import { H1, H2 } from '../../../src/web/primitives/Heading';
 import { ErrorMessage } from '../../../src/web/primitives/Errors';
 import Information from '../../../src/web/primitives/Information';
+import { SpecificBlock, TextBlock } from '../../../src/web/primitives/Block';
+import StyledErrorBlock from '../../../src/web/primitives/ErrorBlock';
 
 export default function PrimitivesIntro() {
   return (<div>
@@ -26,6 +28,7 @@ export default function PrimitivesIntro() {
         </ErrorMessage>
     </div>
     <hr />
+
     <H2>Information notice</H2>
     <div>
         <Information>
@@ -45,5 +48,17 @@ export default function PrimitivesIntro() {
             This is important information, remember this!
           </Information>
     </div>
+    <hr />
+
+    <H2>Error block</H2>
+    <StyledErrorBlock>
+      <SpecificBlock groupedSimple>
+        <H2>This is an error block</H2>
+      </SpecificBlock>
+      <SpecificBlock grouped groupedSimple>
+        <p>No point in continuing with the guide once you see one of these, unfortunately.</p>
+      </SpecificBlock>
+    </StyledErrorBlock>
+    <hr />
   </div>);
 }

@@ -8,6 +8,9 @@ export const Details = injectStyles(styled.details`
     font-size: 1em;
     margin-bottom: 0;
   }
+  p {
+    margin-top: 0;
+  }
 `);
 
 export const Summary = injectStyles(styled.summary`
