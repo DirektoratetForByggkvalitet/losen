@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 const Title = injectStyles(styled.div`
+  cursor: pointer;
   text-align: center;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -10,7 +11,7 @@ const Title = injectStyles(styled.div`
   font-size: 24px;
   line-height: 1.2;
   &::before {
-    content: "Veiviser";
+    content: 'Veiviser';
     display: block;
     color: gray;
     text-transform: uppercase;

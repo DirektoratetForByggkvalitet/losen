@@ -132,6 +132,7 @@ class Wizard extends Component {
               setPage={this.setPage}
               heading={wizard.meta.title}
               tableOfContents={tableOfContents}
+              showIntro={showIntro}
             />
             {page.type === 'Result' ? (
               <Result

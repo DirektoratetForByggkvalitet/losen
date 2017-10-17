@@ -15,12 +15,13 @@ export default class Nav extends Component {
     page: PropTypes.string,
     setPage: PropTypes.func.isRequired,
     tableOfContents: PropTypes.array.isRequired,
-  }
+    showIntro: PropTypes.func.isRequired,
+  };
 
   static defaultProps = {
     heading: 'Missing page heading',
     page: 0,
-  }
+  };
 
   state = { tocExpanded: true };
 
@@ -32,6 +33,7 @@ export default class Nav extends Component {
       page: currentPage = {},
       setPage,
       tableOfContents,
+      showIntro,
     } = this.props;
 
     const { tocExpanded } = this.state;
@@ -43,7 +45,7 @@ export default class Nav extends Component {
         </Button>
 
         <StyledNav tocExpanded={tocExpanded}>
-          <Title>{heading}</Title>
+          <Title onClick={showIntro}>{heading}</Title>
           {tableOfContents.map(
             (page, index) =>
               page.type === 'Result' ? (
