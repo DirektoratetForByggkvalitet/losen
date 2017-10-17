@@ -12,7 +12,7 @@ addDecorator(storyFn => (
     <link href="/storybook.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Mono:300,400" rel="stylesheet" />
 
-    <StyleProvider styles={{ font: { primary: 'Source Sans Pro', secondary: 'Source Sans Pro' } }}>
+    <StyleProvider>
       {storyFn()}
     </StyleProvider>
   </div>
@@ -38,7 +38,22 @@ storiesOf('DSL', module)
 
 storiesOf('Visual primitives', module)
   .add('Intro', require('./primitives/intro').default)
-  .add('Buttons', require('./primitives/buttons').default);
+  .add('Headings', require('./primitives/headings').default)
+  .add('Paragraphs', require('./primitives/paragraphs').default)
+  .add('Buttons', require('./primitives/buttons').default)
+  .add('Input: Radio', require('./primitives/input-radio').default)
+  .add('Input: Checkbox', require('./primitives/input-checkbox').default)
+  .add('Input: Text', require('./primitives/input-text').default)
+  .add('Input: Number', require('./primitives/input-number').default)
+  .add('Select', require('./primitives/select').default)
+  .add('Textarea', require('./primitives/textarea').default)
+  .add('Table', require('./primitives/table').default)
+  .add('Images', require('./primitives/images').default)
+  .add('Errors', require('./primitives/errors').default)
+  .add('Loading', require('./primitives/loading').default)
+  .add('Menu', require('./primitives/menu').default)
+  .add('Blocks', require('./primitives/blocks').default)
+  ;
 
 storiesOf('Navigation', module)
   .add('with Next', () => <Navigation page={0} />)

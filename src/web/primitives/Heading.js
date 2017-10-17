@@ -6,7 +6,7 @@ export const H1 = injectStyles(styled.h1`
   font-family: ${({ styles }) => styles.font.secondary};
   font-size: 50px;
   font-weight: 300;
-  margin: 0 0 10px;
+  margin: 0 0 30px;
   line-height: 1.2;
   ${props =>
     props.small
