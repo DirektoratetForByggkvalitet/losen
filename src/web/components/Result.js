@@ -7,13 +7,12 @@ import Block from './blocks/Block';
 import ErrorResult from './ErrorResult';
 import ExportData from './ExportData';
 import Html from './helper/Html';
-import Summary from './Summary';
 
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import { MainButton } from '../primitives/Button';
 import { SpecificBlock } from '../primitives/Block';
-import { PrintForm } from '../primitives/PrintForm';
+import PrintForm from '../primitives/PrintForm';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
 
@@ -30,7 +29,6 @@ function Result({
   previousPage,
   schema,
   setPage,
-  summary,
 }) {
   if (errorPages.length) {
     return (
@@ -54,11 +52,16 @@ function Result({
 
       <SpecificBlock>
         <H1 small>Erklæring om ansvarsrett</H1>
-        {summary ? (
-          <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-        ) : null}
         <PrintForm>
-          {children.map(block => <Block key={block.property} {...block} />)}
+          {children.map(block => (
+            <Block
+              key={block.property}
+              {...block}
+              errorPages={errorPages}
+              setPage={setPage}
+              pages={schema}
+            />
+          ))}
         </PrintForm>
       </SpecificBlock>
 
@@ -88,7 +91,6 @@ Result.propTypes = {
   previousPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
-  summary: PropTypes.bool,
 };
 
 Result.defaultProps = {
@@ -100,7 +102,6 @@ Result.defaultProps = {
   heading: 'Missing page heading',
   lead: '',
   schema: [],
-  summary: true,
 };
 
 const mapStateToProps = (state, { wizard }) => ({

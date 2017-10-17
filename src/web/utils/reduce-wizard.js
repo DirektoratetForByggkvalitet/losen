@@ -191,9 +191,20 @@ export const liftChildrenBranchPages = (res, node) => {
     return res;
   }
 
-  // If the node has no children, there'll be no pages to hoist
+  // A page with no children is no good. Skip it
+  if (node.type === 'Page' && (!node.children || !node.children.length)) {
+    return res;
+  }
+
+  // If the node has no children, there's nothing to show and we'll just skip the page
   if (!Array.isArray(node.children) || !node.children.length) {
     return [...res, node];
+  }
+
+  // If page has only child, and that child is a result page,
+  // return the result page and ditch the page
+  if (node.children.length === 1 && node.children[0].type === 'Result') {
+    return [...res, node.children[0]];
   }
 
   // Hoist result page if the last child of this page is a result

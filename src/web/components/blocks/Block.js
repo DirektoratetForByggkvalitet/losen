@@ -20,6 +20,7 @@ import Select from './select/Select';
 import Table from './Table';
 import Text from './Text';
 import Textarea from './Textarea';
+import Summary from './Summary';
 
 // State deps
 import { setData } from '../../state/actions';
@@ -78,6 +79,9 @@ function getBlock(type) {
     case 'Signature':
       return Signature;
 
+    case 'Summary':
+      return Summary;
+
     default:
       return null;
   }
@@ -132,7 +136,8 @@ export function PureBlock(props) {
     props.type === 'Image' ||
     props.type === 'Text' ||
     props.type === 'Data' ||
-    props.type === 'Signature'
+    props.type === 'Signature' ||
+    props.type === 'Summary'
   ) {
     return (
       <SpecificBlock

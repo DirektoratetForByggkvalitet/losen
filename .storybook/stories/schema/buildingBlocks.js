@@ -52,6 +52,7 @@ export default function SchemaBuildingBlocks() {
           <code>children</code>: An array of nodes to show for this result page. The nodes can be of any type except
           <em>Page</em> and <em>Result</em>.
         </li>
+        <li><code>disableErrorPage</code>: Disable the error page that by default shows when the wizard has not been completed. Default: false</li>
       </ul>
 
       <H2>Group</H2>
@@ -231,6 +232,9 @@ export default function SchemaBuildingBlocks() {
 ]`}</pre>
         </li>
       </ul>
+
+      <H4>Summary</H4>
+      <p>A summary of all input and errors in the wizard</p>
     </div>
   );
 }
