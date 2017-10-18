@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const PageSummary = injectStyles(styled.div`
-  padding: 10px 0 20px;
+  padding: 20px 0 20px;
   margin: 0 0 10px;
   background: white;
   line-height: 2;
@@ -56,11 +56,16 @@ export const PageSummary = injectStyles(styled.div`
 `);
 
 export const NodeSummary = injectStyles(styled.div` 
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   h3 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 300;
     margin-bottom: 0;
+  }
+  @media screen and (max-width: 900px) {
+    h3 {
+      font-size: 16px;
+    }
   }
   @media print {
     font-size: 12px;

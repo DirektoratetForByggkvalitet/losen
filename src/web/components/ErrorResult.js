@@ -21,6 +21,7 @@ export default function ErrorResult({ children, errorPages, schema, setPage }) {
         endre dine svar.
       </Lead>
       <SpecificBlock>
+        <H1 small>Tittel her</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
         {children.map(block => <Block key={block.property} {...block} />)}
       </SpecificBlock>

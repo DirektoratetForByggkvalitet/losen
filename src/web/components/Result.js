@@ -29,6 +29,7 @@ function Result({
   previousPage,
   schema,
   setPage,
+  title,
 }) {
   if (errorPages.length) {
     return (
@@ -51,7 +52,7 @@ function Result({
       </Lead>
 
       <SpecificBlock>
-        <H1 small>Erklæring om ansvarsrett</H1>
+        <H1 small>{title}</H1>
         <div>
           {children.map(block => (
             <Block
@@ -79,6 +80,7 @@ function Result({
 }
 
 Result.propTypes = {
+  title: PropTypes.string,
   children: PropTypes.array,
   debug: PropTypes.bool,
   end: PropTypes.string,
@@ -94,6 +96,7 @@ Result.propTypes = {
 };
 
 Result.defaultProps = {
+  title: null,
   children: [],
   debug: false,
   end: '',

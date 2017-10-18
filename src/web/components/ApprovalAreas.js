@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Table } from '../primitives/Table';
+import { H3 } from '../primitives/Heading';
 import TableContainer from '../primitives/TableContainer';
 /* eslint-disable react/no-array-index-key */
 export default function ApprovalAreas({ areas, title }) {
@@ -10,7 +11,7 @@ export default function ApprovalAreas({ areas, title }) {
   }
   let heading;
   if (title) {
-    heading = <h3>Sentral godkjenninger</h3>;
+    heading = <H3>Sentrale godkjenninger</H3>;
   }
   return (
     <div>

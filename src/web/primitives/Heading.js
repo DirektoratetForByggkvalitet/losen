@@ -16,6 +16,7 @@ export const H1 = injectStyles(styled.h1`
     letter-spacing: 0.05em;
     font-weight: 300;
     color: gray;
+    margin-bottom: 10px;
     `
       : ' '};
   @media screen and (max-width: 700px) {

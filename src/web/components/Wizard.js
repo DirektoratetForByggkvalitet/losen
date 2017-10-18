@@ -141,6 +141,7 @@ class Wizard extends Component {
                 debug={debug}
                 pageid={page.id}
                 wizard={wizard}
+                title={wizard.meta.title}
                 schema={schema}
                 setPage={this.setPage}
                 exports={exports}

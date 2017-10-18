@@ -7,7 +7,6 @@ const Signature = injectStyles(styled.div`
   width: 100%;
   max-width: 300px;
   margin: 120px auto 30px;
-  padding-top: 10px;
   border-top: 1px solid black;
 `);
 
