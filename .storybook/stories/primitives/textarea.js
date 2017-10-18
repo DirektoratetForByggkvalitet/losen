@@ -4,7 +4,7 @@ import { Textarea } from '../../../src/web/primitives/Input';
 
 export default function PrimitivesIntro() {
   return (<div>
-    <H1>Text inputs</H1>
+    <H1>Textarea</H1>
     <H2>Regular</H2>
     <div>
         <Textarea />
