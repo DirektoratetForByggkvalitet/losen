@@ -137,13 +137,6 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
 
   const translatedProps = translateNode(node, translations);
 
-  if (node.type === 'Result') {
-    return {
-      ...node,
-      ...translatedProps,
-    };
-  }
-
   if (!node.children) {
     return {
       ...node,
