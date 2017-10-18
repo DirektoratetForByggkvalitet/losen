@@ -12,7 +12,7 @@ import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import { MainButton } from '../primitives/Button';
 import { SpecificBlock } from '../primitives/Block';
-import PrintForm from '../primitives/PrintForm';
+// import PrintForm from '../primitives/PrintForm';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
 
@@ -52,17 +52,17 @@ function Result({
 
       <SpecificBlock>
         <H1 small>Erklæring om ansvarsrett</H1>
-        <PrintForm>
+        <div>
           {children.map(block => (
             <Block
-              key={block.property}
+              key={block.id}
               {...block}
               errorPages={errorPages}
               setPage={setPage}
               pages={schema}
             />
           ))}
-        </PrintForm>
+        </div>
       </SpecificBlock>
 
       {exporter ? (

@@ -102,6 +102,9 @@ export function PureBlock(props) {
             key={block.id}
             data-id={props.id}
             simple={props.simple}
+            setPage={props.setPage}
+            errorPages={props.errorPages}
+            pages={props.pages}
             {...block}
           />
         ))}
@@ -121,6 +124,9 @@ export function PureBlock(props) {
             key={block.id}
             data-id={props.id}
             simple={props.simple}
+            setPage={props.setPage}
+            errorPages={props.errorPages}
+            pages={props.pages}
             {...block}
           />
         ))}
@@ -216,6 +222,9 @@ PureBlock.propTypes = {
       pattern: PropTypes.string.isRequired,
     }),
   ]),
+  errorPages: PropTypes.array.isRequired,
+  setPage: PropTypes.func.isRequired,
+  pages: PropTypes.array.isRequired,
 };
 
 PureBlock.defaultProps = {
