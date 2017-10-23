@@ -137,20 +137,22 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
 
   const translatedProps = translateNode(node, translations);
 
-  if (!node.children) {
+  if (['Page', 'Result'].indexOf(node.type) > -1 || node.children) {
     return {
       ...node,
       ...translatedProps,
-      currentValue,
-      errors,
-      errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
+      ...((node.children && node.children.length) ? {
+        children: reduceWizard(node.children, state, nodeTitles, translations),
+      } : {}),
     };
   }
 
   return {
     ...node,
     ...translatedProps,
-    children: reduceWizard(node.children, state, nodeTitles, translations),
+    currentValue,
+    errors,
+    errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
   };
 };
 

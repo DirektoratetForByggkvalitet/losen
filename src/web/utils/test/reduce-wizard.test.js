@@ -8,7 +8,36 @@ import reduceWizard, {
 } from '../reduce-wizard';
 
 describe('reduce-wizard', () => {
-  it.only('leaves groups in place', () => {
+  it('removes empty pages', () => {
+    const wizard = [
+      {
+        type: 'Page',
+        children: [
+          {
+            type: 'Branch',
+            branches: [
+              {
+                test: {
+                  field: 'fjasebengel',
+                  operator: 'required',
+                },
+                children: [
+                  { type: 'Input' },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      { type: 'Result', heading: 'Foobar' },
+    ];
+
+    expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
+      { heading: 'Foobar', type: 'Result' },
+    ]);
+  });
+
+  it('leaves groups in place', () => {
     const wizard = [
       {
         type: 'Page',
@@ -104,8 +133,26 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input', errors: [], errorDescription: '' },
-          { ...wizard[0].children[1], errors: [], errorDescription: '' },
+          {
+            type: 'Input',
+            currentValue: undefined,
+            errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
+          },
+          {
+            ...wizard[0].children[1],
+            currentValue: undefined,
+            errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
+          },
         ],
       },
       { heading: 'The end', type: 'Result' },
@@ -120,10 +167,30 @@ describe('reduce-wizard', () => {
       {
         type: 'Page',
         children: [
-          { type: 'Input', errors: [], errorDescription: '' },
+          {
+            type: 'Input',
+            currentValue: undefined,
+            errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
+          },
         ],
       },
       { type: 'Result', heading: 'The end' },
+    ]);
+  });
+
+  it("doesn't add error stuff to result page", () => {
+    const wizard = [
+      { type: 'Page' },
+      { type: 'Result', heading: 'Foobar' },
+    ];
+
+    expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
+      { heading: 'Foobar', type: 'Result' },
     ]);
   });
 
@@ -138,15 +205,40 @@ describe('reduce-wizard', () => {
               {
                 test: { field: 'foo', operator: 'required' },
                 children: [
-                  { type: 'Input' },
-                  { type: 'Radio', hidden: { field: 'foo', operator: 'not' } },
+                  {
+                    type: 'Input',
+                    currentValue: undefined,
+                    errorDescription: '',
+                    errors: {
+                      disabled: [],
+                      required: true,
+                      validation: {},
+                    },
+                  },
+                  {
+                    type: 'Radio',
+                    currentValue: undefined,
+                    errorDescription: '',
+                    errors: {
+                      disabled: [],
+                      required: true,
+                      validation: {},
+                    },
+                    hidden: {
+                      field: 'foo',
+                      operator: 'not',
+                    },
+                  },
                 ],
               },
             ],
           },
         ],
       },
-      { type: 'Result', heading: 'Foobar' },
+      {
+        type: 'Result',
+        heading: 'Foobar',
+      },
     ];
 
     expect(reduceWizard(wizard, { [NAME]: { foo: 'test' } })).toEqual([
@@ -155,13 +247,23 @@ describe('reduce-wizard', () => {
         children: [
           {
             type: 'Input',
-            errors: [],
+            currentValue: undefined,
             errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
           },
           {
             ...wizard[0].children[0].branches[0].children[1],
-            errors: [],
+            currentValue: undefined,
             errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
           },
         ],
       },
@@ -178,13 +280,23 @@ describe('reduce-wizard', () => {
         children: [
           {
             type: 'Input',
-            errors: [],
+            currentValue: undefined,
             errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
           },
           {
             ...wizard[0].children[0].branches[0].children[1],
-            errors: [],
+            currentValue: undefined,
             errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
           },
         ],
       },
@@ -304,11 +416,38 @@ describe('reduce-wizard', () => {
           {
             type: 'Stuff',
             children: [
-              { type: 'Input', errors: [], errorDescription: '' },
-              { type: 'Checkbox', errors: [], errorDescription: '' },
+              {
+                type: 'Input',
+                currentValue: undefined,
+                errorDescription: '',
+                errors: {
+                  disabled: [],
+                  required: true,
+                  validation: {},
+                },
+              },
+              {
+                type: 'Checkbox',
+                currentValue: undefined,
+                errorDescription: '',
+                errors: {
+                  disabled: [],
+                  required: true,
+                  validation: {},
+                },
+              },
             ],
           },
-          { type: 'Input', errors: [], errorDescription: '' },
+          {
+            type: 'Input',
+            currentValue: undefined,
+            errorDescription: '',
+            errors: {
+              disabled: [],
+              required: true,
+              validation: {},
+            },
+          },
         ],
       });
     });
