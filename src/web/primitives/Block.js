@@ -113,7 +113,7 @@ export const SpecificBlock = injectStyles(styled.div`
 `);
 
 export const TextBlock = injectStyles(styled.div`
-  padding: 30px 33px 36px;
+  padding: 30px 0 10px;
   margin: 20px 0;
   width: 100%;
 

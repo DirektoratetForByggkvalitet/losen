@@ -5,7 +5,7 @@ import React from 'react';
 import { getErrorPages } from '../utils/selectors';
 import Block from './blocks/Block';
 import ErrorResult from './ErrorResult';
-import ExportData from './ExportData';
+// import ExportData from './ExportData';
 import Html from './helper/Html';
 import Summary from './Summary';
 
@@ -21,7 +21,6 @@ function Result({
   debug,
   errorPages,
   exporter,
-  exports,
   heading,
   lead,
   pageid,
@@ -67,10 +66,7 @@ function Result({
 
       {exporter ? (
         <Export>
-          <MainButton>Skriv ut</MainButton>
-          <br />
-          {exporter &&
-            exports[exporter] && <ExportData exporter={exports[exporter]} />}
+          <MainButton onclick={print}>Skriv ut</MainButton>
         </Export>
       ) : null}
     </Main>
@@ -83,7 +79,6 @@ Result.propTypes = {
   debug: PropTypes.bool,
   errorPages: PropTypes.array.isRequired,
   exporter: PropTypes.string,
-  exports: PropTypes.objectOf(PropTypes.func),
   heading: PropTypes.string,
   lead: PropTypes.string,
   pageid: PropTypes.number.isRequired,
@@ -98,7 +93,6 @@ Result.defaultProps = {
   debug: false,
   end: '',
   exporter: null,
-  exports: {},
   heading: 'Missing page heading',
   lead: '',
   schema: [],
