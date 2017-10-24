@@ -16,6 +16,7 @@ import { SpecificBlock } from '../primitives/Block';
 // import PrintForm from '../primitives/PrintForm';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
+import PrintForm from '../primitives/PrintForm';
 
 function Result({
   children = [],
@@ -55,7 +56,7 @@ function Result({
       <SpecificBlock>
         <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-        <div>
+        <PrintForm>
           {children.map(block => (
             <Block
               key={block.id}
@@ -65,7 +66,7 @@ function Result({
               pages={schema}
             />
           ))}
-        </div>
+        </PrintForm>
       </SpecificBlock>
 
       {exporter ? (
