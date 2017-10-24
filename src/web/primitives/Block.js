@@ -94,8 +94,7 @@ export const SpecificBlock = injectStyles(styled.div`
     }
   }
   `
-    : ' '} 
-  @media screen and (max-width: 700px) {
+    : ' '} @media screen and (max-width: 700px) {
     padding: ${props => (props.grouped ? '20px 12px' : '20px 16px')};
     ${props =>
     props.groupedSimple
@@ -142,11 +141,14 @@ export const TextBlock = injectStyles(styled.div`
   @media screen and (max-width: 700px) {
     padding: 20px 0;
   }
-`);
 
-/*
-  background: #ECF2F6;
-  &:nth-child(odd) {
-    background: #DBE8F0;
-  }
-*/
+  ${props =>
+    props.printonly
+      ? `
+    display: none;
+    @media print {
+      font-size: 12px;
+      display: block;
+    }`
+      : ''};
+`);

@@ -13,15 +13,12 @@ import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import { MainButton } from '../primitives/Button';
 import { SpecificBlock } from '../primitives/Block';
-// import PrintForm from '../primitives/PrintForm';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
-import PrintForm from '../primitives/PrintForm';
 
 function Result({
   children = [],
   debug,
-  end,
   errorPages,
   exporter,
   exports,
@@ -56,7 +53,7 @@ function Result({
       <SpecificBlock>
         <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-        <PrintForm>
+        <div>
           {children.map(block => (
             <Block
               key={block.id}
@@ -66,12 +63,11 @@ function Result({
               pages={schema}
             />
           ))}
-        </PrintForm>
+        </div>
       </SpecificBlock>
 
       {exporter ? (
         <Export>
-          <Html text={end} />
           <MainButton>Skriv ut</MainButton>
           <br />
           {exporter &&
@@ -86,7 +82,6 @@ Result.propTypes = {
   title: PropTypes.string,
   children: PropTypes.array,
   debug: PropTypes.bool,
-  end: PropTypes.string,
   errorPages: PropTypes.array.isRequired,
   exporter: PropTypes.string,
   exports: PropTypes.objectOf(PropTypes.func),
