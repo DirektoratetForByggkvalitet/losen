@@ -7,6 +7,7 @@ import Block from './blocks/Block';
 import ErrorResult from './ErrorResult';
 import ExportData from './ExportData';
 import Html from './helper/Html';
+import Summary from './Summary';
 
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
@@ -53,6 +54,7 @@ function Result({
 
       <SpecificBlock>
         <H1 small>{title}</H1>
+        <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
         <div>
           {children.map(block => (
             <Block
