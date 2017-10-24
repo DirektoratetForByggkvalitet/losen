@@ -11,13 +11,13 @@ import { Textarea } from '../primitives/Input';
 class ExportData extends Component {
   static propTypes = {
     data: PropTypes.any,
-  }
+  };
 
   static defaultProps = {
     data: null,
-  }
+  };
 
-  state = { open: false }
+  state = { open: false };
 
   selectText = () => this.textarea.select();
 
@@ -28,11 +28,6 @@ class ExportData extends Component {
 
   render() {
     const { data } = this.props;
-    const { open } = this.state;
-
-    if (!open) {
-      return <MainButton onClick={this.showExportData}>Kopier svar</MainButton>;
-    }
 
     const json = JSON.stringify(data, null, 2);
     const lines = json.split(/\n/).length;

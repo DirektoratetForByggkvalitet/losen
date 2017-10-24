@@ -12,6 +12,7 @@ const Text = ({
   text,
   warning = false,
   printonly = false,
+  printhide = false,
 }) => {
   let title = '';
   if (heading) {
@@ -24,6 +25,7 @@ const Text = ({
       debug={debug}
       data-id={id}
       printonly={printonly}
+      printhide={printhide}
     >
       {title}
       <Html text={text} />
@@ -35,6 +37,7 @@ Text.propTypes = {
   debug: PropTypes.bool,
   heading: PropTypes.string,
   id: PropTypes.string,
+  printhide: PropTypes.bool,
   printonly: PropTypes.bool,
   text: PropTypes.string.isRequired,
   warning: PropTypes.bool,
@@ -44,6 +47,7 @@ Text.defaultProps = {
   debug: false,
   heading: '',
   id: null,
+  printhide: false,
   printonly: false,
   warning: false,
 };

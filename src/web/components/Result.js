@@ -53,18 +53,17 @@ function Result({
       <SpecificBlock>
         <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-        <div>
-          {children.map(block => (
-            <Block
-              key={block.id}
-              {...block}
-              errorPages={errorPages}
-              setPage={setPage}
-              pages={schema}
-            />
-          ))}
-        </div>
       </SpecificBlock>
+
+      {children.map(block => (
+        <Block
+          key={block.id}
+          {...block}
+          errorPages={errorPages}
+          setPage={setPage}
+          pages={schema}
+        />
+      ))}
 
       {exporter ? (
         <Export>

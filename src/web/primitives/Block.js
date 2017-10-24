@@ -151,4 +151,12 @@ export const TextBlock = injectStyles(styled.div`
       display: block;
     }`
       : ''};
+
+  ${props =>
+    props.printhide
+      ? `
+        @media print {
+          display: none;
+        }`
+      : ''};
 `);
