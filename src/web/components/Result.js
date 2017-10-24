@@ -38,6 +38,7 @@ function Result({
         previousPage={previousPage}
         errorPages={errorPages}
         children={children}
+        title={title}
       />
     );
   }

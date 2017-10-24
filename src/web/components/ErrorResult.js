@@ -9,7 +9,13 @@ import { Lead } from '../primitives/Paragraphs';
 import { SpecificBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 
-export default function ErrorResult({ children, errorPages, schema, setPage }) {
+export default function ErrorResult({
+  children,
+  errorPages,
+  schema,
+  setPage,
+  title,
+}) {
   return (
     <Main result>
       {/* TODO: Move this to "api" */}
@@ -21,7 +27,7 @@ export default function ErrorResult({ children, errorPages, schema, setPage }) {
         endre dine svar.
       </Lead>
       <SpecificBlock>
-        <H1 small>Tittel her</H1>
+        <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
         {children.map(block => <Block key={block.property} {...block} />)}
       </SpecificBlock>
@@ -32,6 +38,7 @@ export default function ErrorResult({ children, errorPages, schema, setPage }) {
 ErrorResult.defaultProps = {
   children: [],
   schema: [],
+  title: '',
 };
 
 ErrorResult.propTypes = {
@@ -39,4 +46,5 @@ ErrorResult.propTypes = {
   errorPages: PropTypes.array.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
+  title: PropTypes.string,
 };
