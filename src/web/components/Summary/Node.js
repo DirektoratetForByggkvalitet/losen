@@ -13,15 +13,7 @@ const ignoreNodes = ['Text', 'Image'];
 const overrideValueSummary = { FetchOrg };
 
 export default function NodeSummary({ node }) {
-  const {
-    children,
-    currentValue,
-    errorDescription,
-    errors,
-    heading,
-    property,
-    type,
-  } = node;
+  const { children, currentValue, errorDescription, errors, heading, property, type } = node;
 
   if (ignoreNodes.includes(type) || property === undefined) {
     return null;
@@ -29,9 +21,7 @@ export default function NodeSummary({ node }) {
 
   if (type === 'Group') {
     return (
-      <div>
-        {children.map(child => <NodeSummary value={child.currentValue} node={child} />)}
-      </div>
+      <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>
     );
   }
 
@@ -41,8 +31,17 @@ export default function NodeSummary({ node }) {
     <StyledNodeSummary>
       <H3>{heading}</H3>
       <ValueSummary value={currentValue} node={node} />
-      {errors.validation.error ? <ErrorMessage><ErrorIcon />{errors.validation.message}</ErrorMessage> : null}
-      {errors.disabled.length ? <ErrorMessage><ErrorIcon /> {errorDescription}</ErrorMessage> : null}
+      {errors.validation.error ? (
+        <ErrorMessage>
+          <ErrorIcon />
+          {errors.validation.message}
+        </ErrorMessage>
+      ) : null}
+      {errors.disabled.length ? (
+        <ErrorMessage>
+          <ErrorIcon /> {errorDescription}
+        </ErrorMessage>
+      ) : null}
     </StyledNodeSummary>
   );
 }
