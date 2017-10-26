@@ -56,18 +56,12 @@ function Result({
       </SpecificBlock>
 
       {children.map(block => (
-        <Block
-          key={block.id}
-          {...block}
-          errorPages={errorPages}
-          setPage={setPage}
-          pages={schema}
-        />
+        <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
       ))}
 
       {exporter ? (
         <Export>
-          <MainButton onclick={print}>Skriv ut</MainButton>
+          <MainButton onClick={() => window.print()}>Skriv ut</MainButton>
         </Export>
       ) : null}
     </Main>
