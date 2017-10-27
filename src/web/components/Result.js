@@ -5,7 +5,6 @@ import React from 'react';
 import { getErrorPages } from '../utils/selectors';
 import Block from './blocks/Block';
 import ErrorResult from './ErrorResult';
-// import ExportData from './ExportData';
 import Html from './helper/Html';
 import Summary from './Summary';
 
@@ -28,6 +27,8 @@ function Result({
   schema,
   setPage,
   title,
+  errorheading,
+  errorlead,
 }) {
   if (errorPages.length) {
     return (
@@ -39,6 +40,8 @@ function Result({
         errorPages={errorPages}
         children={children}
         title={title}
+        errorheading={errorheading}
+        errorlead={errorlead}
       />
     );
   }
@@ -69,9 +72,10 @@ function Result({
 }
 
 Result.propTypes = {
-  title: PropTypes.string,
   children: PropTypes.array,
   debug: PropTypes.bool,
+  errorheading: PropTypes.string,
+  errorlead: PropTypes.string,
   errorPages: PropTypes.array.isRequired,
   exporter: PropTypes.string,
   heading: PropTypes.string,
@@ -80,17 +84,20 @@ Result.propTypes = {
   previousPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
+  title: PropTypes.string,
 };
 
 Result.defaultProps = {
-  title: null,
   children: [],
   debug: false,
   end: '',
+  errorheading: '',
+  errorlead: '',
   exporter: null,
   heading: 'Missing page heading',
   lead: '',
   schema: [],
+  title: null,
 };
 
 const mapStateToProps = (state, { wizard }) => ({

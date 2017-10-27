@@ -15,17 +15,13 @@ export default function ErrorResult({
   schema,
   setPage,
   title,
+  errorheading,
+  errorlead,
 }) {
   return (
     <Main result>
-      {/* TODO: Move this to "api" */}
-      <H1>Du har ikke svart på alle spørsmålene</H1>
-      <Lead>
-        Vi kan derfor ikke gi deg svar på om firmaet ditt kan erklære ansvar. Du
-        kan se hvilke spørsmål du ikke har svart på i oppsummeringen under. Der
-        kan du også klikke deg inn på hvert steg i veiviseren for å legge til og
-        endre dine svar.
-      </Lead>
+      <H1>{errorheading}</H1>
+      <Lead>{errorlead}</Lead>
       <SpecificBlock>
         <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
@@ -37,12 +33,16 @@ export default function ErrorResult({
 
 ErrorResult.defaultProps = {
   children: [],
+  errorheading: '',
+  errorlead: '',
   schema: [],
   title: '',
 };
 
 ErrorResult.propTypes = {
   children: PropTypes.array,
+  errorheading: PropTypes.string,
+  errorlead: PropTypes.string,
   errorPages: PropTypes.array.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
