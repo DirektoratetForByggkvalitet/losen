@@ -28,21 +28,13 @@ export default class Nav extends Component {
   toggleToc = () => this.setState({ tocExpanded: !this.state.tocExpanded });
 
   render() {
-    const {
-      heading,
-      page: currentPage = {},
-      setPage,
-      tableOfContents,
-      showIntro,
-    } = this.props;
+    const { heading, page: currentPage = {}, setPage, tableOfContents, showIntro } = this.props;
 
     const { tocExpanded } = this.state;
 
     return (
       <div>
-        <Button onClick={this.toggleToc}>
-          {tocExpanded ? 'Vis' : 'Skjul'} alle steg
-        </Button>
+        <Button onClick={this.toggleToc}>{tocExpanded ? 'Vis' : 'Skjul'} alle steg</Button>
 
         <StyledNav tocExpanded={tocExpanded}>
           <Title onClick={showIntro}>{heading}</Title>
@@ -59,7 +51,7 @@ export default class Nav extends Component {
                 />
               ) : (
                 <NavItem
-                  key={page.id} // eslint-disable-line react/no-array-index-key
+                  key={page.id}
                   id={page.id}
                   index={index + 1}
                   heading={page.heading}
