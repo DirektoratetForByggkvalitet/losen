@@ -41,13 +41,17 @@ export default class Input extends Component {
   };
 
   handleChange = (e) => {
-    const { type, step, property, setData, update } = this.props;
+    const { type, step, property, setData, update, min } = this.props;
     let value = e.target.value;
 
     if (type === 'number' && step >= 1) {
       value = parseInt(value, 10);
     } else if (type === 'number') {
       value = parseFloat(value);
+    }
+
+    if (type === 'number' && min === 0) {
+      value = Math.abs(value);
     }
 
     if (type === 'number' && isNaN(value)) {
