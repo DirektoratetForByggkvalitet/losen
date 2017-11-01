@@ -121,6 +121,8 @@ export default class FetchOrg extends Component {
       validApprovalAreas,
       dataSG: true,
     });
+    // Set sgdata property.
+    setData('sgdata', get(data, 'dibk-sgdata.status.approved', false));
 
     this.setState({ loading: false });
   }
@@ -134,20 +136,14 @@ export default class FetchOrg extends Component {
       this.fetchSGData(value);
     } else {
       setData(property, { dataOrg: false, dataSG: false });
+      setData('sgdata', false);
     }
   }
 
   render() {
     const { loading } = this.state;
 
-    const {
-      information,
-      invalidapproval,
-      property,
-      setData,
-      SGheading,
-      SGtext,
-    } = this.props;
+    const { information, invalidapproval, property, setData, SGheading, SGtext } = this.props;
 
     return (
       <div>
@@ -190,14 +186,9 @@ export default class FetchOrg extends Component {
               get(this.props, 'currentValue.dataSG', false) && (
                 <Notice>
                   <H3>
-                    <VariableText
-                      text={SGheading}
-                      data={this.props.currentValue}
-                    />
+                    <VariableText text={SGheading} data={this.props.currentValue} />
                   </H3>
-                  <ApprovalAreas
-                    areas={get(this.props, 'currentValue.validApprovalAreas')}
-                  />
+                  <ApprovalAreas areas={get(this.props, 'currentValue.validApprovalAreas')} />
                   <VariableText text={SGtext} data={this.props.currentValue} />
                 </Notice>
               )}
