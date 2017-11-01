@@ -237,6 +237,7 @@ export const NumberInput = injectStyles(styled.input`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
+  width: auto;
   min-width: 20%;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
@@ -253,6 +254,7 @@ export const TextInput = injectStyles(styled.input`
   font-family: inherit;
   font-size: 1em;
   padding: 0.5em;
+  width: auto;
   min-width: 40%;
   border: 1px solid ${({ styles, validation: { error } = {} }) => error ? styles.color.red : styles.color.darkgray};
   &::placeholder {
