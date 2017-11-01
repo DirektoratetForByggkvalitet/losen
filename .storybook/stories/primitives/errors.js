@@ -16,7 +16,7 @@ export default function PrimitivesIntro() {
               viewBox="0 0 38 38"
             >
               <g>
-                <circle style={{ fill: "red" }} cx="19" cy="19" r="16" />
+                <circle style={{ fill: "#c1272d" }} cx="19" cy="19" r="16" />
                 <path
                   style={{ fill: "white" }}
                   d="M16.9,25.1c0-0.7,0.2-1.2,0.5-1.5s0.9-0.5,1.5-0.5c0.6,0,1.2,0.2,1.5,0.5s0.5,0.8,0.5,1.5
