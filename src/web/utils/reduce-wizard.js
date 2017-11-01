@@ -1,5 +1,4 @@
 /* eslint no-use-before-define: 0 */
-
 import parseExpression from '../../shared/utils/dsl';
 import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
@@ -53,21 +52,23 @@ export const parseTableCells = (state, translations) => (node) => {
 
   return {
     ...node,
-    cells: (node.cells || []).map(row => (row || row).map((cell) => {
-      let inactive = false;
+    cells: (node.cells || []).map(row =>
+      (row || row).map((cell) => {
+        let inactive = false;
 
-      if (cell.test) {
-        inactive = !parseExpression(cell.test)(state[NAME]).valid;
-      }
+        if (cell.test) {
+          inactive = !parseExpression(cell.test)(state[NAME]).valid;
+        }
 
-      const translatedProps = translateNode(cell, translations);
+        const translatedProps = translateNode(cell, translations);
 
-      return {
-        ...cell,
-        ...translatedProps,
-        inactive,
-      };
-    })),
+        return {
+          ...cell,
+          ...translatedProps,
+          inactive,
+        };
+      }),
+    ),
   };
 };
 
@@ -75,13 +76,15 @@ export const parseTableCells = (state, translations) => (node) => {
  * Reduce option messages to a single (if any) message.
  */
 export const reduceOptionMessages = state => messages =>
-  (messages || []).filter((message) => {
-    if (!message.test) {
-      return true;
-    }
+  (messages || [])
+    .filter((message) => {
+      if (!message.test) {
+        return true;
+      }
 
-    return parseExpression(message.test)(state[NAME]).valid;
-  }).slice(0, 1);
+      return parseExpression(message.test)(state[NAME]).valid;
+    })
+    .slice(0, 1);
 
 export const filterSchemaNodes = state => (node) => {
   if (node.type === 'Branch') {
@@ -123,10 +126,17 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
   }
 
   if (node.validator && currentValue) {
-    errors.validation = {
-      error: !new RegExp(node.validator.pattern).test(`${currentValue}`),
-      message: node.validator.error,
-    };
+    if (node.validator.object) {
+      errors.validation = {
+        error: !new RegExp(node.validator.pattern).test(currentValue[node.validator.object]),
+        message: node.validator.error,
+      };
+    } else {
+      errors.validation = {
+        error: !new RegExp(node.validator.pattern).test(`${currentValue}`),
+        message: node.validator.error,
+      };
+    }
   }
 
   if (!node.optional && ![...nonInteractiveTypes, 'Checkbox'].includes(node.type)) {
@@ -141,9 +151,11 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
     return {
       ...node,
       ...translatedProps,
-      ...((node.children && node.children.length) ? {
-        children: reduceWizard(node.children, state, nodeTitles, translations),
-      } : {}),
+      ...(node.children && node.children.length
+        ? {
+          children: reduceWizard(node.children, state, nodeTitles, translations),
+        }
+        : {}),
     };
   }
 
@@ -205,11 +217,7 @@ export const liftChildrenBranchPages = (res, node) => {
   // Hoist result page if the last child of this page is a result
   // page (mening it's a dead end)
   if (node.children[node.children.length - 1].type === 'Result') {
-    return [
-      ...res,
-      node,
-      node.children.pop(),
-    ];
+    return [...res, node, node.children.pop()];
   }
 
   // Page with regular pages (not a dead end)
