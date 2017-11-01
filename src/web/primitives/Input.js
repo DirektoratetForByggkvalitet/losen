@@ -46,6 +46,8 @@ export const Checkbox = injectStyles(styled.input`
     h3 {
       font-size: 18px;
       margin-bottom: 0;
+      font-style: normal;
+      font-weight: bold;
     }
   }
 
@@ -171,6 +173,8 @@ export const Radio = injectStyles(styled.input.attrs({
     h3 {
       font-size: 18px;
       margin-bottom: 0;
+      font-style: normal;
+      font-weight: bold;
     }
   }
 
@@ -256,7 +260,7 @@ export const TextInput = injectStyles(styled.input`
   padding: 0.5em;
   width: auto;
   min-width: 40%;
-  border: 1px solid ${({ styles, validation: { error } = {} }) => error ? styles.color.red : styles.color.darkgray};
+  border: 1px solid ${({ styles, validation: { error } = {} }) => error ? styles.color.red : styles.color.darkgray} !important;
   &::placeholder {
     font-color: inherit;
     opacity: 0.6;

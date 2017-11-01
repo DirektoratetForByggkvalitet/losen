@@ -20,6 +20,7 @@ export const MainButton = injectStyles(styled.button`
   transition: background 0.1s ease-in-out;
   &:hover, &:focus {
     background: ${({ styles }) => styles.color.dark};
+    color: white;
   }
   @media screen and (max-width: 400px) {
     width: 100%;
@@ -47,6 +48,7 @@ export const SecondaryButton = injectStyles(styled.button`
   transition: background 0.1s ease-in-out;
   &:hover, &:focus {
     background: ${({ styles }) => styles.color.warmgray2};
+    color: ${({ styles }) => styles.color.light};
   }
   @media screen and (max-width: 400px) {
     width: 100%;
