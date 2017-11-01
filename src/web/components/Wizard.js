@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import autobind from 'react-autobind';
 import Modal from './helper/Modal';
 
-import { getPages, getNodeTitles } from '../utils/selectors';
+import { getPages, getNodeTitles, getData } from '../utils/selectors';
+import { setData } from '../state/actions';
 import Nav from './Nav';
 import Page from './Page';
 import reduceWizard from '../utils/reduce-wizard';
@@ -18,9 +20,11 @@ import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
   static propTypes = {
+    data: PropTypes.object,
     debug: PropTypes.bool,
     exports: PropTypes.objectOf(PropTypes.func),
     schema: PropTypes.array.isRequired,
+    setData: PropTypes.func.isRequired,
     showIntro: PropTypes.func,
     styles: PropTypes.object,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -39,6 +43,7 @@ class Wizard extends Component {
   };
 
   static defaultProps = {
+    data: {},
     debug: false,
     exports: {},
     showIntro: () => {},
@@ -58,10 +63,7 @@ class Wizard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
-      track(
-        this.props.schema.filter(item => item.id === this.state.page)[0]
-          .heading,
-      );
+      track(this.props.schema.filter(item => item.id === this.state.page)[0].heading);
     }
   }
 
@@ -80,14 +82,14 @@ class Wizard extends Component {
     } else {
       window.scrollTo(0, 0);
     }
-
+    this.props.setData('page', page);
     this.setState({ page });
   }
 
   getCurrentIndex() {
     return Math.max(
       0,
-      this.props.schema.findIndex(({ id }) => id === this.state.page),
+      this.props.schema.findIndex(({ id }) => id === getData(this.props.data).page),
     );
   }
 
@@ -108,16 +110,7 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1);
 
   render() {
-    const {
-      debug,
-      exports,
-      schema,
-      showIntro,
-      styles,
-      tableOfContents,
-      wizard,
-    } = this.props;
-
+    const { debug, exports, schema, showIntro, styles, tableOfContents, wizard } = this.props;
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
 
@@ -170,7 +163,10 @@ const mapStateToProps = (state, { wizard, translations }) => {
     debug: !!window.location.search.match('debug'),
     schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
     tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
+    data: state,
   };
 };
 
-export default connect(mapStateToProps)(Wizard);
+export default connect(mapStateToProps, dispatch => bindActionCreators({ setData }, dispatch))(
+  Wizard,
+);
