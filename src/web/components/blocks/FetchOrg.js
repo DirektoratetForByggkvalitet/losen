@@ -13,6 +13,7 @@ import VariableText from '../helper/VariableText';
 import { H3 } from '../../primitives/Heading';
 import DL from '../../primitives/Datalist';
 import ErrorIcon from '../graphics/ErrorIcon';
+import { ErrorMessage } from '../../primitives/Errors';
 import Information from '../../primitives/Information';
 import Loading from '../../primitives/Loading';
 import Notice from '../../primitives/Notice';
@@ -22,6 +23,7 @@ export default class FetchOrg extends Component {
     currentValue: PropTypes.object,
     information: PropTypes.string,
     invalidapproval: PropTypes.string,
+    invalidOrg: PropTypes.string,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
     SGheading: PropTypes.string,
@@ -34,6 +36,7 @@ export default class FetchOrg extends Component {
     currentValue: {},
     information: '',
     invalidapproval: '',
+    invalidOrg: '',
     SGheading: '',
     SGsource: '',
     SGtext: '',
@@ -49,12 +52,20 @@ export default class FetchOrg extends Component {
   }
 
   fetchOrgData(orgid) {
+    const { property, setData, source } = this.props;
     const id = orgid.toString().replace(/\s/g, '');
 
-    fetch(`${this.props.source}%27${id}%27`)
+    fetch(`${source}%27${id}%27`)
       .then(response => response.json())
       .then((data) => {
-        this.updateOrgData(data, orgid);
+        if (Object.prototype.hasOwnProperty.call(data, 'data')) {
+          this.updateOrgData(data, orgid);
+        } else {
+          setData(property, {
+            ...this.props.currentValue,
+            invalidOrg: true,
+          });
+        }
       });
   }
 
@@ -82,6 +93,7 @@ export default class FetchOrg extends Component {
       postplace,
       address,
       dataOrg: true,
+      invalidOrg: false,
     });
   }
 
@@ -143,7 +155,15 @@ export default class FetchOrg extends Component {
   render() {
     const { loading } = this.state;
 
-    const { information, invalidapproval, property, setData, SGheading, SGtext } = this.props;
+    const {
+      information,
+      invalidapproval,
+      invalidOrg,
+      property,
+      setData,
+      SGheading,
+      SGtext,
+    } = this.props;
 
     return (
       <div>
@@ -196,6 +216,13 @@ export default class FetchOrg extends Component {
               !get(this.props, 'currentValue.dataSG', false) &&
               get(this.props, 'orgid', false) && <H3>{invalidapproval}</H3>}
           </div>
+        </div>
+        <div>
+          {get(this.props, 'currentValue.invalidOrg', false) && (
+            <ErrorMessage>
+              <ErrorIcon /> {invalidOrg}
+            </ErrorMessage>
+          )}
         </div>
       </div>
     );
