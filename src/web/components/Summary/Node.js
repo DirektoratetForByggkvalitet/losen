@@ -10,7 +10,7 @@ import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 import ErrorIcon from '../graphics/ErrorIcon';
 import SoftError from './SoftError';
 
-const ignoreNodes = ['Image'];
+const ignoreNodes = ['Text', 'Image'];
 const overrideValueSummary = { FetchOrg };
 
 export default function NodeSummary({ node }) {
