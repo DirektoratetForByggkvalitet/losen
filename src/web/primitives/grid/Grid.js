@@ -8,6 +8,7 @@ const Grid = injectStyles(styled.div`
   grid-template-columns: ${({ styles }) => styles.size.navWidth} 1fr;
   grid-template-rows: 1fr;
   min-height: 100vh;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   @media screen and (max-width: 900px) {

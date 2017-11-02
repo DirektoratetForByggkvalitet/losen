@@ -5,7 +5,7 @@ export default {
   },
   font: {
     primary: '"Open Sans", arial, sans-serif',
-    secondary: '"Altis-light", "Altis", "Open Sans", arial, sans-serif',
+    secondary: '"Altis-Light", "Altis", "Open Sans", arial, sans-serif',
   },
   color: {
     light: '#00757F',
@@ -27,7 +27,7 @@ export default {
     large: '8px',
   },
   size: {
-    blockWidth: '700px',
+    blockWidth: '800px',
     navWidth: '380px',
     headerHeight: '75px',
     mobileContentWidth: '90%',
