@@ -90,7 +90,6 @@ Result.propTypes = {
 Result.defaultProps = {
   children: [],
   debug: false,
-  end: '',
   errorheading: '',
   errorlead: '',
   exporter: null,
