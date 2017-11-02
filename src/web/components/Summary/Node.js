@@ -8,17 +8,19 @@ import { ErrorMessage } from '../../primitives/Errors';
 import { H3 } from '../../primitives/Heading';
 import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 import ErrorIcon from '../graphics/ErrorIcon';
+import SoftError from './SoftError';
 
-const ignoreNodes = ['Text', 'Image'];
+const ignoreNodes = ['Image'];
 const overrideValueSummary = { FetchOrg };
 
 export default function NodeSummary({ node }) {
   const { children, currentValue, errorDescription, errors, heading, property, type } = node;
-
   if (ignoreNodes.includes(type) || property === undefined) {
     return null;
   }
-
+  if (type === 'Error') {
+    return <SoftError children={children} />;
+  }
   if (type === 'Group') {
     return (
       <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>

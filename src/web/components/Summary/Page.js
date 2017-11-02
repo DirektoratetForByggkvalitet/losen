@@ -10,7 +10,9 @@ import NodeSummary from './Node';
 export default function PageSummary({ children, error, goToPage, heading }) {
   return (
     <StyledPageSummary error={error}>
-      <H2>{heading} <Button onClick={goToPage}>Endre svar</Button></H2>
+      <H2>
+        {heading} <Button onClick={goToPage}>Endre svar</Button>
+      </H2>
       {children.map(node => <NodeSummary node={node} />)}
     </StyledPageSummary>
   );
