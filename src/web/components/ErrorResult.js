@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Block from './blocks/Block';
 import Summary from './Summary';
 
 import { H1 } from '../primitives/Heading';
@@ -10,7 +9,6 @@ import { SpecificBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 
 export default function ErrorResult({
-  children,
   errorPages,
   schema,
   setPage,
@@ -25,14 +23,12 @@ export default function ErrorResult({
       <SpecificBlock>
         <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-        {children.map(block => <Block key={block.property} {...block} />)}
       </SpecificBlock>
     </Main>
   );
 }
 
 ErrorResult.defaultProps = {
-  children: [],
   errorheading: '',
   errorlead: '',
   schema: [],
@@ -40,7 +36,6 @@ ErrorResult.defaultProps = {
 };
 
 ErrorResult.propTypes = {
-  children: PropTypes.array,
   errorheading: PropTypes.string,
   errorlead: PropTypes.string,
   errorPages: PropTypes.array.isRequired,
