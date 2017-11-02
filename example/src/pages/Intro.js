@@ -32,7 +32,7 @@ export default function Intro({ close }) {
         <Primitives.Paragraphs.P>
           Når du har fullført veiviseren får du vite om du kan skaffe deg katt eller ikke. I en annen veiviser vil du kanskje få erklæring tilsendt på e-post, slik at du kan signere den og sende den videre til ansvarlig søker.
         </Primitives.Paragraphs.P>
-        <Primitives.Button.MainButton onClick={() => close()}>
+        <Primitives.Button.MainButton type="button" onClick={() => close()}>
           Start veiviseren
         </Primitives.Button.MainButton>
       </IntroMain>

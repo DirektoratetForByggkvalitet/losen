@@ -5,7 +5,7 @@ export default {
   },
   font: {
     primary: '"Open Sans", arial, sans-serif',
-    secondary: '"Altis", "Open Sans", arial, sans-serif',
+    secondary: '"Altis-light", "Altis", "Open Sans", arial, sans-serif',
   },
   color: {
     light: '#00757F',

@@ -64,7 +64,7 @@ function Result({
 
       {exporter ? (
         <Export>
-          <MainButton onClick={() => window.print()}>Skriv ut</MainButton>
+          <MainButton type="button" onClick={() => window.print()}>Skriv ut</MainButton>
         </Export>
       ) : null}
     </Main>

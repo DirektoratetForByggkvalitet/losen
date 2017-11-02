@@ -71,9 +71,9 @@ class Modal extends Component {
         <Lead id="full_description">
           Veiviseren husker svarene fra ditt forrige besøk.
         </Lead>
-        <MainButton onClick={this.handleCloseModal}>Fortsett</MainButton>
+        <MainButton type="button" onClick={this.handleCloseModal}>Fortsett</MainButton>
         <br />
-        <SecondaryButton onClick={this.handleRestart}>
+        <SecondaryButton type="button" onClick={this.handleRestart}>
           Start på nytt
         </SecondaryButton>
       </ReactModal>

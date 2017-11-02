@@ -1,6 +1,7 @@
 import React from 'react';
 import { H1, H2 } from '../../../src/web/primitives/Heading';
 import NavItem from '../../../src/web/primitives/NavItem';
+import ToggleButton from '../../../src/web/primitives/ToggleButton';
 
 export default function PrimitivesIntro() {
   return (<div>
@@ -37,6 +38,9 @@ export default function PrimitivesIntro() {
           Heading
         </p>
       </NavItem>
+    <hr />
+    <H2>Button to toggle menu on small screens</H2>
+      <ToggleButton visible>Show all steps</ToggleButton>
     <hr />
   </div>);
 }

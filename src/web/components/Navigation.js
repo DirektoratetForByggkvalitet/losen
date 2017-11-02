@@ -5,8 +5,8 @@ import { NavButton as Button } from '../primitives/Button';
 import Nav from '../primitives/grid/Navigation';
 
 export default function Navigation({ hasNext, hasPrevious, nextPage, previousPage }) {
-  const previous = <Button onClick={previousPage}>Forrige</Button>;
-  const next = <Button next onClick={nextPage}>Neste</Button>;
+  const previous = <Button type="button" onClick={previousPage}>Forrige</Button>;
+  const next = <Button type="button" next onClick={nextPage}>Neste</Button>;
 
   return (
     <Nav>

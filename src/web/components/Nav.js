@@ -34,7 +34,7 @@ export default class Nav extends Component {
 
     return (
       <div>
-        <Button onClick={this.toggleToc}>{tocExpanded ? 'Vis' : 'Skjul'} alle steg</Button>
+        <Button type="button" onClick={this.toggleToc}>{tocExpanded ? 'Vis' : 'Skjul'} alle steg</Button>
 
         <StyledNav tocExpanded={tocExpanded}>
           <Title onClick={showIntro}>{heading}</Title>

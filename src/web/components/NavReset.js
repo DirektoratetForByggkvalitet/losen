@@ -9,6 +9,7 @@ import { SecondaryButton as StyledNavReset } from '../primitives/Button';
 function NavReset(props) {
   return (
     <StyledNavReset
+      type="button"
       onClick={() => {
         /* eslint no-alert: 0 */
         if (confirm('Sikker på at du vil slette alle svarene dine?')) {

@@ -12,7 +12,7 @@ const Button = injectStyles(styled.button`
   font-size: inherit;
   padding: 0.5em;
   cursor: pointer;
-  display: none;
+  display: ${props => (props.visible ? 'block' : 'none')};
   &:hover, &:focus {
     color: white;
     background: ${({ styles }) => styles.color.dark};
