@@ -6,6 +6,7 @@ import Summary from './Summary';
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import { SpecificBlock } from '../primitives/Block';
+import Html from './helper/Html';
 import Main from '../primitives/grid/Main';
 
 export default function ErrorResult({
@@ -19,7 +20,9 @@ export default function ErrorResult({
   return (
     <Main result>
       <H1>{errorheading}</H1>
-      <Lead>{errorlead}</Lead>
+      <Lead result>
+        <Html text={errorlead} />
+      </Lead>
       <SpecificBlock>
         <H1 small>{title}</H1>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
