@@ -37,6 +37,8 @@ export const H2 = injectStyles(styled.h2`
 export const H3 = injectStyles(styled.h3`
   font-family: ${({ styles }) => styles.font.primary};
   font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
   margin: 0 0 10px;
   line-height: 1.3;
   @media screen and (max-width: 700px) {
