@@ -17,7 +17,7 @@ const Nav = injectStyles(styled.nav`
     display: block;
   }
   @media screen and (max-width: 900px) {
-    max-width: ${({ styles }) => styles.size.mobileContentWidth};
+    width: ${({ styles }) => styles.size.mobileContentWidth};
     margin: 0 auto;
   }
   @media print {
