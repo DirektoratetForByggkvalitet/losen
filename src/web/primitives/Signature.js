@@ -7,7 +7,10 @@ const Signature = injectStyles(styled.div`
   width: 100%;
   max-width: 300px;
   margin: 120px auto 30px;
-  border-top: 1px solid black;
+  border-top: 0.5px solid black;
+  @media print {
+    page-break-inside: avoid;
+  }
 `);
 
 export default Signature;

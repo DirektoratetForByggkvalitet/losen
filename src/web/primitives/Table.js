@@ -20,6 +20,7 @@ export const Table = injectStyles(styled.table`
   }
   @media print {
     font-size: inherit;
+    border: 0.5px solid ${({ styles }) => styles.color.darkgray};
   }
 `);
 

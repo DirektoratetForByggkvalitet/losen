@@ -12,7 +12,7 @@ export const Checkbox = injectStyles(styled.input`
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
+    box-shadow: 0 0 2px ${({ styles }) => styles.color.dark};
     padding: 10px;
     border-radius: 5px;
     transition: all 0.1s ease-in-out;
@@ -141,7 +141,7 @@ export const Radio = injectStyles(styled.input.attrs({
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 0 1px ${({ styles }) => styles.color.dark};
+    box-shadow: 0 0 2px ${({ styles }) => styles.color.dark};
     transition: all 0.1s ease-in-out;
 
     &:before {

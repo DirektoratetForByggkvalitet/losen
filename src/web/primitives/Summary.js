@@ -48,6 +48,7 @@ export const PageSummary = injectStyles(styled.div`
     }
   }
   @media print {
+    page-break-inside: avoid;
     padding-bottom: 0;
     font-size: 12px;
     h2 {

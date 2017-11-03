@@ -107,8 +107,7 @@ export const SpecificBlock = injectStyles(styled.div`
 
   @media print {
     box-shadow: none;
-    padding-left: 0;
-    padding-right: 0;
+    padding: ${props => (props.grouped ? '20px 24px 20px' : '0')};
   }
 `);
 

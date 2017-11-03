@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import injectStyles from '../../utils/inject-styles';
 
 const Nav = injectStyles(styled.nav`
-  grid-area: nav;
+  width: ${({ styles }) => styles.size.navWidth};
   padding: 30px 20px 20px;
-  margin: 0 46px 0 10px;
+  margin: 0 20px 0 10px;
   background: white;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.18);
   overflow: hidden;

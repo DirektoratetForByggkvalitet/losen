@@ -28,7 +28,7 @@ export default {
   },
   size: {
     blockWidth: '800px',
-    navWidth: '380px',
+    navWidth: '340px',
     headerHeight: '75px',
     mobileContentWidth: '90%',
   },

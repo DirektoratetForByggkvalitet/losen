@@ -11,6 +11,9 @@ const Wizard = injectStyles(styled.div`
   font-size: 18px;
   font-weight: 300;
   line-height: 1.6;
+  strong {
+    font-weight: 700;
+  }
   * {
     box-sizing: border-box;
     &:focus {
