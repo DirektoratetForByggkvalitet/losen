@@ -18,6 +18,9 @@ export const Table = injectStyles(styled.table`
     margin: 0;
     line-height: 1.3;
   }
+  @media print {
+    font-size: inherit;
+  }
 `);
 
 export const TD = injectStyles(styled.td`

@@ -48,6 +48,7 @@ export const PageSummary = injectStyles(styled.div`
     }
   }
   @media print {
+    padding-bottom: 0;
     font-size: 12px;
     h2 {
       display: none;
@@ -68,6 +69,7 @@ export const NodeSummary = injectStyles(styled.div`
     }
   }
   @media print {
+    margin-bottom: 20px;
     font-size: 12px;
     h3 {
       font-size: 12px;
