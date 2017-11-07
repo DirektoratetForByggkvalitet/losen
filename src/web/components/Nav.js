@@ -61,7 +61,7 @@ export default class Nav extends Component {
                 />
               ),
           )}
-          <NavReset />
+          <NavReset showIntro={showIntro} />
         </StyledNav>
       </div>
     );
