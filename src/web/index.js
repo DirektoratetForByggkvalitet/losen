@@ -1,4 +1,5 @@
 require('babel-polyfill');
+require('details-polyfill');
 
 export * as state from './state';
 
