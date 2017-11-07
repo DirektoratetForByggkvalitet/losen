@@ -12,7 +12,7 @@ function NavReset(props) {
       type="button"
       onClick={() => {
         /* eslint no-alert: 0 */
-        if (confirm('Anders, Sikker på at du vil slette alle svarene dine?')) {
+        if (confirm('Sikker på at du vil slette alle svarene dine?')) {
           props.resetData();
           props.showIntro();
         }
