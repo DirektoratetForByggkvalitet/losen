@@ -51,6 +51,9 @@ export const PageSummary = injectStyles(styled.div`
     page-break-inside: avoid;
     padding-bottom: 0;
     font-size: 12px;
+    &:last-of-type {
+      border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
+    }
     h2 {
       display: none;
     }

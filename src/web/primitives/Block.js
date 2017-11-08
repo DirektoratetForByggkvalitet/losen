@@ -145,6 +145,8 @@ export const TextBlock = injectStyles(styled.div`
     props.printonly
       ? `
     display: none;
+    margin-top: 10px;
+    padding-top: 0;
     @media print {
       font-size: 12px;
       display: block;
