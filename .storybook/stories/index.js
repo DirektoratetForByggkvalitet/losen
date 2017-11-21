@@ -27,7 +27,8 @@ storiesOf('Schema', module)
   .add('The building blocks', require('./schema/buildingBlocks').default)
   .add('Branching', require('./schema/branching').default)
   .add('Validation', require('./schema/validation').default)
-  .add('Translating', require('./schema/translating').default);
+  .add('Translating', require('./schema/translating').default)
+  .add('Data export', require('./schema/dataExport').default);
 
 storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)
