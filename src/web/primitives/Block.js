@@ -7,14 +7,11 @@ export const SpecificBlock = injectStyles(styled.div`
   padding: ${props => (props.grouped ? '20px 24px 20px' : '30px 33px 36px')};
   margin: 20px 0;
   width: 100%;
-  background: ${props =>
-    props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white'};
+  background: ${props => (props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white')};
   &:nth-child(even) {
-    background: ${props =>
-    props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd'};
+    background: ${props => (props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd')};
   }
-  box-shadow: ${props =>
-    props.grouped ? 'none' : '0 2px 3px rgba(0, 0, 0, 0.18)'};
+  box-shadow: ${props => (props.grouped ? 'none' : '0 2px 3px rgba(0, 0, 0, 0.18)')};
   p {
     margin-top: 0;
     font-weight: 300;
@@ -73,7 +70,8 @@ export const SpecificBlock = injectStyles(styled.div`
       line-height: 1.3;
     }
     td,th {
-      ${props.debug
+      ${
+  props.debug
     ? `
       :hover {
         position: relative;
@@ -90,7 +88,8 @@ export const SpecificBlock = injectStyles(styled.div`
           padding: 2px 6px;
         }
       }`
-    : ''}
+    : ''
+}
     }
   }
   `
@@ -113,7 +112,14 @@ export const SpecificBlock = injectStyles(styled.div`
 
 export const TextBlock = injectStyles(styled.div`
   padding: 30px 0 10px;
-  margin: 20px 0;
+  ${props =>
+    props.groupedSimple
+      ? ''
+      : `
+    margin: 0;
+    padding: 0;
+    `};
+
   width: 100%;
 
   ${props =>

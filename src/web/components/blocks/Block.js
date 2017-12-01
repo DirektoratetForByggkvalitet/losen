@@ -91,19 +91,21 @@ export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
 
   if (props.type === 'ErrorOk') {
-    return (<div>
-      {props.children.map(block => (
-        <ConnectedBlock
-          key={block.id}
-          data-id={props.id}
-          simple={props.simple}
-          setPage={props.setPage}
-          errorPages={props.errorPages}
-          pages={props.pages}
-          {...block}
-        />
-      ))}
-    </div>);
+    return (
+      <div>
+        {props.children.map(block => (
+          <ConnectedBlock
+            key={block.id}
+            data-id={props.id}
+            simple={props.simple}
+            setPage={props.setPage}
+            errorPages={props.errorPages}
+            pages={props.pages}
+            {...block}
+          />
+        ))}
+      </div>
+    );
   }
 
   if (props.type === 'Group') {
@@ -162,12 +164,7 @@ export function PureBlock(props) {
     props.type === 'Summary'
   ) {
     return (
-      <SpecificBlock
-        grouped={props.grouped}
-        debug={props.debug}
-        data-id={props.id}
-        {...props}
-      />
+      <SpecificBlock grouped={props.grouped} debug={props.debug} data-id={props.id} {...props} />
     );
   }
 
@@ -192,9 +189,7 @@ export function PureBlock(props) {
             validation:
               props.currentValue && props.validator
                 ? {
-                  error: !new RegExp(props.validator.pattern).test(
-                    props.currentValue,
-                  ),
+                  error: !new RegExp(props.validator.pattern).test(props.currentValue),
                   message: props.validator.error,
                 }
                 : {},
@@ -266,10 +261,8 @@ const ConnectedBlock = connect(
     disabled:
       props.errors &&
       props.errors.disabled &&
-      ((Array.isArray(props.errors.disabled) &&
-        props.errors.disabled.length > 0) ||
-        (props.errors.disabled.errors &&
-          props.errors.disabled.errors.length > 0)),
+      ((Array.isArray(props.errors.disabled) && props.errors.disabled.length > 0) ||
+        (props.errors.disabled.errors && props.errors.disabled.errors.length > 0)),
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);
