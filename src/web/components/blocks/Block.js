@@ -90,6 +90,22 @@ function getBlock(type) {
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
 
+  if (props.type === 'ErrorOk') {
+    return (<div>
+      {props.children.map(block => (
+        <ConnectedBlock
+          key={block.id}
+          data-id={props.id}
+          simple={props.simple}
+          setPage={props.setPage}
+          errorPages={props.errorPages}
+          pages={props.pages}
+          {...block}
+        />
+      ))}
+    </div>);
+  }
+
   if (props.type === 'Group') {
     return (
       <StyledBlock data-id={props.id} debug={props.debug}>

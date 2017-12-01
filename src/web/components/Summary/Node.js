@@ -18,6 +18,11 @@ export default function NodeSummary({ node }) {
   if (ignoreNodes.includes(type) || property === undefined) {
     return null;
   }
+  if (type === 'ErrorOk') {
+    return (
+      <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>
+    );
+  }
   if (type === 'Error') {
     return <SoftError children={children} />;
   }

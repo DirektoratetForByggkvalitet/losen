@@ -62,11 +62,9 @@ function Result({
         <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
       ))}
 
-      {exporter ? (
-        <Export>
-          <MainButton type="button" onClick={() => window.print()}>Skriv ut</MainButton>
-        </Export>
-      ) : null}
+      <Export exporter={exporter}>
+        <MainButton type="button" onClick={() => window.print()}>Skriv ut</MainButton>
+      </Export>
     </Main>
   );
 }
