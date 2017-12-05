@@ -126,7 +126,14 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
   }
 
   if (node.validator && currentValue) {
-    if (node.validator.object) {
+    // If test property is used use DSL validator
+    if (node.validator.test) {
+      errors.validation = {
+        error: !parseExpression(node.validator.test)(state[NAME]).valid,
+        message: node.validator.error,
+      };
+      // If currentValue is an object with multiple values pick value from one given key
+    } else if (node.validator.object) {
       errors.validation = {
         error: !new RegExp(node.validator.pattern).test(currentValue[node.validator.object]),
         message: node.validator.error,
