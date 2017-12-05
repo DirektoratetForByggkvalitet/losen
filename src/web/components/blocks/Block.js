@@ -20,6 +20,7 @@ import Select from './select/Select';
 import Table from './Table';
 import Text from './Text';
 import Textarea from './Textarea';
+import Sum from './Sum';
 import Summary from './Summary';
 
 // State deps
@@ -81,6 +82,9 @@ function getBlock(type) {
 
     case 'Summary':
       return Summary;
+
+    case 'Sum':
+      return Sum;
 
     default:
       return null;
@@ -161,6 +165,7 @@ export function PureBlock(props) {
     props.type === 'Text' ||
     props.type === 'Data' ||
     props.type === 'Signature' ||
+    props.type === 'Sum' ||
     props.type === 'Summary'
   ) {
     return (
