@@ -20,6 +20,14 @@ export default function SchemaBuildingBlocks() {
         to the Wizard component.
       </p>
       <p>
+        <code>summary</code>: Optional part of every block and is a set with the details attribute.
+        If you want a expand collapse element that can provide more information use these two
+        properties.
+      </p>
+      <p>
+        <code>details</code>: Accepts html code. Se comment for <code>summary</code>.
+      </p>
+      <p>
         Also, the <code>hidden</code> property is available for all input and output types, as well
         as Select/Checkbox/Radio options. The hidden property is a logical expression used to
         determine whether or not to hide the item in question.

@@ -15,13 +15,14 @@ import Input from './Input';
 import Missing from './Missing';
 import Number from './Number';
 import Radio from './radio/Radio';
-import Signature from './Signature';
 import Select from './select/Select';
+import Signature from './Signature';
+import Sum from './Sum';
+import Summary from './Summary';
+import SummaryDetails from './SummaryDetails';
 import Table from './Table';
 import Text from './Text';
 import Textarea from './Textarea';
-import Sum from './Sum';
-import Summary from './Summary';
 
 // State deps
 import { setData } from '../../state/actions';
@@ -206,6 +207,7 @@ export function PureBlock(props) {
             <ErrorIcon /> {props.errorDescription}
           </ErrorMessage>
         )}
+        {props.summary && <SummaryDetails summary={props.summary} details={props.details} />}
         <ImageComponent image={props.image} />
       </div>
     </StyledBlock>
@@ -239,6 +241,8 @@ PureBlock.propTypes = {
     }),
   ]),
   errorPages: PropTypes.array.isRequired,
+  details: PropTypes.string,
+  summary: PropTypes.string,
   setPage: PropTypes.func.isRequired,
   pages: PropTypes.array.isRequired,
 };
@@ -246,6 +250,7 @@ PureBlock.propTypes = {
 PureBlock.defaultProps = {
   children: [],
   currentValue: undefined,
+  details: '',
   disabled: false,
   errorDescription: null,
   errors: {},
@@ -255,6 +260,7 @@ PureBlock.defaultProps = {
   image: {},
   property: null,
   simple: false,
+  summary: '',
   text: '',
   validator: false,
 };
