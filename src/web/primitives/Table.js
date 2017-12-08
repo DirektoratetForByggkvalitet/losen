@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import injectStyles from '../utils/inject-styles';
 
 export const Table = injectStyles(styled.table`
-  text-align: center;
   width: 100%;
   font-size: 14px;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   border-collapse: collapse;
+  text-align: left;
   th, td {
     border: 1px solid ${({ styles }) => styles.color.darkgray};
     padding: 10px;
@@ -19,8 +19,15 @@ export const Table = injectStyles(styled.table`
     line-height: 1.3;
   }
   @media print {
-    font-size: inherit;
-    border: 0.5px solid ${({ styles }) => styles.color.darkgray};
+    font-size: 12px;
+    width: auto;
+    th, td {
+      padding: 5px 10px;
+    }
+    th > *,
+    td > * {
+      line-height: 1.2;
+    }
   }
 `);
 

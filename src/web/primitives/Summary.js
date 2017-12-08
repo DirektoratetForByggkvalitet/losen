@@ -51,11 +51,14 @@ export const PageSummary = injectStyles(styled.div`
     page-break-inside: avoid;
     padding-bottom: 0;
     font-size: 12px;
-    &:last-of-type {
-      border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
-    }
+    border: 1px solid ${({ styles }) => styles.color.darkgray};
+    padding: 16px;
     h2 {
-      display: none;
+      font-size: 14px;
+      font-style: italic;
+      display: inline-block;
+      margin-bottom: 20px;
+      border-bottom: 1px solid ${({ styles }) => styles.color.warmgray2};
     }
   }
 `);

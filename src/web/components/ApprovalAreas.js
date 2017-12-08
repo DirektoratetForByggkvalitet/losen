@@ -20,9 +20,9 @@ export default function ApprovalAreas({ areas, title }) {
         <Table>
           <thead>
             <tr>
-              <th>FUNKSJON</th>
-              <th>FAGOMRÅDE</th>
-              <th>TILTAKSKLASSE</th>
+              <th>Funksjon</th>
+              <th>Fagområde</th>
+              <th>Tiltaksklasse</th>
             </tr>
           </thead>
           <tbody>
