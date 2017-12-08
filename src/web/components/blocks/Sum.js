@@ -2,32 +2,35 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import get from 'lodash.get';
 
-import { H3 } from '../../primitives/Heading';
+import StyledSum from '../../primitives/Sum';
+import Html from '../helper/Html';
 
-export default function Sum({ heading, text, values, data }) {
+export default function Sum({ text, values, data, final, unit }) {
   const sum = values.reduce(
     (accumulator, currentValue) => accumulator + get(data, currentValue),
     0,
   );
   return (
-    <div>
-      <H3>{heading}</H3>
+    <StyledSum final={final}>
       <p>
-        {text}: {sum}
+        {text}:&nbsp;
+        <span>{sum} {unit ? <Html inline text={unit} /> : null}</span>
       </p>
-    </div>
+    </StyledSum>
   );
 }
 
 Sum.defaultProps = {
   text: '',
-  heading: '',
   values: [],
+  final: false,
+  unit: '',
 };
 
 Sum.propTypes = {
   text: PropTypes.string,
-  heading: PropTypes.string,
   values: PropTypes.array,
   data: PropTypes.object.isRequired,
+  final: PropTypes.bool,
+  unit: PropTypes.string,
 };

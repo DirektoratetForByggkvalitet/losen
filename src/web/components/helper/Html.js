@@ -9,7 +9,7 @@ export default function Html({ text, inline }) {
   }
 
   // eslint-disable-next-line react/no-danger
-  return <StyledHtml inline dangerouslySetInnerHTML={{ __html: text }} />;
+  return <StyledHtml inline={inline} dangerouslySetInnerHTML={{ __html: text }} />;
 }
 
 Html.defaultProps = {
