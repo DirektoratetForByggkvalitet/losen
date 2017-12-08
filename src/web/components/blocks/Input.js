@@ -10,6 +10,7 @@ export default class Input extends Component {
   static propTypes = {
     currentValue: PropTypes.any,
     disabled: PropTypes.bool,
+    unit: PropTypes.string,
     errors: PropTypes.shape({
       validation: PropTypes.shape({
         error: PropTypes.bool,
@@ -30,6 +31,7 @@ export default class Input extends Component {
   static defaultProps = {
     currentValue: '',
     disabled: false,
+    unit: '',
     heading: '',
     max: Number.MAX_SAFE_INTEGER,
     min: 0,
