@@ -5,6 +5,7 @@ import { ErrorMessage } from '../../primitives/Errors';
 import { SRLabel } from '../../primitives/Label';
 import { TextInput, NumberInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
+import Html from '../helper/Html';
 
 export default class Input extends Component {
   static propTypes = {
@@ -122,6 +123,8 @@ export default class Input extends Component {
       <div>
         {label}
         {input}
+
+        {unit ? <Html inline text={unit} /> : null}
 
         {errors.validation.error && (
           <ErrorMessage>

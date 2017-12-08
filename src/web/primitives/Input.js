@@ -234,9 +234,11 @@ export const Radio = injectStyles(styled.input.attrs({
 export const NumberInput = injectStyles(styled.input`
   font-family: inherit;
   font-size: 1em;
+  text-align: right;
   padding: 0.5em;
   width: auto;
   min-width: 20%;
+  margin-right: 0.5em;
   border: 1px solid ${({ styles }) => styles.color.darkgray};
   &::placeholder {
     font-color: inherit;
@@ -247,24 +249,6 @@ export const NumberInput = injectStyles(styled.input`
   &:focus {
     border-color: ${({ styles }) => styles.color.dark};
   }
-
-  ${props =>
-    props.unit
-      ? `
-  > input {
-    :after {
-      content: 'Anders';
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: deeppink;
-      color: white;
-      font-size: 14px;
-      padding: 2px 6px;
-    }
-  }`
-      : ''};
 `);
 
 export const TextInput = injectStyles(styled.input`
