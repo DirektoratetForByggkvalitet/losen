@@ -10,12 +10,13 @@ import Html from './helper/Html';
 import Main from '../primitives/grid/Main';
 
 export default function ErrorResult({
+  errorheading,
+  errorlead,
   errorPages,
   schema,
   setPage,
+  summaryTitle,
   title,
-  errorheading,
-  errorlead,
 }) {
   return (
     <Main result>
@@ -24,7 +25,7 @@ export default function ErrorResult({
         <Html text={errorlead} />
       </Lead>
       <SpecificBlock>
-        <H1 small>{title}</H1>
+        {summaryTitle ? <H1 small>{summaryTitle}</H1> : <H1 small>{title}</H1>}
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
       </SpecificBlock>
     </Main>
@@ -35,6 +36,7 @@ ErrorResult.defaultProps = {
   errorheading: '',
   errorlead: '',
   schema: [],
+  summaryTitle: '',
   title: '',
 };
 
@@ -44,5 +46,6 @@ ErrorResult.propTypes = {
   errorPages: PropTypes.array.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
+  summaryTitle: PropTypes.string,
   title: PropTypes.string,
 };

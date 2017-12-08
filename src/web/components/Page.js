@@ -20,13 +20,7 @@ export default function Page({
   previousPage,
 }) {
   let navigation = (
-    <Navigation
-      page={pageid}
-      hasPrevious
-      previousPage={previousPage}
-      hasNext
-      nextPage={nextPage}
-    />
+    <Navigation page={pageid} hasPrevious previousPage={previousPage} hasNext nextPage={nextPage} />
   );
 
   if (firstPage) {

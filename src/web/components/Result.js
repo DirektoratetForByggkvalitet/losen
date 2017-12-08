@@ -18,6 +18,8 @@ import Export from '../primitives/Export';
 function Result({
   children = [],
   debug,
+  errorheading,
+  errorlead,
   errorPages,
   exporter,
   heading,
@@ -26,9 +28,8 @@ function Result({
   previousPage,
   schema,
   setPage,
+  summaryTitle,
   title,
-  errorheading,
-  errorlead,
 }) {
   if (errorPages.length) {
     return (
@@ -42,6 +43,7 @@ function Result({
         title={title}
         errorheading={errorheading}
         errorlead={errorlead}
+        summaryTitle={summaryTitle}
       />
     );
   }
@@ -54,7 +56,7 @@ function Result({
       </Lead>
 
       <SpecificBlock>
-        <H1 small>{title}</H1>
+        {summaryTitle ? <H1 small>{summaryTitle}</H1> : <H1 small>{title}</H1>}
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
       </SpecificBlock>
 
@@ -62,11 +64,11 @@ function Result({
         <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
       ))}
 
-      {exporter ? (
-        <Export>
-          <MainButton type="button" onClick={() => window.print()}>Skriv ut</MainButton>
-        </Export>
-      ) : null}
+      <Export exporter={exporter}>
+        <MainButton type="button" onClick={() => window.print()}>
+          Skriv ut
+        </MainButton>
+      </Export>
     </Main>
   );
 }
@@ -84,6 +86,7 @@ Result.propTypes = {
   previousPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
+  summaryTitle: PropTypes.string,
   title: PropTypes.string,
 };
 
@@ -96,6 +99,7 @@ Result.defaultProps = {
   heading: 'Missing page heading',
   lead: '',
   schema: [],
+  summaryTitle: '',
   title: null,
 };
 

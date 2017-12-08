@@ -15,12 +15,14 @@ import Input from './Input';
 import Missing from './Missing';
 import Number from './Number';
 import Radio from './radio/Radio';
-import Signature from './Signature';
 import Select from './select/Select';
+import Signature from './Signature';
+import Sum from './Sum';
+import Summary from './Summary';
+import SummaryDetails from './SummaryDetails';
 import Table from './Table';
 import Text from './Text';
 import Textarea from './Textarea';
-import Summary from './Summary';
 
 // State deps
 import { setData } from '../../state/actions';
@@ -82,6 +84,9 @@ function getBlock(type) {
     case 'Summary':
       return Summary;
 
+    case 'Sum':
+      return Sum;
+
     default:
       return null;
   }
@@ -89,6 +94,24 @@ function getBlock(type) {
 
 export function PureBlock(props) {
   const SpecificBlock = getBlock(props.type);
+
+  if (props.type === 'ErrorOk') {
+    return (
+      <div>
+        {props.children.map(block => (
+          <ConnectedBlock
+            key={block.id}
+            data-id={props.id}
+            simple={props.simple}
+            setPage={props.setPage}
+            errorPages={props.errorPages}
+            pages={props.pages}
+            {...block}
+          />
+        ))}
+      </div>
+    );
+  }
 
   if (props.type === 'Group') {
     return (
@@ -143,15 +166,11 @@ export function PureBlock(props) {
     props.type === 'Text' ||
     props.type === 'Data' ||
     props.type === 'Signature' ||
+    props.type === 'Sum' ||
     props.type === 'Summary'
   ) {
     return (
-      <SpecificBlock
-        grouped={props.grouped}
-        debug={props.debug}
-        data-id={props.id}
-        {...props}
-      />
+      <SpecificBlock grouped={props.grouped} debug={props.debug} data-id={props.id} {...props} />
     );
   }
 
@@ -176,9 +195,7 @@ export function PureBlock(props) {
             validation:
               props.currentValue && props.validator
                 ? {
-                  error: !new RegExp(props.validator.pattern).test(
-                    props.currentValue,
-                  ),
+                  error: !new RegExp(props.validator.pattern).test(props.currentValue),
                   message: props.validator.error,
                 }
                 : {},
@@ -190,6 +207,7 @@ export function PureBlock(props) {
             <ErrorIcon /> {props.errorDescription}
           </ErrorMessage>
         )}
+        {props.summary && <SummaryDetails summary={props.summary} details={props.details} />}
         <ImageComponent image={props.image} />
       </div>
     </StyledBlock>
@@ -223,6 +241,8 @@ PureBlock.propTypes = {
     }),
   ]),
   errorPages: PropTypes.array.isRequired,
+  details: PropTypes.string,
+  summary: PropTypes.string,
   setPage: PropTypes.func.isRequired,
   pages: PropTypes.array.isRequired,
 };
@@ -230,6 +250,7 @@ PureBlock.propTypes = {
 PureBlock.defaultProps = {
   children: [],
   currentValue: undefined,
+  details: '',
   disabled: false,
   errorDescription: null,
   errors: {},
@@ -239,6 +260,7 @@ PureBlock.defaultProps = {
   image: {},
   property: null,
   simple: false,
+  summary: '',
   text: '',
   validator: false,
 };
@@ -250,10 +272,8 @@ const ConnectedBlock = connect(
     disabled:
       props.errors &&
       props.errors.disabled &&
-      ((Array.isArray(props.errors.disabled) &&
-        props.errors.disabled.length > 0) ||
-        (props.errors.disabled.errors &&
-          props.errors.disabled.errors.length > 0)),
+      ((Array.isArray(props.errors.disabled) && props.errors.disabled.length > 0) ||
+        (props.errors.disabled.errors && props.errors.disabled.errors.length > 0)),
   }),
   dispatch => bindActionCreators({ setData }, dispatch),
 )(PureBlock);
