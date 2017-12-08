@@ -78,7 +78,7 @@ export const Checkbox = injectStyles(styled.input`
       }
     }
     &:checked + label:after {
-      content: " ";
+      content: ' ';
       position: absolute;
       left: 13px;
       top: 13px;
@@ -89,16 +89,14 @@ export const Checkbox = injectStyles(styled.input`
       border-bottom: 4px solid ${({ styles }) => styles.color.light};
     }
     &:checked + label {
-      box-shadow:
-        0 0 0 1px ${({ styles }) => styles.color.dark},
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
         0 0 4px 0 ${({ styles }) => styles.color.dark};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
     }
     &:checked:focus + label {
-      box-shadow:
-        0 0 0 1px ${({ styles }) => styles.color.dark},
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
         0 0 6px 1px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
@@ -109,7 +107,6 @@ export const Checkbox = injectStyles(styled.input`
     + label {
       flex-wrap: wrap;
       &::before {
-        
       }
       div {
         flex: 1;
@@ -199,16 +196,14 @@ export const Radio = injectStyles(styled.input.attrs({
       background: ${({ styles }) => styles.color.light};
     }
     &:checked + label {
-      box-shadow:
-        0 0 0 1px ${({ styles }) => styles.color.dark},
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
         0 0 4px 0 ${({ styles }) => styles.color.dark};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
     }
     &:checked:focus + label {
-      box-shadow:
-        0 0 0 1px ${({ styles }) => styles.color.dark},
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
         0 0 6px 1px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
@@ -219,7 +214,6 @@ export const Radio = injectStyles(styled.input.attrs({
     + label {
       flex-wrap: wrap;
       &::before {
-        
       }
       div {
         flex: 1;
@@ -249,9 +243,28 @@ export const NumberInput = injectStyles(styled.input`
     opacity: 0.6;
   }
   transition: border-color 0.1s ease-in-out;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: ${({ styles }) => styles.color.dark};
   }
+
+  ${props =>
+    props.unit
+      ? `
+  > input {
+    :after {
+      content: 'Anders';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: deeppink;
+      color: white;
+      font-size: 14px;
+      padding: 2px 6px;
+    }
+  }`
+      : ''};
 `);
 
 export const TextInput = injectStyles(styled.input`
@@ -260,13 +273,16 @@ export const TextInput = injectStyles(styled.input`
   padding: 0.5em;
   width: auto;
   min-width: 40%;
-  border: 1px solid ${({ styles, validation: { error } = {} }) => error ? styles.color.red : styles.color.darkgray} !important;
+  border: 1px solid
+    ${({ styles, validation: { error } = {} }) =>
+    error ? styles.color.red : styles.color.darkgray} !important;
   &::placeholder {
     font-color: inherit;
     opacity: 0.6;
   }
   transition: border-color 0.1s ease-in-out;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: ${({ styles }) => styles.color.dark};
   }
   @media screen and (max-width: 360px) {
@@ -286,7 +302,8 @@ export const Textarea = injectStyles(styled.textarea`
     opacity: 0.6;
   }
   transition: border-color 0.1s ease-in-out;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: ${({ styles }) => styles.color.dark};
   }
 `);
@@ -296,7 +313,7 @@ export const SelectWrapper = injectStyles(styled.div`
   width: 100%;
   max-width: 400px;
   &::before {
-    content: " ";
+    content: ' ';
     position: absolute;
     right: 16px;
     top: 36%;
@@ -324,7 +341,8 @@ export const SelectWrapper = injectStyles(styled.div`
     }
     cursor: pointer;
     transition: border-color 0.1s ease-in-out;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border-color: ${({ styles }) => styles.color.dark};
     }
   }

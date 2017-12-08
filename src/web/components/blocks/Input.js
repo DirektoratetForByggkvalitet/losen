@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { ErrorMessage } from '../../primitives/Errors';
 import { SRLabel } from '../../primitives/Label';
-import { TextInput as StyledInput } from '../../primitives/Input';
+import { TextInput, NumberInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 
 export default class Input extends Component {
@@ -76,6 +76,7 @@ export default class Input extends Component {
       property,
       step,
       type,
+      unit,
     } = this.props;
     let inputType = type;
     if (inputType === 'Input') {
@@ -85,27 +86,42 @@ export default class Input extends Component {
     if (heading) {
       label = <SRLabel htmlFor={property}>{heading}</SRLabel>;
     }
-    return (
-      <div>
-        {label}
-        <StyledInput
+    let input = (
+      <TextInput
+        aria-invalid={errors.validation.error}
+        aria-label={heading}
+        disabled={disabled}
+        id={property}
+        onChange={this.handleChange}
+        placeholder={placeholder}
+        type={inputType}
+        validation={errors.validation}
+        value={currentValue}
+      />
+    );
+    if (this.props.type === 'number') {
+      input = (
+        <NumberInput
+          aria-invalid={errors.validation.error}
           aria-label={heading}
           disabled={disabled}
-          aria-invalid={errors.validation.error}
           id={property}
           onChange={this.handleChange}
           placeholder={placeholder}
           type={inputType}
           validation={errors.validation}
           value={currentValue}
-          {...(this.props.type === 'number'
-            ? {
-              min,
-              max,
-              step,
-            }
-            : {})}
+          min={min}
+          max={max}
+          step={step}
+          unit={unit}
         />
+      );
+    }
+    return (
+      <div>
+        {label}
+        {input}
 
         {errors.validation.error && (
           <ErrorMessage>
