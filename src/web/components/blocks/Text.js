@@ -4,6 +4,7 @@ import React from 'react';
 import { TextBlock } from '../../primitives/Block';
 import { H2 } from '../../primitives/Heading';
 import Html from '../helper/Html';
+import VariableText from '../helper/VariableText';
 
 const Text = ({
   debug,
@@ -13,12 +14,28 @@ const Text = ({
   warning = false,
   printonly = false,
   printhide = false,
+  variables = false,
 }) => {
   let title = '';
   if (heading) {
     title = <H2>{heading}</H2>;
   }
-
+  if (variables) {
+    return (
+      <TextBlock
+        warning={warning}
+        debug={debug}
+        data-id={id}
+        printonly={printonly}
+        printhide={printhide}
+      >
+        <VariableText
+          text={text}
+          data={{ addedParkingPlaces: 'DENNE VARIABELEN FINENS IKKE ENNÅ' }}
+        />
+      </TextBlock>
+    );
+  }
   return (
     <TextBlock
       warning={warning}
@@ -40,6 +57,7 @@ Text.propTypes = {
   printhide: PropTypes.bool,
   printonly: PropTypes.bool,
   text: PropTypes.string.isRequired,
+  variables: PropTypes.bool,
   warning: PropTypes.bool,
 };
 
@@ -49,6 +67,7 @@ Text.defaultProps = {
   id: null,
   printhide: false,
   printonly: false,
+  variables: false,
   warning: false,
 };
 
