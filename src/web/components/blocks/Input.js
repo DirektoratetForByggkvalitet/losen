@@ -107,15 +107,15 @@ export default class Input extends Component {
           aria-label={heading}
           disabled={disabled}
           id={property}
+          max={max}
+          min={min}
           onChange={this.handleChange}
           placeholder={placeholder}
+          step={step}
           type={inputType}
+          unit={unit}
           validation={errors.validation}
           value={currentValue}
-          min={min}
-          max={max}
-          step={step}
-          unit={unit}
         />
       );
     }

@@ -29,10 +29,7 @@ const Text = ({
         printonly={printonly}
         printhide={printhide}
       >
-        <VariableText
-          text={text}
-          data={{ addedParkingPlaces: 'DENNE VARIABELEN FINENS IKKE ENNÅ' }}
-        />
+        <VariableText text={text} data={{ test: 'Not implemented yet' }} />
       </TextBlock>
     );
   }
