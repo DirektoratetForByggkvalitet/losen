@@ -13,12 +13,7 @@ export default function Sum({ value, node }) {
   }
 
   if (ifMoreThanOnePropertyIsMissingValue()) {
-    return (
-      <div>
-        <h3>{node.text}</h3>
-        <StyledValue missing>* Mangler verdi for utregning</StyledValue>
-      </div>
-    );
+    return <StyledValue missing>* Mangler verdi for utregning</StyledValue>;
   }
 
   const sum = values.reduce((accumulator, currentValue, currentIndex) => {
@@ -31,12 +26,7 @@ export default function Sum({ value, node }) {
     }
     return Math.max(accumulator + get(data, currentValue), minimum);
   }, 0);
-  return (
-    <div>
-      <h3>{node.text}</h3>
-      <StyledValue>{sum}</StyledValue>
-    </div>
-  );
+  return <StyledValue>{sum}</StyledValue>;
 }
 
 Sum.propTypes = {

@@ -35,6 +35,7 @@ function Result({
   if (errorPages.length) {
     return (
       <ErrorResult
+        beforeResult={beforeResult}
         schema={schema}
         setPage={setPage}
         page={pageid}

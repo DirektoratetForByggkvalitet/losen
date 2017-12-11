@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Summary from './Summary';
+import Block from './blocks/Block';
 
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
@@ -10,6 +11,7 @@ import Html from './helper/Html';
 import Main from '../primitives/grid/Main';
 
 export default function ErrorResult({
+  beforeResult,
   errorheading,
   errorlead,
   errorPages,
@@ -24,6 +26,10 @@ export default function ErrorResult({
       <Lead result>
         <Html text={errorlead} />
       </Lead>
+
+      {beforeResult.map(block => (
+        <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
+      ))}
       <SpecificBlock>
         {summaryTitle ? <H1 small>{summaryTitle}</H1> : <H1 small>{title}</H1>}
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
@@ -33,6 +39,7 @@ export default function ErrorResult({
 }
 
 ErrorResult.defaultProps = {
+  beforeResult: [],
   errorheading: '',
   errorlead: '',
   schema: [],
@@ -41,6 +48,7 @@ ErrorResult.defaultProps = {
 };
 
 ErrorResult.propTypes = {
+  beforeResult: PropTypes.array,
   errorheading: PropTypes.string,
   errorlead: PropTypes.string,
   errorPages: PropTypes.array.isRequired,

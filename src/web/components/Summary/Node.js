@@ -12,7 +12,7 @@ import ErrorIcon from '../graphics/ErrorIcon';
 import SoftError from './SoftError';
 
 const ignoreNodes = ['Text', 'Image'];
-const overrideValueSummary = { FetchOrg };
+const overrideValueSummary = { FetchOrg, Sum };
 
 export default function NodeSummary({ node }) {
   const { children, currentValue, errorDescription, errors, heading, property, type } = node;
@@ -25,13 +25,6 @@ export default function NodeSummary({ node }) {
   if (type === 'Group' || type === 'ErrorOk') {
     return (
       <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>
-    );
-  }
-  if (type === 'Sum') {
-    return (
-      <StyledNodeSummary>
-        <Sum value={currentValue} node={node} />
-      </StyledNodeSummary>
     );
   }
 

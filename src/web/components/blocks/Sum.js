@@ -13,7 +13,7 @@ export default function Sum({
   minimum,
   operations,
   summary,
-  text,
+  heading,
   unit,
   values,
 }) {
@@ -30,7 +30,7 @@ export default function Sum({
   return (
     <StyledSum final={final}>
       <p>
-        {text}
+        {heading}
         <span>
           {sum} {unit ? <Html inline text={unit} /> : null}
         </span>
@@ -44,7 +44,7 @@ Sum.defaultProps = {
   details: '',
   final: false,
   summary: '',
-  text: '',
+  heading: '',
   unit: '',
   values: [],
   operations: [],
@@ -58,7 +58,7 @@ Sum.propTypes = {
   minimum: PropTypes.number,
   operations: PropTypes.array,
   summary: PropTypes.string,
-  text: PropTypes.string,
+  heading: PropTypes.string,
   unit: PropTypes.string,
   values: PropTypes.array,
 };
