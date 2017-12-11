@@ -55,10 +55,10 @@ Sum.propTypes = {
   data: PropTypes.object.isRequired,
   details: PropTypes.string,
   final: PropTypes.bool,
+  minimum: PropTypes.number,
+  operations: PropTypes.array,
   summary: PropTypes.string,
   text: PropTypes.string,
   unit: PropTypes.string,
   values: PropTypes.array,
-  operations: PropTypes.array,
-  minimum: PropTypes.number,
 };

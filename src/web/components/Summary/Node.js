@@ -3,6 +3,7 @@ import React from 'react';
 
 import DefaultValueSummary from './value';
 import FetchOrg from './value/FetchOrg';
+import Sum from './value/Sum';
 
 import { ErrorMessage } from '../../primitives/Errors';
 import { H3 } from '../../primitives/Heading';
@@ -18,17 +19,19 @@ export default function NodeSummary({ node }) {
   if (ignoreNodes.includes(type) || property === undefined) {
     return null;
   }
-  if (type === 'ErrorOk') {
+  if (type === 'Error') {
+    return <SoftError children={children} />;
+  }
+  if (type === 'Group' || type === 'ErrorOk') {
     return (
       <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>
     );
   }
-  if (type === 'Error') {
-    return <SoftError children={children} />;
-  }
-  if (type === 'Group') {
+  if (type === 'Sum') {
     return (
-      <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>
+      <StyledNodeSummary>
+        <Sum value={currentValue} node={node} />
+      </StyledNodeSummary>
     );
   }
 
