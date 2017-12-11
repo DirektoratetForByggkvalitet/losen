@@ -3,9 +3,10 @@ import React from 'react';
 import get from 'lodash.get';
 
 import StyledSum from '../../primitives/Sum';
+import SummaryDetails from './SummaryDetails';
 import Html from '../helper/Html';
 
-export default function Sum({ text, values, data, final, unit }) {
+export default function Sum({ text, values, data, final, unit, summary, details }) {
   const sum = values.reduce(
     (accumulator, currentValue) => accumulator + get(data, currentValue),
     0,
@@ -13,24 +14,31 @@ export default function Sum({ text, values, data, final, unit }) {
   return (
     <StyledSum final={final}>
       <p>
-        {text}:&nbsp;
-        <span>{sum} {unit ? <Html inline text={unit} /> : null}</span>
+        {text}
+        <span>
+          {sum} {unit ? <Html inline text={unit} /> : null}
+        </span>
       </p>
+      {summary && <SummaryDetails summary={summary} details={details} />}
     </StyledSum>
   );
 }
 
 Sum.defaultProps = {
-  text: '',
-  values: [],
+  details: '',
   final: false,
+  summary: '',
+  text: '',
   unit: '',
+  values: [],
 };
 
 Sum.propTypes = {
-  text: PropTypes.string,
-  values: PropTypes.array,
   data: PropTypes.object.isRequired,
+  details: PropTypes.string,
   final: PropTypes.bool,
+  summary: PropTypes.string,
+  text: PropTypes.string,
   unit: PropTypes.string,
+  values: PropTypes.array,
 };

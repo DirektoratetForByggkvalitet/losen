@@ -4,6 +4,7 @@ import React from 'react';
 import Block from './blocks/Block';
 import Html from './helper/Html';
 import Navigation from './Navigation';
+import SummaryDetails from './blocks/SummaryDetails';
 
 import { H1 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
@@ -12,12 +13,14 @@ import Main from '../primitives/grid/Main';
 export default function Page({
   children = [],
   debug,
+  details,
   firstPage,
   heading,
   lead,
   nextPage,
   pageid,
   previousPage,
+  summary,
 }) {
   let navigation = (
     <Navigation page={pageid} hasPrevious previousPage={previousPage} hasNext nextPage={nextPage} />
@@ -33,6 +36,7 @@ export default function Page({
       <Lead>
         <Html text={lead} />
       </Lead>
+      {summary && <SummaryDetails summary={summary} details={details} />}
       {children.map(block => <Block key={block.property} {...block} />)}
       {navigation}
     </Main>
@@ -41,17 +45,21 @@ export default function Page({
 
 Page.defaultProps = {
   debug: false,
+  details: '',
   heading: 'Missing page heading',
   lead: '',
+  summary: '',
 };
 
 Page.propTypes = {
   children: PropTypes.array.isRequired,
   debug: PropTypes.bool,
+  details: PropTypes.string,
   firstPage: PropTypes.bool.isRequired,
   heading: PropTypes.string,
   lead: PropTypes.string,
   nextPage: PropTypes.func.isRequired,
   pageid: PropTypes.string.isRequired,
   previousPage: PropTypes.func.isRequired,
+  summary: PropTypes.string,
 };
