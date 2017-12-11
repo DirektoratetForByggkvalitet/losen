@@ -16,6 +16,7 @@ import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
 
 function Result({
+  beforeResult = [],
   children = [],
   debug,
   errorheading,
@@ -55,6 +56,10 @@ function Result({
         <Html text={lead} />
       </Lead>
 
+      {beforeResult.map(block => (
+        <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
+      ))}
+
       <SpecificBlock>
         {summaryTitle ? <H1 small>{summaryTitle}</H1> : <H1 small>{title}</H1>}
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
@@ -74,6 +79,7 @@ function Result({
 }
 
 Result.propTypes = {
+  beforeResult: PropTypes.array,
   children: PropTypes.array,
   debug: PropTypes.bool,
   errorheading: PropTypes.string,
@@ -91,6 +97,7 @@ Result.propTypes = {
 };
 
 Result.defaultProps = {
+  beforeResult: [],
   children: [],
   debug: false,
   errorheading: '',
