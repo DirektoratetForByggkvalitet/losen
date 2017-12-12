@@ -12,14 +12,28 @@ const StyledSum = injectStyles(styled.div`
     line-height: 1em;
   }
   ${props =>
-    props.groupedSimple
+    props.final
       ? `
       width: 33%;
-      padding: 0;
+      padding: 0 20px;
       display: inline-block;
       border-right: 1px solid ${props.styles.color.darkgray};
+      &:last-of-type {
+        border-right: none;
+      }
+      &:first-of-type {
+        padding-left: 0;
+      }
       `
       : ''}
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    display: block;
+    padding: 0;
+    span {
+      font-size: 20px;
+    }
+  }
 `);
 
 export default StyledSum;
