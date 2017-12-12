@@ -9,7 +9,7 @@ export const SpecificBlock = injectStyles(styled.div`
   width: 100%;
   background: ${props => (props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white')};
   &:nth-child(even) {
-    background: ${props => (props.grouped ? 'rgba(0, 117, 127, 0.06)' : '#fdfdfd')};
+    background: ${props => (props.grouped ? 'rgba(0, 117, 127, 0.06)' : 'white')};
   }
   box-shadow: ${props => (props.grouped ? 'none' : '0 2px 3px rgba(0, 0, 0, 0.18)')};
   p {
