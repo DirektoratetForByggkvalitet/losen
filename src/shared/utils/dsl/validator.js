@@ -8,7 +8,11 @@
  */
 export function validateSimpleExpression(expression) {
   if (expression.type) {
-    throw new Error(`Expected simple expression. Got ${expression.type} expression: ${JSON.stringify(expression)}`);
+    throw new Error(
+      `Expected simple expression. Got ${expression.type} expression: ${JSON.stringify(
+        expression,
+      )}`,
+    );
   }
 
   if (!expression.operator) {
@@ -27,11 +31,18 @@ export function validateSimpleExpression(expression) {
     case 'eq':
     case 'neq':
       if (typeof expression.value === 'undefined') {
-        throw new Error(`Operator ${expression.operator} expects a value property: ${JSON.stringify(expression)}`);
+        throw new Error(
+          `Operator ${expression.operator} expects a value property: ${JSON.stringify(expression)}`,
+        );
       }
 
-      if (typeof expression.value === 'object' && !expression.value.field) {
-        throw new Error(`Expression with value of type object is supposed to be a reference to a field to compare to. No field property found: : ${expression}`);
+      if (
+        typeof expression.value === 'object' &&
+        (!expression.value.field && !expression.value.fields)
+      ) {
+        throw new Error(
+          `Expression with value of type object is supposed to be a reference to a field to compare to. No field property found: : ${expression}`,
+        );
       }
 
       break;
@@ -39,20 +50,40 @@ export function validateSimpleExpression(expression) {
     // Validate range expression
     case 'between':
       if (!expression.value) {
-        throw new Error(`Expression with operator ${expression.operator} must have a value property: ${JSON.stringify(expression)}`);
+        throw new Error(
+          `Expression with operator ${
+            expression.operator
+          } must have a value property: ${JSON.stringify(expression)}`,
+        );
       }
 
       if (!Array.isArray(expression.value)) {
-        throw new Error(`Expression with operator ${expression.operator} must have an array as the value property: ${JSON.stringify(expression)}`);
+        throw new Error(
+          `Expression with operator ${
+            expression.operator
+          } must have an array as the value property: ${JSON.stringify(expression)}`,
+        );
       }
 
       if (expression.value.length !== 2) {
-        throw new Error(`Expression with operator ${expression.operator} expects an array containing two values. Got ${expression.value.length}: ${JSON.stringify(expression)}`);
+        throw new Error(
+          `Expression with operator ${
+            expression.operator
+          } expects an array containing two values. Got ${
+            expression.value.length
+          }: ${JSON.stringify(expression)}`,
+        );
       }
 
       expression.value.forEach((number) => {
         if (isNaN(parseFloat(number))) {
-          throw new Error(`Expression with operator ${expression.operator} expected a range of two numbers. ${number} is not a valid number: ${JSON.stringify(expression)}`);
+          throw new Error(
+            `Expression with operator ${
+              expression.operator
+            } expected a range of two numbers. ${number} is not a valid number: ${JSON.stringify(
+              expression,
+            )}`,
+          );
         }
       });
 
@@ -86,20 +117,18 @@ export function validateComplexExpression(expression) {
   }
 
   // Validate children
-  return expression.clauses.reduce(
-    (valid, childExpression) => {
-      switch (expression.type) {
-        case 'and':
-          return valid && validateExpression(childExpression);
+  return expression.clauses.reduce((valid, childExpression) => {
+    switch (expression.type) {
+      case 'and':
+        return valid && validateExpression(childExpression);
 
-        case 'or':
-          return valid || validateExpression(childExpression);
+      case 'or':
+        return valid || validateExpression(childExpression);
 
-        default:
-          return false;
-      }
-    }, true,
-  );
+      default:
+        return false;
+    }
+  }, true);
 }
 
 export function validateExpression(expression) {

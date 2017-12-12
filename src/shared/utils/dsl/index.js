@@ -4,6 +4,10 @@ import get from 'lodash.get';
 import { validateExpression } from './validator';
 
 export function getValue(value, state) {
+  if (typeof value === 'object' && value.fields) {
+    return value.fields.reduce((acc, currentValue) => acc + get(state, currentValue), 0);
+  }
+
   if (typeof value === 'object' && value.field) {
     return get(state, value.field);
   }
@@ -242,10 +246,10 @@ export function buildValidatorForComplexExpression(expression) {
       },
       {
         /**
-     * Start with valid being true for and expressions to avoid the
-     * result always being false, and with false for or expressions
-     * to avoid the result always being true 🤓
-     */
+         * Start with valid being true for and expressions to avoid the
+         * result always being false, and with false for or expressions
+         * to avoid the result always being true 🤓
+         */
         valid: expression.type === 'and',
         errors: {
           operator: expression.type,
