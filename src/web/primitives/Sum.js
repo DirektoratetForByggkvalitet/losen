@@ -12,7 +12,7 @@ const StyledSum = injectStyles(styled.div`
     line-height: 1em;
   }
   ${props =>
-    props.final
+    props.groupedSimple
       ? `
       width: 33%;
       padding: 0 20px;
