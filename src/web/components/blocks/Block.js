@@ -171,7 +171,13 @@ export function PureBlock(props) {
     props.type === 'Summary'
   ) {
     return (
-      <SpecificBlock grouped={props.grouped} debug={props.debug} data-id={props.id} {...props} />
+      <SpecificBlock
+        grouped={props.grouped}
+        groupedSimple={props.simple}
+        debug={props.debug}
+        data-id={props.id}
+        {...props}
+      />
     );
   }
 

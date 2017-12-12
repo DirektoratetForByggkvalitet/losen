@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import get from 'lodash.get';
+import { NAME } from '../../../state';
 
 import { Value as StyledValue } from '../../../primitives/Summary';
 
-export default function Sum({ value, node }) {
+export function getData(state) {
+  return state[NAME] || {};
+}
+
+function missingValues(values, data) {
+  console.log(values, data, getData());
+  return true;
+}
+
+export default function Sum({ node }) {
   const { minimum, operations, values, data } = node;
-
-  function ifMoreThanOnePropertyIsMissingValue() {
-    console.log(value);
-    return true;
-  }
-
-  if (ifMoreThanOnePropertyIsMissingValue()) {
+  if (missingValues(values)) {
     return <StyledValue missing>* Mangler verdi for utregning</StyledValue>;
   }
 
@@ -31,9 +35,4 @@ export default function Sum({ value, node }) {
 
 Sum.propTypes = {
   node: PropTypes.object.isRequired,
-  value: PropTypes.any,
-};
-
-Sum.defaultProps = {
-  value: undefined,
 };
