@@ -16,6 +16,7 @@ export default function Sum({
   heading,
   unit,
   values,
+  groupedSimple,
 }) {
   const sum = values.reduce((accumulator, currentValue, currentIndex) => {
     if (operations[currentIndex] === '-') {
@@ -28,7 +29,7 @@ export default function Sum({
     return Math.max(accumulator + get(data, currentValue), minimum);
   }, 0);
   return (
-    <StyledSum final={final}>
+    <StyledSum groupedSimple={groupedSimple} final={final}>
       <p>
         {heading}
         <span>
@@ -49,6 +50,7 @@ Sum.defaultProps = {
   values: [],
   operations: [],
   minimum: undefined,
+  groupedSimple: false,
 };
 
 Sum.propTypes = {
@@ -61,4 +63,5 @@ Sum.propTypes = {
   heading: PropTypes.string,
   unit: PropTypes.string,
   values: PropTypes.array,
+  groupedSimple: PropTypes.bool,
 };

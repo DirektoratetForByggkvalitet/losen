@@ -7,18 +7,19 @@ const StyledSum = injectStyles(styled.div`
   width: 100%;
   span {
     display: block;
-    font-size: 42px;
+    font-size: 36px;
     font-weight: bold;
     line-height: 1em;
   }
   ${props =>
-    props.final
+    props.groupedSimple
       ? `
-      background: gold;
-      color: black;
-        text-shadow: 2px 2px 0 black;
-    `
-      : ' '};
+      width: 33%;
+      padding: 0;
+      display: inline-block;
+      border-right: 1px solid ${props.styles.color.darkgray};
+      `
+      : ''}
 `);
 
 export default StyledSum;
