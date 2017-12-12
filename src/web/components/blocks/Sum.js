@@ -17,25 +17,36 @@ export default function Sum({
   unit,
   values,
   groupedSimple,
+  property,
+  setData,
 }) {
-  const sum = values.reduce((accumulator, currentValue, currentIndex) => {
+  let sum = values.reduce((accumulator, cur, currentIndex) => {
     if (operations && operations[currentIndex] === '-') {
-      return Math.max(accumulator - get(data, currentValue), minimum);
+      return accumulator - get(data, cur);
     } else if (operations && operations[currentIndex] === '*') {
-      return Math.max(accumulator * get(data, currentValue), minimum);
+      return accumulator * get(data, cur);
     } else if (operations && operations[currentIndex] === '/') {
-      return Math.max(accumulator / get(data, currentValue), minimum);
+      return accumulator / get(data, cur);
     }
-    return Math.max(accumulator + get(data, currentValue), minimum);
+    return accumulator + get(data, cur);
   }, 0);
+  if (minimum) {
+    sum = Math.max(sum, minimum);
+  }
+
+  // eslint-disable-next-line eqeqeq
+  if (get(data, `sum-${property}`) !== sum) {
+    setData(`sum-${property}`, sum);
+  }
+
   return (
     <StyledSum groupedSimple={groupedSimple} final={final}>
-      <p>
+      <div>
         {heading}
         <span>
           {sum} {unit ? <Html inline text={unit} /> : null}
         </span>
-      </p>
+      </div>
       {summary && <SummaryDetails summary={summary} details={details} />}
     </StyledSum>
   );
@@ -51,6 +62,8 @@ Sum.defaultProps = {
   operations: [],
   minimum: undefined,
   groupedSimple: false,
+  property: undefined,
+  currentValue: undefined,
 };
 
 Sum.propTypes = {
@@ -64,4 +77,6 @@ Sum.propTypes = {
   unit: PropTypes.string,
   values: PropTypes.array,
   groupedSimple: PropTypes.bool,
+  property: PropTypes.string.isRequired,
+  setData: PropTypes.func.isRequired,
 };

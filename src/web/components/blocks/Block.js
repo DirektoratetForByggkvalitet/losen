@@ -14,6 +14,7 @@ import ImageComponent from '../helper/Image';
 import Input from './Input';
 import Missing from './Missing';
 import Number from './Number';
+import Evaluation from './Evaluation';
 import Radio from './radio/Radio';
 import Select from './select/Select';
 import Signature from './Signature';
@@ -68,6 +69,9 @@ function getBlock(type) {
 
     case 'Data':
       return Data;
+
+    case 'Evaluation':
+      return Evaluation;
 
     case 'FetchOrg':
       return FetchOrg;
@@ -168,7 +172,8 @@ export function PureBlock(props) {
     props.type === 'Data' ||
     props.type === 'Signature' ||
     props.type === 'Sum' ||
-    props.type === 'Summary'
+    props.type === 'Summary' ||
+    props.type === 'Evaluation'
   ) {
     return (
       <SpecificBlock
