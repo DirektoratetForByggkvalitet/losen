@@ -1,22 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import get from 'lodash.get';
+import { connect } from 'react-redux';
 import { NAME } from '../../../state';
 
 import { Value as StyledValue } from '../../../primitives/Summary';
 
-export function getData(state) {
-  return state[NAME] || {};
+function hasAllValues(values, data) {
+  return values.reduce((acc, currentValue) => get(data, currentValue) && acc, true);
 }
 
-function missingValues(values, data) {
-  console.log(values, data, getData());
-  return true;
-}
-
-export default function Sum({ node }) {
-  const { minimum, operations, values, data } = node;
-  if (missingValues(values)) {
+function Sum({ node, data }) {
+  const { minimum, operations, values } = node;
+  if (!hasAllValues(values, data)) {
     return <StyledValue missing>* Mangler verdi for utregning</StyledValue>;
   }
 
@@ -33,6 +29,13 @@ export default function Sum({ node }) {
   return <StyledValue>{sum}</StyledValue>;
 }
 
+const ConnectedSum = connect(state => ({
+  data: state[NAME],
+}))(Sum);
+
+export default ConnectedSum;
+
 Sum.propTypes = {
   node: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
