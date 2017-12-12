@@ -131,6 +131,7 @@ export function PureBlock(props) {
             {...block}
           />
         ))}
+        {props.summary && <SummaryDetails summary={props.summary} details={props.details} />}
       </StyledBlock>
     );
   }
