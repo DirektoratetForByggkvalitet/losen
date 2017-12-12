@@ -19,11 +19,11 @@ export default function Sum({
   groupedSimple,
 }) {
   const sum = values.reduce((accumulator, currentValue, currentIndex) => {
-    if (operations[currentIndex] === '-') {
+    if (operations && operations[currentIndex] === '-') {
       return Math.max(accumulator - get(data, currentValue), minimum);
-    } else if (operations[currentIndex] === '*') {
+    } else if (operations && operations[currentIndex] === '*') {
       return Math.max(accumulator * get(data, currentValue), minimum);
-    } else if (operations[currentIndex] === '/') {
+    } else if (operations && operations[currentIndex] === '/') {
       return Math.max(accumulator / get(data, currentValue), minimum);
     }
     return Math.max(accumulator + get(data, currentValue), minimum);
