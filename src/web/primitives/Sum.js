@@ -5,6 +5,7 @@ import injectStyles from '../utils/inject-styles';
 const StyledSum = injectStyles(styled.div`
   padding: 0 33px 20px;
   width: 100%;
+  vertical-align: top;
   span {
     display: block;
     font-size: 36px;
@@ -30,6 +31,7 @@ const StyledSum = injectStyles(styled.div`
     width: 100%;
     display: block;
     padding: 0;
+    border-right: none;
     span {
       font-size: 20px;
     }
