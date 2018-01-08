@@ -27,6 +27,7 @@ export default class Input extends Component {
     step: PropTypes.number,
     type: PropTypes.string,
     update: PropTypes.func,
+    toggle: PropTypes.array,
   };
 
   static defaultProps = {
@@ -41,7 +42,14 @@ export default class Input extends Component {
     type: 'text',
     update: () => {},
     validation: {},
+    toggle: [],
   };
+
+  updateToggle = (value) => {
+    if (value !== 0 && this.props.toggle) {
+      this.props.toggle.map(item => this.props.setData(`${item}`, 0));
+    }
+  }
 
   handleChange = (e) => {
     const { type, step, property, setData, update, min } = this.props;
@@ -60,7 +68,7 @@ export default class Input extends Component {
     if (type === 'number' && isNaN(value)) {
       value = undefined;
     }
-
+    this.updateToggle(value);
     update(value);
     setData(property, value);
   };
