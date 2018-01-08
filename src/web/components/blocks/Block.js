@@ -21,6 +21,7 @@ import Signature from './Signature';
 import Sum from './Sum';
 import Summary from './Summary';
 import SummaryDetails from './SummaryDetails';
+import Switch from './Switch';
 import Table from './Table';
 import Text from './Text';
 import Textarea from './Textarea';
@@ -90,6 +91,9 @@ function getBlock(type) {
 
     case 'Sum':
       return Sum;
+
+    case 'Switch':
+      return Switch;
 
     default:
       return null;
