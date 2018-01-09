@@ -23,6 +23,8 @@ export default function Sum({
   let sum = values.reduce((accumulator, cur, currentIndex) => {
     if (operations && operations[currentIndex] === '-') {
       return accumulator - get(data, cur);
+    } else if (operations && operations[currentIndex] === '%') {
+      return accumulator * cur;
     } else if (operations && operations[currentIndex] === '*') {
       return accumulator * get(data, cur);
     } else if (operations && operations[currentIndex] === '/') {
