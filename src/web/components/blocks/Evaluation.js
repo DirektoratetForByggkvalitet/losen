@@ -5,7 +5,14 @@ import get from 'lodash.get';
 import StyledSum from '../../primitives/Sum';
 
 export default function Evaluation({ data, testing, final, heading, groupedSimple, happy, sad }) {
-  if (get(data, testing) < 0) {
+  let testedValue;
+  if (Array.isArray(testing)) {
+    testedValue = get(data, testing[0]) - get(data, testing[1]);
+  } else {
+    testedValue = get(data, testing);
+  }
+
+  if (testedValue < 0) {
     // sad case
     return (
       <StyledSum groupedSimple={groupedSimple} final={final}>

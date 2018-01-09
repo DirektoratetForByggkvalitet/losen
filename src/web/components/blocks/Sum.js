@@ -14,6 +14,7 @@ export default function Sum({
   operations,
   summary,
   heading,
+  secondary,
   unit,
   values,
   groupedSimple,
@@ -24,9 +25,11 @@ export default function Sum({
     if (operations && operations[currentIndex] === '-') {
       return accumulator - get(data, cur);
     } else if (operations && operations[currentIndex] === '%') {
-      return accumulator * cur;
+      return (accumulator * cur).toFixed(2);
     } else if (operations && operations[currentIndex] === '*') {
       return accumulator * get(data, cur);
+    } else if (operations && operations[currentIndex] === '-/') {
+      return get(data, cur) / accumulator;
     } else if (operations && operations[currentIndex] === '/') {
       return accumulator / get(data, cur);
     }
@@ -45,6 +48,7 @@ export default function Sum({
     <StyledSum groupedSimple={groupedSimple} final={final}>
       <div>
         {heading}
+        {secondary ? <span>{get(data, secondary)} %</span> : null }
         <span>
           {sum} {unit ? <Html inline text={unit} /> : null}
         </span>
@@ -66,6 +70,7 @@ Sum.defaultProps = {
   groupedSimple: false,
   property: undefined,
   currentValue: undefined,
+  secondary: undefined,
 };
 
 Sum.propTypes = {
@@ -81,4 +86,5 @@ Sum.propTypes = {
   groupedSimple: PropTypes.bool,
   property: PropTypes.string.isRequired,
   setData: PropTypes.func.isRequired,
+  secondary: PropTypes.string,
 };
