@@ -35,7 +35,8 @@ export default function Sum({
     }
     return accumulator + get(data, cur, 0);
   }, 0);
-  if (minimum) {
+
+  if (typeof minimum === 'number') {
     sum = Math.max(sum, minimum);
   }
 
