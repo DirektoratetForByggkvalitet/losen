@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import repeatQuestion from '../helper/RepeatQuestion';
+
 // Components
 import Checkbox from './checkbox/Checkbox';
 import Data from './Data';
@@ -203,7 +205,8 @@ export function PureBlock(props) {
       <div>
         <H2>{props.heading}</H2>
         <Html text={props.text} />
-
+        <ImageComponent image={props.image} />
+        {repeatQuestion(props.image, props.text) ? <b>{props.heading}</b> : ''}
         <SpecificBlock
           debug={props.debug}
           {...{
@@ -224,7 +227,6 @@ export function PureBlock(props) {
           </ErrorMessage>
         )}
         {props.summary && <SummaryDetails summary={props.summary} details={props.details} />}
-        <ImageComponent image={props.image} />
       </div>
     </StyledBlock>
   );
