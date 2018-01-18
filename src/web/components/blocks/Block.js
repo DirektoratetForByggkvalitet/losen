@@ -35,7 +35,7 @@ import { NAME } from '../../state';
 // Primitives
 import { SpecificBlock as StyledBlock } from '../../primitives/Block';
 import StyledErrorBlock from '../../primitives/ErrorBlock';
-import { H2 } from '../../primitives/Heading';
+import { H2, H3 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 
 /**
@@ -206,7 +206,7 @@ export function PureBlock(props) {
         <H2>{props.heading}</H2>
         <Html text={props.text} />
         <ImageComponent image={props.image} />
-        {repeatQuestion(props.image, props.text) ? <b>{props.heading}</b> : ''}
+        {repeatQuestion(props.image, props.text) ? <H3>{props.heading}</H3> : ''}
         <SpecificBlock
           debug={props.debug}
           {...{
