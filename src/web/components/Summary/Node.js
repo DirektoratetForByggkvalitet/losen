@@ -16,11 +16,11 @@ const overrideValueSummary = { FetchOrg, Sum };
 
 export default function NodeSummary({ node }) {
   const { children, currentValue, errorDescription, errors, heading, property, type } = node;
-  if (ignoreNodes.includes(type) || property === undefined) {
-    return null;
-  }
   if (type === 'Error') {
     return <SoftError children={children} />;
+  }
+  if (ignoreNodes.includes(type) || property === undefined) {
+    return null;
   }
   if (type === 'Group' || type === 'ErrorOk') {
     return (
