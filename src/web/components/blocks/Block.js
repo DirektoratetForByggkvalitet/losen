@@ -35,7 +35,6 @@ import { NAME } from '../../state';
 // Primitives
 import { SpecificBlock as StyledBlock } from '../../primitives/Block';
 import StyledErrorBlock from '../../primitives/ErrorBlock';
-import { H2, H3 } from '../../primitives/Heading';
 import { ErrorMessage } from '../../primitives/Errors';
 
 /**
@@ -126,7 +125,7 @@ export function PureBlock(props) {
   if (props.type === 'Group') {
     return (
       <StyledBlock data-id={props.id} debug={props.debug}>
-        <H2>{props.heading}</H2>
+        <Html text={props.heading} h2 />
         <Html text={props.text} />
 
         {props.children.map(block => (
@@ -149,7 +148,7 @@ export function PureBlock(props) {
   if (props.type === 'Error') {
     return (
       <StyledErrorBlock data-id={props.id} debug={props.debug}>
-        <H2>{props.heading}</H2>
+        <Html text={props.heading} h2 />
         <Html text={props.text} />
 
         {props.children.map(block => (
@@ -203,10 +202,10 @@ export function PureBlock(props) {
       type={props.type}
     >
       <div>
-        <H2>{props.heading}</H2>
+        <Html text={props.heading} h2 />
         <Html text={props.text} />
         <ImageComponent image={props.image} />
-        {repeatQuestion(props.image, props.text) ? <H3>{props.heading}</H3> : ''}
+        {repeatQuestion(props.image, props.text) ? <Html text={props.heading} h3 /> : ''}
         <SpecificBlock
           debug={props.debug}
           {...{

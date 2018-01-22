@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { TextBlock } from '../../primitives/Block';
-import { H2 } from '../../primitives/Heading';
 import Html from '../helper/Html';
 import VariableText from '../helper/VariableText';
 
@@ -18,7 +17,7 @@ const Text = ({
 }) => {
   let title = '';
   if (heading) {
-    title = <H2>{heading}</H2>;
+    title = <Html text={heading} h2 />;
   }
   if (variables) {
     return (

@@ -6,7 +6,7 @@ import FetchOrg from './value/FetchOrg';
 import Sum from './value/Sum';
 
 import { ErrorMessage } from '../../primitives/Errors';
-import { H3 } from '../../primitives/Heading';
+import Html from '../helper/Html';
 import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 import ErrorIcon from '../graphics/ErrorIcon';
 import SoftError from './SoftError';
@@ -32,7 +32,7 @@ export default function NodeSummary({ node }) {
 
   return (
     <StyledNodeSummary>
-      <H3>{heading}</H3>
+      <Html text={heading} h3 />
       <ValueSummary value={currentValue} node={node} />
       {errors.validation.error ? (
         <ErrorMessage>

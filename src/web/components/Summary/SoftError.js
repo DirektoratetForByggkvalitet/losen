@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 import { ErrorMessage } from '../../primitives/Errors';
+import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 import ErrorIcon from '../graphics/ErrorIcon';
+import Html from '../helper/Html';
 
 export default function SoftError({ children }) {
   return (
@@ -12,7 +13,7 @@ export default function SoftError({ children }) {
         if (child.heading) {
           return (
             <ErrorMessage>
-              <ErrorIcon /> {child.heading}
+              <ErrorIcon /> <Html text={child.heading} inline />
             </ErrorMessage>
           );
         }

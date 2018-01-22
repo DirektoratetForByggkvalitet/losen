@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import injectStyles from '../utils/inject-styles';
 
-const Html = injectStyles(styled.div`
-    display: ${props => (props.inline ? 'inline' : 'block')};
+const StyledHtml = injectStyles(styled.div`
+  display: ${props => (props.inline ? 'inline' : 'block')};
 `);
 
-export default Html;
+export default StyledHtml;
