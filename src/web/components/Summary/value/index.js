@@ -36,7 +36,11 @@ export default function Value({ value, node }) {
 
     // If only one value selected
     if (!commaSeparated.length) {
-      return <StyledValue>{lastOne}</StyledValue>;
+      return (
+        <StyledValue>
+          <Html inline text={lastOne} />
+        </StyledValue>
+      );
     }
 
     // If more than one selected
