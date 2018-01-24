@@ -49,10 +49,10 @@ export default class Input extends Component {
     if (value !== 0 && this.props.toggle) {
       this.props.toggle.map(item => this.props.setData(`${item}`, 0));
     }
-  }
+  };
 
   handleChange = (e) => {
-    const { type, step, property, setData, update, min } = this.props;
+    const { type, step, property, setData, update, min, max } = this.props;
     let value = e.target.value;
 
     if (type === 'number' && step >= 1) {
@@ -63,6 +63,10 @@ export default class Input extends Component {
 
     if (type === 'number' && min === 0) {
       value = Math.abs(value);
+    }
+
+    if (type === 'number' && max < value) {
+      value = max;
     }
 
     if (type === 'number' && isNaN(value)) {
