@@ -21,6 +21,7 @@ import Radio from './radio/Radio';
 import Select from './select/Select';
 import Signature from './Signature';
 import Sum from './Sum';
+import SpecialSum from './SpecialSum';
 import Summary from './Summary';
 import SummaryDetails from './SummaryDetails';
 import Switch from './Switch';
@@ -92,6 +93,9 @@ function getBlock(type) {
 
     case 'Sum':
       return Sum;
+
+    case 'SpecialSum':
+      return SpecialSum;
 
     case 'Switch':
       return Switch;
@@ -177,6 +181,7 @@ export function PureBlock(props) {
     props.type === 'Data' ||
     props.type === 'Signature' ||
     props.type === 'Sum' ||
+    props.type === 'SpecialSum' ||
     props.type === 'Summary' ||
     props.type === 'Evaluation'
   ) {
