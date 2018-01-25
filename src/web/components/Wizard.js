@@ -84,6 +84,7 @@ class Wizard extends Component {
     }
     this.props.setData('page', page);
     this.setState({ page });
+    document.activeElement.blur(); // Remove focus on next/prev buttons after page change
   }
 
   getCurrentIndex() {
