@@ -10,3 +10,13 @@ export default function track(wizardName, id, title) {
     event: 'newpage', // eventnavn som gjennbrukes for alle nye sider
   });
 }
+
+export function trackEvent(name) {
+  if (typeof dataLayer === 'undefined') {
+    dataLayer = [];
+  }
+  // DIBK tracking oppsett
+  dataLayer.push({
+    event: name,
+  });
+}

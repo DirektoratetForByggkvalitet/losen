@@ -54,6 +54,7 @@ class Wizard extends Component {
   constructor(props) {
     super(props);
     autobind(this);
+    this.trackPage(true);
   }
 
   state = {
@@ -63,11 +64,7 @@ class Wizard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
-      track(
-        this.props.wizard.meta.name,
-        this.props.schema.filter(item => item.id === this.state.page)[0].id,
-        this.props.schema.filter(item => item.id === this.state.page)[0].heading,
-      );
+      this.trackPage();
     }
   }
 
@@ -96,6 +93,19 @@ class Wizard extends Component {
       0,
       this.props.schema.findIndex(({ id }) => id === getData(this.props.data).page),
     );
+  }
+
+  trackPage(first) {
+    if (first) {
+      track(
+        this.props.wizard.meta.name,
+        this.props.wizard.schema[0].id,
+        this.props.wizard.schema[0].heading,
+      );
+    } else {
+      const page = this.props.schema.filter(item => item.id === this.state.page)[0];
+      track(this.props.wizard.meta.name, page.id, page.heading);
+    }
   }
 
   changePage(distance) {

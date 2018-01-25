@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { getData } from '../utils/selectors';
-import track from '../utils/tracking';
+import { trackEvent } from '../utils/tracking';
 
 import { MainButton } from '../primitives/Button';
 import { Textarea } from '../primitives/Input';
@@ -22,7 +22,7 @@ class ExportData extends Component {
   selectText = () => this.textarea.select();
 
   showExportData = () => {
-    track('Click export data');
+    trackEvent('export-data');
     this.setState({ open: true });
   };
 
