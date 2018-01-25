@@ -63,7 +63,11 @@ class Wizard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
-      track(this.props.schema.filter(item => item.id === this.state.page)[0].heading);
+      track(
+        this.props.wizard.meta.name,
+        this.props.schema.filter(item => item.id === this.state.page)[0].id,
+        this.props.schema.filter(item => item.id === this.state.page)[0].heading,
+      );
     }
   }
 
