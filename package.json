@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "0.21.10",
+  "version": "0.21.11",
   "description": "Losen - a flexible wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
