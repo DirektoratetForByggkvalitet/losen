@@ -65,7 +65,7 @@ export default class Input extends Component {
       value = Math.abs(value);
     }
 
-    if (type === 'number' && max < value) {
+    if (type === 'number' && max !== null && max < value) {
       value = max;
     }
 
