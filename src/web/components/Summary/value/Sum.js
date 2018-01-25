@@ -7,7 +7,7 @@ import { NAME } from '../../../state';
 import { Value as StyledValue } from '../../../primitives/Summary';
 
 function hasAllValues(values, data) {
-  return values.reduce((acc, currentValue) => get(data, currentValue) && acc, true);
+  return values.reduce((acc, currentValue) => get(data, currentValue) !== undefined && acc, true);
 }
 
 function Sum({ node, data }) {
