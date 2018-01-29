@@ -69,6 +69,10 @@ export default class Input extends Component {
       value = max;
     }
 
+    if (type === 'number' && min !== null && min > value) {
+      value = min;
+    }
+
     if (type === 'number' && isNaN(value)) {
       value = undefined;
     }
