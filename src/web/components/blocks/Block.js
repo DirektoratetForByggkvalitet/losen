@@ -9,19 +9,20 @@ import repeatQuestion from '../helper/RepeatQuestion';
 import Checkbox from './checkbox/Checkbox';
 import Data from './Data';
 import ErrorIcon from '../graphics/ErrorIcon';
+import Evaluation from './Evaluation';
 import FetchOrg from './FetchOrg';
 import Html from '../helper/Html';
 import Image from './Image';
 import ImageComponent from '../helper/Image';
+import Information from './Information';
 import Input from './Input';
 import Missing from './Missing';
 import Number from './Number';
-import Evaluation from './Evaluation';
 import Radio from './radio/Radio';
 import Select from './select/Select';
 import Signature from './Signature';
-import Sum from './Sum';
 import SpecialSum from './SpecialSum';
+import Sum from './Sum';
 import Summary from './Summary';
 import SummaryDetails from './SummaryDetails';
 import Switch from './Switch';
@@ -99,6 +100,9 @@ function getBlock(type) {
 
     case 'Switch':
       return Switch;
+
+    case 'Information':
+      return Information;
 
     default:
       return null;
@@ -183,6 +187,7 @@ export function PureBlock(props) {
     props.type === 'Sum' ||
     props.type === 'SpecialSum' ||
     props.type === 'Summary' ||
+    props.type === 'Information' ||
     props.type === 'Evaluation'
   ) {
     return (
