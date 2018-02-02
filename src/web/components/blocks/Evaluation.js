@@ -3,13 +3,13 @@ import React from 'react';
 import get from 'lodash.get';
 
 import StyledSum from '../../primitives/Sum';
+import StyledSumResult from '../../primitives/SumResult';
 import Html from '../helper/Html';
 
 export default function Evaluation({
   data,
   testing,
   final,
-  heading,
   groupedSimple,
   happy,
   sad,
@@ -29,7 +29,7 @@ export default function Evaluation({
         <StyledSum groupedSimple={groupedSimple} final={final}>
           <div>
             {sad}
-            <span style={{ color: 'red' }}>
+            <span className="sad">
               {absTestedValue} {unit ? <Html inline text={unit} /> : null}
             </span>
           </div>
@@ -40,7 +40,7 @@ export default function Evaluation({
       <StyledSum groupedSimple={groupedSimple} final={final}>
         <div>
           {happy}
-          <span style={{ color: 'green' }}>
+          <span className="happy">
             {testedValue} {unit ? <Html inline text={unit} /> : null}
           </span>
         </div>
@@ -51,22 +51,20 @@ export default function Evaluation({
   if (testedValue < 0) {
     // sad case
     return (
-      <StyledSum groupedSimple={groupedSimple} final={final}>
+      <StyledSumResult>
         <div>
-          {heading}
-          <span style={{ color: 'red' }}>{sad}</span>
+          {sad}
         </div>
-      </StyledSum>
+      </StyledSumResult>
     );
   }
   // happy case
   return (
-    <StyledSum groupedSimple={groupedSimple} final={final}>
+    <StyledSumResult>
       <div>
-        {heading}
-        <span style={{ color: 'green' }}>{happy}</span>
+        {happy}
       </div>
-    </StyledSum>
+    </StyledSumResult>
   );
 }
 
@@ -75,7 +73,6 @@ Evaluation.defaultProps = {
   details: '',
   final: false,
   groupedSimple: false,
-  heading: '',
   minimum: undefined,
   operations: [],
   property: undefined,
@@ -89,7 +86,6 @@ Evaluation.propTypes = {
   data: PropTypes.object.isRequired,
   testing: PropTypes.string.isRequired,
   final: PropTypes.bool,
-  heading: PropTypes.string,
   groupedSimple: PropTypes.bool,
   happy: PropTypes.string.isRequired,
   sad: PropTypes.string.isRequired,
