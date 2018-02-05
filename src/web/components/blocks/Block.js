@@ -83,9 +83,6 @@ function getBlock(type) {
     case 'Table':
       return Table;
 
-    case 'Error':
-      return Table;
-
     case 'Signature':
       return Signature;
 

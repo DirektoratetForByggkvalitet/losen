@@ -202,6 +202,20 @@ export default function SchemaBuildingBlocks() {
         </li>
       </ul>
 
+      <H3>Switch</H3>
+      <p>
+        The switch was is a checkbox that can be used to change the value of other input types. It
+        is used in the wizard "How big can you build?" ("Hvor stort kan du bygge") to set a default
+        value to some input fields when this checkbox is switched on.
+      </p>
+
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>update</code>: An array of the id of the elements to update. Default value is 0.
+        </li>
+      </ul>
+
       <H3>Radio</H3>
       <p>
         Radio button group. Just like Checkbox, but only possible to select one. Properties are the
@@ -257,6 +271,55 @@ export default function SchemaBuildingBlocks() {
       <ul>
         <li>
           <code>information</code>: A notice that shows below the textarea.
+        </li>
+      </ul>
+
+      <H3>Sum</H3>
+      <p>A block that shows the sum of an expression</p>
+
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>values</code>: An array of the ids to the elements you want to sum. Default
+          operation is +.
+        </li>
+        <li>
+          <code>operations</code>: An array of operations to be used. First operation is between 0
+          and the first element so usually true. Then the operation for the next elements.
+        </li>
+        <li>
+          <code>unit</code>: Text appended after the value
+        </li>
+        <li>
+          <code>minimum</code>: If you want it to have a minimum set this value.
+        </li>
+      </ul>
+
+      <H3>Evaulation</H3>
+      <p>
+        A block that shows different information given an expression. It can be used with one value
+        and shows sad stat if that value is less than 0 or otherwise happy state. Can also compare
+        two numbers
+      </p>
+
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>testing</code>: The id of the element you want to evaluate or an array of the two
+          elements you want to evaulate.
+        </li>
+        <li>
+          <code>showValue</code>: Boolean value for if the number should be shown. Only shows
+          absoulte values.
+        </li>
+        <li>
+          <code>sad</code>: The text string to be used when sad state
+        </li>
+        <li>
+          <code>happy</code>: The text string to be used when happy state
+        </li>
+        <li>
+          <code>unit</code>: Text appended after the value
         </li>
       </ul>
 
@@ -336,8 +399,33 @@ export default function SchemaBuildingBlocks() {
         </li>
       </ul>
 
-      <H4>Summary</H4>
+      <H3>Summary</H3>
       <p>A summary of all input and errors in the wizard</p>
+
+      <H3>Information</H3>
+      <p>
+        Kinda like a text block but it has a nice icon before the text and it is dispalyed on the
+        result page.
+      </p>
+
+      <H3>Signature</H3>
+      <p>A nice signature line for documents that should be signed.</p>
+
+      <H3>Error</H3>
+      <p>A textblock that looks like a error message</p>
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>warning</code>: Mark the text block as a warning and will display it on the result
+          page. Default: false
+        </li>
+      </ul>
+
+      <H3>ErrorOk</H3>
+      <p>
+        Just like the error block but with a different look. We should look into refacotring but to
+        do that we need to figure out how we want these to really work.
+      </p>
     </div>
   );
 }
