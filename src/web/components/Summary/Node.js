@@ -10,6 +10,7 @@ import Html from '../helper/Html';
 import { NodeSummary as StyledNodeSummary } from '../../primitives/Summary';
 import ErrorIcon from '../graphics/ErrorIcon';
 import SoftError from './SoftError';
+import Information from './Information';
 
 const ignoreNodes = ['Text', 'Image'];
 const overrideValueSummary = { FetchOrg, Sum };
@@ -18,6 +19,9 @@ export default function NodeSummary({ node }) {
   const { children, currentValue, errorDescription, errors, heading, property, type } = node;
   if (type === 'Error') {
     return <SoftError children={children} />;
+  }
+  if (type === 'Information') {
+    return <Information text={node.text} />;
   }
   if (ignoreNodes.includes(type) || property === undefined) {
     return null;
