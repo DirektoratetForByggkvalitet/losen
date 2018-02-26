@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "0.21.16",
+  "version": "0.22.0",
   "description": "Losen - a flexible wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "tdd": "jest --watch",
-    "lint": "eslint . --cache --cache-location=.cache/eslint --ext .jsx,.js",
+    "lint": "eslint . --ext .jsx,.js",
     "build": "NODE_ENV=production webpack",
     "dev": "webpack --watch",
     "start": "npm run dev",
@@ -45,7 +45,7 @@
       "email": "hei@elisejakob.no"
     }
   ],
-  "license": "SEE LICENSE IN LICENCE.md",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/netliferesearch/losen/issues"
   },
