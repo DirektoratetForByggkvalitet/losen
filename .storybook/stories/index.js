@@ -28,7 +28,8 @@ storiesOf('Schema', module)
   .add('Branching', require('./schema/branching').default)
   .add('Validation', require('./schema/validation').default)
   .add('Translating', require('./schema/translating').default)
-  .add('Data export', require('./schema/dataExport').default);
+  .add('Data export', require('./schema/dataExport').default)
+  .add('Computed properties', require('./schema/computedProps').default)
 
 storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)
