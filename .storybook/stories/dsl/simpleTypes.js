@@ -78,6 +78,13 @@ export default function DslSimpleTypes() {
         value.
       </p>
       <pre>{"{ field: 'some.field', operartor: 'not' }"}</pre>
+
+      <H3>is</H3>
+      <p>
+        Expression describing a check for a property that must have a truthy
+        value.
+      </p>
+      <pre>{"{ field: 'some.field', operartor: 'is' }"}</pre>
     </div>
   );
 }
