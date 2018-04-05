@@ -368,6 +368,48 @@ describe('DSL parser', () => {
     });
   });
 
+  describe('not', () => {
+    const validatorFunc = buildValidatorForSimpleExpression({
+      field: 'apekatt',
+      operator: 'not',
+    });
+
+    it('returns error when condition is not met', () => {
+      expect(validatorFunc({ apekatt: 5 })).toEqual({
+        valid: false,
+        errors: [[{ field: 'apekatt' }, 'skal være usann']],
+      });
+    });
+
+    it('succeeds when condition is met', () => {
+      expect(validatorFunc({ })).toEqual({
+        valid: true,
+        errors: [],
+      });
+    });
+  });
+
+  describe('is', () => {
+    const validatorFunc = buildValidatorForSimpleExpression({
+      field: 'apekatt',
+      operator: 'is',
+    });
+
+    it('returns error when condition is not met', () => {
+      expect(validatorFunc({ })).toEqual({
+        valid: false,
+        errors: [[{ field: 'apekatt' }, 'skal være sann']],
+      });
+    });
+
+    it('succeeds when condition is met', () => {
+      expect(validatorFunc({ apekatt: 4 })).toEqual({
+        valid: true,
+        errors: [],
+      });
+    });
+  });
+
   describe('validateComplexExpression', () => {
     describe('or expression', () => {
       const validatorFunc = buildValidatorForComplexExpression({
