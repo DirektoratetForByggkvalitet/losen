@@ -43,6 +43,7 @@ class ExportData extends Component {
     try {
       document.execCommand('copy');
     } catch (err) {
+      // eslint-disable-next-line no-console
       console.warn('Could not copy to clipboard', err);
     }
 
