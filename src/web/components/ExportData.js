@@ -65,15 +65,17 @@ class ExportData extends Component {
     this.setState({ copied: true });
     setTimeout(() => {
       this.setState({ copied: false });
-    }, 20000);
+    }, 2000);
   };
 
   render() {
-    const buttonText = this.state.copied ? 'Lagret til utklippstavlen!' : 'Kopier svarene til utklippstavlen';
+    const buttonText = this.state.copied ? 'Svarene er lagret til utklippstavlen!' : 'Kopier svarene til utklippstavlen';
 
     return (
       <div>
-        <MainButton onClick={this.copyToClipboard}>{buttonText}</MainButton>
+        <MainButton copied={this.state.copied} onClick={this.copyToClipboard}>
+          {buttonText}
+        </MainButton>
       </div>
     );
   }
