@@ -46,10 +46,13 @@ class Modal extends Component {
   handleCloseModal = () => this.setState({ showModal: false });
 
   handleRestart = () => {
-    this.props.resetData();
     this.setState({ showModal: false });
-    this.props.showIntro();
-  };
+
+    setTimeout(() => {
+      this.props.resetData();
+      this.props.showIntro();
+    }, 0);
+  }
 
   render() {
     return (
