@@ -6,7 +6,6 @@ import { getData } from '../utils/selectors';
 import { trackEvent } from '../utils/tracking';
 
 import { MainButton } from '../primitives/Button';
-import { Textarea } from '../primitives/Input';
 
 class ExportData extends Component {
   static propTypes = {
@@ -17,31 +16,52 @@ class ExportData extends Component {
     data: null,
   };
 
-  state = { open: false };
-
-  selectText = () => this.textarea.select();
+  state = {
+    open: false,
+    copied: false,
+    json: JSON.stringify(this.props.data, null, 2),
+  };
 
   showExportData = () => {
     trackEvent('export-data');
     this.setState({ open: true });
   };
 
-  render() {
-    const { data } = this.props;
+  // copy json result from forms to clipboard
+  copyToClipboard = () => {
+    // create a temporary (and hidden) element for text selection
+    const temp = document.createElement('textarea');
+    const text = document.createTextNode(this.state.json);
+    temp.appendChild(text);
+    document.body.appendChild(temp);
 
-    const json = JSON.stringify(data, null, 2);
-    const lines = json.split(/\n/).length;
+    // select textarea to enable copying
+    temp.focus();
+    temp.select();
+
+    // copy json
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      console.warn('Could not copy to clipboard', err);
+    }
+
+    // clean up · remove temporary element
+    temp.remove();
+
+    // let user know that json is copied, for some time
+    this.setState({ copied: true });
+    setTimeout(() => {
+      this.setState({ copied: false });
+    }, 20000);
+  };
+
+  render() {
+    const buttonText = this.state.copied ? 'Lagret til utklippstavlen!' : 'Kopier svarene til utklippstavlen';
 
     return (
       <div>
-        <Textarea
-          rows={lines}
-          innerRef={textarea => (this.textarea = textarea)}
-          onClick={this.selectText}
-          value={json}
-          read-only
-        />
-        <MainButton>Kopier svar</MainButton>
+        <MainButton onClick={this.copyToClipboard}>{buttonText}</MainButton>
       </div>
     );
   }
