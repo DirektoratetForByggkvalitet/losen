@@ -18,17 +18,22 @@ export const MainButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
-  ${props =>
-    props.copied
-      ? `
-      background: lime;
-      color: deeppink;
-      `
-      : ''}
   &:hover, &:focus {
     background: ${({ styles }) => styles.color.dark};
     color: white;
   }
+  ${props =>
+    props.copied
+      ? `
+      background: ${props.styles.color.green};
+      &:hover {
+        background: ${props.styles.color.green};
+      }
+      &:before {
+        content: "\\2713  ";
+      }
+      `
+      : ''}
   @media screen and (max-width: 400px) {
     width: 100%;
   }
