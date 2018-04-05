@@ -22,6 +22,17 @@ class ExportData extends Component {
     json: JSON.stringify(this.props.data, null, 2),
   };
 
+  componentDidMount = () => {
+    // polyfill remove any elem in DOM 
+    if (!Element.prototype.remove) {
+      Element.prototype.remove = function remove() {
+        if (this.parentNode) {
+          this.parentNode.removeChild(this);
+        }
+      };
+    }
+  }
+
   showExportData = () => {
     trackEvent('export-data');
     this.setState({ open: true });
