@@ -18,6 +18,13 @@ export const MainButton = injectStyles(styled.button`
   margin-bottom: 10px;
   position: relative;
   transition: background 0.1s ease-in-out;
+  ${props =>
+    props.copied
+      ? `
+      background: lime;
+      color: deeppink;
+      `
+      : ''}
   &:hover, &:focus {
     background: ${({ styles }) => styles.color.dark};
     color: white;

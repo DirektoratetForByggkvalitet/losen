@@ -73,13 +73,8 @@ function Result({
       ))}
 
       <Export exporter={exporter}>
-        <MainButton type="button" onClick={() => window.print()}>
-          Skriv ut
-          {exporter && exports[exporter] ? <div>
-            <br />
-            <ExportData exporter={exports[exporter]} />
-          </div> : null}
-        </MainButton>
+        {exporter && exports[exporter] ? <ExportData exporter={exports[exporter]} /> : null}
+        <MainButton type="button" onClick={() => window.print()}>Skriv ut</MainButton>
       </Export>
     </Main>
   );

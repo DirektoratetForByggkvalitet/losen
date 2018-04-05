@@ -41,7 +41,7 @@ class ExportData extends Component {
           value={json}
           read-only
         />
-        <MainButton>Gå til altinn</MainButton>
+        <MainButton>Kopier svar</MainButton>
       </div>
     );
   }
