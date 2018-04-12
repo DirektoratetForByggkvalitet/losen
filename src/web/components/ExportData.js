@@ -23,7 +23,7 @@ class ExportData extends Component {
   };
 
   componentDidMount = () => {
-    // polyfill remove any elem in DOM 
+    // polyfill for .remove()
     if (!Element.prototype.remove) {
       Element.prototype.remove = function remove() {
         if (this.parentNode) {

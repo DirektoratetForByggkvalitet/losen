@@ -105,12 +105,14 @@ export const reduceBranches = state => (res, node) => {
     return [...res, node];
   }
 
+  // find a branch with a test that evaluates to true
   const selectedBranch = node.branches.find(
     branch => parseExpression(branch.test)(state[NAME]).valid,
   );
 
+  // get your result + the new stuff
   if (selectedBranch) {
-    return [...res, ...selectedBranch.children];
+    return [...res, ...selectedBranch.children.reduce(reduceBranches(state), [])];
   }
 
   return res;

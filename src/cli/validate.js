@@ -33,8 +33,8 @@ if (!errors.length) {
   console.log('🌈  The schema is ok');
 } else {
   console.log('🚒  There seems to be something wrong with your schema 👇\n');
-  errors.forEach(({ path = [], error }) => {
-    console.log(chalk`{red.bold ${path.join('.')}}:
+  errors.forEach(({ path = [], id, error }) => {
+    console.log(chalk`{red.bold ${path.join('.')} ${id ? `(${id})` : ''}}:
 ${error}
 `);
   });

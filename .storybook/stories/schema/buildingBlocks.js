@@ -42,10 +42,10 @@ export default function SchemaBuildingBlocks() {
       <H3>Properties</H3>
       <ul>
         <li>
-          <code>title</code>: The title of the page. <strong>Required</strong>
+          <code>heading</code>: The heading of the page. <strong>Required</strong>
         </li>
         <li>
-          <code>lead</code>: A subtitle or lead text for the page. <strong>Required</strong>
+          <code>lead</code>: A subtitle or lead text for the page. <strong>Optional</strong>
         </li>
         <li>
           <code>children</code>: An array of nodes to show for this page. The nodes can be of any

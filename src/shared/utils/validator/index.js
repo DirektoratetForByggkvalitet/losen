@@ -3,7 +3,7 @@ import parseExpression from '../dsl';
 const inputRequiredProperties = ['id', 'property', 'heading'];
 
 const requiredProperties = {
-  Page: ['id', 'heading', 'lead', 'children'],
+  Page: ['id', 'heading', 'children'],
   Result: ['id', 'heading'],
   Group: ['id', 'children'],
   Answer: ['id', 'heading', 'value'],
@@ -37,7 +37,7 @@ function assertProperties(object, path, properties) {
 
   (properties || []).forEach((property) => {
     if (typeof object[property] === 'undefined') {
-      errors = [...errors, { path, error: `${object.type} is missing the ${property} property` }];
+      errors = [...errors, { path, id: object.id, error: `${object.type} is missing the ${property} property` }];
     }
   });
 
