@@ -1,6 +1,6 @@
 import setWith from 'lodash.setwith';
 
-import { SET_DATA, RESET_DATA } from './actions';
+import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL } from './actions';
 import processComputed from '../utils/process-computed';
 
 const initialState = {};
@@ -13,7 +13,7 @@ export function applyComputed(schema, state) {
   };
 }
 
-// mutator that sets a value on the state
+// mutator that sets a value in data and returns the new state
 export function setDataUpdate(schema, state, { payload }) {
   return applyComputed(schema, setWith(
     { ...state },
@@ -32,6 +32,9 @@ export default schema => (state = applyComputed(schema, initialState), action) =
 
     case RESET_DATA:
       return applyComputed(schema, initialState);
+
+    case SHOW_RESET_MODAL:
+      return { ...state, $showResetModal: action.payload.show };
 
     default:
       return state;

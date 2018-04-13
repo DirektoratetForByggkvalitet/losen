@@ -5,7 +5,14 @@ import { bindActionCreators } from 'redux';
 import autobind from 'react-autobind';
 import Modal from './helper/Modal';
 
-import { getPages, getNodeTitles, getData } from '../utils/selectors';
+import { NAME } from '../state';
+
+import {
+  getPages,
+  getNodeTitles,
+  getData,
+} from '../utils/selectors';
+
 import { setData } from '../state/actions';
 import Nav from './Nav';
 import Page from './Page';
@@ -54,13 +61,12 @@ class Wizard extends Component {
   constructor(props) {
     super(props);
     autobind(this);
+
+    const { $computed, ...wizardData } = props.data[NAME] || {};
+
+    this.state = { page: 0, result: false, showResetModal: !!Object.keys(wizardData).length };
     this.trackPage(true);
   }
-
-  state = {
-    page: 0,
-    result: false,
-  };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
@@ -125,14 +131,27 @@ class Wizard extends Component {
   previousPage = () => this.changePage(-1);
 
   render() {
-    const { debug, exports, schema, showIntro, styles, tableOfContents, wizard } = this.props;
+    const {
+      debug,
+      exports,
+      schema,
+      showIntro,
+      styles,
+      tableOfContents,
+      wizard,
+    } = this.props;
+
+    const { showResetModal } = this.state;
+
     const pageIndex = this.getCurrentIndex();
     const page = schema[pageIndex];
+    const lastPage = pageIndex + 1 === schema.length;
+    const firstPage = pageIndex === 0;
 
     return (
       <StyleProvider styles={styles}>
         <StyledWizard>
-          <Modal showIntro={showIntro} />
+          {showResetModal && <Modal showIntro={showIntro} />}
           <Grid>
             <SkipLink />
             <Nav
@@ -156,11 +175,12 @@ class Wizard extends Component {
               />
             ) : (
               <Page
+                firstPage={firstPage}
+                lastPage={lastPage}
                 nextPage={this.nextPage}
                 previousPage={this.previousPage}
                 debug={debug}
                 pageid={page.id}
-                firstPage={schema[0].id === page.id}
                 {...page}
               />
             )}

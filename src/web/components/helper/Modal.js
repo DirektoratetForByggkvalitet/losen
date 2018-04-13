@@ -41,8 +41,6 @@ class Modal extends Component {
     showModal: true,
   };
 
-  componentDidMount = () => (this.state.showModal = false);
-
   handleCloseModal = () => this.setState({ showModal: false });
 
   handleRestart = () => {

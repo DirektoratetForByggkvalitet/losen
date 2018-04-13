@@ -15,6 +15,7 @@ export default function Page({
   debug,
   details,
   firstPage,
+  lastPage,
   heading,
   lead,
   nextPage,
@@ -22,14 +23,6 @@ export default function Page({
   previousPage,
   summary,
 }) {
-  let navigation = (
-    <Navigation page={pageid} hasPrevious previousPage={previousPage} hasNext nextPage={nextPage} />
-  );
-
-  if (firstPage) {
-    navigation = <Navigation page={pageid} hasNext nextPage={nextPage} />;
-  }
-
   return (
     <Main debug={debug} data-id={pageid} id="main">
       <H1>{heading}</H1>
@@ -38,7 +31,16 @@ export default function Page({
       </Lead>
       {summary && <SummaryDetails summary={summary} details={details} />}
       {children.map(block => <Block key={block.property} {...block} />)}
-      {navigation}
+
+      {(!firstPage || !lastPage) && (
+        <Navigation
+          page={pageid}
+          hasPrevious={!firstPage}
+          previousPage={previousPage}
+          hasNext={!lastPage}
+          nextPage={nextPage}
+        />
+      )}
     </Main>
   );
 }
@@ -56,6 +58,7 @@ Page.propTypes = {
   debug: PropTypes.bool,
   details: PropTypes.string,
   firstPage: PropTypes.bool.isRequired,
+  lastPage: PropTypes.bool.isRequired,
   heading: PropTypes.string,
   lead: PropTypes.string,
   nextPage: PropTypes.func.isRequired,

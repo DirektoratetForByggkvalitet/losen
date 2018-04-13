@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -28,6 +27,4 @@ NavReset.propTypes = {
   showIntro: PropTypes.func.isRequired,
 };
 
-export default connect(null, dispatch =>
-  bindActionCreators({ resetData }, dispatch),
-)(NavReset);
+export default connect(null, { resetData })(NavReset);
