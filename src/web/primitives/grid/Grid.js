@@ -8,6 +8,7 @@ const Grid = injectStyles(styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 100px;
   @media screen and (max-width: 900px) {
         display: block;
   }
