@@ -30,7 +30,7 @@ export default class Switch extends Component {
 
   handleChange = (property, value) => (e) => {
     if (e.target.checked && this.props.update) {
-      this.props.update.map(item => this.props.setData(`${item}`, 0));
+      this.props.update.map(item => this.props.setData(`${item}`));
     }
     this.props.setData(`${property}.${value}`, e.target.checked);
   }
