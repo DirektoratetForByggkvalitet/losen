@@ -41,7 +41,7 @@ export const SpecificBlock = injectStyles(styled.div`
     : ' '} ${props =>
   props.groupedSimple
     ? `
-  margin-top: 36px;
+  margin-bottom: 26px;
   padding: 0;
   background: none;
   &:nth-child(even) {
