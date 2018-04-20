@@ -77,27 +77,34 @@ export const parseTableCells = (state, translations) => (node) => {
  */
 export const reduceOptionMessages = state => messages =>
   (messages || [])
-    .filter((message) => {
-      if (!message.test) {
-        return true;
+    .filter(({ show, hide, hidden }) => {
+      if (show) {
+        return parseExpression(show)(state[NAME]).valid;
       }
 
-      return parseExpression(message.test)(state[NAME]).valid;
+      if (hide || hidden) {
+        return !parseExpression(hide || hidden)(state[NAME]).valid;
+      }
+
+      return true;
     })
     .slice(0, 1);
 
-export const filterSchemaNodes = state => (node) => {
-  if (node.type === 'Branch') {
+export const filterSchemaNodes = state => ({ type, show, hide, hidden }) => {
+  if (type === 'Branch') {
     return true;
   }
 
-  // if no expression is specified that could hide this node, exit now
-  if (!node.hidden) {
-    return true;
+  if (show) {
+    return parseExpression(show)(state[NAME]).valid;
   }
 
-  // parse and test expression. if result is falsy, we're not hiding
-  return !parseExpression(node.hidden)(state[NAME]).valid;
+  if (hide || hidden) {
+    const expression = hide || hidden;
+    return !parseExpression(expression)(state[NAME]).valid;
+  }
+
+  return true;
 };
 
 export const reduceBranches = state => (res, node) => {
@@ -185,12 +192,16 @@ export const reduceOptions = (state, translations) => (node) => {
   return {
     ...node,
     options: node.options
-      .filter(({ hidden }) => {
-        if (hidden === undefined) {
-          return true;
+      .filter(({ show, hide, hidden }) => {
+        if (show) {
+          return parseExpression(show)(state[NAME]).valid;
         }
 
-        return !parseExpression(hidden)(state[NAME]).valid;
+        if (hide || hidden) {
+          return parseExpression(hide || hidden)(state[NAME]).valid;
+        }
+
+        return true;
       })
       .map(option => ({
         ...option,

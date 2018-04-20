@@ -54,8 +54,8 @@ describe('reduce-wizard', () => {
                   {
                     test: { field: 'foo', operator: 'eq', value: 'bar' },
                     children: [
-                      { type: 'Input', hidden: { field: 'foo', operator: 'neq', value: 'bar' } },
-                      { type: 'Result', heading: 'The other end' },
+                      { type: 'Input', hide: { field: 'foo', operator: 'neq', value: 'bar' } },
+                      { type: 'Result', show: { field: 'foo', operator: 'eq', value: 'bar' }, heading: 'The other end' },
                     ],
                   },
                   {
@@ -92,7 +92,7 @@ describe('reduce-wizard', () => {
               {
                 currentValue: undefined,
                 type: 'Input',
-                hidden: { field: 'foo', operator: 'neq', value: 'bar' },
+                hide: { field: 'foo', operator: 'neq', value: 'bar' },
                 errors: { disabled: [], validation: {}, required: true },
                 errorDescription: '',
               },
@@ -100,7 +100,15 @@ describe('reduce-wizard', () => {
           },
         ],
       },
-      { heading: 'The other end', type: 'Result' },
+      {
+        heading: 'The other end',
+        type: 'Result',
+        show: {
+          field: 'foo',
+          operator: 'eq',
+          value: 'bar',
+        },
+      },
     ]);
   });
 

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import autobind from 'react-autobind';
-import Modal from './helper/Modal';
 
+import Modal from './helper/Modal';
 import { NAME } from '../state';
 
 import {
@@ -21,6 +21,7 @@ import Result from './Result';
 import SkipLink from './helper/SkipLink';
 import StyleProvider from './StyleProvider';
 import track from '../utils/tracking';
+import validateSchema from '../../shared/utils/validator';
 
 import Grid from '../primitives/grid/Grid';
 import StyledWizard from '../primitives/Wizard';
@@ -66,6 +67,8 @@ class Wizard extends Component {
 
     this.state = { page: 0, result: false, showResetModal: !!Object.keys(wizardData).length };
     this.trackPage(true);
+
+    this.helper();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -99,6 +102,26 @@ class Wizard extends Component {
       0,
       this.props.schema.findIndex(({ id }) => id === getData(this.props.data).page),
     );
+  }
+
+  helper() {
+    if (!console || window.location.hostname !== 'localhost') {
+      return;
+    }
+
+    const errors = validateSchema(this.props.wizard);
+
+    if (!errors.length) {
+      console.log('🌈  The schema is ok');
+    } else {
+      console.warn('🚒  There seems to be something wrong with your schema 👇\n');
+
+      errors.forEach(({ path = [], id, error }) => {
+        console.warn(`${path.join('.')}${id ? ` (${id})` : ''}:
+${error}
+    `);
+      });
+    }
   }
 
   trackPage(first) {

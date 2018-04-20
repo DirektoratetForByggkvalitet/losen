@@ -28,9 +28,9 @@ export default function SchemaBuildingBlocks() {
         <code>details</code>: Accepts html code. Se comment for <code>summary</code>.
       </p>
       <p>
-        Also, the <code>hidden</code> property is available for all input and output types, as well
-        as Select/Checkbox/Radio options. The hidden property is a logical expression used to
-        determine whether or not to hide the item in question.
+        Also, the <code>hide</code> and <code>show</code> properties is available for all input and
+        output types, as well as Select/Checkbox/Radio options. The properties are logical expressions
+        used to determine if the item in question should be shown or not.
       </p>
 
       <H2>Page</H2>
@@ -130,9 +130,11 @@ export default function SchemaBuildingBlocks() {
           <code>heading</code>: The label for this input field. <strong>Required</strong>
         </li>
         <li>
-          <code>test</code>: A logical test that must evaluate to a true in order for the field to
-          be available. If the test evaluates to a falsy value, the field will still show, but it
-          will be disabled and a message will explain what prerequisites has not been met.
+          <code>validator</code>: An object containing two properties: <code>test</code>; a logical 
+          expression that must evaluate to a true in order for the field to be available. If the test 
+          evaluates to a falsy value, the field will still show, but it will be disabled and a message 
+          will explain what prerequisites has not been met. The message is defined with the 
+          <code>error</code> property in the validator object.
         </li>
         <li>
           <code>optional</code>: Mark input as optional. By default all fields are required.

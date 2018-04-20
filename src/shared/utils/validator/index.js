@@ -18,6 +18,22 @@ const requiredProperties = {
   TextArea: inputRequiredProperties,
 };
 
+const deprecatedProperties = {
+  Page: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Result: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Group: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Answer: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Image: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Text: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Branch: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Checkbox: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Radio: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Select: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Input: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Number: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  TextArea: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+};
+
 /**
  * Validate that the metadata is ok
  */
@@ -37,7 +53,29 @@ function assertProperties(object, path, properties) {
 
   (properties || []).forEach((property) => {
     if (typeof object[property] === 'undefined') {
-      errors = [...errors, { path, id: object.id, error: `${object.type} is missing the ${property} property` }];
+      errors = [...errors, { path, id: object.id, error: `${object.type} is missing the '${property}' property` }];
+    }
+  });
+
+  return errors;
+}
+
+/**
+ * Check for deprecated properties on the node. Returns array of errors
+ */
+function assertDeprecations(object, path, properties) {
+  let errors = [];
+
+  (properties || []).forEach(({ property, use }) => {
+    if (typeof object[property] !== 'undefined') {
+      errors = [
+        ...errors,
+        {
+          path,
+          id: object.id,
+          error: `${object.type} is using the '${property}' property. It's deprecated and will be removed.${use ? ` Use '${use}' instead` : ''}.`,
+        },
+      ];
     }
   });
 
@@ -58,7 +96,11 @@ function validateNode(node, path, ancestors) {
     errors = [...errors, { path, error: 'Encountered a nested page. Page is only allowed at the top level' }];
   }
 
-  errors = [...errors, ...assertProperties(node, path, requiredProperties[node.type])];
+  errors = [
+    ...errors,
+    ...assertProperties(node, path, requiredProperties[node.type]),
+    ...assertDeprecations(node, path, deprecatedProperties[node.type]),
+  ];
 
   // Parse logical expressions
   ['hidden', 'disabled', 'test'].forEach((field) => {
