@@ -112,11 +112,14 @@ class Wizard extends Component {
     const errors = validateSchema(this.props.wizard);
 
     if (!errors.length) {
+      // eslint-disable-next-line no-console
       console.log('🌈  The schema is ok');
     } else {
+      // eslint-disable-next-line no-console
       console.warn('🚒  There seems to be something wrong with your schema 👇\n');
 
       errors.forEach(({ path = [], id, error }) => {
+        // eslint-disable-next-line no-console
         console.warn(`${path.join('.')}${id ? ` (${id})` : ''}:
 ${error}
     `);
