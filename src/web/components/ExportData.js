@@ -69,7 +69,7 @@ class ExportData extends Component {
   };
 
   render() {
-    const buttonText = this.state.copied ? 'Svarene er lagret til utklippstavlen!' : 'Kopier svarene til utklippstavlen';
+    const buttonText = this.state.copied ? 'Svarene er lagret på utklippstavlen!' : 'Kopier svarene til et fagsystem';
 
     return (
       <div>
