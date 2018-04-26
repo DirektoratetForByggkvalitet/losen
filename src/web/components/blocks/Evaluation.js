@@ -52,7 +52,7 @@ export default function Evaluation({
     // sad case
     return (
       <StyledSumResult>
-        <div>
+        <div className="sad">
           {sad}
         </div>
       </StyledSumResult>
@@ -61,7 +61,7 @@ export default function Evaluation({
   // happy case
   return (
     <StyledSumResult>
-      <div>
+      <div className="happy">
         {happy}
       </div>
     </StyledSumResult>

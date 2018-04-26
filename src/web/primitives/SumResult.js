@@ -11,6 +11,12 @@ const StyledSumResult = injectStyles(styled.div`
     font-size: 28px;
     font-weight: bold;
     line-height: 1.3;
+    .sad {
+        color: ${({ styles }) => styles.color.red};
+    }
+    .happy {
+        color: ${({ styles }) => styles.color.green};
+    }
     @media screen and (max-width: 900px) {
         width: 100%;
         font-size: 20px;
