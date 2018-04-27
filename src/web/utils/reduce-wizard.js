@@ -107,7 +107,7 @@ export const filterSchemaNodes = state => ({ type, show, hide, hidden }) => {
   return true;
 };
 
-export const reduceBranches = state => (res, node) => {
+export const reduceBranches = (state, nodeTitles, translations = {}, nodeMap) => (res, node) => {
   if (node.type !== 'Branch') {
     return [...res, node];
   }
@@ -119,13 +119,16 @@ export const reduceBranches = state => (res, node) => {
 
   // get your result + the new stuff
   if (selectedBranch) {
-    return [...res, ...selectedBranch.children.reduce(reduceBranches(state), [])];
+    return [
+      ...res,
+      ...reduceWizard(selectedBranch.children, state, nodeTitles, translations, nodeMap),
+    ];
   }
 
   return res;
 };
 
-export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node) => {
+export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap) => (node) => {
   const currentValue = node.property ? getNodeValue(node.property, state) : undefined;
 
   const errors = { disabled: [], validation: {} };
@@ -169,7 +172,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
       ...translatedProps,
       ...(node.children && node.children.length
         ? {
-          children: reduceWizard(node.children, state, nodeTitles, translations),
+          children: reduceWizard(node.children, state, nodeTitles, translations, nodeMap),
         }
         : {}),
     };
@@ -184,7 +187,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}) => (node
   };
 };
 
-export const reduceOptions = (state, translations) => (node) => {
+export const reduceOptions = (state, translations, nodeMap) => (node) => {
   if (!node.options) {
     return node;
   }
@@ -192,6 +195,7 @@ export const reduceOptions = (state, translations) => (node) => {
   return {
     ...node,
     options: node.options
+      .map(replaceReferences(nodeMap))
       .filter(({ show, hide, hidden }) => {
         if (show) {
           return parseExpression(show)(state[NAME]).valid;
@@ -244,12 +248,47 @@ export const liftChildrenBranchPages = (res, node) => {
   return [...res, node];
 };
 
-export default function reduceWizard(schema, state, nodeTitles, translations = {}) {
+// Replace Reference nodes with the node they referenced
+export const replaceReferences = nodeMap => (node) => {
+  if (node.type !== 'Reference') {
+    return node;
+  }
+
+  if (!node.nodeId || !nodeMap[node.nodeId]) {
+    return node;
+  }
+
+  return nodeMap[node.nodeId];
+};
+
+// Build a flat object with all the nodes in the schema that have an ID
+export const buildNodeMap = schema => schema.reduce((res, node) => ({
+  ...res,
+  ...(node.id ? { [node.id]: node } : {}),
+  ...(node.children ? buildNodeMap(node.children) : {}),
+  ...(node.options ? buildNodeMap(node.options) : {}),
+  ...(node.branches
+    ? buildNodeMap(node.branches.reduce((children, branch) => [
+      ...children,
+      ...branch.children,
+    ], []))
+    : {}
+  ),
+}), {});
+
+export default function reduceWizard(schema, state, nodeTitles, translations = {}, nodeMap = null) {
+  let schemaNodeMap = nodeMap;
+
+  if (!schemaNodeMap) {
+    schemaNodeMap = buildNodeMap(schema);
+  }
+
   return schema
-    .reduce(reduceBranches(state), [])
+    .map(replaceReferences(schemaNodeMap))
+    .reduce(reduceBranches(state, nodeTitles, translations, schemaNodeMap), [])
     .filter(filterSchemaNodes(state))
     .map(parseTableCells(state, translations))
-    .map(mapWizardChildren(state, nodeTitles, translations))
-    .map(reduceOptions(state, translations))
+    .map(mapWizardChildren(state, nodeTitles, translations, schemaNodeMap))
+    .map(reduceOptions(state, translations, schemaNodeMap))
     .reduce(liftChildrenBranchPages, []);
 }
