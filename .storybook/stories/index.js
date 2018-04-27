@@ -30,6 +30,7 @@ storiesOf('Schema', module)
   .add('Translating', require('./schema/translating').default)
   .add('Data export', require('./schema/dataExport').default)
   .add('Computed properties', require('./schema/computedProps').default)
+  .add('References', require('./schema/references').default)
 
 storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)

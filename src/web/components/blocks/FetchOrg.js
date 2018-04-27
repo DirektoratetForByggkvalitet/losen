@@ -203,7 +203,8 @@ export default class FetchOrg extends Component {
           <div>
             {loading && <Loading>Laster inn data</Loading>}
             {!loading &&
-              get(this.props, 'currentValue.dataSG', false) && (
+              get(this.props, 'currentValue.dataSG', false) &&
+              (
                 <Notice>
                   <H3>
                     <VariableText text={SGheading} data={this.props.currentValue} />
@@ -211,7 +212,8 @@ export default class FetchOrg extends Component {
                   <ApprovalAreas areas={get(this.props, 'currentValue.validApprovalAreas')} />
                   <VariableText text={SGtext} data={this.props.currentValue} />
                 </Notice>
-              )}
+              )
+            }
             {!loading &&
               !get(this.props, 'currentValue.dataSG', false) &&
               get(this.props, 'orgid', false) && <H3>{invalidapproval}</H3>}
