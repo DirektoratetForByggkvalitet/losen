@@ -60,6 +60,7 @@ Text.propTypes = {
 Text.defaultProps = {
   debug: false,
   heading: '',
+  text: '',
   id: null,
   printhide: false,
   printonly: false,

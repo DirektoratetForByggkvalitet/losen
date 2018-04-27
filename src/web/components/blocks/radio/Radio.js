@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import Fieldset from '../../../primitives/Fieldset';
 import Legend from '../../../primitives/Legend';
+import Text from '../Text';
 import RadioInput from './RadioInput';
 
 export default class Radio extends Component {
@@ -11,6 +12,7 @@ export default class Radio extends Component {
     debug: PropTypes.bool,
     disabled: PropTypes.bool,
     heading: PropTypes.string,
+    text: PropTypes.string,
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
@@ -24,22 +26,16 @@ export default class Radio extends Component {
     text: '',
   };
 
-  handleChange = (property, value) => () =>
-    this.props.setData(`${property}`, value);
+  handleChange = (property, value) => () => this.props.setData(`${property}`, value);
 
   render() {
-    const {
-      currentValue,
-      debug,
-      disabled,
-      heading,
-      options,
-      property,
-    } = this.props;
+    const { currentValue, debug, disabled, heading, text, options, property } = this.props;
 
     return (
       <Fieldset>
         <Legend>{heading}</Legend>
+        <Text>{text}</Text>
+
         {options.map((option) => {
           const isDisabled = disabled || option.disabled;
 
@@ -53,9 +49,7 @@ export default class Radio extends Component {
               data-id={option.id}
               disabled={isDisabled}
               checked={currentValue === option.value}
-              onChange={
-                !isDisabled && this.handleChange(property, option.value)
-              }
+              onChange={!isDisabled && this.handleChange(property, option.value)}
             />
           );
         })}
