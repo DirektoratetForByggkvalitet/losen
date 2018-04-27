@@ -5,9 +5,108 @@ import reduceWizard, {
   liftChildrenBranchPages,
   mapWizardChildren,
   reduceBranches,
+  buildNodeMap,
 } from '../reduce-wizard';
 
 describe('reduce-wizard', () => {
+  it.only('replaces references', () => {
+    const wizard = [
+      {
+        type: 'Page',
+        children: [
+          {
+            type: 'Branch',
+            branches: [
+              {
+                test: {
+                  field: 'apekatt',
+                  operator: 'neq',
+                  value: 'hipp hopp ostepop',
+                },
+                children: [
+                  { type: 'Input' },
+                  { type: 'Reference', nodeId: 'resultPage' },
+                  {
+                    type: 'Radio',
+                    options: [
+                      { heading: 'Ostepop', id: 'ostepop' },
+                      { heading: 'Godt & Blanda', id: 'diggsnop' },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          { type: 'Input', id: 'apekatt' },
+        ],
+      },
+      {
+        type: 'Result',
+        id: 'resultPage',
+        heading: 'Foobar',
+        children: [
+          { type: 'Reference', nodeId: 'apekatt' },
+          {
+            type: 'Radio',
+            options: [
+              { type: 'Reference', nodeId: 'diggsnop' },
+            ],
+          },
+        ],
+      },
+    ];
+
+    expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
+      {
+        type: 'Page',
+        children: [
+          {
+            type: 'Input',
+            errors: {
+              disabled: [],
+              validation: {},
+              required: true,
+            },
+            errorDescription: '',
+          },
+        ],
+      },
+      {
+        type: 'Result',
+        id: 'resultPage',
+        heading: 'Foobar',
+        children: [
+          {
+            type: 'Input',
+            id: 'apekatt',
+            errors: {
+              disabled: [],
+              validation: {},
+              required: true,
+            },
+            errorDescription: '',
+          },
+          {
+            type: 'Radio',
+            options: [
+              {
+                heading: 'Godt & Blanda',
+                id: 'diggsnop',
+                messages: [],
+              },
+            ],
+            errors: {
+              disabled: [],
+              validation: {},
+              required: true,
+            },
+            errorDescription: '',
+          },
+        ],
+      },
+    ]);
+  });
+
   it('removes empty pages', () => {
     const wizard = [
       {
@@ -398,6 +497,7 @@ describe('reduce-wizard', () => {
     });
   });
 
+
   describe('#mapWizardChildren', () => {
     it('processes child nodes recursively', () => {
       const node = {
@@ -480,6 +580,124 @@ describe('reduce-wizard', () => {
         },
         { type: 'Result', heading: 'Hey yo' },
       ]);
+    });
+  });
+
+  describe('#buildNodeMap', () => {
+    it('ignores refs with no nodeId property', () => {
+      const raw = [
+        { type: 'Page' },
+        { type: 'Page', id: 'apekatt' },
+      ];
+
+      expect(buildNodeMap(raw)).toEqual({ apekatt: { type: 'Page', id: 'apekatt' } });
+    });
+
+    it('includes child node of node ignored because of missing id', () => {
+      const raw = [
+        {
+          type: 'Page',
+          children: [
+            { type: 'Input', id: 'apekatt' },
+          ],
+        },
+      ];
+
+      expect(buildNodeMap(raw)).toEqual({ apekatt: { type: 'Input', id: 'apekatt' } });
+    });
+
+    it('includes pages and result pages', () => {
+      const raw = [
+        { type: 'Page' },
+        { type: 'Page', id: 'apekatt' },
+        { type: 'Result' },
+        { type: 'Result', id: 'fjasebengel' },
+      ];
+
+      expect(buildNodeMap(raw)).toEqual({
+        apekatt: { type: 'Page', id: 'apekatt' },
+        fjasebengel: { type: 'Result', id: 'fjasebengel' },
+      });
+    });
+
+    it('includes branch children', () => {
+      const raw = [
+        {
+          type: 'Page',
+          children: [
+            {
+              type: 'Branch',
+              branches: [
+                {
+                  test: {
+                    field: 'houseType',
+                    operator: 'eq',
+                    value: 'enebolig',
+                  },
+                  children: [
+                    { type: 'Input', id: 'apekatt' },
+                  ],
+                },
+                {
+                  test: {
+                    field: 'houseType',
+                    operator: 'eq',
+                    value: 'rekkehus',
+                  },
+                  children: [
+                    { type: 'Input', id: 'fjasebengel' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      expect(buildNodeMap(raw)).toEqual({
+        apekatt: { type: 'Input', id: 'apekatt' },
+        fjasebengel: { type: 'Input', id: 'fjasebengel' },
+      });
+    });
+
+    it('includes options', () => {
+      const raw = [
+        {
+          type: 'Page',
+          children: [
+            {
+              type: 'Radio',
+              options: [
+                {
+                  test: {
+                    field: 'houseType',
+                    operator: 'eq',
+                    value: 'enebolig',
+                  },
+                  children: [
+                    { type: 'Input', id: 'apekatt' },
+                  ],
+                },
+                {
+                  test: {
+                    field: 'houseType',
+                    operator: 'eq',
+                    value: 'rekkehus',
+                  },
+                  children: [
+                    { type: 'Input', id: 'fjasebengel' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ];
+
+      expect(buildNodeMap(raw)).toEqual({
+        apekatt: { type: 'Input', id: 'apekatt' },
+        fjasebengel: { type: 'Input', id: 'fjasebengel' },
+      });
     });
   });
 });
