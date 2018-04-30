@@ -17,6 +17,7 @@ export default {
     warmgray2: '#e5e3e1',
     darkgray: '#afaba8',
     red: '#c1272d',
+    lightred: '#ffeaeb',
     oldred: '#9d312f',
     green: '#008B21',
     oldgreen: '#809e3d',

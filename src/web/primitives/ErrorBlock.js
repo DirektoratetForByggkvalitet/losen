@@ -13,8 +13,7 @@ const StyledErrorBlock = injectStyles(styled.div`
 
   > div:first-of-type {
     border-left: 12px solid ${({ styles }) => styles.color.red};
-    background: white;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.18);
+    background: ${({ styles }) => styles.color.lightred};
     margin-bottom: 0;
     padding: 30px 33px 36px 21px;
   }

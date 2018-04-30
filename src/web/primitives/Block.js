@@ -35,9 +35,10 @@ export const SpecificBlock = injectStyles(styled.div`
   props.grouped
     ? `
   h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 4px;
-  }`
+  }
+  `
     : ' '} ${props =>
   props.groupedSimple
     ? `
