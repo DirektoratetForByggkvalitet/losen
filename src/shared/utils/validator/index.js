@@ -10,6 +10,7 @@ const requiredProperties = {
   Image: ['id', 'image'],
   Text: ['id', 'text'],
   Branch: ['branches'],
+  Reference: ['nodeId'],
   Checkbox: [...inputRequiredProperties, 'options'],
   Radio: [...inputRequiredProperties, 'options'],
   Select: [...inputRequiredProperties, 'options'],
