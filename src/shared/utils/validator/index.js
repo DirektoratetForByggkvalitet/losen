@@ -22,6 +22,7 @@ const requiredProperties = {
 const deprecatedProperties = {
   Page: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
   Result: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
+  Reference: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
   Group: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
   Answer: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
   Image: [{ property: 'hidden', use: 'hide' }, { property: 'test', use: 'show' }],
