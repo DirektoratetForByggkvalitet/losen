@@ -91,7 +91,7 @@ Result.propTypes = {
   exports: PropTypes.objectOf(PropTypes.func),
   heading: PropTypes.string,
   lead: PropTypes.string,
-  pageid: PropTypes.number.isRequired,
+  pageid: PropTypes.string.isRequired,
   previousPage: PropTypes.func.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
