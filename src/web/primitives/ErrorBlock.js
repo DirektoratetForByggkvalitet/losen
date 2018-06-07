@@ -4,8 +4,8 @@ import injectStyles from '../utils/inject-styles';
 
 const StyledErrorBlock = injectStyles(styled.div`
   padding: 0;
-  margin: 0;
   width: 100%;
+  margin: ${props => (props.grouped ? '0 0 20px 0' : '20px 0')};
 
   > div {
     padding: 0;
@@ -14,7 +14,6 @@ const StyledErrorBlock = injectStyles(styled.div`
   > div:first-of-type {
     border-left: 12px solid ${({ styles }) => styles.color.red};
     background: ${({ styles }) => styles.color.lightred};
-    margin-bottom: 0;
     padding: 30px 33px 36px 21px;
   }
   > div:nth-of-type(2) {
