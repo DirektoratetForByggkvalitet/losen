@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Losen - a flexible wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -16,7 +16,7 @@
     "start": "npm run dev",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
-    "prepublishOnly": "npm run lint && npm run build && npm run test"
+    "prepublishOnly": "npm run build && npm run lint && npm run test"
   },
   "pre-commit": [
     "lint"
