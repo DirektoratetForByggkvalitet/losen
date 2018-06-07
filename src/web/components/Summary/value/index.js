@@ -5,6 +5,11 @@ import Html from '../../helper/Html';
 import { Value as StyledValue } from '../../../primitives/Summary';
 
 export default function Value({ value, node }) {
+  if (Number(value) === value && value % 1 !== 0) {
+    // eslint-disable-next-line no-param-reassign
+    value = Math.round(value);
+  }
+
   if (!node.optional && [null, undefined, ''].includes(value)) {
     return <StyledValue missing>* Må fylles ut</StyledValue>;
   }

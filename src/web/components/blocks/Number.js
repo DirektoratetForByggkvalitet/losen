@@ -4,15 +4,7 @@ import React from 'react';
 import Input from './Input';
 
 export default function Number({ minimum, maximum, ...props }) {
-  return (
-    <Input
-      {...props}
-      type="number"
-      step={1}
-      min={minimum}
-      max={maximum}
-    />
-  );
+  return <Input {...props} type="number" step={0.001} min={minimum} max={maximum} />;
 }
 
 Number.propTypes = {
