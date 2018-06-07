@@ -16,7 +16,7 @@
     "start": "npm run dev",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
-    "prepublishOnly": "npm run lint && npm run test && npm run build"
+    "prepublishOnly": "npm run lint && npm run build && npm run test"
   },
   "pre-commit": [
     "lint"
