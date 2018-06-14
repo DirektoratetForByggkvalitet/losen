@@ -19,7 +19,6 @@ class ExportData extends Component {
   state = {
     open: false,
     copied: false,
-    json: JSON.stringify(this.props.data, null, 2),
   };
 
   componentDidMount = () => {
@@ -42,7 +41,7 @@ class ExportData extends Component {
   copyToClipboard = () => {
     // create a temporary (and hidden) element for text selection
     const temp = document.createElement('textarea');
-    const text = document.createTextNode(this.state.json);
+    const text = document.createTextNode(JSON.stringify(this.props.data, null, 2));
     temp.appendChild(text);
     document.body.appendChild(temp);
 
