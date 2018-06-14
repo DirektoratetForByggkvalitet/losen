@@ -1,14 +1,14 @@
-import setWith from "lodash.setwith";
-import { NAME } from "./index";
-import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL } from "./actions";
-import processComputed from "../utils/process-computed";
-import reduceWizard, { buildNodeMap } from "../utils/reduce-wizard";
+import setWith from 'lodash.setwith';
+import { NAME } from './index';
+import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL } from './actions';
+import processComputed from '../utils/process-computed';
+import reduceWizard, { buildNodeMap } from '../utils/reduce-wizard';
 
 const initialState = {};
 
-const removeInactiveQuestions = (state, questions) =>
+const removeInactiveQuestions = (state, nodes) =>
   Object.keys(state).reduce((acc, id) => {
-    if (nodes[id] || id === "page" || id === "$computed") {
+    if (nodes[id] || id === 'page' || id === '$computed') {
       return { ...acc, [id]: state[id] };
     }
     return { ...acc };
@@ -18,29 +18,21 @@ const removeInactiveQuestions = (state, questions) =>
 export function applyComputed(wizard, state) {
   return {
     ...state,
-    $computed: processComputed(wizard, state)
+    $computed: processComputed(wizard, state),
   };
 }
 
 // mutator that sets a value in data and returns the new state
 export function setDataUpdate(wizard, state, { payload }) {
   // If payload.key is "question.yes" the . should be considered a path to a new object
-  const newState = setWith(
-    { ...state },
-    payload.key,
-    payload.value,
-    nsValue => nsValue || {}
-  );
+  const newState = setWith({ ...state }, payload.key, payload.value, nsValue => nsValue || {});
   const newSchema = reduceWizard(wizard.schema, { [NAME]: newState });
   const visibleNodes = buildNodeMap(newSchema);
   const purgedState = removeInactiveQuestions(newState, visibleNodes);
   return applyComputed(wizard, purgedState);
 }
 
-export default wizard => (
-  state = applyComputed(wizard, initialState),
-  action
-) => {
+export default wizard => (state = applyComputed(wizard, initialState), action) => {
   const { type } = action;
 
   switch (type) {
