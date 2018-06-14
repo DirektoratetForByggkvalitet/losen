@@ -38,6 +38,7 @@ export default function ExamplesError() {
         <li>An error (with Text inside)</li>
         <li>A result page</li>
       </ul>
+
       <JSONPretty
         id="json-pretty"
         json={[
