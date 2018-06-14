@@ -1,12 +1,60 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import get from 'lodash.get';
 
 import StyledSum from '../../primitives/Sum';
 import SummaryDetails from './SummaryDetails';
 import Html from '../helper/Html';
 
-export default function Sum({
+export default class Sum extends Component {
+  componentDidUpdate() {
+    const { operations, values, data, property, setData, minimum } = this.props;
+
+    this.sum = values.reduce((accumulator, cur, currentIndex) => {
+      if (operations && operations[currentIndex] === '-') {
+        return accumulator - get(data, cur, 0);
+      } else if (operations && operations[currentIndex] === '%') {
+        return (accumulator * cur).toFixed(2);
+      } else if (operations && operations[currentIndex] === '*') {
+        return accumulator * get(data, cur, 1);
+      } else if (operations && operations[currentIndex] === '-/') {
+        return get(data, cur, 0) / accumulator;
+      } else if (operations && operations[currentIndex] === '/') {
+        return accumulator / get(data, cur, 1);
+      }
+      return accumulator + get(data, cur, 0);
+    }, 0);
+
+    if (typeof minimum === 'number') {
+      this.sum = Math.max(this.sum, minimum);
+    }
+
+    // eslint-disable-next-line eqeqeq
+    if (get(data, `sum-${property}`) !== this.sum) {
+      setData(`sum-${property}`, this.sum);
+    }
+  }
+
+  render() {
+    const { groupedSimple, final, unit, data, secondary, heading, summary, details } = this.props;
+    const sum = this.sum;
+
+    return (
+      <StyledSum groupedSimple={groupedSimple} final={final}>
+        <div>
+          {heading}
+          {secondary ? <span>{get(data, secondary)} %</span> : null}
+          <span>
+            {sum} {unit ? <Html inline text={unit} /> : null}
+          </span>
+        </div>
+        {summary && <SummaryDetails summary={summary} details={details} />}
+      </StyledSum>
+    );
+  }
+}
+
+/* export default function Sum({
   data,
   details,
   final,
@@ -19,24 +67,24 @@ export default function Sum({
   values,
   groupedSimple,
   property,
-  setData,
+  setData
 }) {
   let sum = values.reduce((accumulator, cur, currentIndex) => {
-    if (operations && operations[currentIndex] === '-') {
+    if (operations && operations[currentIndex] === "-") {
       return accumulator - get(data, cur, 0);
-    } else if (operations && operations[currentIndex] === '%') {
+    } else if (operations && operations[currentIndex] === "%") {
       return (accumulator * cur).toFixed(2);
-    } else if (operations && operations[currentIndex] === '*') {
+    } else if (operations && operations[currentIndex] === "*") {
       return accumulator * get(data, cur, 1);
-    } else if (operations && operations[currentIndex] === '-/') {
+    } else if (operations && operations[currentIndex] === "-/") {
       return get(data, cur, 0) / accumulator;
-    } else if (operations && operations[currentIndex] === '/') {
+    } else if (operations && operations[currentIndex] === "/") {
       return accumulator / get(data, cur, 1);
     }
     return accumulator + get(data, cur, 0);
   }, 0);
 
-  if (typeof minimum === 'number') {
+  if (typeof minimum === "number") {
     sum = Math.max(sum, minimum);
   }
 
@@ -49,7 +97,7 @@ export default function Sum({
     <StyledSum groupedSimple={groupedSimple} final={final}>
       <div>
         {heading}
-        {secondary ? <span>{get(data, secondary)} %</span> : null }
+        {secondary ? <span>{get(data, secondary)} %</span> : null}
         <span>
           {sum} {unit ? <Html inline text={unit} /> : null}
         </span>
@@ -57,7 +105,7 @@ export default function Sum({
       {summary && <SummaryDetails summary={summary} details={details} />}
     </StyledSum>
   );
-}
+} */
 
 Sum.defaultProps = {
   details: '',
