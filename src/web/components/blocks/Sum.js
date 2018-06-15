@@ -6,46 +6,68 @@ import StyledSum from '../../primitives/Sum';
 import SummaryDetails from './SummaryDetails';
 import Html from '../helper/Html';
 
-export default class Sum extends Component {
-  componentDidUpdate() {
-    const { operations, values, data, property, setData, minimum } = this.props;
-
-    this.sum = values.reduce((accumulator, cur, currentIndex) => {
-      if (operations && operations[currentIndex] === '-') {
-        return accumulator - get(data, cur, 0);
-      } else if (operations && operations[currentIndex] === '%') {
-        return (accumulator * cur).toFixed(2);
-      } else if (operations && operations[currentIndex] === '*') {
-        return accumulator * get(data, cur, 1);
-      } else if (operations && operations[currentIndex] === '-/') {
-        return get(data, cur, 0) / accumulator;
-      } else if (operations && operations[currentIndex] === '/') {
-        return accumulator / get(data, cur, 1);
-      }
-      return accumulator + get(data, cur, 0);
-    }, 0);
-
-    if (typeof minimum === 'number') {
-      this.sum = Math.max(this.sum, minimum);
+const calculateSum = (data, values, operations, minimum = 0) => {
+  let sum = values.reduce((accumulator, cur, currentIndex) => {
+    if (operations && operations[currentIndex] === '-') {
+      return accumulator - get(data, cur, 0);
+    } else if (operations && operations[currentIndex] === '%') {
+      return (accumulator * cur).toFixed(2);
+    } else if (operations && operations[currentIndex] === '*') {
+      return accumulator * get(data, cur, 1);
+    } else if (operations && operations[currentIndex] === '-/') {
+      return get(data, cur, 0) / accumulator;
+    } else if (operations && operations[currentIndex] === '/') {
+      return accumulator / get(data, cur, 1);
     }
+    return accumulator + get(data, cur, 0);
+  }, 0);
 
+  if (typeof minimum === 'number') {
+    sum = Math.max(sum, minimum);
+  }
+
+  return sum;
+};
+
+export default class Sum extends Component {
+  componentDidMount() {
+    const { property, data, setData } = this.props;
     // eslint-disable-next-line eqeqeq
-    if (get(data, `sum-${property}`) !== this.sum) {
-      setData(`sum-${property}`, this.sum);
+    if (get(data, property) !== this.sum) {
+      setData(property, this.sum);
+    }
+  }
+
+  componentDidUpdate() {
+    const { data, property, setData } = this.props;
+    // eslint-disable-next-line eqeqeq
+    if (get(data, property) !== this.sum) {
+      setData(property, this.sum);
     }
   }
 
   render() {
-    const { groupedSimple, final, unit, data, secondary, heading, summary, details } = this.props;
-    const sum = this.sum;
+    const {
+      groupedSimple,
+      final,
+      unit,
+      data,
+      heading,
+      summary,
+      details,
+      values,
+      operations,
+      minimum,
+    } = this.props;
+
+    this.sum = calculateSum(data, values, operations, minimum);
 
     return (
       <StyledSum groupedSimple={groupedSimple} final={final}>
         <div>
           {heading}
-          {secondary ? <span>{get(data, secondary)} %</span> : null}
           <span>
-            {sum} {unit ? <Html inline text={unit} /> : null}
+            {this.sum} {unit ? <Html inline text={unit} /> : null}
           </span>
         </div>
         {summary && <SummaryDetails summary={summary} details={details} />}
@@ -53,59 +75,6 @@ export default class Sum extends Component {
     );
   }
 }
-
-/* export default function Sum({
-  data,
-  details,
-  final,
-  minimum,
-  operations,
-  summary,
-  heading,
-  secondary,
-  unit,
-  values,
-  groupedSimple,
-  property,
-  setData
-}) {
-  let sum = values.reduce((accumulator, cur, currentIndex) => {
-    if (operations && operations[currentIndex] === "-") {
-      return accumulator - get(data, cur, 0);
-    } else if (operations && operations[currentIndex] === "%") {
-      return (accumulator * cur).toFixed(2);
-    } else if (operations && operations[currentIndex] === "*") {
-      return accumulator * get(data, cur, 1);
-    } else if (operations && operations[currentIndex] === "-/") {
-      return get(data, cur, 0) / accumulator;
-    } else if (operations && operations[currentIndex] === "/") {
-      return accumulator / get(data, cur, 1);
-    }
-    return accumulator + get(data, cur, 0);
-  }, 0);
-
-  if (typeof minimum === "number") {
-    sum = Math.max(sum, minimum);
-  }
-
-  // eslint-disable-next-line eqeqeq
-  if (get(data, `sum-${property}`) !== sum) {
-    setData(`sum-${property}`, sum);
-  }
-
-  return (
-    <StyledSum groupedSimple={groupedSimple} final={final}>
-      <div>
-        {heading}
-        {secondary ? <span>{get(data, secondary)} %</span> : null}
-        <span>
-          {sum} {unit ? <Html inline text={unit} /> : null}
-        </span>
-      </div>
-      {summary && <SummaryDetails summary={summary} details={details} />}
-    </StyledSum>
-  );
-} */
 
 Sum.defaultProps = {
   details: '',
@@ -119,7 +88,6 @@ Sum.defaultProps = {
   groupedSimple: false,
   property: undefined,
   currentValue: undefined,
-  secondary: undefined,
 };
 
 Sum.propTypes = {
@@ -135,5 +103,4 @@ Sum.propTypes = {
   groupedSimple: PropTypes.bool,
   property: PropTypes.string.isRequired,
   setData: PropTypes.func.isRequired,
-  secondary: PropTypes.string,
 };
