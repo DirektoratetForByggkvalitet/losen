@@ -8,7 +8,11 @@ const initialState = {};
 
 const removeInactiveQuestions = (state, nodes) =>
   Object.keys(state).reduce((acc, id) => {
-    if (nodes[id] || id === 'page' || id === '$computed') {
+    // TODO: Do something smart so we don't have to write expections on the conditional
+    if (id === 'page' || id === '$computed') {
+      return { ...acc, [id]: state[id] };
+    }
+    if (nodes[id]) {
       return { ...acc, [id]: state[id] };
     }
     return { ...acc };
