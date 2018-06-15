@@ -1,14 +1,14 @@
+import setWith from 'lodash.setwith';
 import { NAME } from './index';
 import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL } from './actions';
 import processComputed from '../utils/process-computed';
-import reduceWizard from '../utils/reduce-wizard';
-import getSchemaQuestions from '../utils/get-schema-questions';
+import reduceWizard, { buildNodeMap } from '../utils/reduce-wizard';
 
 const initialState = {};
 
-const removeInactiveQuestions = (state, questions) =>
+const removeInactiveQuestions = (state, nodes) =>
   Object.keys(state).reduce((acc, id) => {
-    if (questions[id] || id === 'page') {
+    if (nodes[id] || id === 'page') {
       return { ...acc, [id]: state[id] };
     }
     return { ...acc };
@@ -24,10 +24,10 @@ export function applyComputed(wizard, state) {
 
 // mutator that sets a value in data and returns the new state
 export function setDataUpdate(wizard, state, { payload }) {
-  const newState = { ...state, [payload.key]: payload.value };
+  const newState = setWith({ ...state }, payload.key, payload.value, nsValue => nsValue || {});
   const newSchema = reduceWizard(wizard.schema, { [NAME]: newState });
-  const visibleQuestions = getSchemaQuestions(newSchema);
-  const purgedState = removeInactiveQuestions(newState, visibleQuestions);
+  const visibleNodes = buildNodeMap(newSchema);
+  const purgedState = removeInactiveQuestions(newState, visibleNodes);
   return applyComputed(wizard, purgedState);
 }
 
