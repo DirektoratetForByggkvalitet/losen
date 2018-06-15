@@ -262,19 +262,21 @@ export const replaceReferences = nodeMap => (node) => {
 };
 
 // Build a flat object with all the nodes in the schema that have an ID
-export const buildNodeMap = schema => schema.reduce((res, node) => ({
-  ...res,
-  ...(node.id ? { [node.id]: node } : {}),
-  ...(node.children ? buildNodeMap(node.children) : {}),
-  ...(node.options ? buildNodeMap(node.options) : {}),
-  ...(node.branches
-    ? buildNodeMap(node.branches.reduce((children, branch) => [
-      ...children,
-      ...branch.children,
-    ], []))
-    : {}
-  ),
-}), {});
+export const buildNodeMap = schema =>
+  schema.reduce(
+    (res, node) => ({
+      ...res,
+      ...(node.id ? { [node.id]: node } : {}),
+      ...(node.children ? buildNodeMap(node.children) : {}),
+      ...(node.options ? buildNodeMap(node.options) : {}),
+      ...(node.branches
+        ? buildNodeMap(
+          node.branches.reduce((children, branch) => [...children, ...branch.children], []),
+        )
+        : {}),
+    }),
+    {},
+  );
 
 export default function reduceWizard(schema, state, nodeTitles, translations = {}, nodeMap = null) {
   let schemaNodeMap = nodeMap;
