@@ -10,8 +10,7 @@ We use [Storybook](https://github.com/storybooks/storybook) to document the comp
 
 ## Release a new version of losen
 
-`npm version { major | minor | patch }`  
-`git push origin master` - Travis will automatically publish when pushed to master
+`npm run release` - Follow the instructions
 
 ## Building a wizard
 See the storybook documentation for an introduction to how to build a wizard with the framework.
