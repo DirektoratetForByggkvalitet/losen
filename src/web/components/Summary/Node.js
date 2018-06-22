@@ -23,13 +23,18 @@ export default function NodeSummary({ node }) {
   if (type === 'Information') {
     return <Information text={node.text} />;
   }
-  if (ignoreNodes.includes(type) || property === undefined) {
-    return null;
-  }
   if (type === 'Group' || type === 'ErrorOk') {
     return (
-      <div>{children.map(child => <NodeSummary value={child.currentValue} node={child} />)}</div>
+      <div>
+        {children.map(child => (
+          <NodeSummary key={child.id} value={child.currentValue} node={child} />
+        ))}
+      </div>
     );
+  }
+  if (ignoreNodes.includes(type) || property === undefined) {
+    console.log(node);
+    return null;
   }
 
   const ValueSummary = overrideValueSummary[type] || DefaultValueSummary;
