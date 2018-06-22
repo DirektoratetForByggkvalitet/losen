@@ -5,10 +5,12 @@ import injectStyles from '../../utils/inject-styles';
 const Nav = injectStyles(styled.nav`
   width: ${({ styles }) => styles.size.navWidth};
   padding: 30px 20px 20px;
-  margin: 0 20px 0 10px;
+  margin: 0;
   background: white;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.18);
   overflow: hidden;
+  position: absolute;
+  //height: 100%;
+  //overflow-y: auto;
   button {
     width: 100%;
     max-width: 400px;
@@ -19,6 +21,7 @@ const Nav = injectStyles(styled.nav`
   @media screen and (max-width: 900px) {
     width: ${({ styles }) => styles.size.mobileContentWidth};
     margin: 0 auto;
+    position: static;
   }
   @media print {
     display: none;

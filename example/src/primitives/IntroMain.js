@@ -14,9 +14,6 @@ export const IntroMain = styled.main`
     float: right;
     max-width: 300px;
   }
-  ol, p {
-    margin-bottom: 40px;
-  }
   header.temp {
     position: absolute;
     top: 0;

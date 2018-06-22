@@ -4,7 +4,9 @@ import injectStyles from '../../utils/inject-styles';
 
 const Main = injectStyles(styled.main`
   flex: 1;
-  padding: 30px 30px 0;
+  padding: 30px 40px 0 60px;
+  margin-left: ${({ styles }) => styles.size.navWidth};
+  max-width: ${({ styles }) => styles.size.blockWidth};
   h2 {
     margin-top: 0;
   }
