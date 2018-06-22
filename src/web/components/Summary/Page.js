@@ -16,7 +16,7 @@ export default function PageSummary({ children, error, goToPage, heading }) {
           Endre svar
         </Button>
       </H2>
-      {children.map(node => <NodeSummary node={node} />)}
+      {children.map(node => <NodeSummary key={node.id} node={node} />)}
     </StyledPageSummary>
   );
 }
