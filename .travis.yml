@@ -8,16 +8,8 @@ script: yarn test && yarn build-storybook
 notifications:
   email:
     on_success: never
-before_deploy: "npm run prepublishOnly"
 deploy:
   - provider: firebase
     skip_cleanup: true
     token:
       secure: cvGlVBEQeXCjUlIKZNOEk9IYVoONhCxuqyZSQxArkY/UTkYornhxdzV9ZKWZhribBSxE69BTJ5Qu9mzNhY+661tZBOHWiCKkdhLGnqJTAnhq4DHCNv4jYE/8N+0olfE0tS16tzUfkGc6hrit78ux3W4rGPw+7+St4nkHf1AZuNAXEhEnfYTUweExLU6wGObj0qo09W21X0dH4jkcSWvJesHFeS4WpKkOILRFG7eelIjs8icIoJWz0woQJCaHkpMdD2T56yvVvRPttSRoxeiT7HNUQOQOZ8ABztHW5QIluReSybEZswuXBgzhIPbCcCwiFcrIqNB23wlDTff9YVzsooGxweY2I/zFKzTx3I9M+9ZmQOE7SB52pAJw1d6Hz8xWlLo+TUyyDDYmuWADThglefcieaD7HDppKmDK/iRwi4R89QXZD/D0F7YR3HZ0bg7aIbzT9CF+hk/s3Y13fjjipSvj/ARZlsd3Bfl3w549MGji/mvdz1aWcmjczsBbYXgsAaHADMwvOLMPqXzXNAQHzcgEXquPDUW1uXH/Jif84TpH3S/3nkAEu5oxmS0XWPn1gVBZgysLb3aV0bmdEI4MQfTPcs/ulLL6nNLjGWxkQApasaOsoH4y3bAiO5EzpGFBCD0e6s2TAYA7hnqJ0EJQ2Ngfl9Ebs6/Qz3E692gjTHY=
-  - provider: npm
-    on:
-      branch: master
-    skip_cleanup: true
-    email: riksheim.leif@gmail.com
-    api_key: 
-      secure: InU3NfFfXHKrCECe0zQ43o/GEa41QxEhJunGtsTi5oQMa5SHJIeP4j+KsrP3en7Mu7djKKKVNESIQIKwpqTdWaUb1mD5PTRFInTcb6HOnc8f5ODx+Rcg9gQzCIXlJSfpRZDDBxBM7aj0wVRCEG1FIkGW2cFJQNTHxJ3N4Z5dqwIQvkLw6PyFFD5R7qTSrV2iZEq1Vyh6xQvcQD3Qr5pvlUbrd8gBTbEUDuYEksoyA8kYNAYUhQW+UfoIqVf3Aa0ZLhK0QbBRQso3nxYNX5rpVdKzggIOV57vt6DdhrnxH7pB13kPQ0XeAM87y2RhUp/U8F1SXRHVJ8iCikFkVQwHnKyBks8wzJ5y5KbXQwuMXH3TkM3tv5bTn3dWJd98NS/y+muPHOp5FkBn3FkUUUbLBCAh5TZme7q1giEv8ku8P5qNvA7er2wPQgHi8hiUgs4Vr/k+9jWRqv8mOmvfU+Gi8BuIduJEEvFpnJv18qO/AXRtQekUvwhw43AtV7MJ9FwccaDeTCJr8sC9PfUnyxk5WY7MVn3v9zvMGUtOC4CJXWJ7gwMc99740o/hB9D+Jd3zmLT2l4w/ENSmkAcDEKhLI1aA/IKAMo/uTeD9SzETU+SkoRehdrNqlczDVIbKMoujY10LcDp8OsTSGlcod9ujj/aYWxINwkS3eoFCn+a9oEk=   

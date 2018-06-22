@@ -8,15 +8,15 @@ export default class StyleProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     styles: PropTypes.object,
-  }
-
-  static defaultProps = {
-    styles: {},
-  }
+  };
 
   static childContextTypes = {
     styles: PropTypes.object,
-  }
+  };
+
+  static defaultProps = {
+    styles: {},
+  };
 
   getChildContext() {
     return {
@@ -25,10 +25,6 @@ export default class StyleProvider extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
+    return <div>{this.props.children}</div>;
   }
 }

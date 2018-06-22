@@ -8,7 +8,11 @@ const initialState = {};
 
 const removeInactiveQuestions = (state, nodes) =>
   Object.keys(state).reduce((acc, id) => {
-    if (nodes[id] || id === 'page') {
+    // TODO: Do something smart so we don't have to write expections on the conditional
+    if (id === 'page' || id === '$computed') {
+      return { ...acc, [id]: state[id] };
+    }
+    if (nodes[id]) {
       return { ...acc, [id]: state[id] };
     }
     return { ...acc };
@@ -24,6 +28,7 @@ export function applyComputed(wizard, state) {
 
 // mutator that sets a value in data and returns the new state
 export function setDataUpdate(wizard, state, { payload }) {
+  // If payload.key is "question.yes" the . should be considered a path to a new object
   const newState = setWith({ ...state }, payload.key, payload.value, nsValue => nsValue || {});
   const newSchema = reduceWizard(wizard.schema, { [NAME]: newState });
   const visibleNodes = buildNodeMap(newSchema);

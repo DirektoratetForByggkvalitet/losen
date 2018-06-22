@@ -16,7 +16,7 @@ export default class Switch extends Component {
     disabled: PropTypes.bool,
     setData: PropTypes.func.isRequired,
     update: PropTypes.array,
-  }
+  };
 
   static defaultProps = {
     currentValue: '',
@@ -26,25 +26,17 @@ export default class Switch extends Component {
     text: '',
     disabled: false,
     update: [],
-  }
+  };
 
   handleChange = (property, value) => (e) => {
     if (e.target.checked && this.props.update) {
       this.props.update.map(item => this.props.setData(`${item}`));
     }
     this.props.setData(`${property}.${value}`, e.target.checked);
-  }
-
+  };
 
   render() {
-    const {
-      currentValue,
-      debug,
-      disabled,
-      options,
-      property,
-      heading,
-    } = this.props;
+    const { currentValue, debug, disabled, options, property, heading } = this.props;
 
     return (
       <Fieldset>
@@ -62,9 +54,7 @@ export default class Switch extends Component {
                 checked={currentValue[option.value]}
                 name={property}
                 {...option}
-                onChange={
-                  !isDisabled && this.handleChange(property, option.value)
-                }
+                onChange={!isDisabled && this.handleChange(property, option.value)}
               />
             );
           })}

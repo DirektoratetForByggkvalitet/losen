@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "2.2.1",
+  "version": "3.0.3-0",
   "description": "Losen - a flexible wizard rendering framework",
   "main": "dist/bundle.js",
   "bin": {
@@ -16,7 +16,8 @@
     "start": "npm run dev",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
-    "prepublishOnly": "npm run build && npm run lint && npm run test"
+    "prepublishOnly": "npm run build && npm run lint && npm run test",
+    "release": "np"
   },
   "pre-commit": [
     "lint"
@@ -62,14 +63,14 @@
     "lodash.set": "^4.3.2",
     "lodash.setwith": "^4.3.2",
     "lodash.template": "^4.4.0",
-    "prop-types": "^15.6.1",
-    "react": "^15.6.2",
+    "prop-types": "^15.6.2",
+    "react": "^15.6.1",
     "react-autobind": "^1.0.6",
-    "react-modal": "^3.4.4",
+    "react-modal": "^3.4.5",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
+    "react-router": "^4.3.1",
     "redux": "^3.7.2",
-    "styled-components": "^2.4.0"
+    "styled-components": "^2.4.1"
   },
   "peerDependencies": {
     "react": "^15.6.1",
@@ -79,7 +80,7 @@
     "styled-components": "^2.1.1"
   },
   "devDependencies": {
-    "@storybook/react": "^3.4.2",
+    "@storybook/react": "^3.4.7",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
@@ -90,19 +91,22 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^15.1.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react": "^7.9.1",
     "jest": "^20.0.4",
     "jest-cli": "^21.2.1",
+    "np": "^3.0.4",
     "pre-commit": "^1.2.2",
     "react-dom": "^15.6.2",
-    "webpack": "^3.11.0"
+    "react-json-pretty": "^1.7.6",
+    "webpack": "^3.12.0"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": "airbnb",
     "rules": {
+      "no-debugger": 0,
       "no-return-assign": 0,
       "no-confusing-arrow": 0,
       "react/forbid-prop-types": 0,

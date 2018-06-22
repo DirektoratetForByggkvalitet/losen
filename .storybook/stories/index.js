@@ -10,11 +10,12 @@ import StyleProvider from '../../src/web/components/StyleProvider';
 addDecorator(storyFn => (
   <div className="container">
     <link href="/storybook.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Mono:300,400" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto+Mono:300,400"
+      rel="stylesheet"
+    />
 
-    <StyleProvider>
-      {storyFn()}
-    </StyleProvider>
+    <StyleProvider>{storyFn()}</StyleProvider>
   </div>
 ));
 
@@ -30,7 +31,7 @@ storiesOf('Schema', module)
   .add('Translating', require('./schema/translating').default)
   .add('Data export', require('./schema/dataExport').default)
   .add('Computed properties', require('./schema/computedProps').default)
-  .add('References', require('./schema/references').default)
+  .add('References', require('./schema/references').default);
 
 storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)
@@ -57,8 +58,9 @@ storiesOf('Visual primitives', module)
   .add('Loading', require('./primitives/loading').default)
   .add('Menu', require('./primitives/menu').default)
   .add('Blocks', require('./primitives/blocks').default)
-  .add('Signature', require('./primitives/signature').default)
-  ;
+  .add('Signature', require('./primitives/signature').default);
+
+storiesOf('Examples', module).add('Disqualifying error', require('./examples/errors').default);
 
 storiesOf('Navigation', module)
   .add('with Next', () => <Navigation page={0} />)

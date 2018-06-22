@@ -9,15 +9,14 @@ import ExportData from './ExportData';
 import Html from './helper/Html';
 import Summary from './Summary';
 
-import { H1 } from '../primitives/Heading';
+import { H1, H2 } from '../primitives/Heading';
 import { Lead } from '../primitives/Paragraphs';
 import { MainButton } from '../primitives/Button';
-import { SpecificBlock } from '../primitives/Block';
+import { SpecificBlock, TextBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
 
 function Result({
-  beforeResult = [],
   children = [],
   debug,
   errorheading,
@@ -37,7 +36,6 @@ function Result({
   if (errorPages.length) {
     return (
       <ErrorResult
-        beforeResult={beforeResult}
         schema={schema}
         setPage={setPage}
         page={pageid}
@@ -59,7 +57,7 @@ function Result({
         <Html text={lead} />
       </Lead>
 
-      {beforeResult.map(block => (
+      {children.map(block => (
         <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
       ))}
 
@@ -68,20 +66,24 @@ function Result({
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
       </SpecificBlock>
 
-      {children.map(block => (
-        <Block key={block.id} {...block} errorPages={errorPages} setPage={setPage} pages={schema} />
-      ))}
+      {exporter ? (
+        <TextBlock>
+          <H2>Takk for at du gjennomførte veiviseren!</H2>
+          <Lead>Du kan kopiere svarene dine, eller skrive ut resultatsiden.</Lead>
+        </TextBlock>
+      ) : null}
 
       <Export exporter={exporter}>
         {exporter && exports[exporter] ? <ExportData exporter={exports[exporter]} /> : null}
-        <MainButton type="button" onClick={() => window.print()}>Skriv ut</MainButton>
+        <MainButton type="button" onClick={() => window.print()}>
+          Skriv ut
+        </MainButton>
       </Export>
     </Main>
   );
 }
 
 Result.propTypes = {
-  beforeResult: PropTypes.array,
   children: PropTypes.array,
   debug: PropTypes.bool,
   errorheading: PropTypes.string,
@@ -100,7 +102,6 @@ Result.propTypes = {
 };
 
 Result.defaultProps = {
-  beforeResult: [],
   children: [],
   debug: false,
   errorheading: '',
