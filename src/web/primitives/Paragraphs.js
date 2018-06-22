@@ -7,7 +7,6 @@ export const P = injectStyles(styled.p`
   font-weight: 300;
   margin: 0 0 20px;
   max-width: 600px;
-  line-height: 
 `);
 
 export const Lead = injectStyles(styled.div`
