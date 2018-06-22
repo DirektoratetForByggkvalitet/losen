@@ -4,8 +4,8 @@ import injectStyles from '../utils/inject-styles';
 
 export const SpecificBlock = injectStyles(styled.div`
   position: relative;
-  padding: ${props => (props.grouped ? '20px 24px 20px' : '30px 33px 36px')};
-  margin: 20px 0;
+  padding: ${props => (props.grouped ? '16px 18px 20px' : '24px 28px 24px')};
+  margin: ${props => (props.grouped ? '0 0 20px 0' : '20px 0')};
   width: 100%;
   background: ${props => (props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white')};
   &:nth-child(even) {
@@ -37,6 +37,9 @@ export const SpecificBlock = injectStyles(styled.div`
   h2 {
     font-size: 20px;
     margin-bottom: 4px;
+    @media screen and (max-width: 700px) {
+      font-size: 18px;
+    }
   }
   `
     : ' '} ${props =>
@@ -95,11 +98,11 @@ export const SpecificBlock = injectStyles(styled.div`
   }
   `
     : ' '} @media screen and (max-width: 700px) {
-    padding: ${props => (props.grouped ? '20px 12px' : '20px 16px')};
+    padding: ${props => (props.grouped ? '12px 20px' : '26px 20px')};
     ${props =>
     props.groupedSimple
       ? `
-    margin-top: 24px;
+    margin-bottom: 24px;
     padding: 0;
     `
       : ' '};
@@ -122,7 +125,7 @@ export const TextBlock = injectStyles(styled.div`
     `};
 
   width: 100%;
-
+  max-width: ${({ styles }) => styles.size.blockWidth};
   ${props =>
     props.debug
       ? `
@@ -143,9 +146,6 @@ export const TextBlock = injectStyles(styled.div`
     margin: 1em 0;
     line-height: 1.6;
     max-width: 600px;
-  }
-  @media screen and (max-width: 700px) {
-    padding: 20px 0;
   }
 
   ${props =>
