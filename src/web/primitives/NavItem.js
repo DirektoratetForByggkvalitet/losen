@@ -35,7 +35,7 @@ const NavItem = injectStyles(styled.a`
   }
   p {
     flex-grow: 1;
-    font-weight: ${props => (props.active ? 'bold' : '300')};
+    font-weight: ${props => (props.active ? '300' : '300')};
     padding: 0 20px;
     line-height: 1.3;
     font-size: 16px;
