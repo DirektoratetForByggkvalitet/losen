@@ -10,10 +10,11 @@ export default function SoftError({ children }) {
   return (
     <StyledNodeSummary>
       {children.map((child) => {
-        if (child.heading) {
+        const heading = child.heading || child.text;
+        if (heading) {
           return (
             <ErrorMessage>
-              <ErrorIcon /> <Html text={child.heading} inline />
+              <ErrorIcon /> <Html text={heading} inline />
             </ErrorMessage>
           );
         }
