@@ -33,7 +33,6 @@ export default function NodeSummary({ node }) {
     );
   }
   if (ignoreNodes.includes(type) || property === undefined) {
-    console.log(node);
     return null;
   }
 
