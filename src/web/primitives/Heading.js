@@ -19,9 +19,25 @@ export const H1 = injectStyles(styled.h1`
     margin-bottom: 10px;
     `
       : ' '};
+  ${props =>
+    props.result
+      ? `
+      &::before {
+        content: 'Resultat';
+        display: block;
+        color: gray;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 300;
+        font-size: 0.9rem;
+        margin-bottom: 0.3em;
+      }
+    `
+      : ' '};
   @media screen and (max-width: 700px) {
     font-size: ${props => (props.small ? '0.9rem' : '30px')}
   }
+
 `);
 
 export const H2 = injectStyles(styled.h2`
@@ -30,7 +46,7 @@ export const H2 = injectStyles(styled.h2`
   margin: 0 0 10px;
   line-height: 1.3;
   @media screen and (max-width: 700px) {
-    font-size: 20px;
+    font-size: 18px;
   }
 `);
 
