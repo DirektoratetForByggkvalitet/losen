@@ -134,13 +134,15 @@ export const NavButton = injectStyles(styled.button`
     display: ${props => (props.next ? 'inline-block' : 'none')};
     margin-left: 1em;
   }
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: ${({ styles }) => styles.color.dark};
   }
-  &:hover::before, &:focus::before,
-  &:hover::after, &:focus::after {
-    animation: ${props => (props.next ? 'pushnext' : 'pushprev')} 0.8s linear
-      infinite;
+  &:hover::before,
+  &:focus::before,
+  &:hover::after,
+  &:focus::after {
+    animation: ${props => (props.next ? 'pushnext' : 'pushprev')} 0.8s linear infinite;
   }
   @media screen and (max-width: 900px) {
     min-width: 48%;
