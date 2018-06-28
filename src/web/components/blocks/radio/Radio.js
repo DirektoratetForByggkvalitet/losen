@@ -16,6 +16,7 @@ export default class Radio extends Component {
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
+    clear: PropTypes.array,
   };
 
   static defaultProps = {
@@ -24,9 +25,19 @@ export default class Radio extends Component {
     disabled: false,
     heading: '',
     text: '',
+    clear: [],
   };
 
-  handleChange = (property, value) => () => this.props.setData(`${property}`, value);
+  handleChange = (property, value) => () => {
+    const { clear, setData } = this.props;
+
+    if (clear.length) {
+      clear.forEach((clearProp) => {
+        setData(`${clearProp}`, undefined);
+      });
+    }
+    setData(`${property}`, value);
+  };
 
   render() {
     const { currentValue, debug, disabled, heading, text, options, property } = this.props;
