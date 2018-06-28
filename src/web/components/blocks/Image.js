@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 import Figure from '../../primitives/Figure';
 
-export default function Image({ image: { url, alt }, text }) {
+export default function Image({ id, debug, image: { url, alt }, text }) {
   return (
-    <Figure>
+    <Figure data-id={id} debug={debug}>
       <img src={url} alt={alt} />
-      <figcaption>
-        {text}
-      </figcaption>
+      <figcaption>{text}</figcaption>
     </Figure>
   );
 }
 
 Image.propTypes = {
+  id: PropTypes.string.isRequired,
+  debug: PropTypes.bool.isRequired,
   image: PropTypes.shape({
     url: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
