@@ -29,8 +29,8 @@ export default function SchemaBuildingBlocks() {
       </p>
       <p>
         Also, the <code>hide</code> and <code>show</code> properties is available for all input and
-        output types, as well as Select/Checkbox/Radio options. The properties are logical expressions
-        used to determine if the item in question should be shown or not.
+        output types, as well as Select/Checkbox/Radio options. The properties are logical
+        expressions used to determine if the item in question should be shown or not.
       </p>
 
       <H2>Page</H2>
@@ -130,10 +130,10 @@ export default function SchemaBuildingBlocks() {
           <code>heading</code>: The label for this input field. <strong>Required</strong>
         </li>
         <li>
-          <code>validator</code>: An object containing two properties: <code>test</code>; a logical 
-          expression that must evaluate to a true in order for the field to be available. If the test 
-          evaluates to a falsy value, the field will still show, but it will be disabled and a message 
-          will explain what prerequisites has not been met. The message is defined with the 
+          <code>validator</code>: An object containing two properties: <code>test</code>; a logical
+          expression that must evaluate to a true in order for the field to be available. If the
+          test evaluates to a falsy value, the field will still show, but it will be disabled and a
+          message will explain what prerequisites has not been met. The message is defined with the
           <code>error</code> property in the validator object.
         </li>
         <li>
@@ -223,6 +223,13 @@ export default function SchemaBuildingBlocks() {
         Radio button group. Just like Checkbox, but only possible to select one. Properties are the
         same.
       </p>
+
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>clear</code>: Array of property names. Clears elements when you select a new value.
+        </li>
+      </ul>
 
       <H3>Select</H3>
       <p>
