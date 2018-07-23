@@ -38,21 +38,6 @@ const Main = injectStyles(styled.main`
     margin: 30px auto;
     padding: 0;
   }
-
-  ${props =>
-    props.result
-      ? `
-  @media print {
-    > h1,
-    > h2,
-    > p {
-      display: none;
-    }
-  }
-  `
-      : `
-  
-  `};
 `);
 
 export default Main;
