@@ -7,6 +7,11 @@ const Main = injectStyles(styled.main`
   padding: 30px 40px 0 60px;
   margin-left: ${({ styles }) => styles.size.navWidth};
   max-width: ${({ styles }) => styles.size.blockWidth};
+
+  @media print {
+    margin: 0 auto;
+  }
+
   h2 {
     margin-top: 0;
   }
@@ -34,7 +39,9 @@ const Main = injectStyles(styled.main`
     padding: 0;
   }
 
-  ${props => props.result ? `
+  ${props =>
+    props.result
+      ? `
   @media print {
     > h1,
     > h2,
@@ -42,9 +49,10 @@ const Main = injectStyles(styled.main`
       display: none;
     }
   }
-  ` : `
+  `
+      : `
   
-  `}
+  `};
 `);
 
 export default Main;
