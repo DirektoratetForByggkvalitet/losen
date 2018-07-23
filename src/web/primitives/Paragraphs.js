@@ -15,7 +15,8 @@ export const Lead = injectStyles(styled.div`
   font-size: 22px;
   line-height: 1.4;
   margin: 16px 0 40px;
-  h3, h4 {
+  h3,
+  h4 {
     margin-bottom: 0;
   }
   p {
@@ -24,11 +25,4 @@ export const Lead = injectStyles(styled.div`
   @media screen and (max-width: 700px) {
     font-size: 20px;
   }
-  ${props => props.result ? `
-  @media print {
-    display: none;
-  }
-  ` : `
-  
-  `}
 `);
