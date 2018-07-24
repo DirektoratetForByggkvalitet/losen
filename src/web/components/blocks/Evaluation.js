@@ -52,18 +52,14 @@ export default function Evaluation({
     // sad case
     return (
       <StyledSumResult>
-        <div className="sad">
-          {sad}
-        </div>
+        <div className="sad">{sad}</div>
       </StyledSumResult>
     );
   }
   // happy case
   return (
     <StyledSumResult>
-      <div className="happy">
-        {happy}
-      </div>
+      <div className="happy">{happy}</div>
     </StyledSumResult>
   );
 }
@@ -84,7 +80,8 @@ Evaluation.defaultProps = {
 
 Evaluation.propTypes = {
   data: PropTypes.object.isRequired,
-  testing: PropTypes.string.isRequired,
+  testing: PropTypes.oneOfType([PropTypes.string.isRequired, PropTypes.array.isRequired])
+    .isRequired,
   final: PropTypes.bool,
   groupedSimple: PropTypes.bool,
   happy: PropTypes.string.isRequired,
