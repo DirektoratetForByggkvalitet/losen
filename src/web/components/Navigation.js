@@ -4,11 +4,25 @@ import React from 'react';
 import { NavButton as Button } from '../primitives/Button';
 import Nav from '../primitives/grid/Navigation';
 
-export default function Navigation({ hasNext, hasPrevious, nextPage, previousPage }) {
+export default function Navigation({
+  nextPageIsResult,
+  hasNext,
+  hasPrevious,
+  nextPage,
+  previousPage,
+}) {
   return (
     <Nav>
-      {hasPrevious && <Button type="button" onClick={previousPage}>Forrige</Button>}
-      {hasNext && <Button type="button" next onClick={nextPage}>Neste</Button>}
+      {hasPrevious && (
+        <Button type="button" onClick={previousPage}>
+          Forrige
+        </Button>
+      )}
+      {hasNext && (
+        <Button type="button" next onClick={nextPage}>
+          {nextPageIsResult ? 'Vis resultat' : 'Neste'}
+        </Button>
+      )}
     </Nav>
   );
 }
@@ -25,4 +39,5 @@ Navigation.propTypes = {
   hasPrevious: PropTypes.bool,
   nextPage: PropTypes.func,
   previousPage: PropTypes.func,
+  nextPageIsResult: PropTypes.bool.isRequired,
 };

@@ -19,6 +19,7 @@ export default function Page({
   heading,
   lead,
   nextPage,
+  nextPageIsResult,
   pageid,
   previousPage,
   summary,
@@ -35,6 +36,8 @@ export default function Page({
       {(!firstPage || !lastPage) && (
         <Navigation
           page={pageid}
+          nextPageIsResult={nextPageIsResult}
+          lastPage={lastPage}
           hasPrevious={!firstPage}
           previousPage={previousPage}
           hasNext={!lastPage}
@@ -63,6 +66,7 @@ Page.propTypes = {
   lead: PropTypes.string,
   nextPage: PropTypes.func.isRequired,
   pageid: PropTypes.string.isRequired,
+  nextPageIsResult: PropTypes.bool.isRequired,
   previousPage: PropTypes.func.isRequired,
   summary: PropTypes.string,
 };

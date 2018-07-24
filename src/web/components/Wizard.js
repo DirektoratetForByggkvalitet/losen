@@ -7,11 +7,7 @@ import autobind from 'react-autobind';
 import Modal from './helper/Modal';
 import { NAME } from '../state';
 
-import {
-  getPages,
-  getNodeTitles,
-  getData,
-} from '../utils/selectors';
+import { getPages, getNodeTitles, getData } from '../utils/selectors';
 
 import { setData } from '../state/actions';
 import Nav from './Nav';
@@ -157,15 +153,7 @@ ${error}
   previousPage = () => this.changePage(-1);
 
   render() {
-    const {
-      debug,
-      exports,
-      schema,
-      showIntro,
-      styles,
-      tableOfContents,
-      wizard,
-    } = this.props;
+    const { debug, exports, schema, showIntro, styles, tableOfContents, wizard } = this.props;
 
     const { showResetModal } = this.state;
 
@@ -173,6 +161,9 @@ ${error}
     const page = schema[pageIndex];
     const lastPage = pageIndex + 1 === schema.length;
     const firstPage = pageIndex === 0;
+    const nextPageIsResult = schema[pageIndex + 1]
+      ? schema[pageIndex + 1].type === 'Result'
+      : false;
 
     return (
       <StyleProvider styles={styles}>
@@ -206,6 +197,7 @@ ${error}
                 nextPage={this.nextPage}
                 previousPage={this.previousPage}
                 debug={debug}
+                nextPageIsResult={nextPageIsResult}
                 pageid={page.id}
                 {...page}
               />
@@ -228,6 +220,7 @@ const mapStateToProps = (state, { wizard, translations }) => {
   };
 };
 
-export default connect(mapStateToProps, dispatch => bindActionCreators({ setData }, dispatch))(
-  Wizard,
-);
+export default connect(
+  mapStateToProps,
+  dispatch => bindActionCreators({ setData }, dispatch),
+)(Wizard);
