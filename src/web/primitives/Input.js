@@ -91,6 +91,7 @@ export const Checkbox = injectStyles(styled.input`
     &:checked + label {
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
         0 0 4px 0 ${({ styles }) => styles.color.dark};
+      background: ${({ styles }) => styles.color.lightgreen};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
@@ -198,6 +199,7 @@ export const Radio = injectStyles(styled.input.attrs({
     &:checked + label {
       box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
         0 0 4px 0 ${({ styles }) => styles.color.dark};
+      background: ${({ styles }) => styles.color.lightgreen};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
