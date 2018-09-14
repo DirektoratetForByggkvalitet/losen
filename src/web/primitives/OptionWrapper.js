@@ -42,9 +42,26 @@ const OptionWrapper = injectStyles(styled.div`
       label:before {
         display: none;
       }
-
+      
+      @media screen and (max-width: 900px) {
+        label img {
+          margin-top: 0;
+        }
+      }
       @media screen and (max-width: 700px) {
-        width: 48%;
+        width: 46%;
+        margin: 2%;
+        label img {
+          margin-top: 0;
+        }
+      }
+      @media screen and (max-width: 400px) {
+        label div {
+          font-size: 14px;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          hyphens: auto;
+        }
       }
     }
     `
