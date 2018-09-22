@@ -13,7 +13,7 @@ export default function Intro({ close }) {
           Du får kun velge ett ansvarsområde med én tiltalsklasse og én funksjon for hver gang du gjennomfører denne veiviseren.
         </Primitives.Paragraphs.P>
         <Primitives.Figure>
-          <img src="https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-9/18447415_10155393402102558_3004629122651437765_n.jpg?oh=25762607ce16dceda32d1a69df61bde3&oe=5A47FED5" alt="katter er fine" />
+          <img src="https://i.kym-cdn.com/entries/icons/original/000/026/638/cat.jpg" alt="katter er fine" />
           <figcaption>
             Bildetekst kanskje?
           </figcaption>
