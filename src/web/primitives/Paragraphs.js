@@ -5,7 +5,7 @@ import injectStyles from '../utils/inject-styles';
 export const P = injectStyles(styled.p`
   font-size: inherit;
   font-weight: 300;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
   max-width: 600px;
 `);
 

@@ -34,8 +34,11 @@ export default function CheckboxInput({
 
       <Label htmlFor={id} warning={message.warning} debug={debug}>
         <div data-id={id}>
-          {heading ? <H3>{heading}</H3> : null}
-          <Html text={text} />
+          <div>
+            {heading && !text ? heading : null}
+            {heading && text ? <H3>{heading}</H3> : null}
+          </div>
+          {text ? <Html text={text} /> : null}
         </div>
         {image && image.url ? <img src={image.url} alt={image.alt} /> : null}
       </Label>
@@ -51,6 +54,7 @@ CheckboxInput.defaultProps = {
   image: {},
   messages: [],
   onChange: () => {},
+  text: '',
 };
 
 CheckboxInput.propTypes = {

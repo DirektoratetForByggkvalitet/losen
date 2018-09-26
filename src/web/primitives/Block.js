@@ -167,4 +167,53 @@ export const TextBlock = injectStyles(styled.div`
           display: none;
         }`
       : ''};
+
+  h1 {
+    font-family: ${({ styles }) => styles.font.secondary};
+    font-size: 50px;
+    font-weight: 300;
+    margin: 0 0 30px;
+    line-height: 1.2;
+    @media screen and (max-width: 700px) {
+      font-size: ${props => (props.small ? '0.9rem' : '30px')}
+    }
+  }
+
+  h2 {
+    font-family: ${({ styles }) => styles.font.primary};
+    font-size: 24px;
+    margin: 0 0 10px;
+    line-height: 1.3;
+    @media screen and (max-width: 700px) {
+      font-size: 18px;
+    }
+  }
+
+  h3 {
+    font-family: ${({ styles }) => styles.font.primary};
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    margin: 0 0 10px;
+    line-height: 1.3;
+    @media screen and (max-width: 700px) {
+      font-size: 16px;
+    }
+  }
+
+  h4 {
+    font-family: ${({ styles }) => styles.font.primary};
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: inherit;
+    font-weight: 300;
+    margin: 0 0 24px;
+    max-width: 600px;
+  }
 `);
