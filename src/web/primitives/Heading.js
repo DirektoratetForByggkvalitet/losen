@@ -64,11 +64,9 @@ export const H3 = injectStyles(styled.h3`
 
 export const H4 = injectStyles(styled.h4`
   font-family: ${({ styles }) => styles.font.primary};
-  font-size: 16px;
+  font-size: 14px;
   text-transform: uppercase;
+  letter-spacing: 1px;
   margin: 0 0 6px;
   line-height: 1.3;
-  @media screen and (max-width: 700px) {
-    font-size: 14px;
-  }
 `);
