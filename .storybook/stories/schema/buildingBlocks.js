@@ -1,44 +1,46 @@
 import React from 'react';
 
 import { H1, H2, H3, H4 } from '../../../src/web/primitives/Heading';
+import { P, Lead } from '../../../src/web/primitives/Paragraphs';
 
 export default function SchemaBuildingBlocks() {
   return (
     <div>
       <H1>The schema building blocks</H1>
       <H2>Shared requirements</H2>
-      <p>
+      <P>
         <em>Note:</em> these shared fields won't be repeated below.
-      </p>
-
-      <p>
-        <code>type</code>: The only property that is shared across <strong>all</strong> nodes in the
-        schema. The type is required in order to determine what type of node it is.
-      </p>
-      <p>
-        <code>id</code>: Needed in order to map texts passed as the value for the translation prop
-        to the Wizard component.
-      </p>
-      <p>
-        <code>summary</code>: Optional part of every block and is a set with the details attribute.
-        If you want a expand collapse element that can provide more information use these two
-        properties.
-      </p>
-      <p>
-        <code>details</code>: Accepts html code. Se comment for <code>summary</code>.
-      </p>
-      <p>
-        Also, the <code>hide</code> and <code>show</code> properties is available for all input and
-        output types, as well as Select/Checkbox/Radio options. The properties are logical
-        expressions used to determine if the item in question should be shown or not.
-      </p>
+      </P>
+      <ul>
+        <li>
+          <code>type</code>: The only property that is shared across <strong>all</strong> nodes in the
+          schema. The type is required in order to determine what type of node it is.
+        </li>
+        <li>
+          <code>id</code>: Needed in order to map texts passed as the value for the translation prop
+          to the Wizard component.
+        </li>
+        <li>
+          <code>summary</code>: Optional part of every block and is a set with the details attribute.
+          If you want a expand collapse element that can provide more information use these two
+          properties.
+        </li>
+        <li>
+          <code>details</code>: Accepts html code. Se comment for <code>summary</code>.
+        </li>
+        <li>
+          Also, the <code>hide</code> and <code>show</code> properties is available for all input and
+          output types, as well as Select/Checkbox/Radio options. The properties are logical
+          expressions used to determine if the item in question should be shown or not.
+        </li>
+      </ul>
 
       <H2>Page</H2>
-      <p>
+      <P>
         The <em>Page</em> is the largest building block. Sort of a container for everything else.
         Inside a page you can have pretty much anything, but not a Page. Nested pages is not
         supported.
-      </p>
+      </P>
       <H3>Properties</H3>
       <ul>
         <li>
@@ -55,13 +57,13 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H2>Result</H2>
-      <p>
+      <P>
         The result page represents the end of a wizard. Once the algorithm encounters a Result page,
         it will be appended after the page it's included as a child in, and no more pages will be
         shown. This is intentional as it gives an opening for short-circuiting the wizard once the
         user answer in such a way that no further input is necessary in order to give feedback,
         either positive or negative.
-      </p>
+      </P>
       <H3>Properties</H3>
       <ul>
         <li>
@@ -86,10 +88,10 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H2>Group</H2>
-      <p>
+      <P>
         The group node gives you a way of grouping nodes on a page. It does "nothing" besides
         grouping other nodes.
-      </p>
+      </P>
 
       <H3>Properties</H3>
       <ul>
@@ -110,16 +112,16 @@ export default function SchemaBuildingBlocks() {
       <hr />
 
       <H2>Input types</H2>
-      <p>
+      <P>
         In addition to the <em>Page</em> and <em>Result</em> nodes we have several input nodes that
         can be used to collect input from the user. The property called <code>property</code> on the
         node declares the path to the value for this node in the data.
-      </p>
+      </P>
 
       <H3>Shared properties</H3>
-      <p>
+      <P>
         <em>Note:</em> these properties apply for all input nodes, and won't be repeated below.
-      </p>
+      </P>
 
       <ul>
         <li>
@@ -141,8 +143,52 @@ export default function SchemaBuildingBlocks() {
         </li>
       </ul>
 
+      <H3>Checkbox</H3>
+      <P>A group of checkboxes. One or more values can be selected.</P>
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>text</code>: The text to follow the heading for this input field.
+        </li>
+        <li>
+          <code>options</code>: An array of <em>Answer</em> nodes. Options that the user can select.
+          <strong>Required</strong>
+        </li>
+        <li>
+          <code>grid</code>: Display options in a three column grid.
+        </li>
+      </ul>
+
+      <H3>Radio</H3>
+      <P>
+        A group of radio buttons. Just like Checkbox, but only possible to select one.
+      </P>
+      <H4>Properties</H4>
+      <ul>
+        <li>
+          <code>text</code>: The text to follow the heading for this input field.
+        </li>
+        <li>
+          <code>options</code>: An array of <em>Answer</em> nodes. Options that the user can select.
+          <strong>Required</strong>
+        </li>
+        <li>
+          <code>grid</code>: Display options in a three column grid.
+        </li>
+        <li>
+          <code>clear</code>: Array of property names. Clears elements when you select a new value.
+        </li>
+      </ul>
+
+      <H3>Select</H3>
+      <P>
+        Dropdown list. Just like Radio, but with a select element and no support for
+        image/descriptive text. <code>Answer</code> nodes for a select will not show the{' '}
+        <code>text</code>, so
+      </P>
+
       <H3>Answer</H3>
-      <p>Answer used as an option in Radio, Checkbox or Select.</p>
+      <P>Answer used as an option in Radio, Checkbox or Select.</P>
 
       <H4>Properties</H4>
       <ul>
@@ -172,9 +218,9 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Message</H3>
-      <p>
+      <P>
         Message for <code>Answer</code> that is shown if test is truthy.
-      </p>
+      </P>
 
       <H4>Property</H4>
       <ul>
@@ -190,26 +236,12 @@ export default function SchemaBuildingBlocks() {
         </li>
       </ul>
 
-      <H3>Checkbox</H3>
-      <p>The checkbox is a group of checkboxes. One or more values can be selected.</p>
-
-      <H4>Properties</H4>
-      <ul>
-        <li>
-          <code>text</code>: The text to follow the heading for this input field.
-        </li>
-        <li>
-          <code>options</code>: An array of <em>Answer</em> nodes. Options that the user can select.{' '}
-          <strong>Required</strong>
-        </li>
-      </ul>
-
       <H3>Switch</H3>
-      <p>
-        The switch was is a checkbox that can be used to change the value of other input types. It
+      <P>
+        The switch is a checkbox that can be used to change the value of other input types. It
         is used in the wizard "How big can you build?" ("Hvor stort kan du bygge") to set a default
         value to some input fields when this checkbox is switched on.
-      </p>
+      </P>
 
       <H4>Properties</H4>
       <ul>
@@ -218,28 +250,8 @@ export default function SchemaBuildingBlocks() {
         </li>
       </ul>
 
-      <H3>Radio</H3>
-      <p>
-        Radio button group. Just like Checkbox, but only possible to select one. Properties are the
-        same.
-      </p>
-
-      <H4>Properties</H4>
-      <ul>
-        <li>
-          <code>clear</code>: Array of property names. Clears elements when you select a new value.
-        </li>
-      </ul>
-
-      <H3>Select</H3>
-      <p>
-        Dropdown list. Just like Radio, but with a select element and no support for
-        image/descriptive text. <code>Answer</code> nodes for a select will not show the{' '}
-        <code>text</code>, so
-      </p>
-
       <H3>Input</H3>
-      <p>Regular text input field.</p>
+      <P>Regular text input field.</P>
 
       <H4>Properties</H4>
       <ul>
@@ -260,7 +272,7 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Number</H3>
-      <p>An input field which is a number.</p>
+      <P>An input field which is a number.</P>
 
       <H4>Properties</H4>
       <ul>
@@ -274,7 +286,7 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>TextArea</H3>
-      <p>A multi-line input field.</p>
+      <P>A multi-line input field.</P>
 
       <H4>Properties</H4>
       <ul>
@@ -284,7 +296,7 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Sum</H3>
-      <p>A block that shows the sum of an expression</p>
+      <P>A block that shows the sum of an expression</P>
 
       <H4>Properties</H4>
       <ul>
@@ -305,11 +317,11 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Evaulation</H3>
-      <p>
+      <P>
         A block that shows different information given an expression. It can be used with one value
         and shows sad stat if that value is less than 0 or otherwise happy state. Can also compare
         two numbers
-      </p>
+      </P>
 
       <H4>Properties</H4>
       <ul>
@@ -335,10 +347,10 @@ export default function SchemaBuildingBlocks() {
       <hr />
 
       <H2>Output types</H2>
-      <p>Nodes that exist to present information and don't feature user input</p>
+      <P>Nodes that exist to present information and don't feature user input</P>
 
       <H3>Image</H3>
-      <p>An image.</p>
+      <P>An image.</P>
 
       <H4>Properties</H4>
       <ul>
@@ -357,7 +369,7 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Text</H3>
-      <p>A block of text</p>
+      <P>A block of text</P>
 
       <H4>Properties</H4>
       <ul>
@@ -371,12 +383,12 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Table</H3>
-      <p>
+      <P>
         Sometimes, the need for presenting complex information in the form of a matrix arise. The{' '}
         <em>Table</em> features a way of visualizing multiple dimensions with dynamic state that
         reacts to user wizard input through a dynamic structure and flexible tests to mark cells as
         active/inactive.
-      </p>
+      </P>
 
       <H4>Properties</H4>
       <ul>
@@ -409,19 +421,19 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>Summary</H3>
-      <p>A summary of all input and errors in the wizard</p>
+      <P>A summary of all input and errors in the wizard</P>
 
       <H3>Information</H3>
-      <p>
+      <P>
         Kinda like a text block but it has a nice icon before the text and it is dispalyed on the
         result page.
-      </p>
+      </P>
 
       <H3>Signature</H3>
-      <p>A nice signature line for documents that should be signed.</p>
+      <P>A nice signature line for documents that should be signed.</P>
 
       <H3>Error</H3>
-      <p>A textblock that looks like a error message</p>
+      <P>A textblock that looks like a error message</P>
       <H4>Properties</H4>
       <ul>
         <li>
@@ -431,10 +443,10 @@ export default function SchemaBuildingBlocks() {
       </ul>
 
       <H3>ErrorOk</H3>
-      <p>
+      <P>
         Just like the error block but with a different look. We should look into refacotring but to
         do that we need to figure out how we want these to really work.
-      </p>
+      </P>
     </div>
   );
 }
