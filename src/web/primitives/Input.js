@@ -44,7 +44,7 @@ export const Checkbox = injectStyles(styled.input`
       margin-bottom: 0;
     }
     h3 {
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 0;
       font-style: normal;
       font-weight: bold;
@@ -169,7 +169,7 @@ export const Radio = injectStyles(styled.input.attrs({
       margin-bottom: 0;
     }
     h3 {
-      font-size: 18px;
+      font-size: 16px;
       margin-bottom: 0;
       font-style: normal;
       font-weight: bold;
