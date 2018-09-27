@@ -48,6 +48,7 @@ export const SpecificBlock = injectStyles(styled.div`
   margin-bottom: 26px;
   padding: 0;
   background: none;
+  box-shadow: none;
   &:nth-child(even) {
     background: none;
   }`

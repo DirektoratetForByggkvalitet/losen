@@ -11,7 +11,7 @@ function TableCell(props) {
   return <TD {...props} />;
 }
 
-function TableHeader(props) {
+function TableHeader({ simple, ...props }) {
   return <th {...props} />;
 }
 
@@ -20,9 +20,9 @@ TableCell.propTypes = {
 };
 
 /* eslint-disable react/no-array-index-key */
-export default function Table({ cells, debug }) {
+export default function Table({ cells, debug, simple }) {
   return (
-    <TableContainer>
+    <TableContainer simple={simple}>
       <table data-debug={debug}>
         <tbody>
           {cells.map((row, rowKey) => (
@@ -36,7 +36,7 @@ export default function Table({ cells, debug }) {
                 const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
                 return (
-                  <Cell data-id={cell.id} {...cellProps} key={cellKey}>
+                  <Cell data-id={cell.id} {...cellProps} key={cellKey} simple={simple}>
                     <Html text={cell.text} />
                   </Cell>
                 );
@@ -61,8 +61,19 @@ Table.propTypes = {
     ),
   ).isRequired,
   debug: PropTypes.bool,
+  simple: PropTypes.bool,
 };
 
 Table.defaultProps = {
   debug: false,
+  simple: false,
+};
+
+TableHeader.propTypes = {
+  simple: PropTypes.bool,
+};
+
+
+TableHeader.defaultProps = {
+  simple: false,
 };
