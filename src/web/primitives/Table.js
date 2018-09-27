@@ -36,7 +36,26 @@ export const TD = injectStyles(styled.td`
   background: ${props.simple ? '#ffffff' : 'repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px)'};
   font-weight: normal;
   ` : `
-  font-weight: bold;
+  font-weight: ${props.simple ? 'normal' : 'bold'};
   background: ${props.simple ? '#ffffff' : 'rgba(0, 255, 0, 0.1)'};
   `}
+  ${props => props.simple ? `
+    text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+    line-height: 1.5;
+    p {
+      font-weight: normal !important;
+      margin-top: 3px !important;
+    }
+    strong {
+      font-weight: bold;
+    }
+    em {
+      font-weight: normal;
+    }
+    @media (max-width: 700px) {
+      word-wrap: break-word;
+    }
+  ` : ' '}
 `);

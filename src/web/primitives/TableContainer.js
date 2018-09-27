@@ -13,6 +13,12 @@ const TableContainer = injectStyles(styled.div`
     border-collapse: collapse;
     th {
       font-weight: inherit;
+      ${props => props.simple ? `
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background: #ffffff;
+      ` : ' '}
     }
     th, td {
       border: 1px solid ${props => (props.styles.color.darkgray)};
