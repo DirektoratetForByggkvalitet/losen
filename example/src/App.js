@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { Wizard, StyleProvider } from 'losen';
 import store from './store';
 import cat from './api/cat.json';
-import Intro from './pages/Intro';
 
 import dataExport from './exports/data-export';
 
@@ -24,14 +23,6 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.intro) {
-      return (
-        <StyleProvider>
-          <Intro close={this.closeIntro} />
-        </StyleProvider>
-      );
-    }
-
     return (
       <Provider store={store}>
         <Wizard wizard={cat} exports={{ dataExport }} />
