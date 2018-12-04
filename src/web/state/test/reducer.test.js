@@ -19,6 +19,11 @@ const schema = {
           operator: 'eq',
           value: true,
         },
+        {
+          field: 'funny.animals.cat',
+          operator: 'eq',
+          value: true,
+        },
       ],
     },
   },
@@ -49,8 +54,28 @@ const schema = {
           ],
         },
         {
-          id: 'cat',
+          id: 'funnyAnimals.cat',
           property: 'cat',
+          type: 'Radio',
+          heading: 'Katt?',
+          options: [
+            {
+              id: '1234',
+              type: 'Answer',
+              heading: 'Ja',
+              value: true,
+            },
+            {
+              id: '1234',
+              type: 'Answer',
+              heading: 'Ja',
+              value: false,
+            },
+          ],
+        },
+        {
+          id: 'funny.animals.cat',
+          property: 'funny.animals.cat',
           type: 'Radio',
           heading: 'Katt?',
           options: [
@@ -92,16 +117,33 @@ describe('reducer', () => {
     });
   });
 
-  it('computes properties on state change', () => {
-    const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
+  describe('computes properties on state change', () => {
+    it('for shallow, top-level property', () => {
+      const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
 
-    store.dispatch(setData('cat', true));
+      store.dispatch(setData('cat', true));
+      const state = store.getState()[NAME];
 
-    const state = store.getState()[NAME];
+      expect(state).toEqual({
+        $computed: { dogOrCat: true },
+        cat: true,
+      });
+    });
 
-    expect(state).toEqual({
-      $computed: { dogOrCat: true },
-      cat: true,
+    it('for nested property', () => {
+      const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
+
+      store.dispatch(setData('funny.animals.cat', true));
+      const state = store.getState()[NAME];
+
+      expect(state).toEqual({
+        $computed: { dogOrCat: true },
+        funny: {
+          animals: {
+            cat: true,
+          },
+        },
+      });
     });
   });
 });

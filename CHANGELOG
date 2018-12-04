@@ -1,0 +1,54 @@
+# Changelog
+All notable changes to this project will be documented in this file, starting from version 3.0.2.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Changed
+
+## [3.3.0] - 2018-12-04
+
+### Added
+- Added `simple` option for `Table` block
+- Added `grid` layout option for the `Checkbox` and `Radio` input blocks
+
+### Changed
+- Reduced font size for H4 `Heading` from 16 👉 14px
+- Reduced font size for H3 in `Input` from 18 👉 18px
+- Slightly reduced margin below paragraphs
+
+### Fixed
+- Fixed bug in state management causing state updates to be ignored if the 
+`id` and `property` properties on input blocks were not the same value, or 
+if the property was a nested value (like engine.displacement).
+
+## [3.2.5] - 2018-07-24
+
+### Added
+- Added visual indicator to show you're on result page
+- Show debug label for images when the debug query param is added to the url
+- Added functionality for clearing other fields when an option is selected for a radio group. You can pass in an array of properties you want to clear when this question is selected
+
+### Changed
+- Adjust grid and spacing
+- Reduce number of different font weights
+- Adjust overall spacing on blocks
+
+## [3.1.1] - 2018-06-22
+🚨 This was tagged as a minor change, even though the commit message states that the change is breaking.
+
+### Changed
+- Refactor `Sum`
+- Allow `page` and `$computed` in the `removeInactiveQuestions` function when updating state
+
+### Removed
+- Remove `SpecialSum`. Use two sums instead
+- Remove `beforeResult` on the `Result` component to reduce the complexity
+
+## [3.0.2] - 
+
+[Unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.3.0...HEAD
+[3.3.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.2.5...v3.3.0
+[3.2.5]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.1.1...v3.2.5
+[3.1.1]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.0.2...v3.1.1
