@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "losen": "^1.0.0",
+    "losen": "^3.2.5",
     "lodash.get": "^4.4.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
