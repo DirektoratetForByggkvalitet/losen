@@ -6,85 +6,77 @@ export default function Welcome() {
   return (
     <div>
       <H1>Getting started</H1>
-      <p>
-        In order to get your wizard up and running, the easiest way to go about it is to grab the
-        example repo from{' '}
-        <a href="https://github.com/netliferesearch/losen/tree/master/example">github</a>. The
-        example is a working wizard, where data handling, JSON export, offline storage and all is
-        set up for you.
-      </p>
-
-      <H2>Installation</H2>
-      <p>
-        When you've got hold of the example wizard, you need to install the dependencies by running{' '}
-        <code>npm install</code> before you can start the dev mode by running <code>npm start</code>.
-        At this point the browser should open and you should see something wizard-like. In case you
-        don't, you probably have some sort of error message in the terminal window where you
-        performed the <code>npm start</code> command.
-      </p>
-
-      <H2>"The schema"</H2>
-      <p>
-        Throughout this documentation we'll refer to "the schema". More precisely, the schema is a
-        formalized structure that describes your wizard. It contains most everything when it comes
-        to the wizard, such as logical tests, branches, the input fields, result pages and pretty
-        much everything else.
-      </p>
-      <p>
-        The structure you have to abide by is described in much greater detail in the{' '}
-        <em>Schema</em> section.
-      </p>
-
-      <H2>The Wizard component</H2>
-      <p>
-        The wizard framework exports a few components, of which Wizard is the most important. The
-        Wizard component expects to have a Redux context, meaning is has to be put inside a{' '}
-        <code>react-redux</code> Provider node. The reason we do it this way is because the wizard
-        you create might want to make use of the data from the wizard, and if the Redux context was
-        created inside the framework getting hold of the data would be more cumbersome. In addition
-        to the Redux context, the Wizard requires one prop: <code>schema</code>.
-      </p>
-
-      <H3>Optional props</H3>
-      <ul>
-        <li>
-          <code>styles</code>: styles object to override default styles in the framework.
-        </li>
-
-        <li>
-          <code>exports</code>: an object with data export functions. The functions can be referred
-          to from the Result page node in order to give the user a way of exportin their data. The
-          functions is passed the entire wizard state data object and can do whatever it want with
-          it before returning something that will be JSON encoded and presented to to the user.
-        </li>
-      </ul>
-
-      <H2>Building and deploying</H2>
+      <p>The easiest way to get started is to use our example.</p>
+      <H2>Setup</H2>
       <ol>
-        <li>Commit changes</li>
         <li>
-          Bump version number{' '}
-          <a href="https://docs.npmjs.com/getting-started/semantic-versioning">appriopriately</a> by
-          running <code>npm run release</code>
+          <strong>
+            Grab our <a href="https://github.com/DirektoratetForByggkvalitet/losen/tree/master/example">example repo</a>{' '}
+            from GitHub.
+          </strong>
+          <br />
+          This contains a complete working wizard, where data handling, JSON export, offline storage and all is set up
+          for you.
+          <br />
+          <br />
         </li>
         <li>
-          Push to remote master branch. Will do continous deployment via travis. Mainly to update
-          this storybook documentation
+          <strong>
+            Edit or replace the{' '}
+            <a href="https://github.com/DirektoratetForByggkvalitet/losen/blob/master/example/src/api/cat.json">
+              example schema
+            </a>
+            .
+          </strong>
+          <br />
+          Take a look at our{' '}
+          <a href="https://dibk-storybook.firebaseapp.com/?selectedKind=Schema">schema documentation</a> for how to set
+          up your custom schema structure.
+          <br />
+          <br />
+        </li>
+        <li>
+          <strong>Custom styling</strong>
+          <br /> Losen uses Styled Components for styling. Currently only a few theming options are available.
         </li>
       </ol>
-      <p>That's it 🎉</p>
+      <H2>Build and deploy</H2>
+      <p>The wizard can be be used as a stand alone site or embedded on your current site.</p>
+      <H3>Use as a stand alone site</H3>
       <p>
-        The framework is built without a running server backend as a requirement, and the example
-        wizard reflects this and is set up for building a static bundle and deploying to firebase
-        cloud hosting.
+        Run <code>npm run build</code>
+        <br />
+        This creates a /build folder with a index.html. Run it to see your wizard.
       </p>
-      <p>
-        If you want to deploy to the firebase CDN you need to set the project key in the{' '}
-        <code>.firebaserc</code> when setting up a new wizard. When you've done that you have to
-        install and login with the
-        <a href="https://github.com/firebase/firebase-tools">firebase-tools</a>. When you've logged
-        in deploying is as simple as <code>npm run deploy</code> and 🙏.
-      </p>
+      <H3>Use embedded</H3>
+      <ol>
+        <li>
+          Create an empty placeholder on your site where you want the wizard to show up, and give it an unique id.
+          <br />
+          Example: <code>{`<div id=“wizard-example”></div>`}</code>
+          <br />
+          <br />
+        </li>
+        <li>
+          Update{' '}
+          <a href="https://github.com/DirektoratetForByggkvalitet/losen/blob/master/example/src/index.js">index.js</a>{' '}
+          to match your unique id.
+          <br />
+          Example: <code>{`ReactDOM.render(<App />, document.getElementById(‘wizard-example’))`}</code>
+          <br />
+          <br />
+        </li>
+        <li>
+          Run <code>npm run build</code>
+          <br />
+          This creates a /build folder. Copy the <code>/build/static/js</code> file and embed on your site
+          <br />
+          Example: <code>{`<script type="text/javascript" src="/static/js/main.536c234c.js"></script>`}</code>
+          <br />
+          <br />
+        </li>
+        <li>The wizard should now show up on your site :)</li>
+      </ol>
     </div>
   );
 }
