@@ -1,4 +1,7 @@
 import setWith from 'lodash.setwith';
+import isObject from 'lodash.isobject';
+import find from 'lodash.find';
+
 import { NAME } from './index';
 import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL } from './actions';
 import processComputed from '../utils/process-computed';
@@ -6,15 +9,36 @@ import reduceWizard, { buildNodeMap } from '../utils/reduce-wizard';
 
 const initialState = {};
 
-const removeInactiveQuestions = (state, nodes) =>
-  Object.keys(state).reduce((acc, id) => {
-    // TODO: Do something smart so we don't have to write expections on the conditional
-    if (id === 'page' || id === '$computed') {
-      return { ...acc, [id]: state[id] };
+const removeInactiveQuestions = (state, nodes, path = []) =>
+  Object.keys(state).reduce((acc, property) => {
+    // page and $computed properties we want to keep
+    if (property === 'page' || property === '$computed') {
+      return { ...acc, [property]: state[property] };
     }
-    if (nodes[id]) {
-      return { ...acc, [id]: state[id] };
+
+    // build the path to the property, can be a nested property
+    const propertyPath = [...path, property];
+    const fullPropertyPath = propertyPath.join('.');
+
+    // check if a node with the property we got to exists in the list of nodes
+    if (find(nodes, ({ property: nodeProperty }) => nodeProperty === fullPropertyPath)) {
+      return { ...acc, [property]: state[property] };
     }
+
+    // recurse if the property is an object
+    if (isObject(state[property])) {
+      return {
+        ...acc,
+
+        // remove inactive properties on the property object
+        [property]: removeInactiveQuestions(
+          state[property], // pass the object we got to
+          nodes,
+          [...path, property], // add the property to the path and go on
+        ),
+      };
+    }
+
     return { ...acc };
   }, {});
 
@@ -33,6 +57,7 @@ export function setDataUpdate(wizard, state, { payload }) {
   const newSchema = reduceWizard(wizard.schema, { [NAME]: newState });
   const visibleNodes = buildNodeMap(newSchema);
   const purgedState = removeInactiveQuestions(newState, visibleNodes);
+
   return applyComputed(wizard, purgedState);
 }
 
