@@ -310,7 +310,7 @@
                   "SGsource": "//sgregister.dibk.no/api/enterprises/",
                   "validator": {
                     "object": "orgid",
-                    "pattern": "(\\d[\\s-]*){8}\\d",
+                    "pattern": "^\\s*(\\d\\s*){9}$",
                     "error": "Må være gyldig organisasjonsnummer"
                   }
                 },
