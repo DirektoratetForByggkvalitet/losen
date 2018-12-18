@@ -12,7 +12,7 @@ export default function Welcome() {
         <li>
           <strong>
             Grab our <a href="https://github.com/DirektoratetForByggkvalitet/losen/tree/master/example">example repo</a>{' '}
-            from GitHub.
+            from GitHub, and follow the instructions.
           </strong>
           <br />
           This contains a complete working wizard, where data handling, JSON export, offline storage and all is set up

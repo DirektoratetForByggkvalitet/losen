@@ -12,7 +12,7 @@ function numOfMatchingItemsInObject(object, value) {
   return items.length;
 }
 
-function Sum({ node, data }) {
+function Sum({ node }) {
   const matchingItems = numOfMatchingItemsInObject(node.currentValue, true);
   return (
     <div>
@@ -21,7 +21,8 @@ function Sum({ node, data }) {
           {matchingItems === 0 && <strong>Du har ikke valgt noen alternativer:</strong>}
           {matchingItems > 0 && (
             <strong>
-              Du har valgt {numOfMatchingItemsInObject(node.currentValue, true)} av {node.options.length} alternativer:
+              Du har valgt {numOfMatchingItemsInObject(node.currentValue, true)}
+              av {node.options.length} alternativer:
             </strong>
           )}
         </p>
@@ -52,5 +53,4 @@ export default ConnectedSum;
 
 Sum.propTypes = {
   node: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
 };
