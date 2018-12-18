@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import DefaultValueSummary from './value';
+import Checkbox from './value/Checkbox';
 import FetchOrg from './value/FetchOrg';
 import Sum from './value/Sum';
 
@@ -13,7 +14,7 @@ import SoftError from './SoftError';
 import Information from './Information';
 
 const ignoreNodes = ['Text', 'Image'];
-const overrideValueSummary = { FetchOrg, Sum };
+const overrideValueSummary = { FetchOrg, Sum, Checkbox };
 
 export default function NodeSummary({ node }) {
   const { children, currentValue, errorDescription, errors, heading, property, type } = node;

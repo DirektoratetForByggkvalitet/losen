@@ -6,8 +6,10 @@ export const SpecificBlock = injectStyles(styled.div`
   position: relative;
   padding: ${props => (props.grouped ? '16px 18px 20px' : '24px 28px 24px')};
   margin: ${props => (props.grouped ? '0 0 20px 0' : '20px 0')};
+  margin: ${props => (props.smallMarginTop ? '8px 0 20px 0' : '20px 0')};
   width: 100%;
   background: ${props => (props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white')};
+
   &:nth-child(even) {
     background: ${props => (props.grouped ? 'rgba(0, 117, 127, 0.06)' : 'white')};
   }
@@ -76,8 +78,8 @@ export const SpecificBlock = injectStyles(styled.div`
     }
     td,th {
       ${
-  props.debug
-    ? `
+        props.debug
+          ? `
       :hover {
         position: relative;
 
@@ -93,20 +95,20 @@ export const SpecificBlock = injectStyles(styled.div`
           padding: 2px 6px;
         }
       }`
-    : ''
-}
+          : ''
+      }
     }
   }
   `
     : ' '} @media screen and (max-width: 700px) {
     padding: ${props => (props.grouped ? '12px 20px' : '26px 20px')};
     ${props =>
-    props.groupedSimple
-      ? `
+      props.groupedSimple
+        ? `
     margin-bottom: 24px;
     padding: 0;
     `
-      : ' '};
+        : ' '};
   }
 
   @media print {
@@ -176,7 +178,7 @@ export const TextBlock = injectStyles(styled.div`
     margin: 0 0 30px;
     line-height: 1.2;
     @media screen and (max-width: 700px) {
-      font-size: ${props => (props.small ? '0.9rem' : '30px')}
+      font-size: ${props => (props.small ? '0.9rem' : '30px')};
     }
   }
 
