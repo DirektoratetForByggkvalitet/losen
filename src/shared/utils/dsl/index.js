@@ -292,7 +292,7 @@ export function buildValidatorFunction(expression) {
  *
  * @param {*} expression
  */
-export default function parse(expression, topLevel = true) {
+export function parse(expression, topLevel = true) {
   if (topLevel) {
     // Validate expression first. Otherwise we would need loads of
     // redundant tests in the validation function builder..
@@ -302,3 +302,5 @@ export default function parse(expression, topLevel = true) {
   // A-OK, let's build the function! 🎸
   return buildValidatorFunction(expression);
 }
+
+export default parse;
