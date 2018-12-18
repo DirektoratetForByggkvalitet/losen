@@ -44,6 +44,7 @@ class Wizard extends Component {
       }),
     ),
     wizard: PropTypes.object.isRequired,
+    showResetModal: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -53,6 +54,7 @@ class Wizard extends Component {
     showIntro: () => {},
     styles: {},
     translations: {},
+    showResetModal: true,
   };
 
   constructor(props) {
@@ -61,7 +63,16 @@ class Wizard extends Component {
 
     const { $computed, ...wizardData } = props.data[NAME] || {};
 
-    this.state = { page: 0, result: false, showResetModal: !!Object.keys(wizardData).length };
+    this.state = {
+      page: 0,
+      result: false,
+      showResetModal: props.showResetModal && !!Object.keys(wizardData).length,
+    };
+
+    if (wizardData.page) {
+      this.setPage(wizardData.page);
+    }
+
     this.trackPage(true);
 
     this.helper();
