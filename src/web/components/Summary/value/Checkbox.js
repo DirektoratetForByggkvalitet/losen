@@ -18,11 +18,11 @@ function Sum({ node }) {
     <div>
       <SpecificBlock grouped smallMarginTop>
         <p>
-          {matchingItems === 0 && <strong>Du har ikke valgt noen alternativer:</strong>}
+          {matchingItems === 0 && <strong>Du har ikke valgt noen alternativer.</strong>}
           {matchingItems > 0 && (
             <strong>
               Du har valgt {numOfMatchingItemsInObject(node.currentValue, true)}
-              av {node.options.length} alternativer:
+              {' av '} {node.options.length} alternativer:
             </strong>
           )}
         </p>
