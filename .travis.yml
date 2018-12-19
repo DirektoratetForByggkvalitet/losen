@@ -8,8 +8,3 @@ script: yarn test && yarn build-storybook
 notifications:
   email:
     on_success: never
-deploy:
-  - provider: firebase
-    skip_cleanup: true
-    token:
-      secure: cvGlVBEQeXCjUlIKZNOEk9IYVoONhCxuqyZSQxArkY/UTkYornhxdzV9ZKWZhribBSxE69BTJ5Qu9mzNhY+661tZBOHWiCKkdhLGnqJTAnhq4DHCNv4jYE/8N+0olfE0tS16tzUfkGc6hrit78ux3W4rGPw+7+St4nkHf1AZuNAXEhEnfYTUweExLU6wGObj0qo09W21X0dH4jkcSWvJesHFeS4WpKkOILRFG7eelIjs8icIoJWz0woQJCaHkpMdD2T56yvVvRPttSRoxeiT7HNUQOQOZ8ABztHW5QIluReSybEZswuXBgzhIPbCcCwiFcrIqNB23wlDTff9YVzsooGxweY2I/zFKzTx3I9M+9ZmQOE7SB52pAJw1d6Hz8xWlLo+TUyyDDYmuWADThglefcieaD7HDppKmDK/iRwi4R89QXZD/D0F7YR3HZ0bg7aIbzT9CF+hk/s3Y13fjjipSvj/ARZlsd3Bfl3w549MGji/mvdz1aWcmjczsBbYXgsAaHADMwvOLMPqXzXNAQHzcgEXquPDUW1uXH/Jif84TpH3S/3nkAEu5oxmS0XWPn1gVBZgysLb3aV0bmdEI4MQfTPcs/ulLL6nNLjGWxkQApasaOsoH4y3bAiO5EzpGFBCD0e6s2TAYA7hnqJ0EJQ2Ngfl9Ebs6/Qz3E692gjTHY=
