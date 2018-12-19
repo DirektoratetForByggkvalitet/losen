@@ -12,6 +12,10 @@ they left off.
 
 ### Changed
 - Updated getting started docs
+- Change presentation of checkbox on result-page
+
+### Fixed
+- Fix whitespace error
 
 ## [3.3.0] - 2018-12-04
 

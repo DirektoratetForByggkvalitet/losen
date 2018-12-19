@@ -89,21 +89,97 @@ export const Checkbox = injectStyles(styled.input`
       border-bottom: 4px solid ${({ styles }) => styles.color.light};
     }
     &:checked + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 4px 0 ${({ styles }) => styles.color.dark};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark}, 0 0 4px 0 ${({ styles }) => styles.color.dark};
       background: ${({ styles }) => styles.color.lightgreen};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
     }
     &:checked:focus + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 6px 1px ${({ styles }) => styles.color.light};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark}, 0 0 6px 1px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
     }
   }
+  @media screen and (max-width: 900px) {
+    + label {
+      flex-wrap: wrap;
+      &::before {
+      }
+      div {
+        flex: 1;
+        div {
+          margin-right: 0;
+        }
+      }
+      img {
+        width: 100%;
+        margin: 20px auto 0;
+        display: block;
+        flex: 0 0 100%;
+      }
+    }
+  }
+`);
+
+export const CheckboxResultDisplay = injectStyles(styled.input`
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  line-height: 1.4;
+
+  + label {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0;
+    padding: 10px;
+    position: relative;
+
+    &:before {
+      content: ' ';
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 10px;
+      width: 10px;
+      height: 10px;
+      background: white;
+      margin-right: 1em;
+      border: 0.3em solid white;
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
+    }
+
+    div {
+      margin-right: 30px;
+      flex: 1;
+    }
+    img {
+      width: 25%;
+      max-width: 200px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: 16px;
+      margin-bottom: 0;
+      font-style: normal;
+      font-weight: bold;
+    }
+  }
+
+  &:checked + label:after {
+    content: ' ';
+    position: absolute;
+    left: 13px;
+    top: 13px;
+    width: 11px;
+    height: 6px;
+    transform: rotate(-46deg);
+    border-left: 4px solid ${({ styles }) => styles.color.light};
+    border-bottom: 4px solid ${({ styles }) => styles.color.light};
+  }
+
   @media screen and (max-width: 900px) {
     + label {
       flex-wrap: wrap;
@@ -197,16 +273,14 @@ export const Radio = injectStyles(styled.input.attrs({
       background: ${({ styles }) => styles.color.light};
     }
     &:checked + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 4px 0 ${({ styles }) => styles.color.dark};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark}, 0 0 4px 0 ${({ styles }) => styles.color.dark};
       background: ${({ styles }) => styles.color.lightgreen};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
     }
     &:checked:focus + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 6px 1px ${({ styles }) => styles.color.light};
+      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark}, 0 0 6px 1px ${({ styles }) => styles.color.light};
       &::before {
         box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
       }
@@ -259,9 +333,7 @@ export const TextInput = injectStyles(styled.input`
   padding: 0.5em;
   width: auto;
   min-width: 40%;
-  border: 1px solid
-    ${({ styles, validation: { error } = {} }) =>
-    error ? styles.color.red : styles.color.darkgray} !important;
+  border: 1px solid ${({ styles, validation: { error } = {} }) => (error ? styles.color.red : styles.color.darkgray)} !important;
   &::placeholder {
     font-color: inherit;
     opacity: 0.6;
