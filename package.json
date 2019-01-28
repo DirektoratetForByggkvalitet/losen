@@ -17,6 +17,7 @@
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
     "prepublishOnly": "npm run build && npm run lint && npm run test",
+    "deploy": "npm run build-storybook && firebase deploy",
     "release": "np"
   },
   "pre-commit": [
