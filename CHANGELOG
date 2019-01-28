@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 texts for all four variations on incomplete/with error.
 
 ### Removed
+- ErrorResult component. Equivivalent with the Result component, except from the print/export
+being hidden. Added logic to Result to show those instead.
+
+### Fixed
+- Add sanity checks in Checkbox result page summary to account for wonky data in state
+- Recurse down through schema when checking for soft errors, to catch deeply nested
+ones (e.g. in Groups)
 
 ## [3.4.0] - 2018-12-19
 ### Added
