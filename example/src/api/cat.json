@@ -754,9 +754,19 @@
     {
       "id": "hooray",
       "type": "Result",
-      "heading": "Hurra - du kan ha katt 🌈",
-      "lead": "Les nøye gjennom svarene dine, og sjekk at alt stemmer før du tar med deg resultatene til ditt nærmeste adopsjonssenter for katter. Husk at du vil bli stilt til ansvar for at katten får det bra hos deg!",
-      "exporter": "dataExport"
+      "exporter": "dataExport",
+      "heading": {
+        "complete": "Hurra - du kan ha katt 🌈",
+        "completeWithError": "Feil - rett opp svarene dine",
+        "incomplete": "Feil - du har ikke svart på alt",
+        "incompleteWithError": "Feil - rett opp svarene dine og svar på alt"
+      },
+      "lead": {
+        "complete": "Les nøye gjennom svarene dine, og sjekk at alt stemmer før du tar med deg resultatene til ditt nærmeste adopsjonssenter for katter. Husk at du vil bli stilt til ansvar for at katten får det bra hos deg!",
+        "completeWithError": "Du kan ikke ha katt :( Se feilene dine under.",
+        "incomplete": "Vi kan ikke gi deg et råd med mindre du svarer på alle spørsmålene.",
+        "incompleteWithError": "Du kan ikke ha katt :( Se feil og manglende svar under."
+      }
     }
   ]
 }
