@@ -70,7 +70,7 @@ function assertDeprecations(object, path, properties) {
   let errors = [];
 
   (properties || []).forEach(({ property, use }) => {
-    if (get(object, property, undefined) === undefined) {
+    if (get(object, property, undefined) !== undefined) {
       errors = [
         ...errors,
         {
