@@ -181,7 +181,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap)
   return {
     ...node,
     ...translatedProps,
-    currentValue,
+    ...(currentValue !== undefined ? { currentValue } : {}),
     errors,
     errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
   };
@@ -210,8 +210,12 @@ export const reduceOptions = (state, translations, nodeMap) => (node) => {
       .map(option => ({
         ...option,
         ...translateNode(option, translations),
+        ...(
+          option.disabled
+            ? { disabled: !parseExpression(option.disabled)(state[NAME]).valid }
+            : {}
+        ),
         messages: reduceOptionMessages(state)(option.messages),
-        disabled: option.disabled && !parseExpression(option.disabled)(state[NAME]).valid,
       })),
   };
 };
