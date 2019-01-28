@@ -1,3 +1,5 @@
+import omit from 'lodash.omit';
+
 import { NAME } from '../../state';
 
 import reduceWizard, {
@@ -158,7 +160,7 @@ describe('reduce-wizard', () => {
             type: 'Group',
             children: [
               { type: 'Input' },
-              { type: 'Input', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
+              { type: 'Input', hide: { field: 'foo', operator: 'eq', value: 'bar' } },
               {
                 type: 'Branch',
                 branches: [
@@ -186,7 +188,6 @@ describe('reduce-wizard', () => {
         type: 'Page',
         children: [
           {
-            currentValue: undefined,
             type: 'Radio',
             errors: { disabled: [], validation: {}, required: true },
             errorDescription: '',
@@ -195,15 +196,12 @@ describe('reduce-wizard', () => {
             type: 'Group',
             children: [
               {
-                currentValue: undefined,
                 type: 'Input',
                 errors: { disabled: [], validation: {}, required: true },
                 errorDescription: '',
               },
               {
-                currentValue: undefined,
                 type: 'Input',
-                hide: { field: 'foo', operator: 'neq', value: 'bar' },
                 errors: { disabled: [], validation: {}, required: true },
                 errorDescription: '',
               },
@@ -214,11 +212,6 @@ describe('reduce-wizard', () => {
       {
         heading: 'The other end',
         type: 'Result',
-        show: {
-          field: 'foo',
-          operator: 'eq',
-          value: 'bar',
-        },
       },
     ]);
   });
@@ -229,7 +222,7 @@ describe('reduce-wizard', () => {
         type: 'Page',
         children: [
           { type: 'Input' },
-          { type: 'Input', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
+          { type: 'Input', hide: { field: 'foo', operator: 'eq', value: 'bar' } },
           {
             type: 'Branch',
             branches: [
@@ -254,7 +247,6 @@ describe('reduce-wizard', () => {
         children: [
           {
             type: 'Input',
-            currentValue: undefined,
             errorDescription: '',
             errors: {
               disabled: [],
@@ -263,8 +255,10 @@ describe('reduce-wizard', () => {
             },
           },
           {
-            ...wizard[0].children[1],
-            currentValue: undefined,
+            ...omit( // we expect the show, hide and hidden props to be gone
+              wizard[0].children[1],
+              ['show', 'hide', 'hidden'],
+            ),
             errorDescription: '',
             errors: {
               disabled: [],
@@ -288,7 +282,6 @@ describe('reduce-wizard', () => {
         children: [
           {
             type: 'Input',
-            currentValue: undefined,
             errorDescription: '',
             errors: {
               disabled: [],
@@ -326,7 +319,6 @@ describe('reduce-wizard', () => {
                 children: [
                   {
                     type: 'Input',
-                    currentValue: undefined,
                     errorDescription: '',
                     errors: {
                       disabled: [],
@@ -336,14 +328,13 @@ describe('reduce-wizard', () => {
                   },
                   {
                     type: 'Radio',
-                    currentValue: undefined,
                     errorDescription: '',
                     errors: {
                       disabled: [],
                       required: true,
                       validation: {},
                     },
-                    hidden: {
+                    hide: {
                       field: 'foo',
                       operator: 'not',
                     },
@@ -366,7 +357,6 @@ describe('reduce-wizard', () => {
         children: [
           {
             type: 'Input',
-            currentValue: undefined,
             errorDescription: '',
             errors: {
               disabled: [],
@@ -375,8 +365,10 @@ describe('reduce-wizard', () => {
             },
           },
           {
-            ...wizard[0].children[0].branches[0].children[1],
-            currentValue: undefined,
+            ...omit( // we expect the show, hide and hidden props to be gone
+              wizard[0].children[0].branches[0].children[1],
+              ['show', 'hide', 'hidden'],
+            ),
             errorDescription: '',
             errors: {
               disabled: [],
@@ -399,7 +391,6 @@ describe('reduce-wizard', () => {
         children: [
           {
             type: 'Input',
-            currentValue: undefined,
             errorDescription: '',
             errors: {
               disabled: [],
@@ -408,8 +399,10 @@ describe('reduce-wizard', () => {
             },
           },
           {
-            ...wizard[0].children[0].branches[0].children[1],
-            currentValue: undefined,
+            ...omit( // we expect the show, hide and hidden props to be gone
+              wizard[0].children[0].branches[0].children[1],
+              ['show', 'hide', 'hidden'],
+            ),
             errorDescription: '',
             errors: {
               disabled: [],
@@ -427,7 +420,7 @@ describe('reduce-wizard', () => {
     it('does not filter out nodes missing the hidden property', () => {
       const raw = [{
         type: 'Input',
-        hidden: { field: 'foo', operator: 'eq', value: 'test' },
+        hide: { field: 'foo', operator: 'eq', value: 'test' },
       }, {
         type: 'Input',
       }];
@@ -439,7 +432,7 @@ describe('reduce-wizard', () => {
     it('does not filter out Branch nodes', () => {
       const raw = [{
         type: 'Branch',
-        hidden: { field: 'foo', operator: 'eq', value: 'test' },
+        hide: { field: 'foo', operator: 'eq', value: 'test' },
       }, {
         type: 'Input',
       }];
@@ -454,11 +447,11 @@ describe('reduce-wizard', () => {
       const raw = [{
         type: 'Input',
         heading: 'Fjasebengel',
-        hidden: { field: 'foo', operator: 'eq', value: 'bar' },
+        hide: { field: 'foo', operator: 'eq', value: 'bar' },
       }, {
         type: 'Input',
         heading: 'Floppo',
-        hidden: { field: 'foo', operator: 'neq', value: 'bar' },
+        hide: { field: 'foo', operator: 'neq', value: 'bar' },
       }];
 
       const filtered = raw.filter(filterSchemaNodes(state));
@@ -501,7 +494,6 @@ describe('reduce-wizard', () => {
         raw[0],
         {
           ...raw[1].branches[0].children[0],
-          currentValue: undefined,
           errorDescription: '',
           errors: {
             disabled: [],
@@ -517,7 +509,6 @@ describe('reduce-wizard', () => {
         raw[0],
         {
           ...raw[1].branches[1].children[0],
-          currentValue: undefined,
           errorDescription: '',
           errors: {
             disabled: [],
@@ -543,12 +534,12 @@ describe('reduce-wizard', () => {
             type: 'Stuff',
             children: [
               { type: 'Input' },
-              { type: 'Radio', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
+              { type: 'Radio', hide: { field: 'foo', operator: 'eq', value: 'bar' } },
               { type: 'Checkbox' },
             ],
           },
           { type: 'Input' },
-          { type: 'Radio', hidden: { field: 'foo', operator: 'eq', value: 'bar' } },
+          { type: 'Radio', hide: { field: 'foo', operator: 'eq', value: 'bar' } },
         ],
       };
 
@@ -562,7 +553,6 @@ describe('reduce-wizard', () => {
             children: [
               {
                 type: 'Input',
-                currentValue: undefined,
                 errorDescription: '',
                 errors: {
                   disabled: [],
@@ -572,7 +562,6 @@ describe('reduce-wizard', () => {
               },
               {
                 type: 'Checkbox',
-                currentValue: undefined,
                 errorDescription: '',
                 errors: {
                   disabled: [],
@@ -584,7 +573,6 @@ describe('reduce-wizard', () => {
           },
           {
             type: 'Input',
-            currentValue: undefined,
             errorDescription: '',
             errors: {
               disabled: [],

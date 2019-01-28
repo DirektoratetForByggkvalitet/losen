@@ -294,6 +294,12 @@ export const buildNodeMap = schema =>
     {},
   );
 
+/**
+ * Get rid of the show, hide and hidden props - not needed in render, and no
+ * use in passing them around.
+ */
+export const discardVisibilityProps = ({ show, hide, hidden, ...node }) => node;
+
 export default function reduceWizard(schema, state, nodeTitles, translations = {}, nodeMap = null) {
   let schemaNodeMap = nodeMap;
 
@@ -308,5 +314,6 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
     .map(parseTableCells(state, translations))
     .map(mapWizardChildren(state, nodeTitles, translations, schemaNodeMap))
     .map(reduceOptions(state, translations, schemaNodeMap))
+    .map(discardVisibilityProps)
     .reduce(liftChildrenBranchPages, []);
 }
