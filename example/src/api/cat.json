@@ -87,17 +87,6 @@
                       ]
                     },
                     {
-                      "id": "apekatt",
-                      "type": "Error",
-                      "children": [
-                        {
-                          "id": "apekatt.child",
-                          "type": "Text",
-                          "text": "Dette er feil"
-                        }
-                      ]
-                    },
-                    {
                       "id": "living.floor",
                       "property": "living.floor",
                       "type": "Select",
@@ -774,9 +763,9 @@
       },
       "lead": {
         "complete": "Les nøye gjennom svarene dine, og sjekk at alt stemmer før du tar med deg resultatene til ditt nærmeste adopsjonssenter for katter. Husk at du vil bli stilt til ansvar for at katten får det bra hos deg!",
-        "completeWithError": "Du kan ikke ha katt :(",
+        "completeWithError": "Du kan ikke ha katt :( Se feilene dine under.",
         "incomplete": "Vi kan ikke gi deg et råd med mindre du svarer på alle spørsmålene.",
-        "incompleteWithError": "Du kan ikke ha katt :("
+        "incompleteWithError": "Du kan ikke ha katt :( Se feil og manglende svar under."
       }
     }
   ]
