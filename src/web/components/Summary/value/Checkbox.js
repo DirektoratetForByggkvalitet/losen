@@ -8,7 +8,7 @@ import { CheckboxResultDisplay as Checkbox } from '../../../primitives/Input';
 import { Label } from '../../../primitives/Label';
 
 function numOfMatchingItemsInObject(object, value) {
-  const items = Object.keys(object).filter(key => object[key] === value);
+  const items = Object.keys(object || {}).filter(key => object[key] === value);
   return items.length;
 }
 
