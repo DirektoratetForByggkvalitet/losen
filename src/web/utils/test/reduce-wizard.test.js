@@ -9,7 +9,7 @@ import reduceWizard, {
 } from '../reduce-wizard';
 
 describe('reduce-wizard', () => {
-  it.only('replaces references', () => {
+  it('replaces references', () => {
     const wizard = [
       {
         type: 'Page',
@@ -474,7 +474,7 @@ describe('reduce-wizard', () => {
         branches: [
           {
             test: { field: 'foo', operator: 'eq', value: 'bar' },
-            children: [{ type: 'Checkbox' }],
+            children: [{ type: 'Radio' }],
           },
           {
             test: { field: 'foo', operator: 'eq', value: 'baz' },
