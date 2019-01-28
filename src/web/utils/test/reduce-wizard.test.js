@@ -485,11 +485,35 @@ describe('reduce-wizard', () => {
 
       expect(
         raw.reduce(reduceBranches({ [NAME]: { foo: 'bar' } }), []),
-      ).toEqual([raw[0], ...raw[1].branches[0].children]);
+      ).toEqual([
+        raw[0],
+        {
+          ...raw[1].branches[0].children[0],
+          currentValue: undefined,
+          errorDescription: '',
+          errors: {
+            disabled: [],
+            required: true,
+            validation: {},
+          },
+        },
+      ]);
 
       expect(
         raw.reduce(reduceBranches({ [NAME]: { foo: 'baz' } }), []),
-      ).toEqual([raw[0], ...raw[1].branches[1].children]);
+      ).toEqual([
+        raw[0],
+        {
+          ...raw[1].branches[1].children[0],
+          currentValue: undefined,
+          errorDescription: '',
+          errors: {
+            disabled: [],
+            required: true,
+            validation: {},
+          },
+        },
+      ]);
 
       expect(
         raw.reduce(reduceBranches({ [NAME]: { foo: 'ban' } }), []),
