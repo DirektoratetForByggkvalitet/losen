@@ -258,7 +258,19 @@ export const replaceReferences = nodeMap => (node) => {
     return node;
   }
 
-  return nodeMap[node.nodeId];
+  const {
+    show,
+    hide,
+    hidden,
+    ...referencedNodeProps
+  } = nodeMap[node.nodeId];
+
+  return {
+    ...referencedNodeProps,
+    ...(node.show ? { show: node.show } : {}),
+    ...(node.hide ? { hide: node.hide } : {}),
+    ...(node.hidden ? { hidden: node.hidden } : {}),
+  };
 };
 
 // Build a flat object with all the nodes in the schema that have an ID

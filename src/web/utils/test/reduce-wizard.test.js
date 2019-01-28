@@ -45,18 +45,30 @@ describe('reduce-wizard', () => {
         id: 'resultPage',
         heading: 'Foobar',
         children: [
-          { type: 'Reference', nodeId: 'apekatt' },
+          {
+            type: 'Reference',
+            nodeId: 'apekatt',
+            hide: { field: 'foo', operator: 'eq', value: 'bar' },
+          },
           {
             type: 'Radio',
             options: [
-              { type: 'Reference', nodeId: 'diggsnop' },
+              {
+                type: 'Reference',
+                nodeId: 'diggsnop',
+                show: { field: 'foo', operator: 'eq', value: 'bar' },
+              },
+              {
+                type: 'Reference',
+                nodeId: 'ostepop',
+              },
             ],
           },
         ],
       },
     ];
 
-    expect(reduceWizard(wizard, { [NAME]: {} })).toEqual([
+    expect(reduceWizard(wizard, { [NAME]: { foo: 'bar' } })).toEqual([
       {
         type: 'Page',
         children: [
@@ -77,30 +89,30 @@ describe('reduce-wizard', () => {
         heading: 'Foobar',
         children: [
           {
-            type: 'Input',
-            id: 'apekatt',
-            errors: {
-              disabled: [],
-              validation: {},
-              required: true,
-            },
-            errorDescription: '',
-          },
-          {
             type: 'Radio',
             options: [
               {
                 heading: 'Godt & Blanda',
                 id: 'diggsnop',
                 messages: [],
+                show: {
+                  field: 'foo',
+                  operator: 'eq',
+                  value: 'bar',
+                },
+              },
+              {
+                heading: 'Ostepop',
+                id: 'ostepop',
+                messages: [],
               },
             ],
+            errorDescription: '',
             errors: {
               disabled: [],
-              validation: {},
               required: true,
+              validation: {},
             },
-            errorDescription: '',
           },
         ],
       },
