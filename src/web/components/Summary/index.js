@@ -2,13 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import PageSummary from './Page';
-
-function hasSoftError(page) {
-  return Object.keys(page.children).reduce(
-    (sum, value) => sum || page.children[value].type === 'Error',
-    false,
-  );
-}
+import hasSoftError from '../../utils/has-soft-error';
 
 export default function Summary({ errorPages, setPage, pages }) {
   return (

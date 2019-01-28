@@ -1,10 +1,21 @@
+import get from 'lodash.get';
 import parseExpression from '../dsl';
 
 const inputRequiredProperties = ['id', 'property', 'heading'];
 
 const requiredProperties = {
+  Result: [
+    'id',
+    'lead.complete',
+    'lead.completeWithError',
+    'lead.incomplete',
+    'lead.incompleteWithError',
+    'heading.complete',
+    'heading.completeWithError',
+    'heading.incomplete',
+    'heading.incompleteWithError',
+  ],
   Page: ['id', 'heading', 'children'],
-  Result: ['id', 'heading'],
   Group: ['id', 'children'],
   Answer: ['id', 'heading', 'value'],
   Image: ['id', 'image'],
@@ -54,7 +65,7 @@ function assertProperties(object, path, properties) {
   let errors = [];
 
   (properties || []).forEach((property) => {
-    if (typeof object[property] === 'undefined') {
+    if (get(object, property, undefined) === undefined) {
       errors = [...errors, { path, id: object.id, error: `${object.type} is missing the '${property}' property` }];
     }
   });
@@ -69,7 +80,7 @@ function assertDeprecations(object, path, properties) {
   let errors = [];
 
   (properties || []).forEach(({ property, use }) => {
-    if (typeof object[property] !== 'undefined') {
+    if (get(object, property, undefined) === undefined) {
       errors = [
         ...errors,
         {
