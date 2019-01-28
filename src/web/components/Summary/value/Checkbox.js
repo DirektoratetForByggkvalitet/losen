@@ -12,8 +12,8 @@ function numOfMatchingItemsInObject(object, value) {
   return items.length;
 }
 
-function Sum({ node }) {
-  const matchingItems = numOfMatchingItemsInObject(node.currentValue, true);
+function Sum({ node, node: { currentValue = {} } }) {
+  const matchingItems = numOfMatchingItemsInObject(currentValue, true);
   return (
     <div>
       <SpecificBlock grouped smallMarginTop>
@@ -21,7 +21,7 @@ function Sum({ node }) {
           {matchingItems === 0 && <strong>Du har ikke valgt noen alternativer.</strong>}
           {matchingItems > 0 && (
             <strong>
-              Du har valgt {numOfMatchingItemsInObject(node.currentValue, true)}
+              Du har valgt {numOfMatchingItemsInObject(currentValue, true)}
               {' av '} {node.options.length} alternativer:
             </strong>
           )}
@@ -32,7 +32,7 @@ function Sum({ node }) {
             <Checkbox
               type="checkbox"
               id={`${node.id}-${item.value}`}
-              checked={node.currentValue[item.value]}
+              checked={currentValue[item.value] || false}
               readOnly
             />
             <Label for={`${node.id}-${item.value}`}>
