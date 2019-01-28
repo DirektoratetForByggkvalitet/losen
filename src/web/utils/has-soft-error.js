@@ -5,8 +5,9 @@
  * @returns {boolean}
  */
 export default function hasSoftError({ children = [] }) {
-  return Object.keys(children).reduce(
-    (sum, value) => sum || children[value].type === 'Error',
-    false,
-  );
+  return children.reduce((sum, node) => (
+    sum
+      || node.type === 'Error'
+      || (node.children && hasSoftError(node))
+  ), false);
 }
