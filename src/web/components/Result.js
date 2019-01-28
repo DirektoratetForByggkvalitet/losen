@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import hasSoftError from '../utils/has-soft-error';
+import getResultText from '../utils/get-result-text';
 import { getErrorPages } from '../utils/selectors';
 import Block from './blocks/Block';
 import ExportData from './ExportData';
@@ -16,39 +17,27 @@ import { SpecificBlock, TextBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
 
-function Result({
-  children = [],
-  debug,
-  errorPages,
-  exporter,
-  exports,
-  heading,
-  lead,
-  pageid,
-  schema,
-  setPage,
-  summaryTitle,
-  title,
-}) {
+function Result(props) {
+  const {
+    children = [],
+    debug,
+    errorPages,
+    exporter,
+    heading,
+    lead,
+    exports,
+    pageid,
+    schema,
+    setPage,
+    summaryTitle,
+    title,
+  } = props;
+
   const incomplete = errorPages.length > 0;
   const hasSoftErrors = schema.filter(page => hasSoftError(page)).length > 0;
 
-  let resultHeading = '';
-  let resultLead = '';
-
-  if (incomplete && hasSoftErrors) {
-    resultHeading = heading.incompleteWithError;
-    resultLead = lead.incompleteWithError;
-  } else if (incomplete && !hasSoftErrors) {
-    resultHeading = heading.incomplete;
-    resultLead = lead.incomplete;
-  } else if (hasSoftErrors) {
-    resultHeading = heading.completeWithError;
-    resultLead = lead.completeWithError;
-  } else {
-    resultHeading = heading.complete;
-    resultLead = lead.complete;
-  }
+  const resultHeading = getResultText(heading, incomplete, hasSoftErrors);
+  const resultLead = getResultText(lead, incomplete, hasSoftErrors);
 
   return (
     <Main result debug={debug} data-id={pageid} id="main">
@@ -89,18 +78,24 @@ Result.propTypes = {
   errorPages: PropTypes.array.isRequired,
   exporter: PropTypes.string,
   exports: PropTypes.objectOf(PropTypes.func),
-  heading: PropTypes.shape({
-    complete: PropTypes.string.isRequired,
-    completeWithError: PropTypes.string.isRequired,
-    incomplete: PropTypes.string.isRequired,
-    incompleteWithError: PropTypes.string.isRequired,
-  }),
-  lead: PropTypes.shape({
-    complete: PropTypes.string.isRequired,
-    completeWithError: PropTypes.string.isRequired,
-    incomplete: PropTypes.string.isRequired,
-    incompleteWithError: PropTypes.string.isRequired,
-  }),
+  heading: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.shape({
+      complete: PropTypes.string.isRequired,
+      completeWithError: PropTypes.string.isRequired,
+      incomplete: PropTypes.string.isRequired,
+      incompleteWithError: PropTypes.string.isRequired,
+    }).isRequired,
+  ]),
+  lead: PropTypes.oneOfType([
+    PropTypes.string.isRequired,
+    PropTypes.shape({
+      complete: PropTypes.string.isRequired,
+      completeWithError: PropTypes.string.isRequired,
+      incomplete: PropTypes.string.isRequired,
+      incompleteWithError: PropTypes.string.isRequired,
+    }),
+  ]),
   pageid: PropTypes.string.isRequired,
   schema: PropTypes.arrayOf(PropTypes.object),
   setPage: PropTypes.func.isRequired,
