@@ -17,6 +17,7 @@ import Result from './Result';
 import SkipLink from './helper/SkipLink';
 import StyleProvider from './StyleProvider';
 import track from '../utils/tracking';
+import beforeUnloadHandler from '../utils/before-unload-handler';
 import validateSchema from '../../shared/utils/validator';
 
 import Grid from '../primitives/grid/Grid';
@@ -26,6 +27,7 @@ class Wizard extends Component {
   static propTypes = {
     data: PropTypes.object,
     debug: PropTypes.bool,
+    warningBeforeUnload: PropTypes.bool,
     exports: PropTypes.objectOf(PropTypes.func),
     schema: PropTypes.array.isRequired,
     setData: PropTypes.func.isRequired,
@@ -50,6 +52,7 @@ class Wizard extends Component {
   static defaultProps = {
     data: {},
     debug: false,
+    warningBeforeUnload: true,
     exports: {},
     showIntro: () => {},
     styles: {},
@@ -60,7 +63,6 @@ class Wizard extends Component {
   constructor(props) {
     super(props);
     autobind(this);
-
     const { $computed, ...wizardData } = props.data[NAME] || {};
 
     this.state = {
@@ -78,11 +80,25 @@ class Wizard extends Component {
     this.helper();
   }
 
+  componentDidMount = () => {
+    const { warningBeforeUnload } = this.props;
+    if (warningBeforeUnload) {
+      window.addEventListener('beforeunload', beforeUnloadHandler);
+    }
+  };
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.page !== prevState.page) {
       this.trackPage();
     }
   }
+
+  componentWillUnmount = () => {
+    const { warningBeforeUnload } = this.props;
+    if (warningBeforeUnload) {
+      window.removeEventListener('beforeunload', beforeUnloadHandler);
+    }
+  };
 
   // @todo Consider finding a more elegant way for scrolling..?
   setPage(page, property = null) {
