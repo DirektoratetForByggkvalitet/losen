@@ -11,8 +11,8 @@ const initialState = {};
 
 const removeInactiveQuestions = (state, nodes, path = []) =>
   Object.keys(state).reduce((acc, property) => {
-    // page and $computed properties we want to keep
-    if (property === 'page' || property === '$computed') {
+    // page, $computed and $external properties we want to keep
+    if (['page', '$computed', '$external'].indexOf(property) > -1) {
       return { ...acc, [property]: state[property] };
     }
 
