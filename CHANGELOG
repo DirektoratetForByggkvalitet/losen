@@ -11,6 +11,8 @@ texts for all four variations on incomplete/with error.
 - When replacing Reference nodes with the referenced node, keep the show/hide specified
 on the Reference. Previously the whole Reference node was replaced without regard
 for the show/hide setting on the Reference.
+- Exclude $external from losen state cleanup in reducer, in the same way that $computed
+is left untouched.
 
 ### Removed
 - ErrorResult component. Equivivalent with the Result component, except from the print/export

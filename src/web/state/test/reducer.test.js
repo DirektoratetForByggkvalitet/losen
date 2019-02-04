@@ -93,6 +93,31 @@ const schema = {
             },
           ],
         },
+        {
+          id: 'snakez',
+          property: 'snakez',
+          type: 'Radio',
+          heading: 'Can has snakez?',
+          hide: {
+            field: 'cat',
+            operator: 'neq',
+            value: true,
+          },
+          options: [
+            {
+              id: 'snakez.ja',
+              type: 'Answer',
+              heading: 'ja',
+              value: true,
+            },
+            {
+              id: 'snakez.nei',
+              type: 'Answer',
+              heading: 'nei',
+              value: false,
+            },
+          ],
+        },
       ],
     },
   ],
@@ -105,15 +130,57 @@ describe('reducer', () => {
 
       expect(typeof store.getState().getState).toBeDefined();
     });
+
+    it('computes properties initially', () => {
+      const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
+
+      const state = store.getState()[NAME];
+
+      expect(state).toEqual({
+        $computed: { dogOrCat: false },
+      });
+    });
   });
 
-  it('computes properties initially', () => {
-    const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
+  describe('setDataUpdate', () => {
+    it('purges properties that belongs to removed nodes', () => {
+      const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
 
-    const state = store.getState()[NAME];
+      // Set cat and assert that it's set in state
+      store.dispatch(setData('cat', true));
+      expect(store.getState()[NAME]).toEqual({
+        $computed: { dogOrCat: true },
+        cat: true,
+      });
 
-    expect(state).toEqual({
-      $computed: { dogOrCat: false },
+      // Set snake prop and assert that it's set in state
+      store.dispatch(setData('snakez', true));
+      expect(store.getState()[NAME]).toEqual({
+        $computed: { dogOrCat: true },
+        cat: true,
+        snakez: true,
+      });
+
+      /**
+       * Unset cat prop (which will cause the snake question to go away)
+       * and assert that the snakez property is cleaned out as well
+       */
+      store.dispatch(setData('cat', false));
+      expect(store.getState()[NAME]).toEqual({
+        $computed: { dogOrCat: false },
+        cat: false,
+      });
+    });
+
+    it('leaves properties under $external without touching them ', () => {
+      const store = createStore(combineReducers({ [NAME]: reducer(schema) }));
+
+      // Set external prop and assert that it's not removed
+      store.dispatch(setData('$external.entryFromLink', true));
+      expect(store.getState()[NAME]).toEqual({
+        $computed: { dogOrCat: false },
+        $external: { entryFromLink: true },
+      });
     });
   });
 
