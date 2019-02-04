@@ -3,5 +3,5 @@ export default function beforeUnloadHandler(event) {
   event.preventDefault();
   // Chrome requires returnValue to be set.
   // eslint-disable-next-line
-  event.returnValue = 'ape';
+  event.returnValue = '';
 }
