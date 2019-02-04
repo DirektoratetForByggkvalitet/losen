@@ -62,6 +62,7 @@
     "lodash.has": "^4.5.2",
     "lodash.isobject": "^3.0.2",
     "lodash.merge": "^4.6.1",
+    "lodash.omit": "^4.5.0",
     "lodash.pick": "^4.4.0",
     "lodash.set": "^4.3.2",
     "lodash.setwith": "^4.3.2",

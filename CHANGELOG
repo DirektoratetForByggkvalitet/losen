@@ -8,8 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use object for heading and lead texts on result page, and make it possible to add
 texts for all four variations on incomplete/with error.
+- When replacing Reference nodes with the referenced node, keep the show/hide specified
+on the Reference. Previously the whole Reference node was replaced without regard
+for the show/hide setting on the Reference.
 
 ### Removed
+- ErrorResult component. Equivivalent with the Result component, except from the print/export
+being hidden. Added logic to Result to show those instead.
+
+### Fixed
+- Add sanity checks in Checkbox result page summary to account for wonky data in state
+- Recurse down through schema when checking for soft errors, to catch deeply nested
+ones (e.g. in Groups)
 
 ## [3.4.0] - 2018-12-19
 ### Added

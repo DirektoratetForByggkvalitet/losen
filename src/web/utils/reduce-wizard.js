@@ -181,7 +181,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap)
   return {
     ...node,
     ...translatedProps,
-    currentValue,
+    ...(currentValue !== undefined ? { currentValue } : {}),
     errors,
     errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
   };
@@ -210,8 +210,12 @@ export const reduceOptions = (state, translations, nodeMap) => (node) => {
       .map(option => ({
         ...option,
         ...translateNode(option, translations),
+        ...(
+          option.disabled
+            ? { disabled: !parseExpression(option.disabled)(state[NAME]).valid }
+            : {}
+        ),
         messages: reduceOptionMessages(state)(option.messages),
-        disabled: option.disabled && !parseExpression(option.disabled)(state[NAME]).valid,
       })),
   };
 };
@@ -258,7 +262,19 @@ export const replaceReferences = nodeMap => (node) => {
     return node;
   }
 
-  return nodeMap[node.nodeId];
+  const {
+    show,
+    hide,
+    hidden,
+    ...referencedNodeProps
+  } = nodeMap[node.nodeId];
+
+  return {
+    ...referencedNodeProps,
+    ...(node.show ? { show: node.show } : {}),
+    ...(node.hide ? { hide: node.hide } : {}),
+    ...(node.hidden ? { hidden: node.hidden } : {}),
+  };
 };
 
 // Build a flat object with all the nodes in the schema that have an ID
@@ -278,6 +294,12 @@ export const buildNodeMap = schema =>
     {},
   );
 
+/**
+ * Get rid of the show, hide and hidden props - not needed in render, and no
+ * use in passing them around.
+ */
+export const discardVisibilityProps = ({ show, hide, hidden, ...node }) => node;
+
 export default function reduceWizard(schema, state, nodeTitles, translations = {}, nodeMap = null) {
   let schemaNodeMap = nodeMap;
 
@@ -292,5 +314,6 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
     .map(parseTableCells(state, translations))
     .map(mapWizardChildren(state, nodeTitles, translations, schemaNodeMap))
     .map(reduceOptions(state, translations, schemaNodeMap))
+    .map(discardVisibilityProps)
     .reduce(liftChildrenBranchPages, []);
 }

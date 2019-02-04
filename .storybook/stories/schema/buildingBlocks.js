@@ -67,10 +67,20 @@ export default function SchemaBuildingBlocks() {
       <H3>Properties</H3>
       <ul>
         <li>
-          <code>title</code>: The title of the page. <strong>Required</strong>
+          <code>heading</code>: The heading of the page. <strong>Required</strong> Can either be a simple 
+          string, or an object if you want different heading depending on whether or not the wizard
+          is completed and if it has errors. If you an object, it must have the following structure:
+          <pre>{`{
+  "complete": "Done 🌈", 
+  "completeWithError": "Done, but with errors",
+  "incomplete": "Not done yet, but so far so good 🙏",
+  "incompleteWithError": "Not done, no good"
+}`}</pre>
         </li>
         <li>
-          <code>lead</code>: A subtitle or lead text for the page.
+          <code>lead</code>: A subtitle or lead text for the page. Can be either a string or an object,
+          just like the heading. See description of heading for explanation, the lead property works
+          the same way and expects the same object structure.
         </li>
         <li>
           <code>exporter</code>: Which exporter to use. Refers to the exports object prop passed to

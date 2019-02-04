@@ -4,17 +4,7 @@ import parseExpression from '../dsl';
 const inputRequiredProperties = ['id', 'property', 'heading'];
 
 const requiredProperties = {
-  Result: [
-    'id',
-    'lead.complete',
-    'lead.completeWithError',
-    'lead.incomplete',
-    'lead.incompleteWithError',
-    'heading.complete',
-    'heading.completeWithError',
-    'heading.incomplete',
-    'heading.incompleteWithError',
-  ],
+  Result: ['id', 'heading'],
   Page: ['id', 'heading', 'children'],
   Group: ['id', 'children'],
   Answer: ['id', 'heading', 'value'],
@@ -80,7 +70,7 @@ function assertDeprecations(object, path, properties) {
   let errors = [];
 
   (properties || []).forEach(({ property, use }) => {
-    if (get(object, property, undefined) === undefined) {
+    if (get(object, property, undefined) !== undefined) {
       errors = [
         ...errors,
         {
