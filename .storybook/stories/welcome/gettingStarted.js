@@ -40,6 +40,7 @@ export default function Welcome() {
           <br /> Losen uses Styled Components for styling. Currently only a few theming options are available.
         </li>
       </ol>
+
       <H2>Build and deploy</H2>
       <p>The wizard can be be used as a stand alone site or embedded on your current site.</p>
       <H3>Use as a stand alone site</H3>

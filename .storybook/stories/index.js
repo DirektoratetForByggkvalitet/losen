@@ -21,7 +21,8 @@ addDecorator(storyFn => (
 
 storiesOf('Welcome', module)
   .add('to the Losen framework', require('./welcome').default)
-  .add('Getting started', require('./welcome/gettingStarted').default);
+  .add('Getting started', require('./welcome/gettingStarted').default)
+  .add('The Wizard component', require('./welcome/wizardComponent').default);
 
 storiesOf('Schema', module)
   .add('Intro', require('./schema/intro').default)
