@@ -9,7 +9,9 @@ export default function SchemaIntro() {
       <p>
         The wizard framework is based upon a schema, frequently referred to as "the schema" in the docs 🤓. The schema
         features is a description of the wizard, and contains information about what kind of input fields to show, when
-        to show them and also contains logical checks and branching.
+        to show them and also contains logical checks and branching. In the documentation we'll refer to the things that 
+        constitutes the schema as <em>nodes</em>.
+
       </p>
 
       <H2>Prior art</H2>
