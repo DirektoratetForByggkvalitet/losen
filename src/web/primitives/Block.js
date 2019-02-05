@@ -9,6 +9,7 @@ export const SpecificBlock = injectStyles(styled.div`
   margin: ${props => (props.smallMarginTop ? '8px 0 20px 0' : '20px 0')};
   width: 100%;
   background: ${props => (props.grouped ? 'rgba(137, 174, 196, 0.15)' : 'white')};
+  ${props => props.error ? `background: ${props.styles.color.lightred};` : ''}
 
   &:nth-child(even) {
     background: ${props => (props.grouped ? 'rgba(0, 117, 127, 0.06)' : 'white')};

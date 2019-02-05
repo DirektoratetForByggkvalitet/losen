@@ -12,17 +12,18 @@ function numOfMatchingItemsInObject(object, value) {
   return items.length;
 }
 
-function Sum({ node, node: { currentValue = {} } }) {
+function Sum({ node, node: { allMandatory, currentValue = {}, errors } }) {
   const matchingItems = numOfMatchingItemsInObject(currentValue, true);
+
   return (
     <div>
-      <SpecificBlock grouped smallMarginTop>
+      <SpecificBlock grouped smallMarginTop error={allMandatory && errors.required}>
         <p>
-          {matchingItems === 0 && <strong>Du har ikke valgt noen alternativer.</strong>}
+          {matchingItems === 0 && <strong>Du har ikke valgt noen alternativer, men for </strong>}
           {matchingItems > 0 && (
             <strong>
-              Du har valgt {numOfMatchingItemsInObject(currentValue, true)}
-              {' av '} {node.options.length} alternativer:
+              Du har {allMandatory && errors.required ? 'kun' : ''} valgt {numOfMatchingItemsInObject(currentValue, true)}
+              {' av '} {node.options.length} alternativer.
             </strong>
           )}
         </p>

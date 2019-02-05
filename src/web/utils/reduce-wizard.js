@@ -160,8 +160,13 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap)
 
   if (!node.optional && ![...nonInteractiveTypes, 'Checkbox'].includes(node.type)) {
     errors.required = [null, undefined, ''].includes(currentValue);
-  } else if (!node.optional && node.type === 'Checkbox') {
+  } else if (!node.optional && node.type === 'Checkbox' && !node.allMandatory) {
     errors.required = !currentValue || !Object.values(currentValue).filter(v => v).length;
+  } else if (!node.optional && node.type === 'Checkbox' && node.allMandatory) {
+    errors.required = (
+      Object.values(currentValue).filter(v => v).length !==
+      node.options.length
+    );
   }
 
   const translatedProps = translateNode(node, translations);

@@ -583,6 +583,96 @@ describe('reduce-wizard', () => {
         ],
       });
     });
+
+    describe('sets error.required for', () => {
+      const node = {
+        id: 'snakez',
+        property: 'snakez',
+        type: 'Checkbox',
+        heading: 'Dat is snakes?',
+        options: [
+          {
+            id: 'creeps',
+            type: 'Answer',
+            heading: 'Gimme creeps',
+            value: 'creaps',
+          },
+          {
+            id: 'sneak',
+            type: 'Answer',
+            heading: 'Many sneak',
+            value: 'sneak',
+          },
+          {
+            id: 'evil',
+            type: 'Answer',
+            heading: 'Very evil',
+            value: 'evil',
+          },
+        ],
+      };
+
+      const allMandatoryNode = { ...node, allMandatory: true };
+
+      it('non-optional checkbox with nothing selected', () => {
+        expect(
+          mapWizardChildren({ [NAME]: { foo: 'bar' } })(node),
+        ).toHaveProperty('errors.required', true);
+      });
+
+      it('allMandatory checkbox with something, but not all selected', () => {
+        expect(
+          mapWizardChildren({ [NAME]: { snakez: {
+            creaps: true,
+          } } })(allMandatoryNode),
+        ).toHaveProperty('errors.required', true);
+      });
+    });
+
+    describe('does not set error.required for', () => {
+      const node = {
+        id: 'snakez',
+        property: 'snakez',
+        type: 'Checkbox',
+        heading: 'Dat is snakes?',
+        options: [
+          {
+            id: 'creeps',
+            type: 'Answer',
+            heading: 'Gimme creeps',
+            value: 'creaps',
+          },
+          {
+            id: 'sneak',
+            type: 'Answer',
+            heading: 'Many sneak',
+            value: 'sneak',
+          },
+          {
+            id: 'evil',
+            type: 'Answer',
+            heading: 'Very evil',
+            value: 'evil',
+          },
+        ],
+      };
+
+      const optionalNode = { ...node, optional: true };
+
+      it('optional checkbox with nothing selected', () => {
+        expect(
+          mapWizardChildren({ [NAME]: {} })(optionalNode).errors,
+        ).toEqual({ disabled: [], validation: {} });
+      });
+
+      it('non-allMandatory checkbox with one option selected', () => {
+        expect(
+          mapWizardChildren({ [NAME]: { snakez: {
+            creaps: true,
+          } } })(node),
+        ).toHaveProperty('errors.required', false);
+      });
+    });
   });
 
   describe('#liftChildrenBranchPages', () => {

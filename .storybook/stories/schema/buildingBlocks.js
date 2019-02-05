@@ -167,6 +167,9 @@ export default function SchemaBuildingBlocks() {
         <li>
           <code>grid</code>: Display options in a three column grid.
         </li>
+        <li>
+          <code>allMandatory</code>: Whether or not the user is required to check all the options
+          in the list, in order for it to be "valid". Boolean. Default: <code>false</code></li>
       </ul>
 
       <H3>Radio</H3>

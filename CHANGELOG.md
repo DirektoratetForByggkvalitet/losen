@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [4.0.1] - 2019-02-04
+## [4.1.0] - 2019-02-05
 
 ### Added
 
 - `warningBeforeUnload` prop added to `Wizard` component, making it possible to alert the user before leaving Losen if they use the browser back-button or closes tab/window. Defaults to true.
+- Added `allMandatory` option to the Chebox node allowing it to be used
+as a checklist (where the user must tick all the boxes for it to be valid)
 
 ## [4.0.0] - 2019-02-04
 
@@ -102,7 +104,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.2] -
 
-[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.0.0...HEAD
+[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.0...HEAD
+[4.1.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.0.0...v4.1.0
 [4.0.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.4.0...v4.0.0
 [3.4.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.3.0...v3.4.0
 [3.3.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.2.5...v3.3.0
