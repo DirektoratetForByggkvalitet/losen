@@ -163,10 +163,8 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap)
   } else if (!node.optional && node.type === 'Checkbox' && !node.allMandatory) {
     errors.required = !currentValue || !Object.values(currentValue).filter(v => v).length;
   } else if (!node.optional && node.type === 'Checkbox' && node.allMandatory) {
-    errors.required = (
-      Object.values(currentValue).filter(v => v).length !==
-      node.options.length
-    );
+    errors.required =
+      Object.values(currentValue || {}).filter(v => v).length !== node.options.length;
   }
 
   const translatedProps = translateNode(node, translations);
@@ -215,11 +213,9 @@ export const reduceOptions = (state, translations, nodeMap) => (node) => {
       .map(option => ({
         ...option,
         ...translateNode(option, translations),
-        ...(
-          option.disabled
-            ? { disabled: !parseExpression(option.disabled)(state[NAME]).valid }
-            : {}
-        ),
+        ...(option.disabled
+          ? { disabled: !parseExpression(option.disabled)(state[NAME]).valid }
+          : {}),
         messages: reduceOptionMessages(state)(option.messages),
       })),
   };
@@ -267,12 +263,7 @@ export const replaceReferences = nodeMap => (node) => {
     return node;
   }
 
-  const {
-    show,
-    hide,
-    hidden,
-    ...referencedNodeProps
-  } = nodeMap[node.nodeId];
+  const { show, hide, hidden, ...referencedNodeProps } = nodeMap[node.nodeId];
 
   return {
     ...referencedNodeProps,
