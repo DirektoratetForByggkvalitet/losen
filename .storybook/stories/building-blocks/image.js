@@ -5,14 +5,13 @@ import { P } from '../../../src/web/primitives/Paragraphs';
 import { Table } from '../../../src/web/primitives/Table'
 import * as common from './common';
 
+import radioProperties from './radio';
+
 export default function SchemaBuildingBlocks() {
   return (
     <div>
-      <H1>Group</H1>
-      <P>
-        The group node gives you a way of grouping nodes on a page. It does "nothing" besides
-        grouping other nodes.
-      </P>
+      <H1>Image</H1>
+      <P>An image.</P>
 
       <H2>Properties</H2>
       <Table>
@@ -22,29 +21,26 @@ export default function SchemaBuildingBlocks() {
             <td><code>type</code></td>
             <td>
               The type is required in order to determine what type of node it is. For 
-              a group, this property must be set to <code>Group</code>.
+              an image, this property must be set to <code>Image</code>.
             </td>
             <td>Yes</td>
           </tr>
           <tr>
             <td><code>id</code></td>
-            <td>The id of the group</td>
+            <td>The id of the image</td>
             <td>Yes</td>
           </tr>
           <tr>
-            <td><code>children</code></td>
-            <td>Children to render inside this group</td>
+            <td><code>image</code></td>
+            <td>
+              Image to show with description, represented as an object with two 
+              properties: <code>url</code> and <code>alt</code>.
+            </td>
             <td>Yes</td>
           </tr>
-          {common.heading}
           <tr>
             <td><code>text</code></td>
-            <td>A description for the group to follow the <em>heading</em></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><code>simple</code></td>
-            <td>Show as a simple group, with less separation between blocks.</td>
+            <td>Additional description that follows the image.</td>
             <td></td>
           </tr>
           {common.show}
@@ -55,14 +51,13 @@ export default function SchemaBuildingBlocks() {
       
       <H2>Example</H2>
       <pre>{`{
-  "id": "living.type.group",
-  "property": "living.type.group",
-  "type": "Group",
-  "heading": "Boforhold",
-  "text": "Din bosituasjon kan være avgjørende for hvilken katt du burde ha.",
-  "children": [
-    ...
-  ]
+  "id": "cat.image",
+  "type": "Image",
+  "text": "Dette er en bildeblokk",
+  "image": {
+    "url": "//media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
+    "alt": "alt for image"
+  }
 }`}</pre>
     </div>
   );

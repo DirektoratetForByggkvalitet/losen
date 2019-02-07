@@ -44,13 +44,25 @@ export const hide = (
   </tr>
 );
 
-export const inputProperties = [
-  property,
+export const heading = (
   <tr key="heading">
     <td><code>heading</code></td>
-    <td>The label for this input field.</td>
+    <td>The label for this node.</td>
     <td>Yes</td>
-  </tr>,
+  </tr>
+)
+
+export const optional = (
+  <tr key="optional">
+    <td><code>optional</code></td>
+    <td>Mark input as optional. By default all fields are required.</td>
+    <td></td>
+  </tr>
+)
+
+export const inputProperties = [
+  property,
+  heading,
 ];
 
 export const optionalInputProperties = [
@@ -65,11 +77,7 @@ export const optionalInputProperties = [
     </td>
     <td></td>
   </tr>,
-  <tr key="optional">
-    <td><code>optional</code></td>
-    <td>Mark input as optional. By default all fields are required.</td>
-    <td></td>
-  </tr>,
+  optional,
   show,
   hide
 ];

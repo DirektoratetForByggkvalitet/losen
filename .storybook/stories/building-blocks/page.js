@@ -3,7 +3,7 @@ import React from 'react';
 import { H1, H2, H3, H4 } from '../../../src/web/primitives/Heading';
 import { P, Lead } from '../../../src/web/primitives/Paragraphs';
 import { Table } from '../../../src/web/primitives/Table'
-import { thead, show, hide } from './common';
+import * as common from './common';
 
 export default function SchemaBuildingBlocks() {
   return (
@@ -17,7 +17,7 @@ export default function SchemaBuildingBlocks() {
       
       <H2>Properties</H2>
       <Table>
-        {thead}
+        {common.thead}
         <tr>
           <td><code>type</code></td>
           <td>
@@ -31,11 +31,7 @@ export default function SchemaBuildingBlocks() {
           <td>The id of the page.</td>
           <td>Yes</td>
         </tr>
-        <tr>
-          <td><code>heading</code></td>
-          <td>The heading of the page.</td>
-          <td>Yes</td>
-        </tr>
+        {common.heading}
         <tr>
           <td><code>children</code></td>
           <td>
@@ -49,8 +45,8 @@ export default function SchemaBuildingBlocks() {
           <td>A subtitle or lead text for the page.</td>
           <td></td>
         </tr>
-        {show}
-        {hide}
+        {common.show}
+        {common.hide}
       </Table>
       <br/>
       

@@ -18,6 +18,19 @@ export default function SchemaBuildingBlocks() {
         {common.thead}
         <tbody>
           <tr>
+            <td><code>type</code></td>
+            <td>
+              The type is required in order to determine what type of node it is. For
+              an answer, this property must be set to <code>Answer</code>.
+            </td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><code>id</code></td>
+            <td>The id of the answer input</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
             <td><code>heading</code></td>
             <td>The title for the option.</td>
             <td>Yes</td>

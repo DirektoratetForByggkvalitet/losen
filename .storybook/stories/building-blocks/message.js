@@ -10,7 +10,7 @@ import radioProperties from './radio';
 export default function SchemaBuildingBlocks() {
   return (
     <div>
-      <H3>Message</H3>
+      <H1>Message</H1>
       <P>
         Message for <code>Answer</code> node that is shown if 
         test is truthy or not specified.
