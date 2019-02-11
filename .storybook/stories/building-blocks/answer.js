@@ -51,9 +51,9 @@ export default function SchemaBuildingBlocks() {
               Image to show with description. If a values is passed, the following
               structure is expected:
               <pre>{`{
-    url: 'https://url.to/image.jpg',
-    alt: 'alternative text'
-  }`}</pre>
+  url: 'https://url.to/image.jpg',
+  alt: 'alternative text'
+}`}</pre>
             </td>
             <td></td>
           </tr>

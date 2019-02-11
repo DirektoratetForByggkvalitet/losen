@@ -1,17 +1,53 @@
 import React from 'react';
 
 import { H1, H2 } from '../../../src/web/primitives/Heading';
+import { Table } from '../../../src/web/primitives/Table'
+import * as common from './common';
 
 export default function SchemaBranching() {
   return (
     <div>
-      <H1>Schema brancing</H1>
+      <H1>Branch</H1>
       <p>
-        In order to build a dialogue tree you need to be able to branch based on
+        In order to build a wizard you often need to be able to branch based on
         user input. The <code>Branch</code> node gives you this posibility, as
         described briefly in <em>Getting started</em> section, where the schema
         is shown in an example.
       </p>
+
+      <H2>Properties</H2>
+      <Table>
+        {common.thead}
+        <tbody>
+          <tr>
+            <td><code>type</code></td>
+            <td>
+              The type is required in order to determine what type of node it is. For 
+              a branch node, this property must be set to <code>Branch</code>.
+            </td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><code>branches</code></td>
+            <td>
+              An array of objects containing a test, and list of nodes to show if the
+              test passes. Should follow this structure: <pre>{`[
+  {
+    test: { field: 'continue', operator: 'eq', value: true },
+    children: [
+      // nodes to show
+    ]
+  },
+  ...
+]`}</pre>
+            </td>
+            <td>Yes</td>
+          </tr>
+          {common.show}
+          {common.hide}
+        </tbody>
+      </Table>
+      <br/>
 
       <H2>Key concepts</H2>
       <ul>
@@ -26,9 +62,10 @@ export default function SchemaBranching() {
         user will never have to deal with the branching itself. It's an
         implementation detail in the algorithm. As a consequence of this, the
         branch has no text, heading or any other properties than{' '}
-        <code>branches</code>. It looks like this:
+        <code>branches</code>.
       </p>
 
+      <H2>Example</H2>
       <pre>{`{
   type: 'Branch',
   branches: [
