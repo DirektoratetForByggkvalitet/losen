@@ -21,25 +21,43 @@ addDecorator(storyFn => (
 
 storiesOf('Welcome', module)
   .add('to the Losen framework', require('./welcome').default)
-  .add('Getting started', require('./welcome/gettingStarted').default)
-  .add('The Wizard component', require('./welcome/wizardComponent').default);
+  .add('Getting started', require('./welcome/getting-started').default)
+  .add('The Wizard component', require('./welcome/wizard-component').default)
+  .add('Schema intro', require('./welcome/the-schema').default);
 
-storiesOf('Schema', module)
-  .add('Intro', require('./schema/intro').default)
-  .add('The building blocks', require('./schema/buildingBlocks').default)
-  .add('Branching', require('./schema/branching').default)
+storiesOf('The building blocks', module)
+  .add('Page', require('./building-blocks/page').default)
+  .add('Result', require('./building-blocks/result').default)
+  .add('Branch', require('./building-blocks/branch').default)
+  .add('Reference', require('./building-blocks/reference').default)
+  .add('Group', require('./building-blocks/group').default)
+  .add('Input', require('./building-blocks/input').default)
+  .add('Number', require('./building-blocks/number').default)
+  .add('Checkbox', require('./building-blocks/checkbox').default)
+  .add('Radio', require('./building-blocks/radio').default)
+  .add('Select', require('./building-blocks/select').default)
+  .add('Answer', require('./building-blocks/answer').default)
+  .add('Message', require('./building-blocks/message').default)
+  .add('Sum', require('./building-blocks/sum').default)
+  .add('Image', require('./building-blocks/image').default)
+  .add('Text', require('./building-blocks/text').default)
+  .add('Table', require('./building-blocks/table').default)
+  .add('Information', require('./building-blocks/information').default)
+  .add('Evaluation', require('./building-blocks/evaluation').default)
+  .add('Switch', require('./building-blocks/switch').default)
+
+storiesOf('Schema features', module)
   .add('Validation', require('./schema/validation').default)
   .add('Translating', require('./schema/translating').default)
-  .add('Data export', require('./schema/dataExport').default)
-  .add('Computed properties', require('./schema/computedProps').default)
-  .add('References', require('./schema/references').default)
-  .add('External data', require('./schema/externalData').default);
+  .add('Data export', require('./schema/data-export').default)
+  .add('Computed properties', require('./schema/computed-props').default)
+  .add('External data', require('./schema/external-data').default);
 
 storiesOf('DSL', module)
   .add('Intro', require('./dsl/intro').default)
-  .add('Simple types', require('./dsl/simpleTypes').default)
-  .add('Complex types', require('./dsl/complexTypes').default)
-  .add('Custom errors', require('./dsl/customErrors').default)
+  .add('Simple types', require('./dsl/simple-types').default)
+  .add('Complex types', require('./dsl/complex-types').default)
+  .add('Custom errors', require('./dsl/custom-errors').default)
   .add('Parsing', require('./dsl/parsing').default);
 
 storiesOf('Visual primitives', module)

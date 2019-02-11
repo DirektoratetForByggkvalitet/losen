@@ -6,7 +6,7 @@ export default function Welcome() {
   return (
     <div>
       <H1>Getting started</H1>
-      <p>The easiest way to get started is to use our example.</p>
+      <p>The easiest way to get started is to use our example. Also, if you want to, you can play around with an <a href="https://codesandbox.io/s/14zn6k3wy3">example over at codesandbox</a>, before setting it up on your own machine.</p>
       <H2>Setup</H2>
       <ol>
         <li>

@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Documentation restructuring
+
+## [4.1.2] - 2019-02-11
+
+### Fixed
+
+- Load `babel-polyfill` only if not done already to avoid duplicate loading and
+the `webpack` errors that follow
+
 ## [4.1.1] - 2019-02-05
 
 ### Fixed
@@ -110,7 +120,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.2] -
 
-[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.0...HEAD
+[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.2...HEAD
+[4.1.2]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.1...v4.1.2
+[4.1.1]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.0...v4.1.1
 [4.1.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.0.0...v4.1.0
 [4.0.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.4.0...v4.0.0
 [3.4.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v3.3.0...v3.4.0

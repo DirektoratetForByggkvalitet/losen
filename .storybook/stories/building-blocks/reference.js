@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { H1, H2 } from '../../../src/web/primitives/Heading';
+import { Table } from '../../../src/web/primitives/Table'
+import * as common from './common';
 
 export default function References() {
   return (
@@ -13,7 +15,6 @@ export default function References() {
         it a lot easier to manage your schema over time.
       </p>
 
-      <H2>Branching anatomy</H2>
       <p>
         A <em>Reference</em> node is not represented in the user interface, and the
         reference is invisible both to losen and the end user – as long as the referenced 
@@ -21,12 +22,30 @@ export default function References() {
         It looks like this:
       </p>
 
-      <pre>{`{
-  type: 'Reference',
-  nodeId: 'idOfTheNodeWeWantToReference
-}`}</pre>
+      <H2>Properties</H2>
+      <Table>
+        {common.thead}
+        <tbody>
+          <tr>
+            <td><code>type</code></td>
+            <td>
+              The type is required in order to determine what type of node it is. For 
+              a reference node, this property must be set to <code>Reference</code>.
+            </td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <td><code>nodeId</code></td>
+            <td>The id of the node we're referencing.</td>
+            <td>Yes</td>
+          </tr>
+          {common.show}
+          {common.hide}
+        </tbody>
+      </Table>
+      <br/>
 
-      <H2>Complete example</H2>
+      <H2>Example</H2>
       <pre>{`[
   {
     "type": "Page",
