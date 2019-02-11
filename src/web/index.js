@@ -1,4 +1,10 @@
-require('babel-polyfill');
+/* eslint global-require:0 no-underscore-dangle:0 */
+
+// Include polyfill if not already in scope
+if (!window._babelPolyfill) {
+  require('babel-polyfill');
+}
+
 require('details-polyfill');
 
 export * as state from './state';
