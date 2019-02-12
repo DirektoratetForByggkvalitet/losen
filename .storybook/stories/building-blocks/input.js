@@ -47,6 +47,9 @@ export default function SchemaBuildingBlocks() {
             </td>
             <td></td>
           </tr>
+          {common.optional}
+          {common.show}
+          {common.hide}
         </tbody>
       </Table>
       <br/>
