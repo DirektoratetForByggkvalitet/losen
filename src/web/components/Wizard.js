@@ -151,15 +151,26 @@ ${error}
   }
 
   trackPage(first) {
+    const firstPage = this.props.wizard.schema[0];
+
+    /**
+     * Don't track if we have no page. No page, no question.
+     * Probably something wrong with the schema...
+     */
+    if (!firstPage) { return; }
+
     if (first) {
       track(
         this.props.wizard.meta.name,
-        this.props.wizard.schema[0].id,
-        this.props.wizard.schema[0].heading,
+        firstPage.id,
+        firstPage.heading,
       );
     } else {
-      const page = this.props.schema.filter(item => item.id === this.state.page)[0];
-      track(this.props.wizard.meta.name, page.id, page.heading);
+      const page = (this.props.schema || []).filter(item => item.id === this.state.page)[0];
+
+      if (page) {
+        track(this.props.wizard.meta.name, page.id, page.heading);
+      }
     }
   }
 
@@ -199,13 +210,13 @@ ${error}
           <Grid>
             <SkipLink />
             <Nav
-              page={page.id}
+              page={(page && page.id) || null}
               setPage={this.setPage}
               heading={wizard.meta.title}
               tableOfContents={tableOfContents}
               showIntro={showIntro}
             />
-            {page.type === 'Result' ? (
+            {page && page.type === 'Result' ? (
               <Result
                 {...page}
                 previousPage={this.previousPage}
@@ -218,7 +229,7 @@ ${error}
                 exports={exports}
               />
             ) : (
-              <Page
+              page && <Page
                 firstPage={firstPage}
                 lastPage={lastPage}
                 nextPage={this.nextPage}

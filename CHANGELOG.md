@@ -7,8 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.3] - 2019-02-12
+
 ### Fixed
 - Documentation restructuring
+- Add missing sanity check causing render to fail if no page exist in schema
+- Set `dataLayer` on window object to avoid undefined errors if it's missing in the page markup
 
 ## [4.1.2] - 2019-02-11
 
@@ -120,7 +124,8 @@ the `webpack` errors that follow
 
 ## [3.0.2] -
 
-[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.2...HEAD
+[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.3...HEAD
+[4.1.3]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.2...v4.1.3
 [4.1.2]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.1...v4.1.2
 [4.1.1]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.0...v4.1.1
 [4.1.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.0.0...v4.1.0
