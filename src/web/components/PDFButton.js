@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Spinner from '../primitives/Spinner';
 import createPDF from '../utils/create-pdf';
 import { MainButton } from '../primitives/Button';
 
@@ -46,7 +47,7 @@ export default class PDFButton extends Component {
     return (
       <div>
         <MainButton type="button" onClick={this.handleClick} disabled={isDownloading}>
-          Lagre som PDF
+          Lagre som PDF{!isDownloading ? <Spinner /> : null}
         </MainButton>
 
         {errorMessage && <p>Noe gikk galt. Prøv igjen.</p>}
