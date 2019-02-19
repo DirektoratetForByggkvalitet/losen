@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import autobind from 'react-autobind';
 
 import Modal from './helper/Modal';
 import { NAME } from '../state';
@@ -62,7 +61,6 @@ class Wizard extends Component {
 
   constructor(props) {
     super(props);
-    autobind(this);
     const { $computed, ...wizardData } = props.data[NAME] || {};
 
     this.state = {
@@ -87,7 +85,7 @@ class Wizard extends Component {
     }
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if (this.state.page !== prevState.page) {
       this.trackPage();
     }
@@ -101,7 +99,7 @@ class Wizard extends Component {
   };
 
   // @todo Consider finding a more elegant way for scrolling..?
-  setPage(page, property = null) {
+  setPage = (page, property = null) => {
     if (property) {
       setImmediate(() => {
         const element = document.getElementById(property);
@@ -120,14 +118,12 @@ class Wizard extends Component {
     document.activeElement.blur(); // Remove focus on next/prev buttons after page change
   }
 
-  getCurrentIndex() {
-    return Math.max(
-      0,
-      this.props.schema.findIndex(({ id }) => id === getData(this.props.data).page),
-    );
-  }
+  getCurrentIndex = () => Math.max(
+    0,
+    this.props.schema.findIndex(({ id }) => id === getData(this.props.data).page),
+  )
 
-  helper() {
+  helper = () => {
     if (!console || window.location.hostname !== 'localhost') {
       return;
     }
@@ -150,7 +146,7 @@ ${error}
     }
   }
 
-  trackPage(first) {
+  trackPage = (first) => {
     const firstPage = this.props.wizard.schema[0];
 
     /**
@@ -174,7 +170,7 @@ ${error}
     }
   }
 
-  changePage(distance) {
+  changePage = (distance) => {
     const schema = this.props.schema;
     const pageIndex = this.getCurrentIndex();
     const newIndex = pageIndex + distance;

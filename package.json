@@ -53,6 +53,7 @@
   },
   "homepage": "https://github.com/netliferesearch/losen#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
@@ -69,7 +70,6 @@
     "lodash.template": "^4.4.0",
     "prop-types": "^15.6.2",
     "react": "^15.6.2",
-    "react-autobind": "^1.0.6",
     "react-modal": "^3.4.5",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
