@@ -16,6 +16,7 @@ import { MainButton } from '../primitives/Button';
 import { SpecificBlock, TextBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
+import PDFButton from './PDFButton';
 
 function Result(props) {
   const {
@@ -62,12 +63,16 @@ function Result(props) {
         </TextBlock>
       ) : null}
 
-      {!incomplete ? <Export exporter={exporter}>
-        {exporter && exports[exporter] ? <ExportData exporter={exports[exporter]} /> : null}
-        <MainButton type="button" onClick={() => window.print()}>
-          Skriv ut
-        </MainButton>
-      </Export> : null}
+      <PDFButton />
+
+      {!incomplete ? (
+        <Export exporter={exporter}>
+          {exporter && exports[exporter] ? <ExportData exporter={exports[exporter]} /> : null}
+          <MainButton type="button" onClick={() => window.print()}>
+            Skriv ut
+          </MainButton>
+        </Export>
+      ) : null}
     </Main>
   );
 }
