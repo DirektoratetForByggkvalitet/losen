@@ -1,4 +1,4 @@
-import get from 'lodash.get';
+import { get } from 'lodash';
 import parseExpression from '../dsl';
 
 const inputRequiredProperties = ['id', 'property', 'heading'];
