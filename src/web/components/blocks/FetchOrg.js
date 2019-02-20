@@ -1,6 +1,4 @@
-import autobind from 'react-autobind';
-import get from 'lodash.get';
-import has from 'lodash.has';
+import { get, has } from 'lodash';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -42,16 +40,11 @@ export default class FetchOrg extends Component {
     SGtext: '',
   };
 
-  constructor(props) {
-    super(props);
-    autobind(this);
-
-    this.state = {
-      loading: false,
-    };
+  state = {
+    loading: false,
   }
 
-  fetchOrgData(orgid) {
+  fetchOrgData = (orgid) => {
     const { property, setData, source } = this.props;
     const id = orgid.toString().replace(/\s/g, '');
 
@@ -69,7 +62,7 @@ export default class FetchOrg extends Component {
       });
   }
 
-  updateOrgData(data, orgid) {
+  updateOrgData = (data, orgid) => {
     const { property, setData } = this.props;
     const name = get(data, 'data[0].navn');
     let postcode;
@@ -97,7 +90,7 @@ export default class FetchOrg extends Component {
     });
   }
 
-  fetchSGData(orgid) {
+  fetchSGData = (orgid) => {
     const id = orgid.toString().replace(/\s/g, '');
     fetch(`${this.props.SGsource}${id}.json`)
       .then(checkStatus)
@@ -121,7 +114,7 @@ export default class FetchOrg extends Component {
       });
   }
 
-  updateSGData(data) {
+  updateSGData = (data) => {
     const { property, setData } = this.props;
 
     const status = get(data, 'dibk-sgdata.status');
@@ -139,7 +132,7 @@ export default class FetchOrg extends Component {
     this.setState({ loading: false });
   }
 
-  update(value) {
+  update = (value) => {
     const { property, setData } = this.props;
 
     if (value && value.toString().replace(/\s/g, '').length === 9) {

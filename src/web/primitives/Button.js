@@ -34,6 +34,19 @@ export const MainButton = injectStyles(styled.button`
       }
       `
       : ''}
+  
+  ${props => props.disabled
+    ? `
+    cursor: default;
+    background: ${props.styles.color.darkgray};
+    color: white;
+    
+    &:hover {
+      background: ${props.styles.color.darkgray};
+      color: white;
+    }`
+    : ''}
+
   @media screen and (max-width: 400px) {
     width: 100%;
   }

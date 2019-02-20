@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.2.0] - 2019-02-20
+
+### Added
+- Integration with [`losen-pdf`](https://github.com/DirektoratetForOkonomistyring/losen-pdf) for PDF printing
+- `disabled` prop for `MainButton` primitive
+
+### Changed
+- Depend on `lodash` instead of on `lodash.*` to reduce number of deps
+- Renamed chapter from DSL to Logical expressions in the storybook to make it easier to understand what it is
+
 ## [4.1.3] - 2019-02-12
 
 ### Fixed
@@ -18,8 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Load `babel-polyfill` only if not done already to avoid duplicate loading and
-the `webpack` errors that follow
+- Load `babel-polyfill` only if not done already to avoid duplicate loading and the `webpack` errors that follow
 
 ## [4.1.1] - 2019-02-05
 
@@ -32,39 +41,30 @@ the `webpack` errors that follow
 ### Added
 
 - `warningBeforeUnload` prop added to `Wizard` component, making it possible to alert the user before leaving Losen if they use the browser back-button or closes tab/window. Defaults to true.
-- Added `allMandatory` option to the Chebox node allowing it to be used
-  as a checklist (where the user must tick all the boxes for it to be valid)
+- Added `allMandatory` option to the Chebox node allowing it to be used as a checklist (where the user must tick all the boxes for it to be valid)
 
 ## [4.0.0] - 2019-02-04
 
 ### Changed
 
-- Use object for heading and lead texts on result page, and make it possible to add
-  texts for all four variations on incomplete/with error.
-- When replacing Reference nodes with the referenced node, keep the show/hide specified
-  on the Reference. Previously the whole Reference node was replaced without regard
-  for the show/hide setting on the Reference.
-- Exclude $external from losen state cleanup in reducer, in the same way that $computed
-  is left untouched.
+- Use object for heading and lead texts on result page, and make it possible to add texts for all four variations on incomplete/with error.
+- When replacing Reference nodes with the referenced node, keep the show/hide specified on the Reference. Previously the whole Reference node was replaced without regard for the show/hide setting on the Reference.
+- Exclude $external from losen state cleanup in reducer, in the same way that $computed is left untouched.
 
 ### Removed
 
-- ErrorResult component. Equivivalent with the Result component, except from the print/export
-  being hidden. Added logic to Result to show those instead.
+- ErrorResult component. Equivivalent with the Result component, except from the print/export being hidden. Added logic to Result to show those instead.
 
 ### Fixed
 
 - Add sanity checks in Checkbox result page summary to account for wonky data in state
-- Recurse down through schema when checking for soft errors, to catch deeply nested
-  ones (e.g. in Groups)
+- Recurse down through schema when checking for soft errors, to catch deeply nested ones (e.g. in Groups)
 
 ## [3.4.0] - 2018-12-19
 
 ### Added
 
-- `showResetModal` prop added to `Wizard` component, making it possible to supress
-  the modal that usually pops up asking users if they want to reset or continue where
-  they left off.
+- `showResetModal` prop added to `Wizard` component, making it possible to supress the modal that usually pops up asking users if they want to reset or continue where they left off.
 
 ### Changed
 
@@ -90,9 +90,7 @@ the `webpack` errors that follow
 
 ### Fixed
 
-- Fixed bug in state management causing state updates to be ignored if the
-  `id` and `property` properties on input blocks were not the same value, or
-  if the property was a nested value (like engine.displacement).
+- Fixed bug in state management causing state updates to be ignored if the `id` and `property` properties on input blocks were not the same value, or if the property was a nested value (like engine.displacement).
 
 ## [3.2.5] - 2018-07-24
 
@@ -124,7 +122,8 @@ the `webpack` errors that follow
 
 ## [3.0.2] -
 
-[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.3...HEAD
+[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.2.0...HEAD
+[4.2.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.3...v4.2.0
 [4.1.3]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.2...v4.1.3
 [4.1.2]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.1...v4.1.2
 [4.1.1]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.0...v4.1.1

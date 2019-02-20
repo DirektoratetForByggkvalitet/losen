@@ -16,6 +16,7 @@ import { MainButton } from '../primitives/Button';
 import { SpecificBlock, TextBlock } from '../primitives/Block';
 import Main from '../primitives/grid/Main';
 import Export from '../primitives/Export';
+import PDFButton from './PDFButton';
 
 function Result(props) {
   const {
@@ -31,6 +32,12 @@ function Result(props) {
     setPage,
     summaryTitle,
     title,
+    wizard: {
+      meta: {
+        pdfServiceUrl,
+        localStorageKey,
+      },
+    },
   } = props;
 
   const incomplete = errorPages.length > 0;
@@ -62,12 +69,29 @@ function Result(props) {
         </TextBlock>
       ) : null}
 
-      {!incomplete ? <Export exporter={exporter}>
-        {exporter && exports[exporter] ? <ExportData exporter={exports[exporter]} /> : null}
-        <MainButton type="button" onClick={() => window.print()}>
-          Skriv ut
-        </MainButton>
-      </Export> : null}
+      <Export exporter={exporter}>
+        {(
+          !incomplete
+          && exporter
+          && exports[exporter]
+        )
+          ? <ExportData exporter={exports[exporter]} />
+          : null
+        }
+
+        {pdfServiceUrl
+          ? (
+            <PDFButton
+              pdfServiceUrl={pdfServiceUrl}
+              localStorageKey={localStorageKey}
+            />
+          )
+          : (
+            <MainButton type="button" onClick={() => window.print()}>
+            Skriv ut
+            </MainButton>
+          )}
+      </Export>
     </Main>
   );
 }
@@ -101,6 +125,12 @@ Result.propTypes = {
   setPage: PropTypes.func.isRequired,
   summaryTitle: PropTypes.string,
   title: PropTypes.string,
+  wizard: PropTypes.shape({
+    meta: PropTypes.shape({
+      pdfServiceUrl: PropTypes.string,
+      localStorageKey: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 Result.defaultProps = {

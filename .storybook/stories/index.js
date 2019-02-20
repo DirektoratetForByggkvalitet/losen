@@ -51,9 +51,10 @@ storiesOf('Schema features', module)
   .add('Translating', require('./schema/translating').default)
   .add('Data export', require('./schema/data-export').default)
   .add('Computed properties', require('./schema/computed-props').default)
-  .add('External data', require('./schema/external-data').default);
+  .add('External data', require('./schema/external-data').default)
+  .add('PDF generation', require('./schema/pdf-generation').default);
 
-storiesOf('DSL', module)
+storiesOf('Logical expressions', module)
   .add('Intro', require('./dsl/intro').default)
   .add('Simple types', require('./dsl/simple-types').default)
   .add('Complex types', require('./dsl/complex-types').default)

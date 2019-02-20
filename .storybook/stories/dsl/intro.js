@@ -5,7 +5,7 @@ import { H1, H2, H3 } from '../../../src/web/primitives/Heading';
 export default function DslIntro() {
   return (
     <div>
-      <H1>DSL</H1>
+      <H1>Logical expressions</H1>
       <p>
         The wizard framework use a Domain Specific Language, a DSL for short, to express logical
         expressions in the schema. The expressions is parsed and translated to functions that can
