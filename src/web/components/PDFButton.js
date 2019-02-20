@@ -44,10 +44,16 @@ export default class PDFButton extends Component {
 
   render() {
     const { isDownloading, errorMessage } = this.state;
+
     return (
       <div>
-        <MainButton type="button" onClick={this.handleClick} disabled={isDownloading}>
-          Lagre som PDF{!isDownloading ? <Spinner /> : null}
+        <MainButton
+          type="button"
+          onClick={this.handleClick}
+          disabled={isDownloading}
+        >
+          <span key="text">{isDownloading ? 'Lager PDF...' : 'Lagre som PDF'}</span>
+          <Spinner key="spinner" hidden={!isDownloading} />
         </MainButton>
 
         {errorMessage && <p>Noe gikk galt. Prøv igjen.</p>}
