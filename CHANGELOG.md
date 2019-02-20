@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [4.2.0] - 2019-02-19
+## [4.2.0] - 2019-02-20
 
 ### Added
 - Integration with [`losen-pdf`](https://github.com/DirektoratetForOkonomistyring/losen-pdf) for PDF printing
