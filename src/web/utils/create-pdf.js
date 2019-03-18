@@ -14,7 +14,7 @@ export default function createPDF(pdfServiceUrl, localStorageKey) {
     .post(
       pdfServiceUrl,
       {
-        url: window.location.origin,
+        url: window.location.href,
         localStorageData: JSON.parse(localStorageData),
         localStorageKey,
       },
