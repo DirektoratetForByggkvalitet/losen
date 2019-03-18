@@ -36,11 +36,15 @@ export default function createPDF(pdfServiceUrl, localStorageKey) {
 
       const data = window.URL.createObjectURL(file);
       const link = document.createElement('a');
+      link.setAttribute('type', 'hidden');
       link.href = data;
       link.download = 'veiviser.pdf';
+      document.body.appendChild(link);
       link.click();
+
       setTimeout(() => {
         // For Firefox it is necessary to delay revoking the ObjectURL
+        document.body.removeChild(link);
         window.URL.revokeObjectURL(data);
       }, 100);
     });
