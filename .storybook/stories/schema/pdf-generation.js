@@ -8,7 +8,7 @@ export default function DataExport() {
       <H1>PDF generation</H1>
       <p>
         Since browsers aren't good or reliable when it comes to printing and saving to PDF format
-        losen integrates with a ready made <a href="https://github.com/DirektoratetForByggkvalitat/losen-pdf">
+        losen integrates with a ready made <a href="https://github.com/DirektoratetForByggkvalitet/losen-pdf">
         companion service</a> for building PDFs.
       </p>
       <p>
