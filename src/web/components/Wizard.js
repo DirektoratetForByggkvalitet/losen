@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import Modal from './helper/Modal';
 import { NAME } from '../state';
 
-import { getPages, getNodeTitles, getData } from '../utils/selectors';
+import { getPages, getTitle, getNodeTitles, getData } from '../utils/selectors';
 
 import { setData } from '../state/actions';
 import Nav from './Nav';
@@ -32,16 +32,21 @@ class Wizard extends Component {
     setData: PropTypes.func.isRequired,
     showIntro: PropTypes.func,
     styles: PropTypes.object,
+    title: PropTypes.string.isRequired,
     tableOfContents: PropTypes.arrayOf(PropTypes.object).isRequired,
     translations: PropTypes.objectOf(
       PropTypes.shape({
-        description: PropTypes.string,
-        heading: PropTypes.string,
-        image: PropTypes.shape({
-          small: PropTypes.string.isRequired,
-          large: PropTypes.string.isRequired,
+        key: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        tags: PropTypes.shape({
+          description: PropTypes.string,
+          heading: PropTypes.string,
+          image: PropTypes.shape({
+            small: PropTypes.string.isRequired,
+            large: PropTypes.string.isRequired,
+          }),
+          tooltips: PropTypes.string,
         }),
-        tooltips: PropTypes.string,
       }),
     ),
     wizard: PropTypes.object.isRequired,
@@ -187,7 +192,17 @@ ${error}
   previousPage = () => this.changePage(-1);
 
   render() {
-    const { debug, exports, schema, showIntro, styles, tableOfContents, wizard } = this.props;
+    const {
+      debug,
+      exports,
+      schema,
+      showIntro,
+      styles,
+      tableOfContents,
+      wizard,
+      translations,
+      title,
+    } = this.props;
 
     const { showResetModal } = this.state;
 
@@ -208,9 +223,10 @@ ${error}
             <Nav
               page={(page && page.id) || null}
               setPage={this.setPage}
-              heading={wizard.meta.title}
+              heading={title}
               tableOfContents={tableOfContents}
               showIntro={showIntro}
+              translations={translations}
             />
             {page && page.type === 'Result' ? (
               <Result
@@ -219,7 +235,7 @@ ${error}
                 debug={debug}
                 pageid={page.id}
                 wizard={wizard}
-                title={wizard.meta.title}
+                title={title}
                 schema={schema}
                 setPage={this.setPage}
                 exports={exports}
@@ -244,12 +260,13 @@ ${error}
 }
 
 const mapStateToProps = (state, { wizard, translations }) => {
-  const nodeTitles = getNodeTitles(wizard.schema, translations);
+  const nodeTitles = getNodeTitles(wizard.schema, translations, state);
 
   return {
     debug: !!window.location.search.match('debug'),
     schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
     tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
+    title: getTitle(state, wizard, translations),
     data: state,
   };
 };

@@ -1,8 +1,10 @@
 /* eslint no-use-before-define: 0 */
+import { get } from 'lodash';
+
 import parseExpression from '../../shared/utils/dsl';
 import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
-import { getNodeValue } from './selectors';
+import { getNodeValue, getTranslation } from './selectors';
 
 const nonInteractiveTypes = ['Image', 'Text', 'Group', 'Table'];
 
@@ -296,6 +298,11 @@ export const buildNodeMap = schema =>
  */
 export const discardVisibilityProps = ({ show, hide, hidden, ...node }) => node;
 
+export const replaceTranslations = translation => node => ({
+  ...node,
+  ...get(translation, [node.id], {}),
+});
+
 export default function reduceWizard(schema, state, nodeTitles, translations = {}, nodeMap = null) {
   let schemaNodeMap = nodeMap;
 
@@ -303,7 +310,10 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
     schemaNodeMap = buildNodeMap(schema);
   }
 
+  const translation = getTranslation(state, translations);
+
   return schema
+    .map(replaceTranslations(translation))
     .map(replaceReferences(schemaNodeMap))
     .reduce(reduceBranches(state, nodeTitles, translations, schemaNodeMap), [])
     .filter(filterSchemaNodes(state))
