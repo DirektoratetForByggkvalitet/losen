@@ -5,6 +5,8 @@ import { values } from 'lodash';
 
 import { setLanguage } from '../state/actions';
 import { getCurrentLanguage } from '../utils/selectors';
+import { SmallButton } from '../primitives/Button';
+import { Simple as Grid } from '../primitives/grid';
 
 class LanguageSelector extends Component {
   static propTypes = {
@@ -35,7 +37,7 @@ class LanguageSelector extends Component {
     }
 
     return (
-      <ul>
+      <Grid padItems>
         {[
           /**
            * If we have translations, but no norwegian one we need
@@ -49,14 +51,13 @@ class LanguageSelector extends Component {
           ),
           ...translations,
         ].map(({ key, name }) => (
-          <li key={key}>
-            <button
-              disabled={key === currentLanguage}
-              onClick={this.handleLanguageSelect(key)}
-            >{name}</button>
-          </li>
+          <SmallButton
+            key={key}
+            disabled={key === currentLanguage}
+            onClick={this.handleLanguageSelect(key)}
+          >{name}</SmallButton>
         ))}
-      </ul>
+      </Grid>
     );
   }
 }
