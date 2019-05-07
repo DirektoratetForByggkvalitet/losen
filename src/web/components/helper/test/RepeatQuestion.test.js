@@ -1,4 +1,4 @@
-import repeatQuestion from './RepeatQuestion';
+import repeatQuestion from '../RepeatQuestion';
 
 const exampleImage = { url: 'someurl', alt: 'some alt' };
 const notImage = 'notimage';
