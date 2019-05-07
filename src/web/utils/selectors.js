@@ -41,6 +41,10 @@ export function getErrorPages(schema, state) {
   ]), []).filter(({ errorNodes }) => errorNodes.length);
 }
 
+export function getCurrentLanguage(state, defaultValue = 'no') {
+  return get(getData(state), '$language', defaultValue);
+}
+
 export function getTitle(state, { meta: { title } }, translations) {
   const currentLanguage = getCurrentLanguage(state, false);
 
@@ -58,7 +62,7 @@ export function getTitle(state, { meta: { title } }, translations) {
 export function getTranslation(state, translations) {
   const currentLanguage = getCurrentLanguage(state);
 
-  return get(translations, [currentLanguage, 'tags']);
+  return get(translations, [currentLanguage, 'tags'], {});
 }
 
 export function getNodeTitles(schema, translations, state) {
@@ -79,10 +83,6 @@ export function getNodeTitles(schema, translations, state) {
       ...getNodeTitles(branch.children, translations, state),
     }), {}) : {}),
   }), {});
-}
-
-export function getCurrentLanguage(state, defaultValue = 'no') {
-  return get(getData(state), '$language', defaultValue);
 }
 
 export function getNodeValue(property, state) {

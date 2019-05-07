@@ -7,6 +7,7 @@ import reduceWizard, {
   liftChildrenBranchPages,
   mapWizardChildren,
   reduceBranches,
+  translateNode,
   buildNodeMap,
 } from '../reduce-wizard';
 
@@ -811,6 +812,103 @@ describe('reduce-wizard', () => {
       expect(buildNodeMap(raw)).toEqual({
         apekatt: { type: 'Input', id: 'apekatt' },
         fjasebengel: { type: 'Input', id: 'fjasebengel' },
+      });
+    });
+  });
+
+  describe('#translateNode', () => {
+    const translations = {
+      se: {
+        key: 'se',
+        name: 'Svenska',
+        tags: {
+          varemerker: {
+            heading: 'Varumärken',
+          },
+          risikovurdering: {
+            heading: 'Riskbedömning',
+            description: 'Vi behöver veta hur mycket risk',
+          },
+          fasade: {
+            heading: 'Fasade',
+            image: {
+              large: 'http://example.com/large.jpeg',
+            },
+          },
+        },
+      },
+    };
+
+    it('returns node if no translation is found', () => {
+      const node = {
+        id: 'varemerker',
+        type: 'Input',
+        heading: 'Varemerker',
+      };
+
+      expect(translateNode(node, {}, translations)).toEqual(node);
+    });
+
+    it('returns translated heading', () => {
+      const node = {
+        id: 'varemerker',
+        type: 'Input',
+        heading: 'Varemerker',
+      };
+
+      expect(translateNode(
+        node,
+        { [NAME]: { $language: 'se' } },
+        translations,
+      )).toEqual({
+        ...node,
+        heading: translations.se.tags.varemerker.heading,
+      });
+    });
+
+    it('returns translated lead/text', () => {
+      ['Page', 'Result', 'Input'].forEach((type) => {
+        const descriptionNodeProperty = type === 'Input' ? 'text' : 'lead';
+
+        const node = {
+          type,
+          id: 'risikovurdering',
+          [descriptionNodeProperty]: 'Risikovurdering',
+        };
+
+        const translatedNode = translateNode(
+          node,
+          { [NAME]: { $language: 'se' } },
+          translations,
+        );
+
+        expect(translatedNode).toEqual({
+          ...node,
+          heading: translations.se.tags.risikovurdering.heading,
+          [descriptionNodeProperty]: translations.se.tags.risikovurdering.description,
+        });
+      });
+    });
+
+    it('sets image from translation', () => {
+      const node = {
+        type: 'Image',
+        id: 'fasade',
+      };
+
+      const translatedNode = translateNode(
+        node,
+        { [NAME]: { $language: 'se' } },
+        translations,
+      );
+
+      expect(translatedNode).toEqual({
+        ...node,
+        heading: translations.se.tags.fasade.heading,
+        image: {
+          url: translations.se.tags.fasade.image.large,
+          alt: `Illustrasjon for ${translations.se.tags.fasade.heading}`,
+        },
       });
     });
   });

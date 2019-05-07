@@ -6,7 +6,7 @@ import { values } from 'lodash';
 import { setLanguage } from '../state/actions';
 import { getCurrentLanguage } from '../utils/selectors';
 
-export class LanguageSelector extends Component {
+class LanguageSelector extends Component {
   static propTypes = {
     translations: PropTypes.objectOf(PropTypes.object).isRequired,
     setLanguage: PropTypes.func.isRequired,
