@@ -21,21 +21,6 @@ export function getNodeErrors(node) {
   );
 }
 
-export function getPages(schema, state, nodeTitles, translations) {
-  const pages = reduceWizard(schema, state, nodeTitles, translations);
-
-  return pages.map(({ children = [], ...page }) => {
-    const errorCount = children.reduce((res, node) => res + getNodeErrors(node), 0);
-
-    return {
-      ...page,
-      heading: get(nodeTitles, page.id, page.heading),
-      errors: errorCount,
-      completed: !errorCount,
-    };
-  });
-}
-
 export function getErrorPages(schema, state) {
   const pages = reduceWizard(schema, state);
 

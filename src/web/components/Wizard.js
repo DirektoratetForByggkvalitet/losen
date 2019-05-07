@@ -6,7 +6,8 @@ import { bindActionCreators } from 'redux';
 import Modal from './helper/Modal';
 import { NAME } from '../state';
 
-import { getPages, getTitle, getNodeTitles, getData } from '../utils/selectors';
+import { getTitle, getNodeTitles, getData } from '../utils/selectors';
+import getPages from '../utils/get-pages';
 
 import { setData } from '../state/actions';
 import Nav from './Nav';
@@ -262,10 +263,12 @@ ${error}
 const mapStateToProps = (state, { wizard, translations }) => {
   const nodeTitles = getNodeTitles(wizard.schema, translations, state);
 
+  const schema = reduceWizard(wizard.schema, state, nodeTitles, translations);
+
   return {
+    schema,
     debug: !!window.location.search.match('debug'),
-    schema: reduceWizard(wizard.schema, state, nodeTitles, translations),
-    tableOfContents: getPages(wizard.schema, state, nodeTitles, translations),
+    tableOfContents: getPages(schema, nodeTitles),
     title: getTitle(state, wizard, translations),
     data: state,
   };

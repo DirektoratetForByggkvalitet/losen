@@ -17,19 +17,37 @@ export class LanguageSelector extends Component {
 
   render() {
     const {
-      translations,
+      translations: translationsObject,
       currentLanguage,
     } = this.props;
 
-    if (!translations) {
+    // Get an array of the translations from the object values
+    const translations = values(translationsObject);
+
+    // Return no lang selector if we have no translations
+    if (!translations || !translations.length) {
+      return null;
+    }
+
+    // Return no lang selector if we have only norwegian
+    if (translations.length === 1 && translationsObject.no) {
       return null;
     }
 
     return (
       <ul>
         {[
-          { key: 'no', name: 'Norsk' },
-          ...values(translations),
+          /**
+           * If we have translations, but no norwegian one we need
+           * to add it in order to have a way to select the norwegian
+           * original
+           */
+          ...(
+            translationsObject.no ?
+              [] :
+              [{ key: 'no', name: 'Norsk' }]
+          ),
+          ...translations,
         ].map(({ key, name }) => (
           <li key={key}>
             <button
