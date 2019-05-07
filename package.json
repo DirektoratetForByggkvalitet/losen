@@ -118,6 +118,8 @@
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "collectCoverage": true,
+    "coverageReporters": ["text-summary"]
   }
 }
