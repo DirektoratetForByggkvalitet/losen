@@ -7,24 +7,63 @@ export default function SchemaTranslating() {
     <div>
       <H1>Schema translation</H1>
       <p>
-        A common use case when building services such as wizards is the need for a way of updating texts and images in the
-        wizard without having to build and deploy the wizards, preferably through a CMS.
+        A common use case when building services such as wizards for a wide audience is the need for showing content in more
+        than one language.
       </p>
 
       <p>
         In <em>losen</em> this is handled by allowing you to pass a translations object to the <code>Wizard</code> node
-        when rendering the wizard. The keys of the object corresponds to the id on the nodes in the schema. Given that we
-        have for instance an Input node in our schema with the <code>id</code> property set to apekatt, the translations
-        object would look like this 👇
+        when rendering the wizard. Multiple languages are supported, and a language selector is shown in the bottom of the
+        table of contents if multiple languages are set up. Translations are passed to losen by adding the
+        <code>translations</code> to the <code>{`<Wizard>`}</code> component.
+      </p>
+
+      <p>
+        Losen expects translations provided to be in the following structure:
+      </p>
+
+      <pre>{`
+{
+  // the property name (en) should be the same as the
+  // key property inside the object
+  en: {
+    "key": "en"
+    "name": "English",
+    "meta": {
+      "title": "Title of the wizard"
+    },
+    "tags": { ... }
+  }
+}
+`}</pre>
+
+      <p>
+        The <code>tags</code> property for each translation is an object where the
+        properties are references to the <code>id</code> nodes in the schema. Given
+        that we have for instance an Input node in our schema with the <code>id</code>
+        property set to <code>fornavn</code>, the complete translation object for an
+        English translation would look like this 👇
       </p>
 
       <pre>{`const trans = {
-  apekatt: {
-    heading: "A fun heading 🐒"
+  en: {
+    "key": "en"
+    "name": "English",
+    "meta": {
+      "title": "Title of the wizard"
+    },
+    "tags": {
+      "fornavn": {
+        "heading": "First name"
+      }
+    }
   }
 }`}</pre>
 
-      <p>With the translation above, the field will get the heading "A fun heading 🐒".</p>
+      <p>
+        With the translation above, the field will get the heading "First name" if
+        the user selects the English translation.
+      </p>
 
       <H2>Properties for translation items</H2>
       <p>
@@ -33,9 +72,9 @@ export default function SchemaTranslating() {
       </p>
 
       <pre>{`{
-  apekatt: {
-    heading: "Heading for the node",
-    description: "A longer explanation. Simple HTML is ok if you want to.",
+  fornavn: {
+    heading: "First name",
+    description: "The name you've got that is <strong>not</strong> your family name.",
     image: {
       large: "https://url.to/large/image.png",
       small: "https://url.to/small/image.png",
@@ -48,6 +87,18 @@ export default function SchemaTranslating() {
         When working with the content in the wizard, append `?debug` to the page url to show the
         id of all the nodes in the wizard. The nodes ids will show as pink labels in the top-right
         corner of the component.
+      </p>
+
+      <H2>Overriding content (a "hack")</H2>
+      <p>
+        In some cases you might want simply to override the headings, text or images in the schema.
+        If you want non-technical editors to be able to override part of the content in the wizard
+        you can add a Norwegian translation with the key <code>no</code> to the wizard.
+      </p>
+
+      <p>
+        The Norwegian translation is the default one, and the language picker won't show unless you
+        add some other language than that.
       </p>
     </div>
   )
