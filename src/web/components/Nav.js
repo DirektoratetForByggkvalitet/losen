@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import NavItem from './NavItem';
 import NavReset from './NavReset';
 import NavResult from './NavResult';
+import LanguageSelector from './LanguageSelector';
 
 import Button from '../primitives/ToggleButton';
 import Title from '../primitives/Title';
@@ -16,6 +17,7 @@ export default class Nav extends Component {
     setPage: PropTypes.func.isRequired,
     tableOfContents: PropTypes.array.isRequired,
     showIntro: PropTypes.func.isRequired,
+    translations: PropTypes.objectOf(PropTypes.object).isRequired,
   };
 
   static defaultProps = {
@@ -28,7 +30,14 @@ export default class Nav extends Component {
   toggleToc = () => this.setState({ tocExpanded: !this.state.tocExpanded });
 
   render() {
-    const { heading, page: currentPage = {}, setPage, tableOfContents, showIntro } = this.props;
+    const {
+      heading,
+      page: currentPage = {},
+      setPage,
+      tableOfContents,
+      showIntro,
+      translations,
+    } = this.props;
 
     const { tocExpanded } = this.state;
 
@@ -64,6 +73,7 @@ export default class Nav extends Component {
               ),
           )}
           <NavReset showIntro={showIntro} />
+          <LanguageSelector translations={translations} />
         </StyledNav>
       </div>
     );

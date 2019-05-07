@@ -21,3 +21,7 @@ export function resetModal(show = true) {
     payload: { show },
   };
 }
+
+export function setLanguage(language) {
+  return setData('$language', language);
+}

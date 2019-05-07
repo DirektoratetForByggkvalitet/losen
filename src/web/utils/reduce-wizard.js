@@ -2,43 +2,48 @@
 import parseExpression from '../../shared/utils/dsl';
 import { NAME } from '../state';
 import vocalizeErrors from './vocalize-errors';
-import { getNodeValue } from './selectors';
+import { getNodeValue, getTranslation } from './selectors';
 
 const nonInteractiveTypes = ['Image', 'Text', 'Group', 'Table'];
 
-export function translateNode(node, translations) {
+export function translateNode(node, state, translations) {
   if (!node.id) {
     return node;
   }
 
-  if (!translations[node.id]) {
+  const currentTranslation = getTranslation(state, translations);
+
+  if (!currentTranslation[node.id]) {
     return node;
   }
 
-  const translation = translations[node.id];
-  const result = {};
+  const nodeTranslation = currentTranslation[node.id];
+  const result = { ...node };
 
-  if (translation.heading) {
-    result.heading = translation.heading;
+  if (nodeTranslation.heading) {
+    result.heading = nodeTranslation.heading;
   }
 
-  if (translation.description) {
+  if (nodeTranslation.description) {
     if (['Result', 'Page'].includes(node.type)) {
-      result.lead = translation.description;
+      result.lead = nodeTranslation.description;
     } else {
-      result.text = translation.description;
+      result.text = nodeTranslation.description;
     }
   }
 
-  if (translation.image) {
+  if (nodeTranslation.image) {
     result.image = {
-      url: translation.image.large,
-      alt: `Illustrasjon for ${result.heading || node.heading}`,
+      url: nodeTranslation.image.large,
+      alt: `Illustrasjon for ${result.heading}`,
     };
   }
 
   return result;
 }
+
+export const mapTranslateNode = (state, translations) => node =>
+  translateNode(node, state, translations);
 
 /**
  * Parse tests for cells in (the dynamic) Table in order to set the invalid
@@ -60,7 +65,7 @@ export const parseTableCells = (state, translations) => (node) => {
           inactive = !parseExpression(cell.test)(state[NAME]).valid;
         }
 
-        const translatedProps = translateNode(cell, translations);
+        const translatedProps = translateNode(cell, state, translations);
 
         return {
           ...cell,
@@ -167,12 +172,11 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap)
       Object.values(currentValue || {}).filter(v => v).length !== node.options.length;
   }
 
-  const translatedProps = translateNode(node, translations);
+  const translatedNode = translateNode(node, state, translations);
 
   if (['Page', 'Result'].indexOf(node.type) > -1 || node.children) {
     return {
-      ...node,
-      ...translatedProps,
+      ...translatedNode,
       ...(node.children && node.children.length
         ? {
           children: reduceWizard(node.children, state, nodeTitles, translations, nodeMap),
@@ -182,8 +186,7 @@ export const mapWizardChildren = (state, nodeTitles, translations = {}, nodeMap)
   }
 
   return {
-    ...node,
-    ...translatedProps,
+    ...translatedNode,
     ...(currentValue !== undefined ? { currentValue } : {}),
     errors,
     errorDescription: vocalizeErrors(errors.disabled, nodeTitles),
@@ -210,9 +213,9 @@ export const reduceOptions = (state, translations, nodeMap) => (node) => {
 
         return true;
       })
+      .map(mapTranslateNode(state, translations))
       .map(option => ({
         ...option,
-        ...translateNode(option, translations),
         ...(option.disabled
           ? { disabled: !parseExpression(option.disabled)(state[NAME]).valid }
           : {}),
@@ -305,6 +308,7 @@ export default function reduceWizard(schema, state, nodeTitles, translations = {
 
   return schema
     .map(replaceReferences(schemaNodeMap))
+    .map(mapTranslateNode(state, translations))
     .reduce(reduceBranches(state, nodeTitles, translations, schemaNodeMap), [])
     .filter(filterSchemaNodes(state))
     .map(parseTableCells(state, translations))
