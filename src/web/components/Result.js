@@ -88,7 +88,7 @@ function Result(props) {
           )
           : (
             <MainButton type="button" onClick={() => window.print()}>
-            Skriv ut
+              Skriv ut
             </MainButton>
           )}
       </Export>

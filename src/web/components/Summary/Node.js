@@ -67,6 +67,7 @@ NodeSummary.propTypes = {
     heading: PropTypes.string,
     property: PropTypes.string,
     type: PropTypes.string.isRequired,
+    text: PropTypes.string,
   }).isRequired,
 };
 
