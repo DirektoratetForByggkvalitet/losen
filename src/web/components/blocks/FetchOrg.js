@@ -47,37 +47,35 @@ export default class FetchOrg extends Component {
   fetchOrgData = (orgid) => {
     const { property, setData, source } = this.props;
     const id = orgid.toString().replace(/\s/g, '');
-
-    fetch(`${source}%27${id}%27`)
+    fetch(`${source}${id}`)
       .then(response => response.json())
       .then((data) => {
-        if (Object.prototype.hasOwnProperty.call(data, 'data')) {
-          this.updateOrgData(data, orgid);
-        } else {
-          setData(property, {
-            ...this.props.currentValue,
-            invalidOrg: true,
-          });
-        }
+        this.updateOrgData(data, orgid);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+        setData(property, {
+          ...this.props.currentValue,
+          invalidOrg: true,
+        });
       });
   }
-
   updateOrgData = (data, orgid) => {
     const { property, setData } = this.props;
-    const name = get(data, 'data[0].navn');
+    const name = get(data, 'navn');
     let postcode;
     let postplace;
     let address;
-    if (has(data, 'data[0].postadresse.adresse')) {
-      postcode = get(data, 'data[0].postadresse.postnummer');
-      postplace = get(data, 'data[0].postadresse.poststed');
-      address = get(data, 'data[0].postadresse.adresse');
+    if (has(data, 'postadresse.adresse', '')) {
+      postcode = get(data, 'postadresse.postnummer', '');
+      postplace = get(data, 'postadresse.poststed', '');
+      address = get(data, 'postadresse.adresse', '');
     } else {
-      postcode = get(data, 'data[0].forretningsadresse.postnummer');
-      postplace = get(data, 'data[0].forretningsadresse.poststed');
-      address = get(data, 'data[0].forretningsadresse.adresse');
+      postcode = get(data, 'forretningsadresse.postnummer', '');
+      postplace = get(data, 'forretningsadresse.poststed', '');
+      address = get(data, 'forretningsadresse.adresse', '');
     }
-
     setData(property, {
       ...this.props.currentValue,
       orgid,

@@ -301,7 +301,7 @@
                   "heading": "Organisasjonsnummer",
                   "text": "<p>Eksempel: 992294035 eller 992 294 035</p>",
                   "placeholder": "992 294 035",
-                  "source": "//data.brreg.no/enhetsregisteret/enhet.json?page=0&size=30&$filter=organisasjonsnummer+eq+",
+                  "source": "//data.brreg.no/enhetsregisteret/api/enheter/",
                   "information": "Er firmaets navn eller adresse feil? Da må du endre denne informasjonen via skjemaet <a href=\"//www.altinn.no/no/Starte-og-drive-bedrift/Drive/Andre-driftsoppgaver/Flytting-og-omorganisering/Hvordan-meldes-flytting-og-andre-endringer/\">Samordnet registermelding</a> i Altinn før du fortsetter.",
                   "fetchSG": true,
                   "SGheading": "${name} er registrert med sentral godkjenning for følgende områder",
