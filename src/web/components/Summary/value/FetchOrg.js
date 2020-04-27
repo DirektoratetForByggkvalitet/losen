@@ -35,7 +35,7 @@ FetchOrgSummary.propTypes = {
   value: PropTypes.shape({
     address: PropTypes.string,
     name: PropTypes.string,
-    orgid: PropTypes.string,
+    orgid: PropTypes.number,
     postcode: PropTypes.string,
     postplace: PropTypes.string,
   }),
