@@ -35,59 +35,66 @@ export default function SchemaIntro() {
           if the user said yes to the first question.
         </p>
 
-        <pre>{`[
-  {
-    id: 'intoPage',
-    type: 'Page',
-    lead: 'The intro page is not very interesting.',
-    children: [
-      {
-        type: 'Radio',
-        property: 'continue',
-        heading: 'Do you want to continue?',
-        options: [
-          {
-            type: 'Answer',
-            text: 'Yes',
-            value: true
-          },
-          {
-            type: 'Answer',
-            text: 'No',
-            value: false
-          }
-        ]
-      }
-      {
-        type: 'Branch',
-        branches: [
-          {
-            test: { field: 'continue', operator: 'eq', value: true },
-            children: [
-              {
+        <pre>{`{
+  "meta": {
+    "title": "My wizard",
+    "name": "wizard",
+    "footer": "Your footer here!"
+  },
+  "schema": [
+    {
+      id: 'intoPage',
+      type: 'Page',
+      lead: 'The intro page is not very interesting.',
+      children: [
+        {
+          type: 'Radio',
+          property: 'continue',
+          heading: 'Do you want to continue?',
+          options: [
+            {
+              type: 'Answer',
+              text: 'Yes',
+              value: true
+            },
+            {
+              type: 'Answer',
+              text: 'No',
+              value: false
+            }
+          ]
+        }
+        {
+          type: 'Branch',
+          branches: [
+            {
+              test: { field: 'continue', operator: 'eq', value: true },
+              children: [
                 {
-                  property: 'living.gone',
-                  type: 'Number',
-                  heading: 'For how many hours do you leave your pets each day?',
-                  placeholder: 'Hours',
-                  minimum: 0,
-                  maximum: 24,
-                  step: 1,
+                  {
+                    property: 'living.gone',
+                    type: 'Number',
+                    heading: 'For how many hours do you leave your pets each day?',
+                    placeholder: 'Hours',
+                    minimum: 0,
+                    maximum: 24,
+                    step: 1,
+                  }
                 }
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]`}</pre>
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}`}</pre>
       </div>
 
       <p>
-        Given that the user said yes, the property <code>continue</code> is
-        <em>true</em> and the branch test will evaluate to true. The schema will be reduced
-        to the following before it's rendered:
+        Given that the user said yes, the property <code>continue</code> is <em>true</em> and
+        the branch test will evaluate to true. The schema will be reduced to the following
+        before it's rendered:
       </p>
 
       <pre>{`[
@@ -138,6 +145,59 @@ export default function SchemaIntro() {
         A more in depth explanation of the different properties, node types and such can be
         found in the following chapters.
       </p>
+
+      <H3>Allowed root types</H3>
+      <p>
+        On the top level of the schema, only <code>Page</code>, <code>Result</code> and <code>Error</code> nodes are 
+        allowed. In addition you are allowed to use <code>Branch</code> nodes as long as the children of the branches
+        are of one of these types.
+      </p>
+
+      <p>An example of a schema </p>
+
+      <pre>{`{
+  "meta": {
+    "title": "My wizard",
+    "name": "wizard",
+    "footer": "Your footer here!"
+  },
+  "schema": [
+    {
+      id: 'intoPage',
+      type: 'Page',
+      lead: 'The intro page is not very interesting.',
+      children: [
+        ...
+      ]
+    },
+
+    // This 👇 is OK because the child node of the branch(es) are Page, Result or Error nodes
+    {
+      "id": "mybranch",
+      "type": "Branch",
+      "branches": [
+        {
+          "test": {
+            "field": "firstname",
+            "operator": "eq",
+            "value": "Torgeir"
+          },
+          "children": [
+            {
+              id: 'torgeirOnlyPage',
+              type: 'Page',
+              lead: 'This page is just for Torgeir',
+              children: [
+                ...
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}`}</pre>
     </div>
+
   );
 }

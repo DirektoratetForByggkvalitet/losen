@@ -219,6 +219,39 @@ function validatePage(page, path) {
 }
 
 /**
+ * Validate root-level branch to ensure that the resulting nodes are Pages
+ * or Result pages (the only types really allowed at the top level of the
+ * schema)
+ */
+function validateRootBranch(branchNode, path) {
+  return [
+    // Check for bad children node types
+    ...(get(branchNode, 'branches', []).reduce((errors, branch, index) => {
+      if (branch.children.find(({ type }) => !['Branch', 'Page', 'Result', 'Error'].includes(type))) {
+        return [
+          ...errors,
+          {
+            path: [...path, 'branches', index],
+            error: 'Root level Branch node contains a child that is not a Page, Result or Error',
+          },
+        ];
+      }
+
+      return errors;
+    }, [])),
+
+    // Visit Branch nodes below this Branch node
+    ...get(branchNode, 'branches', []).reduce((errors, node, branchIndex) => [
+      ...errors,
+      ...get(node, 'children', []).reduce((childBranchErrors, childBranch, childIndex) => [
+        ...childBranchErrors,
+        ...validateRootBranch(childBranch, [...path, 'branches', branchIndex, 'children', childIndex]),
+      ], []),
+    ], []),
+  ];
+}
+
+/**
  * Validates that the schema is ok. Checking that the top level is pages
  * and recursing down from there, ending up with an array of everything that
  * isn't up to standards 👮
@@ -227,19 +260,23 @@ function validateSchema(schema) {
   let errors = [];
 
   schema.forEach((page, index) => {
-    if (!['Page', 'Result'].includes(page.type)) {
+    if (!['Page', 'Result', 'Branch', 'Error'].includes(page.type)) {
       errors = [
         ...errors,
         {
           path: ['schema', index],
-          error: 'Top-level element is of invalid type. Must be Page or Result',
+          error: 'Top-level element is of invalid type. Must be Page, Result, Error or Branch (with Page/Result/Error as child)',
         },
       ];
     }
 
     errors = [
       ...errors,
-      ...validatePage(page, ['schema', index]),
+      ...(
+        page.type === 'Branch'
+          ? validateRootBranch(page, ['schema', index])
+          : validatePage(page, ['schema', index])
+      ),
     ];
   });
 
