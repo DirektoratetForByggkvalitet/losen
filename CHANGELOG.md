@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.1.9] - 2020-08-13
+### Changed
+- Update outdated documentation
+- Allow `Error` and `Branch` nodes on the root level
+
+### Fixed
+- Styling of active/inactive table cells inside a simple group node
+
+## [5.1.8] - 2020-04-16
+### Fixed
+- Fix Brønnøysund registry lookups
+
 ## [5.0.0] - 2019-05-07
 ### Added
 - Support for multiple languages in translations
@@ -135,7 +147,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.2] -
 
-[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v5.0.0...HEAD
+[unreleased]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v5.1.9...HEAD
+[5.1.9]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v5.1.8...v5.1.9
+[5.1.8]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v5.0.0...v5.1.8
 [5.0.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.2.0...v5.0.0
 [4.2.0]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.3...v4.2.0
 [4.1.3]: https://github.com/DirektoratetForByggkvalitet/losen/compare/v4.1.2...v4.1.3
