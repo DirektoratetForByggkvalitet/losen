@@ -33,12 +33,13 @@ export const Table = injectStyles(styled.table`
 
 export const TD = injectStyles(styled.td`
   ${props => props['data-inactive'] ? `
-  background: ${props.simple ? '#ffffff' : 'repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px)'};
-  font-weight: normal;
-  ` : `
-  font-weight: ${props.simple ? 'normal' : 'bold'};
-  background: ${props.simple ? '#ffffff' : 'rgba(0, 255, 0, 0.1)'};
-  `}
+    background: repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px);
+    font-weight: normal;
+` : `
+    font-weight: ${props.simple ? 'normal' : 'bold'};
+    background: rgba(0, 255, 0, 0.1);
+`}
+
   ${props => props.simple ? `
     text-align: left;
     vertical-align: top;
