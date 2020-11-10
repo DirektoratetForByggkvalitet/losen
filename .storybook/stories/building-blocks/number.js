@@ -49,7 +49,7 @@ export default function SchemaBuildingBlocks() {
           </tr>
           <tr>
             <td><code>step</code></td>
-            <td>The increment in which the value can be adjusted</td>
+            <td>The increment in which the value can be adjusted. It defaults to 1, but can be set to decimals or higher numbers if needed.</td>
             <td></td>
           </tr>
           {common.optional}
@@ -66,9 +66,9 @@ export default function SchemaBuildingBlocks() {
   "type": "Number",
   "heading": "Hvor mange timer er du borte fra hjemmet hver dag?",
   "placeholder": "Timer",
-  "minimum": 0,
-  "maximum": 24,
-  "step": 1
+  "minimum": "0",
+  "maximum": "24",
+  "step": "1"
 }`}</pre>
     </div>
   );

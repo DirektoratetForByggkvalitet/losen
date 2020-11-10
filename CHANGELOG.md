@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.1.10] - 2020-11-10
+## Changed
+- Default `step` in Numberinput to 1
+- Allow decimals in `step` prop on Numberinput
+
 ## [5.1.9] - 2020-08-13
 ### Changed
 - Update outdated documentation
