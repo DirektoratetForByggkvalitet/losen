@@ -11,6 +11,7 @@ export default class Textarea extends Component {
   static propTypes = {
     currentValue: PropTypes.string,
     information: PropTypes.string,
+    heading: PropTypes.string,
     placeholder: PropTypes.string,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func,
@@ -19,6 +20,7 @@ export default class Textarea extends Component {
   static defaultProps = {
     currentValue: '',
     information: '',
+    heading: '',
     placeholder: '',
     setData: () => {},
   };
@@ -31,11 +33,12 @@ export default class Textarea extends Component {
   };
 
   render() {
-    const { currentValue, information, placeholder } = this.props;
+    const { currentValue, information, heading, placeholder } = this.props;
 
     return (
       <div>
         <StyledTextarea
+          aria-label={heading}
           placeholder={placeholder}
           value={currentValue}
           onChange={this.handleChange}
