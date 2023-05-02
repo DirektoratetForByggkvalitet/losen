@@ -5,6 +5,7 @@ import React from 'react';
 import hasSoftError from '../utils/has-soft-error';
 import getResultText from '../utils/get-result-text';
 import { getErrorPages } from '../utils/selectors';
+import { trackEvent } from '../utils/tracking';
 import Block from './blocks/Block';
 import ExportData from './ExportData';
 import Html from './helper/Html';
@@ -46,6 +47,11 @@ function Result(props) {
   const resultHeading = getResultText(heading, incomplete, hasSoftErrors);
   const resultLead = getResultText(lead, incomplete, hasSoftErrors);
 
+  const printPage = () => {
+    trackEvent('Skriv ut', resultHeading);
+    window.print();
+  };
+
   return (
     <Main result debug={debug} data-id={pageid} id="main">
       <H1 result>{resultHeading}</H1>
@@ -84,10 +90,11 @@ function Result(props) {
             <PDFButton
               pdfServiceUrl={pdfServiceUrl}
               localStorageKey={localStorageKey}
+              pageHeading={resultHeading}
             />
           )
           : (
-            <MainButton type="button" onClick={() => window.print()}>
+            <MainButton type="button" onClick={printPage}>
               Skriv ut
             </MainButton>
           )}
