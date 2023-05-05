@@ -8,11 +8,11 @@ export default function NavItem({ active, done, heading, id, index, setPage }) {
     <StyledNavItem
       active={active}
       done={done}
+      href="#"
       onClick={(e) => {
         e.preventDefault();
         setPage(id);
       }}
-      tabIndex={0}
     >
       <div>{index}</div>
       <p>
