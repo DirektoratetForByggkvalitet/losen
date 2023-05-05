@@ -98,11 +98,16 @@ export default class Input extends Component {
     if (inputType === 'Input') {
       inputType = 'text';
     }
+
+    const describedBy = [];
+    if (unit) describedBy.push(`${property}.unit`);
+    if (errors.validation.error) describedBy.push(`${property}.error`);
+
     let input = (
       <TextInput
         aria-label={heading}
         aria-invalid={errors.validation.error}
-        aria-describedby={errors.validation.error ? `${property}.error` : undefined}
+        aria-describedby={describedBy.length > 0 ? describedBy.join(' ') : undefined}
         disabled={disabled}
         id={property}
         onChange={this.handleChange}
@@ -117,7 +122,7 @@ export default class Input extends Component {
         <NumberInput
           aria-label={heading}
           aria-invalid={errors.validation.error}
-          aria-describedby={errors.validation.error ? `${property}.error` : undefined}
+          aria-describedby={describedBy.length > 0 ? describedBy.join(' ') : undefined}
           disabled={disabled}
           id={property}
           max={max}
@@ -136,7 +141,7 @@ export default class Input extends Component {
       <div>
         {input}
 
-        {unit ? <Html inline text={unit} /> : null}
+        {unit ? <Html inline id={`${property}.unit`} text={unit} /> : null}
 
         {errors.validation.error && (
           <ErrorMessage role="alert" id={`${property}.error`}>
