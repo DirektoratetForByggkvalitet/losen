@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { ErrorMessage } from '../../primitives/Errors';
-import { SRLabel } from '../../primitives/Label';
 import { TextInput, NumberInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -99,14 +98,10 @@ export default class Input extends Component {
     if (inputType === 'Input') {
       inputType = 'text';
     }
-    let label = '';
-    if (heading) {
-      label = <SRLabel htmlFor={property}>{heading}</SRLabel>;
-    }
     let input = (
       <TextInput
-        aria-invalid={errors.validation.error}
         aria-label={heading}
+        aria-invalid={errors.validation.error}
         disabled={disabled}
         id={property}
         onChange={this.handleChange}
@@ -119,8 +114,8 @@ export default class Input extends Component {
     if (this.props.type === 'number') {
       input = (
         <NumberInput
-          aria-invalid={errors.validation.error}
           aria-label={heading}
+          aria-invalid={errors.validation.error}
           disabled={disabled}
           id={property}
           max={max}
@@ -137,7 +132,6 @@ export default class Input extends Component {
     }
     return (
       <div>
-        {label}
         {input}
 
         {unit ? <Html inline text={unit} /> : null}
