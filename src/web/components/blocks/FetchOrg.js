@@ -212,7 +212,7 @@ export default class FetchOrg extends Component {
         </div>
         <div>
           {get(this.props, 'currentValue.invalidOrg', false) && (
-            <ErrorMessage>
+            <ErrorMessage role="alert">
               <ErrorIcon /> {invalidOrg}
             </ErrorMessage>
           )}

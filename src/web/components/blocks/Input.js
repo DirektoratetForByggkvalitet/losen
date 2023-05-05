@@ -102,6 +102,7 @@ export default class Input extends Component {
       <TextInput
         aria-label={heading}
         aria-invalid={errors.validation.error}
+        aria-describedby={errors.validation.error ? `${property}.error` : undefined}
         disabled={disabled}
         id={property}
         onChange={this.handleChange}
@@ -116,6 +117,7 @@ export default class Input extends Component {
         <NumberInput
           aria-label={heading}
           aria-invalid={errors.validation.error}
+          aria-describedby={errors.validation.error ? `${property}.error` : undefined}
           disabled={disabled}
           id={property}
           max={max}
@@ -137,7 +139,7 @@ export default class Input extends Component {
         {unit ? <Html inline text={unit} /> : null}
 
         {errors.validation.error && (
-          <ErrorMessage>
+          <ErrorMessage role="alert" id={`${property}.error`}>
             <ErrorIcon /> {errors.validation.message}
           </ErrorMessage>
         )}

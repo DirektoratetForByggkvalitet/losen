@@ -33,18 +33,19 @@ export default class Textarea extends Component {
   };
 
   render() {
-    const { currentValue, information, heading, placeholder } = this.props;
+    const { currentValue, information, heading, placeholder, property } = this.props;
 
     return (
       <div>
         <StyledTextarea
           aria-label={heading}
+          aria-describedby={information ? `${property}.information` : undefined}
           placeholder={placeholder}
           value={currentValue}
           onChange={this.handleChange}
         />
         {information && (
-          <Information>
+          <Information id={`${property}.information`}>
             <ErrorIcon triangleFill={'black'} />
             <Html text={information} />
           </Information>

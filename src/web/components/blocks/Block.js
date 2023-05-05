@@ -223,7 +223,7 @@ export function PureBlock(props) {
         />
 
         {props.disabled && (
-          <ErrorMessage>
+          <ErrorMessage role="alert">
             <ErrorIcon /> {props.errorDescription}
           </ErrorMessage>
         )}
