@@ -21,6 +21,7 @@ import beforeUnloadHandler from '../utils/before-unload-handler';
 import validateSchema from '../../shared/utils/validator';
 
 import Grid from '../primitives/grid/Grid';
+import FocusWrapper from '../primitives/grid/FocusWrapper';
 import StyledWizard from '../primitives/Wizard';
 
 class Wizard extends Component {
@@ -75,6 +76,8 @@ class Wizard extends Component {
       showResetModal: props.showResetModal && !!Object.keys(wizardData).length,
     };
 
+    this.pageWrapper = null;
+
     if (wizardData.page) {
       this.setPage(wizardData.page);
     }
@@ -94,6 +97,7 @@ class Wizard extends Component {
   componentDidUpdate = (prevProps, prevState) => {
     if (this.state.page !== prevState.page) {
       this.trackPage();
+      if (this.pageWrapper) this.pageWrapper.focus(); // Move keyboard focus to wrapper
     }
   }
 
@@ -121,7 +125,6 @@ class Wizard extends Component {
     }
     this.props.setData('page', page);
     this.setState({ page });
-    document.activeElement.blur(); // Remove focus on next/prev buttons after page change
   }
 
   getCurrentIndex = () => Math.max(
@@ -229,30 +232,32 @@ ${error}
               showIntro={showIntro}
               translations={translations}
             />
-            {page && page.type === 'Result' ? (
-              <Result
-                {...page}
-                previousPage={this.previousPage}
-                debug={debug}
-                pageid={page.id}
-                wizard={wizard}
-                title={title}
-                schema={schema}
-                setPage={this.setPage}
-                exports={exports}
-              />
-            ) : (
-              page && <Page
-                firstPage={firstPage}
-                lastPage={lastPage}
-                nextPage={this.nextPage}
-                previousPage={this.previousPage}
-                debug={debug}
-                nextPageIsResult={nextPageIsResult}
-                pageid={page.id}
-                {...page}
-              />
-            )}
+            <FocusWrapper tabIndex="-1" innerRef={e => (this.pageWrapper = e)}>
+              {page && page.type === 'Result' ? (
+                <Result
+                  {...page}
+                  previousPage={this.previousPage}
+                  debug={debug}
+                  pageid={page.id}
+                  wizard={wizard}
+                  title={title}
+                  schema={schema}
+                  setPage={this.setPage}
+                  exports={exports}
+                />
+              ) : (
+                page && <Page
+                  firstPage={firstPage}
+                  lastPage={lastPage}
+                  nextPage={this.nextPage}
+                  previousPage={this.previousPage}
+                  debug={debug}
+                  nextPageIsResult={nextPageIsResult}
+                  pageid={page.id}
+                  {...page}
+                />
+              )}
+            </FocusWrapper>
           </Grid>
         </StyledWizard>
       </StyleProvider>
