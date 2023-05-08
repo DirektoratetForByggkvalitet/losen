@@ -60,6 +60,14 @@ export const optional = (
   </tr>
 )
 
+export const autocoomplete = (
+  <tr key="autocomplete">
+    <td><code>autocomplete</code></td>
+    <td>The autocomplete content attribute can be used to hint to the browser how to, or whether to, help the user fill forms in. For example prefilling the user's name, address or phone numbers based on earlier input. This is an accessibility requirement if there are relevant codes available. See UUtilsynet for <a href="https://www.uutilsynet.no/veiledning/135-identifiser-formal-med-inndata/1238">documentation on available codes</a>. This field is optional.</td>
+    <td></td>
+  </tr>
+)
+
 export const inputProperties = [
   property,
   heading,

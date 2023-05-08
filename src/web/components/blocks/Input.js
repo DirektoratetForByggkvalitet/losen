@@ -21,6 +21,7 @@ export default class Input extends Component {
     max: PropTypes.number,
     min: PropTypes.number,
     placeholder: PropTypes.string,
+    autocomplete: PropTypes.string,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
     step: PropTypes.number,
@@ -42,6 +43,7 @@ export default class Input extends Component {
     update: () => {},
     validation: {},
     toggle: [],
+    autocomplete: undefined,
   };
 
   updateToggle = (value) => {
@@ -88,6 +90,7 @@ export default class Input extends Component {
       heading,
       max,
       min,
+      autocomplete,
       placeholder,
       property,
       step,
@@ -112,6 +115,7 @@ export default class Input extends Component {
         id={property}
         onChange={this.handleChange}
         placeholder={placeholder}
+        autoComplete={autocomplete}
         type={inputType}
         validation={errors.validation}
         value={currentValue}
@@ -128,6 +132,7 @@ export default class Input extends Component {
           max={max}
           min={min}
           onChange={this.handleChange}
+          autoComplete={autocomplete}
           placeholder={placeholder}
           step={step}
           type={inputType}

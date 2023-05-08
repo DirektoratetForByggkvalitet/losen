@@ -13,6 +13,7 @@ export default class Textarea extends Component {
     information: PropTypes.string,
     heading: PropTypes.string,
     placeholder: PropTypes.string,
+    autocomplete: PropTypes.string,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func,
   };
@@ -23,6 +24,7 @@ export default class Textarea extends Component {
     heading: '',
     placeholder: '',
     setData: () => {},
+    autocomplete: undefined,
   };
 
   handleChange = (e) => {
@@ -33,7 +35,7 @@ export default class Textarea extends Component {
   };
 
   render() {
-    const { currentValue, information, heading, placeholder, property } = this.props;
+    const { currentValue, information, heading, placeholder, property, autocomplete } = this.props;
 
     return (
       <div>
@@ -43,6 +45,7 @@ export default class Textarea extends Component {
           placeholder={placeholder}
           value={currentValue}
           onChange={this.handleChange}
+          autoComplete={autocomplete}
         />
         {information && (
           <Information id={`${property}.information`}>

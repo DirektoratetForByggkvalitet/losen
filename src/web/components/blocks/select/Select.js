@@ -15,6 +15,7 @@ export default class Select extends Component {
     options: PropTypes.array.isRequired,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
+    autocomplete: PropTypes.string,
   }
 
   static defaultProps = {
@@ -23,6 +24,7 @@ export default class Select extends Component {
     defaultOption: '',
     heading: '',
     text: '',
+    autocomplete: undefined,
   }
 
   handleChange = (e) => {
@@ -45,11 +47,16 @@ export default class Select extends Component {
   };
 
   render() {
-    const { currentValue, options, defaultOption, heading, debug } = this.props;
+    const { currentValue, options, defaultOption, heading, autocomplete, debug } = this.props;
     const placeholder = defaultOption || 'Velg fra listen';
     return (
       <SelectWrapper>
-        <select aria-label={heading} value={currentValue} onChange={this.handleChange}>
+        <select
+          aria-label={heading}
+          value={currentValue}
+          onChange={this.handleChange}
+          autoComplete={autocomplete}
+        >
           <option value={NULL_VALUE}>{placeholder}</option>
 
           {options.map(option => (

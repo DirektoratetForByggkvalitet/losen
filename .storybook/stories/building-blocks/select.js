@@ -48,6 +48,7 @@ export default function SchemaBuildingBlocks() {
             <td>The text to follow the heading for this input field.</td>
             <td></td>
           </tr>
+          {common.autocoomplete}
           {common.optionalInputProperties}
         </tbody>
       </Table>
