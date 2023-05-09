@@ -42,7 +42,7 @@ export default function PrimitivesIntro() {
 
     <H2>Error block</H2>
     <p>An error block is basically a grouped block with custom styling.</p>
-    <StyledErrorBlock>
+    <StyledErrorBlock role="alert">
       <SpecificBlock groupedSimple>
         <H2>This is an error block</H2>
       </SpecificBlock>

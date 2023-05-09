@@ -44,13 +44,13 @@ export default function NodeSummary({ node }) {
       <Html text={heading} h3 />
       <ValueSummary value={currentValue} node={node} />
       {errors.validation.error ? (
-        <ErrorMessage>
+        <ErrorMessage role="alert">
           <ErrorIcon />
           {errors.validation.message}
         </ErrorMessage>
       ) : null}
       {errors.disabled.length ? (
-        <ErrorMessage>
+        <ErrorMessage role="alert">
           <ErrorIcon /> {errorDescription}
         </ErrorMessage>
       ) : null}

@@ -64,7 +64,7 @@ class ExportData extends Component {
     this.setState({ copied: true });
     setTimeout(() => {
       this.setState({ copied: false });
-    }, 2000);
+    }, 5000);
   };
 
   render() {
@@ -72,7 +72,7 @@ class ExportData extends Component {
 
     return (
       <div>
-        <MainButton copied={this.state.copied} onClick={this.copyToClipboard}>
+        <MainButton aria-live={this.state.copied ? 'assertive' : undefined} copied={this.state.copied} onClick={this.copyToClipboard}>
           {buttonText}
         </MainButton>
       </div>

@@ -170,7 +170,7 @@ export default class FetchOrg extends Component {
         {get(this.props, 'currentValue.dataOrg', false) && (
           <div>
             <br />
-            <DL>
+            <DL role="status">
               <dt>Firmaets navn</dt>
               <dd>{get(this.props, 'currentValue.name')}</dd>
 
@@ -192,7 +192,7 @@ export default class FetchOrg extends Component {
         <div>
           {get(this.props, 'currentValue.fetchSG', false)}
           <div>
-            {loading && <Loading>Laster inn data</Loading>}
+            {loading && <Loading role="status">Laster inn data</Loading>}
             {!loading &&
               get(this.props, 'currentValue.dataSG', false) &&
               (
@@ -212,7 +212,7 @@ export default class FetchOrg extends Component {
         </div>
         <div>
           {get(this.props, 'currentValue.invalidOrg', false) && (
-            <ErrorMessage>
+            <ErrorMessage role="alert">
               <ErrorIcon /> {invalidOrg}
             </ErrorMessage>
           )}

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { ErrorMessage } from '../../primitives/Errors';
-import { SRLabel } from '../../primitives/Label';
 import { TextInput, NumberInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
@@ -22,6 +21,7 @@ export default class Input extends Component {
     max: PropTypes.number,
     min: PropTypes.number,
     placeholder: PropTypes.string,
+    autocomplete: PropTypes.string,
     property: PropTypes.string.isRequired,
     setData: PropTypes.func.isRequired,
     step: PropTypes.number,
@@ -43,6 +43,7 @@ export default class Input extends Component {
     update: () => {},
     validation: {},
     toggle: [],
+    autocomplete: undefined,
   };
 
   updateToggle = (value) => {
@@ -89,6 +90,7 @@ export default class Input extends Component {
       heading,
       max,
       min,
+      autocomplete,
       placeholder,
       property,
       step,
@@ -99,18 +101,21 @@ export default class Input extends Component {
     if (inputType === 'Input') {
       inputType = 'text';
     }
-    let label = '';
-    if (heading) {
-      label = <SRLabel htmlFor={property}>{heading}</SRLabel>;
-    }
+
+    const describedBy = [];
+    if (unit) describedBy.push(`${property}.unit`);
+    if (errors.validation.error) describedBy.push(`${property}.error`);
+
     let input = (
       <TextInput
-        aria-invalid={errors.validation.error}
         aria-label={heading}
+        aria-invalid={errors.validation.error}
+        aria-describedby={describedBy.length > 0 ? describedBy.join(' ') : undefined}
         disabled={disabled}
         id={property}
         onChange={this.handleChange}
         placeholder={placeholder}
+        autoComplete={autocomplete}
         type={inputType}
         validation={errors.validation}
         value={currentValue}
@@ -119,13 +124,15 @@ export default class Input extends Component {
     if (this.props.type === 'number') {
       input = (
         <NumberInput
-          aria-invalid={errors.validation.error}
           aria-label={heading}
+          aria-invalid={errors.validation.error}
+          aria-describedby={describedBy.length > 0 ? describedBy.join(' ') : undefined}
           disabled={disabled}
           id={property}
           max={max}
           min={min}
           onChange={this.handleChange}
+          autoComplete={autocomplete}
           placeholder={placeholder}
           step={step}
           type={inputType}
@@ -137,13 +144,12 @@ export default class Input extends Component {
     }
     return (
       <div>
-        {label}
         {input}
 
-        {unit ? <Html inline text={unit} /> : null}
+        {unit ? <Html inline id={`${property}.unit`} text={unit} /> : null}
 
         {errors.validation.error && (
-          <ErrorMessage>
+          <ErrorMessage role="alert" id={`${property}.error`}>
             <ErrorIcon /> {errors.validation.message}
           </ErrorMessage>
         )}

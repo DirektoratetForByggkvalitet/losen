@@ -148,7 +148,7 @@ export function PureBlock(props) {
 
   if (props.type === 'Error') {
     return (
-      <StyledErrorBlock data-id={props.id} debug={props.debug}>
+      <StyledErrorBlock role="alert" data-id={props.id} debug={props.debug}>
         <Html text={props.heading} h2 />
         <Html text={props.text} />
 
@@ -223,7 +223,7 @@ export function PureBlock(props) {
         />
 
         {props.disabled && (
-          <ErrorMessage>
+          <ErrorMessage role="alert">
             <ErrorIcon /> {props.errorDescription}
           </ErrorMessage>
         )}

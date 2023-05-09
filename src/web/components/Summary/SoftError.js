@@ -13,7 +13,7 @@ export default function SoftError({ children }) {
         const heading = child.heading || child.text;
         if (heading) {
           return (
-            <ErrorMessage>
+            <ErrorMessage role="alert">
               <ErrorIcon /> <Html text={heading} inline />
             </ErrorMessage>
           );

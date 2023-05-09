@@ -10,29 +10,33 @@ import { resetData } from '../../state/actions';
 import { H1 } from '../../primitives/Heading';
 import { Lead } from '../../primitives/Paragraphs';
 import { MainButton, SecondaryButton } from '../../primitives/Button';
+import ModalBox from '../../primitives/ModalBox';
 
 const customStyle = {
   overlay: {
     position: 'fixed',
+    zIndex: '1002',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'column',
+    overflowY: 'scroll',
   },
   content: {
     position: 'static',
-    maxWidth: '666px',
-    margin: '0 auto',
-    border: '1px solid #ccc',
-    background: '#fff',
-    borderRadius: '0',
+    inset: '0',
+    overflow: 'visible',
+    background: 'transparent',
+    padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexGrow: 1,
     outline: 'none',
-    padding: '40px 60px',
-    textAlign: 'center',
   },
 };
 
@@ -68,15 +72,17 @@ class Modal extends Component {
         onRequestClose={this.handleCloseModal}
         style={customStyle}
       >
-        <H1 id="heading">Vil du starte på nytt?</H1>
-        <Lead id="full_description">
-          Veiviseren husker svarene fra ditt forrige besøk.
-        </Lead>
-        <MainButton type="button" onClick={this.handleCloseModal}>Fortsett</MainButton>
-        <br />
-        <SecondaryButton type="button" onClick={this.handleRestart}>
-          Start på nytt
-        </SecondaryButton>
+        <ModalBox>
+          <H1 id="heading">Vil du starte på nytt?</H1>
+          <Lead id="full_description">
+            Veiviseren husker svarene fra ditt forrige besøk.
+          </Lead>
+          <MainButton type="button" onClick={this.handleCloseModal}>Fortsett</MainButton>
+          <br />
+          <SecondaryButton type="button" onClick={this.handleRestart}>
+            Start på nytt
+          </SecondaryButton>
+        </ModalBox>
       </ReactModal>
     );
   }

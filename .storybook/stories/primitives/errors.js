@@ -10,7 +10,7 @@ export default function PrimitivesIntro() {
     <H1>Errors and warnings</H1>
     <H2>Validation error</H2>
     <div>
-        <ErrorMessage>
+        <ErrorMessage role="alert">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 38 38"
@@ -51,7 +51,7 @@ export default function PrimitivesIntro() {
     <hr />
 
     <H2>Error block</H2>
-    <StyledErrorBlock>
+    <StyledErrorBlock role="alert">
       <SpecificBlock groupedSimple>
         <H2>This is an error block</H2>
       </SpecificBlock>

@@ -47,6 +47,7 @@ export default function SchemaBuildingBlocks() {
             </td>
             <td></td>
           </tr>
+          {common.autocoomplete}
           {common.optional}
           {common.show}
           {common.hide}
@@ -59,6 +60,7 @@ export default function SchemaBuildingBlocks() {
   "id": "favourite.actor",
   "property": "favourite.actor",
   "type": "Input",
+  "autocomplete": "name",
   "validator": {
     "pattern": "^\\d+(,\\d+)?$",
     "error": "Oppgi på formatet 123,1239"

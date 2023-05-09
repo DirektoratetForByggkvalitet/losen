@@ -15,11 +15,11 @@ export default {
     bluegreen: '#54acb8',
     warmgray3: '#f2f1f0',
     warmgray2: '#e5e3e1',
-    darkgray: '#afaba8',
+    darkgray: '#989390',
     red: '#c1272d',
     lightred: '#ffeaeb',
     oldred: '#9d312f',
-    green: '#008B21',
+    green: '#007a1d',
     oldgreen: '#809e3d',
   },
   padding: {

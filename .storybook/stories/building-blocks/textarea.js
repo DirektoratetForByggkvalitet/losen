@@ -52,6 +52,7 @@ export default function SchemaBuildingBlocks() {
             </td>
             <td></td>
           </tr>
+          {common.autocoomplete}
           {common.optional}
           {common.show}
           {common.hide}
