@@ -22,9 +22,16 @@ const Information = ({
     printonly={printonly}
     printhide={printhide}
   >
-    <InformationBlock>
-      <ErrorIcon triangleFill={'black'} />
-      <Html text={heading} h2 />
+    <InformationBlock withHeading={Boolean(heading)}>
+      {heading ? (
+        <div className="headerWrap">
+          <ErrorIcon triangleFill={'black'} />
+          <Html text={heading} h2 />
+        </div>
+      ) : (
+        <ErrorIcon triangleFill={'black'} />
+      )}
+
       <Html text={text} />
     </InformationBlock>
   </TextBlock>

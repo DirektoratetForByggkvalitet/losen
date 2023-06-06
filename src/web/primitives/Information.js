@@ -10,9 +10,24 @@ const Information = injectStyles(styled.div`
     vertical-align: middle;
     margin-right: 0.25em;
   }
-  div, p {
-    display: inline;
-  }
+
+  ${props => props.withHeading ? `
+    .headerWrap {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      h2 {
+        margin-bottom: 0;
+        display: inline-block;
+      }
+    }
+  ` : `
+    div,
+    p {
+      display: inline;
+    }
+  `}
 `);
 
 export default Information;
