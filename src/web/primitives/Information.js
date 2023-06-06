@@ -17,6 +17,10 @@ const Information = injectStyles(styled.div`
       align-items: center;
       margin-bottom: 10px;
 
+      svg {
+        flex-shrink: 0;
+      }
+
       h2 {
         margin-bottom: 0;
         display: inline-block;
