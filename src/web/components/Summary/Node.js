@@ -22,7 +22,7 @@ export default function NodeSummary({ node }) {
     return <SoftError children={children} />;
   }
   if (type === 'Information') {
-    return <Information text={node.text} />;
+    return <Information heading={node.heading} text={node.text} />;
   }
   if (type === 'Group' || type === 'ErrorOk') {
     return (
