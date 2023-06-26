@@ -6,11 +6,12 @@
 
 The wizard framework contains the logic and building blocks necessary to building wizards large and small.
 
-We use [Storybook](https://github.com/storybooks/storybook) to document the components. The Storybook is hosted on Firebase at [dibk-storybook](https://dibk-storybook.firebaseapp.com/).
+We use [Storybook](https://github.com/storybooks/storybook) to document the components.
 
 ## Release a new version of losen
 
-`npm run release` - Follow the instructions
+1. `npm run version major/minor/patch` to bump version
+2. `npm run publish-packages` to publish
 
 ## Building a wizard
 See the storybook documentation for an introduction to how to build a wizard with the framework.

@@ -1,0 +1,84 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Reference" />
+
+# References
+
+When you need to show something, for instance an Error or a Result page, in more
+than one place you want to use the `Reference` instead of manually
+duplicating the node in your schema. It will be duplicated for you, and it makes
+it a lot easier to manage your schema over time.
+
+A <em>Reference</em> node is not represented in the user interface, and the
+reference is invisible both to losen and the end user - as long as the referenced
+node exists in the schema, it's just as if you duplicated the node in your schema.
+It looks like this:
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a reference node, this property must be set to `Reference`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>nodeId</code>
+      </td>
+      <td>The id of the node we're referencing.</td>
+      <td>Yes</td>
+    </tr>
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  // ...,
+  "schema": [
+    {
+      "type": "Page",
+      "id": "start"
+      "children": [
+        { "type": "Reference", "nodeId": "coolError" }
+      ]
+    },
+    {
+      "type": "Page",
+      "id": "otherPage",
+      "children": [
+        {
+          "id": "coolError",
+          "type": "Error",
+          "warning": true,
+          "children": [
+            {
+              "id": "coolError.text",
+              "type": "Text",
+              "text": "😎😎😎"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Gotchas
+
+Beware of referencing something inside itself. It will create an infinite loop,
+and there will be 🐉🐲🔥.

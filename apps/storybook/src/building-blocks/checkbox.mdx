@@ -1,0 +1,112 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Checkbox" />
+
+# Checkbox
+
+A group of checkboxes. One or more values can be selected.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a checkbox group, this property must be set to `Checkbox`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the checkbox group</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>options</code>
+      </td>
+      <td>
+        An array of [`Answer`](?path=?path=/docs/building-blocks-answer--docs)
+        nodes. Options that the user can select.
+      </td>
+      <td>Yes</td>
+    </tr>
+    {common.inputProperties}
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>The text to follow the heading for this input field.</td>
+      <td></td>
+    </tr>
+    {common.optionalInputProperties}
+    <tr>
+      <td>
+        <code>grid</code>
+      </td>
+      <td>Display options in a three column grid.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <code>allMandatory</code>
+      </td>
+      <td>
+        Required user to check all the options in the list, in order for it to
+        be "valid".
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "preferences.predator",
+  "property": "preferences.predator",
+  "type": "Checkbox",
+  "heading": "Trenger du en katt som kan fange ekle dyr i huset ditt?",
+  "options": [
+    {
+      "id": "preferences.predator.edderkopp",
+      "type": "Answer",
+      "heading": "🕷",
+      "value": "edderkopp"
+    },
+    {
+      "id": "preferences.predator.mus",
+      "type": "Answer",
+      "heading": "🐁",
+      "value": "mus",
+      "disabled": {
+        "field": "preferences.predator.edderkopp",
+        "operator": "neq",
+        "value": true
+      }
+    },
+    {
+      "id": "preferences.predator.fluer",
+      "type": "Answer",
+      "heading": "🦗",
+      "value": "fluer"
+    },
+    {
+      "id": "preferences.predator.rotter",
+      "type": "Answer",
+      "heading": "🐀",
+      "value": "rotter"
+    }
+  ]
+}
+```

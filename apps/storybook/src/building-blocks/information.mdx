@@ -1,0 +1,53 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Information" />
+
+# Information text
+
+Kinda like a text block but with an icon before the text and shown on the result page.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        an information text block, this property must be set to `Information`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the information block</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>The information text to show.</td>
+      <td></td>
+    </tr>
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "information",
+  "type": "Information",
+  "text": "Husk å fylle ut alle feltene!"
+}
+```

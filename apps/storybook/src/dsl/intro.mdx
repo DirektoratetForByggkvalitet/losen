@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Logical expressions/Intro" />
+
+# Logical expressions
+
+The wizard framework use a Domain Specific Language, a DSL for short, to express logical
+expressions in the schema. The expressions is parsed and translated to functions that can
+be run on the user data.
+
+This gives a rich language for describing dependencies in data, validation rules and
+preriqusites that must be met in order for something to show, hide etc.
+
+The expressions consist of a few types that is used for composing other expressions:
+
+`or` and `and`. These can be used to combine simple (and complex) expressions in order to express more complex expressions. An example:
+
+## Examples Below is a few examples to show how the expressions are constructed.
+
+### Two simple expressions
+
+`person.age` is greater than or equal to 20 **and** `person.sex` is required to have a value.
+
+```json
+{
+  "type": "and",
+  "clauses": [
+    { "field": "person.age", "operator": "gte", "value": 20 },
+    { "field": "person.sex", "operator": "required" }
+  ]
+}
+```
+
+### Nested complex expression
+
+(`person.age` is greater than or equal to 25 **and** `person.sex` is required to have a value) **or** `person.age` is less than 20.
+
+```json
+{
+  "type": "or",
+  "clauses": [
+    {
+      "type": "and",
+      "clauses": [
+        { "field": "person.age", "operator": "gte", "value": 25 },
+        { "field": "person.sex", "operator": "required" }
+      ]
+    },
+    { "field": "person.age", "operator": "lt", "value": 20 }
+  ]
+}
+```

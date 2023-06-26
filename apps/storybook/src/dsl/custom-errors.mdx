@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Logical expressions/Custom errors" />
+
+# Custom errors
+
+When showing more complex errors to the user, you might want to add custom errors that
+is more descriptive or less technical to make the wizard easier to use. This can be done
+by adding a <code>errorMessage</code> property to the DSL expression.
+
+In the case of a nested, complex expression (<code>and/or</code>), the outmost error will
+be returned in order to have a way of overriding a tree of errors. In other words, if you
+set an error message on the and-statement, nested errors will be omitted in the output.
+
+If you have an <code>and</code> or <code>or</code> statement without
+the <code>errorMessage</code> property, nested properties will be output as usual.
+
+## Error format
+
+The error is formatted as an array containing strings, numbers and field references (`{ field: 'theField' }`). The heading for the referenced field
+will be pulled from the schema when the error is transformed to a string.
+
+## Examples
+
+### Simple expression example
+
+```json
+{
+  "field": "myField",
+  "operator": "gt",
+  "value": { "field": "yourField" },
+  "errorMessage": [
+    "👮 :",
+    { "field": "myField" },
+    "ain't as big as",
+    { "field": "yourField" },
+    "😭 "
+  ]
+}
+```
+
+### Complex expression example
+
+```json
+{
+  "type": "or",
+  "clauses": [
+    { "field": "myField", "operator": "eq", "value": "🦄 " },
+    { "field": "myField", "operator": "eq", "value": "🌈 " }
+  ],
+  "errorMessage": ["Rainbows of unicorns, man 👮 "]
+}
+```

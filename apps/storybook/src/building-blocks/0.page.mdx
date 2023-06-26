@@ -1,0 +1,68 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Page" />
+
+# Page
+
+The <em>Page</em> is the largest building block. Sort of a container for everything else.
+Inside a page you can have pretty much anything, but not a Page. Nested pages is not
+supported.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tr>
+    <td>
+      <code>type</code>
+    </td>
+    <td>
+      The type is required in order to determine what type of node it is. For a
+      page, this property must be set to `Page`.
+    </td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>
+      <code>id</code>
+    </td>
+    <td>The id of the page.</td>
+    <td>Yes</td>
+  </tr>
+  {common.heading}
+  <tr>
+    <td>
+      <code>children</code>
+    </td>
+    <td>
+      An array of nodes to show for this page. The nodes can be of any type
+      except <em>Page</em>.
+    </td>
+    <td>Yes</td>
+  </tr>
+  <tr>
+    <td>
+      <code>lead</code>
+    </td>
+    <td>A subtitle or lead text for the page.</td>
+    <td></td>
+  </tr>
+  {common.show}
+  {common.hide}
+</Table>
+
+## Example
+
+```json
+{
+  "id": "relation",
+  "type": "Page",
+  "heading": "Forhold til katter",
+  "lead": "Før vi bestemmer type katt må vi sjekke at du ikke er en slem kattehater.",
+  "children": [
+    // ...
+  ]
+}
+```

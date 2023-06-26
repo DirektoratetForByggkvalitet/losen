@@ -1,0 +1,52 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Getting started" />
+
+## Getting started
+
+The Losen framework contains the logic and building blocks necessary to building wizards large and small. The easiest way to get started is to use our example. Also, if you want to, you can play around with an example over at codesandbox, before setting it up on your own machine.
+
+### Setup
+
+1. **Grab our [example repo](https://github.com/DirektoratetForByggkvalitet/losen/tree/master/example) from GitHub**, and follow the instructions.
+   This contains a complete working wizard, where data handling, JSON export, offline storage and all is set up for you.
+
+2. **Edit or replace the example schema.**
+   Take a look at our schema documentation for how to set up your custom schema structure.
+
+3. Custom styling
+   Losen uses Styled Components for styling. Currently only a few theming options are available.
+
+### Build and deploy
+
+The wizard can be be used as a stand alone site or embedded on your current site.
+
+#### Use as a stand alone site
+
+Run `npm run build`
+This creates a `/build` folder with a index.html. Run it to see your wizard.
+
+#### Use embedded
+
+1. Create an empty placeholder on your site where you want the wizard to show up, and give it an unique id.
+   Example:
+
+   ```html
+   <div id="wizard-example"></div>
+   ```
+
+2. Update `index.js` to match your unique id.
+   Example:
+
+   ```jsx
+   ReactDOM.render(<App />, document.getElementById("wizard-example"));
+   ```
+
+3. Run `npm run build`
+   This creates a /build folder. Copy the /build/static/js file and embed on your site. Example:
+
+   ```html
+   <script type="text/javascript" src="/static/js/main.536c234c.js"></script>
+   ```
+
+4. The wizard should now show up on your site 😊

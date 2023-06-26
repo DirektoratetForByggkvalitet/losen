@@ -1,0 +1,87 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Number" />
+
+# Number
+
+An input field for numbers.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a number input, this property must be set to `Number`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the number input</td>
+      <td>Yes</td>
+    </tr>
+    {common.inputProperties}
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>The text to follow the heading for this input field.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <code>minimum</code>
+      </td>
+      <td>
+        The minimum number in the feild. If you only want possitive values set
+        minimum to `0`.
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <code>maximum</code>
+      </td>
+      <td>The maximum number for the field.</td>
+      <td />
+    </tr>
+    <tr>
+      <td>
+        <code>step</code>
+      </td>
+      <td>
+        The increment in which the value can be adjusted. It defaults to 1, but
+        can be set to decimals or higher numbers if needed.
+      </td>
+      <td></td>
+    </tr>
+    {common.optional}
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "living.gone",
+  "property": "living.gone",
+  "type": "Number",
+  "heading": "Hvor mange timer er du borte fra hjemmet hver dag?",
+  "placeholder": "Timer",
+  "minimum": "0",
+  "maximum": "24",
+  "step": "1"
+}
+```

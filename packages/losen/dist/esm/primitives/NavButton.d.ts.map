@@ -1,0 +1,1 @@
+{"version":3,"file":"NavButton.d.ts","sourceRoot":"","sources":["../../primitives/NavButton.ts"],"names":[],"mappings":";AAGA,OAAO,EAAE,cAAc,EAAe,MAAM,WAAW,CAAC;AAExD,MAAM,MAAM,QAAQ,GAAG,cAAc,CAAC;IACpC,IAAI,CAAC,EAAE,OAAO,CAAC;CAChB,CAAC,CAAC;AAEH,eAAO,MAAM,SAAS;;;;;;;;;mDA0BpB,CAAC;AAEH,eAAO,MAAM,QAAQ;;;;;;;;;mDAyBnB,CAAC"}

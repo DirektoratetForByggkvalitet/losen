@@ -1,0 +1,92 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Evaluation" />
+
+# Evaulation - _deprecated_
+
+A block that shows different information given an expression. It can be used with one value
+and shows sad stat if that value is less than 0 or otherwise happy state. Can also compare
+two numbers
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        an evaluation node, this property must be set to `Evaluation`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the evaluation node</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>testing</code>
+      </td>
+      <td>
+        The id of the element you want to evaluate or an array of the two
+        elements you want to evaulate.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>sad</code>
+      </td>
+      <td>The text string to be used when sad state</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>happy</code>
+      </td>
+      <td>The text string to be used when happy state</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>showValue</code>
+      </td>
+      <td>
+        Boolean value for if the number should be shown. Only shows absoulte
+        values.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>unit</code>
+      </td>
+      <td>Text appended after the value</td>
+      <td></td>
+    </tr>
+    {common.optional}
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "evalish",
+  "type": "Evaluation",
+  "testing": ["utnyttingsgrad", "planArea2"],
+  "sad": "Du planlegger å bygge mer enn det som er tillatt på eiendommen din.",
+  "happy": "Du er innenfor det som er tillatt å bygge på eiendommen din.",
+  "optional": true
+}
+```

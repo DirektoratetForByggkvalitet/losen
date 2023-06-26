@@ -1,0 +1,29 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Logical expressions/Parsing" />
+
+# DSL parsing
+
+The logical expressions is parsed as part of the wizard flow logic, but if you want to use
+the dsl parser to build functions from logical expressions you can do so by importing it
+from the <code>losen</code> package.
+
+## Parse your own expressions
+
+```ts
+import { dsl } from "losen";
+
+const expression = { field: "some.field", operator: "gt", value: 4 };
+const state = { some: { field: 8 } };
+
+// A function is returned from parse, that can be called with data
+// to validate the expression agains.
+const func = dsl.parse(expression);
+
+console.log(func(state));
+// -> { errors: [], valid: true }
+```
+
+If the provided expression is malformed, the parser will throw an expression.
