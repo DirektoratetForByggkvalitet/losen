@@ -1,0 +1,29 @@
+import styled from "styled-components";
+
+import injectStyles from "../utils/inject-styles";
+import { PrimitiveProps } from "../styles";
+
+export const ToggleButton = injectStyles(styled.button<
+  PrimitiveProps<{
+    visible?: boolean;
+  }>
+>`
+  width: ${({ styles }) => styles.size.mobileContentWidth};
+  margin: 2px auto;
+  background: white;
+  color: ${({ styles }) => styles.color.dark};
+  border: 1px solid ${({ styles }) => styles.color.dark};
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.5em;
+  cursor: pointer;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  &:hover,
+  &:focus {
+    color: white;
+    background: ${({ styles }) => styles.color.dark};
+  }
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
+`);

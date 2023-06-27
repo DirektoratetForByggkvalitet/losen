@@ -1,0 +1,1 @@
+{"version":3,"file":"PDFButton.d.ts","sourceRoot":"","sources":["../../components/PDFButton.tsx"],"names":[],"mappings":"AAOA,KAAK,KAAK,GAAG;IACX,aAAa,EAAE,MAAM,CAAC;IACtB,eAAe,EAAE,MAAM,CAAC;IACxB,WAAW,CAAC,EAAE,MAAM,CAAC;CACtB,CAAA;AAED,MAAM,CAAC,OAAO,UAAU,SAAS,CAAC,EAChC,eAAe,EACf,WAAW,EACX,aAAa,GACd,EAAE,KAAK,2CAgCP"}

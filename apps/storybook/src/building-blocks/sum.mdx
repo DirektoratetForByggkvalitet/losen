@@ -1,0 +1,93 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Sum" />
+
+# Sum
+
+A block that shows the sum of an expression. Make sure to have the same number of operations and values.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a sum, this property must be set to `Sum`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the sum</td>
+      <td>Yes</td>
+    </tr>
+    {common.heading}
+    <tr>
+      <td>
+        <code>values</code>
+      </td>
+      <td>
+        An array of the ids to the elements you want to sum. Default operation
+        is +.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>operations</code>
+      </td>
+      <td>
+        An array of operations to be used. First operation is between 0 and the
+        first element so usually +. If no operations is specified, all the
+        values will be added together.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>unit</code>
+      </td>
+      <td>Text appended after the value</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <code>minimum</code>
+      </td>
+      <td>If you want it to have a minimum set this value.</td>
+      <td></td>
+    </tr>
+    {common.optional}
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "parkeringssum",
+  "property": "parkeringssum",
+  "type": "Sum",
+  "values": [
+    "requiredParkingSpots",
+    "numberOfParkinglotsInCarport",
+    "parkingPlaceArea"
+  ],
+  "operations": ["+", "-", "*"],
+  "minimum": 0,
+  "optional": true,
+  "heading": "Nødvendig parkeringsareal på terreng:",
+  "unit": "m<sup>2</sup>"
+}
+```

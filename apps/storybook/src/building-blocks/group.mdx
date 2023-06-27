@@ -1,0 +1,76 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Group" />
+
+# Group
+
+The group node gives you a way of grouping nodes on a page. It does "nothing" besides
+grouping other nodes.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a group, this property must be set to `Group`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the group</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>children</code>
+      </td>
+      <td>Children to render inside this group</td>
+      <td>Yes</td>
+    </tr>
+    {common.heading}
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>
+        A description for the group to follow the <em>heading</em>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        <code>simple</code>
+      </td>
+      <td>Show as a simple group, with less separation between blocks.</td>
+      <td></td>
+    </tr>
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "living.type.group",
+  "property": "living.type.group",
+  "type": "Group",
+  "heading": "Boforhold",
+  "text": "Din bosituasjon kan være avgjørende for hvilken katt du burde ha.",
+  "children": [
+    //...
+  ]
+}
+```

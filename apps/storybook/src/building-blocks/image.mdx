@@ -1,0 +1,67 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Image" />
+
+# Image
+
+An image.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        an image, this property must be set to `Image`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the image</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>image</code>
+      </td>
+      <td>
+        Image to show with description, represented as an object with two
+        properties: `url` and `alt`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>Additional description that follows the image.</td>
+      <td></td>
+    </tr>
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "cat.image",
+  "type": "Image",
+  "text": "Dette er en bildeblokk",
+  "image": {
+    "url": "//media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
+    "alt": "alt for image"
+  }
+}
+```

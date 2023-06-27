@@ -1,0 +1,66 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Text" />
+
+# Text
+
+A block of text
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a text block, this property must be set to `Text`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the text block</td>
+      <td>Yes</td>
+    </tr>
+    {common.heading}
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>
+        The text. If you need to, you can put HTML in here to make links etc.,
+        but make sure that whatever you insert is valid HTML.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>warning</code>
+      </td>
+      <td>Indicate that this is an warning/error message.</td>
+      <td></td>
+    </tr>
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "cat.information",
+  "property": "cat.information",
+  "type": "Text",
+  "heading": "Et lite notis med tekst",
+  "text": "Cat ipsum dolor sit amet, always hungry man running from cops stops to <a href=\"somewhere\">pet cats</a>, goes to jail step on your keyboard while you're gaming and then turn in a circle . Pose purrfectly to show my beauty woops poop hanging from butt must get rid run run around house drag poop on floor maybe it comes off woops left brown marks on floor human slave clean. Lick butt, next to <a href=\"somewhere\">human slave food dispenser</a>."
+}
+```

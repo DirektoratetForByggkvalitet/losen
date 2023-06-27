@@ -1,0 +1,98 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Branch" />
+
+# Branch
+
+In order to build a wizard you often need to be able to branch based on
+user input. The `Branch` node gives you this posibility, as
+described briefly in _Getting started_ section, where the schema
+is shown in an example.
+
+## Properties
+
+<Table>
+    {common.thead}
+    <tbody>
+        <tr>
+            <td><code>type</code></td>
+            <td>
+              The type is required in order to determine what type of node it is. For
+              a branch node, this property must be set to `Branch`.
+            </td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td><code>branches</code></td>
+            <td>
+              An array of objects containing a test, and list of nodes to show if the
+              test passes. Should follow this structure:
+
+              ```ts
+              [
+                  {
+                      test: {
+                          field: 'continue',
+                          operator: 'eq',
+                          value: true
+                      },
+                      children: [ /* nodes to show */ ]
+                  },
+                  // ...
+              ]
+              ```
+            </td>
+            <td>Yes</td>
+        </tr>
+        {common.show}
+        {common.hide}
+    </tbody>
+
+</Table>
+
+## Key concepts
+
+- The tests decide which branch will be shown
+- The first branch test that returns a truthy value will be used
+- One or no branches will be selected
+
+## Branching anatomy
+
+A _Branch_ node is not represented in the user interface, and the
+user will never have to deal with the branching itself. It's an
+implementation detail in the algorithm. As a consequence of this, the
+branch has no text, heading or any other properties than
+`branches`.
+
+## Example
+
+```json
+{
+  "type": "Branch",
+  "branches": [
+    {
+      "test": { "field": "continue", "operator": "eq", "value": true },
+      "children": [
+        // ...nodes for when the user continues
+      ]
+    },
+    {
+      "test": { "field": "continue", "operator": "neq", "value": true },
+      "children": [
+        // ...nodes for when the user choose not to continue
+      ]
+    }
+  ]
+}
+```
+
+## The test
+
+The test is described in a structured format that allows for describing
+most logical expressions and that features a way of referencing data
+from fields in the schema. This will be referred to as the `DSL` - short for Domain Specific Language.
+
+The DSL is described in greater detail in a separate section of the
+documentation.

@@ -1,0 +1,78 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Error" />
+
+# Error
+
+An error, consisting of one or more [`Text`](?path=/docs/building-blocks-text--docs) and [`Image`](?path=/docs/building-blocks-text--docs) nodes.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td>
+        <code>type</code>
+      </td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a text block, this property must be set to `Text`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>id</code>
+      </td>
+      <td>The id of the text block</td>
+      <td>Yes</td>
+    </tr>
+    {common.heading}
+    <tr>
+      <td>
+        <code>text</code>
+      </td>
+      <td>
+        The text. If you need to, you can put HTML in here to make links etc.,
+        but make sure that whatever you insert is valid HTML.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>warning</code>
+      </td>
+      <td>Indicate that this is an warning/error message.</td>
+      <td></td>
+    </tr>
+    {common.show}
+    {common.hide}
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "applymunicipality",
+  "property": "applymunicipality",
+  "type": "Error",
+  "simple": true,
+  "children": [
+    {
+      "id": "insufficientCompentency",
+      "type": "Text",
+      "warning": true,
+      "heading": "Firmaet ditt har ikke tilstrekkelig kompetanse til å gjøre jobben"
+    },
+    {
+      "id": "failedButCanGoOn",
+      "type": "Text",
+      "text": "<p>Du kan fortsatt gå videre i veiviseren, men du vil ikke kunne erklære ansvar for arbeidet som skal gjøres. Vil du vite mer om kravene? <a href=\"https://dibk.no/byggeregler/sak/3/11/11-3/\">Les mer om krav til utdanning og praksis på DiBKs nettsider.</a></p>"
+    }
+  ]
+}
+```

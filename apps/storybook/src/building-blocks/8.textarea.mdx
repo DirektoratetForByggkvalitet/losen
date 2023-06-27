@@ -1,0 +1,79 @@
+import { Meta } from "@storybook/blocks";
+import { Table } from "losen/primitives/Table";
+import * as common from "../common";
+
+<Meta title="Building blocks/Textarea" />
+
+# Textarea
+
+A multi-line input field.
+
+## Properties
+
+<Table>
+  {common.thead}
+  <tbody>
+    <tr>
+      <td><code>type</code></td>
+      <td>
+        The type is required in order to determine what type of node it is. For
+        a textarea, this property must be set to `Textarea`.
+      </td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td><code>id</code></td>
+      <td>The id of the textarea</td>
+      <td>Yes</td>
+    </tr>
+    {common.inputProperties}
+    <tr>
+      <td><code>text</code></td>
+      <td>The text to follow the heading for this input field.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>information</code></td>
+      <td>A notice that shows below the textarea.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>validator</code></td>
+      <td>
+        Input validation. If a validator is provided, the following structure is
+        expected:
+
+```json
+{
+  "pattern": "^\\d+(,\\d+)?$",
+  "error": "Value should be on either one of these formats: 123 or 123,1239."
+}
+```
+
+      </td>
+      <td></td>
+    </tr>
+    {common.autocoomplete}
+    {common.optional}
+    {common.show}
+    {common.hide}
+
+  </tbody>
+</Table>
+
+## Example
+
+```json
+{
+  "id": "favourite.actor",
+  "property": "favourite.actor",
+  "type": "Input",
+  "validator": {
+    "pattern": "^\\d+(,\\d+)?$",
+    "error": "Oppgi på formatet 123,1239"
+  },
+  "heading": "Hvem er din favorittskuespiller?",
+  "text": "Input burde kanskje ikke ha brødtekst som skiller spørsmål fra inputfelt?",
+  "placeholder": "Kit Harington"
+}
+```
