@@ -418,6 +418,8 @@ export const replaceReferences =
 // Build a flat object with all the nodes in the schema that have an ID
 export const buildNodeMap = (schema: (RenderableNode | Node)[]): NodeMap =>
   schema.reduce((res, node) => {
+    const type = node.type;
+
     return {
       ...res,
       ...(hasProperty(node, "id") ? { [node.id]: node } : {}),
