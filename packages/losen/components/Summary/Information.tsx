@@ -1,6 +1,5 @@
 import InformationBlock from "losen/primitives/Information";
-import { NodeSummary as StyledNodeSummary } from "losen/primitives/Summary";
-import ErrorIcon from "../graphics/ErrorIcon";
+import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";
 
 type Props = {
@@ -10,12 +9,10 @@ type Props = {
 export default function Information({ text }: Props) {
   if (text) {
     return (
-      <StyledNodeSummary>
-        <InformationBlock>
-          <ErrorIcon triangleFill={"black"} />
-          <Html text={text} />
-        </InformationBlock>
-      </StyledNodeSummary>
+      <InformationBlock>
+        <InfoIcon />
+        <Html text={text} />
+      </InformationBlock>
     );
   }
   return <p>TEXT MISSING</p>;

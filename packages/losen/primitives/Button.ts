@@ -7,32 +7,40 @@ export const MainButton = injectStyles(styled.button<
   PrimitiveProps<{
     copied?: boolean;
   }>
->`
-  font-family: ${({ styles }) => styles.font.primary};
-  font-weight: normal;
-  font-size: 18px;
-  color: white;
-  background: ${({ styles }) => styles.color.light};
-  min-width: 46%;
-  padding: 15px 20px 16px;
+>`${({ styles, disabled, copied }) => `
+  padding: 16px ${styles.padding.large};
   cursor: pointer;
   user-select: none;
   border: none;
   border-radius: 0;
   appearance: none;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  background: ${styles.color2.primary};
+  border-radius: ${styles.borderRadius.small};
+  font-family: ${styles.font.body};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.boldWeight};
+  line-height: ${styles.text.body.lineHeight};
+  letter-spacing: ${styles.text.body.letterSpacing};
+  color: ${styles.color2.textWhite};
+  transition: background 200ms ${styles.easing.easeOut};
   &:hover, &:focus {
-    background: ${({ styles }) => styles.color.dark};
-    color: white;
+    background: ${styles.color2.primaryLight};
+    color: ${styles.color2.textWhite};
   }
-  ${(props) =>
-    props.copied
+  &:active {
+    background: ${styles.color2.primaryXLight};
+    color: ${styles.color2.textWhite};
+  }
+  &:focus {
+    outline-offset: 2px;
+  }
+  ${copied
       ? `
-      background: ${props.styles.color.green};
+      background: ${styles.color2.positive};
       &:hover {
-        background: ${props.styles.color.green};
+        background: ${styles.color2.positive};
       }
       &:before {
         content: "\\2713  ";
@@ -40,46 +48,57 @@ export const MainButton = injectStyles(styled.button<
       `
       : ""}
   
-  ${(props) =>
-    props.disabled
+  ${disabled
       ? `
     cursor: default;
-    background: ${props.styles.color.darkgray};
+    background: ${styles.color2.secondaryLight};
     color: white;
     
     &:hover {
-      background: ${props.styles.color.darkgray};
+      background: ${styles.color2.secondaryLight};
       color: white;
     }`
       : ""}
 
+  &:not(:last-child) {
+    margin-bottom:  ${styles.padding.xSmall}
+  }
   @media screen and (max-width: 400px) {
     width: 100%;
   }
   @media print {
       display none;
   }
-`);
+`}`);
 
-export const SecondaryButton = injectStyles(styled.button<PrimitiveProps>`
-  font-family: ${({ styles }) => styles.font.primary};
-  font-weight: normal;
-  font-size: 18px;
-  color: ${({ styles }) => styles.color.light};
-  background: white;
-  min-width: 46%;
-  padding: 15px 20px 16px;
+export const SecondaryButton = injectStyles(styled.button<PrimitiveProps>`${({ styles }) => `
+  padding: 16px ${styles.padding.large};
   cursor: pointer;
   user-select: none;
-  border: 1px solid ${({ styles }) => styles.color.warmgray2};
+  border: none;
   border-radius: 0;
   appearance: none;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  background: transparent;
+  border-radius: ${styles.borderRadius.small};
+  font-family: ${styles.font.body};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.boldWeight};
+  line-height: ${styles.text.body.lineHeight};
+  letter-spacing: ${styles.text.body.letterSpacing};
+  color: ${styles.color2.link};
+  border: 1px solid ${styles.color2.secondaryLight};
+  transition: background 200ms ${styles.easing.easeOut};
   &:hover, &:focus {
-    background: ${({ styles }) => styles.color.warmgray2};
-    color: ${({ styles }) => styles.color.light};
+    background: ${styles.color2.secondaryXLight};
+    color: ${styles.color2.link};
+  }
+  &:active {
+    background: ${styles.color2.secondaryLight};
+  }
+  &:focus {
+    outline-offset: 2px;
   }
   @media screen and (max-width: 400px) {
     width: 100%;
@@ -87,105 +106,106 @@ export const SecondaryButton = injectStyles(styled.button<PrimitiveProps>`
   @media print {
       display none;
   }
-`);
+  &:not(:last-child) {
+    margin-bottom:  ${styles.padding.xSmall}
+  }
+`}`);
 
-export const SmallButton = injectStyles(styled.button<PrimitiveProps>`
-  font-family: ${({ styles }) => styles.font.primary};
-  font-size: 16px;
-  color: white;
-  background: ${({ styles }) => styles.color.light};
-  padding: 6px 16px 7px;
-  cursor: pointer;
-  user-select: none;
-  border: 0 none;
-  border-radius: 0;
+export const SmallButton = injectStyles(styled.button<PrimitiveProps>`${({ styles, disabled }) => `
+  position: relative;
   appearance: none;
+  font-family: ${styles.font.body};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.fontWeight};
+  line-height: ${styles.text.body.lineHeight};
+  letter-spacing: ${styles.text.body.letterSpacing};
+  background: none;
+  color: ${styles.color2.link};
+  text-decoration: underline;
+  cursor: pointer;
+  border: 0 none;
+  padding: ${styles.padding.xxSmall} ${styles.padding.xSmall};
   margin: 0 auto;
   margin-bottom: 10px;
-  position: relative;
-  transition: background 0.1s ease-in-out;
   
   &:hover, &:focus {
-    background: ${({ styles }) => styles.color.dark};
+    text-decoration: none;
+    background: transparent;
+    color: ${styles.color2.link};
   }
 
-  ${(props) =>
-    props.disabled
+  ${disabled
       ? `
     cursor: default;
-    background: ${props.styles.color.darkgray};
-    color: white;
-
-    &:hover {
-      background: ${props.styles.color.darkgray};
-      color: white;
-    }`
+    opacity: 0.5;
+    color: ${styles.color2.textDark};
+    text-decoration: none;
+    `
       : ""}
 
   @media print {
       display none;
   }
-`);
+`}`);
 
 export const NavButton = injectStyles(styled.button<
   PrimitiveProps<{
     next?: boolean;
   }>
->`
-  font-family: ${({ styles }) => styles.font.primary};
-  font-weight: normal;
-  font-size: 18px;
-  color: white;
-  background: ${({ styles }) => styles.color.light};
-  min-width: 30%;
-  padding: 15px 20px 16px;
+  >`${({ styles, next }) => `
+  width: auto;
+  padding: ${styles.padding.small} ${styles.padding.large};
   cursor: pointer;
   user-select: none;
-  border: 0 none;
+  border: none;
   border-radius: 0;
   appearance: none;
-  margin-right: ${(props) => (props.next ? "0" : "auto")};
-  margin-left: ${(props) => (props.next ? "auto" : "0")};
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  background: ${styles.color2.primary};
+  border-radius: ${styles.borderRadius.small};
+  font-family: ${styles.font.body};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.boldWeight};
+  line-height: ${styles.text.body.lineHeight};
+  letter-spacing: ${styles.text.body.letterSpacing};
+  color: ${styles.color2.textWhite};
+  transition: background 200ms ${styles.easing.easeOut};
+  &:hover, &:focus {
+    background: ${styles.color2.primaryLight};
+    color: ${styles.color2.textWhite};
+  }
+  &:active {
+    background: ${styles.color2.primaryXLight};
+  }
+  &:focus {
+    outline-offset: 2px;
+  }
   &:before,
   &:after {
     content: " ";
     display: inline-block;
-    position: absolute;
-    left: ${(props) => (props.next ? "auto" : "1em")};
-    right: ${(props) => (props.next ? "1em" : "auto")};
-    top: calc(50% - 0.4rem);
     width: 0.5rem;
     height: 0.5rem;
     vertical-align: middle;
-    transform: ${(props) => (props.next ? "rotate(45deg)" : "rotate(-135deg)")};
-    border: 2px solid white;
+    transform: ${next ? "rotate(45deg)" : "rotate(-135deg)"};
+    border: 2px solid ${styles.color2.textWhite};
     border-width: 2px 2px 0 0;
   }
   &:before {
-    display: ${(props) => (props.next ? "none" : "inline-block")};
+    display: ${next ? "none" : "inline-block"};
     margin-right: 1em;
   }
   &:after {
-    display: ${(props) => (props.next ? "inline-block" : "none")};
+    display: ${next ? "inline-block" : "none"};
     margin-left: 1em;
-  }
-  &:hover,
-  &:focus {
-    background: ${({ styles }) => styles.color.dark};
   }
   &:hover::before,
   &:focus::before,
   &:hover::after,
   &:focus::after {
-    animation: ${(props) => (props.next ? "pushnext" : "pushprev")} 0.8s linear
+    animation: ${next ? "pushnext" : "pushprev"} 0.8s linear
       infinite;
-  }
-  @media screen and (max-width: 900px) {
-    min-width: 48%;
-    text-align: ${(props) => (props.next ? "left" : "right")};
   }
   @keyframes pushnext {
     0% {
@@ -209,4 +229,4 @@ export const NavButton = injectStyles(styled.button<
       transform: rotate(-135deg) translate3d(0, 0, 0);
     }
   }
-`);
+`}`);

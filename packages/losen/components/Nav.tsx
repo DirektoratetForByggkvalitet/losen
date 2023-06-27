@@ -20,17 +20,37 @@ export default function Nav({ heading = "Missing page heading", page: currentPag
   const [tocExpanded, setTocExpanded] = useState(true);
 
   const toggleToc = () => setTocExpanded(!tocExpanded);
+  const currentIndex = tableOfContents.findIndex(page => page.id === currentPage);
 
   return (
     <div>
       <ToggleButton type="button" onClick={toggleToc}>
-        {tocExpanded ? "Vis" : "Skjul"} alle steg
+        {tocExpanded ? `${currentIndex + 1} av ${tableOfContents.length} steg` : "Skjul all steg"}
       </ToggleButton>
 
       <Grid.Nav tocExpanded={tocExpanded}>
-        <Title onClick={showIntro}>{heading}</Title>
-        {tableOfContents.map((page, index) =>
-          page.type === "Result" ? (
+        <Grid.NavSection large>
+          <Title onClick={showIntro}>{heading}</Title>
+        </Grid.NavSection>
+        <Grid.NavSection>
+          <Grid.NavList>
+            {tableOfContents.filter(page => page.type !== "Result").map((page, index) =>
+              <li>
+                <NavItem
+                  key={page.id}
+                  id={page.id}
+                  index={index + 1}
+                  heading={page.heading}
+                  setPage={setPage}
+                  done={page.completed}
+                  active={page.id === currentPage}
+                />
+              </li>
+            )}
+          </Grid.NavList>
+        </Grid.NavSection>
+        <Grid.NavSection large>
+          {tableOfContents.filter(page => page.type === "Result").map((page) =>
             <NavResult
               key={page.id}
               id={page.id}
@@ -40,19 +60,9 @@ export default function Nav({ heading = "Missing page heading", page: currentPag
               // done={!page.errors}
               active={page.id === currentPage}
             />
-          ) : (
-            <NavItem
-              key={page.id}
-              id={page.id}
-              index={index + 1}
-              heading={page.heading}
-              setPage={setPage}
-              done={!page.errors}
-              active={page.id === currentPage}
-            />
-          )
-        )}
-        <NavReset showIntro={showIntro} />
+          )}
+          <NavReset showIntro={showIntro} />
+        </Grid.NavSection>
         <LanguageSelector translations={translations} />
       </Grid.Nav>
     </div>

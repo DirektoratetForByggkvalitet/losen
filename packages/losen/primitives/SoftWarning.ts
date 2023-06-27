@@ -7,13 +7,22 @@ const SoftWarning = injectStyles(styled.p<
   PrimitiveProps<{
     warning?: boolean;
   }>
->`
-  display: block;
+>`${({ styles, warning }) => `
+  display: inline-block;
   margin-top: 0;
-  color: ${(props) =>
-    props.warning ? props.styles.color.red : props.styles.color.green};
-  font-style: italic;
+  padding: ${styles.padding.xSmall} 0;
+  color: ${warning ? styles.color2.error : styles.color2.positive};
   font-weight: normal !important;
-`);
+  font-family: ${styles.font.body};
+  font-size: ${styles.text.subHeading.fontSize};
+  font-weight: ${styles.text.subHeading.fontWeight};
+  line-height: ${styles.text.subHeading.lineHeight};
+  text-transform: ${styles.text.subHeading.textTransform};
+  letter-spacing: ${styles.text.subHeading.letterSpacing};
+  &:before {
+    content: "${warning ? '✖' : '✔'}";
+    margin-right: 0.5rem;
+  }
+`}`);
 
 export default SoftWarning;

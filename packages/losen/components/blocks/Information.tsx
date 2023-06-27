@@ -1,7 +1,7 @@
 import { TextBlock } from 'losen/primitives/Block';
 import InformationBlock from 'losen/primitives/Information';
 import Html from 'losen/components/helper/Html';
-import ErrorIcon from 'losen/components/graphics/ErrorIcon';
+import InfoIcon from 'losen/components/graphics/InfoIcon';
 import { RenderWithData } from 'losen';
 
 export default function Information({
@@ -22,7 +22,7 @@ export default function Information({
       printhide={printhide}
     >
       <InformationBlock>
-        <ErrorIcon triangleFill={'black'} />
+        <InfoIcon />
         <Html text={heading} h2 />
         <Html text={text} />
       </InformationBlock>

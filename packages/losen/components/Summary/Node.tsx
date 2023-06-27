@@ -31,11 +31,11 @@ export default function NodeSummary({ node }: Props) {
   }
   if (isOfType(node, ["Group", "ErrorOk"])) {
     return (
-      <div>
+      <>
         {node.children.map((child: any) => (
           <NodeSummary key={child.id} value={child.currentValue} node={child} />
         ))}
-      </div>
+      </>
     );
   }
 
@@ -48,10 +48,9 @@ export default function NodeSummary({ node }: Props) {
   const errorDescription = get(node, 'errorDescription') as any
 
   return (
-    <StyledNodeSummary>
+    <StyledNodeSummary error={errors.validation.error}>
       <Html text={node.heading} h3 />
       <ValueSummary value={get(node, 'currentValue')} node={node} />
-
       {errors.validation.error ? (
         <ErrorMessage role="alert">
           <ErrorIcon />

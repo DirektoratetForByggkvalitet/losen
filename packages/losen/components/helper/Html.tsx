@@ -5,11 +5,12 @@ type Props = {
   id?: string
   text?: string
   inline?: boolean
+  margins?: boolean
   h2?: boolean
   h3?: boolean
 }
 
-export default function Html({ id, text, inline, h2, h3 }: Props) {
+export default function Html({ id, text, inline, margins, h2, h3 }: Props) {
   if (!text) {
     return null;
   }
@@ -33,6 +34,7 @@ export default function Html({ id, text, inline, h2, h3 }: Props) {
     <StyledHtml
       id={id}
       inline={inline}
+      margins={margins}
       dangerouslySetInnerHTML={{ __html: text }}
     />
   );

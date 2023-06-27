@@ -3,26 +3,22 @@ import styled from "styled-components";
 import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
-const StyledSumResult = injectStyles(styled.div<PrimitiveProps>`
+const StyledSumResult = injectStyles(styled.div<PrimitiveProps>`${({ styles }) => `
     padding: 0;
     width: 100%;
     vertical-align: top;
-
     display: block;
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1.3;
+    font-size: ${styles.text.h1.fontSize};
+    font-weight: ${styles.text.h1.fontWeight};
+    line-height: ${styles.text.h1.lineHeight};
+    letter-spacing: ${styles.text.h1.letterSpacing};
     .sad {
-        color: ${({ styles }) => styles.color.red};
+        color: ${styles.color2.error};
     }
     .happy {
-        color: ${({ styles }) => styles.color.green};
-    }
-    @media screen and (max-width: 900px) {
-        width: 100%;
-        font-size: 20px;
+        color: ${styles.color2.positive};
     }
   }
-`);
+`}`);
 
 export default StyledSumResult;

@@ -40,15 +40,16 @@ export default function Page({
   return (
     <Grid.Main debug={debug} data-id={pageid} id="main">
       <Heading.H1>{heading}</Heading.H1>
-      <Paragraphs.Lead>
+      {lead && <Paragraphs.Lead>
         <Html text={lead} />
-      </Paragraphs.Lead>
-
+      </Paragraphs.Lead>}
       {summary && <SummaryDetails summary={summary} details={details} />}
-
+      
+      <Grid.Blocks>
       {children.map((block, index) => (
         <Block key={(hasProperty(block, 'id') && block.id) || index} {...block} />
       ))}
+      </Grid.Blocks>
 
       {(!firstPage || !lastPage) && (
         <Navigation
@@ -57,7 +58,7 @@ export default function Page({
           previousPage={previousPage}
           hasNext={!lastPage}
           nextPage={nextPage}
-        />
+          />
       )}
     </Grid.Main>
   );

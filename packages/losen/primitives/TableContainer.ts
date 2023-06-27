@@ -14,7 +14,7 @@ const TableContainer = injectStyles(styled.div<
     text-align: center;
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${(props) => props.styles.color.darkgray};
+    border: 1px solid ${(props) => props.styles.color2.secondary};
     border-collapse: collapse;
     th {
       font-weight: inherit;
@@ -30,7 +30,7 @@ const TableContainer = injectStyles(styled.div<
     }
     th,
     td {
-      border: 1px solid ${(props) => props.styles.color.darkgray};
+      border: 1px solid ${(props) => props.styles.color2.secondary};
       padding: 10px;
     }
     th > *,

@@ -1,4 +1,4 @@
-import { Button, Grid } from "losen/primitives";
+import { Button } from "losen/primitives";
 
 type Props = {
   hasNext?: boolean,
@@ -11,22 +11,15 @@ type Props = {
 export default function Navigation({
   nextPageIsResult,
   hasNext = false,
-  hasPrevious = false,
   nextPage = () => { },
-  previousPage = () => { },
 }: Props) {
   return (
-    <Grid.Nav>
-      {hasPrevious ? (
-        <Button.NavButton type="button" onClick={previousPage}>
-          Forrige
-        </Button.NavButton>
-      ) : null}
+    <>
       {hasNext ? (
         <Button.NavButton type="button" next onClick={nextPage}>
           {nextPageIsResult ? "Vis resultat" : "Neste"}
         </Button.NavButton>
       ) : null}
-    </Grid.Nav>
+    </>
   );
 }

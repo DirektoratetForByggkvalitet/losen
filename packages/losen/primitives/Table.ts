@@ -6,12 +6,12 @@ import { PrimitiveProps } from "../styles";
 export const Table = injectStyles(styled.table<PrimitiveProps>`
   width: 100%;
   font-size: 14px;
-  border: 1px solid ${({ styles }) => styles.color.darkgray};
+  border: 1px solid ${({ styles }) => styles.color2.secondary};
   border-collapse: collapse;
   text-align: left;
   th,
   td {
-    border: 1px solid ${({ styles }) => styles.color.darkgray};
+    border: 1px solid ${({ styles }) => styles.color2.secondary};
     padding: 10px;
   }
   th > *,
@@ -43,12 +43,14 @@ export const TD = injectStyles(styled.td<
   ${(props) =>
     props["data-inactive"]
       ? `
-    background: repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px);
+    background: ${props.styles.color2.errorXLight};
     font-weight: normal;
+    position: relative;
+    text-decoration: line-through;
 `
       : `
     font-weight: ${props.simple ? "normal" : "bold"};
-    background: rgba(0, 255, 0, 0.1);
+    background: ${props.styles.color2.positiveXLight};
 `}
 
   ${(props) =>

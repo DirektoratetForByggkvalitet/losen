@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 import injectStyles from "../utils/inject-styles";
+import { PrimitiveProps } from "../styles";
 
-const SkipLink = injectStyles(styled.a`
+const SkipLink = injectStyles(styled.a<PrimitiveProps>`${({ styles }) => `
   position: absolute;
   width: 1px;
   height: 1px;
@@ -14,18 +15,18 @@ const SkipLink = injectStyles(styled.a`
 
   &:active,
   &:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
     overflow: visible;
     position: absolute;
+    z-index: 2;
+    height: auto;
+    margin: 0;
     width: auto;
-    font-size: 21px;
-    top: 2px;
-    left: 2px;
-    padding: 5px 10px;
-    background-color: #fff;
+    clip: auto;
+    top: ${styles.padding.small};
+    left: ${styles.padding.small};
+    padding: ${styles.padding.small} ${styles.padding.large};
+    background-color:  ${styles.color2.sectionBackground};
   }
-`);
+`}`);
 
 export default SkipLink;

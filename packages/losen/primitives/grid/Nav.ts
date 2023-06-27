@@ -7,15 +7,16 @@ export const Nav = injectStyles(styled.nav<
   PrimitiveProps<{
     tocExpanded?: boolean;
   }>
->`
-  width: ${({ styles }) => styles.size.navWidth};
-  padding: 30px 20px 20px;
+>`${({styles, tocExpanded }) => `
+  width: ${styles.size.navWidth};
   margin: 0;
-  background: white;
   overflow: hidden;
-  position: absolute;
-  //height: 100%;
-  //overflow-y: auto;
+  top: ${styles.padding.medium};
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  gap: ${styles.padding.xxSmall};
+  border-radius: ${styles.borderRadius.large};
   button {
     width: 100%;
     max-width: 400px;
@@ -24,22 +25,22 @@ export const Nav = injectStyles(styled.nav<
     display: block;
   }
   @media screen and (max-width: 900px) {
-    width: ${({ styles }) => styles.size.mobileContentWidth};
+    width: ${styles.size.mobileContentWidth};
     margin: 0 auto;
     position: static;
   }
   @media print {
     display: none;
   }
-  ${(props) =>
-    props.tocExpanded
+  ${tocExpanded
       ? `@media screen and (max-width: 900px) {
     max-height: 0;
     padding: 0;
   }`
       : ` @media screen and (max-width: 900px) {
     max-height: 1000px;
+    margin-bottom: ${styles.padding.small};
     transition: max-height 0.3s ease-in-out;
   }
   `}
-`);
+`}`);

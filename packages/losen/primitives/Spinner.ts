@@ -6,6 +6,7 @@ import { PrimitiveProps } from "../styles";
 export default injectStyles(styled.div<
   PrimitiveProps<{
     noMargin?: boolean;
+    hidden?: boolean;
   }>
 >`
   display: inline-flex;

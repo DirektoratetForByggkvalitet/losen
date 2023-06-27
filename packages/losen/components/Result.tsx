@@ -12,7 +12,7 @@ import Summary from "./Summary";
 import { H1, H2 } from "losen/primitives/Heading";
 import { Lead } from "losen/primitives/Paragraphs";
 import { MainButton } from "losen/primitives/Button";
-import { SpecificBlock, TextBlock } from "losen/primitives/Block";
+import { TextBlock } from "losen/primitives/Block";
 import { Export, Grid } from "losen/primitives";
 import PDFButton from "./PDFButton";
 import { RenderableNode, State, WizardDefinition } from "losen";
@@ -55,8 +55,6 @@ function Result(props: Props) {
     pageid,
     schema,
     setPage,
-    summaryTitle,
-    title,
     wizard: {
       meta: { pdfServiceUrl, localStorageKey },
     },
@@ -76,24 +74,26 @@ function Result(props: Props) {
   return (
     <Grid.Main result debug={debug} data-id={pageid} id="main">
       <H1 result>{resultHeading}</H1>
-      <Lead result>
+      {resultLead && <Grid.Blocks>
         <Html text={resultLead} />
-      </Lead>
+      </Grid.Blocks>}
 
       {children.map(({ heading, ...block }: any) => (
-        <Block
-          {...block}
-          key={block.id}
-          errorPages={errorPages}
-          setPage={setPage}
-          pages={schema}
-        />
+        <Grid.Blocks>
+          <Block
+            {...block}
+            key={block.id}
+            errorPages={errorPages}
+            setPage={setPage}
+            pages={schema}
+          />
+        </Grid.Blocks>
       ))}
-
-      <SpecificBlock>
-        {summaryTitle ? <H1 small>{summaryTitle}</H1> : <H1 small>{title}</H1>}
+      <Grid.Blocks>
+        <hr />
+        <H2 small>Oppsummering</H2>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-      </SpecificBlock>
+      </Grid.Blocks>
 
       {!incomplete && exporter ? (
         <TextBlock>

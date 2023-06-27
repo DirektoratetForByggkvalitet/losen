@@ -1,6 +1,7 @@
 import { RenderWithData } from "losen";
 import { TextBlock } from "losen/primitives/Block";
 import Html from "losen/components/helper/Html";
+import InfoIcon from 'losen/components/graphics/InfoIcon';
 
 export default function Text({
   debug,
@@ -19,7 +20,8 @@ export default function Text({
       printonly={printonly}
       printhide={printhide}
     >
-      <Html text={heading} h2 />;
+      {warning && <InfoIcon />}
+      <Html text={heading} h2 />
       <Html text={text} />
     </TextBlock>
   );

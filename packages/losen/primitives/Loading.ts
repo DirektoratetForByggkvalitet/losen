@@ -3,33 +3,34 @@ import styled from "styled-components";
 import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
-const Loading = injectStyles(styled.div<PrimitiveProps>`
-  background: ${({ styles }) => styles.color.lightgreen};
-  padding: 10px 24px;
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+const Loading = injectStyles(styled.div<PrimitiveProps>`${({ styles }) => `
+  background: ${styles.color2.secondaryXLight};
+  border-left: 4px solid ${styles.color2.secondary};
+  padding: ${styles.padding.medium};
+  margin-top: ${styles.padding.medium};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.fontWeight};
   &::after {
     content: "...";
-    animation: dotdotdot 2s linear infinite;
+    animation: dotdotdot 1s linear infinite;
   }
   @keyframes dotdotdot {
     0% {
       content: " ";
     }
     25% {
-      content: ".";
+      content: " .";
     }
     50% {
-      content: "..";
+      content: " ..";
     }
     75% {
-      content: "...";
+      content: " ...";
     }
     100% {
-      content: "...";
+      content: " ...";
     }
   }
-`);
+`}`);
 
 export default Loading;

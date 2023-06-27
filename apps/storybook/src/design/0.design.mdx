@@ -1,0 +1,26 @@
+import React from 'react'
+import { Meta, Source } from "@storybook/blocks";
+import Styles from "losen/styles"
+
+<Meta title="Design/Theming" />
+
+# Theming
+Losen is based on DiBK's design system, but it is quite easy to change it to accomodate other design systems.
+
+## Overriding styles
+You find all used theme variables in the file `losen/styles.ts`. Here you have color variables, font families, border radius, padding, easing, sizes and typograhpy. It is possible to theme losen closer to your design system just by altering these variables. 
+
+The default theme variables can be overridden by the `styles` prop in `Wizard` like so:
+
+```tsx
+import { Wizard } from 'losen'
+import schema from './schema'
+import customTheme from './customTheme.tsx'
+
+<Wizard wizard={schema} styles={customTheme} />
+```
+
+## Default styles
+Use the default styles file as baseline when overriding. All variables need to be present in the custom theme file. 
+<Source code={JSON.stringify(Styles, null, 2)} language="json" format type="dynamic"/>
+
