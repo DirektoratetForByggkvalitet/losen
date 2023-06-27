@@ -1872,12 +1872,12 @@ var reducer_default = (wizard) => (state = applyComputed(wizard, initialState), 
 };
 
 // components/Wizard.tsx
-var import_react14 = require("react");
+var import_react13 = require("react");
 var import_react_redux9 = require("react-redux");
 var import_redux3 = require("redux");
 
 // components/helper/Modal.tsx
-var import_react3 = __toESM(require("react"));
+var import_react3 = require("react");
 var import_redux = require("redux");
 var import_react_redux = require("react-redux");
 var import_react_modal = __toESM(require("react-modal"));
@@ -2290,7 +2290,7 @@ var customStyle = {
   }
 };
 function Modal(props) {
-  const [showModal, setShowModal] = import_react3.default.useState(true);
+  const [showModal, setShowModal] = (0, import_react3.useState)(true);
   const handleCloseModal = () => setShowModal(false);
   const handleRestart = () => {
     setShowModal(false);
@@ -3751,9 +3751,6 @@ var OptionWrapper = inject_styles_default(import_styled_components25.default.div
 `);
 var OptionWrapper_default = OptionWrapper;
 
-// components/blocks/checkbox/CheckboxInput.tsx
-var import_react5 = __toESM(require("react"));
-
 // primitives/Html.ts
 var import_styled_components26 = __toESM(require("styled-components"));
 var StyledHtml = inject_styles_default(import_styled_components26.default.div`
@@ -3815,32 +3812,20 @@ function Html({ id, text, inline, h2, h3 }) {
 }
 
 // components/blocks/checkbox/CheckboxInput.tsx
-function CheckboxInput(_a) {
-  var _b = _a, {
-    checked,
-    debug,
-    disabled,
-    heading,
-    id,
-    image,
-    messages,
-    name,
-    onChange,
-    text
-  } = _b, props = __objRest(_b, [
-    "checked",
-    "debug",
-    "disabled",
-    "heading",
-    "id",
-    "image",
-    "messages",
-    "name",
-    "onChange",
-    "text"
-  ]);
+function CheckboxInput({
+  checked,
+  debug,
+  disabled,
+  heading,
+  id,
+  image,
+  messages,
+  name,
+  onChange,
+  text
+}) {
   const message = messages == null ? void 0 : messages[0];
-  return /* @__PURE__ */ import_react5.default.createElement("div", null, /* @__PURE__ */ import_react5.default.createElement(
+  return /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(
     Checkbox,
     {
       "aria-label": heading,
@@ -3851,12 +3836,12 @@ function CheckboxInput(_a) {
       disabled,
       checked
     }
-  ), /* @__PURE__ */ import_react5.default.createElement(Label, { htmlFor: id, warning: message == null ? void 0 : message.warning, debug }, /* @__PURE__ */ import_react5.default.createElement("div", { "data-id": id }, /* @__PURE__ */ import_react5.default.createElement("div", null, heading && !text ? heading : null, heading && text ? /* @__PURE__ */ import_react5.default.createElement(H3, null, heading) : null), text ? /* @__PURE__ */ import_react5.default.createElement(Html, { text }) : null), image && image.url ? /* @__PURE__ */ import_react5.default.createElement("img", { src: image.url, alt: image.alt }) : null));
+  ), /* @__PURE__ */ React.createElement(Label, { htmlFor: id, warning: message == null ? void 0 : message.warning, debug }, /* @__PURE__ */ React.createElement("div", { "data-id": id }, /* @__PURE__ */ React.createElement("div", null, heading && !text ? heading : null, heading && text ? /* @__PURE__ */ React.createElement(H3, null, heading) : null), text ? /* @__PURE__ */ React.createElement(Html, { text }) : null), image && image.url ? /* @__PURE__ */ React.createElement("img", { src: image.url, alt: image.alt }) : null));
 }
 
 // components/blocks/checkbox/Checkbox.tsx
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var import_react6 = require("react");
+var import_react5 = require("react");
 function Checkbox2({
   setData: setData2,
   heading,
@@ -3879,7 +3864,7 @@ function Checkbox2({
     /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Legend_default, { children: heading }),
     options && options.length ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(OptionWrapper_default, { grid, children: options.map((option) => {
       const isDisabled = disabled || option.disabled;
-      return /* @__PURE__ */ (0, import_react6.createElement)(
+      return /* @__PURE__ */ (0, import_react5.createElement)(
         CheckboxInput,
         __spreadProps(__spreadValues({}, option), {
           data,
@@ -4055,7 +4040,7 @@ function Evaluation({
 }
 
 // components/blocks/FetchOrg.tsx
-var import_react7 = require("react");
+var import_react6 = require("react");
 var import_merge2 = __toESM(require("lodash/merge"));
 
 // primitives/Table.ts
@@ -4343,7 +4328,7 @@ var Notice_default = Notice;
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function FetchOrd(props) {
   var _a, _b, _c, _d, _e;
-  const [loading, setLoading] = (0, import_react7.useState)(false);
+  const [loading, setLoading] = (0, import_react6.useState)(false);
   const {
     information,
     invalidapproval,
@@ -4648,11 +4633,10 @@ function RadioInput({
 
 // components/blocks/radio/Radio.tsx
 var import_jsx_runtime23 = require("react/jsx-runtime");
-var import_react8 = require("react");
+var import_react7 = require("react");
 function Radio2({
   property,
   heading,
-  text,
   grid,
   options,
   disabled,
@@ -4674,7 +4658,7 @@ function Radio2({
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Legend_default, { children: heading }),
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(OptionWrapper_default, { grid, children: options.map((option) => {
       const isDisabled = disabled || option.disabled;
-      return /* @__PURE__ */ (0, import_react8.createElement)(
+      return /* @__PURE__ */ (0, import_react7.createElement)(
         RadioInput,
         __spreadProps(__spreadValues({}, option), {
           data,
@@ -4702,7 +4686,7 @@ function SelectOption({ id, value, heading, debug }) {
 
 // components/blocks/select/Select.tsx
 var import_jsx_runtime25 = require("react/jsx-runtime");
-var import_react9 = require("react");
+var import_react8 = require("react");
 var NULL_VALUE = "({[NULL]})";
 function Select({
   setData: setData2,
@@ -4739,7 +4723,7 @@ function Select({
       autoComplete: autocomplete,
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("option", { value: NULL_VALUE, children: placeholder }),
-        options.map((option) => /* @__PURE__ */ (0, import_react9.createElement)(SelectOption, __spreadProps(__spreadValues({ data, debug }, option), { key: option.value })))
+        options.map((option) => /* @__PURE__ */ (0, import_react8.createElement)(SelectOption, __spreadProps(__spreadValues({ data, debug }, option), { key: option.value })))
       ]
     }
   ) });
@@ -4859,7 +4843,7 @@ function Sum({
 // components/blocks/Table.tsx
 var import_pick = __toESM(require("lodash/pick"));
 var import_jsx_runtime29 = require("react/jsx-runtime");
-var import_react10 = require("react");
+var import_react9 = require("react");
 function TableCell(props) {
   return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(TD, __spreadValues({}, props));
 }
@@ -4873,7 +4857,7 @@ function Table2({ cells, debug, simple }) {
       "data-inactive": Boolean(cell.inactive)
     });
     const Cell = cell.type === "Heading" ? TableHeader : TableCell;
-    return /* @__PURE__ */ (0, import_react10.createElement)(Cell, __spreadProps(__spreadValues({ "data-id": cell.id }, cellProps), { key: cellKey, simple }), /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Html, { text: cell.text }));
+    return /* @__PURE__ */ (0, import_react9.createElement)(Cell, __spreadProps(__spreadValues({ "data-id": cell.id }, cellProps), { key: cellKey, simple }), /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Html, { text: cell.text }));
   }) }, rowKey)) }) }) });
 }
 
@@ -5266,13 +5250,12 @@ function trackEvent(action, name = "") {
 }
 
 // components/ExportData.tsx
-var import_react11 = require("react");
+var import_react10 = require("react");
 var import_react_redux5 = require("react-redux");
 var import_jsx_runtime35 = require("react/jsx-runtime");
 function ExportData({ data }) {
-  const [open, setOpen] = (0, import_react11.useState)(false);
-  const [copied, setCopied] = (0, import_react11.useState)(false);
-  (0, import_react11.useEffect)(() => {
+  const [copied, setCopied] = (0, import_react10.useState)(false);
+  (0, import_react10.useEffect)(() => {
     if (!Element.prototype.remove) {
       Element.prototype.remove = function remove() {
         if (this.parentNode) {
@@ -5281,10 +5264,6 @@ function ExportData({ data }) {
       };
     }
   }, []);
-  const showExportData = () => {
-    trackEvent("export-data");
-    setOpen(true);
-  };
   const copyToClipboard = () => {
     const temp = document.createElement("textarea");
     const text = document.createTextNode(
@@ -5667,7 +5646,7 @@ function Summary2({ errorPages, setPage, pages = [] }) {
 }
 
 // components/PDFButton.tsx
-var import_react12 = require("react");
+var import_react11 = require("react");
 
 // primitives/Spinner.ts
 var import_styled_components41 = __toESM(require("styled-components"));
@@ -5740,8 +5719,8 @@ function PDFButton({
   pageHeading,
   pdfServiceUrl
 }) {
-  const [isDownloading, setIsDownloading] = (0, import_react12.useState)(false);
-  const [errorMessage, setErrorMessage] = (0, import_react12.useState)(false);
+  const [isDownloading, setIsDownloading] = (0, import_react11.useState)(false);
+  const [errorMessage, setErrorMessage] = (0, import_react11.useState)(false);
   const handleClick = () => {
     if (isDownloading) {
       return;
@@ -5776,7 +5755,7 @@ function PDFButton({
 
 // components/Result.tsx
 var import_jsx_runtime46 = require("react/jsx-runtime");
-var import_react13 = require("react");
+var import_react12 = require("react");
 function Result(props) {
   const {
     children = [],
@@ -5808,7 +5787,7 @@ function Result(props) {
     /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Lead, { result: true, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Html, { text: resultLead }) }),
     children.map((_a) => {
       var _b = _a, { heading: heading2 } = _b, block = __objRest(_b, ["heading"]);
-      return /* @__PURE__ */ (0, import_react13.createElement)(
+      return /* @__PURE__ */ (0, import_react12.createElement)(
         Block_default,
         __spreadProps(__spreadValues({}, block), {
           key: block.id,
@@ -6261,9 +6240,9 @@ function Wizard2({
   title,
   wizard
 }) {
-  const [pageId, setPageId] = (0, import_react14.useState)(data[NAME].page || wizard.schema[0].id);
-  const [showResetModal, setShowResetModal] = (0, import_react14.useState)(showResetModalDefault);
-  const pageWrapper = (0, import_react14.useRef)(null);
+  const [pageId, setPageId] = (0, import_react13.useState)(data[NAME].page || wizard.schema[0].id);
+  const [showResetModal, setShowResetModal] = (0, import_react13.useState)(showResetModalDefault);
+  const pageWrapper = (0, import_react13.useRef)(null);
   const setPage = (page2, property) => {
     if (property) {
       setImmediate(() => {
@@ -6296,7 +6275,7 @@ function Wizard2({
       }
     }
   };
-  (0, import_react14.useEffect)(() => {
+  (0, import_react13.useEffect)(() => {
     const _a = data[NAME] || {}, { $computed } = _a, wizardData = __objRest(_a, ["$computed"]);
     if (wizardData.page) {
       setPageId(wizardData.page);

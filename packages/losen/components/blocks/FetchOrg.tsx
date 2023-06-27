@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import merge from 'lodash/merge';
 
 import ApprovalAreas from '../ApprovalAreas';

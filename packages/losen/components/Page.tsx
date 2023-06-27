@@ -1,4 +1,3 @@
-import React from "react";
 
 import Block from "./blocks/Block";
 import Html from "./helper/Html";

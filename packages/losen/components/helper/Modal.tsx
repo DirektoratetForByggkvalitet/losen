@@ -1,9 +1,6 @@
-import React from "react";
-
+import { useState } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { Component } from "react";
 import ReactModal from "react-modal";
 
 import { NAME } from "losen/state";
@@ -50,7 +47,7 @@ type Props = {
 }
 
 function Modal(props: Props) {
-  const [showModal, setShowModal] = React.useState(true);
+  const [showModal, setShowModal] = useState(true);
 
   const handleCloseModal = () => setShowModal(false)
 

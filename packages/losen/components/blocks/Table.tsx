@@ -1,4 +1,3 @@
-import React from 'react';
 import pick from 'lodash/pick';
 import Html from '../helper/Html';
 import { TD } from 'losen/primitives/Table';

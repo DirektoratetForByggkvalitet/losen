@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react';
+import { ChangeEventHandler } from 'react';
 
 import { Checkbox as Input } from 'losen/primitives/Input';
 import { H3 } from 'losen/primitives/Heading';
@@ -23,7 +23,6 @@ export default function CheckboxInput({
   name,
   onChange,
   text,
-  ...props
 }: Props) {
   const message = messages?.[0];
 

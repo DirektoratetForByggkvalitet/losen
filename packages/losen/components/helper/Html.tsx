@@ -1,4 +1,3 @@
-import React from 'react';
 import StyledHtml from "../../primitives/Html";
 import { H2, H3 } from "../../primitives/Heading";
 

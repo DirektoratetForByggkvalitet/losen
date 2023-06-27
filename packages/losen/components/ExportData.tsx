@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 
-import { trackEvent } from "losen/utils/tracking";
 import { MainButton } from "losen/primitives/Button";
 import { getData } from "losen/utils/get-data";
 import { State } from "losen";
@@ -11,7 +10,6 @@ type Props = {
 }
 
 function ExportData({ data }: Props) {
-  const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -24,11 +22,6 @@ function ExportData({ data }: Props) {
       };
     }
   }, [])
-
-  const showExportData = () => {
-    trackEvent("export-data");
-    setOpen(true)
-  };
 
   // copy json result from forms to clipboard
   const copyToClipboard = () => {

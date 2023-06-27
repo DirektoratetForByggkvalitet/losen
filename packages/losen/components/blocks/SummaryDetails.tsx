@@ -1,4 +1,3 @@
-import React from 'react';
 import { Details, Summary } from "losen/primitives/details";
 import Html from "../helper/Html";
 

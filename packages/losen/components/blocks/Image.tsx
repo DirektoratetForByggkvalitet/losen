@@ -1,4 +1,3 @@
-import React from 'react';
 import Figure from "losen/primitives/Figure";
 import { RenderWithData } from "losen";
 

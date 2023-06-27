@@ -8,10 +8,10 @@ node_modules
 # testing
 coverage
 
-# next.js
 .next/
 out/
 build
+storybook-static
 
 # misc
 .DS_Store

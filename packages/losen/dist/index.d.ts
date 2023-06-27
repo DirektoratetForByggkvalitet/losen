@@ -1,7 +1,6 @@
 import { Action as Action$1 } from 'losen/state/actions';
 import { WizardDefinition as WizardDefinition$1, State as State$1, RenderableNode as RenderableNode$1 } from 'losen';
 import * as react from 'react';
-import react__default from 'react';
 import * as react_redux from 'react-redux';
 import * as redux from 'redux';
 import * as react_jsx_runtime from 'react/jsx-runtime';
@@ -229,7 +228,7 @@ declare const _default: react_redux.ConnectedComponent<typeof Wizard$1, {
 }>;
 
 type Props = {
-    children: react__default.ReactNode;
+    children: React.ReactNode;
     styles?: StylesProps['styles'];
 };
 declare function StyleProvider({ children, styles }: Props): react_jsx_runtime.JSX.Element;

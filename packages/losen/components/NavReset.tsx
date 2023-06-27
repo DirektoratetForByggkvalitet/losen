@@ -1,4 +1,3 @@
-import React from 'react'
 import { connect } from 'react-redux';
 import { resetData } from '../state/actions';
 import { SecondaryButton as StyledNavReset } from '../primitives/Button';

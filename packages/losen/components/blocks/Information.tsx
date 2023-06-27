@@ -1,4 +1,3 @@
-import React from 'react';
 import { TextBlock } from 'losen/primitives/Block';
 import InformationBlock from 'losen/primitives/Information';
 import Html from 'losen/components/helper/Html';

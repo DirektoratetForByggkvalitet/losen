@@ -1,4 +1,3 @@
-import React from 'react';
 import StyledSignature from "losen/primitives/Signature";
 import PrintForm from "losen/primitives/PrintForm";
 

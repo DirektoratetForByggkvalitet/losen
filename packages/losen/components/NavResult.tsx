@@ -1,4 +1,3 @@
-import React from "react";
 
 import { MainButton as StyledNavResult } from "../primitives/Button";
 
