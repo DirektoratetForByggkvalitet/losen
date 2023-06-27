@@ -79,6 +79,8 @@ export type InputNodeBase<T extends NodeType> = NodeBase<T> &
   CommonOptions & {
     id: string;
     property: string;
+    summary?: string;
+    details?: string;
   };
 
 export type Answer = NodeBase<"Answer"> & {
@@ -126,7 +128,7 @@ export type Result = NodeBase<"Result"> & {
 };
 
 export type Error = NodeBase<"Error"> & {
-  heading: string;
+  heading?: string;
   lead?: string;
   children: Node[];
 };
