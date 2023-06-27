@@ -50,7 +50,7 @@ export default function Nav({ heading = "Missing page heading", page: currentPag
           </Grid.NavList>
         </Grid.NavSection>
         <Grid.NavSection large>
-          {tableOfContents.filter(page => page.type === "Result").map((page, index) =>
+          {tableOfContents.filter(page => page.type === "Result").map((page) =>
             <NavResult
               key={page.id}
               id={page.id}

@@ -5,13 +5,14 @@ import { PrimitiveProps } from "../styles";
 
 type Props = PrimitiveProps<{
   grouped?: boolean;
-  smallMarginTop?: boolean;
   error?: boolean;
   groupedSimple?: boolean;
   type?: string;
 }>;
 
-export const SpecificBlock = injectStyles(styled.div<Props>`${({ styles, debug, grouped, smallMarginTop, error, groupedSimple, type,}) => `
+export const SpecificBlock = injectStyles(
+  styled.div<Props>`
+    ${({ styles, debug, grouped, error, groupedSimple, type }) => `
   position: relative;
   padding: ${grouped ? styles.padding.large : styles.padding.large} 0;
   ${error ? `background: ${styles.color2.negativeXLight};` : ""}
@@ -20,7 +21,8 @@ export const SpecificBlock = injectStyles(styled.div<Props>`${({ styles, debug, 
     width: 100%;
     max-width: ${styles.size.imageWidth};
   }
-  ${debug
+  ${
+    debug
       ? `
   :before {
     content: attr(data-id);
@@ -33,8 +35,10 @@ export const SpecificBlock = injectStyles(styled.div<Props>`${({ styles, debug, 
     font-size: 14px;
     padding: 2px 6px;
   }`
-      : ""} ${groupedSimple
-      ? `
+      : ""
+  } ${
+      groupedSimple
+        ? `
   margin-bottom: 26px;
   padding: 0;
   background: none;
@@ -42,8 +46,10 @@ export const SpecificBlock = injectStyles(styled.div<Props>`${({ styles, debug, 
   &:nth-child(even) {
     background: none;
   }`
-      : " "} ${type === "Table"
-      ? `
+        : " "
+    } ${
+      type === "Table"
+        ? `
   table {
     text-align: center;
     width: 100%;
@@ -87,28 +93,39 @@ export const SpecificBlock = injectStyles(styled.div<Props>`${({ styles, debug, 
     }
   }
   `
-  : " "} 
+        : " "
+    } 
 
   @media print {
     page-break-inside: avoid;
   }
 
-`}`);
+`}
+  `
+);
 
-export const TextBlock = injectStyles(styled.div<
-  PrimitiveProps<{
-    groupedSimple?: boolean;
-    printonly?: boolean;
-    printhide?: boolean;
-    small?: boolean;
-  }>
->`${({ styles, debug, groupedSimple, printonly, printhide, small }) => `
+export const TextBlock = injectStyles(
+  styled.div<
+    PrimitiveProps<{
+      groupedSimple?: boolean;
+      printonly?: boolean;
+      printhide?: boolean;
+      small?: boolean;
+    }>
+  >`
+    ${({ styles, debug, groupedSimple, printonly, printhide, small }) => `
 padding: ${styles.padding.large} 0 ${styles.padding.small};
-  ${groupedSimple ? "" : `
+  ${
+    groupedSimple
+      ? ""
+      : `
     padding: 0;
-    `};
+    `
+  };
   width: 100%;
-  ${debug ? `
+  ${
+    debug
+      ? `
   position: relative;
   :before {
     content: attr(data-id);
@@ -121,14 +138,16 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
     font-size: 14px;
     padding: 2px 6px;
   }`
-    : ""} 
+      : ""
+  } 
   p {
     margin: 1em 0;
     line-height: 1.6;
     max-width: 600px;
   }
 
-  ${printonly
+  ${
+    printonly
       ? `
     display: none;
     margin-top: 10px;
@@ -137,14 +156,17 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
       font-size: 12px;
       display: block;
     }`
-      : ""};
+      : ""
+  };
 
-  ${printhide
+  ${
+    printhide
       ? `
         @media print {
           display: none;
         }`
-      : ""};
+      : ""
+  };
 
   h1 {
     font-family: ${styles.font.headline};
@@ -192,4 +214,6 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
     margin: 0 0 ${styles.padding.large};
     max-width: 600px;
   }
-`}`);
+`}
+  `
+);

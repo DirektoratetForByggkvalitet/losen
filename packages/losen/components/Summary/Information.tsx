@@ -1,5 +1,4 @@
 import InformationBlock from "losen/primitives/Information";
-import { NodeSummary as StyledNodeSummary } from "losen/primitives/Summary";
 import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";
 

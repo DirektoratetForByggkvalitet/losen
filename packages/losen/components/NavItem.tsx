@@ -1,6 +1,5 @@
 import { NavItem as StyledNavItem } from "losen/primitives";
 import CheckIcon from './graphics/CheckIcon';
-import EditIcon from './graphics/EditIcon';
 
 type Props = {
   active?: boolean

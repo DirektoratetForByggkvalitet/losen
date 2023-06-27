@@ -1,5 +1,4 @@
 import { H3 } from 'losen/primitives/Heading';
-import { P } from 'losen/primitives/Paragraphs';
 import { Radio as Input } from 'losen/primitives/Input';
 import Html from 'losen/components/helper/Html';
 import { Label } from 'losen/primitives/Label';

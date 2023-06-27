@@ -1,5 +1,4 @@
 import { ErrorMessage } from "losen/primitives/Errors";
-import { NodeSummary as StyledNodeSummary } from "losen/primitives/Summary";
 import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";
 import { RenderableNode } from "../..";

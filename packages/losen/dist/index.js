@@ -261,7 +261,7 @@ var require_react_is_development = __commonJS({
         var ContextProvider = REACT_PROVIDER_TYPE;
         var Element2 = REACT_ELEMENT_TYPE;
         var ForwardRef = REACT_FORWARD_REF_TYPE;
-        var Fragment = REACT_FRAGMENT_TYPE;
+        var Fragment5 = REACT_FRAGMENT_TYPE;
         var Lazy = REACT_LAZY_TYPE;
         var Memo = REACT_MEMO_TYPE;
         var Portal = REACT_PORTAL_TYPE;
@@ -320,7 +320,7 @@ var require_react_is_development = __commonJS({
         exports.ContextProvider = ContextProvider;
         exports.Element = Element2;
         exports.ForwardRef = ForwardRef;
-        exports.Fragment = Fragment;
+        exports.Fragment = Fragment5;
         exports.Lazy = Lazy;
         exports.Memo = Memo;
         exports.Portal = Portal;
@@ -1901,39 +1901,134 @@ var import_merge = __toESM(require("lodash/merge"));
 
 // styles.ts
 var styles = {
-  logo: {
-    default: 'url("https://dibk.no/Frontend/assets/images/dibk_logo_mob.svg")',
-    mobile: 'url("https://dibk.no/Frontend/assets/images/DiBk_logo_rgb.svg")'
-  },
   font: {
-    primary: '"Open Sans", arial, sans-serif',
-    secondary: '"Altis-Light", "Altis", "Open Sans", arial, sans-serif'
+    headline: '"PP Mori", "Open Sans", arial, helvetika, sans-serif',
+    body: '"PP Mori", "Altis-Light", "Altis", "Open Sans", arial, sans-serif'
   },
-  color: {
-    light: "#00757F",
-    dark: "#072938",
-    lightorange: "#faefdf",
-    lightgreen: "#f0f2cb",
-    bluegreen: "#54acb8",
-    warmgray3: "#f2f1f0",
-    warmgray2: "#e5e3e1",
-    darkgray: "#989390",
-    red: "#c1272d",
-    lightred: "#ffeaeb",
-    oldred: "#9d312f",
-    green: "#007a1d",
-    oldgreen: "#809e3d"
+  color2: {
+    pageBackground: "#ebf4fa",
+    // Havblå 50
+    sectionBackground: "#ffffff",
+    // Hvit
+    textHeading: "#003045",
+    textDark: "#003045",
+    textWhite: "#ffffff",
+    link: "#005275",
+    visitedLink: "#551abb",
+    outline: "#003045",
+    // Havblå 900
+    focus: "rgba(0, 92, 173, 0.4)",
+    // Himmelblå 700 40%
+    primary: "#003045",
+    // Havblå 900
+    primaryLight: "rgba(0, 48, 69, 0.85)",
+    primaryXLight: "rgba(0, 48, 69, 0.75)",
+    secondary: "#89bad6",
+    // Havblå 300
+    secondaryLight: "#c7e0f2",
+    // havblå 100
+    secondaryXLight: "#ebf4fa",
+    // havblå 50
+    error: "#db0000",
+    // Rød 700
+    errorLight: "#ffc5c2",
+    // Rød 100
+    errorXLight: "#fceceb",
+    // Rød 50
+    positive: "#177912",
+    // Sindre
+    positiveLight: "#cbebb0",
+    // Grønn 100
+    positiveXLight: "#f1fae3",
+    // Grønn 50
+    negative: "#ffbe00",
+    // oransje 200
+    negativeLight: "#fcefb6",
+    // oransje 100
+    negativeXLight: "#fff8db"
+    // oransje 50
+  },
+  borderRadius: {
+    small: "0px",
+    large: "0px"
   },
   padding: {
-    small: "2px",
-    medium: "5px",
-    large: "8px"
+    xxSmall: "4px",
+    xSmall: "8px",
+    small: "12px",
+    // 16 
+    medium: "20px",
+    large: "24px",
+    xLarge: "48px"
   },
   size: {
+    imageWidth: "600px",
+    pageWidth: "1280px",
     blockWidth: "800px",
     navWidth: "340px",
     headerHeight: "75px",
-    mobileContentWidth: "90%"
+    mobileContentWidth: "100%"
+  },
+  iconSize: {
+    small: "20px",
+    medium: "24px"
+  },
+  easing: {
+    easeOut: "cubic-bezier(0.22, 1, 0.36, 1)"
+  },
+  text: {
+    body: {
+      fontSize: "16px",
+      fontWeight: "400",
+      boldWeight: "600",
+      lineHeight: "24px",
+      letterSpacing: "0.01em"
+    },
+    lead: {
+      fontSize: "18px",
+      fontWeight: "400",
+      boldWeight: "600",
+      lineHeight: "26px",
+      letterSpacing: "0.01em"
+    },
+    h1: {
+      fontSize: "28px",
+      fontWeight: "600",
+      lineHeight: "36px",
+      letterSpacing: "0"
+    },
+    h2: {
+      fontSize: "22px",
+      fontWeight: "600",
+      lineHeight: "30px",
+      letterSpacing: "0"
+    },
+    h3: {
+      fontSize: "18px",
+      fontWeight: "600",
+      lineHeight: "24px",
+      letterSpacing: "0"
+    },
+    subHeading: {
+      fontSize: "12px",
+      fontWeight: "600",
+      lineHeight: "18px",
+      letterSpacing: "0",
+      textTransform: "uppercase"
+    },
+    caption: {
+      fontSize: "14px",
+      fontWeight: "400",
+      lineHeight: "20px",
+      letterSpacing: "0",
+      fontStyle: "italic"
+    },
+    label: {
+      fontSize: "18px",
+      fontWeight: "400",
+      lineHeight: "26px",
+      letterSpacing: "0.01em"
+    }
   }
 };
 var styles_default = styles;
@@ -1960,64 +2055,99 @@ var injectStyles = (WrappedComponent) => (0, import_react2.forwardRef)((props, r
 var inject_styles_default = injectStyles;
 
 // primitives/Heading.ts
-var H1 = inject_styles_default(import_styled_components.default.h1`
-  font-family: ${({ styles: styles2 }) => styles2.font.secondary};
-  font-size: 50px;
-  font-weight: 300;
-  margin: 0 0 30px;
-  line-height: 1.2;
-  ${(props) => props.small ? `
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 300;
-    color: gray;
+var H1 = inject_styles_default(
+  import_styled_components.default.h1`
+    ${({ styles: styles2, small, result }) => `
+  font-family: ${styles2.font.headline};
+  font-size: ${styles2.text.h1.fontSize};
+  font-weight: ${styles2.text.h1.fontWeight};
+  line-height: ${styles2.text.h1.lineHeight};
+  letter-spacing: ${styles2.text.h1.letterSpacing};
+  text-wrap: balance;
+  margin: 0 0 ${styles2.padding.medium};
+  color: ${styles2.color2.textHeading};
+  ${small ? `
+    font-size: ${styles2.text.h3.fontSize};
+    font-weight: ${styles2.text.h3.fontWeight};
+    line-height: ${styles2.text.h3.lineHeight};
+    letter-spacing: ${styles2.text.h3.letterSpacing};
+    color: ${styles2.color2.textHeading};
     margin-bottom: 10px;
     ` : " "};
-  ${(props) => props.result ? `
+  ${result ? `
       &::before {
         content: 'Resultat';
         display: block;
-        color: gray;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 300;
-        font-size: 0.9rem;
-        margin-bottom: 0.3em;
+        color: ${styles2.color2.textHeading};
+        opacity: 0.75;
+        font-size: ${styles2.text.subHeading.fontSize};
+        font-weight: ${styles2.text.subHeading.fontWeight};
+        line-height: ${styles2.text.subHeading.lineHeight};
+        letter-spacing: ${styles2.text.subHeading.letterSpacing};
+        text-transform: ${styles2.text.subHeading.textTransform};
+        margin-bottom: ${styles2.padding.xxSmall};
       }
     ` : " "};
   @media screen and (max-width: 700px) {
-    font-size: ${(props) => props.small ? "0.9rem" : "30px"};
+    font-size: ${small ? "0.9rem" : "30px"};
   }
-`);
-var H2 = inject_styles_default(import_styled_components.default.h2`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-size: 24px;
-  margin: 0 0 10px;
-  line-height: 1.3;
-  @media screen and (max-width: 700px) {
-    font-size: 18px;
+  &:last-child {
+    margin-bottom: 0;
   }
-`);
-var H3 = inject_styles_default(import_styled_components.default.h3`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-size: 18px;
+`}
+  `
+);
+var H2 = inject_styles_default(
+  import_styled_components.default.h2`
+    ${({ styles: styles2, small }) => `
+  font-family: ${styles2.font.headline};
+  font-size: ${styles2.text.h2.fontSize};
+  font-weight: ${styles2.text.h2.fontWeight};
+  line-height: ${styles2.text.h2.lineHeight};
+  letter-spacing: ${styles2.text.h2.letterSpacing};
+  text-wrap: balance;
+  margin: 0 0 ${styles2.padding.small};
+  color: ${styles2.color2.textHeading};
+  ${small && `
+    font-size: ${styles2.text.subHeading.fontSize};
+    font-weight: ${styles2.text.subHeading.fontWeight};
+    line-height: ${styles2.text.subHeading.lineHeight};
+    letter-spacing: ${styles2.text.subHeading.letterSpacing};
+    text-transform: ${styles2.text.subHeading.textTransform};
+    opacity: 0.75;
+  `}
+`}
+  `
+);
+var H3 = inject_styles_default(
+  import_styled_components.default.h3`
+    ${({ styles: styles2 }) => `
   font-style: normal;
-  font-weight: bold;
-  margin: 0 0 10px;
-  line-height: 1.3;
-  @media screen and (max-width: 700px) {
-    font-size: 16px;
-  }
-`);
-var H4 = inject_styles_default(import_styled_components.default.h4`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: ${styles2.font.headline};
+  font-size: ${styles2.text.h3.fontSize};
+  font-weight: ${styles2.text.h3.fontWeight};
+  line-height: ${styles2.text.h3.lineHeight};
+  letter-spacing: ${styles2.text.h3.letterSpacing};
+  text-wrap: balance;
+  margin: 0 0 ${styles2.padding.small};
+  color: ${styles2.color2.textHeading};
+`}
+  `
+);
+var H4 = inject_styles_default(
+  import_styled_components.default.h4`
+    ${({ styles: styles2 }) => `
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.subHeading.fontSize};
+  font-weight: ${styles2.text.subHeading.fontWeight};
+  line-height: ${styles2.text.subHeading.lineHeight};
+  letter-spacing: ${styles2.text.subHeading.letterSpacing};
+  text-transform: ${styles2.text.subHeading.textTransform};
+  text-wrap: balance;
   margin: 0 0 6px;
-  line-height: 1.3;
-`);
+`}
+  `
+);
 
 // primitives/Paragraphs.ts
 var Paragraphs_exports = {};
@@ -2026,18 +2156,24 @@ __export(Paragraphs_exports, {
   P: () => P
 });
 var import_styled_components2 = __toESM(require("styled-components"));
-var P = inject_styles_default(import_styled_components2.default.p`
-  font-size: inherit;
-  font-weight: 300;
-  margin: 0 0 24px;
+var P = inject_styles_default(import_styled_components2.default.p`${({ styles: styles2 }) => `
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  margin: 0 0 ${styles2.padding.large};
   max-width: 600px;
-`);
-var Lead = inject_styles_default(import_styled_components2.default.div`
-  font-family: ${({ styles: styles2 }) => styles2.font.secondary};
-  font-weight: 300;
-  font-size: 22px;
-  line-height: 1.4;
-  margin: 16px 0 40px;
+`}`);
+var Lead = inject_styles_default(import_styled_components2.default.div`${({ styles: styles2 }) => `
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.lead.fontSize};
+  font-weight: ${styles2.text.lead.fontWeight};
+  line-height: ${styles2.text.lead.lineHeight};
+  letter-spacing: ${styles2.text.lead.letterSpacing};
+  margin: 0;
+  margin-bottom: ${styles2.padding.large};
+  color: ${styles2.color2.textDark};
   h3,
   h4 {
     margin-bottom: 0;
@@ -2045,10 +2181,7 @@ var Lead = inject_styles_default(import_styled_components2.default.div`
   p {
     margin-top: 0;
   }
-  @media screen and (max-width: 700px) {
-    font-size: 20px;
-  }
-`);
+`}`);
 
 // primitives/Button.ts
 var Button_exports = {};
@@ -2059,72 +2192,93 @@ __export(Button_exports, {
   SmallButton: () => SmallButton
 });
 var import_styled_components3 = __toESM(require("styled-components"));
-var MainButton = inject_styles_default(import_styled_components3.default.button`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-weight: normal;
-  font-size: 18px;
-  color: white;
-  background: ${({ styles: styles2 }) => styles2.color.light};
-  min-width: 46%;
-  padding: 15px 20px 16px;
+var MainButton = inject_styles_default(import_styled_components3.default.button`${({ styles: styles2, disabled, copied }) => `
+  padding: 16px ${styles2.padding.large};
   cursor: pointer;
   user-select: none;
   border: none;
   border-radius: 0;
   appearance: none;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  background: ${styles2.color2.primary};
+  border-radius: ${styles2.borderRadius.small};
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.boldWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  color: ${styles2.color2.textWhite};
+  transition: background 200ms ${styles2.easing.easeOut};
   &:hover, &:focus {
-    background: ${({ styles: styles2 }) => styles2.color.dark};
-    color: white;
+    background: ${styles2.color2.primaryLight};
+    color: ${styles2.color2.textWhite};
   }
-  ${(props) => props.copied ? `
-      background: ${props.styles.color.green};
+  &:active {
+    background: ${styles2.color2.primaryXLight};
+    color: ${styles2.color2.textWhite};
+  }
+  &:focus {
+    outline-offset: 2px;
+  }
+  ${copied ? `
+      background: ${styles2.color2.positive};
       &:hover {
-        background: ${props.styles.color.green};
+        background: ${styles2.color2.positive};
       }
       &:before {
         content: "\\2713  ";
       }
       ` : ""}
   
-  ${(props) => props.disabled ? `
+  ${disabled ? `
     cursor: default;
-    background: ${props.styles.color.darkgray};
+    background: ${styles2.color2.secondaryLight};
     color: white;
     
     &:hover {
-      background: ${props.styles.color.darkgray};
+      background: ${styles2.color2.secondaryLight};
       color: white;
     }` : ""}
 
+  &:not(:last-child) {
+    margin-bottom:  ${styles2.padding.xSmall}
+  }
   @media screen and (max-width: 400px) {
     width: 100%;
   }
   @media print {
       display none;
   }
-`);
-var SecondaryButton = inject_styles_default(import_styled_components3.default.button`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-weight: normal;
-  font-size: 18px;
-  color: ${({ styles: styles2 }) => styles2.color.light};
-  background: white;
-  min-width: 46%;
-  padding: 15px 20px 16px;
+`}`);
+var SecondaryButton = inject_styles_default(import_styled_components3.default.button`${({ styles: styles2 }) => `
+  padding: 16px ${styles2.padding.large};
   cursor: pointer;
   user-select: none;
-  border: 1px solid ${({ styles: styles2 }) => styles2.color.warmgray2};
+  border: none;
   border-radius: 0;
   appearance: none;
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  background: transparent;
+  border-radius: ${styles2.borderRadius.small};
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.boldWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  color: ${styles2.color2.link};
+  border: 1px solid ${styles2.color2.secondaryLight};
+  transition: background 200ms ${styles2.easing.easeOut};
   &:hover, &:focus {
-    background: ${({ styles: styles2 }) => styles2.color.warmgray2};
-    color: ${({ styles: styles2 }) => styles2.color.light};
+    background: ${styles2.color2.secondaryXLight};
+    color: ${styles2.color2.link};
+  }
+  &:active {
+    background: ${styles2.color2.secondaryLight};
+  }
+  &:focus {
+    outline-offset: 2px;
   }
   @media screen and (max-width: 400px) {
     width: 100%;
@@ -2132,96 +2286,98 @@ var SecondaryButton = inject_styles_default(import_styled_components3.default.bu
   @media print {
       display none;
   }
-`);
-var SmallButton = inject_styles_default(import_styled_components3.default.button`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-size: 16px;
-  color: white;
-  background: ${({ styles: styles2 }) => styles2.color.light};
-  padding: 6px 16px 7px;
-  cursor: pointer;
-  user-select: none;
-  border: 0 none;
-  border-radius: 0;
+  &:not(:last-child) {
+    margin-bottom:  ${styles2.padding.xSmall}
+  }
+`}`);
+var SmallButton = inject_styles_default(import_styled_components3.default.button`${({ styles: styles2, disabled }) => `
+  position: relative;
   appearance: none;
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  background: none;
+  color: ${styles2.color2.link};
+  text-decoration: underline;
+  cursor: pointer;
+  border: 0 none;
+  padding: ${styles2.padding.xxSmall} ${styles2.padding.xSmall};
   margin: 0 auto;
   margin-bottom: 10px;
-  position: relative;
-  transition: background 0.1s ease-in-out;
   
   &:hover, &:focus {
-    background: ${({ styles: styles2 }) => styles2.color.dark};
+    text-decoration: none;
+    background: transparent;
+    color: ${styles2.color2.link};
   }
 
-  ${(props) => props.disabled ? `
+  ${disabled ? `
     cursor: default;
-    background: ${props.styles.color.darkgray};
-    color: white;
-
-    &:hover {
-      background: ${props.styles.color.darkgray};
-      color: white;
-    }` : ""}
+    opacity: 0.5;
+    color: ${styles2.color2.textDark};
+    text-decoration: none;
+    ` : ""}
 
   @media print {
       display none;
   }
-`);
-var NavButton = inject_styles_default(import_styled_components3.default.button`
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-weight: normal;
-  font-size: 18px;
-  color: white;
-  background: ${({ styles: styles2 }) => styles2.color.light};
-  min-width: 30%;
-  padding: 15px 20px 16px;
+`}`);
+var NavButton = inject_styles_default(import_styled_components3.default.button`${({ styles: styles2, next }) => `
+  width: auto;
+  padding: ${styles2.padding.small} ${styles2.padding.large};
   cursor: pointer;
   user-select: none;
-  border: 0 none;
+  border: none;
   border-radius: 0;
   appearance: none;
-  margin-right: ${(props) => props.next ? "0" : "auto"};
-  margin-left: ${(props) => props.next ? "auto" : "0"};
-  margin-bottom: 10px;
+  margin-bottom: 0;
   position: relative;
-  transition: background 0.1s ease-in-out;
+  background: ${styles2.color2.primary};
+  border-radius: ${styles2.borderRadius.small};
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.boldWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  color: ${styles2.color2.textWhite};
+  transition: background 200ms ${styles2.easing.easeOut};
+  &:hover, &:focus {
+    background: ${styles2.color2.primaryLight};
+    color: ${styles2.color2.textWhite};
+  }
+  &:active {
+    background: ${styles2.color2.primaryXLight};
+  }
+  &:focus {
+    outline-offset: 2px;
+  }
   &:before,
   &:after {
     content: " ";
     display: inline-block;
-    position: absolute;
-    left: ${(props) => props.next ? "auto" : "1em"};
-    right: ${(props) => props.next ? "1em" : "auto"};
-    top: calc(50% - 0.4rem);
     width: 0.5rem;
     height: 0.5rem;
     vertical-align: middle;
-    transform: ${(props) => props.next ? "rotate(45deg)" : "rotate(-135deg)"};
-    border: 2px solid white;
+    transform: ${next ? "rotate(45deg)" : "rotate(-135deg)"};
+    border: 2px solid ${styles2.color2.textWhite};
     border-width: 2px 2px 0 0;
   }
   &:before {
-    display: ${(props) => props.next ? "none" : "inline-block"};
+    display: ${next ? "none" : "inline-block"};
     margin-right: 1em;
   }
   &:after {
-    display: ${(props) => props.next ? "inline-block" : "none"};
+    display: ${next ? "inline-block" : "none"};
     margin-left: 1em;
-  }
-  &:hover,
-  &:focus {
-    background: ${({ styles: styles2 }) => styles2.color.dark};
   }
   &:hover::before,
   &:focus::before,
   &:hover::after,
   &:focus::after {
-    animation: ${(props) => props.next ? "pushnext" : "pushprev"} 0.8s linear
+    animation: ${next ? "pushnext" : "pushprev"} 0.8s linear
       infinite;
-  }
-  @media screen and (max-width: 900px) {
-    min-width: 48%;
-    text-align: ${(props) => props.next ? "left" : "right"};
   }
   @keyframes pushnext {
     0% {
@@ -2245,19 +2401,27 @@ var NavButton = inject_styles_default(import_styled_components3.default.button`
       transform: rotate(-135deg) translate3d(0, 0, 0);
     }
   }
-`);
+`}`);
 
 // primitives/ModalBox.ts
 var import_styled_components4 = __toESM(require("styled-components"));
-var ModalBox = inject_styles_default(import_styled_components4.default.div`
+var ModalBox = inject_styles_default(import_styled_components4.default.div`${({ styles: styles2 }) => `
   display: block;
-  max-width: 666px;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 0;
-  padding: 40px 60px;
-  text-align: center;
-`);
+  max-width: ${styles2.size.blockWidth};
+  background: ${styles2.color2.sectionBackground};
+  border-radius: ${styles2.borderRadius.large};
+  padding: ${styles2.padding.xLarge};
+  animation: modalIn 1000ms ${styles2.easing.easeOut};
+  > button:not(:last-child) {
+    margin-right: ${styles2.padding.small};
+  }
+  @media screen and (max-width: 400px) {
+    padding: ${styles2.padding.xLarge} ${styles2.padding.large};
+  }
+  @keyframes modalIn {
+    0% { opacity: 0; transform: translateY(2em); }
+  }
+  `}`);
 var ModalBox_default = ModalBox;
 
 // components/helper/Modal.tsx
@@ -2270,7 +2434,7 @@ var customStyle = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    backgroundColor: "rgba(0, 48, 69, 0.4)",
     display: "flex",
     flexDirection: "column",
     overflowY: "scroll"
@@ -2313,10 +2477,9 @@ function Modal(props) {
       onRequestClose: handleCloseModal,
       style: customStyle,
       children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(ModalBox_default, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(H1, { id: "heading", children: "Vil du starte p\xE5 nytt?" }),
+        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(H1, { id: "heading", children: "Vil du fortsette der du slapp?" }),
         /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Lead, { id: "full_description", children: "Veiviseren husker svarene fra ditt forrige bes\xF8k." }),
         /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(MainButton, { type: "button", onClick: handleCloseModal, children: "Fortsett" }),
-        /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("br", {}),
         /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(SecondaryButton, { type: "button", onClick: handleRestart, children: "Start p\xE5 nytt" })
       ] })
     }
@@ -2411,8 +2574,6 @@ __export(primitives_exports, {
   Heading: () => Heading_exports,
   Input: () => Input_exports,
   Label: () => Label_exports,
-  Logo: () => Logo,
-  NavButton: () => NavButton_exports,
   NavItem: () => NavItem,
   Paragraphs: () => Paragraphs_exports,
   Title: () => Title,
@@ -2420,148 +2581,76 @@ __export(primitives_exports, {
   Wizard: () => Wizard
 });
 
-// primitives/NavButton.ts
-var NavButton_exports = {};
-__export(NavButton_exports, {
-  NavReset: () => NavReset,
-  NavResult: () => NavResult
-});
-var import_styled_components5 = __toESM(require("styled-components"));
-var NavResult = inject_styles_default(import_styled_components5.default.div`
-  font-family: ${({ styles: styles2 }) => {
-  var _a;
-  return (_a = styles2 == null ? void 0 : styles2.font) == null ? void 0 : _a.secondary;
-}};
-  font-size: 1em;
-  font-weight: normal;
-  text-align: center;
-  color: white;
-  background: ${({ styles: styles2 }) => {
-  var _a;
-  return (_a = styles2 == null ? void 0 : styles2.color) == null ? void 0 : _a.light;
-}};
-  width: 100%;
-  padding: 12px 18px 13px;
-  cursor: pointer;
-  user-select: none;
-  border: 0 none;
-  border-radius: 0;
-  appearance: none;
-  margin-top: 30px;
-  margin-right: ${(props) => (props == null ? void 0 : props.next) ? "0" : "auto"};
-  margin-left: ${(props) => (props == null ? void 0 : props.next) ? "auto" : "0"};
-  margin-bottom: 10px;
-  position: relative;
-  transition: background 0.1s ease-in-out;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  &:hover {
-    background: ${({ styles: styles2 }) => styles2 == null ? void 0 : styles2.color.dark};
-  }
-`);
-var NavReset = inject_styles_default(import_styled_components5.default.button`
-  font-family: ${({ styles: styles2 }) => styles2 == null ? void 0 : styles2.font.secondary};
-  font-size: 1em;
-  font-weight: normal;
-  text-align: center;
-  color: ${({ styles: styles2 }) => styles2 == null ? void 0 : styles2.color.light};
-  background: white;
-  width: 100%;
-  padding: 12px 18px 13px;
-  cursor: pointer;
-  user-select: none;
-  border: 1px solid ${({ styles: styles2 }) => styles2 == null ? void 0 : styles2.color.warmgray2};
-  border-radius: 0;
-  appearance: none;
-  margin-right: ${(props) => props.next ? "0" : "auto"};
-  margin-left: ${(props) => props.next ? "auto" : "0"};
-  margin-bottom: 10px;
-  position: relative;
-  transition: all 0.1s ease-in-out;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  &:hover {
-    background: ${({ styles: styles2 }) => styles2 == null ? void 0 : styles2.color.warmgray2};
-  }
-`);
-
 // primitives/NavItem.ts
-var import_styled_components6 = __toESM(require("styled-components"));
-var NavItem = inject_styles_default(import_styled_components6.default.a`
-  background: ${(props) => props.active ? ({ styles: styles2 }) => styles2.color.warmgray3 : "white"};
+var import_styled_components5 = __toESM(require("styled-components"));
+var NavItem = inject_styles_default(import_styled_components5.default.a`${({ styles: styles2, active, errors, done }) => `
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.1s ease-in-out;
-  color: black !important;
+  text-decoration: none;
+  border-radius: ${styles2.borderRadius.small};
+  padding: ${styles2.padding.small};
+  margin-bottom: ${styles2.padding.xxSmall};
+  transition: background 400ms ${styles2.easing.easeOut};
+  ${done ? `background: ${styles2.color2.positiveXLight};` : ""}
+  ${errors ? `background: ${styles2.color2.errorXLight};` : ""}
+  ${active ? `background: ${styles2.color2.secondaryLight};` : ""}
+  ${!(done || errors) || active ? `color: ${styles2.color2.link};` : ""}
+  ${done ? `color: ${styles2.color2.positive};` : ""}
+  ${errors ? `color: ${styles2.color2.error};` : ""}
   &:hover {
     cursor: pointer;
-    background: ${({ styles: styles2 }) => styles2.color.warmgray3};
+    ${!(active || done || errors) ? `background: ${styles2.color2.secondaryXLight};` : ""}
+    ${done ? `background: ${styles2.color2.positiveLight};` : ""}
+    ${errors ? `background: ${styles2.color2.errorLight};` : ""}
+    ${active ? `background: ${styles2.color2.secondaryLight};` : ""}
+    p {
+      text-decoration: underline;
+    }
   }
-  div {
-    color: ${(props) => props.active ? "white" : "inherit"};
-    background: ${(props) => props.active ? ({ styles: styles2 }) => styles2.color.dark : "white"};
+  span {
     display: flex;
     align-self: stretch;
-    min-width: 2.4em;
     align-items: center;
     justify-content: center;
-    transition: background 0.1s ease-in-out;
     overflow: hidden;
+    min-width: 12px;
     max-width: 100%;
-  }
-  &:hover div {
-    background: ${(props) => props.active ? ({ styles: styles2 }) => styles2.color.dark : ({ styles: styles2 }) => styles2.color.warmgray3};
   }
   p {
     flex-grow: 1;
-    font-weight: ${(props) => props.active ? "300" : "300"};
-    padding: 0 20px;
-    line-height: 1.3;
-    font-size: 16px;
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    margin: 0;
+    margin-left: ${styles2.padding.small};
   }
-  span {
-    text-decoration: underline;
-    color: ${({ styles: styles2 }) => styles2.color.light};
-    font-size: 14px;
-    line-height: 1.8;
-    font-weight: normal;
-    display: block;
-    padding: 0;
-  }
-  &::after {
-    content: " ";
-    width: 11px;
-    height: 6px;
-    margin: 13px;
+  svg {
+    display: inline-block;
     flex-shrink: 0;
-    border-left: 4px solid ${({ styles: styles2 }) => styles2.color.light};
-    border-bottom: 4px solid ${({ styles: styles2 }) => styles2.color.light};
+    width: ${styles2.iconSize.small};
+    height: ${styles2.iconSize.small};
+    opacity: 0;
+    transition: opacity 400ms ${styles2.easing.easeOut};
   }
-  ${(props) => props.done ? `
-      &::after {
-        transform: rotate(-46deg);
-      }
-      span {
-        display: block;
-      }
-    ` : `
-      &::after {
-        border: none;
-      }
-      span {
-        display: none;
-      }
-    `} ${(props) => props.active ? `
-      span {
-        display: none;
-      }
-    ` : " "} &:last-of-type {
-    margin-bottom: 30px;
+  &:hover svg {
+    opacity: 1;
   }
-`);
+  ${done || active ? `
+      svg {
+        opacity: 1;
+      }
+    ` : ""}
+
+  ${errors ? `
+    &::after {
+      display: inline-block;
+      transform: rotate(-46deg);
+      border-color: ${styles2.color2.negative};
+    }
+  ` : ""}
+`}`);
 
 // primitives/Block.ts
 var Block_exports = {};
@@ -2569,26 +2658,19 @@ __export(Block_exports, {
   SpecificBlock: () => SpecificBlock,
   TextBlock: () => TextBlock
 });
-var import_styled_components7 = __toESM(require("styled-components"));
-var SpecificBlock = inject_styles_default(import_styled_components7.default.div`
+var import_styled_components6 = __toESM(require("styled-components"));
+var SpecificBlock = inject_styles_default(
+  import_styled_components6.default.div`
+    ${({ styles: styles2, debug, grouped, error, groupedSimple, type }) => `
   position: relative;
-  padding: ${(props) => props.grouped ? "16px 18px 20px" : "24px 28px 24px"};
-  margin: ${(props) => props.grouped ? "0 0 20px 0" : "20px 0"};
-  margin: ${(props) => props.smallMarginTop ? "8px 0 20px 0" : "20px 0"};
-  width: 100%;
-  background: ${(props) => props.grouped ? "rgba(137, 174, 196, 0.15)" : "white"};
-  ${(props) => props.error ? `background: ${props.styles.color.lightred};` : ""}
-
-  &:nth-child(even) {
-    background: ${(props) => props.grouped ? "rgba(0, 117, 127, 0.06)" : "white"};
+  padding: ${grouped ? styles2.padding.large : styles2.padding.large} 0;
+  ${error ? `background: ${styles2.color2.negativeXLight};` : ""}
+  > img:first-child {
+    margin-bottom: ${styles2.padding.large};
+    width: 100%;
+    max-width: ${styles2.size.imageWidth};
   }
-  box-shadow: ${(props) => props.grouped ? "none" : "0 2px 3px rgba(0, 0, 0, 0.18)"};
-  p {
-    margin-top: 0;
-    font-weight: 300;
-  }
-
-  ${(props) => props.debug ? `
+  ${debug ? `
   :before {
     content: attr(data-id);
     display: block;
@@ -2599,33 +2681,25 @@ var SpecificBlock = inject_styles_default(import_styled_components7.default.div`
     color: white;
     font-size: 14px;
     padding: 2px 6px;
-  }` : ""} ${(props) => props.grouped ? `
-  h2 {
-    font-size: 20px;
-    margin-bottom: 4px;
-    @media screen and (max-width: 700px) {
-      font-size: 18px;
-    }
-  }
-  ` : " "} ${(props) => props.groupedSimple ? `
+  }` : ""} ${groupedSimple ? `
   margin-bottom: 26px;
   padding: 0;
   background: none;
   box-shadow: none;
   &:nth-child(even) {
     background: none;
-  }` : " "} ${(props) => props.type === "Table" ? `
+  }` : " "} ${type === "Table" ? `
   table {
     text-align: center;
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${props.styles.color.darkgray};
+    border: 1px solid ${styles2.color2.secondary};
     border-collapse: collapse;
     th {
       font-weight: inherit;
     }
     th, td {
-      border: 1px solid ${props.styles.color.darkgray};
+      border: 1px solid ${styles2.color2.secondary};
       padding: 10px;
     }
     th > *,
@@ -2635,7 +2709,7 @@ var SpecificBlock = inject_styles_default(import_styled_components7.default.div`
       line-height: 1.3;
     }
     td,th {
-      ${props.debug ? `
+      ${debug ? `
       :hover {
         position: relative;
 
@@ -2653,31 +2727,25 @@ var SpecificBlock = inject_styles_default(import_styled_components7.default.div`
       }` : ""}
     }
   }
-  ` : " "} @media screen and (max-width: 700px) {
-    padding: ${(props) => props.grouped ? "12px 20px" : "26px 20px"};
-    ${(props) => props.groupedSimple ? `
-    margin-bottom: 24px;
-    padding: 0;
-    ` : " "};
-  }
+  ` : " "} 
 
   @media print {
-    box-shadow: none;
-    padding: ${(props) => props.grouped ? "20px 24px 20px" : "0"};
+    page-break-inside: avoid;
   }
-`);
-var TextBlock = inject_styles_default(import_styled_components7.default.div`
-  padding: 30px 0 10px;
-  ${(props) => props.groupedSimple ? "" : `
-    margin: 0;
+
+`}
+  `
+);
+var TextBlock = inject_styles_default(
+  import_styled_components6.default.div`
+    ${({ styles: styles2, debug, groupedSimple, printonly, printhide, small }) => `
+padding: ${styles2.padding.large} 0 ${styles2.padding.small};
+  ${groupedSimple ? "" : `
     padding: 0;
     `};
-
   width: 100%;
-  max-width: ${({ styles: styles2 }) => styles2.size.blockWidth};
-  ${(props) => props.debug ? `
+  ${debug ? `
   position: relative;
-
   :before {
     content: attr(data-id);
     display: block;
@@ -2688,13 +2756,14 @@ var TextBlock = inject_styles_default(import_styled_components7.default.div`
     color: white;
     font-size: 14px;
     padding: 2px 6px;
-  }` : ""} p {
+  }` : ""} 
+  p {
     margin: 1em 0;
     line-height: 1.6;
     max-width: 600px;
   }
 
-  ${(props) => props.printonly ? `
+  ${printonly ? `
     display: none;
     margin-top: 10px;
     padding-top: 0;
@@ -2703,92 +2772,113 @@ var TextBlock = inject_styles_default(import_styled_components7.default.div`
       display: block;
     }` : ""};
 
-  ${(props) => props.printhide ? `
+  ${printhide ? `
         @media print {
           display: none;
         }` : ""};
 
   h1 {
-    font-family: ${({ styles: styles2 }) => styles2.font.secondary};
-    font-size: 50px;
-    font-weight: 300;
-    margin: 0 0 30px;
-    line-height: 1.2;
-    @media screen and (max-width: 700px) {
-      font-size: ${(props) => props.small ? "0.9rem" : "30px"};
-    }
+    font-family: ${styles2.font.headline};
+    font-size: ${small ? styles2.text.h3.fontSize : styles2.text.h1.fontSize};
+    font-weight: ${styles2.text.h1.fontWeight};
+    line-height: ${styles2.text.h1.lineHeight};
+    letter-spacing: ${styles2.text.h1.letterSpacing};
+    margin: 0 0 ${styles2.padding.large};
   }
 
   h2 {
-    font-family: ${({ styles: styles2 }) => styles2.font.primary};
-    font-size: 24px;
-    margin: 0 0 10px;
-    line-height: 1.3;
-    @media screen and (max-width: 700px) {
-      font-size: 18px;
-    }
+    font-family: ${styles2.font.headline};
+    font-size: ${styles2.text.h2.fontSize};
+    font-weight: ${styles2.text.h2.fontWeight};
+    line-height: ${styles2.text.h2.lineHeight};
+    letter-spacing: ${styles2.text.h2.letterSpacing};
+    margin: 0 0 ${styles2.padding.small};
   }
 
   h3 {
-    font-family: ${({ styles: styles2 }) => styles2.font.primary};
-    font-size: 18px;
-    font-style: normal;
-    font-weight: bold;
-    margin: 0 0 10px;
-    line-height: 1.3;
-    @media screen and (max-width: 700px) {
-      font-size: 16px;
-    }
+    font-family: ${styles2.font.headline};
+    font-size: ${styles2.text.h3.fontSize};
+    font-weight: ${styles2.text.h3.fontWeight};
+    line-height: ${styles2.text.h3.lineHeight};
+    letter-spacing: ${styles2.text.h3.letterSpacing};
+    margin: 0 0 ${styles2.padding.xSmall};
   }
 
   h4 {
-    font-family: ${({ styles: styles2 }) => styles2.font.primary};
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 6px;
-    line-height: 1.3;
+    font-family: ${styles2.font.body};
+    font-size: ${styles2.text.subHeading.fontSize};
+    font-weight: ${styles2.text.subHeading.fontWeight};
+    line-height: ${styles2.text.subHeading.lineHeight};
+    letter-spacing: ${styles2.text.subHeading.letterSpacing};
+    text-transform: ${styles2.text.subHeading.textTransform};
+    margin: 0 0 ${styles2.padding.xSmall};
   }
 
   p {
-    font-size: inherit;
-    font-weight: 300;
-    margin: 0 0 24px;
+    font-family: ${styles2.font.body};
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    margin: 0 0 ${styles2.padding.large};
     max-width: 600px;
   }
-`);
+`}
+  `
+);
 
 // primitives/Errors.ts
 var Errors_exports = {};
 __export(Errors_exports, {
-  ErrorMessage: () => ErrorMessage,
-  ErrorMessageAlt: () => ErrorMessageAlt
+  ErrorMessage: () => ErrorMessage
 });
-var import_styled_components8 = __toESM(require("styled-components"));
-var ErrorMessage = inject_styles_default(import_styled_components8.default.p`
-  color: ${({ styles: styles2 }) => styles2.color.red};
+var import_styled_components7 = __toESM(require("styled-components"));
+var ErrorMessage = inject_styles_default(import_styled_components7.default.div`${({ styles: styles2 }) => `
+  display: flex;
+  align-items: center;
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  color: ${styles2.color2.error};
+  margin: ${styles2.padding.small} 0 0;
+  animation: messageIn 1000ms ${styles2.easing.easeOut};
+  > div {
+    display: block;
+    margin: 0;
+  }
   svg {
-    width: 1.2em;
-    height: 1.2em;
+    width: ${styles2.iconSize.small};
+    height: ${styles2.iconSize.small};
     display: inline-block;
     vertical-align: middle;
+    margin-right: 0.5em;
   }
-`);
-var ErrorMessageAlt = inject_styles_default(import_styled_components8.default.p`
-  font-family: ${({ styles: styles2 }) => styles2.font.secondary};
-`);
+  @keyframes messageIn {
+    0% { opacity: 0; transform: translateX(2em); }
+  }
+`}`);
 
 // primitives/Figure.ts
 var Figure_exports = {};
 __export(Figure_exports, {
   default: () => Figure_default
 });
-var import_styled_components9 = __toESM(require("styled-components"));
-var Figure = inject_styles_default(import_styled_components9.default.figure`
+var import_styled_components8 = __toESM(require("styled-components"));
+var Figure = inject_styles_default(import_styled_components8.default.figure`${({ styles: styles2, debug }) => `
   padding: 0;
   position: relative;
-  margin: 0 33px 30px;
-  ${(props) => props.debug ? `
+  margin: ${styles2.padding.small} 0;
+  
+  figcaption {
+    font-style: ${styles2.text.caption.fontStyle};
+    font-size: ${styles2.text.caption.fontSize};
+    font-weight: ${styles2.text.caption.fontWeight};
+    line-height: ${styles2.text.caption.lineHeight};
+    letter-spacing: ${styles2.text.caption.letterSpacing};
+  }
+  ${debug ? `
   :before {
     content: attr(data-id);
     display: block;
@@ -2799,38 +2889,36 @@ var Figure = inject_styles_default(import_styled_components9.default.figure`
     color: white;
     font-size: 14px;
     padding: 2px 6px;
-  }` : ""} figcaption {
-    font-style: italic;
-    font-size: 14px;
-  }
-  @media screen and (max-width: 700px) {
-    margin: 0 auto 30px;
-  }
-`);
+  }` : ""}
+`}`);
 var Figure_default = Figure;
 
 // primitives/grid/index.ts
 var grid_exports = {};
 __export(grid_exports, {
+  Blocks: () => Blocks,
   FocusWrapper: () => FocusWrapper,
   Grid: () => Grid,
   Main: () => Main,
   Nav: () => Nav,
+  NavList: () => NavList,
+  NavSection: () => NavSection,
   Navigation: () => Navigation,
   Simple: () => Simple
 });
 
 // primitives/grid/Nav.ts
-var import_styled_components10 = __toESM(require("styled-components"));
-var Nav = inject_styles_default(import_styled_components10.default.nav`
-  width: ${({ styles: styles2 }) => styles2.size.navWidth};
-  padding: 30px 20px 20px;
+var import_styled_components9 = __toESM(require("styled-components"));
+var Nav = inject_styles_default(import_styled_components9.default.nav`${({ styles: styles2, tocExpanded }) => `
+  width: ${styles2.size.navWidth};
   margin: 0;
-  background: white;
   overflow: hidden;
-  position: absolute;
-  //height: 100%;
-  //overflow-y: auto;
+  top: ${styles2.padding.medium};
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  gap: ${styles2.padding.xxSmall};
+  border-radius: ${styles2.borderRadius.large};
   button {
     width: 100%;
     max-width: 400px;
@@ -2839,30 +2927,60 @@ var Nav = inject_styles_default(import_styled_components10.default.nav`
     display: block;
   }
   @media screen and (max-width: 900px) {
-    width: ${({ styles: styles2 }) => styles2.size.mobileContentWidth};
+    width: ${styles2.size.mobileContentWidth};
     margin: 0 auto;
     position: static;
   }
   @media print {
     display: none;
   }
-  ${(props) => props.tocExpanded ? `@media screen and (max-width: 900px) {
+  ${tocExpanded ? `@media screen and (max-width: 900px) {
     max-height: 0;
     padding: 0;
   }` : ` @media screen and (max-width: 900px) {
     max-height: 1000px;
+    margin-bottom: ${styles2.padding.small};
     transition: max-height 0.3s ease-in-out;
   }
   `}
+`}`);
+
+// primitives/grid/NavList.ts
+var import_styled_components10 = __toESM(require("styled-components"));
+var NavList = inject_styles_default(import_styled_components10.default.ul`
+  padding: 0;
+  margin: 0;
+  list-style: none;
 `);
 
-// primitives/grid/Grid.ts
+// primitives/grid/NavSection.ts
 var import_styled_components11 = __toESM(require("styled-components"));
-var Grid = inject_styles_default(import_styled_components11.default.div`
+var NavSection = inject_styles_default(import_styled_components11.default.div`${({ styles: styles2, large, xLarge }) => `
+  background: ${styles2.color2.sectionBackground};
+  ${!(xLarge || large) ? `padding: ${styles2.padding.small};` : ""}
+  ${large ? `padding: ${styles2.padding.large};` : ""}
+  ${xLarge ? `
+  padding: ${styles2.padding.xLarge};
+  @media screen and (max-width: 900px) {
+    padding: ${styles2.padding.large};
+  }
+  ` : ""}
+`}`);
+
+// primitives/grid/Blocks.ts
+var import_styled_components12 = __toESM(require("styled-components"));
+var Blocks = inject_styles_default(import_styled_components12.default.div`${({ styles: styles2 }) => `
+  width: 100%;
+  margin-bottom: ${styles2.padding.medium};
+`}`);
+
+// primitives/grid/Grid.ts
+var import_styled_components13 = __toESM(require("styled-components"));
+var Grid = inject_styles_default(import_styled_components13.default.div`${({ styles: styles2 }) => `
   display: flex;
   min-height: 100vh;
   width: 100%;
-  max-width: 1280px;
+  max-width: ${styles2.size.pageWidth};
   margin: 0 auto;
   @media screen and (max-width: 900px) {
     display: block;
@@ -2870,25 +2988,27 @@ var Grid = inject_styles_default(import_styled_components11.default.div`
   @media print {
     display: block;
   }
-`);
+`}`);
 
 // primitives/grid/Main.ts
-var import_styled_components12 = __toESM(require("styled-components"));
-var Main = inject_styles_default(import_styled_components12.default.main`
-  flex: 1;
-  padding: 30px 40px 0 60px;
-  margin-left: ${({ styles: styles2 }) => styles2.size.navWidth};
-  max-width: ${({ styles: styles2 }) => styles2.size.blockWidth};
+var import_styled_components14 = __toESM(require("styled-components"));
+var Main = inject_styles_default(import_styled_components14.default.main`${({ styles: styles2, debug }) => `
+  background: ${styles2.color2.sectionBackground};
+  padding: ${styles2.padding.xLarge};
+  margin-left: ${styles2.padding.large};
+  border-radius: ${styles2.borderRadius.large};
+  overflow: hidden;
 
   @media print {
     margin: 0 auto;
+    background: none;
   }
 
   h2 {
     margin-top: 0;
   }
 
-  ${(props) => props.debug ? `
+  ${debug ? `
   position: relative;
 
   :before {
@@ -2901,25 +3021,27 @@ var Main = inject_styles_default(import_styled_components12.default.main`
     color: white;
     font-size: 14px;
     padding: 2px 6px;
-  }` : ""} @media screen and (max-width: 900px) {
-    padding: 0;
-    width: ${({ styles: styles2 }) => styles2.size.mobileContentWidth};
-    margin: 30px auto;
-    padding: 0;
+  }` : ""} 
+  
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    padding: ${styles2.padding.xLarge} ${styles2.padding.medium};
+    margin: 0 auto;
   }
-`);
+
+`}`);
 
 // primitives/grid/Navigation.ts
-var import_styled_components13 = __toESM(require("styled-components"));
-var Navigation = inject_styles_default(import_styled_components13.default.main`
+var import_styled_components15 = __toESM(require("styled-components"));
+var Navigation = inject_styles_default(import_styled_components15.default.main`
   display: flex;
   margin-bottom: 50px;
   max-width: ${({ styles: styles2 }) => styles2.size.blockWidth};
 `);
 
 // primitives/grid/Simple.ts
-var import_styled_components14 = __toESM(require("styled-components"));
-var Simple = inject_styles_default(import_styled_components14.default.div`
+var import_styled_components16 = __toESM(require("styled-components"));
+var Simple = inject_styles_default(import_styled_components16.default.div`
   display: flex;
   width: 100%;
   max-width: 1280px;
@@ -2943,9 +3065,10 @@ var Simple = inject_styles_default(import_styled_components14.default.div`
 `);
 
 // primitives/grid/FocusWrapper.ts
-var import_styled_components15 = __toESM(require("styled-components"));
-var FocusWrapper = inject_styles_default(import_styled_components15.default.div`
+var import_styled_components17 = __toESM(require("styled-components"));
+var FocusWrapper = inject_styles_default(import_styled_components17.default.div`
   display: block;
+  width: 100%;
   &:focus {
     outline: none;
   }
@@ -2962,40 +3085,56 @@ __export(Input_exports, {
   TextInput: () => TextInput,
   Textarea: () => Textarea
 });
-var import_styled_components16 = __toESM(require("styled-components"));
-var Checkbox = inject_styles_default(import_styled_components16.default.input`
+var import_styled_components18 = __toESM(require("styled-components"));
+var Checkbox = inject_styles_default(import_styled_components18.default.input.attrs({
+  type: "checkbox"
+})`${({ styles: styles2 }) => `
   position: absolute;
   opacity: 0;
   z-index: -1;
   line-height: 1.4;
 
   + label {
+    position: relative;
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    box-shadow: 0 0 2px ${({ styles: styles2 }) => styles2.color.dark};
-    padding: 10px;
-    border-radius: 5px;
-    transition: all 0.1s ease-in-out;
-    position: relative;
-
+    padding: ${styles2.padding.medium};
+    border: 1px solid ${styles2.color2.secondaryLight};
+    border-radius: ${styles2.borderRadius.small};
+    transition: all 200ms ${styles2.easing.easeOut};
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    color: ${styles2.color2.textDark};
+    
     &:before {
       content: " ";
       display: inline-block;
       vertical-align: middle;
-      min-width: 10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      margin-right: 1em;
-      border: 0.3em solid white;
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.darkgray};
-      transition: all 0.1s ease-in-out;
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      background: transparent;
+      margin-right: ${styles2.padding.small};
+      border: 1px solid ${styles2.color2.primary};
+      border-radius: ${styles2.borderRadius.small};
+      transition: all 200ms ${styles2.easing.easeOut};
     }
 
-    div {
-      margin-right: 30px;
+    > div {
       flex: 1;
+      font-size: ${styles2.text.label.fontSize};
+      font-weight: ${styles2.text.label.fontWeight};
+      line-height: ${styles2.text.label.lineHeight};
+      letter-spacing: ${styles2.text.label.letterSpacing};
+      color: ${styles2.color2.textDark};
+    }
+
+    div:not(:last-child) {
+      margin-right: ${styles2.padding.large};
     }
     img {
       width: 25%;
@@ -3005,10 +3144,204 @@ var Checkbox = inject_styles_default(import_styled_components16.default.input`
       margin-bottom: 0;
     }
     h3 {
-      font-size: 16px;
+      font-size: ${styles2.text.lead.fontSize};
+      font-weight: ${styles2.text.lead.boldWeight};
+      line-height: ${styles2.text.lead.lineHeight};
+      letter-spacing: ${styles2.text.lead.letterSpacing};
       margin-bottom: 0;
+    }
+  }
+
+  :disabled + label {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  :not(:disabled) {
+    + label {
+      &:hover {
+        background: ${styles2.color2.secondaryXLight};
+      }
+    }
+    &:focus + label {
+      background: ${styles2.color2.secondaryXLight};
+    }
+    &:focus-visible + label {
+      outline: 1px solid ${styles2.color2.outline};
+    }
+    &:checked + label:after {
+      content: " ";
+      position: absolute;
+      left: calc(${styles2.padding.medium} + 5px);
+      top: calc(${styles2.padding.medium} + 9px);
+      width: 8px;
+      height: 4px;
+      transform: rotate(-46deg);
+      border-left: 3px solid ${styles2.color2.primary};
+      border-bottom: 3px solid ${styles2.color2.primary};
+    }
+    &:checked + label {
+      background: ${styles2.color2.secondaryLight};
+    }
+    &:checked:focus + label {
+      background: ${styles2.color2.secondaryXLight};
+    }
+  }
+`}`);
+var CheckboxResultDisplay = inject_styles_default(import_styled_components18.default.input.attrs({
+  type: "checkbox"
+})`${({ styles: styles2 }) => `
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  line-height: 1.4;
+
+  + label {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0;
+    padding: ${styles2.padding.xxSmall} 0;
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.boldWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+
+    &:before {
+      content: " ";
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 18px;
+      width: 218x;
+      height: 18px;
+      margin-right: ${styles2.padding.xxSmall};
+    }
+
+    > div {
+      flex: 1;
+      font-size: ${styles2.text.label.fontSize};
+      font-weight: ${styles2.text.label.fontWeight};
+      line-height: ${styles2.text.label.lineHeight};
+      letter-spacing: ${styles2.text.label.letterSpacing};
+      color: ${styles2.color2.textDark};
+    }
+
+    div:not(:last-child) {
+      margin-right: ${styles2.padding.large};
+    }
+    img {
+      width: 25%;
+      max-width: 200px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: ${styles2.text.lead.fontSize};
+      font-weight: ${styles2.text.lead.boldWeight};
+      line-height: ${styles2.text.lead.lineHeight};
+      letter-spacing: ${styles2.text.lead.letterSpacing};
       font-style: normal;
-      font-weight: bold;
+    }
+  }
+
+  &:checked + label:after {
+    content: " ";
+    position: absolute;
+    left: 4px;
+    top: calc(${styles2.padding.xxSmall} + 5px);
+    width: 8px;
+    height: 4px;
+    transform: rotate(-46deg);
+    border-left: 3px solid ${styles2.color2.primary};
+    border-bottom: 3px solid ${styles2.color2.primary};
+  }
+
+  @media screen and (max-width: 900px) {
+    + label {
+      flex-wrap: wrap;
+      &::before {
+      }
+      div {
+        flex: 1;
+        div {
+          margin-right: 0;
+        }
+      }
+      img {
+        width: 100%;
+        margin: 20px auto 0;
+        display: block;
+        flex: 0 0 100%;
+      }
+    }
+  }
+  @media print {
+    + label { 
+      border: none;
+      padding: 0;
+    }
+  }
+`}`);
+var Radio = inject_styles_default(import_styled_components18.default.input.attrs({
+  type: "radio"
+})`${({ styles: styles2 }) => `
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  line-height: 1.4;
+
+  + label {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    padding: ${styles2.padding.medium};
+    border: 1px solid ${styles2.color2.secondaryLight};
+    border-radius: ${styles2.borderRadius.small};
+    transition: all 200ms ${styles2.easing.easeOut};
+
+    &:before {
+      content: " ";
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      background: transparent;
+      margin-right: ${styles2.padding.small};
+      border: 1px solid ${styles2.color2.primary};
+      border-radius: 50%;
+      transition: all 200ms ${styles2.easing.easeOut};
+    }
+
+    > div {
+      flex: 1;
+      font-size: ${styles2.text.label.fontSize};
+      font-weight: ${styles2.text.label.fontWeight};
+      line-height: ${styles2.text.label.lineHeight};
+      letter-spacing: ${styles2.text.label.letterSpacing};
+      color: ${styles2.color2.textDark};
+    }
+    
+    div:not(:last-child) {
+      margin-right: ${styles2.padding.large};
+    }
+    img {
+      width: 25%;
+      max-width: 200px;
+      background: ${styles2.color2.secondaryXLight};
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: ${styles2.text.lead.fontSize};
+      font-weight: ${styles2.text.lead.boldWeight};
+      line-height: ${styles2.text.lead.lineHeight};
+      letter-spacing: ${styles2.text.lead.letterSpacing};
+      font-style: normal;
     }
   }
 
@@ -3019,352 +3352,147 @@ var Checkbox = inject_styles_default(import_styled_components16.default.input`
   :not(:disabled) {
     + label {
       &:hover {
-        box-shadow: 0 0 6px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-      &:hover::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-    }
-
-    + label:hover {
-      box-shadow: 0 0 6px ${({ styles: styles2 }) => styles2.color.dark};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
+        background: ${styles2.color2.secondaryXLight};
       }
     }
     &:focus + label {
-      box-shadow: 0 0 6px ${({ styles: styles2 }) => styles2.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
+      background: ${styles2.color2.secondaryXLight};
+    }
+    &:focus-visible + label {
+      outline: 1px solid ${styles2.color2.outline};
     }
     &:checked + label:after {
       content: " ";
       position: absolute;
-      left: 13px;
-      top: 13px;
-      width: 11px;
-      height: 6px;
+      left: calc(${styles2.padding.medium} + 5px);
+      top: calc(${styles2.padding.medium} + 8px);
+      width: 10px;
+      height: 10px;
       transform: rotate(-46deg);
-      border-left: 4px solid ${({ styles: styles2 }) => styles2.color.light};
-      border-bottom: 4px solid ${({ styles: styles2 }) => styles2.color.light};
-    }
-    &:checked + label {
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark},
-        0 0 4px 0 ${({ styles: styles2 }) => styles2.color.dark};
-      background: ${({ styles: styles2 }) => styles2.color.lightgreen};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-    }
-    &:checked:focus + label {
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark},
-        0 0 6px 1px ${({ styles: styles2 }) => styles2.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-    }
-  }
-  @media screen and (max-width: 900px) {
-    + label {
-      flex-wrap: wrap;
-      &::before {
-      }
-      div {
-        flex: 1;
-        div {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        margin: 20px auto 0;
-        display: block;
-        flex: 0 0 100%;
-      }
-    }
-  }
-`);
-var CheckboxResultDisplay = inject_styles_default(import_styled_components16.default.input`
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-  line-height: 1.4;
-
-  + label {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 0;
-    padding: 10px;
-    position: relative;
-
-    &:before {
-      content: " ";
-      display: inline-block;
-      vertical-align: middle;
-      min-width: 10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      margin-right: 1em;
-      border: 0.3em solid white;
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.darkgray};
-    }
-
-    div {
-      margin-right: 30px;
-      flex: 1;
-    }
-    img {
-      width: 25%;
-      max-width: 200px;
-    }
-    p {
-      margin-bottom: 0;
-    }
-    h3 {
-      font-size: 16px;
-      margin-bottom: 0;
-      font-style: normal;
-      font-weight: bold;
-    }
-  }
-
-  &:checked + label:after {
-    content: " ";
-    position: absolute;
-    left: 13px;
-    top: 13px;
-    width: 11px;
-    height: 6px;
-    transform: rotate(-46deg);
-    border-left: 4px solid ${({ styles: styles2 }) => styles2.color.light};
-    border-bottom: 4px solid ${({ styles: styles2 }) => styles2.color.light};
-  }
-
-  @media screen and (max-width: 900px) {
-    + label {
-      flex-wrap: wrap;
-      &::before {
-      }
-      div {
-        flex: 1;
-        div {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        margin: 20px auto 0;
-        display: block;
-        flex: 0 0 100%;
-      }
-    }
-  }
-`);
-var Radio = inject_styles_default(import_styled_components16.default.input.attrs({
-  type: "radio"
-})`
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-
-  + label {
-    display: flex;
-    align-items: flex-start;
-    cursor: pointer;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 2px ${({ styles: styles2 }) => styles2.color.dark};
-    transition: all 0.1s ease-in-out;
-
-    &:before {
-      content: " ";
-      display: block;
-      vertical-align: middle;
-      min-width: 10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      margin-right: 1em;
       border-radius: 50%;
-      border: 0.3em solid white;
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.darkgray};
-      transition: all 0.1s ease-in-out;
-    }
-
-    div {
-      margin-right: 30px;
-      flex: 1;
-    }
-    img {
-      width: 25%;
-      max-width: 200px;
-    }
-    p {
-      margin-bottom: 0;
-    }
-    h3 {
-      font-size: 16px;
-      margin-bottom: 0;
-      font-style: normal;
-      font-weight: bold;
-    }
-  }
-
-  :disabled + label {
-    opacity: 0.4;
-  }
-
-  :not(:disabled) {
-    + label:hover {
-      box-shadow: 0 0 6px ${({ styles: styles2 }) => styles2.color.dark};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-    }
-    &:focus + label {
-      box-shadow: 0 0 6px ${({ styles: styles2 }) => styles2.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-    }
-    &:checked + label:before {
-      background: ${({ styles: styles2 }) => styles2.color.light};
+      background: ${styles2.color2.primary};
     }
     &:checked + label {
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark},
-        0 0 4px 0 ${({ styles: styles2 }) => styles2.color.dark};
-      background: ${({ styles: styles2 }) => styles2.color.lightgreen};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
-    }
-    &:checked:focus + label {
-      box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark},
-        0 0 6px 1px ${({ styles: styles2 }) => styles2.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles: styles2 }) => styles2.color.dark};
-      }
+      background: ${styles2.color2.secondaryLight};
     }
   }
-  @media screen and (max-width: 900px) {
-    + label {
-      flex-wrap: wrap;
-      &::before {
-      }
-      div {
-        flex: 1;
-        div {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        margin: 20px auto 0;
-        display: block;
-        flex: 0 0 100%;
-      }
+
+  @media print {
+    + label { 
+      border: none;
+      padding: 0;
     }
   }
-`);
-var NumberInput = inject_styles_default(import_styled_components16.default.input`
+`}`);
+var NumberInput = inject_styles_default(import_styled_components18.default.input`${({ styles: styles2, validation }) => `
   font-family: inherit;
-  font-size: 1em;
+  font-size: ${styles2.text.label.fontSize} !important;
+  font-weight: ${styles2.text.label.fontWeight};
+  line-height: ${styles2.text.label.lineHeight};
+  letter-spacing: ${styles2.text.label.letterSpacing};
   text-align: right;
-  padding: 0.5em;
+  padding: ${styles2.padding.small} !important;
+  width: auto !important;
+  min-width: 20%;
+  margin-right: 0.5em;
+  border: 1px solid ${(validation == null ? void 0 : validation.error) ? styles2.color2.error : styles2.color2.outline} !important;
+  border-radius: ${styles2.borderRadius.small};
+  &::placeholder {
+    font-color: inherit;
+    opacity: 0.75;
+  }
+  &:focus {
+    outline: 3px solid ${styles2.color2.focus};
+  }
+`}`);
+var TextInput = inject_styles_default(import_styled_components18.default.input`${({ styles: styles2, validation }) => `
+  font-family: inherit;
+  font-size: ${styles2.text.lead.fontSize} !important;
+  font-weight: ${styles2.text.lead.fontWeight};
+  line-height: ${styles2.text.lead.lineHeight};
+  letter-spacing: ${styles2.text.lead.letterSpacing};
+  padding: ${styles2.padding.small} !important;
   width: auto;
   min-width: 20%;
   margin-right: 0.5em;
-  border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
+  border: 1px solid ${(validation == null ? void 0 : validation.error) ? styles2.color2.error : styles2.color2.outline} !important;
+  
+  border-radius: ${styles2.borderRadius.small};
   &::placeholder {
     font-color: inherit;
-    opacity: 0.6;
+    opacity: 0.75;
   }
-  transition: border-color 0.1s ease-in-out;
-  &:hover,
   &:focus {
-    border-color: ${({ styles: styles2 }) => styles2.color.dark};
-  }
-`);
-var TextInput = inject_styles_default(import_styled_components16.default.input`
-  font-family: inherit;
-  font-size: 1em;
-  padding: 0.5em;
-  width: auto;
-  min-width: 40%;
-  border: 1px solid
-    ${({ styles: styles2, validation: { error } = {} }) => error ? styles2.color.red : styles2.color.darkgray} !important;
-  &::placeholder {
-    font-color: inherit;
-    opacity: 0.6;
-  }
-  transition: border-color 0.1s ease-in-out;
-  &:hover,
-  &:focus {
-    border-color: ${({ styles: styles2 }) => styles2.color.dark};
+    outline: 3px solid ${styles2.color2.focus};
   }
   @media screen and (max-width: 360px) {
     width: 100%;
   }
-`);
-var Textarea = inject_styles_default(import_styled_components16.default.textarea`
+`}`);
+var Textarea = inject_styles_default(import_styled_components18.default.textarea`${({ styles: styles2 }) => `
   font-family: inherit;
-  font-size: 1em;
-  padding: 0.5em;
-  width: 100%;
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  padding: ${styles2.padding.small} ${styles2.padding.small};
   min-height: 6em;
-  border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
+  width: 100% !important;
+  min-width: 20%;
+  margin-right: 0.5em;
+  border: 1px solid ${styles2.color2.outline};
+  border-radius: ${styles2.borderRadius.small};
   &::placeholder {
     font-color: inherit;
-    opacity: 0.6;
+    opacity: 0.75;
   }
-  transition: border-color 0.1s ease-in-out;
-  &:hover,
   &:focus {
-    border-color: ${({ styles: styles2 }) => styles2.color.dark};
+    outline: 3px solid ${styles2.color2.focus};
   }
-`);
-var SelectWrapper = inject_styles_default(import_styled_components16.default.div`
+`}`);
+var SelectWrapper = inject_styles_default(import_styled_components18.default.div`${({ styles: styles2 }) => `
   position: relative;
-  width: 100%;
-  max-width: 400px;
+  width: fit-content;
+  max-width: 100%;
   &::before {
     content: " ";
+    pointer-events: none;
     position: absolute;
     right: 16px;
-    top: 36%;
-    width: 6px;
-    height: 6px;
-    transform: rotate(-45deg);
-    border-left: 2px solid ${({ styles: styles2 }) => styles2.color.light};
-    border-bottom: 2px solid ${({ styles: styles2 }) => styles2.color.light};
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateY(-4px) rotate(-45deg);
+    border-left: 2px solid ${styles2.color2.primary};
+    border-bottom: 2px solid ${styles2.color2.primary};
   }
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 100%;
-    font-family: inherit;
-    font-size: 1em;
-    padding: 0.5em;
-    padding-right: 40px;
-    border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
-    border-radius: 0;
-    line-height: normal;
-    background: white;
-    &:focus {
-      outline-color: ${({ styles: styles2 }) => styles2.color.bluegreen};
-    }
     cursor: pointer;
-    transition: border-color 0.1s ease-in-out;
-    &:hover,
+    width: auto;
+    max-width: 100%;
+    font-family: inherit;
+    font-size: ${styles2.text.lead.fontSize};
+    font-weight: ${styles2.text.lead.fontWeight};
+    line-height: ${styles2.text.lead.lineHeight};
+    letter-spacing: ${styles2.text.lead.letterSpacing};
+    padding: ${styles2.padding.small} ${styles2.padding.small};
+    padding-right: 40px;
+    margin-bottom: 0;
+    border: 1px solid ${styles2.color2.primary};
+    border-radius: ${styles2.borderRadius.small};
+    background: transparent;
+    transition: background 200ms ${styles2.easing.easeOut};
+    &:hover, &:focus {
+      background: ${styles2.color2.secondaryXLight};
+    }
     &:focus {
-      border-color: ${({ styles: styles2 }) => styles2.color.dark};
+      outline-color: ${styles2.color2.outline};
     }
   }
-`);
+`}`);
 
 // primitives/Label.ts
 var Label_exports = {};
@@ -3372,14 +3500,13 @@ __export(Label_exports, {
   Label: () => Label,
   SRLabel: () => SRLabel
 });
-var import_styled_components17 = __toESM(require("styled-components"));
-var Label = inject_styles_default(import_styled_components17.default.label`
+var import_styled_components19 = __toESM(require("styled-components"));
+var Label = inject_styles_default(import_styled_components19.default.label`${({ styles: styles2, debug, warning }) => `
   display: block;
   position: relative;
-  margin-top: 10px;
-  background: ${(props) => props.warning ? "rgba(255, 0, 0, 0.05)" : "white"};
-
-  ${(props) => props.debug ? `
+  background: ${warning ? "rgba(255, 0, 0, 0.05)" : "transparent"};
+  margin-bottom: ${styles2.padding.xSmall} !important; 
+  ${debug ? `
   > div {
     :before {
       content: attr(data-id);
@@ -3393,8 +3520,8 @@ var Label = inject_styles_default(import_styled_components17.default.label`
       padding: 2px 6px;
     }
   }` : ""};
-`);
-var SRLabel = inject_styles_default(import_styled_components17.default.label`
+`}`);
+var SRLabel = inject_styles_default(import_styled_components19.default.label`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3406,133 +3533,144 @@ var SRLabel = inject_styles_default(import_styled_components17.default.label`
 `);
 
 // primitives/Title.ts
-var import_styled_components18 = __toESM(require("styled-components"));
-var Title = inject_styles_default(import_styled_components18.default.div`
+var import_styled_components20 = __toESM(require("styled-components"));
+var Title = inject_styles_default(import_styled_components20.default.div`${({ styles: styles2 }) => `
   cursor: pointer;
-  text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid ${({ styles: styles2 }) => styles2.color.warmgray3};
-  font-size: 24px;
-  line-height: 1.2;
+  font-family: ${styles2.font.headline};
+  font-size: ${styles2.text.h3.fontSize};
+  font-weight: ${styles2.text.h3.fontWeight};
+  line-height: ${styles2.text.h3.lineHeight};
+  letter-spacing: ${styles2.text.h3.letterSpacing};
+  color: ${styles2.color2.textHeading};
+  margin: 0;
   &::before {
     content: "Veiviser";
     display: block;
-    color: gray;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 300;
-    font-size: 0.9rem;
+    font-family: ${styles2.font.body};
+    font-size: ${styles2.text.subHeading.fontSize};
+    font-weight: ${styles2.text.subHeading.fontWeight};
+    line-height: ${styles2.text.subHeading.lineHeight};
+    letter-spacing: ${styles2.text.subHeading.letterSpacing};
+    text-transform: ${styles2.text.subHeading.textTransform};
+    color: ${styles2.color2.textHeading};
+    opacity: 0.75;
     margin-bottom: 0.3em;
   }
-`);
-
-// primitives/Logo.ts
-var import_styled_components19 = __toESM(require("styled-components"));
-var Logo = inject_styles_default(import_styled_components19.default.div`
-  background: ${({ styles: styles2 }) => styles2.logo.default} no-repeat;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  @media screen and (max-width: 700px) {
-    background: ${({ styles: styles2 }) => styles2.logo.mobile} no-repeat;
-  }
-`);
+`}`);
 
 // primitives/ToggleButton.ts
-var import_styled_components20 = __toESM(require("styled-components"));
-var ToggleButton = inject_styles_default(import_styled_components20.default.button`
-  width: ${({ styles: styles2 }) => styles2.size.mobileContentWidth};
-  margin: 2px auto;
-  background: white;
-  color: ${({ styles: styles2 }) => styles2.color.dark};
-  border: 1px solid ${({ styles: styles2 }) => styles2.color.dark};
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0.5em;
+var import_styled_components21 = __toESM(require("styled-components"));
+var ToggleButton = inject_styles_default(import_styled_components21.default.button`${({ styles: styles2, visible }) => `
+  width: ${styles2.size.mobileContentWidth};
+  margin: 0 auto;
+  margin-bottom: ${styles2.padding.small};
+  background: transparent;
+  color: ${styles2.color2.primary};
+  border: 1px solid ${styles2.color2.primary};
+  border-radius: ${styles2.borderRadius.small};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.boldWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  padding: ${styles2.padding.small} ${styles2.padding.large};
   cursor: pointer;
-  display: ${(props) => props.visible ? "block" : "none"};
+  display: ${visible ? "block" : "none"};
+  span {
+    margin-left: ${styles2.padding.small};
+  }
   &:hover,
   &:focus {
-    color: white;
-    background: ${({ styles: styles2 }) => styles2.color.dark};
+    color: ${styles2.color2.link};
+    background: ${styles2.color2.secondaryXLight};
   }
   @media screen and (max-width: 900px) {
     display: block;
   }
-`);
+`}`);
 
 // primitives/Export.ts
-var import_styled_components21 = __toESM(require("styled-components"));
-var Export = inject_styles_default(import_styled_components21.default.div`
-  padding: 20px 0 200px;
+var import_styled_components22 = __toESM(require("styled-components"));
+var Export = inject_styles_default(import_styled_components22.default.div`
   @media print {
     display: none;
   }
 `);
 
 // primitives/Wizard.ts
-var import_styled_components22 = __toESM(require("styled-components"));
-var Wizard = inject_styles_default(import_styled_components22.default.div`
-  background-color: white;
-  background-image: linear-gradient(
-    164deg,
-    rgba(137, 174, 196, 0.34),
-    white,
-    rgba(0, 117, 127, 0.19)
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: ${({ styles: styles2 }) => styles2.font.primary};
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.6;
+var import_styled_components23 = __toESM(require("styled-components"));
+var Wizard = inject_styles_default(import_styled_components23.default.div`${({ styles: styles2, noBackground }) => `
+  background-color:${noBackground ? "inherit" : styles2.color2.pageBackground};
+  font-family: ${styles2.font.body};
+  padding: ${noBackground ? "0" : styles2.padding.medium};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
   strong {
-    font-weight: 700;
+    font-weight: ${styles2.text.body.boldWeight};
   }
   * {
     box-sizing: border-box;
     &:focus {
-      outline-color: ${({ styles: styles2 }) => styles2.color.bluegreen};
+      outline-color: ${styles2.color2.outline};
     }
   }
   img {
     max-width: 100%;
   }
-  a {
-    color: ${({ styles: styles2 }) => styles2.color.light};
+  hr {
+    border: none;
+    border-bottom: ${styles2.padding.xxSmall} solid ${styles2.color2.secondaryXLight};
+    margin: ${styles2.padding.xLarge} 0;
+  }
+  a:not(class) {
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    color: ${styles2.color2.link};
     &:hover {
-      color: ${({ styles: styles2 }) => styles2.color.dark};
+      color: ${styles2.color2.link};
+      text-decoration: none;
     }
   }
-  @media screen and (max-width: 700px) {
-    font-size: 16px;
+  @media screen and (max-width: 900px) {
+    padding: ${styles2.padding.xSmall};
   }
   @media print {
-    background-image: none;
     background-color: white;
   }
-`);
+`}`);
+
+// components/graphics/CheckIcon.tsx
+var import_jsx_runtime4 = require("react/jsx-runtime");
+function CheckIcon({
+  fill = styles_default.color2.positive
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg", "aria-label": "Ferdig", style: { fill }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("mask", { id: "mask0_1089_7430", style: { maskType: "alpha" }, maskUnits: "userSpaceOnUse", x: "0", y: "0", width: "20", height: "20", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("rect", { width: "20", height: "20" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("g", { mask: "url(#mask0_1089_7430)", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { d: "M5.71427 8.57149L3.80951 10.4762L8.57141 15.2382L17.1428 6.66672L15.2381 4.76196L8.57141 11.4286L5.71427 8.57149Z" }) })
+  ] });
+}
 
 // components/NavItem.tsx
-var import_jsx_runtime4 = require("react/jsx-runtime");
-function NavItem2({ active = false, done = false, heading = "TITLE MISSING", id, index, setPage }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function NavItem2({ active = false, done = false, errors = false, heading = "TITLE MISSING", id, index, setPage }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
     NavItem,
     {
       active,
       done,
+      errors,
       href: "#",
       onClick: (e) => {
         e.preventDefault();
         setPage(id);
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { children: index }),
-        /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("p", { children: [
-          heading,
-          active ? "" : /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { children: "Endre svar" })
-        ] })
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { children: index }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { children: heading }),
+        done && !active && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(CheckIcon, {})
       ]
     }
   );
@@ -3540,9 +3678,9 @@ function NavItem2({ active = false, done = false, heading = "TITLE MISSING", id,
 
 // components/NavReset.tsx
 var import_react_redux2 = require("react-redux");
-var import_jsx_runtime5 = require("react/jsx-runtime");
-function NavReset2(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+var import_jsx_runtime6 = require("react/jsx-runtime");
+function NavReset(props) {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
     SecondaryButton,
     {
       type: "button",
@@ -3556,12 +3694,12 @@ function NavReset2(props) {
     }
   );
 }
-var NavReset_default = (0, import_react_redux2.connect)(null, { resetData })(NavReset2);
+var NavReset_default = (0, import_react_redux2.connect)(null, { resetData })(NavReset);
 
 // components/NavResult.tsx
-var import_jsx_runtime6 = require("react/jsx-runtime");
-function NavResult2({ setPage, id, active = false }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+var import_jsx_runtime7 = require("react/jsx-runtime");
+function NavResult({ setPage, id, active = false }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
     MainButton,
     {
       type: "button",
@@ -3576,7 +3714,7 @@ function NavResult2({ setPage, id, active = false }) {
 // components/LanguageSelector.tsx
 var import_react_redux3 = require("react-redux");
 var import_values = __toESM(require("lodash/values"));
-var import_jsx_runtime7 = require("react/jsx-runtime");
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function LanguageSelector({ translations: translationsObject, currentLanguage, setLanguage: setLanguage2 }) {
   const handleLanguageSelect = (languageKey) => () => setLanguage2(languageKey);
   const translations = (0, import_values.default)(translationsObject);
@@ -3586,7 +3724,7 @@ function LanguageSelector({ translations: translationsObject, currentLanguage, s
   if (translations.length === 1 && translationsObject.no) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Simple, { padItems: true, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Simple, { padItems: true, children: [
     /**
      * If we have translations, but no norwegian one we need
      * to add it in order to have a way to select the norwegian
@@ -3594,7 +3732,7 @@ function LanguageSelector({ translations: translationsObject, currentLanguage, s
      */
     ...translationsObject.no ? [] : [{ key: "no", name: "Norsk" }],
     ...translations
-  ].map(({ key, name }) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+  ].map(({ key, name }) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
     SmallButton,
     {
       disabled: key === currentLanguage,
@@ -3610,41 +3748,44 @@ var mapStateToProps = (state) => ({
 var LanguageSelector_default = (0, import_react_redux3.connect)(mapStateToProps, { setLanguage })(LanguageSelector);
 
 // components/Nav.tsx
-var import_jsx_runtime8 = require("react/jsx-runtime");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 function Nav2({ heading = "Missing page heading", page: currentPage, setPage, tableOfContents, showIntro, translations }) {
   const [tocExpanded, setTocExpanded] = (0, import_react4.useState)(true);
   const toggleToc = () => setTocExpanded(!tocExpanded);
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(ToggleButton, { type: "button", onClick: toggleToc, children: [
-      tocExpanded ? "Vis" : "Skjul",
-      " alle steg"
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(grid_exports.Nav, { tocExpanded, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Title, { onClick: showIntro, children: heading }),
-      tableOfContents.map(
-        (page, index) => page.type === "Result" ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-          NavResult2,
-          {
-            id: page.id,
-            setPage,
-            active: page.id === currentPage
-          },
-          page.id
-        ) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  const currentIndex = tableOfContents.findIndex((page) => page.id === currentPage);
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ToggleButton, { type: "button", onClick: toggleToc, children: tocExpanded ? `${currentIndex + 1} av ${tableOfContents.length} steg` : "Skjul all steg" }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(grid_exports.Nav, { tocExpanded, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(grid_exports.NavSection, { large: true, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Title, { onClick: showIntro, children: heading }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(grid_exports.NavSection, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(grid_exports.NavList, { children: tableOfContents.filter((page) => page.type !== "Result").map(
+        (page, index) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
           NavItem2,
           {
             id: page.id,
             index: index + 1,
             heading: page.heading,
             setPage,
-            done: !page.errors,
+            done: page.completed,
             active: page.id === currentPage
           },
           page.id
-        )
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(NavReset_default, { showIntro }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(LanguageSelector_default, { translations })
+        ) })
+      ) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(grid_exports.NavSection, { large: true, children: [
+        tableOfContents.filter((page) => page.type === "Result").map(
+          (page) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+            NavResult,
+            {
+              id: page.id,
+              setPage,
+              active: page.id === currentPage
+            },
+            page.id
+          )
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(NavReset_default, { showIntro })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(LanguageSelector_default, { translations })
     ] })
   ] });
 }
@@ -3652,19 +3793,10 @@ function Nav2({ heading = "Missing page heading", page: currentPage, setPage, ta
 // components/blocks/Block.tsx
 var import_redux2 = require("redux");
 var import_react_redux4 = require("react-redux");
-var import_prop_types = __toESM(require_prop_types());
-
-// components/helper/RepeatQuestion.ts
-function repeatQuestion(img, text) {
-  if (img && Object.prototype.hasOwnProperty.call(img, "url") && text && text.length > 200) {
-    return true;
-  }
-  return false;
-}
 
 // primitives/Fieldset.ts
-var import_styled_components23 = __toESM(require("styled-components"));
-var Fieldset = inject_styles_default(import_styled_components23.default.fieldset`
+var import_styled_components24 = __toESM(require("styled-components"));
+var Fieldset = inject_styles_default(import_styled_components24.default.fieldset`
   border: 0;
   padding: 0;
   margin: 0;
@@ -3672,8 +3804,8 @@ var Fieldset = inject_styles_default(import_styled_components23.default.fieldset
 var Fieldset_default = Fieldset;
 
 // primitives/Legend.ts
-var import_styled_components24 = __toESM(require("styled-components"));
-var SRLegend = inject_styles_default(import_styled_components24.default.legend`
+var import_styled_components25 = __toESM(require("styled-components"));
+var SRLegend = inject_styles_default(import_styled_components25.default.legend`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -3686,8 +3818,8 @@ var SRLegend = inject_styles_default(import_styled_components24.default.legend`
 var Legend_default = SRLegend;
 
 // primitives/OptionWrapper.ts
-var import_styled_components25 = __toESM(require("styled-components"));
-var OptionWrapper = inject_styles_default(import_styled_components25.default.div`
+var import_styled_components26 = __toESM(require("styled-components"));
+var OptionWrapper = inject_styles_default(import_styled_components26.default.div`
   ${(props) => props.grid ? `
     display: flex;
     flex-wrap: wrap;
@@ -3752,19 +3884,74 @@ var OptionWrapper = inject_styles_default(import_styled_components25.default.div
 var OptionWrapper_default = OptionWrapper;
 
 // primitives/Html.ts
-var import_styled_components26 = __toESM(require("styled-components"));
-var StyledHtml = inject_styles_default(import_styled_components26.default.div`
-  display: ${(props) => props.inline ? "inline" : "block"};
+var import_styled_components27 = __toESM(require("styled-components"));
+var StyledHtml = inject_styles_default(import_styled_components27.default.div`${({ styles: styles2, inline, margins }) => `
+  display: ${inline ? "inline" : "block"};
+  margin-bottom: ${margins ? styles2.padding.large : "0"};
+  color: ${styles2.color2.textDark};
+  font-style: normal;
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+
+  img {
+    width: 100%;
+    max-width: ${styles2.size.imageWidth};
+    margin-bottom: ${styles2.padding.medium};
+  }
+
+  ul, ol {
+    margin: 0;
+    margin-bottom: ${styles2.padding.medium};
+    padding-left: ${styles2.padding.large};
+  }
+
+  li {
+    margin-bottom: ${styles2.padding.xSmall};
+  }
+
+  p {
+    display: block;
+    font-style: normal;
+    font-family: ${styles2.font.body};
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    margin: 0;
+    margin-bottom: ${styles2.padding.medium};
+    font-weight: 400;
+  }
+  h3 {
+    font-style: normal;
+    font-family: ${styles2.font.headline};
+    font-size: ${styles2.text.h3.fontSize};
+    font-weight: ${styles2.text.h3.fontWeight};
+    line-height: ${styles2.text.h3.lineHeight};
+    letter-spacing: ${styles2.text.h3.letterSpacing};
+    margin: 0 0 ${styles2.padding.small};
+    color: ${styles2.color2.textHeading};
+  }
+  h4 {
+    font-family: ${styles2.font.body};
+    font-size: ${styles2.text.subHeading.fontSize};
+    font-weight: ${styles2.text.subHeading.fontWeight};
+    line-height: ${styles2.text.subHeading.lineHeight};
+    letter-spacing: ${styles2.text.subHeading.letterSpacing};
+    text-transform: ${styles2.text.subHeading.textTransform};
+  }
   table {
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
-    background: ${({ styles: styles2 }) => styles2.color.lightgreen};
+    border: 1px solid ${styles2.color2.secondary};
+    background: ${styles2.color2.positiveXLight};
     border-collapse: collapse;
     text-align: left;
     th,
     td {
-      border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
+      border: 1px solid ${styles2.color2.secondary};
       padding: 10px;
     }
     th > *,
@@ -3786,26 +3973,27 @@ var StyledHtml = inject_styles_default(import_styled_components26.default.div`
       }
     }
   }
-`);
+`}`);
 var Html_default = StyledHtml;
 
 // components/helper/Html.tsx
-var import_jsx_runtime9 = require("react/jsx-runtime");
-function Html({ id, text, inline, h2, h3 }) {
+var import_jsx_runtime10 = require("react/jsx-runtime");
+function Html({ id, text, inline, margins, h2, h3 }) {
   if (!text) {
     return null;
   }
   if (h2) {
-    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(H2, { id, inline, dangerouslySetInnerHTML: { __html: text } });
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(H2, { id, inline, dangerouslySetInnerHTML: { __html: text } });
   }
   if (h3) {
-    return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(H3, { id, inline, dangerouslySetInnerHTML: { __html: text } });
+    return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(H3, { id, inline, dangerouslySetInnerHTML: { __html: text } });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
     Html_default,
     {
       id,
       inline,
+      margins,
       dangerouslySetInnerHTML: { __html: text }
     }
   );
@@ -3840,7 +4028,7 @@ function CheckboxInput({
 }
 
 // components/blocks/checkbox/Checkbox.tsx
-var import_jsx_runtime10 = require("react/jsx-runtime");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 var import_react5 = require("react");
 function Checkbox2({
   setData: setData2,
@@ -3860,9 +4048,9 @@ function Checkbox2({
       setData2(updateProp, void 0, true);
     });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(Fieldset_default, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Legend_default, { children: heading }),
-    options && options.length ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(OptionWrapper_default, { grid, children: options.map((option) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(Fieldset_default, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(Legend_default, { children: heading }),
+    options && options.length ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(OptionWrapper_default, { grid, children: options.map((option) => {
       const isDisabled = disabled || option.disabled;
       return /* @__PURE__ */ (0, import_react5.createElement)(
         CheckboxInput,
@@ -3881,59 +4069,42 @@ function Checkbox2({
 }
 
 // components/graphics/ErrorIcon.tsx
-var import_jsx_runtime11 = require("react/jsx-runtime");
+var import_jsx_runtime12 = require("react/jsx-runtime");
 function ErrorIcon({
   textFill = "white",
-  triangleFill = styles_default.color.red
+  triangleFill = styles_default.color2.error
 }) {
-  let label = "Validaringsfeil";
-  if (triangleFill === "black") {
-    label = "Informasjon";
-  }
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
-    "svg",
-    {
-      xmlns: "http://www.w3.org/2000/svg",
-      viewBox: "0 0 38 38",
-      "aria-label": label,
-      children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("g", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("circle", { style: { fill: triangleFill }, cx: "19", cy: "19", r: "16" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
-          "path",
-          {
-            style: { fill: textFill },
-            d: "M16.9,25.1c0-0.7,0.2-1.2,0.5-1.5s0.9-0.5,1.5-0.5c0.6,0,1.2,0.2,1.5,0.5s0.5,0.8,0.5,1.5\n            c0,0.6-0.2,1.1-0.5,1.5s-0.9,0.5-1.5,0.5c-0.7,0-1.2-0.2-1.5-0.5S16.9,25.7,16.9,25.1z M20.4,21.1h-2.9L17,9.6H21L20.4,21.1z"
-          }
-        )
-      ] })
-    }
-  );
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("svg", { width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", xmlns: "http://www.w3.org/2000/svg", role: "presentation", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("g", { "clip-path": "url(#clip0_1089_7422)", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("mask", { id: "mask0_1089_7422", style: { maskType: "alpha" }, maskUnits: "userSpaceOnUse", x: "0", y: "0", width: "20", height: "20", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("rect", { width: "20", height: "20", style: { fill: textFill } }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("g", { mask: "url(#mask0_1089_7422)", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M0 10C0 4.4775 4.4775 0 10 0C15.5225 0 20 4.4775 20 10C20 15.5225 15.5225 20 10 20C4.4775 20 0 15.5225 0 10ZM11 14.0766C11 14.8122 10.5188 15.3333 9.83335 15.3333C9.13335 15.3333 8.66669 14.8122 8.66669 14.0766C8.66669 13.341 9.13335 12.8046 9.83335 12.8046C10.5188 12.8046 11 13.341 11 14.0766ZM10.65 11.9463H8.98752L8.75419 4.66663H10.8834L10.65 11.9463Z", style: { fill: triangleFill } }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("clipPath", { id: "clip0_1089_7422", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("rect", { width: "20", height: "20", fill: "white" }) }) })
+  ] });
 }
 
 // components/blocks/Evaluation.tsx
 var import_get9 = __toESM(require("lodash/get"));
 
 // primitives/Sum.ts
-var import_styled_components27 = __toESM(require("styled-components"));
-var StyledSum = inject_styles_default(import_styled_components27.default.div`
+var import_styled_components28 = __toESM(require("styled-components"));
+var StyledSum = inject_styles_default(import_styled_components28.default.div`${({ styles: styles2, groupedSimple }) => `
   padding: 0 0 2rem;
   width: 100%;
   vertical-align: top;
-
-  font-family: ${({ styles: styles2 }) => styles2.font.secondary};
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 300;
-  font-size: 0.9rem;
-  line-height: 1.2;
-
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.subHeading.fontSize};
+  font-weight: ${styles2.text.subHeading.fontWeight};
+  line-height: ${styles2.text.subHeading.lineHeight};
+  letter-spacing: ${styles2.text.subHeading.letterSpacing};
+  text-transform: ${styles2.text.subHeading.textTransform};
   &:nth-child(odd) {
     padding-right: 2rem;
   }
 
   span {
     padding: 0;
-    font-family: ${({ styles: styles2 }) => styles2.font.primary};
+    font-family: ${styles2.font.body};
     text-transform: none;
     display: block;
     font-size: 28px;
@@ -3949,14 +4120,14 @@ var StyledSum = inject_styles_default(import_styled_components27.default.div`
     }
 
     &.sad {
-      color: ${({ styles: styles2 }) => styles2.color.red};
+      color: ${styles2.color2.error};
     }
     &.happy {
-      color: ${({ styles: styles2 }) => styles2.color.green};
+      color: ${styles2.color2.positive};
     }
   }
 
-  ${(props) => props.groupedSimple ? `
+  ${groupedSimple ? `
       display: inline-block;
       width: 50%;
       ` : ""}
@@ -3966,36 +4137,32 @@ var StyledSum = inject_styles_default(import_styled_components27.default.div`
       font-size: 20px;
     }
   }
-`);
+`}`);
 var Sum_default = StyledSum;
 
 // primitives/SumResult.ts
-var import_styled_components28 = __toESM(require("styled-components"));
-var StyledSumResult = inject_styles_default(import_styled_components28.default.div`
+var import_styled_components29 = __toESM(require("styled-components"));
+var StyledSumResult = inject_styles_default(import_styled_components29.default.div`${({ styles: styles2 }) => `
     padding: 0;
     width: 100%;
     vertical-align: top;
-
     display: block;
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1.3;
+    font-size: ${styles2.text.h1.fontSize};
+    font-weight: ${styles2.text.h1.fontWeight};
+    line-height: ${styles2.text.h1.lineHeight};
+    letter-spacing: ${styles2.text.h1.letterSpacing};
     .sad {
-        color: ${({ styles: styles2 }) => styles2.color.red};
+        color: ${styles2.color2.error};
     }
     .happy {
-        color: ${({ styles: styles2 }) => styles2.color.green};
-    }
-    @media screen and (max-width: 900px) {
-        width: 100%;
-        font-size: 20px;
+        color: ${styles2.color2.positive};
     }
   }
-`);
+`}`);
 var SumResult_default = StyledSumResult;
 
 // components/blocks/Evaluation.tsx
-var import_jsx_runtime12 = require("react/jsx-runtime");
+var import_jsx_runtime13 = require("react/jsx-runtime");
 function Evaluation({
   data,
   testing,
@@ -4015,28 +4182,28 @@ function Evaluation({
   const absTestedValue = Math.abs(testedValue);
   if (showValue) {
     if (testedValue < 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Sum_default, { groupedSimple, final, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+      return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Sum_default, { groupedSimple, final, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
         sad,
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "sad", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "sad", children: [
           absTestedValue,
           " ",
-          unit ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Html, { inline: true, text: unit }) : null
+          unit ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Html, { inline: true, text: unit }) : null
         ] })
       ] }) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Sum_default, { groupedSimple, final, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Sum_default, { groupedSimple, final, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
       happy,
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("span", { className: "happy", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: "happy", children: [
         testedValue,
         " ",
-        unit ? /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(Html, { inline: true, text: unit }) : null
+        unit ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(Html, { inline: true, text: unit }) : null
       ] })
     ] }) });
   }
   if (testedValue < 0) {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(SumResult_default, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "sad", children: sad }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(SumResult_default, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "sad", children: sad }) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(SumResult_default, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "happy", children: happy }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(SumResult_default, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "happy", children: happy }) });
 }
 
 // components/blocks/FetchOrg.tsx
@@ -4044,16 +4211,16 @@ var import_react6 = require("react");
 var import_merge2 = __toESM(require("lodash/merge"));
 
 // primitives/Table.ts
-var import_styled_components29 = __toESM(require("styled-components"));
-var Table = inject_styles_default(import_styled_components29.default.table`
+var import_styled_components30 = __toESM(require("styled-components"));
+var Table = inject_styles_default(import_styled_components30.default.table`
   width: 100%;
   font-size: 14px;
-  border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
+  border: 1px solid ${({ styles: styles2 }) => styles2.color2.secondary};
   border-collapse: collapse;
   text-align: left;
   th,
   td {
-    border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
+    border: 1px solid ${({ styles: styles2 }) => styles2.color2.secondary};
     padding: 10px;
   }
   th > *,
@@ -4075,13 +4242,15 @@ var Table = inject_styles_default(import_styled_components29.default.table`
     }
   }
 `);
-var TD = inject_styles_default(import_styled_components29.default.td`
+var TD = inject_styles_default(import_styled_components30.default.td`
   ${(props) => props["data-inactive"] ? `
-    background: repeating-linear-gradient(-45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.1) 2px, white 2px, white 6px);
+    background: ${props.styles.color2.errorXLight};
     font-weight: normal;
+    position: relative;
+    text-decoration: line-through;
 ` : `
     font-weight: ${props.simple ? "normal" : "bold"};
-    background: rgba(0, 255, 0, 0.1);
+    background: ${props.styles.color2.positiveXLight};
 `}
 
   ${(props) => props.simple ? `
@@ -4106,15 +4275,15 @@ var TD = inject_styles_default(import_styled_components29.default.td`
 `);
 
 // primitives/TableContainer.ts
-var import_styled_components30 = __toESM(require("styled-components"));
-var TableContainer = inject_styles_default(import_styled_components30.default.div`
+var import_styled_components31 = __toESM(require("styled-components"));
+var TableContainer = inject_styles_default(import_styled_components31.default.div`
   overflow: auto;
   max-width: 100%;
   table {
     text-align: center;
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${(props) => props.styles.color.darkgray};
+    border: 1px solid ${(props) => props.styles.color2.secondary};
     border-collapse: collapse;
     th {
       font-weight: inherit;
@@ -4127,7 +4296,7 @@ var TableContainer = inject_styles_default(import_styled_components30.default.di
     }
     th,
     td {
-      border: 1px solid ${(props) => props.styles.color.darkgray};
+      border: 1px solid ${(props) => props.styles.color2.secondary};
       padding: 10px;
     }
     th > *,
@@ -4160,34 +4329,34 @@ var TableContainer = inject_styles_default(import_styled_components30.default.di
 var TableContainer_default = TableContainer;
 
 // components/ApprovalAreas.tsx
-var import_jsx_runtime13 = require("react/jsx-runtime");
+var import_jsx_runtime14 = require("react/jsx-runtime");
 function ApprovalAreas({ areas, title }) {
   if (areas === void 0 || areas.length === 0) {
     return null;
   }
   let heading;
   if (title) {
-    heading = /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(H3, { children: "Sentrale godkjenninger" });
+    heading = /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(H3, { children: "Sentrale godkjenninger" });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
     heading,
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(TableContainer_default, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(Table, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("tr", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("th", { children: "Funksjon" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("th", { children: "Fagomr\xE5de" }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("th", { children: "Tiltaksklasse" })
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(TableContainer_default, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(Table, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("tr", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { children: "Funksjon" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { children: "Fagomr\xE5de" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("th", { children: "Tiltaksklasse" })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("tbody", { children: areas.map((area, rowKey) => /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("tr", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("td", { children: area.function }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("td", { children: area.subject_area }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("td", { children: area.grade })
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("tbody", { children: areas.map((area, rowKey) => /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("tr", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { children: area.function }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { children: area.subject_area }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("td", { children: area.grade })
       ] }, rowKey)) })
     ] }) })
   ] });
 }
 
 // components/blocks/Input.tsx
-var import_jsx_runtime14 = require("react/jsx-runtime");
+var import_jsx_runtime15 = require("react/jsx-runtime");
 function Input({
   heading,
   property,
@@ -4205,8 +4374,8 @@ function Input({
     setData2(property, e.target.value);
     update == null ? void 0 : update(e.target.value);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
       TextInput,
       {
         "aria-label": heading,
@@ -4222,8 +4391,8 @@ function Input({
         value: currentValue
       }
     ),
-    ((_c = errors == null ? void 0 : errors.validation) == null ? void 0 : _c.error) && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(ErrorMessage, { role: "alert", id: `${property}.error`, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ErrorIcon, {}),
+    ((_c = errors == null ? void 0 : errors.validation) == null ? void 0 : _c.error) && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(ErrorMessage, { role: "alert", id: `${property}.error`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(ErrorIcon, {}),
       " ",
       errors.validation.message
     ] })
@@ -4232,82 +4401,114 @@ function Input({
 
 // components/helper/VariableText.tsx
 var import_template = __toESM(require("lodash/template"));
-var import_jsx_runtime15 = require("react/jsx-runtime");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function VariableText({ data = {}, text = "" }) {
   if (!text) {
     return null;
   }
   const compiled = (0, import_template.default)(text);
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { dangerouslySetInnerHTML: { __html: compiled(data) } });
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { dangerouslySetInnerHTML: { __html: compiled(data) } });
 }
 
 // primitives/Datalist.ts
-var import_styled_components31 = __toESM(require("styled-components"));
-var DL = inject_styles_default(import_styled_components31.default.dl`
+var import_styled_components32 = __toESM(require("styled-components"));
+var DL = inject_styles_default(import_styled_components32.default.dl`${({ styles: styles2 }) => `
   margin: 0;
   dt {
-    font-weight: 300;
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    margin: 0 0 ${styles2.padding.xxSmall};
   }
   dd {
-    margin: 0 0 20px;
-    font-weight: bold;
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.boldWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    margin: 0 0 ${styles2.padding.medium};
   }
-`);
+`}`);
 var Datalist_default = DL;
 
+// components/graphics/InfoIcon.tsx
+function InfoIcon({
+  fill = styles_default.color2.primary
+}) {
+  return /* @__PURE__ */ React.createElement(
+    "svg",
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      viewBox: "0 0 20 20",
+      role: "presentation"
+    },
+    /* @__PURE__ */ React.createElement("path", { d: "M10 0C4.4775 0 0 4.4775 0 10C0 15.5225 4.4775 20 10 20C15.5225 20 20 15.5225 20 10C20 4.4775 15.5225 0 10 0ZM8.30583 13.3417C8.77583 11.8508 9.66583 10.065 9.82333 9.61333C10.0508 8.9575 9.6475 8.66667 8.37333 9.7875L8.09 9.25417C9.54333 7.67333 12.5358 7.31583 11.5175 9.765C10.8817 11.2942 10.4267 12.3267 10.1667 13.1233C9.7875 14.2842 10.745 13.8133 11.6825 12.9475C11.81 13.1558 11.8517 13.2233 11.9792 13.4633C9.8975 15.445 7.58667 15.62 8.30583 13.3417ZM12.2575 6.53417C11.8142 6.91167 11.1575 6.90333 10.79 6.51583C10.4225 6.12833 10.4842 5.50917 10.9267 5.13167C11.37 4.75417 12.0267 4.76333 12.3942 5.15C12.76 5.53833 12.7 6.1575 12.2575 6.53417Z", style: { fill } })
+  );
+}
+
 // primitives/Information.ts
-var import_styled_components32 = __toESM(require("styled-components"));
-var Information = inject_styles_default(import_styled_components32.default.div`
+var import_styled_components33 = __toESM(require("styled-components"));
+var Information = inject_styles_default(import_styled_components33.default.div`${({ styles: styles2 }) => `
+  position: relative;  
+  background: ${styles2.color2.sectionBackground};
+  border: 1px solid ${styles2.color2.secondaryLight};
+  border-radius: ${styles2.borderRadius.small};
+  padding: ${styles2.padding.large};
+  padding-left: calc(${styles2.padding.large} + 1.2em +  ${styles2.padding.large});
+  color: ${styles2.color2.textDark};
+  animation: messageIn 1000ms ${styles2.easing.easeOut};
   svg {
-    width: 1.2em;
-    height: 1.2em;
+    position: absolute;
+    top: ${styles2.padding.large};
+    left: ${styles2.padding.large};
+    width: ${styles2.iconSize.medium};
+    height: ${styles2.iconSize.medium};
     display: inline-block;
     vertical-align: middle;
-    margin-right: 0.25em;
   }
-  div,
-  p {
-    display: inline;
+  @keyframes messageIn {
+    0% { opacity: 0; transform: translateY(2em); }
   }
-`);
+`}`);
 var Information_default = Information;
 
 // primitives/Loading.ts
-var import_styled_components33 = __toESM(require("styled-components"));
-var Loading = inject_styles_default(import_styled_components33.default.div`
-  background: ${({ styles: styles2 }) => styles2.color.lightgreen};
-  padding: 10px 24px;
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+var import_styled_components34 = __toESM(require("styled-components"));
+var Loading = inject_styles_default(import_styled_components34.default.div`${({ styles: styles2 }) => `
+  background: ${styles2.color2.secondaryXLight};
+  border-left: 4px solid ${styles2.color2.secondary};
+  padding: ${styles2.padding.medium};
+  margin-top: ${styles2.padding.medium};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.fontWeight};
   &::after {
     content: "...";
-    animation: dotdotdot 2s linear infinite;
+    animation: dotdotdot 1s linear infinite;
   }
   @keyframes dotdotdot {
     0% {
       content: " ";
     }
     25% {
-      content: ".";
+      content: " .";
     }
     50% {
-      content: "..";
+      content: " ..";
     }
     75% {
-      content: "...";
+      content: " ...";
     }
     100% {
-      content: "...";
+      content: " ...";
     }
   }
-`);
+`}`);
 var Loading_default = Loading;
 
 // primitives/Notice.ts
-var import_styled_components34 = __toESM(require("styled-components"));
-var Notice = inject_styles_default(import_styled_components34.default.div`
-  background: ${({ styles: styles2 }) => styles2.color.lightgreen};
+var import_styled_components35 = __toESM(require("styled-components"));
+var Notice = inject_styles_default(import_styled_components35.default.div`
+  background: ${({ styles: styles2 }) => styles2.color2.positiveXLight};
   font-weight: 300;
   font-size: 14px;
   margin: 20px 0 0;
@@ -4325,7 +4526,7 @@ var Notice = inject_styles_default(import_styled_components34.default.div`
 var Notice_default = Notice;
 
 // components/blocks/FetchOrg.tsx
-var import_jsx_runtime16 = require("react/jsx-runtime");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 function FetchOrd(props) {
   var _a, _b, _c, _d, _e;
   const [loading, setLoading] = (0, import_react6.useState)(false);
@@ -4400,8 +4601,8 @@ function FetchOrd(props) {
       setData3("sgdata", false, true);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
       Input,
       __spreadProps(__spreadValues({}, props), {
         type: "Input",
@@ -4410,62 +4611,66 @@ function FetchOrd(props) {
         update
       })
     ),
-    (currentValue == null ? void 0 : currentValue.dataOrg) ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("br", {}),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(Datalist_default, { role: "status", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("dt", { children: "Firmaets navn" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("dd", { children: (_a = currentValue == null ? void 0 : currentValue.name) != null ? _a : "" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("dt", { children: "Adresse" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("dd", { children: (_b = currentValue == null ? void 0 : currentValue.address) != null ? _b : "" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("dt", { children: "Postnummer- og sted" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("dd", { children: [
-          (_c = currentValue == null ? void 0 : currentValue.postcode) != null ? _c : "",
-          " ",
-          (_d = currentValue == null ? void 0 : currentValue.postplace) != null ? _d : ""
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { "aria-live": "polite", children: [
+      loading && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Loading_default, { role: "status", children: "Laster inn data" }),
+      (currentValue == null ? void 0 : currentValue.dataOrg) ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("br", {}),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(Datalist_default, { role: "status", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("dt", { children: "Firmaets navn" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("dd", { children: (_a = currentValue == null ? void 0 : currentValue.name) != null ? _a : "" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("dt", { children: "Adresse" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("dd", { children: (_b = currentValue == null ? void 0 : currentValue.address) != null ? _b : "" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("dt", { children: "Postnummer- og sted" }),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("dd", { children: [
+            (_c = currentValue == null ? void 0 : currentValue.postcode) != null ? _c : "",
+            " ",
+            (_d = currentValue == null ? void 0 : currentValue.postplace) != null ? _d : ""
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(Information_default, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(InfoIcon, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Html, { text: information })
         ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(Information_default, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ErrorIcon, { triangleFill: "black" }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Html, { text: information })
-      ] })
-    ] }) : null,
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { children: [
-      loading && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Loading_default, { role: "status", children: "Laster inn data" }),
-      !loading && (currentValue == null ? void 0 : currentValue.dataSG) ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(Notice_default, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(H3, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(VariableText, { text: SGheading, data: currentValue }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ApprovalAreas, { areas: (_e = currentValue == null ? void 0 : currentValue.validApprovalAreas) != null ? _e : [] }),
-        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(VariableText, { text: SGtext, data: currentValue })
       ] }) : null,
-      !loading && !(currentValue == null ? void 0 : currentValue.dataSG) && (currentValue == null ? void 0 : currentValue.orgid) ? /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(H3, { children: invalidapproval }) : null
-    ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { children: (currentValue == null ? void 0 : currentValue.invalidOrg) ? /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(ErrorMessage, { role: "alert", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(ErrorIcon, {}),
-      " ",
-      invalidOrg
-    ] }) : null })
+      !loading && (currentValue == null ? void 0 : currentValue.dataSG) ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(Notice_default, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(H3, { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(VariableText, { text: SGheading, data: currentValue }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ApprovalAreas, { areas: (_e = currentValue == null ? void 0 : currentValue.validApprovalAreas) != null ? _e : [] }),
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(VariableText, { text: SGtext, data: currentValue })
+      ] }) : null,
+      !loading && !(currentValue == null ? void 0 : currentValue.dataSG) && (currentValue == null ? void 0 : currentValue.orgid) ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(ErrorMessage, { role: "alert", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ErrorIcon, {}),
+        " ",
+        invalidapproval
+      ] }) : null,
+      (currentValue == null ? void 0 : currentValue.invalidOrg) ? /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(ErrorMessage, { role: "alert", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ErrorIcon, {}),
+        " ",
+        invalidOrg
+      ] }) : null
+    ] })
   ] });
 }
 
 // components/blocks/Image.tsx
-var import_jsx_runtime17 = require("react/jsx-runtime");
+var import_jsx_runtime18 = require("react/jsx-runtime");
 function Image({ id, debug, image: { url, alt }, text }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(Figure_default, { "data-id": id, debug, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("img", { src: url, alt }),
-    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("figcaption", { children: text })
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(Figure_default, { "data-id": id, debug, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("img", { src: url, alt }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("figcaption", { children: text })
   ] });
 }
 
 // components/helper/Image.tsx
-var import_jsx_runtime18 = require("react/jsx-runtime");
+var import_jsx_runtime19 = require("react/jsx-runtime");
 function Image2({ image = {} }) {
   if (Object.prototype.hasOwnProperty.call(image, "url") && image.url) {
-    return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("img", { src: image.url, alt: image.alt });
+    return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("img", { src: image.url, alt: image.alt });
   }
   return null;
 }
 
 // components/blocks/Information.tsx
-var import_jsx_runtime19 = require("react/jsx-runtime");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function Information2({
   debug,
   heading,
@@ -4475,7 +4680,7 @@ function Information2({
   printonly,
   printhide
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
     TextBlock,
     {
       warning,
@@ -4483,28 +4688,28 @@ function Information2({
       "data-id": id,
       printonly,
       printhide,
-      children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(Information_default, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ErrorIcon, { triangleFill: "black" }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Html, { text: heading, h2: true }),
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Html, { text })
+      children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(Information_default, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(InfoIcon, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Html, { text: heading, h2: true }),
+        /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Html, { text })
       ] })
     }
   );
 }
 
 // components/blocks/Missing.tsx
-var import_jsx_runtime20 = require("react/jsx-runtime");
+var import_jsx_runtime21 = require("react/jsx-runtime");
 function Missing({
   type = "No type"
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
     "Block missing: ",
     type
   ] });
 }
 
 // components/blocks/Number.tsx
-var import_jsx_runtime21 = require("react/jsx-runtime");
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function Number2({
   heading,
   property,
@@ -4546,8 +4751,8 @@ function Number2({
     describedBy.push(`${property}.unit`);
   if ((_a = errors == null ? void 0 : errors.validation) == null ? void 0 : _a.error)
     describedBy.push(`${property}.error`);
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
       NumberInput,
       {
         "aria-label": heading,
@@ -4567,9 +4772,9 @@ function Number2({
         value: currentValue
       }
     ),
-    unit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Html, { inline: true, id: `${property}.unit`, text: unit }) : null,
-    ((_c = errors == null ? void 0 : errors.validation) == null ? void 0 : _c.error) && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(ErrorMessage, { role: "alert", id: `${property}.error`, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(ErrorIcon, {}),
+    unit ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Html, { inline: true, id: `${property}.unit`, text: unit }) : null,
+    ((_c = errors == null ? void 0 : errors.validation) == null ? void 0 : _c.error) && /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(ErrorMessage, { role: "alert", id: `${property}.error`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(ErrorIcon, {}),
       " ",
       errors.validation.message
     ] })
@@ -4577,18 +4782,28 @@ function Number2({
 }
 
 // primitives/SoftWarning.ts
-var import_styled_components35 = __toESM(require("styled-components"));
-var SoftWarning = inject_styles_default(import_styled_components35.default.p`
-  display: block;
+var import_styled_components36 = __toESM(require("styled-components"));
+var SoftWarning = inject_styles_default(import_styled_components36.default.p`${({ styles: styles2, warning }) => `
+  display: inline-block;
   margin-top: 0;
-  color: ${(props) => props.warning ? props.styles.color.red : props.styles.color.green};
-  font-style: italic;
+  padding: ${styles2.padding.xSmall} 0;
+  color: ${warning ? styles2.color2.error : styles2.color2.positive};
   font-weight: normal !important;
-`);
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.subHeading.fontSize};
+  font-weight: ${styles2.text.subHeading.fontWeight};
+  line-height: ${styles2.text.subHeading.lineHeight};
+  text-transform: ${styles2.text.subHeading.textTransform};
+  letter-spacing: ${styles2.text.subHeading.letterSpacing};
+  &:before {
+    content: "${warning ? "\u2716" : "\u2714"}";
+    margin-right: 0.5rem;
+  }
+`}`);
 var SoftWarning_default = SoftWarning;
 
 // components/blocks/radio/RadioInput.tsx
-var import_jsx_runtime22 = require("react/jsx-runtime");
+var import_jsx_runtime23 = require("react/jsx-runtime");
 function RadioInput({
   id,
   value,
@@ -4603,8 +4818,8 @@ function RadioInput({
   name
 }) {
   const message = messages == null ? void 0 : messages[0];
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
       Radio,
       {
         "aria-label": heading,
@@ -4617,22 +4832,20 @@ function RadioInput({
         onChange
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(Label, { htmlFor: id, warning: message == null ? void 0 : message.warning, debug, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { "data-id": id, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { children: [
-          heading && !text ? heading : null,
-          heading && text ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(H3, { children: heading }) : null,
-          message ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(SoftWarning_default, { warning: message.warning, children: message.message }) : null
-        ] }),
-        text ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Html, { text }) : null
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(Label, { htmlFor: id, warning: message == null ? void 0 : message.warning, debug, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { "data-id": id, children: [
+        heading && !text ? `${heading} ` : null,
+        heading && text ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(H3, { children: heading }) : null,
+        message ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(SoftWarning_default, { warning: message.warning, children: message.message }) : null,
+        text ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Html, { text }) : null
       ] }),
-      image && image.url ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("img", { src: image.url, alt: image.alt }) : null
+      image && image.url ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: image.url, alt: image.alt }) : null
     ] })
   ] });
 }
 
 // components/blocks/radio/Radio.tsx
-var import_jsx_runtime23 = require("react/jsx-runtime");
+var import_jsx_runtime24 = require("react/jsx-runtime");
 var import_react7 = require("react");
 function Radio2({
   property,
@@ -4654,9 +4867,9 @@ function Radio2({
     }
     setData2(`${property2}`, value);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(Fieldset_default, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Legend_default, { children: heading }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(OptionWrapper_default, { grid, children: options.map((option) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(Fieldset_default, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Legend_default, { children: heading }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(OptionWrapper_default, { grid, children: options.map((option) => {
       const isDisabled = disabled || option.disabled;
       return /* @__PURE__ */ (0, import_react7.createElement)(
         RadioInput,
@@ -4676,16 +4889,16 @@ function Radio2({
 }
 
 // components/blocks/select/SelectOption.tsx
-var import_jsx_runtime24 = require("react/jsx-runtime");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 function SelectOption({ id, value, heading, debug }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("option", { value, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("option", { value, children: [
     heading,
     debug ? ` (${id})` : null
   ] });
 }
 
 // components/blocks/select/Select.tsx
-var import_jsx_runtime25 = require("react/jsx-runtime");
+var import_jsx_runtime26 = require("react/jsx-runtime");
 var import_react8 = require("react");
 var NULL_VALUE = "({[NULL]})";
 function Select({
@@ -4714,7 +4927,7 @@ function Select({
     setData2(property, value);
   };
   const placeholder = defaultOption || "Velg fra listen";
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(SelectWrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(SelectWrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
     "select",
     {
       "aria-label": heading,
@@ -4722,7 +4935,7 @@ function Select({
       onChange: handleChange,
       autoComplete: autocomplete,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("option", { value: NULL_VALUE, children: placeholder }),
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("option", { value: NULL_VALUE, children: placeholder }),
         options.map((option) => /* @__PURE__ */ (0, import_react8.createElement)(SelectOption, __spreadProps(__spreadValues({ data, debug }, option), { key: option.value })))
       ]
     }
@@ -4730,8 +4943,8 @@ function Select({
 }
 
 // primitives/Signature.ts
-var import_styled_components36 = __toESM(require("styled-components"));
-var Signature = inject_styles_default(import_styled_components36.default.div`
+var import_styled_components37 = __toESM(require("styled-components"));
+var Signature = inject_styles_default(import_styled_components37.default.div`
   width: 100%;
   max-width: 300px;
   margin: 80px auto 30px 0;
@@ -4743,8 +4956,8 @@ var Signature = inject_styles_default(import_styled_components36.default.div`
 var Signature_default = Signature;
 
 // primitives/PrintForm.ts
-var import_styled_components37 = __toESM(require("styled-components"));
-var PrintForm = inject_styles_default(import_styled_components37.default.div`
+var import_styled_components38 = __toESM(require("styled-components"));
+var PrintForm = inject_styles_default(import_styled_components38.default.div`
   display: none;
   @media print {
     font-size: 12px;
@@ -4754,44 +4967,94 @@ var PrintForm = inject_styles_default(import_styled_components37.default.div`
 var PrintForm_default = PrintForm;
 
 // components/blocks/Signature.tsx
-var import_jsx_runtime26 = require("react/jsx-runtime");
+var import_jsx_runtime27 = require("react/jsx-runtime");
 function Signature2() {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(PrintForm_default, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Signature_default, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { children: "Dato og signatur" }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(PrintForm_default, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Signature_default, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { children: "Dato og signatur" }) }) });
 }
 
 // components/blocks/Sum.tsx
 var import_get10 = __toESM(require("lodash/get"));
 
 // primitives/details.ts
-var import_styled_components38 = __toESM(require("styled-components"));
-var Details = inject_styles_default(import_styled_components38.default.details`
-  margin-top: 40px;
-  h3,
-  h4 {
-    font-size: 1em;
-    margin-bottom: 0;
+var import_styled_components39 = __toESM(require("styled-components"));
+var Details = inject_styles_default(import_styled_components39.default.details`${({ styles: styles2 }) => `
+  display: block;
+  text-align: right;
+  margin: 0;
+  margin-top: ${styles2.padding.large};
+  & > div {
+    text-align: left;
+    background: ${styles2.color2.secondaryXLight};
+    margin: 0;
+    padding: ${styles2.padding.large};
+    h3,
+    h4 {
+      font-size: 1em;
+      margin-bottom: 0;
+    }
+    p {
+      margin-top: 0;
+    }
+    & > *:last-child {
+      margin-bottom: 0;
+    }
   }
-  p {
-    margin-top: 0;
+  &[open] summary {
+    border-bottom-color: transparent;
+    & ~ * {
+      animation: detailsIn 400ms ${styles2.easing.easeOut} both;
+    }
+    &:after {
+      transform: translateY(-1px) rotate(135deg);
+    }
   }
-`);
-var Summary = inject_styles_default(import_styled_components38.default.summary`
+  @keyframes detailsIn {
+    0% { opacity: 0; transform: translateY(-1em); }
+  }
+`}`);
+var Summary = inject_styles_default(import_styled_components39.default.summary`${({ styles: styles2 }) => `
+  display: inline-block;
+  position: relative;
   cursor: pointer;
-  color: ${({ styles: styles2 }) => styles2.color.light};
-  text-decoration: underline;
-`);
+  padding: ${styles2.padding.xxSmall} 0 ${styles2.padding.xxSmall} ${styles2.padding.small}; 
+  list-style: none;
+  font-family: ${styles2.font.body};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.boldWeight};
+  line-height: ${styles2.text.body.lineHeight};
+  letter-spacing: ${styles2.text.body.letterSpacing};
+  border-bottom: 1px solid ${styles2.color2.link};
+  color: ${styles2.color2.link};
+  &::-webkit-details-marker {
+    display:none;
+  }
+  &:after {
+    content: " ";
+    display: inline-block;
+    vertical-align: middle;
+    pointer-events: none;
+    margin-left: ${styles2.padding.xSmall};
+    width: 5px;
+    height: 5px;
+    transform: translateY(-1px) rotate(-45deg);
+    transform-origin: 2px 4px;
+    border-left: 2px solid ${styles2.color2.link};
+    border-bottom: 2px solid ${styles2.color2.link};
+    transition: transform 400ms ${styles2.easing.easeOut};
+  }
+`}`);
 
 // components/blocks/SummaryDetails.tsx
-var import_jsx_runtime27 = require("react/jsx-runtime");
+var import_jsx_runtime28 = require("react/jsx-runtime");
 function SummaryDetails({ summary, details }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(Details, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Summary, { children: summary }),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Html, { text: details })
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(Details, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Summary, { children: summary }),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Html, { text: details })
   ] });
 }
 
 // components/blocks/Sum.tsx
-var import_jsx_runtime28 = require("react/jsx-runtime");
+var import_jsx_runtime29 = require("react/jsx-runtime");
 var calculateSum = (data, values2, operations = [], minimum) => {
   var _a;
   let sum = values2.reduce((accumulator, cur, currentIndex) => {
@@ -4827,42 +5090,42 @@ function Sum({
   details
 }) {
   const sum = calculateSum(data, values2, operations, minimum);
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(Sum_default, { groupedSimple, final, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(Sum_default, { groupedSimple, final, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { children: [
       heading,
-      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("span", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("span", { children: [
         sum,
         " ",
-        unit ? /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Html, { inline: true, text: unit }) : null
+        unit ? /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Html, { inline: true, text: unit }) : null
       ] })
     ] }),
-    summary && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(SummaryDetails, { summary, details })
+    summary && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SummaryDetails, { summary, details })
   ] });
 }
 
 // components/blocks/Table.tsx
 var import_pick = __toESM(require("lodash/pick"));
-var import_jsx_runtime29 = require("react/jsx-runtime");
+var import_jsx_runtime30 = require("react/jsx-runtime");
 var import_react9 = require("react");
 function TableCell(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(TD, __spreadValues({}, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TD, __spreadValues({}, props));
 }
 function TableHeader(_a) {
   var _b = _a, { simple } = _b, props = __objRest(_b, ["simple"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("th", __spreadValues({}, props));
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("th", __spreadValues({}, props));
 }
 function Table2({ cells, debug, simple }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(TableContainer_default, { simple, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("table", { "data-debug": debug, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("tbody", { children: cells.map((row, rowKey) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("tr", { children: row.map((cell, cellKey) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableContainer_default, { simple, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("table", { "data-debug": debug, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("tbody", { children: cells.map((row, rowKey) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("tr", { children: row.map((cell, cellKey) => {
     const cellProps = __spreadProps(__spreadValues({}, (0, import_pick.default)(cell, ["colSpan", "rowSpan"])), {
       "data-inactive": Boolean(cell.inactive)
     });
     const Cell = cell.type === "Heading" ? TableHeader : TableCell;
-    return /* @__PURE__ */ (0, import_react9.createElement)(Cell, __spreadProps(__spreadValues({ "data-id": cell.id }, cellProps), { key: cellKey, simple }), /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Html, { text: cell.text }));
+    return /* @__PURE__ */ (0, import_react9.createElement)(Cell, __spreadProps(__spreadValues({ "data-id": cell.id }, cellProps), { key: cellKey, simple, "aria-label": cellProps["data-inactive"] ? `Inaktiv: ${cell.text}` : void 0 }), /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Html, { text: cell.text }));
   }) }, rowKey)) }) }) });
 }
 
 // components/blocks/Text.tsx
-var import_jsx_runtime30 = require("react/jsx-runtime");
+var import_jsx_runtime31 = require("react/jsx-runtime");
 function Text({
   debug,
   heading,
@@ -4872,7 +5135,7 @@ function Text({
   printonly = false,
   printhide = false
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
     TextBlock,
     {
       warning,
@@ -4881,16 +5144,16 @@ function Text({
       printonly,
       printhide,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Html, { text: heading, h2: true }),
-        ";",
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Html, { text })
+        warning && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(InfoIcon, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(Html, { text: heading, h2: true }),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(Html, { text })
       ]
     }
   );
 }
 
 // components/blocks/Textarea.tsx
-var import_jsx_runtime31 = require("react/jsx-runtime");
+var import_jsx_runtime32 = require("react/jsx-runtime");
 function Textarea2(props) {
   const handleChange = (e) => {
     const { property: property2, setData: setData2 } = props;
@@ -4898,8 +5161,8 @@ function Textarea2(props) {
     setData2(property2, value);
   };
   const { currentValue, information, heading, placeholder, property, autocomplete } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
       Textarea,
       {
         "aria-label": heading,
@@ -4910,29 +5173,43 @@ function Textarea2(props) {
         autoComplete: autocomplete
       }
     ),
-    information && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(Information_default, { id: `${property}.information`, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(ErrorIcon, { triangleFill: "black" }),
-      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(Html, { text: information })
+    information && /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(Information_default, { id: `${property}.information`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ErrorIcon, { triangleFill: "black" }),
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: information })
     ] })
   ] });
 }
 
 // primitives/ErrorBlock.ts
-var import_styled_components39 = __toESM(require("styled-components"));
-var StyledErrorBlock = inject_styles_default(import_styled_components39.default.div`
-  padding: 0;
+var import_styled_components40 = __toESM(require("styled-components"));
+var StyledErrorBlock = inject_styles_default(import_styled_components40.default.div`${({ styles: styles2, grouped }) => `
+  padding: ${styles2.padding.large} 0;
   width: 100%;
-  margin: ${(props) => props.grouped ? "0 0 20px 0" : "20px 0"};
+  ${grouped ? `&:not(last-child) { margin-bottom: ${styles2.padding.xLarge} ; }` : ""};
+
+  svg {
+    position: absolute;
+    top: ${styles2.padding.large};
+    left: ${styles2.padding.large};
+    width: ${styles2.iconSize.medium};
+    height: ${styles2.iconSize.medium};
+    display: inline-block;
+    vertical-align: middle;
+  }
 
   > div {
     padding: 0;
   }
 
   > div:first-of-type {
-    border-left: 12px solid ${({ styles: styles2 }) => styles2.color.red};
-    background: ${({ styles: styles2 }) => styles2.color.lightred};
-    padding: 30px 33px 36px 21px;
+    position: relative;
+    border-left: 4px solid ${styles2.color2.negative};
+    background: ${styles2.color2.negativeXLight};
+    padding: ${styles2.padding.large};
+    padding-left: calc(${styles2.padding.large} + 1.2em +  ${styles2.padding.large});
+    animation: messageIn 1000ms ${styles2.easing.easeOut};
   }
+
   > div:nth-of-type(2) {
     padding: 0 33px 36px;
   }
@@ -4946,11 +5223,14 @@ var StyledErrorBlock = inject_styles_default(import_styled_components39.default.
     padding: 0;
     margin: 0;
   }
-`);
+  @keyframes messageIn {
+    0% { opacity: 0; transform: translateY(2em); }
+  }
+`}`);
 var ErrorBlock_default = StyledErrorBlock;
 
 // components/blocks/Block.tsx
-var import_jsx_runtime32 = require("react/jsx-runtime");
+var import_jsx_runtime33 = require("react/jsx-runtime");
 function getBlock(type) {
   switch (type) {
     case "Radio":
@@ -4988,7 +5268,7 @@ function getBlock(type) {
 function PureBlock(props) {
   const SpecificBlock2 = getBlock(props.type);
   if (props.type === "ErrorOk") {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("div", { children: props.children.map((block) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", { children: props.children.map((block) => /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
       ConnectedBlock,
       __spreadValues({
         "data-id": props.id,
@@ -5001,10 +5281,10 @@ function PureBlock(props) {
     )) });
   }
   if (props.type === "Group") {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(SpecificBlock, { "data-id": props.id, debug: props.debug, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.heading, h2: true }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.text }),
-      props.children.map((block) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(SpecificBlock, { "data-id": props.id, debug: props.debug, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Html, { text: props.heading, h2: true }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Html, { text: props.text, margins: true }),
+      props.children.map((block) => /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         ConnectedBlock,
         __spreadValues({
           grouped: true,
@@ -5016,14 +5296,14 @@ function PureBlock(props) {
         }, block),
         block.id
       )),
-      props.summary && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(SummaryDetails, { summary: props.summary, details: props.details })
+      props.summary && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(SummaryDetails, { summary: props.summary, details: props.details })
     ] });
   }
   if (props.type === "Error") {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(ErrorBlock_default, { role: "alert", "data-id": props.id, debug: props.debug, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.heading, h2: true }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.text }),
-      props.children.map((block) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(ErrorBlock_default, { role: "alert", "data-id": props.id, debug: props.debug, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Html, { text: props.heading, h2: true }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Html, { text: props.text, margins: true }),
+      props.children.map((block) => /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         ConnectedBlock,
         __spreadValues({
           grouped: true,
@@ -5031,6 +5311,7 @@ function PureBlock(props) {
           simple: props.simple,
           setPage: props.setPage,
           errorPages: props.errorPages,
+          warning: true,
           pages: props.pages
         }, block),
         block.id
@@ -5038,10 +5319,10 @@ function PureBlock(props) {
     ] });
   }
   if (!SpecificBlock2) {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Missing, { type: props.type });
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Missing, { type: props.type });
   }
   if (props.type === "Image" || props.type === "Text" || props.type === "Signature" || props.type === "Sum" || props.type === "Summary" || props.type === "Information" || props.type === "Evaluation") {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
       SpecificBlock2,
       __spreadValues({
         grouped: props.grouped,
@@ -5051,7 +5332,7 @@ function PureBlock(props) {
       }, props)
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
     SpecificBlock,
     {
       "data-id": props.id,
@@ -5061,12 +5342,11 @@ function PureBlock(props) {
       groupedSimple: props.simple,
       disabled: props.disabled,
       type: props.type,
-      children: /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.heading, h2: true }),
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.text }),
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Image2, { image: props.image }),
-        repeatQuestion(props.image, props.text) ? /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Html, { text: props.heading, h3: true }) : "",
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Image2, { image: props.image }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Html, { text: props.heading, h2: !props.grouped, h3: props.grouped }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Html, { text: props.text, margins: true }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
           SpecificBlock2,
           __spreadValues({
             debug: props.debug
@@ -5079,48 +5359,16 @@ function PureBlock(props) {
             } : {}
           }))
         ),
-        props.disabled && /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(ErrorMessage, { role: "alert", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(ErrorIcon, {}),
+        props.disabled && /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(ErrorMessage, { role: "alert", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(ErrorIcon, {}),
           " ",
           props.errorDescription
         ] }),
-        props.summary && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(SummaryDetails, { summary: props.summary, details: props.details })
-      ] })
+        props.summary && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(SummaryDetails, { summary: props.summary, details: props.details })
+      ]
     }
   );
 }
-PureBlock.propTypes = {
-  children: import_prop_types.default.arrayOf(import_prop_types.default.object),
-  currentValue: import_prop_types.default.any,
-  debug: import_prop_types.default.bool.isRequired,
-  disabled: import_prop_types.default.bool,
-  errorDescription: import_prop_types.default.string,
-  errors: import_prop_types.default.shape({
-    disabled: import_prop_types.default.array,
-    validation: import_prop_types.default.object,
-    required: import_prop_types.default.bool
-  }),
-  grouped: import_prop_types.default.bool,
-  heading: import_prop_types.default.string,
-  id: import_prop_types.default.string,
-  image: import_prop_types.default.object,
-  property: import_prop_types.default.string,
-  simple: import_prop_types.default.bool,
-  text: import_prop_types.default.string,
-  type: import_prop_types.default.string.isRequired,
-  validator: import_prop_types.default.oneOfType([
-    import_prop_types.default.bool,
-    import_prop_types.default.shape({
-      error: import_prop_types.default.string.isRequired,
-      pattern: import_prop_types.default.string.isRequired
-    })
-  ]),
-  errorPages: import_prop_types.default.array,
-  details: import_prop_types.default.string,
-  summary: import_prop_types.default.string,
-  setPage: import_prop_types.default.func,
-  pages: import_prop_types.default.array
-};
 PureBlock.defaultProps = {
   children: [],
   currentValue: void 0,
@@ -5153,24 +5401,18 @@ var ConnectedBlock = (0, import_react_redux4.connect)(
 var Block_default = ConnectedBlock;
 
 // components/Navigation.tsx
-var import_jsx_runtime33 = require("react/jsx-runtime");
+var import_jsx_runtime34 = require("react/jsx-runtime");
 function Navigation2({
   nextPageIsResult,
   hasNext = false,
-  hasPrevious = false,
   nextPage = () => {
-  },
-  previousPage = () => {
   }
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(grid_exports.Nav, { children: [
-    hasPrevious ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Button_exports.NavButton, { type: "button", onClick: previousPage, children: "Forrige" }) : null,
-    hasNext ? /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Button_exports.NavButton, { type: "button", next: true, onClick: nextPage, children: nextPageIsResult ? "Vis resultat" : "Neste" }) : null
-  ] });
+  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_jsx_runtime34.Fragment, { children: hasNext ? /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Button_exports.NavButton, { type: "button", next: true, onClick: nextPage, children: nextPageIsResult ? "Vis resultat" : "Neste" }) : null });
 }
 
 // components/Page.tsx
-var import_jsx_runtime34 = require("react/jsx-runtime");
+var import_jsx_runtime35 = require("react/jsx-runtime");
 function Page({
   children = [],
   debug = false,
@@ -5185,12 +5427,12 @@ function Page({
   previousPage,
   summary = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(grid_exports.Main, { debug, "data-id": pageid, id: "main", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Heading_exports.H1, { children: heading }),
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Paragraphs_exports.Lead, { children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Html, { text: lead }) }),
-    summary && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(SummaryDetails, { summary, details }),
-    children.map((block, index) => /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Block_default, __spreadValues({}, block), hasProperty(block, "id") && block.id || index)),
-    (!firstPage || !lastPage) && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(grid_exports.Main, { debug, "data-id": pageid, id: "main", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Heading_exports.H1, { children: heading }),
+    lead && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Paragraphs_exports.Lead, { children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Html, { text: lead }) }),
+    summary && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(SummaryDetails, { summary, details }),
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(grid_exports.Blocks, { children: children.map((block, index) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Block_default, __spreadValues({}, block), hasProperty(block, "id") && block.id || index)) }),
+    (!firstPage || !lastPage) && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       Navigation2,
       {
         nextPageIsResult,
@@ -5252,7 +5494,7 @@ function trackEvent(action, name = "") {
 // components/ExportData.tsx
 var import_react10 = require("react");
 var import_react_redux5 = require("react-redux");
-var import_jsx_runtime35 = require("react/jsx-runtime");
+var import_jsx_runtime36 = require("react/jsx-runtime");
 function ExportData({ data }) {
   const [copied, setCopied] = (0, import_react10.useState)(false);
   (0, import_react10.useEffect)(() => {
@@ -5285,7 +5527,7 @@ function ExportData({ data }) {
     }, 5e3);
   };
   const buttonText = copied ? "Svarene er lagret p\xE5 utklippstavlen!" : "Kopier svarene til et fagsystem";
-  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
     MainButton,
     {
       "aria-live": copied ? "assertive" : void 0,
@@ -5301,41 +5543,24 @@ var mapStateToProps2 = (state, { exporter }) => ({
 var ExportData_default = (0, import_react_redux5.connect)(mapStateToProps2)(ExportData);
 
 // primitives/Summary.ts
-var import_styled_components40 = __toESM(require("styled-components"));
-var PageSummary = inject_styles_default(import_styled_components40.default.div`
-  padding: 20px 0 20px;
-  margin: 0 0 10px;
-  background: white;
-  line-height: 2;
-  border-top: 1px solid ${({ styles: styles2 }) => styles2.color.warmgray3};
+var import_styled_components41 = __toESM(require("styled-components"));
+var PageSummary = inject_styles_default(import_styled_components41.default.div`${({ styles: styles2, error }) => `
+  width: 100%;
+  padding: ${styles2.padding.xLarge} 0;
   h2 {
-    padding: 0.2em 0;
-    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
-    font-weight: 300;
+    margin-bottom: ${styles2.padding.large};
   }
   button {
-    min-width: 120px;
     align-self: flex-start;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 ${styles2.padding.medium};
   }
-  > div {
-    line-height: 1.4;
-    max-width: 600px;
-  }
-  ${(props) => props.error ? `
+  ${error ? `
       h2 {
-        color: ${props.styles.color.red};
+        color: ${styles2.color2.error};
       }
-      button {
-        background: ${props.styles.color.red};
-      }
-    ` : `
-      h2 {
-        color: inherit;
-      }
-    `}
+    ` : ""}
   @media screen and (max-width: 900px) {
     h2 {
       display: block;
@@ -5347,53 +5572,49 @@ var PageSummary = inject_styles_default(import_styled_components40.default.div`
   }
   @media print {
     page-break-inside: avoid;
-    padding-bottom: 0;
-    font-size: 12px;
-    border: 1px solid ${({ styles: styles2 }) => styles2.color.darkgray};
-    padding: 16px;
+    padding: 0;
+    padding-bottom: ${styles2.padding.xLarge};
     h2 {
-      font-size: 14px;
-      font-style: italic;
-      display: inline-block;
-      margin-bottom: 20px;
-      border-bottom: 1px solid ${({ styles: styles2 }) => styles2.color.warmgray2};
+      width: 100%;
+      border-bottom: 1px solid ${styles2.color2.primary};
     }
   }
-`);
-var NodeSummary = inject_styles_default(import_styled_components40.default.div`
-  margin-bottom: 30px;
+`}`);
+var NodeSummary = inject_styles_default(import_styled_components41.default.div`${({ styles: styles2, error }) => `
+  background: ${error ? styles2.color2.errorXLight : styles2.color2.secondaryXLight};
+  padding: ${styles2.padding.medium} ${styles2.padding.large};
+  margin-bottom: ${styles2.padding.xSmall};
+  border-radius: ${styles2.borderRadius.small};
   h3 {
-    font-size: 18px;
-    font-weight: 300;
-    margin-bottom: 0;
-  }
-  @media screen and (max-width: 900px) {
-    h3 {
-      font-size: 16px;
-    }
+    font-size: ${styles2.text.body.fontSize};
+    font-weight: ${styles2.text.body.fontWeight};
+    line-height: ${styles2.text.body.lineHeight};
+    letter-spacing: ${styles2.text.body.letterSpacing};
+    margin-bottom: ${styles2.padding.xxSmall}};
   }
   @media print {
-    margin-bottom: 20px;
+    padding: ${styles2.padding.small} 0;
     font-size: 12px;
     h3 {
       font-size: 12px;
     }
   }
-`);
-var Value = inject_styles_default(import_styled_components40.default.div`
-  color: ${(props) => props.missing ? props.styles.color.red : "black"};
-  font-weight: ${(props) => props.missing ? "300" : "bold"};
-  font-style: ${(props) => props.missing ? "italic" : "normal"};
-`);
+`}`);
+var Value = inject_styles_default(import_styled_components41.default.div`${({ styles: styles2, missing }) => `
+  font-style: ${missing ? "italic" : "normal"};
+  color: ${missing ? styles2.color2.error : styles2.color2.textDark};
+  font-size: ${styles2.text.body.fontSize};
+  font-weight: ${styles2.text.body.boldWeight};
+`}`);
 
 // components/Summary/value/index.tsx
-var import_jsx_runtime36 = require("react/jsx-runtime");
+var import_jsx_runtime37 = require("react/jsx-runtime");
 function Value2({ value, node }) {
   if (Number(value) === value && value % 1 !== 0) {
     value = Math.round(value);
   }
   if (!node.optional && [null, void 0, ""].includes(value)) {
-    return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Value, { missing: true, children: "* M\xE5 fylles ut" });
+    return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Value, { missing: true, children: "* M\xE5 fylles ut" });
   }
   if (node.options) {
     let values2;
@@ -5409,33 +5630,33 @@ function Value2({ value, node }) {
       return option.heading || option.text || val;
     });
     if (!node.optional && !values2.length) {
-      return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Value, { missing: true, children: "* M\xE5 fylles ut" });
+      return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Value, { missing: true, children: "* M\xE5 fylles ut" });
     } else if (!values2.length) {
-      return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Value, { children: "Ingen valgt" });
+      return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Value, { children: "Ingen valgt" });
     }
     const commaSeparated = values2.slice(0, -1);
     const lastOne = values2.slice(-1)[0];
     if (!commaSeparated.length) {
-      return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Value, { children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Html, { inline: true, text: lastOne }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Value, { children: lastOne });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(Value, { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(Value, { children: [
       commaSeparated.join(", "),
       " og ",
       lastOne,
       "."
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(Value, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(Value, { children: [
     value,
     " ",
-    node.unit ? /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Html, { inline: true, text: node.unit }) : null
+    node.unit ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Html, { inline: true, text: node.unit }) : null
   ] });
 }
 
 // components/Summary/value/Checkbox.tsx
-var import_prop_types2 = __toESM(require_prop_types());
+var import_prop_types = __toESM(require_prop_types());
 var import_react_redux6 = require("react-redux");
-var import_jsx_runtime37 = require("react/jsx-runtime");
+var import_jsx_runtime38 = require("react/jsx-runtime");
 function numOfMatchingItemsInObject(object, value) {
   const items = Object.keys(object || {}).filter(
     (key) => object[key] === value
@@ -5444,16 +5665,15 @@ function numOfMatchingItemsInObject(object, value) {
 }
 function Sum2({ node, node: { allMandatory, currentValue = {}, errors } }) {
   const matchingItems = numOfMatchingItemsInObject(currentValue, true);
-  return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
     SpecificBlock,
     {
       grouped: true,
-      smallMarginTop: true,
       error: allMandatory && errors.required,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("p", { children: [
-          matchingItems === 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("strong", { children: "Du har ikke valgt noen alternativer, men for " }),
-          matchingItems > 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("strong", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("small", { children: [
+          matchingItems === 0 && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("em", { children: "Du har ikke valgt noen alternativer, men for " }),
+          matchingItems > 0 && /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("em", { children: [
             "Du har ",
             allMandatory && errors.required ? "kun" : "",
             " valgt",
@@ -5465,8 +5685,8 @@ function Sum2({ node, node: { allMandatory, currentValue = {}, errors } }) {
             " alternativer."
           ] })
         ] }),
-        node.options.map((item) => /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+        node.options.map((item) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
             CheckboxResultDisplay,
             {
               type: "checkbox",
@@ -5475,7 +5695,7 @@ function Sum2({ node, node: { allMandatory, currentValue = {}, errors } }) {
               readOnly: true
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Label, { htmlFor: `${node.id}-${item.value}`, children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { children: item.heading }) })
+          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Label, { htmlFor: `${node.id}-${item.value}`, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { children: item.heading }) })
         ] }, `${node.id}-${item.value}`))
       ]
     }
@@ -5486,11 +5706,11 @@ var ConnectedSum = (0, import_react_redux6.connect)((state) => ({
 }))(Sum2);
 var Checkbox_default = ConnectedSum;
 Sum2.propTypes = {
-  node: import_prop_types2.default.object.isRequired
+  node: import_prop_types.default.object.isRequired
 };
 
 // components/Summary/value/FetchOrg.tsx
-var import_jsx_runtime38 = require("react/jsx-runtime");
+var import_jsx_runtime39 = require("react/jsx-runtime");
 function FetchOrgSummary({
   value: {
     address = "",
@@ -5502,28 +5722,28 @@ function FetchOrgSummary({
   } = {}
 }) {
   if (!orgid) {
-    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Value, { missing: true, children: "* M\xE5 fylles ut" });
+    return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Value, { missing: true, children: "* M\xE5 fylles ut" });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(Datalist_default, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("dd", { children: orgid }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("dt", { children: "Firmaets navn" }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("dd", { children: name }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("dt", { children: "Adresse" }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("dd", { children: address }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("dt", { children: "Postnummer- og sted" }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("dd", { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(Datalist_default, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("dd", { children: orgid }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("dt", { children: "Firmaets navn" }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("dd", { children: name }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("dt", { children: "Adresse" }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("dd", { children: address }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("dt", { children: "Postnummer- og sted" }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("dd", { children: [
       postcode,
       " ",
       postplace
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(ApprovalAreas, { areas: validApprovalAreas, title: true })
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(ApprovalAreas, { areas: validApprovalAreas, title: true })
   ] });
 }
 
 // components/Summary/value/Sum.tsx
 var import_get11 = __toESM(require("lodash/get"));
 var import_react_redux7 = require("react-redux");
-var import_jsx_runtime39 = require("react/jsx-runtime");
+var import_jsx_runtime40 = require("react/jsx-runtime");
 function hasAllValues(values2, data) {
   return values2.reduce(
     (acc, currentValue) => (0, import_get11.default)(data, currentValue) !== void 0 && acc,
@@ -5536,7 +5756,7 @@ function Sum3({ node, data }) {
   }
   const { minimum, operations, values: values2 } = node;
   if (!hasAllValues(values2, data)) {
-    return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Value, { missing: true, children: "* Mangler verdi for utregning" });
+    return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Value, { missing: true, children: "* Mangler verdi for utregning" });
   }
   const sum = values2.reduce((accumulator, currentValue, currentIndex) => {
     if (operations && operations[currentIndex] === "-") {
@@ -5548,7 +5768,7 @@ function Sum3({ node, data }) {
     }
     return Math.max(accumulator + (0, import_get11.default)(data, currentValue), minimum);
   }, 0);
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Value, { children: sum });
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Value, { children: sum });
 }
 var ConnectedSum2 = (0, import_react_redux7.connect)((state) => ({
   data: state[NAME]
@@ -5556,15 +5776,15 @@ var ConnectedSum2 = (0, import_react_redux7.connect)((state) => ({
 var Sum_default2 = ConnectedSum2;
 
 // components/Summary/SoftError.tsx
-var import_jsx_runtime40 = require("react/jsx-runtime");
+var import_jsx_runtime41 = require("react/jsx-runtime");
 function SoftError({ children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(NodeSummary, { children: children.map((child) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_jsx_runtime41.Fragment, { children: children.map((child) => {
     const heading = !isOfType(child, ["Result"]) && (hasProperty(child, "heading") && child.heading || hasProperty(child, "text") && child.text);
     if (heading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(ErrorMessage, { role: "alert", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(ErrorIcon, {}),
+      return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(ErrorMessage, { role: "alert", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(InfoIcon, {}),
         " ",
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Html, { text: heading, inline: true })
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Html, { text: heading, inline: true })
       ] });
     }
     return null;
@@ -5572,31 +5792,31 @@ function SoftError({ children }) {
 }
 
 // components/Summary/Information.tsx
-var import_jsx_runtime41 = require("react/jsx-runtime");
+var import_jsx_runtime42 = require("react/jsx-runtime");
 function Information3({ text }) {
   if (text) {
-    return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(NodeSummary, { children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(Information_default, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(ErrorIcon, { triangleFill: "black" }),
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Html, { text })
-    ] }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(Information_default, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(InfoIcon, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Html, { text })
+    ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { children: "TEXT MISSING" });
+  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("p", { children: "TEXT MISSING" });
 }
 
 // components/Summary/Node.tsx
 var import_get12 = __toESM(require("lodash/get"));
-var import_jsx_runtime42 = require("react/jsx-runtime");
+var import_jsx_runtime43 = require("react/jsx-runtime");
 var ignoreNodes = ["Text", "Image"];
 var overrideValueSummary = { FetchOrg: FetchOrgSummary, Sum: Sum_default2, Checkbox: Checkbox_default };
 function NodeSummary2({ node }) {
   if (isOfType(node, ["Error"])) {
-    return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(SoftError, { children: node.children });
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(SoftError, { children: node.children });
   }
   if (isOfType(node, ["Information"])) {
-    return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Information3, { text: node.text });
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Information3, { text: node.text });
   }
   if (isOfType(node, ["Group", "ErrorOk"])) {
-    return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("div", { children: node.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(NodeSummary2, { value: child.currentValue, node: child }, child.id)) });
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_jsx_runtime43.Fragment, { children: node.children.map((child) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(NodeSummary2, { value: child.currentValue, node: child }, child.id)) });
   }
   if (ignoreNodes.includes(node.type) || !hasProperty(node, "property")) {
     return null;
@@ -5604,15 +5824,15 @@ function NodeSummary2({ node }) {
   const ValueSummary = (0, import_get12.default)(overrideValueSummary, node.type, Value2);
   const errors = (0, import_get12.default)(node, "errors");
   const errorDescription = (0, import_get12.default)(node, "errorDescription");
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(NodeSummary, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Html, { text: node.heading, h3: true }),
-    /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(ValueSummary, { value: (0, import_get12.default)(node, "currentValue"), node }),
-    errors.validation.error ? /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(ErrorMessage, { role: "alert", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(ErrorIcon, {}),
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(NodeSummary, { error: errors.validation.error, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Html, { text: node.heading, h3: true }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ValueSummary, { value: (0, import_get12.default)(node, "currentValue"), node }),
+    errors.validation.error ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(ErrorMessage, { role: "alert", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ErrorIcon, {}),
       errors.validation.message
     ] }) : null,
-    errors.disabled.length ? /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(ErrorMessage, { role: "alert", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(ErrorIcon, {}),
+    errors.disabled.length ? /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(ErrorMessage, { role: "alert", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(ErrorIcon, {}),
       " ",
       errorDescription
     ] }) : null
@@ -5620,22 +5840,22 @@ function NodeSummary2({ node }) {
 }
 
 // components/Summary/Page.tsx
-var import_jsx_runtime43 = require("react/jsx-runtime");
+var import_jsx_runtime44 = require("react/jsx-runtime");
 function PageSummary2({ children = [], error, goToPage, heading }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(PageSummary, { error, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(H2, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(PageSummary, { error, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(H2, { children: [
       heading,
       " ",
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(SmallButton, { type: "button", onClick: goToPage, children: "Endre svar" })
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SmallButton, { type: "button", onClick: goToPage, children: "Endre svar" })
     ] }),
-    children.map((node, index) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(NodeSummary2, { node }, hasProperty(node, "id") ? node.id : index))
+    children.map((node, index) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(NodeSummary2, { node }, hasProperty(node, "id") ? node.id : index))
   ] });
 }
 
 // components/Summary/index.tsx
-var import_jsx_runtime44 = require("react/jsx-runtime");
+var import_jsx_runtime45 = require("react/jsx-runtime");
 function Summary2({ errorPages, setPage, pages = [] }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: pages.filter(({ type }) => type === "Page").map((page) => hasProperty(page, "id") ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_jsx_runtime45.Fragment, { children: pages.filter(({ type }) => type === "Page").map((page) => hasProperty(page, "id") ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
     PageSummary2,
     __spreadValues({
       error: !!errorPages.find(({ id }) => page.id === id) || hasSoftError(page),
@@ -5649,8 +5869,8 @@ function Summary2({ errorPages, setPage, pages = [] }) {
 var import_react11 = require("react");
 
 // primitives/Spinner.ts
-var import_styled_components41 = __toESM(require("styled-components"));
-var Spinner_default = inject_styles_default(import_styled_components41.default.div`
+var import_styled_components42 = __toESM(require("styled-components"));
+var Spinner_default = inject_styles_default(import_styled_components42.default.div`
   display: inline-flex;
   width: 1em;
   height: 1em;
@@ -5713,7 +5933,7 @@ function createPDF(pdfServiceUrl, localStorageKey) {
 }
 
 // components/PDFButton.tsx
-var import_jsx_runtime45 = require("react/jsx-runtime");
+var import_jsx_runtime46 = require("react/jsx-runtime");
 function PDFButton({
   localStorageKey,
   pageHeading,
@@ -5736,25 +5956,25 @@ function PDFButton({
       setIsDownloading(false);
     });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
       MainButton,
       {
         type: "button",
         onClick: handleClick,
         disabled: isDownloading,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: isDownloading ? "Lager PDF..." : "Lagre som PDF" }, "text"),
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Spinner_default, { hidden: !isDownloading }, "spinner")
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: isDownloading ? "Lager PDF..." : "Lagre som PDF" }, "text"),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Spinner_default, { hidden: !isDownloading }, "spinner")
         ]
       }
     ),
-    errorMessage && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("p", { children: "Noe gikk galt. Pr\xF8v igjen." })
+    errorMessage && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("p", { children: "Noe gikk galt. Pr\xF8v igjen." })
   ] });
 }
 
 // components/Result.tsx
-var import_jsx_runtime46 = require("react/jsx-runtime");
+var import_jsx_runtime47 = require("react/jsx-runtime");
 var import_react12 = require("react");
 function Result(props) {
   const {
@@ -5768,8 +5988,6 @@ function Result(props) {
     pageid,
     schema,
     setPage,
-    summaryTitle,
-    title,
     wizard: {
       meta: { pdfServiceUrl, localStorageKey }
     }
@@ -5782,12 +6000,12 @@ function Result(props) {
     trackEvent("Skriv ut", resultHeading);
     window.print();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(grid_exports.Main, { result: true, debug, "data-id": pageid, id: "main", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(H1, { result: true, children: resultHeading }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Lead, { result: true, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Html, { text: resultLead }) }),
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(grid_exports.Main, { result: true, debug, "data-id": pageid, id: "main", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(H1, { result: true, children: resultHeading }),
+    resultLead && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(grid_exports.Blocks, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Html, { text: resultLead }) }),
     children.map((_a) => {
       var _b = _a, { heading: heading2 } = _b, block = __objRest(_b, ["heading"]);
-      return /* @__PURE__ */ (0, import_react12.createElement)(
+      return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(grid_exports.Blocks, { children: /* @__PURE__ */ (0, import_react12.createElement)(
         Block_default,
         __spreadProps(__spreadValues({}, block), {
           key: block.id,
@@ -5795,26 +6013,27 @@ function Result(props) {
           setPage,
           pages: schema
         })
-      );
+      ) });
     }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(SpecificBlock, { children: [
-      summaryTitle ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(H1, { small: true, children: summaryTitle }) : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(H1, { small: true, children: title }),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Summary2, { errorPages, setPage, pages: schema })
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(grid_exports.Blocks, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("hr", {}),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(H2, { small: true, children: "Oppsummering" }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Summary2, { errorPages, setPage, pages: schema })
     ] }),
-    !incomplete && exporter ? /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(TextBlock, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(H2, { children: "Takk for at du gjennomf\xF8rte veiviseren!" }),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Lead, { children: "Du kan kopiere svarene dine, eller skrive ut resultatsiden." })
+    !incomplete && exporter ? /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(TextBlock, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(H2, { children: "Takk for at du gjennomf\xF8rte veiviseren!" }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Lead, { children: "Du kan kopiere svarene dine, eller skrive ut resultatsiden." })
     ] }) : null,
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(Export, { exporter, children: [
-      !incomplete && exporter && (exports == null ? void 0 : exports[exporter]) ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(ExportData_default, { exporter: exports[exporter] }) : null,
-      pdfServiceUrl && localStorageKey ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(Export, { exporter, children: [
+      !incomplete && exporter && (exports == null ? void 0 : exports[exporter]) ? /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ExportData_default, { exporter: exports[exporter] }) : null,
+      pdfServiceUrl && localStorageKey ? /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
         PDFButton,
         {
           pdfServiceUrl,
           localStorageKey,
           pageHeading: resultHeading
         }
-      ) : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(MainButton, { type: "button", onClick: printPage, children: "Skriv ut" })
+      ) : /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(MainButton, { type: "button", onClick: printPage, children: "Skriv ut" })
     ] })
   ] });
 }
@@ -5824,8 +6043,8 @@ var mapStateToProps3 = (state, { wizard }) => ({
 var Result_default = (0, import_react_redux8.connect)(mapStateToProps3)(Result);
 
 // primitives/SkipLink.ts
-var import_styled_components42 = __toESM(require("styled-components"));
-var SkipLink = inject_styles_default(import_styled_components42.default.a`
+var import_styled_components43 = __toESM(require("styled-components"));
+var SkipLink = inject_styles_default(import_styled_components43.default.a`${({ styles: styles2 }) => `
   position: absolute;
   width: 1px;
   height: 1px;
@@ -5837,24 +6056,24 @@ var SkipLink = inject_styles_default(import_styled_components42.default.a`
 
   &:active,
   &:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
     overflow: visible;
     position: absolute;
+    z-index: 2;
+    height: auto;
+    margin: 0;
     width: auto;
-    font-size: 21px;
-    top: 2px;
-    left: 2px;
-    padding: 5px 10px;
-    background-color: #fff;
+    clip: auto;
+    top: ${styles2.padding.small};
+    left: ${styles2.padding.small};
+    padding: ${styles2.padding.small} ${styles2.padding.large};
+    background-color:  ${styles2.color2.sectionBackground};
   }
-`);
+`}`);
 var SkipLink_default = SkipLink;
 
 // components/helper/SkipLink.tsx
-var import_jsx_runtime47 = require("react/jsx-runtime");
-var SkipLink2 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SkipLink_default, { href: "#main", children: "G\xE5 til hovedinnhold" });
+var import_jsx_runtime48 = require("react/jsx-runtime");
+var SkipLink2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SkipLink_default, { href: "#main", children: "G\xE5 til hovedinnhold" });
 var SkipLink_default2 = SkipLink2;
 
 // utils/before-unload-handler.ts
@@ -6221,7 +6440,7 @@ function validate({
 }
 
 // components/Wizard.tsx
-var import_jsx_runtime48 = require("react/jsx-runtime");
+var import_jsx_runtime49 = require("react/jsx-runtime");
 function Wizard2({
   data = {
     [NAME]: {}
@@ -6244,6 +6463,7 @@ function Wizard2({
   const [showResetModal, setShowResetModal] = (0, import_react13.useState)(showResetModalDefault);
   const pageWrapper = (0, import_react13.useRef)(null);
   const setPage = (page2, property) => {
+    var _a;
     if (property) {
       setImmediate(() => {
         const element = document.getElementById(property);
@@ -6255,6 +6475,7 @@ function Wizard2({
     } else {
       window.scrollTo(0, 0);
     }
+    (_a = pageWrapper == null ? void 0 : pageWrapper.current) == null ? void 0 : _a.focus();
     setData2("page", page2);
     setPageId(page2);
   };
@@ -6336,11 +6557,11 @@ ${error}
   const lastPage = pageIndex + 1 === schema.length;
   const firstPage = pageIndex === 0;
   const nextPageIsResult = schema[pageIndex + 1] ? schema[pageIndex + 1].type === "Result" : false;
-  return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StyleProvider, { styles: styles2, children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(Wizard, { children: [
-    showResetModal && /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Modal_default, { showIntro }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(grid_exports.Grid, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SkipLink_default2, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(StyleProvider, { styles: styles2, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(Wizard, { children: [
+    showResetModal && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Modal_default, { showIntro }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(grid_exports.Grid, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SkipLink_default2, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         Nav2,
         {
           page: page == null ? void 0 : page.id,
@@ -6351,12 +6572,12 @@ ${error}
           translations
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         grid_exports.FocusWrapper,
         {
           tabIndex: "-1",
           ref: pageWrapper,
-          children: page && isOfType(page, ["Result"]) ? /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          children: page && isOfType(page, ["Result"]) ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             Result_default,
             __spreadProps(__spreadValues({}, page), {
               debug,
@@ -6367,7 +6588,7 @@ ${error}
               setPage,
               exports
             })
-          ) : page && isOfType(page, ["Page", "Error", "ErrorOk"]) && /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          ) : page && isOfType(page, ["Page", "Error", "ErrorOk"]) && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             Page,
             __spreadValues({
               firstPage,

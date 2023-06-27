@@ -97,45 +97,118 @@ type Translations = Record<string, {
 }>;
 
 declare const styles: {
-    logo: {
-        default: string;
-        mobile: string;
-    };
     font: {
-        primary: string;
-        secondary: string;
+        headline: string;
+        body: string;
     };
-    color: {
-        light: string;
-        dark: string;
-        lightorange: string;
-        lightgreen: string;
-        bluegreen: string;
-        warmgray3: string;
-        warmgray2: string;
-        darkgray: string;
-        red: string;
-        lightred: string;
-        oldred: string;
-        green: string;
-        oldgreen: string;
+    color2: {
+        pageBackground: string;
+        sectionBackground: string;
+        textHeading: string;
+        textDark: string;
+        textWhite: string;
+        link: string;
+        visitedLink: string;
+        outline: string;
+        focus: string;
+        primary: string;
+        primaryLight: string;
+        primaryXLight: string;
+        secondary: string;
+        secondaryLight: string;
+        secondaryXLight: string;
+        error: string;
+        errorLight: string;
+        errorXLight: string;
+        positive: string;
+        positiveLight: string;
+        positiveXLight: string;
+        negative: string;
+        negativeLight: string;
+        negativeXLight: string;
+    };
+    borderRadius: {
+        small: string;
+        large: string;
     };
     padding: {
+        xxSmall: string;
+        xSmall: string;
         small: string;
         medium: string;
         large: string;
+        xLarge: string;
     };
     size: {
+        imageWidth: string;
+        pageWidth: string;
         blockWidth: string;
         navWidth: string;
         headerHeight: string;
         mobileContentWidth: string;
     };
+    iconSize: {
+        small: string;
+        medium: string;
+    };
+    easing: {
+        easeOut: string;
+    };
+    text: {
+        body: {
+            fontSize: string;
+            fontWeight: string;
+            boldWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+        };
+        lead: {
+            fontSize: string;
+            fontWeight: string;
+            boldWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+        };
+        h1: {
+            fontSize: string;
+            fontWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+        };
+        h2: {
+            fontSize: string;
+            fontWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+        };
+        h3: {
+            fontSize: string;
+            fontWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+        };
+        subHeading: {
+            fontSize: string;
+            fontWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+            textTransform: string;
+        };
+        caption: {
+            fontSize: string;
+            fontWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+            fontStyle: string;
+        };
+        label: {
+            fontSize: string;
+            fontWeight: string;
+            lineHeight: string;
+            letterSpacing: string;
+        };
+    };
 };
-type PrimitiveProps<T extends {} = {}> = {
-    styles: typeof styles;
-    debug?: boolean;
-} & T;
 type StylesProps = {
     styles?: Partial<typeof styles>;
 };
@@ -170,39 +243,116 @@ type Props$1 = {
 declare function Wizard$1({ data, debug, warningBeforeUnload, exports, showIntro, styles, translations, showResetModal: showResetModalDefault, schema, setData, tableOfContents, title, wizard }: Props$1): react_jsx_runtime.JSX.Element;
 declare const _default: react_redux.ConnectedComponent<typeof Wizard$1, {
     styles?: Partial<{
-        logo: {
-            default: string;
-            mobile: string;
-        };
         font: {
-            primary: string;
-            secondary: string;
+            headline: string;
+            body: string;
         };
-        color: {
-            light: string;
-            dark: string;
-            lightorange: string;
-            lightgreen: string;
-            bluegreen: string;
-            warmgray3: string;
-            warmgray2: string;
-            darkgray: string;
-            red: string;
-            lightred: string;
-            oldred: string;
-            green: string;
-            oldgreen: string;
+        color2: {
+            pageBackground: string;
+            sectionBackground: string;
+            textHeading: string;
+            textDark: string;
+            textWhite: string;
+            link: string;
+            visitedLink: string;
+            outline: string;
+            focus: string;
+            primary: string;
+            primaryLight: string;
+            primaryXLight: string;
+            secondary: string;
+            secondaryLight: string;
+            secondaryXLight: string;
+            error: string;
+            errorLight: string;
+            errorXLight: string;
+            positive: string;
+            positiveLight: string;
+            positiveXLight: string;
+            negative: string;
+            negativeLight: string;
+            negativeXLight: string;
+        };
+        borderRadius: {
+            small: string;
+            large: string;
         };
         padding: {
+            xxSmall: string;
+            xSmall: string;
             small: string;
             medium: string;
             large: string;
+            xLarge: string;
         };
         size: {
+            imageWidth: string;
+            pageWidth: string;
             blockWidth: string;
             navWidth: string;
             headerHeight: string;
             mobileContentWidth: string;
+        };
+        iconSize: {
+            small: string;
+            medium: string;
+        };
+        easing: {
+            easeOut: string;
+        };
+        text: {
+            body: {
+                fontSize: string;
+                fontWeight: string;
+                boldWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+            };
+            lead: {
+                fontSize: string;
+                fontWeight: string;
+                boldWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+            };
+            h1: {
+                fontSize: string;
+                fontWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+            };
+            h2: {
+                fontSize: string;
+                fontWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+            };
+            h3: {
+                fontSize: string;
+                fontWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+            };
+            subHeading: {
+                fontSize: string;
+                fontWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+                textTransform: string;
+            };
+            caption: {
+                fontSize: string;
+                fontWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+                fontStyle: string;
+            };
+            label: {
+                fontSize: string;
+                fontWeight: string;
+                lineHeight: string;
+                letterSpacing: string;
+            };
         };
     }> | undefined;
     showIntro?: (() => void) | undefined;
@@ -347,41 +497,6 @@ declare namespace index$2 {
   };
 }
 
-type NavProps = PrimitiveProps<{
-    next?: boolean;
-}>;
-declare const NavResult: react.ForwardRefExoticComponent<Omit<{
-    [x: string]: any;
-    [x: number]: any;
-    [x: symbol]: any;
-} & {
-    theme?: any;
-} & {
-    as?: string | react.ComponentType<any> | undefined;
-    forwardedAs?: string | react.ComponentType<any> | undefined;
-}, "ref"> & react.RefAttributes<unknown>>;
-declare const NavReset: react.ForwardRefExoticComponent<Omit<{
-    [x: string]: any;
-    [x: number]: any;
-    [x: symbol]: any;
-} & {
-    theme?: any;
-} & {
-    as?: string | react.ComponentType<any> | undefined;
-    forwardedAs?: string | react.ComponentType<any> | undefined;
-}, "ref"> & react.RefAttributes<unknown>>;
-
-type NavButton$1_NavProps = NavProps;
-declare const NavButton$1_NavReset: typeof NavReset;
-declare const NavButton$1_NavResult: typeof NavResult;
-declare namespace NavButton$1 {
-  export {
-    NavButton$1_NavProps as NavProps,
-    NavButton$1_NavReset as NavReset,
-    NavButton$1_NavResult as NavResult,
-  };
-}
-
 declare const NavItem: react.ForwardRefExoticComponent<Omit<{
     [x: string]: any;
     [x: number]: any;
@@ -487,23 +602,11 @@ declare const ErrorMessage: react.ForwardRefExoticComponent<Omit<{
     as?: string | react.ComponentType<any> | undefined;
     forwardedAs?: string | react.ComponentType<any> | undefined;
 }, "ref"> & react.RefAttributes<unknown>>;
-declare const ErrorMessageAlt: react.ForwardRefExoticComponent<Omit<{
-    [x: string]: any;
-    [x: number]: any;
-    [x: symbol]: any;
-} & {
-    theme?: any;
-} & {
-    as?: string | react.ComponentType<any> | undefined;
-    forwardedAs?: string | react.ComponentType<any> | undefined;
-}, "ref"> & react.RefAttributes<unknown>>;
 
 declare const Errors_ErrorMessage: typeof ErrorMessage;
-declare const Errors_ErrorMessageAlt: typeof ErrorMessageAlt;
 declare namespace Errors {
   export {
     Errors_ErrorMessage as ErrorMessage,
-    Errors_ErrorMessageAlt as ErrorMessageAlt,
   };
 }
 
@@ -525,6 +628,39 @@ declare namespace Figure$1 {
 }
 
 declare const Nav: react.ForwardRefExoticComponent<Omit<{
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} & {
+    theme?: any;
+} & {
+    as?: string | react.ComponentType<any> | undefined;
+    forwardedAs?: string | react.ComponentType<any> | undefined;
+}, "ref"> & react.RefAttributes<unknown>>;
+
+declare const NavList: react.ForwardRefExoticComponent<Omit<{
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} & {
+    theme?: any;
+} & {
+    as?: string | react.ComponentType<any> | undefined;
+    forwardedAs?: string | react.ComponentType<any> | undefined;
+}, "ref"> & react.RefAttributes<unknown>>;
+
+declare const NavSection: react.ForwardRefExoticComponent<Omit<{
+    [x: string]: any;
+    [x: number]: any;
+    [x: symbol]: any;
+} & {
+    theme?: any;
+} & {
+    as?: string | react.ComponentType<any> | undefined;
+    forwardedAs?: string | react.ComponentType<any> | undefined;
+}, "ref"> & react.RefAttributes<unknown>>;
+
+declare const Blocks: react.ForwardRefExoticComponent<Omit<{
     [x: string]: any;
     [x: number]: any;
     [x: symbol]: any;
@@ -590,18 +726,24 @@ declare const FocusWrapper: react.ForwardRefExoticComponent<Omit<{
     forwardedAs?: string | react.ComponentType<any> | undefined;
 }, "ref"> & react.RefAttributes<unknown>>;
 
+declare const index$1_Blocks: typeof Blocks;
 declare const index$1_FocusWrapper: typeof FocusWrapper;
 declare const index$1_Grid: typeof Grid;
 declare const index$1_Main: typeof Main;
 declare const index$1_Nav: typeof Nav;
+declare const index$1_NavList: typeof NavList;
+declare const index$1_NavSection: typeof NavSection;
 declare const index$1_Navigation: typeof Navigation;
 declare const index$1_Simple: typeof Simple;
 declare namespace index$1 {
   export {
+    index$1_Blocks as Blocks,
     index$1_FocusWrapper as FocusWrapper,
     index$1_Grid as Grid,
     index$1_Main as Main,
     index$1_Nav as Nav,
+    index$1_NavList as NavList,
+    index$1_NavSection as NavSection,
     index$1_Navigation as Navigation,
     index$1_Simple as Simple,
   };
@@ -819,17 +961,6 @@ declare const Title: react.ForwardRefExoticComponent<Omit<{
     forwardedAs?: string | react.ComponentType<any> | undefined;
 }, "ref"> & react.RefAttributes<unknown>>;
 
-declare const Logo: react.ForwardRefExoticComponent<Omit<{
-    [x: string]: any;
-    [x: number]: any;
-    [x: symbol]: any;
-} & {
-    theme?: any;
-} & {
-    as?: string | react.ComponentType<any> | undefined;
-    forwardedAs?: string | react.ComponentType<any> | undefined;
-}, "ref"> & react.RefAttributes<unknown>>;
-
 declare const ToggleButton: react.ForwardRefExoticComponent<Omit<{
     [x: string]: any;
     [x: number]: any;
@@ -867,7 +998,6 @@ declare const index_Block: typeof Block;
 declare const index_Button: typeof Button;
 declare const index_Errors: typeof Errors;
 declare const index_Export: typeof Export;
-declare const index_Logo: typeof Logo;
 declare const index_NavItem: typeof NavItem;
 declare const index_Paragraphs: typeof Paragraphs;
 declare const index_Title: typeof Title;
@@ -884,8 +1014,6 @@ declare namespace index {
     Heading$1 as Heading,
     Input$1 as Input,
     Label$1 as Label,
-    index_Logo as Logo,
-    NavButton$1 as NavButton,
     index_NavItem as NavItem,
     index_Paragraphs as Paragraphs,
     index_Title as Title,

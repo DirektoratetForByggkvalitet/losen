@@ -1,8 +1,5 @@
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-
-import repeatQuestion from "losen/components/helper/RepeatQuestion";
 
 // Components
 import Checkbox from "./checkbox/Checkbox";
@@ -30,7 +27,7 @@ import { setData } from "losen/state/actions";
 import { NAME } from "losen/state";
 
 // Primitives
-import { SpecificBlock as StyledBlock, TextBlock } from "losen/primitives/Block";
+import { SpecificBlock as StyledBlock } from "losen/primitives/Block";
 import StyledErrorBlock from "losen/primitives/ErrorBlock";
 import { ErrorMessage } from "losen/primitives/Errors";
 import { RenderableNode, State } from "losen";

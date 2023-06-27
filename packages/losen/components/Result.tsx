@@ -10,9 +10,9 @@ import Html from "./helper/Html";
 import Summary from "./Summary";
 
 import { H1, H2 } from "losen/primitives/Heading";
-import { P, Lead } from "losen/primitives/Paragraphs";
+import { Lead } from "losen/primitives/Paragraphs";
 import { MainButton } from "losen/primitives/Button";
-import { SpecificBlock, TextBlock } from "losen/primitives/Block";
+import { TextBlock } from "losen/primitives/Block";
 import { Export, Grid } from "losen/primitives";
 import PDFButton from "./PDFButton";
 import { RenderableNode, State, WizardDefinition } from "losen";
@@ -55,8 +55,6 @@ function Result(props: Props) {
     pageid,
     schema,
     setPage,
-    summaryTitle,
-    title,
     wizard: {
       meta: { pdfServiceUrl, localStorageKey },
     },
@@ -88,15 +86,15 @@ function Result(props: Props) {
             errorPages={errorPages}
             setPage={setPage}
             pages={schema}
-            />
+          />
         </Grid.Blocks>
       ))}
       <Grid.Blocks>
-        <hr/>
+        <hr />
         <H2 small>Oppsummering</H2>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
       </Grid.Blocks>
-          
+
       {!incomplete && exporter ? (
         <TextBlock>
           <H2>Takk for at du gjennomførte veiviseren!</H2>
@@ -104,7 +102,7 @@ function Result(props: Props) {
             Du kan kopiere svarene dine, eller skrive ut resultatsiden.
           </Lead>
         </TextBlock>
-        ) : null}
+      ) : null}
 
       <Export exporter={exporter}>
         {!incomplete && exporter && exports?.[exporter] ? (
@@ -122,7 +120,7 @@ function Result(props: Props) {
             Skriv ut
           </MainButton>
         )}
-        </Export>
+      </Export>
     </Grid.Main>
   );
 }

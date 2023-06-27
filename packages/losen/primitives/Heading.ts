@@ -9,7 +9,9 @@ type Props = PrimitiveProps<{
   result?: boolean;
 }>;
 
-export const H1 = injectStyles(styled.h1<Props>`${({ styles, small, result }) => `
+export const H1 = injectStyles(
+  styled.h1<Props>`
+    ${({ styles, small, result }) => `
   font-family: ${styles.font.headline};
   font-size: ${styles.text.h1.fontSize};
   font-weight: ${styles.text.h1.fontWeight};
@@ -18,7 +20,8 @@ export const H1 = injectStyles(styled.h1<Props>`${({ styles, small, result }) =>
   text-wrap: balance;
   margin: 0 0 ${styles.padding.medium};
   color: ${styles.color2.textHeading};
-  ${small
+  ${
+    small
       ? `
     font-size: ${styles.text.h3.fontSize};
     font-weight: ${styles.text.h3.fontWeight};
@@ -27,8 +30,10 @@ export const H1 = injectStyles(styled.h1<Props>`${({ styles, small, result }) =>
     color: ${styles.color2.textHeading};
     margin-bottom: 10px;
     `
-      : " "};
-  ${result
+      : " "
+  };
+  ${
+    result
       ? `
       &::before {
         content: 'Resultat';
@@ -43,16 +48,21 @@ export const H1 = injectStyles(styled.h1<Props>`${({ styles, small, result }) =>
         margin-bottom: ${styles.padding.xxSmall};
       }
     `
-      : " "};
+      : " "
+  };
   @media screen and (max-width: 700px) {
     font-size: ${small ? "0.9rem" : "30px"};
   }
   &:last-child {
     margin-bottom: 0;
   }
-`}`);
+`}
+  `
+);
 
-export const H2 = injectStyles(styled.h2<PrimitiveProps>`${({ styles, small }) => `
+export const H2 = injectStyles(
+  styled.h2<PrimitiveProps<{ small?: boolean }>>`
+    ${({ styles, small }) => `
   font-family: ${styles.font.headline};
   font-size: ${styles.text.h2.fontSize};
   font-weight: ${styles.text.h2.fontWeight};
@@ -61,17 +71,24 @@ export const H2 = injectStyles(styled.h2<PrimitiveProps>`${({ styles, small }) =
   text-wrap: balance;
   margin: 0 0 ${styles.padding.small};
   color: ${styles.color2.textHeading};
-  ${small && `
+  ${
+    small &&
+    `
     font-size: ${styles.text.subHeading.fontSize};
     font-weight: ${styles.text.subHeading.fontWeight};
     line-height: ${styles.text.subHeading.lineHeight};
     letter-spacing: ${styles.text.subHeading.letterSpacing};
     text-transform: ${styles.text.subHeading.textTransform};
     opacity: 0.75;
-  `}
-`}`);
+  `
+  }
+`}
+  `
+);
 
-export const H3 = injectStyles(styled.h3<PrimitiveProps>`${({ styles }) => `
+export const H3 = injectStyles(
+  styled.h3<PrimitiveProps>`
+    ${({ styles }) => `
   font-style: normal;
   font-family: ${styles.font.headline};
   font-size: ${styles.text.h3.fontSize};
@@ -81,9 +98,13 @@ export const H3 = injectStyles(styled.h3<PrimitiveProps>`${({ styles }) => `
   text-wrap: balance;
   margin: 0 0 ${styles.padding.small};
   color: ${styles.color2.textHeading};
-`}`);
+`}
+  `
+);
 
-export const H4 = injectStyles(styled.h4<PrimitiveProps>`${({ styles }) => `
+export const H4 = injectStyles(
+  styled.h4<PrimitiveProps>`
+    ${({ styles }) => `
   font-family: ${styles.font.body};
   font-size: ${styles.text.subHeading.fontSize};
   font-weight: ${styles.text.subHeading.fontWeight};
@@ -92,4 +113,6 @@ export const H4 = injectStyles(styled.h4<PrimitiveProps>`${({ styles }) => `
   text-transform: ${styles.text.subHeading.textTransform};
   text-wrap: balance;
   margin: 0 0 6px;
-`}`);
+`}
+  `
+);
