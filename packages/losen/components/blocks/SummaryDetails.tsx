@@ -1,4 +1,4 @@
-import { Details, Summary } from "losen/primitives/details";
+import { Details, Summary } from "losen/primitives/Details";
 import Html from "../helper/Html";
 
 type Props = {

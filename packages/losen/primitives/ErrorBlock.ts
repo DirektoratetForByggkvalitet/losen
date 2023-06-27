@@ -7,10 +7,16 @@ type Props = PrimitiveProps<{
   grouped?: boolean;
 }>;
 
-const StyledErrorBlock = injectStyles(styled.div<Props>`${({styles, grouped}) => `
+const StyledErrorBlock = injectStyles(
+  styled.div<Props>`
+    ${({ styles, grouped }) => `
   padding: ${styles.padding.large} 0;
   width: 100%;
-  ${grouped ? `&:not(last-child) { margin-bottom: ${styles.padding.xLarge} ; }` : ""};
+  ${
+    grouped
+      ? `&:not(last-child) { margin-bottom: ${styles.padding.xLarge} ; }`
+      : ""
+  };
 
   svg {
     position: absolute;
@@ -31,7 +37,9 @@ const StyledErrorBlock = injectStyles(styled.div<Props>`${({styles, grouped}) =>
     border-left: 4px solid ${styles.color2.negative};
     background: ${styles.color2.negativeXLight};
     padding: ${styles.padding.large};
-    padding-left: calc(${styles.padding.large} + 1.2em +  ${styles.padding.large});
+    padding-left: calc(${styles.padding.large} + 1.2em +  ${
+      styles.padding.large
+    });
     animation: messageIn 1000ms ${styles.easing.easeOut};
   }
 
@@ -51,6 +59,8 @@ const StyledErrorBlock = injectStyles(styled.div<Props>`${({styles, grouped}) =>
   @keyframes messageIn {
     0% { opacity: 0; transform: translateY(2em); }
   }
-`}`);
+`}
+  `
+);
 
 export default StyledErrorBlock;

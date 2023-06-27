@@ -3,7 +3,7 @@ export * as Block from "./Block";
 export * as Button from "./Button";
 export * as Errors from "./Errors";
 export * as Figure from "./Figure";
-export * as Grid from "./grid";
+export * as Grid from "./Grid";
 export * as Heading from "./Heading";
 export * as Paragraphs from "./Paragraphs";
 export * as Input from "./Input";

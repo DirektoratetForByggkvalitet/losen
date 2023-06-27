@@ -2570,7 +2570,7 @@ __export(primitives_exports, {
   Errors: () => Errors_exports,
   Export: () => Export,
   Figure: () => Figure_exports,
-  Grid: () => grid_exports,
+  Grid: () => Grid_exports,
   Heading: () => Heading_exports,
   Input: () => Input_exports,
   Label: () => Label_exports,
@@ -2893,9 +2893,9 @@ var Figure = inject_styles_default(import_styled_components8.default.figure`${({
 `}`);
 var Figure_default = Figure;
 
-// primitives/grid/index.ts
-var grid_exports = {};
-__export(grid_exports, {
+// primitives/Grid/index.ts
+var Grid_exports = {};
+__export(Grid_exports, {
   Blocks: () => Blocks,
   FocusWrapper: () => FocusWrapper,
   Grid: () => Grid,
@@ -2907,7 +2907,7 @@ __export(grid_exports, {
   Simple: () => Simple
 });
 
-// primitives/grid/Nav.ts
+// primitives/Grid/Nav.ts
 var import_styled_components9 = __toESM(require("styled-components"));
 var Nav = inject_styles_default(import_styled_components9.default.nav`${({ styles: styles2, tocExpanded }) => `
   width: ${styles2.size.navWidth};
@@ -2945,7 +2945,7 @@ var Nav = inject_styles_default(import_styled_components9.default.nav`${({ style
   `}
 `}`);
 
-// primitives/grid/NavList.ts
+// primitives/Grid/NavList.ts
 var import_styled_components10 = __toESM(require("styled-components"));
 var NavList = inject_styles_default(import_styled_components10.default.ul`
   padding: 0;
@@ -2953,7 +2953,7 @@ var NavList = inject_styles_default(import_styled_components10.default.ul`
   list-style: none;
 `);
 
-// primitives/grid/NavSection.ts
+// primitives/Grid/NavSection.ts
 var import_styled_components11 = __toESM(require("styled-components"));
 var NavSection = inject_styles_default(import_styled_components11.default.div`${({ styles: styles2, large, xLarge }) => `
   background: ${styles2.color2.sectionBackground};
@@ -2967,14 +2967,14 @@ var NavSection = inject_styles_default(import_styled_components11.default.div`${
   ` : ""}
 `}`);
 
-// primitives/grid/Blocks.ts
+// primitives/Grid/Blocks.ts
 var import_styled_components12 = __toESM(require("styled-components"));
 var Blocks = inject_styles_default(import_styled_components12.default.div`${({ styles: styles2 }) => `
   width: 100%;
   margin-bottom: ${styles2.padding.medium};
 `}`);
 
-// primitives/grid/Grid.ts
+// primitives/Grid/Grid.ts
 var import_styled_components13 = __toESM(require("styled-components"));
 var Grid = inject_styles_default(import_styled_components13.default.div`${({ styles: styles2 }) => `
   display: flex;
@@ -2990,7 +2990,7 @@ var Grid = inject_styles_default(import_styled_components13.default.div`${({ sty
   }
 `}`);
 
-// primitives/grid/Main.ts
+// primitives/Grid/Main.ts
 var import_styled_components14 = __toESM(require("styled-components"));
 var Main = inject_styles_default(import_styled_components14.default.main`${({ styles: styles2, debug }) => `
   background: ${styles2.color2.sectionBackground};
@@ -3031,7 +3031,7 @@ var Main = inject_styles_default(import_styled_components14.default.main`${({ st
 
 `}`);
 
-// primitives/grid/Navigation.ts
+// primitives/Grid/Navigation.ts
 var import_styled_components15 = __toESM(require("styled-components"));
 var Navigation = inject_styles_default(import_styled_components15.default.main`
   display: flex;
@@ -3039,7 +3039,7 @@ var Navigation = inject_styles_default(import_styled_components15.default.main`
   max-width: ${({ styles: styles2 }) => styles2.size.blockWidth};
 `);
 
-// primitives/grid/Simple.ts
+// primitives/Grid/Simple.ts
 var import_styled_components16 = __toESM(require("styled-components"));
 var Simple = inject_styles_default(import_styled_components16.default.div`
   display: flex;
@@ -3064,7 +3064,7 @@ var Simple = inject_styles_default(import_styled_components16.default.div`
   }
 `);
 
-// primitives/grid/FocusWrapper.ts
+// primitives/Grid/FocusWrapper.ts
 var import_styled_components17 = __toESM(require("styled-components"));
 var FocusWrapper = inject_styles_default(import_styled_components17.default.div`
   display: block;
@@ -3755,9 +3755,9 @@ function Nav2({ heading = "Missing page heading", page: currentPage, setPage, ta
   const currentIndex = tableOfContents.findIndex((page) => page.id === currentPage);
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { children: [
     /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ToggleButton, { type: "button", onClick: toggleToc, children: tocExpanded ? `${currentIndex + 1} av ${tableOfContents.length} steg` : "Skjul all steg" }),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(grid_exports.Nav, { tocExpanded, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(grid_exports.NavSection, { large: true, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Title, { onClick: showIntro, children: heading }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(grid_exports.NavSection, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(grid_exports.NavList, { children: tableOfContents.filter((page) => page.type !== "Result").map(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(Grid_exports.Nav, { tocExpanded, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Grid_exports.NavSection, { large: true, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Title, { onClick: showIntro, children: heading }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Grid_exports.NavSection, { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(Grid_exports.NavList, { children: tableOfContents.filter((page) => page.type !== "Result").map(
         (page, index) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
           NavItem2,
           {
@@ -3771,7 +3771,7 @@ function Nav2({ heading = "Missing page heading", page: currentPage, setPage, ta
           page.id
         ) })
       ) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(grid_exports.NavSection, { large: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(Grid_exports.NavSection, { large: true, children: [
         tableOfContents.filter((page) => page.type === "Result").map(
           (page) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             NavResult,
@@ -4975,9 +4975,11 @@ function Signature2() {
 // components/blocks/Sum.tsx
 var import_get10 = __toESM(require("lodash/get"));
 
-// primitives/details.ts
+// primitives/Details.ts
 var import_styled_components39 = __toESM(require("styled-components"));
-var Details = inject_styles_default(import_styled_components39.default.details`${({ styles: styles2 }) => `
+var Details = inject_styles_default(
+  import_styled_components39.default.details`
+    ${({ styles: styles2 }) => `
   display: block;
   text-align: right;
   margin: 0;
@@ -5011,8 +5013,12 @@ var Details = inject_styles_default(import_styled_components39.default.details`$
   @keyframes detailsIn {
     0% { opacity: 0; transform: translateY(-1em); }
   }
-`}`);
-var Summary = inject_styles_default(import_styled_components39.default.summary`${({ styles: styles2 }) => `
+`}
+  `
+);
+var Summary = inject_styles_default(
+  import_styled_components39.default.summary`
+    ${({ styles: styles2 }) => `
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -5042,7 +5048,9 @@ var Summary = inject_styles_default(import_styled_components39.default.summary`$
     border-bottom: 2px solid ${styles2.color2.link};
     transition: transform 400ms ${styles2.easing.easeOut};
   }
-`}`);
+`}
+  `
+);
 
 // components/blocks/SummaryDetails.tsx
 var import_jsx_runtime28 = require("react/jsx-runtime");
@@ -5182,7 +5190,9 @@ function Textarea2(props) {
 
 // primitives/ErrorBlock.ts
 var import_styled_components40 = __toESM(require("styled-components"));
-var StyledErrorBlock = inject_styles_default(import_styled_components40.default.div`${({ styles: styles2, grouped }) => `
+var StyledErrorBlock = inject_styles_default(
+  import_styled_components40.default.div`
+    ${({ styles: styles2, grouped }) => `
   padding: ${styles2.padding.large} 0;
   width: 100%;
   ${grouped ? `&:not(last-child) { margin-bottom: ${styles2.padding.xLarge} ; }` : ""};
@@ -5226,7 +5236,9 @@ var StyledErrorBlock = inject_styles_default(import_styled_components40.default.
   @keyframes messageIn {
     0% { opacity: 0; transform: translateY(2em); }
   }
-`}`);
+`}
+  `
+);
 var ErrorBlock_default = StyledErrorBlock;
 
 // components/blocks/Block.tsx
@@ -5427,11 +5439,11 @@ function Page({
   previousPage,
   summary = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(grid_exports.Main, { debug, "data-id": pageid, id: "main", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(Grid_exports.Main, { debug, "data-id": pageid, id: "main", children: [
     /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Heading_exports.H1, { children: heading }),
     lead && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Paragraphs_exports.Lead, { children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Html, { text: lead }) }),
     summary && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(SummaryDetails, { summary, details }),
-    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(grid_exports.Blocks, { children: children.map((block, index) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Block_default, __spreadValues({}, block), hasProperty(block, "id") && block.id || index)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Grid_exports.Blocks, { children: children.map((block, index) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Block_default, __spreadValues({}, block), hasProperty(block, "id") && block.id || index)) }),
     (!firstPage || !lastPage) && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       Navigation2,
       {
@@ -6000,12 +6012,12 @@ function Result(props) {
     trackEvent("Skriv ut", resultHeading);
     window.print();
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(grid_exports.Main, { result: true, debug, "data-id": pageid, id: "main", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(Grid_exports.Main, { result: true, debug, "data-id": pageid, id: "main", children: [
     /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(H1, { result: true, children: resultHeading }),
-    resultLead && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(grid_exports.Blocks, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Html, { text: resultLead }) }),
+    resultLead && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Grid_exports.Blocks, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Html, { text: resultLead }) }),
     children.map((_a) => {
       var _b = _a, { heading: heading2 } = _b, block = __objRest(_b, ["heading"]);
-      return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(grid_exports.Blocks, { children: /* @__PURE__ */ (0, import_react12.createElement)(
+      return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Grid_exports.Blocks, { children: /* @__PURE__ */ (0, import_react12.createElement)(
         Block_default,
         __spreadProps(__spreadValues({}, block), {
           key: block.id,
@@ -6015,7 +6027,7 @@ function Result(props) {
         })
       ) });
     }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(grid_exports.Blocks, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(Grid_exports.Blocks, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("hr", {}),
       /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(H2, { small: true, children: "Oppsummering" }),
       /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Summary2, { errorPages, setPage, pages: schema })
@@ -6559,7 +6571,7 @@ ${error}
   const nextPageIsResult = schema[pageIndex + 1] ? schema[pageIndex + 1].type === "Result" : false;
   return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(StyleProvider, { styles: styles2, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(Wizard, { children: [
     showResetModal && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Modal_default, { showIntro }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(grid_exports.Grid, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(Grid_exports.Grid, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SkipLink_default2, {}),
       /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         Nav2,
@@ -6573,7 +6585,7 @@ ${error}
         }
       ),
       /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
-        grid_exports.FocusWrapper,
+        Grid_exports.FocusWrapper,
         {
           tabIndex: "-1",
           ref: pageWrapper,

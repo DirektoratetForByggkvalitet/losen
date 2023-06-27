@@ -3,7 +3,9 @@ import styled from "styled-components";
 import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
-export const Details = injectStyles(styled.details<PrimitiveProps>`${({ styles }) => `
+export const Details = injectStyles(
+  styled.details<PrimitiveProps>`
+    ${({ styles }) => `
   display: block;
   text-align: right;
   margin: 0;
@@ -37,9 +39,13 @@ export const Details = injectStyles(styled.details<PrimitiveProps>`${({ styles }
   @keyframes detailsIn {
     0% { opacity: 0; transform: translateY(-1em); }
   }
-`}`);
+`}
+  `
+);
 
-export const Summary = injectStyles(styled.summary<PrimitiveProps>`${({ styles }) => `
+export const Summary = injectStyles(
+  styled.summary<PrimitiveProps>`
+    ${({ styles }) => `
   display: inline-block;
   position: relative;
   cursor: pointer;
@@ -69,4 +75,6 @@ export const Summary = injectStyles(styled.summary<PrimitiveProps>`${({ styles }
     border-bottom: 2px solid ${styles.color2.link};
     transition: transform 400ms ${styles.easing.easeOut};
   }
-`}`);
+`}
+  `
+);

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { NavList } from 'losen/primitives/grid';
+import { NavList } from 'losen/primitives/Grid';
 import NavItem from 'losen/components/NavItem';
 
 const meta: Meta<typeof NavList> = {
@@ -17,7 +17,7 @@ export const Default: Story = {
         id="1"
         index={1}
         heading="Page"
-        setPage={() => {}}
+        setPage={() => { }}
         done
       />
     </li>
@@ -27,7 +27,7 @@ export const Default: Story = {
         id="2"
         index={2}
         heading="Page"
-        setPage={() => {}}
+        setPage={() => { }}
         active
       />
     </li>
@@ -37,7 +37,7 @@ export const Default: Story = {
         id="3"
         index={3}
         heading="Page"
-        setPage={() => {}}
+        setPage={() => { }}
       />
     </li>
     <li>
@@ -46,7 +46,7 @@ export const Default: Story = {
         id="4"
         index={4}
         heading="Page"
-        setPage={() => {}}
+        setPage={() => { }}
       />
     </li>
   </NavList>

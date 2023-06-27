@@ -3,7 +3,7 @@ import values from "lodash/values";
 
 import { setLanguage } from "losen/state/actions";
 import { SmallButton } from "losen/primitives/Button";
-import { Simple as Grid } from "losen/primitives/grid";
+import { Simple as Grid } from "../primitives/Grid";
 import { getCurrentLanguage } from "losen/utils/get-current-language";
 import type { State } from "losen";
 
