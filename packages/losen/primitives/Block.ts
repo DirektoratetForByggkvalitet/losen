@@ -11,30 +11,16 @@ type Props = PrimitiveProps<{
   type?: string;
 }>;
 
-export const SpecificBlock = injectStyles(styled.div<Props>`
+export const SpecificBlock = injectStyles(styled.div<Props>`${({ styles, debug, grouped, smallMarginTop, error, groupedSimple, type,}) => `
   position: relative;
-  padding: ${(props) => (props.grouped ? "16px 18px 20px" : "24px 28px 24px")};
-  margin: ${(props) => (props.grouped ? "0 0 20px 0" : "20px 0")};
-  margin: ${(props) => (props.smallMarginTop ? "8px 0 20px 0" : "20px 0")};
-  width: 100%;
-  background: ${(props) =>
-    props.grouped ? "rgba(137, 174, 196, 0.15)" : "white"};
-  ${(props) =>
-    props.error ? `background: ${props.styles.color.lightred};` : ""}
-
-  &:nth-child(even) {
-    background: ${(props) =>
-      props.grouped ? "rgba(0, 117, 127, 0.06)" : "white"};
+  padding: ${grouped ? styles.padding.large : styles.padding.large} 0;
+  ${error ? `background: ${styles.color2.negativeXLight};` : ""}
+  > img:first-child {
+    margin-bottom: ${styles.padding.large};
+    width: 100%;
+    max-width: ${styles.size.imageWidth};
   }
-  box-shadow: ${(props) =>
-    props.grouped ? "none" : "0 2px 3px rgba(0, 0, 0, 0.18)"};
-  p {
-    margin-top: 0;
-    font-weight: 300;
-  }
-
-  ${(props) =>
-    props.debug
+  ${debug
       ? `
   :before {
     content: attr(data-id);
@@ -47,19 +33,7 @@ export const SpecificBlock = injectStyles(styled.div<Props>`
     font-size: 14px;
     padding: 2px 6px;
   }`
-      : ""} ${(props) =>
-    props.grouped
-      ? `
-  h2 {
-    font-size: 20px;
-    margin-bottom: 4px;
-    @media screen and (max-width: 700px) {
-      font-size: 18px;
-    }
-  }
-  `
-      : " "} ${(props) =>
-    props.groupedSimple
+      : ""} ${groupedSimple
       ? `
   margin-bottom: 26px;
   padding: 0;
@@ -68,20 +42,19 @@ export const SpecificBlock = injectStyles(styled.div<Props>`
   &:nth-child(even) {
     background: none;
   }`
-      : " "} ${(props) =>
-    props.type === "Table"
+      : " "} ${type === "Table"
       ? `
   table {
     text-align: center;
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${props.styles.color.darkgray};
+    border: 1px solid ${styles.color2.secondary};
     border-collapse: collapse;
     th {
       font-weight: inherit;
     }
     th, td {
-      border: 1px solid ${props.styles.color.darkgray};
+      border: 1px solid ${styles.color2.secondary};
       padding: 10px;
     }
     th > *,
@@ -92,7 +65,7 @@ export const SpecificBlock = injectStyles(styled.div<Props>`
     }
     td,th {
       ${
-        props.debug
+        debug
           ? `
       :hover {
         position: relative;
@@ -114,22 +87,13 @@ export const SpecificBlock = injectStyles(styled.div<Props>`
     }
   }
   `
-      : " "} @media screen and (max-width: 700px) {
-    padding: ${(props) => (props.grouped ? "12px 20px" : "26px 20px")};
-    ${(props) =>
-      props.groupedSimple
-        ? `
-    margin-bottom: 24px;
-    padding: 0;
-    `
-        : " "};
-  }
+  : " "} 
 
   @media print {
-    box-shadow: none;
-    padding: ${(props) => (props.grouped ? "20px 24px 20px" : "0")};
+    page-break-inside: avoid;
   }
-`);
+
+`}`);
 
 export const TextBlock = injectStyles(styled.div<
   PrimitiveProps<{
@@ -138,23 +102,14 @@ export const TextBlock = injectStyles(styled.div<
     printhide?: boolean;
     small?: boolean;
   }>
->`
-  padding: 30px 0 10px;
-  ${(props) =>
-    props.groupedSimple
-      ? ""
-      : `
-    margin: 0;
+>`${({ styles, debug, groupedSimple, printonly, printhide, small }) => `
+padding: ${styles.padding.large} 0 ${styles.padding.small};
+  ${groupedSimple ? "" : `
     padding: 0;
     `};
-
   width: 100%;
-  max-width: ${({ styles }) => styles.size.blockWidth};
-  ${(props) =>
-    props.debug
-      ? `
+  ${debug ? `
   position: relative;
-
   :before {
     content: attr(data-id);
     display: block;
@@ -166,14 +121,14 @@ export const TextBlock = injectStyles(styled.div<
     font-size: 14px;
     padding: 2px 6px;
   }`
-      : ""} p {
+    : ""} 
+  p {
     margin: 1em 0;
     line-height: 1.6;
     max-width: 600px;
   }
 
-  ${(props) =>
-    props.printonly
+  ${printonly
       ? `
     display: none;
     margin-top: 10px;
@@ -184,8 +139,7 @@ export const TextBlock = injectStyles(styled.div<
     }`
       : ""};
 
-  ${(props) =>
-    props.printhide
+  ${printhide
       ? `
         @media print {
           display: none;
@@ -193,51 +147,49 @@ export const TextBlock = injectStyles(styled.div<
       : ""};
 
   h1 {
-    font-family: ${({ styles }) => styles.font.secondary};
-    font-size: 50px;
-    font-weight: 300;
-    margin: 0 0 30px;
-    line-height: 1.2;
-    @media screen and (max-width: 700px) {
-      font-size: ${(props) => (props.small ? "0.9rem" : "30px")};
-    }
+    font-family: ${styles.font.headline};
+    font-size: ${small ? styles.text.h3.fontSize : styles.text.h1.fontSize};
+    font-weight: ${styles.text.h1.fontWeight};
+    line-height: ${styles.text.h1.lineHeight};
+    letter-spacing: ${styles.text.h1.letterSpacing};
+    margin: 0 0 ${styles.padding.large};
   }
 
   h2 {
-    font-family: ${({ styles }) => styles.font.primary};
-    font-size: 24px;
-    margin: 0 0 10px;
-    line-height: 1.3;
-    @media screen and (max-width: 700px) {
-      font-size: 18px;
-    }
+    font-family: ${styles.font.headline};
+    font-size: ${styles.text.h2.fontSize};
+    font-weight: ${styles.text.h2.fontWeight};
+    line-height: ${styles.text.h2.lineHeight};
+    letter-spacing: ${styles.text.h2.letterSpacing};
+    margin: 0 0 ${styles.padding.small};
   }
 
   h3 {
-    font-family: ${({ styles }) => styles.font.primary};
-    font-size: 18px;
-    font-style: normal;
-    font-weight: bold;
-    margin: 0 0 10px;
-    line-height: 1.3;
-    @media screen and (max-width: 700px) {
-      font-size: 16px;
-    }
+    font-family: ${styles.font.headline};
+    font-size: ${styles.text.h3.fontSize};
+    font-weight: ${styles.text.h3.fontWeight};
+    line-height: ${styles.text.h3.lineHeight};
+    letter-spacing: ${styles.text.h3.letterSpacing};
+    margin: 0 0 ${styles.padding.xSmall};
   }
 
   h4 {
-    font-family: ${({ styles }) => styles.font.primary};
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 0 0 6px;
-    line-height: 1.3;
+    font-family: ${styles.font.body};
+    font-size: ${styles.text.subHeading.fontSize};
+    font-weight: ${styles.text.subHeading.fontWeight};
+    line-height: ${styles.text.subHeading.lineHeight};
+    letter-spacing: ${styles.text.subHeading.letterSpacing};
+    text-transform: ${styles.text.subHeading.textTransform};
+    margin: 0 0 ${styles.padding.xSmall};
   }
 
   p {
-    font-size: inherit;
-    font-weight: 300;
-    margin: 0 0 24px;
+    font-family: ${styles.font.body};
+    font-size: ${styles.text.body.fontSize};
+    font-weight: ${styles.text.body.fontWeight};
+    line-height: ${styles.text.body.lineHeight};
+    letter-spacing: ${styles.text.body.letterSpacing};
+    margin: 0 0 ${styles.padding.large};
     max-width: 600px;
   }
-`);
+`}`);

@@ -1,4 +1,6 @@
+import React from 'react'
 import type { Preview } from "@storybook/react";
+import { Wizard } from "losen/primitives/Wizard"
 
 const preview: Preview = {
   parameters: {
@@ -10,6 +12,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <Wizard noBackground>
+          <Story />
+      </Wizard>
+    ),
+  ],
 };
 
 export default preview;

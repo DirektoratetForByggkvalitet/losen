@@ -79,16 +79,17 @@ function Wizard({
     if (property) {
       setImmediate(() => {
         const element = document.getElementById(property);
-
+        
         if (!element) {
           return;
         }
-
+        
         window.scroll(0, element.offsetTop);
       });
     } else {
       window.scrollTo(0, 0);
     }
+    pageWrapper?.current?.focus()
     setData("page", page);
     setPageId(page);
   };

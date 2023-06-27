@@ -5,12 +5,19 @@ import { PrimitiveProps } from "../styles";
 
 type Props = PrimitiveProps;
 
-const Figure = injectStyles(styled.figure<Props>`
+const Figure = injectStyles(styled.figure<Props>`${({ styles, debug }) => `
   padding: 0;
   position: relative;
-  margin: 0 33px 30px;
-  ${(props) =>
-    props.debug
+  margin: ${styles.padding.small} 0;
+  
+  figcaption {
+    font-style: ${styles.text.caption.fontStyle};
+    font-size: ${styles.text.caption.fontSize};
+    font-weight: ${styles.text.caption.fontWeight};
+    line-height: ${styles.text.caption.lineHeight};
+    letter-spacing: ${styles.text.caption.letterSpacing};
+  }
+  ${debug
       ? `
   :before {
     content: attr(data-id);
@@ -23,13 +30,7 @@ const Figure = injectStyles(styled.figure<Props>`
     font-size: 14px;
     padding: 2px 6px;
   }`
-      : ""} figcaption {
-    font-style: italic;
-    font-size: 14px;
-  }
-  @media screen and (max-width: 700px) {
-    margin: 0 auto 30px;
-  }
-`);
+  : ""}
+`}`);
 
 export default Figure;

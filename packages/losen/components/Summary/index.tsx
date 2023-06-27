@@ -12,7 +12,7 @@ type Props = {
 
 export default function Summary({ errorPages, setPage, pages = [] }: Props) {
   return (
-    <div>
+    <>
       {pages
         .filter(({ type }) => type === "Page")
         .map((page) => (
@@ -26,6 +26,6 @@ export default function Summary({ errorPages, setPage, pages = [] }: Props) {
             {...page}
           /> : null
         ))}
-    </div>
+    </>
   );
 }

@@ -20,7 +20,7 @@ const customStyle: any = {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    backgroundColor: "rgba(0, 48, 69, 0.4)",
     display: "flex",
     flexDirection: "column",
     overflowY: "scroll",
@@ -76,14 +76,13 @@ function Modal(props: Props) {
       style={customStyle}
     >
       <ModalBox>
-        <H1 id="heading">Vil du starte på nytt?</H1>
+        <H1 id="heading">Vil du fortsette der du slapp?</H1>
         <Lead id="full_description">
           Veiviseren husker svarene fra ditt forrige besøk.
         </Lead>
         <MainButton type="button" onClick={handleCloseModal}>
           Fortsett
         </MainButton>
-        <br />
         <SecondaryButton type="button" onClick={handleRestart}>
           Start på nytt
         </SecondaryButton>

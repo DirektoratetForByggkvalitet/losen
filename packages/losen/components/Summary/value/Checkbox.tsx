@@ -21,21 +21,20 @@ function Sum({ node, node: { allMandatory, currentValue = {}, errors } }: any) {
     <div>
       <SpecificBlock
         grouped
-        smallMarginTop
         error={allMandatory && errors.required}
       >
-        <p>
+        <small>
           {matchingItems === 0 && (
-            <strong>Du har ikke valgt noen alternativer, men for </strong>
+            <em>Du har ikke valgt noen alternativer, men for </em>
           )}
           {matchingItems > 0 && (
-            <strong>
+            <em>
               Du har {allMandatory && errors.required ? "kun" : ""} valgt{" "}
               {numOfMatchingItemsInObject(currentValue, true)}
               {" av "} {node.options.length} alternativer.
-            </strong>
+            </em>
           )}
-        </p>
+        </small>
 
         {node.options.map((item: any) => (
           <div key={`${node.id}-${item.value}`}>

@@ -3,39 +3,55 @@ import styled from "styled-components";
 import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
-export const Checkbox = injectStyles(styled.input<PrimitiveProps>`
+export const Checkbox = injectStyles(styled.input.attrs({
+  type: "checkbox",
+})<PrimitiveProps>`${({styles}) => `
   position: absolute;
   opacity: 0;
   z-index: -1;
   line-height: 1.4;
 
   + label {
+    position: relative;
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    box-shadow: 0 0 2px ${({ styles }) => styles.color.dark};
-    padding: 10px;
-    border-radius: 5px;
-    transition: all 0.1s ease-in-out;
-    position: relative;
-
+    padding: ${styles.padding.medium};
+    border: 1px solid ${styles.color2.secondaryLight};
+    border-radius: ${styles.borderRadius.small};
+    transition: all 200ms ${styles.easing.easeOut};
+    font-size: ${styles.text.body.fontSize};
+    font-weight: ${styles.text.body.fontWeight};
+    line-height: ${styles.text.body.lineHeight};
+    letter-spacing: ${styles.text.body.letterSpacing};
+    color: ${styles.color2.textDark};
+    
     &:before {
       content: " ";
       display: inline-block;
       vertical-align: middle;
-      min-width: 10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      margin-right: 1em;
-      border: 0.3em solid white;
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
-      transition: all 0.1s ease-in-out;
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      background: transparent;
+      margin-right: ${styles.padding.small};
+      border: 1px solid ${styles.color2.primary};
+      border-radius: ${styles.borderRadius.small};
+      transition: all 200ms ${styles.easing.easeOut};
     }
 
-    div {
-      margin-right: 30px;
+    > div {
       flex: 1;
+      font-size: ${styles.text.label.fontSize};
+      font-weight: ${styles.text.label.fontWeight};
+      line-height: ${styles.text.label.lineHeight};
+      letter-spacing: ${styles.text.label.letterSpacing};
+      color: ${styles.color2.textDark};
+    }
+
+    div:not(:last-child) {
+      margin-right: ${styles.padding.large};
     }
     img {
       width: 25%;
@@ -45,10 +61,206 @@ export const Checkbox = injectStyles(styled.input<PrimitiveProps>`
       margin-bottom: 0;
     }
     h3 {
-      font-size: 16px;
+      font-size: ${styles.text.lead.fontSize};
+      font-weight: ${styles.text.lead.boldWeight};
+      line-height: ${styles.text.lead.lineHeight};
+      letter-spacing: ${styles.text.lead.letterSpacing};
       margin-bottom: 0;
+    }
+  }
+
+  :disabled + label {
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  :not(:disabled) {
+    + label {
+      &:hover {
+        background: ${styles.color2.secondaryXLight};
+      }
+    }
+    &:focus + label {
+      background: ${styles.color2.secondaryXLight};
+    }
+    &:focus-visible + label {
+      outline: 1px solid ${styles.color2.outline};
+    }
+    &:checked + label:after {
+      content: " ";
+      position: absolute;
+      left: calc(${styles.padding.medium} + 5px);
+      top: calc(${styles.padding.medium} + 9px);
+      width: 8px;
+      height: 4px;
+      transform: rotate(-46deg);
+      border-left: 3px solid ${styles.color2.primary};
+      border-bottom: 3px solid ${styles.color2.primary};
+    }
+    &:checked + label {
+      background: ${styles.color2.secondaryLight};
+    }
+    &:checked:focus + label {
+      background: ${styles.color2.secondaryXLight};
+    }
+  }
+`}`);
+
+export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
+  type: "checkbox",
+})<PrimitiveProps>`${({styles}) => `
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  line-height: 1.4;
+
+  + label {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0;
+    padding: ${styles.padding.xxSmall} 0;
+    font-size: ${styles.text.body.fontSize};
+    font-weight: ${styles.text.body.boldWeight};
+    line-height: ${styles.text.body.lineHeight};
+    letter-spacing: ${styles.text.body.letterSpacing};
+
+    &:before {
+      content: " ";
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 18px;
+      width: 218x;
+      height: 18px;
+      margin-right: ${styles.padding.xxSmall};
+    }
+
+    > div {
+      flex: 1;
+      font-size: ${styles.text.label.fontSize};
+      font-weight: ${styles.text.label.fontWeight};
+      line-height: ${styles.text.label.lineHeight};
+      letter-spacing: ${styles.text.label.letterSpacing};
+      color: ${styles.color2.textDark};
+    }
+
+    div:not(:last-child) {
+      margin-right: ${styles.padding.large};
+    }
+    img {
+      width: 25%;
+      max-width: 200px;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: ${styles.text.lead.fontSize};
+      font-weight: ${styles.text.lead.boldWeight};
+      line-height: ${styles.text.lead.lineHeight};
+      letter-spacing: ${styles.text.lead.letterSpacing};
       font-style: normal;
-      font-weight: bold;
+    }
+  }
+
+  &:checked + label:after {
+    content: " ";
+    position: absolute;
+    left: 4px;
+    top: calc(${styles.padding.xxSmall} + 5px);
+    width: 8px;
+    height: 4px;
+    transform: rotate(-46deg);
+    border-left: 3px solid ${styles.color2.primary};
+    border-bottom: 3px solid ${styles.color2.primary};
+  }
+
+  @media screen and (max-width: 900px) {
+    + label {
+      flex-wrap: wrap;
+      &::before {
+      }
+      div {
+        flex: 1;
+        div {
+          margin-right: 0;
+        }
+      }
+      img {
+        width: 100%;
+        margin: 20px auto 0;
+        display: block;
+        flex: 0 0 100%;
+      }
+    }
+  }
+  @media print {
+    + label { 
+      border: none;
+      padding: 0;
+    }
+  }
+`}`);
+
+export const Radio = injectStyles(styled.input.attrs({
+  type: "radio",
+})<PrimitiveProps>`${({styles}) => `
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  line-height: 1.4;
+
+  + label {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    padding: ${styles.padding.medium};
+    border: 1px solid ${styles.color2.secondaryLight};
+    border-radius: ${styles.borderRadius.small};
+    transition: all 200ms ${styles.easing.easeOut};
+
+    &:before {
+      content: " ";
+      display: inline-block;
+      vertical-align: middle;
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      background: transparent;
+      margin-right: ${styles.padding.small};
+      border: 1px solid ${styles.color2.primary};
+      border-radius: 50%;
+      transition: all 200ms ${styles.easing.easeOut};
+    }
+
+    > div {
+      flex: 1;
+      font-size: ${styles.text.label.fontSize};
+      font-weight: ${styles.text.label.fontWeight};
+      line-height: ${styles.text.label.lineHeight};
+      letter-spacing: ${styles.text.label.letterSpacing};
+      color: ${styles.color2.textDark};
+    }
+    
+    div:not(:last-child) {
+      margin-right: ${styles.padding.large};
+    }
+    img {
+      width: 25%;
+      max-width: 200px;
+      background: ${styles.color2.secondaryXLight};
+    }
+    p {
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: ${styles.text.lead.fontSize};
+      font-weight: ${styles.text.lead.boldWeight};
+      line-height: ${styles.text.lead.lineHeight};
+      letter-spacing: ${styles.text.lead.letterSpacing};
+      font-style: normal;
     }
   }
 
@@ -59,360 +271,154 @@ export const Checkbox = injectStyles(styled.input<PrimitiveProps>`
   :not(:disabled) {
     + label {
       &:hover {
-        box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-      }
-      &:hover::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
-    }
-
-    + label:hover {
-      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
+        background: ${styles.color2.secondaryXLight};
       }
     }
     &:focus + label {
-      box-shadow: 0 0 6px ${({ styles }) => styles.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
+      background: ${styles.color2.secondaryXLight};
+    }
+    &:focus-visible + label {
+      outline: 1px solid ${styles.color2.outline};
     }
     &:checked + label:after {
       content: " ";
       position: absolute;
-      left: 13px;
-      top: 13px;
-      width: 11px;
-      height: 6px;
+      left: calc(${styles.padding.medium} + 5px);
+      top: calc(${styles.padding.medium} + 8px);
+      width: 10px;
+      height: 10px;
       transform: rotate(-46deg);
-      border-left: 4px solid ${({ styles }) => styles.color.light};
-      border-bottom: 4px solid ${({ styles }) => styles.color.light};
-    }
-    &:checked + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 4px 0 ${({ styles }) => styles.color.dark};
-      background: ${({ styles }) => styles.color.lightgreen};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
-    }
-    &:checked:focus + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 6px 1px ${({ styles }) => styles.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
-    }
-  }
-  @media screen and (max-width: 900px) {
-    + label {
-      flex-wrap: wrap;
-      &::before {
-      }
-      div {
-        flex: 1;
-        div {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        margin: 20px auto 0;
-        display: block;
-        flex: 0 0 100%;
-      }
-    }
-  }
-`);
-
-export const CheckboxResultDisplay = injectStyles(styled.input<PrimitiveProps>`
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-  line-height: 1.4;
-
-  + label {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 0;
-    padding: 10px;
-    position: relative;
-
-    &:before {
-      content: " ";
-      display: inline-block;
-      vertical-align: middle;
-      min-width: 10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      margin-right: 1em;
-      border: 0.3em solid white;
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
-    }
-
-    div {
-      margin-right: 30px;
-      flex: 1;
-    }
-    img {
-      width: 25%;
-      max-width: 200px;
-    }
-    p {
-      margin-bottom: 0;
-    }
-    h3 {
-      font-size: 16px;
-      margin-bottom: 0;
-      font-style: normal;
-      font-weight: bold;
-    }
-  }
-
-  &:checked + label:after {
-    content: " ";
-    position: absolute;
-    left: 13px;
-    top: 13px;
-    width: 11px;
-    height: 6px;
-    transform: rotate(-46deg);
-    border-left: 4px solid ${({ styles }) => styles.color.light};
-    border-bottom: 4px solid ${({ styles }) => styles.color.light};
-  }
-
-  @media screen and (max-width: 900px) {
-    + label {
-      flex-wrap: wrap;
-      &::before {
-      }
-      div {
-        flex: 1;
-        div {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        margin: 20px auto 0;
-        display: block;
-        flex: 0 0 100%;
-      }
-    }
-  }
-`);
-
-export const Radio = injectStyles(styled.input.attrs({
-  type: "radio",
-})<PrimitiveProps>`
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-
-  + label {
-    display: flex;
-    align-items: flex-start;
-    cursor: pointer;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 2px ${({ styles }) => styles.color.dark};
-    transition: all 0.1s ease-in-out;
-
-    &:before {
-      content: " ";
-      display: block;
-      vertical-align: middle;
-      min-width: 10px;
-      width: 10px;
-      height: 10px;
-      background: white;
-      margin-right: 1em;
       border-radius: 50%;
-      border: 0.3em solid white;
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.darkgray};
-      transition: all 0.1s ease-in-out;
-    }
-
-    div {
-      margin-right: 30px;
-      flex: 1;
-    }
-    img {
-      width: 25%;
-      max-width: 200px;
-    }
-    p {
-      margin-bottom: 0;
-    }
-    h3 {
-      font-size: 16px;
-      margin-bottom: 0;
-      font-style: normal;
-      font-weight: bold;
-    }
-  }
-
-  :disabled + label {
-    opacity: 0.4;
-  }
-
-  :not(:disabled) {
-    + label:hover {
-      box-shadow: 0 0 6px ${({ styles }) => styles.color.dark};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
-    }
-    &:focus + label {
-      box-shadow: 0 0 6px ${({ styles }) => styles.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
-    }
-    &:checked + label:before {
-      background: ${({ styles }) => styles.color.light};
+      background: ${styles.color2.primary};
     }
     &:checked + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 4px 0 ${({ styles }) => styles.color.dark};
-      background: ${({ styles }) => styles.color.lightgreen};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
-    }
-    &:checked:focus + label {
-      box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark},
-        0 0 6px 1px ${({ styles }) => styles.color.light};
-      &::before {
-        box-shadow: 0 0 0 1px ${({ styles }) => styles.color.dark};
-      }
+      background: ${styles.color2.secondaryLight};
     }
   }
-  @media screen and (max-width: 900px) {
-    + label {
-      flex-wrap: wrap;
-      &::before {
-      }
-      div {
-        flex: 1;
-        div {
-          margin-right: 0;
-        }
-      }
-      img {
-        width: 100%;
-        margin: 20px auto 0;
-        display: block;
-        flex: 0 0 100%;
-      }
-    }
-  }
-`);
 
-export const NumberInput = injectStyles(styled.input<PrimitiveProps>`
+  @media print {
+    + label { 
+      border: none;
+      padding: 0;
+    }
+  }
+`}`);
+
+export const NumberInput = injectStyles(styled.input<PrimitiveProps<{
+    validation?: { error?: boolean };
+  }>>`${({styles, validation}) => `
   font-family: inherit;
-  font-size: 1em;
+  font-size: ${styles.text.label.fontSize} !important;
+  font-weight: ${styles.text.label.fontWeight};
+  line-height: ${styles.text.label.lineHeight};
+  letter-spacing: ${styles.text.label.letterSpacing};
   text-align: right;
-  padding: 0.5em;
-  width: auto;
+  padding: ${styles.padding.small} !important;
+  width: auto !important;
   min-width: 20%;
   margin-right: 0.5em;
-  border: 1px solid ${({ styles }) => styles.color.darkgray};
+  border: 1px solid ${validation?.error ? styles.color2.error : styles.color2.outline} !important;
+  border-radius: ${styles.borderRadius.small};
   &::placeholder {
     font-color: inherit;
-    opacity: 0.6;
+    opacity: 0.75;
   }
-  transition: border-color 0.1s ease-in-out;
-  &:hover,
   &:focus {
-    border-color: ${({ styles }) => styles.color.dark};
+    outline: 3px solid ${styles.color2.focus};
   }
-`);
+`}`);
 
 export const TextInput = injectStyles(styled.input<
   PrimitiveProps<{
     validation?: { error?: boolean };
   }>
->`
+>`${({styles, validation}) => `
   font-family: inherit;
-  font-size: 1em;
-  padding: 0.5em;
+  font-size: ${styles.text.lead.fontSize} !important;
+  font-weight: ${styles.text.lead.fontWeight};
+  line-height: ${styles.text.lead.lineHeight};
+  letter-spacing: ${styles.text.lead.letterSpacing};
+  padding: ${styles.padding.small} !important;
   width: auto;
-  min-width: 40%;
-  border: 1px solid
-    ${({ styles, validation: { error } = {} }) =>
-      error ? styles.color.red : styles.color.darkgray} !important;
+  min-width: 20%;
+  margin-right: 0.5em;
+  border: 1px solid ${validation?.error ? styles.color2.error : styles.color2.outline} !important;
+  
+  border-radius: ${styles.borderRadius.small};
   &::placeholder {
     font-color: inherit;
-    opacity: 0.6;
+    opacity: 0.75;
   }
-  transition: border-color 0.1s ease-in-out;
-  &:hover,
   &:focus {
-    border-color: ${({ styles }) => styles.color.dark};
+    outline: 3px solid ${styles.color2.focus};
   }
   @media screen and (max-width: 360px) {
     width: 100%;
   }
-`);
+`}`);
 
-export const Textarea = injectStyles(styled.textarea<PrimitiveProps>`
+export const Textarea = injectStyles(styled.textarea<PrimitiveProps>`${({styles}) => `
   font-family: inherit;
-  font-size: 1em;
-  padding: 0.5em;
-  width: 100%;
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.fontWeight};
+  line-height: ${styles.text.body.lineHeight};
+  letter-spacing: ${styles.text.body.letterSpacing};
+  padding: ${styles.padding.small} ${styles.padding.small};
   min-height: 6em;
-  border: 1px solid ${({ styles }) => styles.color.darkgray};
+  width: 100% !important;
+  min-width: 20%;
+  margin-right: 0.5em;
+  border: 1px solid ${styles.color2.outline};
+  border-radius: ${styles.borderRadius.small};
   &::placeholder {
     font-color: inherit;
-    opacity: 0.6;
+    opacity: 0.75;
   }
-  transition: border-color 0.1s ease-in-out;
-  &:hover,
   &:focus {
-    border-color: ${({ styles }) => styles.color.dark};
+    outline: 3px solid ${styles.color2.focus};
   }
-`);
+`}`);
 
-export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`
+export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`${({styles}) => `
   position: relative;
-  width: 100%;
-  max-width: 400px;
+  width: fit-content;
+  max-width: 100%;
   &::before {
     content: " ";
+    pointer-events: none;
     position: absolute;
     right: 16px;
-    top: 36%;
-    width: 6px;
-    height: 6px;
-    transform: rotate(-45deg);
-    border-left: 2px solid ${({ styles }) => styles.color.light};
-    border-bottom: 2px solid ${({ styles }) => styles.color.light};
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    transform: translateY(-4px) rotate(-45deg);
+    border-left: 2px solid ${styles.color2.primary};
+    border-bottom: 2px solid ${styles.color2.primary};
   }
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 100%;
-    font-family: inherit;
-    font-size: 1em;
-    padding: 0.5em;
-    padding-right: 40px;
-    border: 1px solid ${({ styles }) => styles.color.darkgray};
-    border-radius: 0;
-    line-height: normal;
-    background: white;
-    &:focus {
-      outline-color: ${({ styles }) => styles.color.bluegreen};
-    }
     cursor: pointer;
-    transition: border-color 0.1s ease-in-out;
-    &:hover,
+    width: auto;
+    max-width: 100%;
+    font-family: inherit;
+    font-size: ${styles.text.lead.fontSize};
+    font-weight: ${styles.text.lead.fontWeight};
+    line-height: ${styles.text.lead.lineHeight};
+    letter-spacing: ${styles.text.lead.letterSpacing};
+    padding: ${styles.padding.small} ${styles.padding.small};
+    padding-right: 40px;
+    margin-bottom: 0;
+    border: 1px solid ${styles.color2.primary};
+    border-radius: ${styles.borderRadius.small};
+    background: transparent;
+    transition: background 200ms ${styles.easing.easeOut};
+    &:hover, &:focus {
+      background: ${styles.color2.secondaryXLight};
+    }
     &:focus {
-      border-color: ${({ styles }) => styles.color.dark};
+      outline-color: ${styles.color2.outline};
     }
   }
-`);
+`}`);

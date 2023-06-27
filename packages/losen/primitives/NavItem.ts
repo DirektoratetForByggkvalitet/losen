@@ -6,89 +6,80 @@ import { PrimitiveProps } from "../styles";
 export const NavItem = injectStyles(styled.a<
   PrimitiveProps<{
     active?: boolean;
+    errors?: boolean;
     done?: boolean;
   }>
->`
-  background: ${(props) =>
-    props.active ? ({ styles }) => styles.color.warmgray3 : "white"};
+>`${({ styles, active, errors, done }) => `
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.1s ease-in-out;
-  color: black !important;
+  text-decoration: none;
+  border-radius: ${styles.borderRadius.small};
+  padding: ${styles.padding.small};
+  margin-bottom: ${styles.padding.xxSmall};
+  transition: background 400ms ${styles.easing.easeOut};
+  ${done ? `background: ${styles.color2.positiveXLight};` : ''}
+  ${errors ? `background: ${styles.color2.errorXLight};` : ''}
+  ${active ? `background: ${styles.color2.secondaryLight};` : ''}
+  ${!(done || errors) || active   ? `color: ${styles.color2.link};` : ''}
+  ${done ? `color: ${styles.color2.positive};` : ''}
+  ${errors ? `color: ${styles.color2.error};` : ''}
   &:hover {
     cursor: pointer;
-    background: ${({ styles }) => styles.color.warmgray3};
+    ${!(active || done || errors)   ? `background: ${styles.color2.secondaryXLight};` : ''}
+    ${done ? `background: ${styles.color2.positiveLight};` : ''}
+    ${errors ? `background: ${styles.color2.errorLight};` : ''}
+    ${active ? `background: ${styles.color2.secondaryLight};` : ''}
+    p {
+      text-decoration: underline;
+    }
   }
-  div {
-    color: ${(props) => (props.active ? "white" : "inherit")};
-    background: ${(props) =>
-      props.active ? ({ styles }) => styles.color.dark : "white"};
+  span {
     display: flex;
     align-self: stretch;
-    min-width: 2.4em;
     align-items: center;
     justify-content: center;
-    transition: background 0.1s ease-in-out;
     overflow: hidden;
+    min-width: 12px;
     max-width: 100%;
-  }
-  &:hover div {
-    background: ${(props) =>
-      props.active
-        ? ({ styles }) => styles.color.dark
-        : ({ styles }) => styles.color.warmgray3};
   }
   p {
     flex-grow: 1;
-    font-weight: ${(props) => (props.active ? "300" : "300")};
-    padding: 0 20px;
-    line-height: 1.3;
-    font-size: 16px;
+    font-size: ${styles.text.body.fontSize};
+    font-weight: ${styles.text.body.fontWeight};
+    line-height: ${styles.text.body.lineHeight};
+    letter-spacing: ${styles.text.body.letterSpacing};
+    margin: 0;
+    margin-left: ${styles.padding.small};
   }
-  span {
-    text-decoration: underline;
-    color: ${({ styles }) => styles.color.light};
-    font-size: 14px;
-    line-height: 1.8;
-    font-weight: normal;
-    display: block;
-    padding: 0;
-  }
-  &::after {
-    content: " ";
-    width: 11px;
-    height: 6px;
-    margin: 13px;
+  svg {
+    display: inline-block;
     flex-shrink: 0;
-    border-left: 4px solid ${({ styles }) => styles.color.light};
-    border-bottom: 4px solid ${({ styles }) => styles.color.light};
+    width: ${styles.iconSize.small};
+    height: ${styles.iconSize.small};
+    opacity: 0;
+    transition: opacity 400ms ${styles.easing.easeOut};
   }
-  ${(props) =>
-    props.done
+  &:hover svg {
+    opacity: 1;
+  }
+  ${(done || active)
       ? `
-      &::after {
-        transform: rotate(-46deg);
-      }
-      span {
-        display: block;
+      svg {
+        opacity: 1;
       }
     `
-      : `
-      &::after {
-        border: none;
-      }
-      span {
-        display: none;
-      }
-    `} ${(props) =>
-    props.active
-      ? `
-      span {
-        display: none;
-      }
-    `
-      : " "} &:last-of-type {
-    margin-bottom: 30px;
+  : ''
   }
-`);
+
+  ${errors
+    ? `
+    &::after {
+      display: inline-block;
+      transform: rotate(-46deg);
+      border-color: ${styles.color2.negative};
+    }
+  `
+  : ''
+  }
+`}`);

@@ -35,7 +35,7 @@ export default function Table({ cells, debug, simple }: RenderWithData<'Table'>)
                 const Cell = cell.type === 'Heading' ? TableHeader : TableCell;
 
                 return (
-                  <Cell data-id={cell.id} {...cellProps} key={cellKey} simple={simple}>
+                  <Cell data-id={cell.id} {...cellProps} key={cellKey} simple={simple} aria-label={cellProps['data-inactive'] ? `Inaktiv: ${cell.text}` : undefined}>
                     <Html text={cell.text} />
                   </Cell>
                 );

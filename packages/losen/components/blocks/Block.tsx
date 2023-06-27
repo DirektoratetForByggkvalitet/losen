@@ -30,7 +30,7 @@ import { setData } from "losen/state/actions";
 import { NAME } from "losen/state";
 
 // Primitives
-import { SpecificBlock as StyledBlock } from "losen/primitives/Block";
+import { SpecificBlock as StyledBlock, TextBlock } from "losen/primitives/Block";
 import StyledErrorBlock from "losen/primitives/ErrorBlock";
 import { ErrorMessage } from "losen/primitives/Errors";
 import { RenderableNode, State } from "losen";
@@ -112,7 +112,7 @@ export function PureBlock(props: any) {
     return (
       <StyledBlock data-id={props.id} debug={props.debug}>
         <Html text={props.heading} h2 />
-        <Html text={props.text} />
+        <Html text={props.text} margins />
 
         {props.children.map((block: any) => (
           <ConnectedBlock
@@ -137,8 +137,7 @@ export function PureBlock(props: any) {
     return (
       <StyledErrorBlock role="alert" data-id={props.id} debug={props.debug}>
         <Html text={props.heading} h2 />
-        <Html text={props.text} />
-
+        <Html text={props.text} margins />
         {props.children.map((block: any) => (
           <ConnectedBlock
             grouped
@@ -147,6 +146,7 @@ export function PureBlock(props: any) {
             simple={props.simple}
             setPage={props.setPage}
             errorPages={props.errorPages}
+            warning
             pages={props.pages}
             {...block}
           />
@@ -189,76 +189,38 @@ export function PureBlock(props: any) {
       disabled={props.disabled}
       type={props.type}
     >
-      <div>
-        <Html text={props.heading} h2 />
-        <Html text={props.text} />
-        <ImageComponent image={props.image} />
-        {repeatQuestion(props.image, props.text) ? (
-          <Html text={props.heading} h3 />
-        ) : (
-          ""
-        )}
-        <SpecificBlock
-          debug={props.debug}
-          {...{
-            ...props,
-            validation:
-              props.currentValue && props.validator
-                ? {
-                  error: !new RegExp(props.validator.pattern).test(
-                    props.currentValue
-                  ),
-                  message: props.validator.error,
-                }
-                : {},
-          }}
-        />
 
-        {props.disabled && (
-          <ErrorMessage role="alert">
-            <ErrorIcon /> {props.errorDescription}
-          </ErrorMessage>
-        )}
-        {props.summary && (
-          <SummaryDetails summary={props.summary} details={props.details} />
-        )}
-      </div>
+      <ImageComponent image={props.image} />
+      <Html text={props.heading} h2={!props.grouped} h3={props.grouped} />
+      <Html text={props.text} margins />
+      <SpecificBlock
+        debug={props.debug}
+        {...{
+          ...props,
+          validation:
+            props.currentValue && props.validator
+              ? {
+                error: !new RegExp(props.validator.pattern).test(
+                  props.currentValue
+                ),
+                message: props.validator.error,
+              }
+              : {},
+        }}
+      />
+
+      {props.disabled && (
+        <ErrorMessage role="alert">
+          <ErrorIcon /> {props.errorDescription}
+        </ErrorMessage>
+      )}
+      {props.summary && (
+        <SummaryDetails summary={props.summary} details={props.details} />
+      )}
     </StyledBlock>
   );
 }
 
-PureBlock.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object),
-  currentValue: PropTypes.any,
-  debug: PropTypes.bool.isRequired,
-  disabled: PropTypes.bool,
-  errorDescription: PropTypes.string,
-  errors: PropTypes.shape({
-    disabled: PropTypes.array,
-    validation: PropTypes.object,
-    required: PropTypes.bool,
-  }),
-  grouped: PropTypes.bool,
-  heading: PropTypes.string,
-  id: PropTypes.string,
-  image: PropTypes.object,
-  property: PropTypes.string,
-  simple: PropTypes.bool,
-  text: PropTypes.string,
-  type: PropTypes.string.isRequired,
-  validator: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.shape({
-      error: PropTypes.string.isRequired,
-      pattern: PropTypes.string.isRequired,
-    }),
-  ]),
-  errorPages: PropTypes.array,
-  details: PropTypes.string,
-  summary: PropTypes.string,
-  setPage: PropTypes.func,
-  pages: PropTypes.array,
-};
 
 PureBlock.defaultProps = {
   children: [],

@@ -1,6 +1,6 @@
 import { ErrorMessage } from "losen/primitives/Errors";
 import { NodeSummary as StyledNodeSummary } from "losen/primitives/Summary";
-import ErrorIcon from "../graphics/ErrorIcon";
+import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";
 import { RenderableNode } from "../..";
 import { hasProperty, isOfType } from "../../utils/is-of-type";
@@ -11,7 +11,7 @@ type Props = {
 
 export default function SoftError({ children }: Props) {
   return (
-    <StyledNodeSummary>
+    <>
       {children.map((child) => {
         const heading =
           !isOfType(child, ['Result']) &&
@@ -23,13 +23,13 @@ export default function SoftError({ children }: Props) {
         if (heading) {
           return (
             <ErrorMessage role="alert">
-              <ErrorIcon /> <Html text={heading} inline />
+              <InfoIcon /> <Html text={heading} inline />
             </ErrorMessage>
           );
         }
 
         return null;
       })}
-    </StyledNodeSummary>
+    </>
   );
 }

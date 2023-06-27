@@ -1,4 +1,5 @@
 import { H3 } from 'losen/primitives/Heading';
+import { P } from 'losen/primitives/Paragraphs';
 import { Radio as Input } from 'losen/primitives/Input';
 import Html from 'losen/components/helper/Html';
 import { Label } from 'losen/primitives/Label';
@@ -41,16 +42,14 @@ export default function RadioInput({
 
       <Label htmlFor={id} warning={message?.warning} debug={debug}>
         <div data-id={id}>
-          <div>
-            {heading && !text ? heading : null}
-            {heading && text ? <H3>{heading}</H3> : null}
+          {heading && !text ? `${heading} ` : null}
+          {heading && text ? <H3>{heading}</H3> : null}
 
-            {message ? (
-              <SoftWarning warning={message.warning}>
-                {message.message}
-              </SoftWarning>
-            ) : null}
-          </div>
+          {message ? (
+            <SoftWarning warning={message.warning}>
+              {message.message}
+            </SoftWarning>
+          ) : null}
 
           {text ? <Html text={text} /> : null}
         </div>

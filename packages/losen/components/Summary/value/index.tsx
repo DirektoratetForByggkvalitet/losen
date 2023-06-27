@@ -48,7 +48,7 @@ export default function Value({ value, node }: Props) {
     if (!commaSeparated.length) {
       return (
         <StyledValue>
-          <Html inline text={lastOne} />
+          {lastOne}
         </StyledValue>
       );
     }

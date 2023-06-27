@@ -1,0 +1,33 @@
+import { Meta, Story } from "@storybook/blocks";
+import * as MainButtonStories from '../MainButton.stories';
+import * as SecondaryButtonStories from '../SecondaryButton.stories';
+import * as NavButtonStories from '../NavButton.stories';
+import * as SmallButtonStories from '../SmallButton.stories';
+
+<Meta title="Primitives/Buttons" />
+
+# Buttons
+
+## Main button
+<Story of={MainButtonStories.Default} />
+<Story of={MainButtonStories.Copied} />
+<Story of={MainButtonStories.Disabled} />
+<Story of={MainButtonStories.LoadingSpinner} />
+
+## Secondary button
+<Story of={SecondaryButtonStories.Default} />
+
+## Small button
+Used only on result page.
+
+<Story of={SmallButtonStories.Default} />
+<Story of={SmallButtonStories.Disabled} />
+
+## Navigation
+Buttons leading to the next step look like this
+
+<Story of={NavButtonStories.Next} />
+
+Buttons leading to the previous step look like this
+
+<Story of={NavButtonStories.Default} />

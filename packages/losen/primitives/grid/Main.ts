@@ -3,23 +3,23 @@ import styled from "styled-components";
 import injectStyles from "../../utils/inject-styles";
 import { PrimitiveProps } from "../../styles";
 
-export const Main = injectStyles(styled.main<PrimitiveProps>`
-  flex: 1;
-  padding: 30px 40px 0 60px;
-  margin-left: ${({ styles }) => styles.size.navWidth};
-  max-width: ${({ styles }) => styles.size.blockWidth};
+export const Main = injectStyles(styled.main<PrimitiveProps>`${({styles, debug}) => `
+  background: ${styles.color2.sectionBackground};
+  padding: ${styles.padding.xLarge};
+  margin-left: ${styles.padding.large};
+  border-radius: ${styles.borderRadius.large};
+  overflow: hidden;
 
   @media print {
     margin: 0 auto;
+    background: none;
   }
 
   h2 {
     margin-top: 0;
   }
 
-  ${(props) =>
-    props.debug
-      ? `
+  ${debug ? `
   position: relative;
 
   :before {
@@ -33,10 +33,12 @@ export const Main = injectStyles(styled.main<PrimitiveProps>`
     font-size: 14px;
     padding: 2px 6px;
   }`
-      : ""} @media screen and (max-width: 900px) {
-    padding: 0;
-    width: ${({ styles }) => styles.size.mobileContentWidth};
-    margin: 30px auto;
-    padding: 0;
+  : ""} 
+  
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    padding: ${styles.padding.medium};
+    margin: 0 auto;
   }
-`);
+
+`}`);

@@ -10,7 +10,7 @@ import Html from "./helper/Html";
 import Summary from "./Summary";
 
 import { H1, H2 } from "losen/primitives/Heading";
-import { Lead } from "losen/primitives/Paragraphs";
+import { P, Lead } from "losen/primitives/Paragraphs";
 import { MainButton } from "losen/primitives/Button";
 import { SpecificBlock, TextBlock } from "losen/primitives/Block";
 import { Export, Grid } from "losen/primitives";
@@ -76,25 +76,27 @@ function Result(props: Props) {
   return (
     <Grid.Main result debug={debug} data-id={pageid} id="main">
       <H1 result>{resultHeading}</H1>
-      <Lead result>
+      {resultLead && <Grid.Blocks>
         <Html text={resultLead} />
-      </Lead>
+      </Grid.Blocks>}
 
       {children.map(({ heading, ...block }: any) => (
-        <Block
-          {...block}
-          key={block.id}
-          errorPages={errorPages}
-          setPage={setPage}
-          pages={schema}
-        />
+        <Grid.Blocks>
+          <Block
+            {...block}
+            key={block.id}
+            errorPages={errorPages}
+            setPage={setPage}
+            pages={schema}
+            />
+        </Grid.Blocks>
       ))}
-
-      <SpecificBlock>
-        {summaryTitle ? <H1 small>{summaryTitle}</H1> : <H1 small>{title}</H1>}
+      <Grid.Blocks>
+        <hr/>
+        <H2 small>Oppsummering</H2>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
-      </SpecificBlock>
-
+      </Grid.Blocks>
+          
       {!incomplete && exporter ? (
         <TextBlock>
           <H2>Takk for at du gjennomførte veiviseren!</H2>
@@ -102,7 +104,7 @@ function Result(props: Props) {
             Du kan kopiere svarene dine, eller skrive ut resultatsiden.
           </Lead>
         </TextBlock>
-      ) : null}
+        ) : null}
 
       <Export exporter={exporter}>
         {!incomplete && exporter && exports?.[exporter] ? (
@@ -120,7 +122,7 @@ function Result(props: Props) {
             Skriv ut
           </MainButton>
         )}
-      </Export>
+        </Export>
     </Grid.Main>
   );
 }

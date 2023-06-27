@@ -7,43 +7,23 @@ export const PageSummary = injectStyles(styled.div<
   PrimitiveProps<{
     error?: any;
   }>
->`
-  padding: 20px 0 20px;
-  margin: 0 0 10px;
-  background: white;
-  line-height: 2;
-  border-top: 1px solid ${({ styles }) => styles.color.warmgray3};
+  >`${({ styles, error }) => `
+  width: 100%;
+  padding: ${styles.padding.xLarge} 0;
   h2 {
-    padding: 0.2em 0;
-    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
-    font-weight: 300;
+    margin-bottom: ${styles.padding.large};
   }
   button {
-    min-width: 120px;
     align-self: flex-start;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 ${styles.padding.medium};
   }
-  > div {
-    line-height: 1.4;
-    max-width: 600px;
-  }
-  ${(props) =>
-    props.error
-      ? `
+  ${error ? `
       h2 {
-        color: ${props.styles.color.red};
+        color: ${styles.color2.error};
       }
-      button {
-        background: ${props.styles.color.red};
-      }
-    `
-      : `
-      h2 {
-        color: inherit;
-      }
-    `}
+    ` : ''}
   @media screen and (max-width: 900px) {
     h2 {
       display: block;
@@ -55,47 +35,45 @@ export const PageSummary = injectStyles(styled.div<
   }
   @media print {
     page-break-inside: avoid;
-    padding-bottom: 0;
-    font-size: 12px;
-    border: 1px solid ${({ styles }) => styles.color.darkgray};
-    padding: 16px;
+    padding: 0;
+    padding-bottom: ${styles.padding.xLarge};
     h2 {
-      font-size: 14px;
-      font-style: italic;
-      display: inline-block;
-      margin-bottom: 20px;
-      border-bottom: 1px solid ${({ styles }) => styles.color.warmgray2};
+      width: 100%;
+      border-bottom: 1px solid ${styles.color2.primary};
     }
   }
-`);
+`}`);
 
-export const NodeSummary = injectStyles(styled.div`
-  margin-bottom: 30px;
+export const NodeSummary = injectStyles(styled.div<PrimitiveProps<{
+    error?: any;
+  }>>`${({ styles, error }) => `
+  background: ${error ? styles.color2.errorXLight : styles.color2.secondaryXLight};
+  padding: ${styles.padding.medium} ${styles.padding.large};
+  margin-bottom: ${styles.padding.xSmall};
+  border-radius: ${styles.borderRadius.small};
   h3 {
-    font-size: 18px;
-    font-weight: 300;
-    margin-bottom: 0;
-  }
-  @media screen and (max-width: 900px) {
-    h3 {
-      font-size: 16px;
-    }
+    font-size: ${styles.text.body.fontSize};
+    font-weight: ${styles.text.body.fontWeight};
+    line-height: ${styles.text.body.lineHeight};
+    letter-spacing: ${styles.text.body.letterSpacing};
+    margin-bottom: ${styles.padding.xxSmall}};
   }
   @media print {
-    margin-bottom: 20px;
+    padding: ${styles.padding.small} 0;
     font-size: 12px;
     h3 {
       font-size: 12px;
     }
   }
-`);
+`}`);
 
 export const Value = injectStyles(styled.div<
   PrimitiveProps<{
     missing?: boolean;
   }>
->`
-  color: ${(props) => (props.missing ? props.styles.color.red : "black")};
-  font-weight: ${(props) => (props.missing ? "300" : "bold")};
-  font-style: ${(props) => (props.missing ? "italic" : "normal")};
-`);
+  >`${({ styles, missing }) => `
+  font-style: ${missing ? "italic" : "normal"};
+  color: ${missing ? styles.color2.error : styles.color2.textDark};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.boldWeight};
+`}`);

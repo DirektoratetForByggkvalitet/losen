@@ -3,43 +3,48 @@ import styled from "styled-components";
 import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
-export const Wizard = injectStyles(styled.div<PrimitiveProps>`
-  background-color: white;
-  background-image: linear-gradient(
-    164deg,
-    rgba(137, 174, 196, 0.34),
-    white,
-    rgba(0, 117, 127, 0.19)
-  );
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  font-family: ${({ styles }) => styles.font.primary};
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.6;
+export const Wizard = injectStyles(styled.div<PrimitiveProps<{
+    noBackground?: boolean;
+  }>>`${({ styles, noBackground }) => `
+  background-color:${noBackground ? "inherit" : styles.color2.pageBackground};
+  font-family: ${styles.font.body};
+  padding: ${noBackground ? "0" : styles.padding.medium};
+  font-size: ${styles.text.body.fontSize};
+  font-weight: ${styles.text.body.fontWeight};
+  line-height: ${styles.text.body.lineHeight};
+  letter-spacing: ${styles.text.body.letterSpacing};
   strong {
-    font-weight: 700;
+    font-weight: ${styles.text.body.boldWeight};
   }
   * {
     box-sizing: border-box;
     &:focus {
-      outline-color: ${({ styles }) => styles.color.bluegreen};
+      outline-color: ${styles.color2.outline};
     }
   }
   img {
     max-width: 100%;
   }
-  a {
-    color: ${({ styles }) => styles.color.light};
+  hr {
+    border-color: ${styles.color2.secondaryXLight};
+    border-width: ${styles.padding.xxSmall};
+    margin: ${styles.padding.xLarge} 0;
+  }
+  a:not(class) {
+    font-size: ${styles.text.body.fontSize};
+    font-weight: ${styles.text.body.fontWeight};
+    line-height: ${styles.text.body.lineHeight};
+    letter-spacing: ${styles.text.body.letterSpacing};
+    color: ${styles.color2.link};
     &:hover {
-      color: ${({ styles }) => styles.color.dark};
+      color: ${styles.color2.link};
+      text-decoration: none;
     }
   }
-  @media screen and (max-width: 700px) {
-    font-size: 16px;
+  @media screen and (max-width: 900px) {
+    padding: ${styles.padding.xSmall};
   }
   @media print {
-    background-image: none;
     background-color: white;
   }
-`);
+`}`);

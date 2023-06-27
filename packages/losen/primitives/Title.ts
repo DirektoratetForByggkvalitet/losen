@@ -3,22 +3,26 @@ import styled from "styled-components";
 import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
-export const Title = injectStyles(styled.div<PrimitiveProps>`
+export const Title = injectStyles(styled.div<PrimitiveProps>`${({ styles }) => `
   cursor: pointer;
-  text-align: center;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid ${({ styles }) => styles.color.warmgray3};
-  font-size: 24px;
-  line-height: 1.2;
+  font-family: ${styles.font.headline};
+  font-size: ${styles.text.h3.fontSize};
+  font-weight: ${styles.text.h3.fontWeight};
+  line-height: ${styles.text.h3.lineHeight};
+  letter-spacing: ${styles.text.h3.letterSpacing};
+  color: ${styles.color2.textHeading};
+  margin: 0;
   &::before {
     content: "Veiviser";
     display: block;
-    color: gray;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 300;
-    font-size: 0.9rem;
+    font-family: ${styles.font.body};
+    font-size: ${styles.text.subHeading.fontSize};
+    font-weight: ${styles.text.subHeading.fontWeight};
+    line-height: ${styles.text.subHeading.lineHeight};
+    letter-spacing: ${styles.text.subHeading.letterSpacing};
+    text-transform: ${styles.text.subHeading.textTransform};
+    color: ${styles.color2.textHeading};
+    opacity: 0.75;
     margin-bottom: 0.3em;
   }
-`);
+`}`);

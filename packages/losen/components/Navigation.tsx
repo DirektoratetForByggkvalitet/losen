@@ -16,17 +16,12 @@ export default function Navigation({
   previousPage = () => { },
 }: Props) {
   return (
-    <Grid.Nav>
-      {hasPrevious ? (
-        <Button.NavButton type="button" onClick={previousPage}>
-          Forrige
-        </Button.NavButton>
-      ) : null}
+    <>
       {hasNext ? (
         <Button.NavButton type="button" next onClick={nextPage}>
           {nextPageIsResult ? "Vis resultat" : "Neste"}
         </Button.NavButton>
       ) : null}
-    </Grid.Nav>
+    </>
   );
 }

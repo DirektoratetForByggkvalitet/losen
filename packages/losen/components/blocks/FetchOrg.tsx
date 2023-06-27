@@ -9,6 +9,7 @@ import VariableText from '../helper/VariableText';
 import { H3 } from '../../primitives/Heading';
 import DL from '../../primitives/Datalist';
 import ErrorIcon from '../graphics/ErrorIcon';
+import InfoIcon from '../graphics/InfoIcon';
 import { ErrorMessage } from '../../primitives/Errors';
 import Information from '../../primitives/Information';
 import Loading from '../../primitives/Loading';
@@ -152,52 +153,54 @@ export default function FetchOrd(props: RenderWithData<"FetchOrg", FetchOrgData 
         setData={(property, value) => setData(property, { orgid: value })}
         update={update}
       />
+      <div aria-live="polite">
+        {loading && <Loading role="status">Laster inn data</Loading>}
 
-      {currentValue?.dataOrg ? (
-        <div>
-          <br />
-          <DL role="status">
-            <dt>Firmaets navn</dt>
-            <dd>{currentValue?.name ?? ''}</dd>
+        {currentValue?.dataOrg ? (
+          <div>
+            <br />
+            <DL role="status">
+              <dt>Firmaets navn</dt>
+              <dd>{currentValue?.name ?? ''}</dd>
 
-            <dt>Adresse</dt>
-            <dd>{currentValue?.address ?? ''}</dd>
+              <dt>Adresse</dt>
+              <dd>{currentValue?.address ?? ''}</dd>
 
-            <dt>Postnummer- og sted</dt>
-            <dd>
-              {currentValue?.postcode ?? ''}{' '}
-              {currentValue?.postplace ?? ''}
-            </dd>
-          </DL>
-          <Information>
-            <ErrorIcon triangleFill={'black'} />
-            <Html text={information} />
-          </Information>
-        </div>
-      ) : null}
+              <dt>Postnummer- og sted</dt>
+              <dd>
+                {currentValue?.postcode ?? ''}{' '}
+                {currentValue?.postplace ?? ''}
+              </dd>
+            </DL>
+            <Information>
+              <InfoIcon  />
+              <Html text={information} />
+            </Information>
+          </div>
+        ) : null}
 
-      <div>
-        <div>
-          {loading && <Loading role="status">Laster inn data</Loading>}
-          {!loading && currentValue?.dataSG ? (
-            <Notice>
-              <H3>
-                <VariableText text={SGheading} data={currentValue} />
-              </H3>
-              <ApprovalAreas areas={currentValue?.validApprovalAreas ?? []} />
-              <VariableText text={SGtext} data={currentValue} />
-            </Notice>
-          ) : null}
+        {!loading && currentValue?.dataSG ? (
+          <Notice>
+            <H3>
+              <VariableText text={SGheading} data={currentValue} />
+            </H3>
+            <ApprovalAreas areas={currentValue?.validApprovalAreas ?? []} />
+            <VariableText text={SGtext} data={currentValue} />
+          </Notice>
+        ) : null}
 
-          {!loading && !currentValue?.dataSG && currentValue?.orgid ? <H3>{invalidapproval}</H3> : null}
-        </div>
-      </div>
-      <div>
+        {!loading && !currentValue?.dataSG && currentValue?.orgid ?
+          <ErrorMessage role="alert">
+            <ErrorIcon /> {invalidapproval}
+          </ErrorMessage>
+          : null}
+
+
         {currentValue?.invalidOrg ? (
           <ErrorMessage role="alert">
             <ErrorIcon /> {invalidOrg}
           </ErrorMessage>
-        ) : null}
+          ) : null}
       </div>
     </div>
   );
