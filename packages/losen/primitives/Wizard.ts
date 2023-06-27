@@ -26,8 +26,8 @@ export const Wizard = injectStyles(styled.div<PrimitiveProps<{
     max-width: 100%;
   }
   hr {
-    border-color: ${styles.color2.secondaryXLight};
-    border-width: ${styles.padding.xxSmall};
+    border: none;
+    border-bottom: ${styles.padding.xxSmall} solid ${styles.color2.secondaryXLight};
     margin: ${styles.padding.xLarge} 0;
   }
   a:not(class) {

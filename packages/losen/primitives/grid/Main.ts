@@ -37,7 +37,7 @@ export const Main = injectStyles(styled.main<PrimitiveProps>`${({styles, debug})
   
   @media screen and (max-width: 900px) {
     width: 100%;
-    padding: ${styles.padding.medium};
+    padding: ${styles.padding.xLarge} ${styles.padding.medium};
     margin: 0 auto;
   }
 
