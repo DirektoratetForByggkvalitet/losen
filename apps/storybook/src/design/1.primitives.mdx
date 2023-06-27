@@ -1,0 +1,58 @@
+import { Meta, Story } from "@storybook/blocks";
+import * as MainButtonStories from '../primitives/MainButton.stories';
+import * as SecondaryButtonStories from '../primitives/SecondaryButton.stories';
+import * as NavButtonStories from '../primitives/NavButton.stories';
+import * as SmallButtonStories from '../primitives/SmallButton.stories';
+import * as ErrorMessageStories from '../primitives/ErrorMessage.stories';
+import * as InformationStories from '../primitives/Information.stories';
+import * as StyledErrorBlockStories from '../primitives/StyledErrorBlock.stories';
+
+<Meta title="Design/Primitives" />
+
+# Primitives
+The losen wizard design is implmented trough _primitives_. These are HTML elements styled by using [styled components](https://styled-components.com/) and inherit from the styles theme variables. Changing colors in the styles file will update the primitives accordingly. 
+
+## Inheritans
+The `Wizard` primitive is the base wrapper that applies base styling inherited troughout the wizard. But each primitive is often very specific on it's own font sizes and such. 
+
+When losen is used inside another design system the global CSS styling may interfer with the components in the wizard it self. 
+
+
+## Example primitives
+All primitives can be found specified as stories in Storybook. Look under _Primitives_ in the left side menu. Some primitives are gathered here as examples.
+
+### Main button
+<Story of={MainButtonStories.Default} />
+<Story of={MainButtonStories.Copied} />
+<Story of={MainButtonStories.Disabled} />
+<Story of={MainButtonStories.LoadingSpinner} />
+
+### Secondary button
+<Story of={SecondaryButtonStories.Default} />
+
+### Small button
+Used only on result page.
+
+<Story of={SmallButtonStories.Default} />
+<Story of={SmallButtonStories.Disabled} />
+
+### Navigation
+Buttons leading to the next step look like this
+
+<Story of={NavButtonStories.Next} />
+
+Buttons leading to the previous step look like this
+
+<Story of={NavButtonStories.Default} />
+
+## Errors and warnings
+
+### Validation error
+For validation errors in input fields and such. 
+<Story of={ErrorMessageStories.Default} />
+
+### Information notice
+<Story of={InformationStories.Default} />
+
+### Error block
+<Story of={StyledErrorBlockStories.Default} />
