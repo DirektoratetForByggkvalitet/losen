@@ -9,13 +9,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
       - name: Lint
-        run: npm test
+        run: npm run lint
       - name: Test
         run: npm test
       - name: Build
+        run: npm run build
