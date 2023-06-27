@@ -1,3 +1,4 @@
+import React from 'react';
 import template from "lodash/template";
 
 type Props = {

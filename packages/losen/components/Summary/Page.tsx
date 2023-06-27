@@ -1,3 +1,4 @@
+import React from 'react';
 import { H2 } from "losen/primitives/Heading";
 import { PageSummary as StyledPageSummary } from "losen/primitives/Summary";
 import { SmallButton as Button } from "losen/primitives/Button";

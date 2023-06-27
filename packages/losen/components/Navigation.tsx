@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button } from "losen/primitives";
 
 type Props = {

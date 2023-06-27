@@ -1,3 +1,4 @@
+import React from 'react';
 import { Table } from "losen/primitives/Table";
 import { H3 } from "losen/primitives/Heading";
 import TableContainer from "losen/primitives/TableContainer";

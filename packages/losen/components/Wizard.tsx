@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -79,11 +79,11 @@ function Wizard({
     if (property) {
       setImmediate(() => {
         const element = document.getElementById(property);
-        
+
         if (!element) {
           return;
         }
-        
+
         window.scroll(0, element.offsetTop);
       });
     } else {

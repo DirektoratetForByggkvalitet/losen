@@ -1,3 +1,4 @@
+import React from 'react';
 import Style from 'losen/styles';
 
 type Props = {

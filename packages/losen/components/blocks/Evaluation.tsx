@@ -1,3 +1,4 @@
+import React from 'react';
 import get from 'lodash/get';
 
 import StyledSum from 'losen/primitives/Sum';

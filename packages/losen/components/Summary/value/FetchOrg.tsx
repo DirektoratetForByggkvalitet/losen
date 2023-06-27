@@ -1,3 +1,4 @@
+import React from 'react';
 import { Value as StyledValue } from "losen/primitives/Summary";
 import DL from "losen/primitives/Datalist";
 import ApprovalAreas from "../../ApprovalAreas";

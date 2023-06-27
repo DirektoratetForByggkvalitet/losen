@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 import { ErrorMessage } from '../../primitives/Errors';
 import { TextInput } from '../../primitives/Input';

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ErrorMessage } from "losen/primitives/Errors";
 import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";

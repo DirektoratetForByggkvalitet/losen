@@ -1,3 +1,4 @@
+import React from 'react';
 import { RenderWithData } from "losen";
 import { TextBlock } from "losen/primitives/Block";
 import Html from "losen/components/helper/Html";

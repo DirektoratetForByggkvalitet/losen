@@ -1,3 +1,4 @@
+import React from 'react';
 import Fieldset from 'losen/primitives/Fieldset';
 import Legend from 'losen/primitives/Legend';
 import OptionWrapper from 'losen/primitives/OptionWrapper';

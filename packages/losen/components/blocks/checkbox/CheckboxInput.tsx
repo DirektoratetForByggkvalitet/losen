@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 import { Checkbox as Input } from 'losen/primitives/Input';
 import { H3 } from 'losen/primitives/Heading';

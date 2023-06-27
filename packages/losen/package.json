@@ -1,12 +1,14 @@
 {
   "name": "losen",
-  "version": "7.0.0-beta.7",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "version": "7.0.0-beta.8",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
   "license": "MIT",
   "scripts": {
     "lint": "tsc --noEmit ./index.ts",
-    "build": "tsup ./index.ts --format cjs --dts ",
+    "build": "tsup ./index.ts --format cjs,esm --dts --external react",
+    "dev": "npm run build -- --watch",
     "bump-version": "npm version",
     "publish-package": "npm publish",
     "test": "jest"

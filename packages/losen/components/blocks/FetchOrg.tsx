@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import merge from 'lodash/merge';
 
 import ApprovalAreas from '../ApprovalAreas';
@@ -173,7 +173,7 @@ export default function FetchOrd(props: RenderWithData<"FetchOrg", FetchOrgData 
               </dd>
             </DL>
             <Information>
-              <InfoIcon  />
+              <InfoIcon />
               <Html text={information} />
             </Information>
           </div>
@@ -200,7 +200,7 @@ export default function FetchOrd(props: RenderWithData<"FetchOrg", FetchOrgData 
           <ErrorMessage role="alert">
             <ErrorIcon /> {invalidOrg}
           </ErrorMessage>
-          ) : null}
+        ) : null}
       </div>
     </div>
   );

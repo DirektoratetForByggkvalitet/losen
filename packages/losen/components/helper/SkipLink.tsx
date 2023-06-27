@@ -1,3 +1,4 @@
+import React from 'react';
 
 import SkipLinkStyles from '../../primitives/SkipLink';
 

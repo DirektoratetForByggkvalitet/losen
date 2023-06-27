@@ -1,3 +1,4 @@
+import React from 'react';
 import Html from "../../helper/Html";
 
 import { Value as StyledValue } from "losen/primitives/Summary";

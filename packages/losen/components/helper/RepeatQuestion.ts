@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function repeatQuestion(
   img?: { url: string; alt: string },
   text?: string

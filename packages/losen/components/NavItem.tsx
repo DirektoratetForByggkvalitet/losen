@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavItem as StyledNavItem } from "losen/primitives";
 import CheckIcon from './graphics/CheckIcon';
 

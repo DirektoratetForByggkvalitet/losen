@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 import Html from '../helper/Html';
 import { Textarea as StyledTextarea } from 'losen/primitives/Input';

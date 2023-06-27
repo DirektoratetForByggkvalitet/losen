@@ -1,3 +1,4 @@
+import React from 'react';
 import DefaultValueSummary from "./value";
 import Checkbox from "./value/Checkbox";
 import FetchOrg from "./value/FetchOrg";

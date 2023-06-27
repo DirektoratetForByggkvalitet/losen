@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 import Fieldset from "losen/primitives/Fieldset";
 import Legend from "losen/primitives/Legend";

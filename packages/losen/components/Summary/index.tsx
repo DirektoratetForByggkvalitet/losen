@@ -1,3 +1,4 @@
+import React from 'react';
 import PageSummary from "./Page";
 import hasSoftError from "losen/utils/has-soft-error";
 import { RenderableNode } from "../..";

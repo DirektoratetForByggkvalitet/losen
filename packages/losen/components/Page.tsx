@@ -1,3 +1,4 @@
+import React from 'react';
 
 import Block from "./blocks/Block";
 import Html from "./helper/Html";
@@ -44,11 +45,11 @@ export default function Page({
         <Html text={lead} />
       </Paragraphs.Lead>}
       {summary && <SummaryDetails summary={summary} details={details} />}
-      
+
       <Grid.Blocks>
-      {children.map((block, index) => (
-        <Block key={(hasProperty(block, 'id') && block.id) || index} {...block} />
-      ))}
+        {children.map((block, index) => (
+          <Block key={(hasProperty(block, 'id') && block.id) || index} {...block} />
+        ))}
       </Grid.Blocks>
 
       {(!firstPage || !lastPage) && (
@@ -58,7 +59,7 @@ export default function Page({
           previousPage={previousPage}
           hasNext={!lastPage}
           nextPage={nextPage}
-          />
+        />
       )}
     </Grid.Main>
   );
