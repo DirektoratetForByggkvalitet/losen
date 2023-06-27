@@ -1,9 +1,5 @@
 module.exports = {
-  extends: ["turbo", "prettier", "react/recommended"],
+  extends: ["turbo", "prettier"],
   rules: {},
-  parserOptions: {
-    babelOptions: {
-      presets: [require.resolve("next/babel")],
-    },
-  },
+  parserOptions: {},
 };
