@@ -63,7 +63,7 @@ function Wizard({
   showIntro = () => { },
   styles = {},
   translations = {},
-  showResetModal: showResetModalDefault = true,
+  showResetModal: enableResetModal = true,
   schema,
   setData,
   tableOfContents,
@@ -71,7 +71,7 @@ function Wizard({
   wizard
 }: Props) {
   const [pageId, setPageId] = useState<string>(data[NAME].page || wizard.schema[0].id);
-  const [showResetModal, setShowResetModal] = useState<boolean>(showResetModalDefault);
+  const [showResetModal, setShowResetModal] = useState<boolean>();
   const pageWrapper = useRef<HTMLDivElement>(null);
 
   // @todo Consider finding a more elegant way for scrolling..?
@@ -121,14 +121,21 @@ function Wizard({
   }
 
   useEffect(() => {
+    if (showResetModal !== undefined) {
+      return
+    }
+
     const { $computed, ...wizardData } = data[NAME] || {};
+
+    const reset = enableResetModal && !!Object.keys(wizardData || {}).length
+    setShowResetModal(reset);
+  }, [showResetModal, data, enableResetModal])
+
+  useEffect(() => {
+    const wizardData = data[NAME] || {};
 
     if (wizardData.page) {
       setPageId(wizardData.page);
-    }
-
-    if (showResetModal && !!Object.keys(wizardData).length) {
-      setShowResetModal(true);
     }
 
     trackPage(true)
@@ -140,7 +147,7 @@ function Wizard({
         window.removeEventListener("beforeunload", beforeUnloadHandler);
       }
     }
-  }, [data])
+  }, [data, showResetModal])
 
   function helper() {
     if (!console || window.location.hostname !== "localhost") {
@@ -202,7 +209,7 @@ ${error}
   return (
     <StyleProvider styles={styles}>
       <WizardPrimitive>
-        {showResetModal && <Modal showIntro={showIntro} />}
+        {showResetModal === true && <Modal showIntro={showIntro} />}
         <Grid.Grid>
           <SkipLink />
           <Nav
