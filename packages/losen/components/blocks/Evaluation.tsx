@@ -1,10 +1,10 @@
 import React from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 
-import StyledSum from 'losen/primitives/Sum';
-import StyledSumResult from 'losen/primitives/SumResult';
-import Html from '../helper/Html';
-import { RenderWithData } from 'losen';
+import StyledSum from 'primitives/Sum';
+import StyledSumResult from 'primitives/SumResult';
+import Html from 'components/helper/Html';
+import { RenderWithData } from 'index';
 
 export default function Evaluation({
   data,

@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import { get } from "lodash";
 import { getData } from "./get-data";
 import type { State } from "losen";
 

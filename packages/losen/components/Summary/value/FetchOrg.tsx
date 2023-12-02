@@ -1,8 +1,8 @@
 import React from 'react';
-import { Value as StyledValue } from "losen/primitives/Summary";
-import DL from "losen/primitives/Datalist";
-import ApprovalAreas from "../../ApprovalAreas";
-import { FetchOrgData } from "../../blocks/FetchOrg";
+import { Value as StyledValue } from "primitives/Summary";
+import DL from "primitives/Datalist";
+import ApprovalAreas from "components/ApprovalAreas";
+import { FetchOrgData } from "components/blocks/FetchOrg";
 
 type Props = {
   value?: FetchOrgData

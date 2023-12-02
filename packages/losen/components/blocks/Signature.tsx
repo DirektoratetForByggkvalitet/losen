@@ -1,6 +1,6 @@
 import React from 'react';
-import StyledSignature from "losen/primitives/Signature";
-import PrintForm from "losen/primitives/PrintForm";
+import StyledSignature  from "primitives/Signature";
+import PrintForm  from "primitives/PrintForm";
 
 export default function Signature() {
   return (

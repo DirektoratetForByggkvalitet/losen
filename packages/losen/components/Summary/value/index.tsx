@@ -1,7 +1,7 @@
 import React from 'react';
-import Html from "../../helper/Html";
+import Html from "components/helper/Html";
 
-import { Value as StyledValue } from "losen/primitives/Summary";
+import { Value as StyledValue }  from "primitives/Summary";
 
 type Props = {
   value: any

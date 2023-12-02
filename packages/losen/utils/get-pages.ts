@@ -1,6 +1,6 @@
-import get from "lodash/get";
-import { getNodeErrors } from "losen/utils/selectors";
-import { hasProperty } from "losen/utils/is-of-type";
+import { get } from "lodash";
+import { getNodeErrors } from "utils/selectors";
+import { hasProperty } from "utils/is-of-type";
 import type { NodeTitles, RenderableNode, ValidatedNode } from "losen";
 
 /**

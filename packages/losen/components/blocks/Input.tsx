@@ -1,9 +1,9 @@
 import React, { ChangeEventHandler } from 'react';
 
-import { ErrorMessage } from '../../primitives/Errors';
-import { TextInput } from '../../primitives/Input';
-import ErrorIcon from '../graphics/ErrorIcon';
-import { RenderWithData } from 'losen';
+import { ErrorMessage } from 'primitives/Errors';
+import { TextInput } from 'primitives/Input';
+import ErrorIcon from 'components/graphics/ErrorIcon';
+import { RenderWithData } from 'index';
 
 type Props = RenderWithData<"Input", string> & {
   update?: (value: string) => void

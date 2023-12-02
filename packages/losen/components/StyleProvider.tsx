@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
-import merge from 'lodash/merge';
+import { merge } from 'lodash';
 
-import defaultStyles, { StylesProps } from '../styles';
+import defaultStyles, { StylesProps } from 'styles';
 
 export const StyleContext = createContext<typeof defaultStyles>(defaultStyles);
 

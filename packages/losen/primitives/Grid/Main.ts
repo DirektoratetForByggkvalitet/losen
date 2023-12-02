@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import injectStyles from "../../utils/inject-styles";
-import { PrimitiveProps } from "../../styles";
+import injectStyles from "utils/inject-styles";
+import { PrimitiveProps } from "styles";
 
 export const Main = injectStyles(styled.main<PrimitiveProps>`${({styles, debug}) => `
   background: ${styles.color2.sectionBackground};

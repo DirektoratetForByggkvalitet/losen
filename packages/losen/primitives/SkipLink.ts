@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import injectStyles from "../utils/inject-styles";
-import { PrimitiveProps } from "../styles";
+import injectStyles from "utils/inject-styles";
+import { PrimitiveProps } from "styles";
 
 const SkipLink = injectStyles(styled.a<PrimitiveProps>`${({ styles }) => `
   position: absolute;

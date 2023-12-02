@@ -1,7 +1,7 @@
 import React from 'react';
-import { Table } from "losen/primitives/Table";
-import { H3 } from "losen/primitives/Heading";
-import TableContainer from "losen/primitives/TableContainer";
+import { Table }  from "primitives/Table";
+import { H3 }  from "primitives/Heading";
+import TableContainer  from "primitives/TableContainer";
 
 type Props = {
   areas?: Array<{ 'function': string, subject_area: string, grade: string }>

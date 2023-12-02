@@ -1,9 +1,9 @@
 import React from 'react';
-import { TextBlock } from 'losen/primitives/Block';
-import InformationBlock from 'losen/primitives/Information';
-import Html from 'losen/components/helper/Html';
-import InfoIcon from 'losen/components/graphics/InfoIcon';
-import { RenderWithData } from 'losen';
+import { TextBlock } from 'primitives/Block';
+import InformationBlock from 'primitives/Information';
+import Html from 'components/helper/Html';
+import InfoIcon from 'components/graphics/InfoIcon';
+import { RenderWithData } from 'index';
 
 export default function Information({
   debug,

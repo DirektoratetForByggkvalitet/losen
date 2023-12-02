@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from "redux";
 
-import reducer from "losen/state/reducer";
-import { setData } from "losen/state/actions";
-import { NAME } from "losen/state";
+import reducer  from "state/reducer";
+import { setData }  from "state/actions";
+import { NAME }  from "state";
 import { WizardDefinition } from "losen";
 
 const schema: WizardDefinition = {

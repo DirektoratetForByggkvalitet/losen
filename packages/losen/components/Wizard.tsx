@@ -3,27 +3,27 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 import Modal from "./helper/Modal";
-import { NAME } from "../state";
-import { RenderableNode, State, WizardDefinition } from 'losen'
+import { NAME } from "state";
+import { RenderableNode, State, WizardDefinition } from 'index'
 
-import { getTitle, getNodeTitles } from "../utils/selectors";
-import getPages from "../utils/get-pages";
+import { getTitle, getNodeTitles } from "utils/selectors";
+import getPages from "utils/get-pages";
 
-import { setData } from "../state/actions";
+import { setData } from "state/actions";
 import Nav from "./Nav";
 import Page from "./Page";
-import reduceWizard, { Translations } from "../utils/reduce-wizard";
-import Result from "./Result";
-import SkipLink from "./helper/SkipLink";
-import { StyleProvider } from "./StyleProvider";
-import { track } from "../utils/tracking";
-import beforeUnloadHandler from "../utils/before-unload-handler";
-import validateSchema from "losen/utils/validator";
+import reduceWizard, { Translations } from "utils/reduce-wizard";
+import Result from "components/Result";
+import SkipLink from "components/helper/SkipLink";
+import { StyleProvider } from "components/StyleProvider";
+import { track } from "utils/tracking";
+import beforeUnloadHandler from "utils/before-unload-handler";
+import validateSchema from "utils/validator";
 
-import { Grid, Wizard as WizardPrimitive } from "losen/primitives";
-import { StylesProps } from "../styles";
-import { hasProperty, isOfType } from "losen/utils/is-of-type";
-import { getData } from "../utils/get-data";
+import { Grid, Wizard as WizardPrimitive } from "primitives";
+import { StylesProps } from "styles";
+import { hasProperty, isOfType } from "utils/is-of-type";
+import { getData } from "utils/get-data";
 
 type Props = {
   data?: State,

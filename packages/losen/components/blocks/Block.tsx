@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 
 // Components
 import Checkbox from "./checkbox/Checkbox";
-import ErrorIcon from "../graphics/ErrorIcon";
+import ErrorIcon from "components/graphics/ErrorIcon";
 import Evaluation from "./Evaluation";
 import FetchOrg from "./FetchOrg";
-import Html from "../helper/Html";
+import Html from "components/helper/Html";
 import Image from "./Image";
-import ImageComponent from "../helper/Image";
+import ImageComponent from "components/helper/Image";
 import Information from "./Information";
 import Input from "./Input";
 import Missing from "./Missing";
@@ -24,14 +24,14 @@ import Text from "./Text";
 import Textarea from "./Textarea";
 
 // State deps
-import { setData } from "losen/state/actions";
-import { NAME } from "losen/state";
+import { setData } from "state/actions";
+import { NAME } from "state";
 
 // Primitives
-import { SpecificBlock as StyledBlock } from "losen/primitives/Block";
-import StyledErrorBlock from "losen/primitives/ErrorBlock";
-import { ErrorMessage } from "losen/primitives/Errors";
-import { RenderableNode, State } from "losen";
+import { SpecificBlock as StyledBlock } from "primitives/Block";
+import StyledErrorBlock from "primitives/ErrorBlock";
+import { ErrorMessage } from "primitives/Errors";
+import { RenderableNode, State } from "index";
 
 /**
  * Determine which component to use based on the node type

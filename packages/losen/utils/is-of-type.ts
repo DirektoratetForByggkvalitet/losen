@@ -1,5 +1,5 @@
-import get from "lodash/get";
-import { Node, Render, RenderableNode } from "..";
+import { get } from "lodash";
+import { Node, Render, RenderableNode } from "losen";
 
 /**
  * Checks if a node is of one of the specified types. If it is, it returns true and narrows the

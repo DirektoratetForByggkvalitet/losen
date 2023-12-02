@@ -1,5 +1,5 @@
-import omit from "lodash/omit";
-import { NAME } from "losen/state";
+import { omit } from 'lodash';
+import { NAME }  from "state";
 
 import reduceWizard, {
   filterSchemaNodes,
@@ -8,7 +8,7 @@ import reduceWizard, {
   reduceBranches,
   translateNode,
   buildNodeMap,
-} from "losen/utils/reduce-wizard";
+}  from "utils/reduce-wizard";
 import { Branch, Page, RenderableNode, Result, Schema } from "losen";
 
 describe("reduce-wizard", () => {

@@ -1,10 +1,10 @@
 import React from 'react';
-import { H3 } from 'losen/primitives/Heading';
-import { Radio as Input } from 'losen/primitives/Input';
-import Html from 'losen/components/helper/Html';
-import { Label } from 'losen/primitives/Label';
-import SoftWarning from 'losen/primitives/SoftWarning';
-import { RenderWithData } from 'losen';
+import { H3 } from 'primitives/Heading';
+import { Radio as Input } from 'primitives/Input';
+import Html from 'components/helper/Html';
+import { Label } from 'primitives/Label';
+import SoftWarning from 'primitives/SoftWarning';
+import { RenderWithData } from 'index';
 
 type Props = RenderWithData<"Answer"> & {
   checked?: boolean,

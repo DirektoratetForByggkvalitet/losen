@@ -1,11 +1,11 @@
 import React from 'react';
-import get from "lodash/get";
+import { get } from 'lodash';
 import { connect } from "react-redux";
-import { NAME } from "losen/state";
+import { NAME }  from "state";
 
-import { Value as StyledValue } from "losen/primitives/Summary";
-import { RenderableNode, State } from "../../..";
-import { isOfType } from "../../../utils/is-of-type";
+import { Value as StyledValue }  from "primitives/Summary";
+import { RenderableNode, State } from "losen";
+import { isOfType } from "utils/is-of-type";
 
 function hasAllValues(values: Array<string | number>, data: State) {
   return values.reduce(

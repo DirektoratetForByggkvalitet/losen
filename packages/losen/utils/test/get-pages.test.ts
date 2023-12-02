@@ -1,5 +1,5 @@
 import { RenderableNode, ValidatedNode } from "losen";
-import getPages from "losen/utils/get-pages";
+import getPages  from "utils/get-pages";
 
 describe("getPages", () => {
   const reducedSchema: ValidatedNode<RenderableNode>[] = [

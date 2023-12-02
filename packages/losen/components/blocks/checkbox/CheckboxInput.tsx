@@ -1,10 +1,10 @@
 import React, { ChangeEventHandler } from 'react';
 
-import { Checkbox as Input } from 'losen/primitives/Input';
-import { H3 } from 'losen/primitives/Heading';
-import Html from 'losen/components/helper/Html';
-import { Label } from 'losen/primitives/Label';
-import { RenderWithData } from 'losen';
+import { Checkbox as Input } from 'primitives/Input';
+import { H3 } from 'primitives/Heading';
+import Html from 'components/helper/Html';
+import { Label } from 'primitives/Label';
+import { RenderWithData } from 'index';
 
 type Props = RenderWithData<"Answer"> & {
   checked?: boolean,

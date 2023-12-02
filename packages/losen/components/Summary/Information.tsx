@@ -1,7 +1,7 @@
 import React from 'react';
-import InformationBlock from "losen/primitives/Information";
-import InfoIcon from "../graphics/InfoIcon";
-import Html from "../helper/Html";
+import InformationBlock  from "primitives/Information";
+import InfoIcon from "components/graphics/InfoIcon";
+import Html from "components/helper/Html";
 
 type Props = {
   text?: string,

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { NAME } from "losen/state";
+import { NAME }  from "state";
 
-import { SpecificBlock } from "losen/primitives/Block";
-import { CheckboxResultDisplay as Checkbox } from "losen/primitives/Input";
-import { Label } from "losen/primitives/Label";
-import { State } from "../../..";
+import { SpecificBlock }  from "primitives/Block";
+import { CheckboxResultDisplay as Checkbox }  from "primitives/Input";
+import { Label }  from "primitives/Label";
+import { State } from "losen";
 
 function numOfMatchingItemsInObject(object: any, value: any) {
   const items = Object.keys(object || {}).filter(

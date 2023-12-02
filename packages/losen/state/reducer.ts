@@ -1,18 +1,11 @@
-import setWith from "lodash/setWith";
-import isObject from "lodash/isObject";
-import find from "lodash/find";
+import { setWith, isObject, find } from "lodash";
 
-import { NAME } from "./constants";
-import {
-  SET_DATA,
-  RESET_DATA,
-  SHOW_RESET_MODAL,
-  Action,
-} from "losen/state/actions";
-import reduceWizard, { buildNodeMap } from "losen/utils/reduce-wizard";
-import { hasProperty } from "losen/utils/is-of-type";
-import processComputed from "losen/utils/process-computed";
+import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL, Action }  from "state/actions";
+import reduceWizard, { buildNodeMap }  from "utils/reduce-wizard";
+import { hasProperty }  from "utils/is-of-type";
+import processComputed  from "utils/process-computed";
 import { State, WizardDefinition } from "losen";
+import { NAME } from "./constants";
 
 const initialState = {};
 

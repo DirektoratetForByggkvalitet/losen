@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import merge from 'lodash/merge';
+import { merge } from 'lodash';
 
 import ApprovalAreas from '../ApprovalAreas';
-import Html from '../helper/Html';
+import Html from 'components/helper/Html';
 import Input from './Input';
-import VariableText from '../helper/VariableText';
+import VariableText from 'components/helper/VariableText';
 
-import { H3 } from '../../primitives/Heading';
-import DL from '../../primitives/Datalist';
-import ErrorIcon from '../graphics/ErrorIcon';
-import InfoIcon from '../graphics/InfoIcon';
-import { ErrorMessage } from '../../primitives/Errors';
-import Information from '../../primitives/Information';
-import Loading from '../../primitives/Loading';
-import Notice from '../../primitives/Notice';
-import { RenderWithData } from 'losen';
+import { H3 } from 'primitives/Heading';
+import DL from 'primitives/Datalist';
+import ErrorIcon from 'components/graphics/ErrorIcon';
+import InfoIcon from 'components/graphics/InfoIcon';
+import { ErrorMessage } from 'primitives/Errors';
+import Information from 'primitives/Information';
+import Loading from 'primitives/Loading';
+import Notice from 'primitives/Notice';
+import { RenderWithData } from 'index';
 
 type BRRegResult = {
   navn: string

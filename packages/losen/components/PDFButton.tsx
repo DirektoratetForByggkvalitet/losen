@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Spinner from '../primitives/Spinner';
-import createPDF from '../utils/create-pdf';
-import { MainButton } from '../primitives/Button';
-import { trackEvent } from '../utils/tracking';
+import Spinner from 'primitives/Spinner';
+import createPDF from 'utils/create-pdf';
+import { MainButton } from 'primitives/Button';
+import { trackEvent } from 'utils/tracking';
 
 type Props = {
   pdfServiceUrl: string,

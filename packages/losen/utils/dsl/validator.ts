@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import { ComplexExpression, Expression, SimpleExpression } from ".";
+import { ComplexExpression, Expression, SimpleExpression } from "utils/dsl";
 
 /**
  * Validate a simple, leaf node expression. No nested expressions
@@ -146,9 +146,9 @@ export function validateComplexExpression(
 export function validateExpression(expression: Expression) {
   // Complex expression
   if (expression.type) {
-    return validateComplexExpression(expression);
+    return validateComplexExpression(expression as ComplexExpression);
   }
 
   // Ok, so this is a simple expression
-  return validateSimpleExpression(expression);
+  return validateSimpleExpression(expression as SimpleExpression);
 }

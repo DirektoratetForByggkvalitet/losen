@@ -1,5 +1,5 @@
 import React from 'react';
-import template from "lodash/template";
+import { template } from 'lodash';
 
 type Props = {
   text?: string

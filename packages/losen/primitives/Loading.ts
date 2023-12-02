@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import injectStyles from "../utils/inject-styles";
-import { PrimitiveProps } from "../styles";
+import injectStyles from "utils/inject-styles";
+import { PrimitiveProps } from "styles";
 
 const Loading = injectStyles(styled.div<PrimitiveProps>`${({ styles }) => `
   background: ${styles.color2.secondaryXLight};
