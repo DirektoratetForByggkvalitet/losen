@@ -5,6 +5,10 @@
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
   "license": "MIT",
+  "engines": {
+    "node": "20",
+    "npm": "9"
+  },
   "scripts": {
     "lint": "tsc --noEmit",
     "build": "tsup ./index.ts --format cjs,esm --dts --external react",
