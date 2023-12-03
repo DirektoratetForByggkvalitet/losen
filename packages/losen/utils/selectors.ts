@@ -11,7 +11,7 @@ import {
   State,
   ValidatedNode,
   WizardDefinition,
-} from "losen";
+} from "..";
 import { hasProperty } from "./is-of-type";
 import { getTranslation } from "./get-translation";
 import { getCurrentLanguage } from "./get-current-language";

@@ -1,9 +1,9 @@
 import React from 'react';
-import { ErrorMessage }  from "primitives/Errors";
-import InfoIcon from "components/graphics/InfoIcon";
-import Html from "components/helper/Html";
-import { RenderableNode } from "losen";
-import { hasProperty, isOfType } from "utils/is-of-type";
+import { ErrorMessage } from "../../primitives/Errors";
+import InfoIcon from "../graphics/InfoIcon";
+import Html from "../helper/Html";
+import { RenderableNode } from "../..";
+import { hasProperty, isOfType } from "../../utils/is-of-type";
 
 type Props = {
   children: RenderableNode[]

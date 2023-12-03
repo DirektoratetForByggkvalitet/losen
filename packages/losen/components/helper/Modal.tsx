@@ -3,14 +3,14 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import ReactModal from "react-modal";
 
-import { NAME }  from "state";
-import { resetData }  from "state/actions";
+import { NAME } from "../../state";
+import { resetData } from "../../state/actions";
 
-import { H1 }  from "primitives/Heading";
-import { Lead }  from "primitives/Paragraphs";
-import { MainButton, SecondaryButton }  from "primitives/Button";
-import ModalBox  from "primitives/ModalBox";
-import { State } from "losen";
+import { H1 } from "../../primitives/Heading";
+import { Lead } from "../../primitives/Paragraphs";
+import { MainButton, SecondaryButton } from "../../primitives/Button";
+import ModalBox from "../../primitives/ModalBox";
+import { State } from "../..";
 
 const customStyle: any = {
   overlay: {

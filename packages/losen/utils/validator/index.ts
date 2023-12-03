@@ -1,7 +1,7 @@
-import { get } from 'lodash';
+import { get } from "lodash";
 
 import parseExpression from "../dsl";
-import { Branch, BranchNode, Metadata, Node, NodeType, Schema } from "losen";
+import { Branch, BranchNode, Metadata, Node, NodeType, Schema } from "../..";
 import { hasProperty, isOfType } from "../is-of-type";
 
 type ValidationError = {

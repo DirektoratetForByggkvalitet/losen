@@ -1,6 +1,6 @@
 import { get } from "lodash";
 import { validateExpression } from "./validator";
-import { State } from "losen";
+import { State } from "../..";
 
 export type ComplexExpression = {
   errorMessage?: string[];

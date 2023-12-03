@@ -1,9 +1,9 @@
 import React from 'react';
 import PageSummary from "./Page";
-import hasSoftError from "utils/has-soft-error";
-import { RenderableNode } from "losen";
-import { hasProperty } from "utils/is-of-type";
-import { getErrorPages } from "utils/selectors";
+import hasSoftError from "../../utils/has-soft-error";
+import { RenderableNode } from "../..";
+import { hasProperty } from "../../utils/is-of-type";
+import { getErrorPages } from "../../utils/selectors";
 
 type Props = {
   errorPages: ReturnType<typeof getErrorPages>,

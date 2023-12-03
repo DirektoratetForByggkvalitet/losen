@@ -1,8 +1,8 @@
 import React from 'react';
-import { RenderWithData } from "index";
-import { TextBlock } from "primitives/Block";
-import Html from "components/helper/Html";
-import InfoIcon from 'components/graphics/InfoIcon';
+import { RenderWithData } from "../..";
+import { TextBlock } from "../../primitives/Block";
+import Html from "../helper/Html";
+import InfoIcon from '../graphics/InfoIcon';
 
 export default function Text({
   debug,

@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import { ComplexExpression, Expression, SimpleExpression } from "utils/dsl";
+import { ComplexExpression, Expression, SimpleExpression } from ".";
 
 /**
  * Validate a simple, leaf node expression. No nested expressions

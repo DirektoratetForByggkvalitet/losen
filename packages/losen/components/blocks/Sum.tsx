@@ -1,10 +1,10 @@
 import React from 'react';
 import { get } from 'lodash';
 
-import StyledSum from 'primitives/Sum';
+import StyledSum from '../../primitives/Sum';
 import SummaryDetails from './SummaryDetails';
-import Html from 'components/helper/Html';
-import { RenderWithData, State } from 'index';
+import Html from '../helper/Html';
+import { RenderWithData, State } from '../..';
 
 type Props = RenderWithData<"Sum">
 

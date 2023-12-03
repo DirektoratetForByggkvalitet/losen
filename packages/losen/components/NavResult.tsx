@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainButton as StyledNavResult } from "primitives/Button";
+import { MainButton as StyledNavResult } from "../primitives/Button";
 
 type Props = {
   setPage: (id: string) => void;

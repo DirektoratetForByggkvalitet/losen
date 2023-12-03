@@ -1,22 +1,22 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import hasSoftError from "utils/has-soft-error";
-import getResultText from "utils/get-result-text";
-import { getErrorPages } from "utils/selectors";
-import { trackEvent } from "utils/tracking";
-import Block from "components/blocks/Block";
-import ExportData from "components/ExportData";
-import Html from "components/helper/Html";
-import Summary from "components/Summary";
+import hasSoftError from "../utils/has-soft-error";
+import getResultText from "../utils/get-result-text";
+import { getErrorPages } from "../utils/selectors";
+import { trackEvent } from "../utils/tracking";
+import Block from "./blocks/Block";
+import ExportData from "./ExportData";
+import Html from "./helper/Html";
+import Summary from "./Summary";
 
-import { H1, H2 } from "primitives/Heading";
-import { Lead } from "primitives/Paragraphs";
-import { MainButton } from "primitives/Button";
-import { TextBlock } from "primitives/Block";
-import { Export, Grid } from "primitives";
-import PDFButton from "components/PDFButton";
-import { RenderableNode, State, WizardDefinition } from "index";
+import { H1, H2 } from "../primitives/Heading";
+import { Lead } from "../primitives/Paragraphs";
+import { MainButton } from "../primitives/Button";
+import { TextBlock } from "../primitives/Block";
+import { Export, Grid } from "../primitives";
+import PDFButton from "./PDFButton";
+import { RenderableNode, State, WizardDefinition } from "..";
 
 type Props = {
   children: RenderableNode[]

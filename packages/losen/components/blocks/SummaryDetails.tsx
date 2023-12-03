@@ -1,6 +1,6 @@
 import React from 'react';
-import { Details, Summary } from "primitives/Details";
-import Html from "components/helper/Html";
+import { Details, Summary } from "../../primitives/Details";
+import Html from "../helper/Html";
 
 type Props = {
   summary: string

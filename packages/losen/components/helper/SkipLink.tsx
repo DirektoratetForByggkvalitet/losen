@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SkipLinkStyles from 'primitives/SkipLink';
+import SkipLinkStyles from '../../primitives/SkipLink';
 
 const SkipLink = () => (
   <SkipLinkStyles href="#main">Gå til hovedinnhold</SkipLinkStyles>

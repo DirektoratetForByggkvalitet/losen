@@ -1,10 +1,10 @@
 import React from 'react';
-import { H3 } from 'primitives/Heading';
-import { Radio as Input } from 'primitives/Input';
-import Html from 'components/helper/Html';
-import { Label } from 'primitives/Label';
-import SoftWarning from 'primitives/SoftWarning';
-import { RenderWithData } from 'index';
+import { H3 } from '../../../primitives/Heading';
+import { Radio as Input } from '../../../primitives/Input';
+import Html from '../../helper/Html';
+import { Label } from '../../../primitives/Label';
+import SoftWarning from '../../../primitives/SoftWarning';
+import { RenderWithData } from '../../..';
 
 type Props = RenderWithData<"Answer"> & {
   checked?: boolean,

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Block from "components/blocks/Block";
-import Html from "components/helper/Html";
-import Navigation from "components/Navigation";
-import SummaryDetails from "components/blocks/SummaryDetails";
+import Block from "./blocks/Block";
+import Html from "./helper/Html";
+import Navigation from "./Navigation";
+import SummaryDetails from "./blocks/SummaryDetails";
 
-import { Heading, Paragraphs, Grid } from "primitives";
-import { RenderableNode } from "index";
-import { hasProperty } from "utils/is-of-type";
+import { Heading, Paragraphs, Grid } from "../primitives";
+import { RenderableNode } from "..";
+import { hasProperty } from "../utils/is-of-type";
 
 type Props = {
   children: RenderableNode[],

@@ -1,5 +1,5 @@
-import { State, WizardDefinition } from "losen";
-import parseExpression from "utils/dsl";
+import { State, WizardDefinition } from "..";
+import parseExpression from "./dsl";
 
 export default function processComputed(
   schema: WizardDefinition,

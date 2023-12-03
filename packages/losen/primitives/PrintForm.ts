@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import injectStyles from "utils/inject-styles";
+import injectStyles from "../utils/inject-styles";
 
 const PrintForm = injectStyles(styled.div`
   display: none;

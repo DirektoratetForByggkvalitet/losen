@@ -4,14 +4,14 @@ import Checkbox from "./value/Checkbox";
 import FetchOrg from "./value/FetchOrg";
 import Sum from "./value/Sum";
 
-import { ErrorMessage }  from "primitives/Errors";
-import Html from "components/helper/Html";
-import { NodeSummary as StyledNodeSummary }  from "primitives/Summary";
-import ErrorIcon from "components/graphics/ErrorIcon";
+import { ErrorMessage } from "../../primitives/Errors";
+import Html from "../helper/Html";
+import { NodeSummary as StyledNodeSummary } from "../../primitives/Summary";
+import ErrorIcon from "../graphics/ErrorIcon";
 import SoftError from "./SoftError";
 import Information from "./Information";
-import { RenderableNode } from "losen";
-import { hasProperty, isOfType } from "utils/is-of-type";
+import { RenderableNode } from "../..";
+import { hasProperty, isOfType } from "../../utils/is-of-type";
 import { get } from 'lodash';
 
 const ignoreNodes = ["Text", "Image"];

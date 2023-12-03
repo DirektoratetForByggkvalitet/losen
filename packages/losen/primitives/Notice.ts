@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import injectStyles from "utils/inject-styles";
-import { PrimitiveProps } from "styles";
+import injectStyles from "../utils/inject-styles";
+import { PrimitiveProps } from "../styles";
 
 const Notice = injectStyles(styled.div<PrimitiveProps>`
   background: ${({ styles }) => styles.color2.positiveXLight};

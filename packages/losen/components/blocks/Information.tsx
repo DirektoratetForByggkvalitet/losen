@@ -1,9 +1,9 @@
 import React from 'react';
-import { TextBlock } from 'primitives/Block';
-import InformationBlock from 'primitives/Information';
-import Html from 'components/helper/Html';
-import InfoIcon from 'components/graphics/InfoIcon';
-import { RenderWithData } from 'index';
+import { TextBlock } from '../../primitives/Block';
+import InformationBlock from '../../primitives/Information';
+import Html from '../helper/Html';
+import InfoIcon from '../graphics/InfoIcon';
+import { RenderWithData } from '../..';
 
 export default function Information({
   debug,

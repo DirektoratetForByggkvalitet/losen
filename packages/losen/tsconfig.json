@@ -11,9 +11,5 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "."
-  },
-  "paths": {
-    "*": ["./*"],
-    "~": ["."]
   }
 }

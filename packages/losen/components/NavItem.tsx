@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavItem as StyledNavItem } from "primitives";
-import CheckIcon from 'components/graphics/CheckIcon';
+import { NavItem as StyledNavItem } from "../primitives";
+import CheckIcon from './graphics/CheckIcon';
 
 type Props = {
   active?: boolean

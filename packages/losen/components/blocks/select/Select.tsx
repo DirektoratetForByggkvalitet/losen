@@ -1,8 +1,8 @@
 import React, { ChangeEventHandler } from 'react';
 import SelectOption from './SelectOption';
 
-import { SelectWrapper } from 'primitives/Input';
-import { RenderWithData } from 'index';
+import { SelectWrapper } from '../../../primitives/Input';
+import { RenderWithData } from '../../..';
 
 const NULL_VALUE = '({[NULL]})';
 

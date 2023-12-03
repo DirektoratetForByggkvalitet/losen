@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import injectStyles from "utils/inject-styles";
-import { PrimitiveProps } from "styles";
+import injectStyles from "../utils/inject-styles";
+import { PrimitiveProps } from "../styles";
 
 const DL = injectStyles(styled.dl<PrimitiveProps>`${({ styles }) => `
   margin: 0;

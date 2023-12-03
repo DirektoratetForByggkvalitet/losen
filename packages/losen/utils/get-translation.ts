@@ -1,4 +1,4 @@
-import { State } from "losen";
+import { State } from "..";
 import { Translations } from "./reduce-wizard";
 import { get } from "lodash";
 import { getCurrentLanguage } from "./get-current-language";

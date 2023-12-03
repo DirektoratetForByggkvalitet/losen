@@ -1,9 +1,9 @@
 import React from 'react';
-import Fieldset from 'primitives/Fieldset';
-import Legend from 'primitives/Legend';
-import OptionWrapper from 'primitives/OptionWrapper';
+import Fieldset from '../../../primitives/Fieldset';
+import Legend from '../../../primitives/Legend';
+import OptionWrapper from '../../../primitives/OptionWrapper';
 import RadioInput from './RadioInput';
-import { RenderWithData } from 'index';
+import { RenderWithData } from '../../..';
 
 export default function Radio({
   property,

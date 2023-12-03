@@ -1,10 +1,10 @@
 import React, { ChangeEventHandler } from 'react';
 
-import Html from 'components/helper/Html';
-import { Textarea as StyledTextarea } from 'primitives/Input';
-import ErrorIcon from 'components/graphics/ErrorIcon';
-import Information from 'primitives/Information';
-import { RenderWithData } from 'index';
+import Html from '../helper/Html';
+import { Textarea as StyledTextarea } from '../../primitives/Input';
+import ErrorIcon from '../graphics/ErrorIcon';
+import Information from '../../primitives/Information';
+import { RenderWithData } from '../..';
 
 export default function Textarea(props: RenderWithData<"Textarea">) {
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {

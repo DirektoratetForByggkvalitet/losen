@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from "react-redux";
 import { values } from 'lodash';
 
-import { setLanguage } from "state/actions";
-import { SmallButton } from "primitives/Button";
-import { Simple as Grid } from "primitives/Grid";
-import { getCurrentLanguage } from "utils/get-current-language";
-import type { State } from "index";
+import { setLanguage } from "../state/actions";
+import { SmallButton } from "../primitives/Button";
+import { Simple as Grid } from "../primitives/Grid";
+import { getCurrentLanguage } from "../utils/get-current-language";
+import type { State } from "..";
 
 type Props = {
   translations: Record<string, Record<string, any>>

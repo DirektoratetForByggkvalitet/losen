@@ -1,8 +1,8 @@
-import { NAME } from "state/constants";
-import vocalizeErrors from "utils/vocalize-errors";
+import { NAME } from "../state/constants";
+import vocalizeErrors from "./vocalize-errors";
 import { get, omit, set } from "lodash";
-import { hasProperty, isOfType } from "utils/is-of-type";
-import parseExpression, { ValidationError, ValidationResult } from "utils/dsl";
+import { hasProperty, isOfType } from "./is-of-type";
+import parseExpression, { ValidationError, ValidationResult } from "./dsl";
 import {
   Answer,
   Node,
@@ -11,7 +11,7 @@ import {
   RenderableNode,
   State,
   ValidatedNode,
-} from "losen";
+} from "../index";
 import { getNodeValue } from "./get-node-value";
 import { getTranslation } from "./get-translation";
 

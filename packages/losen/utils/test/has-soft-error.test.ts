@@ -1,4 +1,4 @@
-import hasSoftError  from "utils/has-soft-error";
+import hasSoftError from "../has-soft-error";
 
 describe("has-soft-error", () => {
   it("returns true if error in children", () => {

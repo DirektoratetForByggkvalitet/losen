@@ -1,11 +1,11 @@
 import React from 'react';
-import { H2 }  from "primitives/Heading";
-import { PageSummary as StyledPageSummary }  from "primitives/Summary";
-import { SmallButton as Button }  from "primitives/Button";
+import { H2 } from "../../primitives/Heading";
+import { PageSummary as StyledPageSummary } from "../../primitives/Summary";
+import { SmallButton as Button } from "../../primitives/Button";
 
 import NodeSummary from "./Node";
-import { RenderableNode, RenderableResult } from "losen";
-import { hasProperty } from "utils/is-of-type";
+import { RenderableNode, RenderableResult } from "../..";
+import { hasProperty } from "../../utils/is-of-type";
 
 type Props = {
   children?: RenderableNode[];

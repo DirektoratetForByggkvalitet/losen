@@ -1,10 +1,10 @@
 import React, { ChangeEventHandler } from 'react';
 
-import { ErrorMessage } from 'primitives/Errors';
-import { NumberInput } from 'primitives/Input';
-import ErrorIcon from 'components/graphics/ErrorIcon';
-import Html from 'components/helper/Html';
-import { RenderWithData } from 'index';
+import { ErrorMessage } from '../../primitives/Errors';
+import { NumberInput } from '../../primitives/Input';
+import ErrorIcon from '../graphics/ErrorIcon';
+import Html from '../helper/Html';
+import { RenderWithData } from '../..';
 
 export default function Number({
   heading,

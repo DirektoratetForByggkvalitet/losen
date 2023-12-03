@@ -1,6 +1,6 @@
 import { get } from "lodash";
 import { getData } from "./get-data";
-import type { State } from "losen";
+import type { State } from "..";
 
 export function getCurrentLanguage(
   state: State,
