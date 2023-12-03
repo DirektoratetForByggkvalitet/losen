@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { NAME } from "../../../state";
 
 import { Value as StyledValue } from "../../../primitives/Summary";
-import { RenderableNode, State } from "../../..";
+import { RenderableNode, State } from "../../../index";
 import { isOfType } from "../../../utils/is-of-type";
 
 function hasAllValues(values: Array<string | number>, data: State) {

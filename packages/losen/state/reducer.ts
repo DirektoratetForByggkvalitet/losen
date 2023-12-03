@@ -4,7 +4,7 @@ import { SET_DATA, RESET_DATA, SHOW_RESET_MODAL, Action } from "./actions";
 import reduceWizard, { buildNodeMap } from "../utils/reduce-wizard";
 import { hasProperty } from "../utils/is-of-type";
 import processComputed from "../utils/process-computed";
-import { State, WizardDefinition } from "..";
+import { State, WizardDefinition } from "../index";
 import { NAME } from "./constants";
 
 const initialState = {};

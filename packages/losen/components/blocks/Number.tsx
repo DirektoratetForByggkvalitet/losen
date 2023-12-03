@@ -4,7 +4,7 @@ import { ErrorMessage } from '../../primitives/Errors';
 import { NumberInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
-import { RenderWithData } from '../..';
+import { RenderWithData } from '../../index';
 
 export default function Number({
   heading,

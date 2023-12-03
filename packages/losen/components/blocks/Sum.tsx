@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import StyledSum from '../../primitives/Sum';
 import SummaryDetails from './SummaryDetails';
 import Html from '../helper/Html';
-import { RenderWithData, State } from '../..';
+import { RenderWithData, State } from '../../index';
 
 type Props = RenderWithData<"Sum">
 

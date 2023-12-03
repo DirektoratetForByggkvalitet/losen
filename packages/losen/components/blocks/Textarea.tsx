@@ -4,7 +4,7 @@ import Html from '../helper/Html';
 import { Textarea as StyledTextarea } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Information from '../../primitives/Information';
-import { RenderWithData } from '../..';
+import { RenderWithData } from '../../index';
 
 export default function Textarea(props: RenderWithData<"Textarea">) {
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RenderWithData } from "../..";
+import { RenderWithData } from "../../index";
 import { TextBlock } from "../../primitives/Block";
 import Html from "../helper/Html";
 import InfoIcon from '../graphics/InfoIcon';

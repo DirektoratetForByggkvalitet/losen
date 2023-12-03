@@ -31,7 +31,7 @@ import { NAME } from "../../state";
 import { SpecificBlock as StyledBlock } from "../../primitives/Block";
 import StyledErrorBlock from "../../primitives/ErrorBlock";
 import { ErrorMessage } from "../../primitives/Errors";
-import { RenderableNode, State } from "../..";
+import { RenderableNode, State } from "../../index";
 
 /**
  * Determine which component to use based on the node type

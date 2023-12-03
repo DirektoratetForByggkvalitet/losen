@@ -3,7 +3,7 @@ import Fieldset from '../../../primitives/Fieldset';
 import Legend from '../../../primitives/Legend';
 import OptionWrapper from '../../../primitives/OptionWrapper';
 import RadioInput from './RadioInput';
-import { RenderWithData } from '../../..';
+import { RenderWithData } from '../../../index';
 
 export default function Radio({
   property,

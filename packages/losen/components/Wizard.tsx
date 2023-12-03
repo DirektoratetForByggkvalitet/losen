@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 
 import Modal from "./helper/Modal";
 import { NAME } from "../state";
-import { RenderableNode, State, WizardDefinition } from '..'
+import { RenderableNode, State, WizardDefinition } from '../index'
 
 import { getTitle, getNodeTitles } from "../utils/selectors";
 import getPages from "../utils/get-pages";

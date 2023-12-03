@@ -3,7 +3,7 @@ import { TextBlock } from '../../primitives/Block';
 import InformationBlock from '../../primitives/Information';
 import Html from '../helper/Html';
 import InfoIcon from '../graphics/InfoIcon';
-import { RenderWithData } from '../..';
+import { RenderWithData } from '../../index';
 
 export default function Information({
   debug,

@@ -6,7 +6,7 @@ import { setLanguage } from "../state/actions";
 import { SmallButton } from "../primitives/Button";
 import { Simple as Grid } from "../primitives/Grid";
 import { getCurrentLanguage } from "../utils/get-current-language";
-import type { State } from "..";
+import type { State } from "../index";
 
 type Props = {
   translations: Record<string, Record<string, any>>

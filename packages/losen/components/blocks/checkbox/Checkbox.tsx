@@ -4,7 +4,7 @@ import Fieldset from "../../../primitives/Fieldset";
 import Legend from "../../../primitives/Legend";
 import OptionWrapper from "../../../primitives/OptionWrapper";
 import CheckboxInput from "./CheckboxInput";
-import { RenderWithData } from "../../..";
+import { RenderWithData } from "../../../index";
 
 export default function Checkbox({
   setData,

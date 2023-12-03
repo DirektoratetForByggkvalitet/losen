@@ -1,4 +1,4 @@
-import { RenderableNode, ValidatedNode } from "../..";
+import { RenderableNode, ValidatedNode } from "../../index";
 import getPages from "../get-pages";
 
 describe("getPages", () => {

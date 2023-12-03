@@ -10,7 +10,7 @@ import { H1 } from "../../primitives/Heading";
 import { Lead } from "../../primitives/Paragraphs";
 import { MainButton, SecondaryButton } from "../../primitives/Button";
 import ModalBox from "../../primitives/ModalBox";
-import { State } from "../..";
+import { State } from "../../index";
 
 const customStyle: any = {
   overlay: {

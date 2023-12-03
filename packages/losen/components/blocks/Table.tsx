@@ -3,7 +3,7 @@ import { pick } from 'lodash';
 import Html from '../helper/Html';
 import { TD } from '../../primitives/Table';
 import TableContainer from '../../primitives/TableContainer';
-import { RenderWithData } from '../..';
+import { RenderWithData } from '../../index';
 
 type CellProps = Pick<RenderWithData<"Cell" | "Heading">, "colSpan" | "rowSpan"> & {
   simple?: boolean

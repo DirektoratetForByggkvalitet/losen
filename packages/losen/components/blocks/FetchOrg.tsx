@@ -14,7 +14,7 @@ import { ErrorMessage } from '../../primitives/Errors';
 import Information from '../../primitives/Information';
 import Loading from '../../primitives/Loading';
 import Notice from '../../primitives/Notice';
-import { RenderWithData } from '../..';
+import { RenderWithData } from '../../index';
 
 type BRRegResult = {
   navn: string

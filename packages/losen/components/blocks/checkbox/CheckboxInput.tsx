@@ -4,7 +4,7 @@ import { Checkbox as Input } from '../../../primitives/Input';
 import { H3 } from '../../../primitives/Heading';
 import Html from '../../helper/Html';
 import { Label } from '../../../primitives/Label';
-import { RenderWithData } from '../../..';
+import { RenderWithData } from '../../../index';
 
 type Props = RenderWithData<"Answer"> & {
   checked?: boolean,

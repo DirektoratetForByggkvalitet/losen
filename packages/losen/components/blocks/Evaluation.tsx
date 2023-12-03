@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import StyledSum from '../../primitives/Sum';
 import StyledSumResult from '../../primitives/SumResult';
 import Html from '../helper/Html';
-import { RenderWithData } from '../..';
+import { RenderWithData } from '../../index';
 
 export default function Evaluation({
   data,

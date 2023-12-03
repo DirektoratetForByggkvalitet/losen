@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { MainButton } from "../primitives/Button";
 import { getData } from "../utils/get-data";
-import { State } from "..";
+import { State } from "../index";
 
 type Props = {
   data?: any

@@ -10,7 +10,7 @@ import { NodeSummary as StyledNodeSummary } from "../../primitives/Summary";
 import ErrorIcon from "../graphics/ErrorIcon";
 import SoftError from "./SoftError";
 import Information from "./Information";
-import { RenderableNode } from "../..";
+import { RenderableNode } from "../../index";
 import { hasProperty, isOfType } from "../../utils/is-of-type";
 import { get } from 'lodash';
 

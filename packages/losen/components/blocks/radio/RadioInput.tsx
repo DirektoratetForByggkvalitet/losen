@@ -4,7 +4,7 @@ import { Radio as Input } from '../../../primitives/Input';
 import Html from '../../helper/Html';
 import { Label } from '../../../primitives/Label';
 import SoftWarning from '../../../primitives/SoftWarning';
-import { RenderWithData } from '../../..';
+import { RenderWithData } from '../../../index';
 
 type Props = RenderWithData<"Answer"> & {
   checked?: boolean,
