@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
+      - name: Versions
+        run: npm run versions
       - name: Lint
         run: npm run lint
       - name: Test

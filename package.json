@@ -7,6 +7,7 @@
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md}\"",
     "version": "turbo run bump-version --",
+    "versions": "tsc --version && node --version && npm --version && eslint --version",
     "publish-packages": "turbo run publish-package --"
   },
   "devDependencies": {
