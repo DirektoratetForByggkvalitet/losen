@@ -6,7 +6,7 @@
   "module": "./dist/index.mjs",
   "license": "MIT",
   "scripts": {
-    "lint": "tsc --noEmit --project .",
+    "lint": "tsc --noEmit",
     "build": "tsup ./index.ts --format cjs,esm --dts --external react",
     "dev": "npm run build -- --watch",
     "bump-version": "npm version",
