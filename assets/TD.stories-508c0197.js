@@ -1,0 +1,3 @@
+import{j as r}from"./jsx-runtime-ffb262ed.js";import{T as n,a as m}from"./Table-70bf50a1.js";import"./index-76fb7be0.js";import"./_commonjsHelpers-de833af9.js";import"./inject-styles-a5bba7af.js";import"./styles-36622289.js";const f={component:n,argTypes:{simple:{control:"boolean"},"data-inactive":{control:"boolean"}}},p=t=>r.jsx(n,{...t,children:r.jsx("tr",{children:r.jsx(m,{...t,children:"Table data"})})}),e={render:p};var o,a,s;e.parameters={...e.parameters,docs:{...(o=e.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  render: template
+}`,...(s=(a=e.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};const j=["Default"];export{e as Default,j as __namedExportsOrder,f as default};
