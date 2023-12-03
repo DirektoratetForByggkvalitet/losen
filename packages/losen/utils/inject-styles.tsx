@@ -1,12 +1,13 @@
 import React, { forwardRef, useContext } from "react";
 import { StyleContext } from "../components/StyleProvider";
+import { IStyledComponent, Runtime } from "styled-components";
 
-const injectStyles = <P extends {}>(WrappedComponent: React.FC<P>) => forwardRef((props: P, ref) => {
+const injectStyles = <R extends Runtime, P extends object>(WrappedComponent: IStyledComponent<R, P>) => forwardRef((props: Omit<P, 'styles'>, ref) => {
   const styles = useContext(StyleContext);
 
   return (
     <WrappedComponent
-      {...props}
+      {...props as P}
       ref={ref}
       styles={styles}
     />

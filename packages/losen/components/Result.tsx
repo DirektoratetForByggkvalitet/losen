@@ -73,7 +73,7 @@ function Result(props: Props) {
   };
 
   return (
-    <Grid.Main result debug={debug} data-id={pageid} id="main">
+    <Grid.Main debug={debug} data-id={pageid} id="main">
       <H1 result>{resultHeading}</H1>
       {resultLead && <Grid.Blocks>
         <Html text={resultLead} />
@@ -105,7 +105,7 @@ function Result(props: Props) {
         </TextBlock>
       ) : null}
 
-      <Export exporter={exporter}>
+      <Export>
         {!incomplete && exporter && exports?.[exporter] ? (
           <ExportData exporter={exports[exporter]} />
         ) : null}

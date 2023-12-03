@@ -28,7 +28,7 @@ export default function Evaluation({
   if (showValue) {
     if (testedValue < 0) {
       return (
-        <StyledSum groupedSimple={groupedSimple} final={final}>
+        <StyledSum groupedSimple={groupedSimple}>
           <div>
             {sad}
             <span className="sad">
@@ -39,7 +39,7 @@ export default function Evaluation({
       );
     }
     return (
-      <StyledSum groupedSimple={groupedSimple} final={final}>
+      <StyledSum groupedSimple={groupedSimple}>
         <div>
           {happy}
           <span className="happy">

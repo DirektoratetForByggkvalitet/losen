@@ -184,7 +184,6 @@ export function PureBlock(props: any) {
       debug={props.debug}
       grouped={props.grouped}
       groupedSimple={props.simple}
-      disabled={props.disabled}
       type={props.type}
     >
 

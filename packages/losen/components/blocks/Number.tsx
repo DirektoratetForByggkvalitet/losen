@@ -67,7 +67,6 @@ export default function Number({
         placeholder={placeholder}
         step={step}
         type="number"
-        unit={unit}
         validation={errors?.validation}
         value={currentValue}
       />

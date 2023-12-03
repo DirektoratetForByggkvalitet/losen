@@ -19,7 +19,7 @@ export default function NavItem({ active = false, done = false, errors = false, 
       done={done}
       errors={errors}
       href="#"
-      onClick={(e: MouseEvent) => {
+      onClick={(e) => {
         e.preventDefault();
         setPage(id);
       }}

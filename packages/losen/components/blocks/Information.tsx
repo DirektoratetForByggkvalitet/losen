@@ -16,7 +16,6 @@ export default function Information({
 }: RenderWithData<"Information">) {
   return (
     <TextBlock
-      warning={warning}
       debug={debug}
       data-id={id}
       printonly={printonly}

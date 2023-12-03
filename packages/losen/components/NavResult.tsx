@@ -12,7 +12,6 @@ export default function NavResult({ setPage, id, active = false }: Props) {
     <StyledNavResult
       type="button"
       data-id={id}
-      active={active}
       onClick={() => setPage(id)}
     >
       Vis resultat

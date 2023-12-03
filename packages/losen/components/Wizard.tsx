@@ -167,7 +167,7 @@ function Wizard({
 
       errors.forEach(({ path = [], error, id }) => {
         // eslint-disable-next-line no-console
-        console.warn(`${path.join(".")}${id ? ` (${id})` : ""}:
+        console.warn(`${path.join("./index")}${id ? ` (${id})` : ""}:
 ${error}
     `);
       });
@@ -221,7 +221,7 @@ ${error}
             translations={translations}
           />
           <Grid.FocusWrapper
-            tabIndex="-1"
+            tabIndex={-1}
             ref={pageWrapper}
           >
             {page && isOfType(page, ["Result"]) ? (

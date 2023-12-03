@@ -19,14 +19,14 @@ export default function Html({ id, text, inline, margins, h2, h3 }: Props) {
   if (h2) {
     // eslint-disable-next-line react/no-danger
     return (
-      <H2 id={id} inline={inline} dangerouslySetInnerHTML={{ __html: text }} />
+      <H2 id={id} dangerouslySetInnerHTML={{ __html: text }} />
     );
   }
 
   if (h3) {
     // eslint-disable-next-line react/no-danger
     return (
-      <H3 id={id} inline={inline} dangerouslySetInnerHTML={{ __html: text }} />
+      <H3 id={id} dangerouslySetInnerHTML={{ __html: text }} />
     );
   }
 
