@@ -27,12 +27,13 @@ export default function Checkbox({
     })
   }
 
+
   return (
     <Fieldset>
       <Legend>{heading}</Legend>
 
       {options && options.length ? (
-        <OptionWrapper grid={grid}>
+        <OptionWrapper $grid={grid}>
           {options.map((option) => {
             const isDisabled = disabled || option.disabled;
 

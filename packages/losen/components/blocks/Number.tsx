@@ -67,7 +67,7 @@ export default function Number({
         placeholder={placeholder}
         step={step}
         type="number"
-        validation={errors?.validation}
+        $validation={errors?.validation}
         value={currentValue}
       />
 

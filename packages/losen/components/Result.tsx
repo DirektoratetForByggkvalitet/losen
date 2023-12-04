@@ -73,8 +73,8 @@ function Result(props: Props) {
   };
 
   return (
-    <Grid.Main debug={debug} data-id={pageid} id="main">
-      <H1 result>{resultHeading}</H1>
+    <Grid.Main $debug={debug} data-id={pageid} id="main">
+      <H1 $result>{resultHeading}</H1>
       {resultLead && <Grid.Blocks>
         <Html text={resultLead} />
       </Grid.Blocks>}
@@ -92,7 +92,7 @@ function Result(props: Props) {
       ))}
       <Grid.Blocks>
         <hr />
-        <H2 small>Oppsummering</H2>
+        <H2 $small>Oppsummering</H2>
         <Summary errorPages={errorPages} setPage={setPage} pages={schema} />
       </Grid.Blocks>
 

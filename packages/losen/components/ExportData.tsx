@@ -63,7 +63,7 @@ function ExportData({ data }: Props) {
     <div>
       <MainButton
         aria-live={copied ? "assertive" : undefined}
-        copied={copied}
+        $copied={copied}
         onClick={copyToClipboard}
       >
         {buttonText}

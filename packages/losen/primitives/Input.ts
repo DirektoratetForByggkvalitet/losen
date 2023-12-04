@@ -5,26 +5,28 @@ import { PrimitiveProps } from "../styles";
 
 export const Checkbox = injectStyles(styled.input.attrs({
   type: "checkbox",
-})<PrimitiveProps>`${({styles}) => `
+})<PrimitiveProps>`
+  ${({ $styles, disabled }) => {
+    return `
   position: absolute;
   opacity: 0;
   z-index: -1;
   line-height: 1.4;
-
+  
   + label {
     position: relative;
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    padding: ${styles.padding.medium};
-    border: 1px solid ${styles.color2.secondaryLight};
-    border-radius: ${styles.borderRadius.small};
-    transition: all 200ms ${styles.easing.easeOut};
-    font-size: ${styles.text.body.fontSize};
-    font-weight: ${styles.text.body.fontWeight};
-    line-height: ${styles.text.body.lineHeight};
-    letter-spacing: ${styles.text.body.letterSpacing};
-    color: ${styles.color2.textDark};
+    padding: ${$styles.padding.medium};
+    border: 1px solid ${$styles.color2.secondaryLight};
+    border-radius: ${$styles.borderRadius.small};
+    transition: all 200ms ${$styles.easing.easeOut};
+    font-size: ${$styles.text.body.fontSize};
+    font-weight: ${$styles.text.body.fontWeight};
+    line-height: ${$styles.text.body.lineHeight};
+    letter-spacing: ${$styles.text.body.letterSpacing};
+    color: ${$styles.color2.textDark};
     
     &:before {
       content: " ";
@@ -35,23 +37,23 @@ export const Checkbox = injectStyles(styled.input.attrs({
       height: 18px;
       margin-top: 4px;
       background: transparent;
-      margin-right: ${styles.padding.small};
-      border: 1px solid ${styles.color2.primary};
-      border-radius: ${styles.borderRadius.small};
-      transition: all 200ms ${styles.easing.easeOut};
+      margin-right: ${$styles.padding.small};
+      border: 1px solid ${$styles.color2.primary};
+      border-radius: ${$styles.borderRadius.small};
+      transition: all 200ms ${$styles.easing.easeOut};
     }
 
     > div {
       flex: 1;
-      font-size: ${styles.text.label.fontSize};
-      font-weight: ${styles.text.label.fontWeight};
-      line-height: ${styles.text.label.lineHeight};
-      letter-spacing: ${styles.text.label.letterSpacing};
-      color: ${styles.color2.textDark};
+      font-size: ${$styles.text.label.fontSize};
+      font-weight: ${$styles.text.label.fontWeight};
+      line-height: ${$styles.text.label.lineHeight};
+      letter-spacing: ${$styles.text.label.letterSpacing};
+      color: ${$styles.color2.textDark};
     }
 
     div:not(:last-child) {
-      margin-right: ${styles.padding.large};
+      margin-right: ${$styles.padding.large};
     }
     img {
       width: 25%;
@@ -61,54 +63,61 @@ export const Checkbox = injectStyles(styled.input.attrs({
       margin-bottom: 0;
     }
     h3 {
-      font-size: ${styles.text.lead.fontSize};
-      font-weight: ${styles.text.lead.boldWeight};
-      line-height: ${styles.text.lead.lineHeight};
-      letter-spacing: ${styles.text.lead.letterSpacing};
+      font-size: ${$styles.text.lead.fontSize};
+      font-weight: ${$styles.text.lead.boldWeight};
+      line-height: ${$styles.text.lead.lineHeight};
+      letter-spacing: ${$styles.text.lead.letterSpacing};
       margin-bottom: 0;
     }
   }
 
-  :disabled + label {
-    cursor: default;
-    opacity: 0.4;
-  }
-
-  :not(:disabled) {
+  ${
+    disabled
+      ? `
+    + label {
+      cursor: default;
+      opacity: 0.4;
+    }
+      `
+      : `
     + label {
       &:hover {
-        background: ${styles.color2.secondaryXLight};
+        background: ${$styles.color2.secondaryXLight};
       }
     }
     &:focus + label {
-      background: ${styles.color2.secondaryXLight};
+      background: ${$styles.color2.secondaryXLight};
     }
     &:focus-visible + label {
-      outline: 1px solid ${styles.color2.outline};
+      outline: 1px solid ${$styles.color2.outline};
     }
     &:checked + label:after {
       content: " ";
       position: absolute;
-      left: calc(${styles.padding.medium} + 5px);
-      top: calc(${styles.padding.medium} + 9px);
+      left: calc(${$styles.padding.medium} + 5px);
+      top: calc(${$styles.padding.medium} + 9px);
       width: 8px;
       height: 4px;
       transform: rotate(-46deg);
-      border-left: 3px solid ${styles.color2.primary};
-      border-bottom: 3px solid ${styles.color2.primary};
+      border-left: 3px solid ${$styles.color2.primary};
+      border-bottom: 3px solid ${$styles.color2.primary};
     }
     &:checked + label {
-      background: ${styles.color2.secondaryLight};
+      background: ${$styles.color2.secondaryLight};
     }
     &:checked:focus + label {
-      background: ${styles.color2.secondaryXLight};
+      background: ${$styles.color2.secondaryXLight};
     }
+  `
   }
-`}`);
+`;
+  }}
+`);
 
 export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
   type: "checkbox",
-})<PrimitiveProps>`${({styles}) => `
+})<PrimitiveProps>`
+  ${({ $styles }) => `
   position: absolute;
   opacity: 0;
   z-index: -1;
@@ -119,11 +128,11 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
     display: flex;
     align-items: flex-start;
     margin-top: 0;
-    padding: ${styles.padding.xxSmall} 0;
-    font-size: ${styles.text.body.fontSize};
-    font-weight: ${styles.text.body.boldWeight};
-    line-height: ${styles.text.body.lineHeight};
-    letter-spacing: ${styles.text.body.letterSpacing};
+    padding: ${$styles.padding.xxSmall} 0;
+    font-size: ${$styles.text.body.fontSize};
+    font-weight: ${$styles.text.body.boldWeight};
+    line-height: ${$styles.text.body.lineHeight};
+    letter-spacing: ${$styles.text.body.letterSpacing};
 
     &:before {
       content: " ";
@@ -132,20 +141,20 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
       min-width: 18px;
       width: 218x;
       height: 18px;
-      margin-right: ${styles.padding.xxSmall};
+      margin-right: ${$styles.padding.xxSmall};
     }
 
     > div {
       flex: 1;
-      font-size: ${styles.text.label.fontSize};
-      font-weight: ${styles.text.label.fontWeight};
-      line-height: ${styles.text.label.lineHeight};
-      letter-spacing: ${styles.text.label.letterSpacing};
-      color: ${styles.color2.textDark};
+      font-size: ${$styles.text.label.fontSize};
+      font-weight: ${$styles.text.label.fontWeight};
+      line-height: ${$styles.text.label.lineHeight};
+      letter-spacing: ${$styles.text.label.letterSpacing};
+      color: ${$styles.color2.textDark};
     }
 
     div:not(:last-child) {
-      margin-right: ${styles.padding.large};
+      margin-right: ${$styles.padding.large};
     }
     img {
       width: 25%;
@@ -155,10 +164,10 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
       margin-bottom: 0;
     }
     h3 {
-      font-size: ${styles.text.lead.fontSize};
-      font-weight: ${styles.text.lead.boldWeight};
-      line-height: ${styles.text.lead.lineHeight};
-      letter-spacing: ${styles.text.lead.letterSpacing};
+      font-size: ${$styles.text.lead.fontSize};
+      font-weight: ${$styles.text.lead.boldWeight};
+      line-height: ${$styles.text.lead.lineHeight};
+      letter-spacing: ${$styles.text.lead.letterSpacing};
       font-style: normal;
     }
   }
@@ -167,12 +176,12 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
     content: " ";
     position: absolute;
     left: 4px;
-    top: calc(${styles.padding.xxSmall} + 5px);
+    top: calc(${$styles.padding.xxSmall} + 5px);
     width: 8px;
     height: 4px;
     transform: rotate(-46deg);
-    border-left: 3px solid ${styles.color2.primary};
-    border-bottom: 3px solid ${styles.color2.primary};
+    border-left: 3px solid ${$styles.color2.primary};
+    border-bottom: 3px solid ${$styles.color2.primary};
   }
 
   @media screen and (max-width: 900px) {
@@ -200,11 +209,13 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
       padding: 0;
     }
   }
-`}`);
+`}
+`);
 
 export const Radio = injectStyles(styled.input.attrs({
   type: "radio",
-})<PrimitiveProps>`${({styles}) => `
+})<PrimitiveProps>`
+  ${({ $styles, disabled }) => `
   position: absolute;
   opacity: 0;
   z-index: -1;
@@ -215,10 +226,10 @@ export const Radio = injectStyles(styled.input.attrs({
     display: flex;
     align-items: flex-start;
     cursor: pointer;
-    padding: ${styles.padding.medium};
-    border: 1px solid ${styles.color2.secondaryLight};
-    border-radius: ${styles.borderRadius.small};
-    transition: all 200ms ${styles.easing.easeOut};
+    padding: ${$styles.padding.medium};
+    border: 1px solid ${$styles.color2.secondaryLight};
+    border-radius: ${$styles.borderRadius.small};
+    transition: all 200ms ${$styles.easing.easeOut};
 
     &:before {
       content: " ";
@@ -229,71 +240,74 @@ export const Radio = injectStyles(styled.input.attrs({
       height: 18px;
       margin-top: 3px;
       background: transparent;
-      margin-right: ${styles.padding.small};
-      border: 1px solid ${styles.color2.primary};
+      margin-right: ${$styles.padding.small};
+      border: 1px solid ${$styles.color2.primary};
       border-radius: 50%;
-      transition: all 200ms ${styles.easing.easeOut};
+      transition: all 200ms ${$styles.easing.easeOut};
     }
 
     > div {
       flex: 1;
-      font-size: ${styles.text.label.fontSize};
-      font-weight: ${styles.text.label.fontWeight};
-      line-height: ${styles.text.label.lineHeight};
-      letter-spacing: ${styles.text.label.letterSpacing};
-      color: ${styles.color2.textDark};
+      font-size: ${$styles.text.label.fontSize};
+      font-weight: ${$styles.text.label.fontWeight};
+      line-height: ${$styles.text.label.lineHeight};
+      letter-spacing: ${$styles.text.label.letterSpacing};
+      color: ${$styles.color2.textDark};
     }
     
     div:not(:last-child) {
-      margin-right: ${styles.padding.large};
+      margin-right: ${$styles.padding.large};
     }
     img {
       width: 25%;
       max-width: 200px;
-      background: ${styles.color2.secondaryXLight};
+      background: ${$styles.color2.secondaryXLight};
     }
     p {
       margin-bottom: 0;
     }
     h3 {
-      font-size: ${styles.text.lead.fontSize};
-      font-weight: ${styles.text.lead.boldWeight};
-      line-height: ${styles.text.lead.lineHeight};
-      letter-spacing: ${styles.text.lead.letterSpacing};
+      font-size: ${$styles.text.lead.fontSize};
+      font-weight: ${$styles.text.lead.boldWeight};
+      line-height: ${$styles.text.lead.lineHeight};
+      letter-spacing: ${$styles.text.lead.letterSpacing};
       font-style: normal;
     }
   }
 
-  :disabled + label {
-    opacity: 0.4;
-  }
-
-  :not(:disabled) {
+  ${
+    disabled
+      ? `
+    + label {
+      opacity: 0.4;
+    }`
+      : `
     + label {
       &:hover {
-        background: ${styles.color2.secondaryXLight};
+        background: ${$styles.color2.secondaryXLight};
       }
     }
     &:focus + label {
-      background: ${styles.color2.secondaryXLight};
+      background: ${$styles.color2.secondaryXLight};
     }
     &:focus-visible + label {
-      outline: 1px solid ${styles.color2.outline};
+      outline: 1px solid ${$styles.color2.outline};
     }
     &:checked + label:after {
       content: " ";
       position: absolute;
-      left: calc(${styles.padding.medium} + 5px);
-      top: calc(${styles.padding.medium} + 8px);
+      left: calc(${$styles.padding.medium} + 5px);
+      top: calc(${$styles.padding.medium} + 8px);
       width: 10px;
       height: 10px;
       transform: rotate(-46deg);
       border-radius: 50%;
-      background: ${styles.color2.primary};
+      background: ${$styles.color2.primary};
     }
     &:checked + label {
-      background: ${styles.color2.secondaryLight};
+      background: ${$styles.color2.secondaryLight};
     }
+  `
   }
 
   @media print {
@@ -302,84 +316,98 @@ export const Radio = injectStyles(styled.input.attrs({
       padding: 0;
     }
   }
-`}`);
+`}
+`);
 
-export const NumberInput = injectStyles(styled.input<PrimitiveProps<{
-    validation?: { error?: boolean };
-  }>>`${({styles, validation}) => `
+export const NumberInput = injectStyles(styled.input<
+  PrimitiveProps<{
+    $validation?: { error?: boolean };
+  }>
+>`
+  ${({ $styles, $validation }) => `
   font-family: inherit;
-  font-size: ${styles.text.label.fontSize} !important;
-  font-weight: ${styles.text.label.fontWeight};
-  line-height: ${styles.text.label.lineHeight};
-  letter-spacing: ${styles.text.label.letterSpacing};
+  font-size: ${$styles.text.label.fontSize} !important;
+  font-weight: ${$styles.text.label.fontWeight};
+  line-height: ${$styles.text.label.lineHeight};
+  letter-spacing: ${$styles.text.label.letterSpacing};
   text-align: right;
-  padding: ${styles.padding.small} !important;
+  padding: ${$styles.padding.small} !important;
   width: auto !important;
   min-width: 20%;
   margin-right: 0.5em;
-  border: 1px solid ${validation?.error ? styles.color2.error : styles.color2.outline} !important;
-  border-radius: ${styles.borderRadius.small};
+  border: 1px solid ${
+    $validation?.error ? $styles.color2.error : $styles.color2.outline
+  } !important;
+  border-radius: ${$styles.borderRadius.small};
   &::placeholder {
     font-color: inherit;
     opacity: 0.75;
   }
   &:focus {
-    outline: 3px solid ${styles.color2.focus};
+    outline: 3px solid ${$styles.color2.focus};
   }
-`}`);
+`}
+`);
 
 export const TextInput = injectStyles(styled.input<
   PrimitiveProps<{
-    validation?: { error?: boolean };
+    $validation?: { error?: boolean };
   }>
->`${({styles, validation}) => `
+>`
+  ${({ $styles, $validation }) => `
   font-family: inherit;
-  font-size: ${styles.text.lead.fontSize} !important;
-  font-weight: ${styles.text.lead.fontWeight};
-  line-height: ${styles.text.lead.lineHeight};
-  letter-spacing: ${styles.text.lead.letterSpacing};
-  padding: ${styles.padding.small} !important;
+  font-size: ${$styles.text.lead.fontSize} !important;
+  font-weight: ${$styles.text.lead.fontWeight};
+  line-height: ${$styles.text.lead.lineHeight};
+  letter-spacing: ${$styles.text.lead.letterSpacing};
+  padding: ${$styles.padding.small} !important;
   width: auto;
   min-width: 20%;
   margin-right: 0.5em;
-  border: 1px solid ${validation?.error ? styles.color2.error : styles.color2.outline} !important;
+  border: 1px solid ${
+    $validation?.error ? $styles.color2.error : $styles.color2.outline
+  } !important;
   
-  border-radius: ${styles.borderRadius.small};
+  border-radius: ${$styles.borderRadius.small};
   &::placeholder {
     font-color: inherit;
     opacity: 0.75;
   }
   &:focus {
-    outline: 3px solid ${styles.color2.focus};
+    outline: 3px solid ${$styles.color2.focus};
   }
   @media screen and (max-width: 360px) {
     width: 100%;
   }
-`}`);
+`}
+`);
 
-export const Textarea = injectStyles(styled.textarea<PrimitiveProps>`${({styles}) => `
+export const Textarea = injectStyles(styled.textarea<PrimitiveProps>`
+  ${({ $styles }) => `
   font-family: inherit;
-  font-size: ${styles.text.body.fontSize};
-  font-weight: ${styles.text.body.fontWeight};
-  line-height: ${styles.text.body.lineHeight};
-  letter-spacing: ${styles.text.body.letterSpacing};
-  padding: ${styles.padding.small} ${styles.padding.small};
+  font-size: ${$styles.text.body.fontSize};
+  font-weight: ${$styles.text.body.fontWeight};
+  line-height: ${$styles.text.body.lineHeight};
+  letter-spacing: ${$styles.text.body.letterSpacing};
+  padding: ${$styles.padding.small} ${$styles.padding.small};
   min-height: 6em;
   width: 100% !important;
   min-width: 20%;
   margin-right: 0.5em;
-  border: 1px solid ${styles.color2.outline};
-  border-radius: ${styles.borderRadius.small};
+  border: 1px solid ${$styles.color2.outline};
+  border-radius: ${$styles.borderRadius.small};
   &::placeholder {
     font-color: inherit;
     opacity: 0.75;
   }
   &:focus {
-    outline: 3px solid ${styles.color2.focus};
+    outline: 3px solid ${$styles.color2.focus};
   }
-`}`);
+`}
+`);
 
-export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`${({styles}) => `
+export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`
+  ${({ $styles }) => `
   position: relative;
   width: fit-content;
   max-width: 100%;
@@ -392,8 +420,8 @@ export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`${({styles}
     width: 8px;
     height: 8px;
     transform: translateY(-4px) rotate(-45deg);
-    border-left: 2px solid ${styles.color2.primary};
-    border-bottom: 2px solid ${styles.color2.primary};
+    border-left: 2px solid ${$styles.color2.primary};
+    border-bottom: 2px solid ${$styles.color2.primary};
   }
   select {
     -webkit-appearance: none;
@@ -403,22 +431,23 @@ export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`${({styles}
     width: auto;
     max-width: 100%;
     font-family: inherit;
-    font-size: ${styles.text.lead.fontSize};
-    font-weight: ${styles.text.lead.fontWeight};
-    line-height: ${styles.text.lead.lineHeight};
-    letter-spacing: ${styles.text.lead.letterSpacing};
-    padding: ${styles.padding.small} ${styles.padding.small};
+    font-size: ${$styles.text.lead.fontSize};
+    font-weight: ${$styles.text.lead.fontWeight};
+    line-height: ${$styles.text.lead.lineHeight};
+    letter-spacing: ${$styles.text.lead.letterSpacing};
+    padding: ${$styles.padding.small} ${$styles.padding.small};
     padding-right: 40px;
     margin-bottom: 0;
-    border: 1px solid ${styles.color2.primary};
-    border-radius: ${styles.borderRadius.small};
+    border: 1px solid ${$styles.color2.primary};
+    border-radius: ${$styles.borderRadius.small};
     background: transparent;
-    transition: background 200ms ${styles.easing.easeOut};
+    transition: background 200ms ${$styles.easing.easeOut};
     &:hover, &:focus {
-      background: ${styles.color2.secondaryXLight};
+      background: ${$styles.color2.secondaryXLight};
     }
     &:focus {
-      outline-color: ${styles.color2.outline};
+      outline-color: ${$styles.color2.outline};
     }
   }
-`}`);
+`}
+`);

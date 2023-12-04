@@ -28,14 +28,14 @@ export default function Nav({ heading = "Missing page heading", page: currentPag
         {tocExpanded ? `${currentIndex + 1} av ${tableOfContents.length} steg` : "Skjul all steg"}
       </ToggleButton>
 
-      <Grid.Nav tocExpanded={tocExpanded}>
-        <Grid.NavSection large>
+      <Grid.Nav $tocExpanded={tocExpanded}>
+        <Grid.NavSection $large>
           <Title onClick={showIntro}>{heading}</Title>
         </Grid.NavSection>
         <Grid.NavSection>
           <Grid.NavList>
             {tableOfContents.filter(page => page.type !== "Result").map((page, index) =>
-              <li>
+              <li key={page.id}>
                 <NavItem
                   key={page.id}
                   id={page.id}
@@ -49,7 +49,7 @@ export default function Nav({ heading = "Missing page heading", page: currentPag
             )}
           </Grid.NavList>
         </Grid.NavSection>
-        <Grid.NavSection large>
+        <Grid.NavSection $large>
           {tableOfContents.filter(page => page.type === "Result").map((page) =>
             <NavResult
               key={page.id}

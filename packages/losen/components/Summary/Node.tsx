@@ -49,7 +49,7 @@ export default function NodeSummary({ node }: Props) {
   const errorDescription = get(node, 'errorDescription') as any
 
   return (
-    <StyledNodeSummary error={errors.validation.error}>
+    <StyledNodeSummary $error={errors.validation.error}>
       <Html text={node.heading} h3 />
       <ValueSummary value={get(node, 'currentValue')} node={node} />
       {errors.validation.error ? (

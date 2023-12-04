@@ -16,10 +16,10 @@ export default function Information({
 }: RenderWithData<"Information">) {
   return (
     <TextBlock
-      debug={debug}
+      $debug={debug}
       data-id={id}
-      printonly={printonly}
-      printhide={printhide}
+      $printonly={printonly}
+      $printhide={printhide}
     >
       <InformationBlock>
         <InfoIcon />

@@ -108,7 +108,7 @@ export function PureBlock(props: any) {
 
   if (props.type === "Group") {
     return (
-      <StyledBlock data-id={props.id} debug={props.debug}>
+      <StyledBlock data-id={props.id} $debug={props.debug}>
         <Html text={props.heading} h2 />
         <Html text={props.text} margins />
 
@@ -133,7 +133,7 @@ export function PureBlock(props: any) {
 
   if (props.type === "Error") {
     return (
-      <StyledErrorBlock role="alert" data-id={props.id} debug={props.debug}>
+      <StyledErrorBlock role="alert" data-id={props.id} $debug={props.debug}>
         <Html text={props.heading} h2 />
         <Html text={props.text} margins />
         {props.children.map((block: any) => (
@@ -181,10 +181,10 @@ export function PureBlock(props: any) {
     <StyledBlock
       data-id={props.id}
       id={props.property}
-      debug={props.debug}
-      grouped={props.grouped}
-      groupedSimple={props.simple}
-      type={props.type}
+      $debug={props.debug}
+      $grouped={props.grouped}
+      $groupedSimple={props.simple}
+      $type={props.type}
     >
 
       <ImageComponent image={props.image} />

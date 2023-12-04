@@ -17,7 +17,7 @@ export default function Navigation({
   return (
     <>
       {hasNext ? (
-        <Button.NavButton type="button" next onClick={nextPage}>
+        <Button.NavButton type="button" $next onClick={nextPage}>
           {nextPageIsResult ? "Vis resultat" : "Neste"}
         </Button.NavButton>
       ) : null}

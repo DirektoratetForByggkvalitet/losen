@@ -4,7 +4,7 @@ import { PageSummary as StyledPageSummary } from "../../primitives/Summary";
 import { SmallButton as Button } from "../../primitives/Button";
 
 import NodeSummary from "./Node";
-import { RenderableNode, RenderableResult } from "../../index";
+import { RenderableNode } from "../../index";
 import { hasProperty } from "../../utils/is-of-type";
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 
 export default function PageSummary({ children = [], error, goToPage, heading }: Props) {
   return (
-    <StyledPageSummary error={error}>
+    <StyledPageSummary $error={error}>
       <H2>
         {heading}{" "}
         <Button type="button" onClick={goToPage}>

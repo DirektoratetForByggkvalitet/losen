@@ -31,7 +31,7 @@ function LanguageSelector({ translations: translationsObject, currentLanguage, s
   }
 
   return (
-    <Grid padItems>
+    <Grid $padItems>
       {[
         /**
          * If we have translations, but no norwegian one we need

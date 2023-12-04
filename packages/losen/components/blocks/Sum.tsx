@@ -49,7 +49,7 @@ export default function Sum({
   const sum = calculateSum(data, values, operations, minimum);
 
   return (
-    <StyledSum groupedSimple={groupedSimple}>
+    <StyledSum $groupedSimple={groupedSimple}>
       <div>
         {heading}
         <span>

@@ -15,10 +15,10 @@ export default function Text({
 }: RenderWithData<"Text">) {
   return (
     <TextBlock
-      debug={debug}
+      $debug={debug}
       data-id={id}
-      printonly={printonly}
-      printhide={printhide}
+      $printonly={printonly}
+      $printhide={printhide}
     >
       {warning && <InfoIcon />}
       <Html text={heading} h2 />

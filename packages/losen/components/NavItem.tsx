@@ -15,9 +15,9 @@ type Props = {
 export default function NavItem({ active = false, done = false, errors = false, heading = "TITLE MISSING", id, index, setPage }: Props) {
   return (
     <StyledNavItem
-      active={active}
-      done={done}
-      errors={errors}
+      $active={active}
+      $done={done}
+      $errors={errors}
       href="#"
       onClick={(e) => {
         e.preventDefault();

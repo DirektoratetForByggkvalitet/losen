@@ -31,7 +31,7 @@ export default function Radio({
     <Fieldset>
       <Legend>{heading}</Legend>
 
-      <OptionWrapper grid={grid}>
+      <OptionWrapper $grid={grid}>
         {options.map((option) => {
           const isDisabled = disabled || option.disabled;
 
