@@ -7,7 +7,8 @@
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "publish-package": {
-      "dependsOn": ["^build", "^test"]
+      "dependsOn": ["^build", "^test"],
+      "cache": false
     },
     "bump-version": {
       "cache": false,
