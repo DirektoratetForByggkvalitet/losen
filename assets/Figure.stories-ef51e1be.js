@@ -1,0 +1,3 @@
+import{j as e}from"./jsx-runtime-ffb262ed.js";import{F as a}from"./Figure-4909abc5.js";import"./index-76fb7be0.js";import"./_commonjsHelpers-de833af9.js";import"./inject-styles-aae5f119.js";import"./styles-36622289.js";const g={component:a},r={render:()=>e.jsxs(a,{children:[e.jsx("img",{src:"mikrohus.png",alt:"Textalternative"}),e.jsx("figcaption",{children:"Figure caption"})]})};var t,i,o;r.parameters={...r.parameters,docs:{...(t=r.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  render: () => <Figure><img src="mikrohus.png" alt="Textalternative" /><figcaption>Figure caption</figcaption></Figure>
+}`,...(o=(i=r.parameters)==null?void 0:i.docs)==null?void 0:o.source}}};const d=["Default"];export{r as Default,d as __namedExportsOrder,g as default};

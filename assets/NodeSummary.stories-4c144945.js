@@ -1,0 +1,3 @@
+import{j as e}from"./jsx-runtime-ffb262ed.js";import{N as s}from"./Summary-054e9995.js";import"./index-76fb7be0.js";import"./_commonjsHelpers-de833af9.js";import"./inject-styles-aae5f119.js";import"./styles-36622289.js";const x={component:s,argTypes:{error:{control:"boolean"}}},p=m=>e.jsxs(s,{...m,children:[e.jsx("h3",{children:"Heading 3"}),e.jsx("p",{children:"This is a paragraph."})]}),r={render:p};var o,t,a;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  render: template
+}`,...(a=(t=r.parameters)==null?void 0:t.docs)==null?void 0:a.source}}};const h=["Default"];export{r as Default,h as __namedExportsOrder,x as default};
