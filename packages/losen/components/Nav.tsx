@@ -5,7 +5,7 @@ import NavReset from "./NavReset";
 import NavResult from "./NavResult";
 import LanguageSelector from "./LanguageSelector";
 
-import { ToggleButton, Title, Grid } from "losen/primitives";
+import { ToggleButton, Title, Grid } from "../primitives";
 
 type Props = {
   heading?: string,

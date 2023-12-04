@@ -7,7 +7,7 @@ export { track, trackEvent } from "./utils/tracking";
 export * as dsl from "./utils/dsl";
 export * as Primitives from "./primitives";
 
-import { Expression, ValidationError, ValidationResult } from "losen/utils/dsl";
+import { Expression, ValidationError, ValidationResult } from "./utils/dsl";
 
 export type NodeTitles = Record<string, string>;
 
@@ -378,18 +378,28 @@ type RenderableBranchNode = WithError<
 >;
 
 export type RenderableError = WithError<
-  Omit<Error, "children"> & { children: RenderableNode[] }
+  Omit<Error, "children" | "heading"> & {
+    children: RenderableNode[];
+    heading: string;
+  }
 >;
 export type RenderableErrorOk = WithError<
-  Omit<ErrorOk, "children"> & { children: RenderableNode[] }
+  Omit<ErrorOk, "children" | "heading"> & {
+    children: RenderableNode[];
+    heading: string;
+  }
 >;
 export type RenderableResult = WithError<
-  Omit<Result, "children"> & {
+  Omit<Result, "children" | "heading"> & {
     children: RenderableNode[];
+    heading: string;
   }
 >;
 export type RenderablePage = WithError<
-  Omit<Page, "children"> & { children: RenderableNode[] }
+  Omit<Page, "children" | "heading"> & {
+    children: RenderableNode[];
+    heading: string;
+  }
 >;
 type RenderableGroup = WithError<
   Omit<Group, "children"> & { children: RenderableNode[] }

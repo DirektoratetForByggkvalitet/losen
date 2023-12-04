@@ -1,6 +1,6 @@
-import { State } from "losen";
+import { State } from "..";
 import { Translations } from "./reduce-wizard";
-import get from "lodash/get";
+import { get } from "lodash";
 import { getCurrentLanguage } from "./get-current-language";
 
 export function getTranslation(state: State, translations: Translations) {

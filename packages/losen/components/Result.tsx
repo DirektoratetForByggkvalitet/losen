@@ -1,22 +1,22 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import hasSoftError from "losen/utils/has-soft-error";
-import getResultText from "losen/utils/get-result-text";
-import { getErrorPages } from "losen/utils/selectors";
-import { trackEvent } from "losen/utils/tracking";
+import hasSoftError from "../utils/has-soft-error";
+import getResultText from "../utils/get-result-text";
+import { getErrorPages } from "../utils/selectors";
+import { trackEvent } from "../utils/tracking";
 import Block from "./blocks/Block";
 import ExportData from "./ExportData";
 import Html from "./helper/Html";
 import Summary from "./Summary";
 
-import { H1, H2 } from "losen/primitives/Heading";
-import { Lead } from "losen/primitives/Paragraphs";
-import { MainButton } from "losen/primitives/Button";
-import { TextBlock } from "losen/primitives/Block";
-import { Export, Grid } from "losen/primitives";
+import { H1, H2 } from "../primitives/Heading";
+import { Lead } from "../primitives/Paragraphs";
+import { MainButton } from "../primitives/Button";
+import { TextBlock } from "../primitives/Block";
+import { Export, Grid } from "../primitives";
 import PDFButton from "./PDFButton";
-import { RenderableNode, State, WizardDefinition } from "losen";
+import { RenderableNode, State, WizardDefinition } from "../index";
 
 type Props = {
   children: RenderableNode[]
@@ -73,7 +73,7 @@ function Result(props: Props) {
   };
 
   return (
-    <Grid.Main result debug={debug} data-id={pageid} id="main">
+    <Grid.Main debug={debug} data-id={pageid} id="main">
       <H1 result>{resultHeading}</H1>
       {resultLead && <Grid.Blocks>
         <Html text={resultLead} />
@@ -105,7 +105,7 @@ function Result(props: Props) {
         </TextBlock>
       ) : null}
 
-      <Export exporter={exporter}>
+      <Export>
         {!incomplete && exporter && exports?.[exporter] ? (
           <ExportData exporter={exports[exporter]} />
         ) : null}

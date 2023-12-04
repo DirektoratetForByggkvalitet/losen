@@ -4,7 +4,7 @@ import { ErrorMessage } from '../../primitives/Errors';
 import { NumberInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
 import Html from '../helper/Html';
-import { RenderWithData } from 'losen';
+import { RenderWithData } from '../../index';
 
 export default function Number({
   heading,
@@ -67,7 +67,6 @@ export default function Number({
         placeholder={placeholder}
         step={step}
         type="number"
-        unit={unit}
         validation={errors?.validation}
         value={currentValue}
       />

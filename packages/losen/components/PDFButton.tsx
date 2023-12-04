@@ -40,7 +40,7 @@ export default function PDFButton({
         onClick={handleClick}
         disabled={isDownloading}
       >
-        <span key="text">{isDownloading ? 'Lager PDF...' : 'Lagre som PDF'}</span>
+        <span key="text">{isDownloading ? 'Lager PDF.../index' : 'Lagre som PDF'}</span>
         <Spinner key="spinner" hidden={!isDownloading} />
       </MainButton>
 

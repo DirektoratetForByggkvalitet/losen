@@ -1,7 +1,7 @@
 import React from 'react';
 import PageSummary from "./Page";
-import hasSoftError from "losen/utils/has-soft-error";
-import { RenderableNode } from "../..";
+import hasSoftError from "../../utils/has-soft-error";
+import { RenderableNode } from "../../index";
 import { hasProperty } from "../../utils/is-of-type";
 import { getErrorPages } from "../../utils/selectors";
 

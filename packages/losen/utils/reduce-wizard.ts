@@ -1,13 +1,8 @@
-import { NAME } from "losen/state/constants";
-import vocalizeErrors from "losen/utils/vocalize-errors";
-import get from "lodash/get";
-import omit from "lodash/omit";
-import set from "lodash/set";
-import { hasProperty, isOfType } from "losen/utils/is-of-type";
-import parseExpression, {
-  ValidationError,
-  ValidationResult,
-} from "losen/utils/dsl";
+import { NAME } from "../state/constants";
+import vocalizeErrors from "./vocalize-errors";
+import { get, omit, set } from "lodash";
+import { hasProperty, isOfType } from "./is-of-type";
+import parseExpression, { ValidationError, ValidationResult } from "./dsl";
 import {
   Answer,
   Node,
@@ -16,7 +11,7 @@ import {
   RenderableNode,
   State,
   ValidatedNode,
-} from "losen";
+} from "../index";
 import { getNodeValue } from "./get-node-value";
 import { getTranslation } from "./get-translation";
 
@@ -423,7 +418,7 @@ export const buildNodeMap = (schema: (RenderableNode | Node)[]): NodeMap =>
       ...(hasProperty(node, "id") ? { [node.id]: node } : {}),
 
       ...(hasProperty(node, "children")
-        ? buildNodeMap(node.children || [])
+        ? buildNodeMap((node as any).children || [])
         : {}),
 
       ...(hasProperty(node, "options") ? buildNodeMap(node.options || []) : {}),

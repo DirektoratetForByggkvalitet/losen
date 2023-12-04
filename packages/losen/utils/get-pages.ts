@@ -1,7 +1,7 @@
-import get from "lodash/get";
-import { getNodeErrors } from "losen/utils/selectors";
-import { hasProperty } from "losen/utils/is-of-type";
-import type { NodeTitles, RenderableNode, ValidatedNode } from "losen";
+import { get } from "lodash";
+import { getNodeErrors } from "./selectors";
+import { hasProperty } from "./is-of-type";
+import type { NodeTitles, RenderableNode, ValidatedNode } from "../index";
 
 /**
  * Returns a list of the wizard pages with number of erros per page and whether

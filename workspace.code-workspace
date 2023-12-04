@@ -1,0 +1,77 @@
+{
+  "folders": [
+    {
+      "name": "Monorepo",
+      "path": "."
+    },
+    {
+      "name": "Config",
+      "path": "packages/config"
+    },
+    {
+      "name": "Example",
+      "path": "apps/example",
+      "typescript.tsdk": "Config/node_modules/typescript/lib",
+      "typescript.enablePromptUseWorkspaceTsdk": true,
+      "eslint.workingDirectories": [
+        {
+          "directory": "apps/example"
+        }
+      ]
+    },
+    {
+      "name": "Storybook",
+      "path": "apps/storybook",
+      "typescript.tsdk": "Config/node_modules/typescript/lib",
+      "typescript.enablePromptUseWorkspaceTsdk": true,
+      "eslint.workingDirectories": [
+        {
+          "directory": "apps/storybook"
+        }
+      ]
+    },
+    {
+      "name": "Losen",
+      "path": "packages/losen",
+      "eslint.workingDirectories": [
+        {
+          "directory": "packages/losen"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": [
+      "source.formatDocument",
+      "source.fixAll.eslint"
+    ],
+    "eslint.validate": ["javascript", "typescript"],
+    "typescript.tsdk": "Monorepo/node_modules/typescript/lib",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.formatOnSave": true
+    },
+    "eslint.alwaysShowStatus": true,
+    "files.autoSave": "afterDelay"
+  },
+  "extensions": {
+    "recommendations": [
+      // We need this plugin to support formatting on save
+      // before we run eslint --fix as a `codeActionsOnSave`
+      "rohit-gohri.format-code-action",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
+}

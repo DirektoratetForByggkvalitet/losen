@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import merge from 'lodash/merge';
+import { merge } from 'lodash';
 
 import defaultStyles, { StylesProps } from '../styles';
 

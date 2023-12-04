@@ -1,5 +1,5 @@
 import React from 'react';
-import { RenderWithData } from 'losen';
+import { RenderWithData } from '../../../index';
 
 export default function SelectOption({ id, value, heading, debug }: RenderWithData<"Answer">) {
   return (

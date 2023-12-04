@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavItem as StyledNavItem } from "losen/primitives";
+import { NavItem as StyledNavItem } from "../primitives";
 import CheckIcon from './graphics/CheckIcon';
 
 type Props = {
@@ -19,7 +19,7 @@ export default function NavItem({ active = false, done = false, errors = false, 
       done={done}
       errors={errors}
       href="#"
-      onClick={(e: MouseEvent) => {
+      onClick={(e) => {
         e.preventDefault();
         setPage(id);
       }}

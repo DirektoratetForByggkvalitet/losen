@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import { get } from "lodash";
 
 import parseExpression from "../dsl";
 import { Branch, BranchNode, Metadata, Node, NodeType, Schema } from "../..";

@@ -3,7 +3,7 @@ import React, { ChangeEventHandler } from 'react';
 import { ErrorMessage } from '../../primitives/Errors';
 import { TextInput } from '../../primitives/Input';
 import ErrorIcon from '../graphics/ErrorIcon';
-import { RenderWithData } from 'losen';
+import { RenderWithData } from '../../index';
 
 type Props = RenderWithData<"Input", string> & {
   update?: (value: string) => void

@@ -1,17 +1,17 @@
 import React from 'react';
-import { H2 } from "losen/primitives/Heading";
-import { PageSummary as StyledPageSummary } from "losen/primitives/Summary";
-import { SmallButton as Button } from "losen/primitives/Button";
+import { H2 } from "../../primitives/Heading";
+import { PageSummary as StyledPageSummary } from "../../primitives/Summary";
+import { SmallButton as Button } from "../../primitives/Button";
 
 import NodeSummary from "./Node";
-import { RenderableNode, RenderableResult } from "../..";
+import { RenderableNode, RenderableResult } from "../../index";
 import { hasProperty } from "../../utils/is-of-type";
 
 type Props = {
   children?: RenderableNode[];
   error?: boolean;
   goToPage: () => void;
-  heading?: RenderableResult["heading"]
+  heading?: string
 }
 
 export default function PageSummary({ children = [], error, goToPage, heading }: Props) {

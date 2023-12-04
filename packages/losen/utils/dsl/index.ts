@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import { get } from "lodash";
 import { validateExpression } from "./validator";
 import { State } from "../..";
 
@@ -401,10 +401,14 @@ export function buildValidatorForComplexExpression(
 export function buildValidatorFunction(expression: Expression): Validator {
   return (state) => {
     if (expression.type) {
-      return buildValidatorForComplexExpression(expression)(state);
+      return buildValidatorForComplexExpression(
+        expression as ComplexExpression
+      )(state);
     }
 
-    return buildValidatorForSimpleExpression(expression)(state);
+    return buildValidatorForSimpleExpression(expression as SimpleExpression)(
+      state
+    );
   };
 }
 

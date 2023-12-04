@@ -1,4 +1,4 @@
-import get from "lodash/get";
+import { get } from "lodash";
 
 import reduceWizard, { Translations } from "./reduce-wizard";
 import {
@@ -11,7 +11,7 @@ import {
   State,
   ValidatedNode,
   WizardDefinition,
-} from "losen";
+} from "..";
 import { hasProperty } from "./is-of-type";
 import { getTranslation } from "./get-translation";
 import { getCurrentLanguage } from "./get-current-language";

@@ -1,9 +1,9 @@
 import React from 'react';
-import pick from 'lodash/pick';
+import { pick } from 'lodash';
 import Html from '../helper/Html';
-import { TD } from 'losen/primitives/Table';
-import TableContainer from 'losen/primitives/TableContainer';
-import { RenderWithData } from 'losen';
+import { TD } from '../../primitives/Table';
+import TableContainer from '../../primitives/TableContainer';
+import { RenderWithData } from '../../index';
 
 type CellProps = Pick<RenderWithData<"Cell" | "Heading">, "colSpan" | "rowSpan"> & {
   simple?: boolean

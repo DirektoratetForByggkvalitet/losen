@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 
-import { MainButton } from "losen/primitives/Button";
-import { getData } from "losen/utils/get-data";
-import { State } from "losen";
+import { MainButton } from "../primitives/Button";
+import { getData } from "../utils/get-data";
+import { State } from "../index";
 
 type Props = {
   data?: any

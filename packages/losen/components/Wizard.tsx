@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 
 import Modal from "./helper/Modal";
 import { NAME } from "../state";
-import { RenderableNode, State, WizardDefinition } from 'losen'
+import { RenderableNode, State, WizardDefinition } from '../index'
 
 import { getTitle, getNodeTitles } from "../utils/selectors";
 import getPages from "../utils/get-pages";
@@ -18,11 +18,11 @@ import SkipLink from "./helper/SkipLink";
 import { StyleProvider } from "./StyleProvider";
 import { track } from "../utils/tracking";
 import beforeUnloadHandler from "../utils/before-unload-handler";
-import validateSchema from "losen/utils/validator";
+import validateSchema from "../utils/validator";
 
-import { Grid, Wizard as WizardPrimitive } from "losen/primitives";
+import { Grid, Wizard as WizardPrimitive } from "../primitives";
 import { StylesProps } from "../styles";
-import { hasProperty, isOfType } from "losen/utils/is-of-type";
+import { hasProperty, isOfType } from "../utils/is-of-type";
 import { getData } from "../utils/get-data";
 
 type Props = {
@@ -167,7 +167,7 @@ function Wizard({
 
       errors.forEach(({ path = [], error, id }) => {
         // eslint-disable-next-line no-console
-        console.warn(`${path.join(".")}${id ? ` (${id})` : ""}:
+        console.warn(`${path.join("./index")}${id ? ` (${id})` : ""}:
 ${error}
     `);
       });
@@ -221,7 +221,7 @@ ${error}
             translations={translations}
           />
           <Grid.FocusWrapper
-            tabIndex="-1"
+            tabIndex={-1}
             ref={pageWrapper}
           >
             {page && isOfType(page, ["Result"]) ? (

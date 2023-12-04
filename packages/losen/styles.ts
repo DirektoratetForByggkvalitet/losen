@@ -14,8 +14,8 @@ const styles = {
     outline: "#003045", // Havblå 900
     focus: "rgba(0, 92, 173, 0.4)", // Himmelblå 700 40%
     primary: "#003045", // Havblå 900
-    primaryLight: "rgba(0, 48, 69, 0.85)", 
-    primaryXLight: "rgba(0, 48, 69, 0.75)", 
+    primaryLight: "rgba(0, 48, 69, 0.85)",
+    primaryXLight: "rgba(0, 48, 69, 0.75)",
     secondary: "#89bad6", // Havblå 300
     secondaryLight: "#c7e0f2", // havblå 100
     secondaryXLight: "#ebf4fa", // havblå 50
@@ -35,8 +35,8 @@ const styles = {
   },
   padding: {
     xxSmall: "4px",
-    xSmall: "8px", 
-    small: "12px", // 16 
+    xSmall: "8px",
+    small: "12px", // 16
     medium: "20px",
     large: "24px",
     xLarge: "48px",
@@ -54,7 +54,7 @@ const styles = {
     medium: "24px",
   },
   easing: {
-    easeOut: "cubic-bezier(0.22, 1, 0.36, 1)"
+    easeOut: "cubic-bezier(0.22, 1, 0.36, 1)",
   },
   text: {
     body: {
@@ -94,14 +94,14 @@ const styles = {
       fontWeight: "600",
       lineHeight: "18px",
       letterSpacing: "0",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
     },
     caption: {
       fontSize: "14px",
       fontWeight: "400",
       lineHeight: "20px",
       letterSpacing: "0",
-      fontStyle: "italic"
+      fontStyle: "italic",
     },
     label: {
       fontSize: "18px",
@@ -109,7 +109,7 @@ const styles = {
       lineHeight: "26px",
       letterSpacing: "0.01em",
     },
-  }
+  },
 };
 
 export type PrimitiveProps<T extends {} = {}> = {

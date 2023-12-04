@@ -1,8 +1,8 @@
 import React from 'react';
-import { ErrorMessage } from "losen/primitives/Errors";
+import { ErrorMessage } from "../../primitives/Errors";
 import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";
-import { RenderableNode } from "../..";
+import { RenderableNode } from "../../index";
 import { hasProperty, isOfType } from "../../utils/is-of-type";
 
 type Props = {

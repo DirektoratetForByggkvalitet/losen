@@ -5,8 +5,8 @@ import Html from "./helper/Html";
 import Navigation from "./Navigation";
 import SummaryDetails from "./blocks/SummaryDetails";
 
-import { Heading, Paragraphs, Grid } from "losen/primitives";
-import { RenderableNode } from "..";
+import { Heading, Paragraphs, Grid } from "../primitives";
+import { RenderableNode } from "../index";
 import { hasProperty } from "../utils/is-of-type";
 
 type Props = {

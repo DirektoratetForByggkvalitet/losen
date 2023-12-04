@@ -1,10 +1,10 @@
 import React, { ChangeEventHandler } from 'react';
 
-import Fieldset from "losen/primitives/Fieldset";
-import Legend from "losen/primitives/Legend";
-import OptionWrapper from "losen/primitives/OptionWrapper";
-import CheckboxInput from "losen/components/blocks/checkbox/CheckboxInput";
-import { RenderWithData } from "losen";
+import Fieldset from "../../../primitives/Fieldset";
+import Legend from "../../../primitives/Legend";
+import OptionWrapper from "../../../primitives/OptionWrapper";
+import CheckboxInput from "./CheckboxInput";
+import { RenderWithData } from "../../../index";
 
 export default function Checkbox({
   setData,

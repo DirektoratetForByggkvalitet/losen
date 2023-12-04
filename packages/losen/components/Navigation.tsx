@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from "losen/primitives";
+import { Button } from "../primitives";
 
 type Props = {
   hasNext?: boolean,

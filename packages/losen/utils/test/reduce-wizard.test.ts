@@ -1,5 +1,5 @@
-import omit from "lodash/omit";
-import { NAME } from "losen/state";
+import { omit } from "lodash";
+import { NAME } from "../../state";
 
 import reduceWizard, {
   filterSchemaNodes,
@@ -8,8 +8,8 @@ import reduceWizard, {
   reduceBranches,
   translateNode,
   buildNodeMap,
-} from "losen/utils/reduce-wizard";
-import { Branch, Page, RenderableNode, Result, Schema } from "losen";
+} from "../reduce-wizard";
+import { Branch, Page, RenderableNode, Result, Schema } from "../..";
 
 describe("reduce-wizard", () => {
   it("replaces references", () => {

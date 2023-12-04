@@ -1,5 +1,5 @@
 import React from 'react';
-import InformationBlock from "losen/primitives/Information";
+import InformationBlock from "../../primitives/Information";
 import InfoIcon from "../graphics/InfoIcon";
 import Html from "../helper/Html";
 

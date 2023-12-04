@@ -1,10 +1,10 @@
 import React from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 
-import StyledSum from 'losen/primitives/Sum';
-import StyledSumResult from 'losen/primitives/SumResult';
+import StyledSum from '../../primitives/Sum';
+import StyledSumResult from '../../primitives/SumResult';
 import Html from '../helper/Html';
-import { RenderWithData } from 'losen';
+import { RenderWithData } from '../../index';
 
 export default function Evaluation({
   data,
@@ -28,7 +28,7 @@ export default function Evaluation({
   if (showValue) {
     if (testedValue < 0) {
       return (
-        <StyledSum groupedSimple={groupedSimple} final={final}>
+        <StyledSum groupedSimple={groupedSimple}>
           <div>
             {sad}
             <span className="sad">
@@ -39,7 +39,7 @@ export default function Evaluation({
       );
     }
     return (
-      <StyledSum groupedSimple={groupedSimple} final={final}>
+      <StyledSum groupedSimple={groupedSimple}>
         <div>
           {happy}
           <span className="happy">

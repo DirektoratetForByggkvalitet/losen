@@ -24,14 +24,14 @@ import Text from "./Text";
 import Textarea from "./Textarea";
 
 // State deps
-import { setData } from "losen/state/actions";
-import { NAME } from "losen/state";
+import { setData } from "../../state/actions";
+import { NAME } from "../../state";
 
 // Primitives
-import { SpecificBlock as StyledBlock } from "losen/primitives/Block";
-import StyledErrorBlock from "losen/primitives/ErrorBlock";
-import { ErrorMessage } from "losen/primitives/Errors";
-import { RenderableNode, State } from "losen";
+import { SpecificBlock as StyledBlock } from "../../primitives/Block";
+import StyledErrorBlock from "../../primitives/ErrorBlock";
+import { ErrorMessage } from "../../primitives/Errors";
+import { RenderableNode, State } from "../../index";
 
 /**
  * Determine which component to use based on the node type
@@ -184,7 +184,6 @@ export function PureBlock(props: any) {
       debug={props.debug}
       grouped={props.grouped}
       groupedSimple={props.simple}
-      disabled={props.disabled}
       type={props.type}
     >
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import get from 'lodash/get';
+import { get } from 'lodash';
 
-import StyledSum from 'losen/primitives/Sum';
+import StyledSum from '../../primitives/Sum';
 import SummaryDetails from './SummaryDetails';
 import Html from '../helper/Html';
-import { RenderWithData, State } from 'losen';
+import { RenderWithData, State } from '../../index';
 
 type Props = RenderWithData<"Sum">
 
@@ -49,7 +49,7 @@ export default function Sum({
   const sum = calculateSum(data, values, operations, minimum);
 
   return (
-    <StyledSum groupedSimple={groupedSimple} final={final}>
+    <StyledSum groupedSimple={groupedSimple}>
       <div>
         {heading}
         <span>

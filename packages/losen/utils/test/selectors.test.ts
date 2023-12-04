@@ -3,11 +3,11 @@ import {
   getNodeTitles,
   getNodeErrors,
   getErrorPages,
-} from "losen/utils/selectors";
+} from "../selectors";
 
-import { Translations } from "losen/utils/reduce-wizard";
-import { NAME } from "losen/state/index";
-import { Schema } from "losen";
+import { Translations } from "../reduce-wizard";
+import { NAME } from "../../state";
+import { Schema } from "../..";
 import { getData } from "../get-data";
 import { getCurrentLanguage } from "../get-current-language";
 import { getTranslation } from "../get-translation";

@@ -1,5 +1,5 @@
-import { State } from "losen";
-import { NAME } from "losen/state/constants";
+import { State } from "..";
+import { NAME } from "../state/constants";
 
 /**
  * Get wizard data

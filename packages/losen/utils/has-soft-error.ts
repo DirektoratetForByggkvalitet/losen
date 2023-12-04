@@ -1,5 +1,5 @@
-import { RenderableNode } from "losen";
-import { hasProperty, isOfType } from "losen/utils/is-of-type";
+import { RenderableNode } from "..";
+import { hasProperty, isOfType } from "./is-of-type";
 
 /**
  * Determine whether or not this page has a soft error (Error message) showing

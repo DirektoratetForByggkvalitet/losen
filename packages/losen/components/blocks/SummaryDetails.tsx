@@ -1,5 +1,5 @@
 import React from 'react';
-import { Details, Summary } from "losen/primitives/Details";
+import { Details, Summary } from "../../primitives/Details";
 import Html from "../helper/Html";
 
 type Props = {
