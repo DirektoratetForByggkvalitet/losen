@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
@@ -14,7 +14,7 @@
     "build": "tsup ./index.ts --format cjs,esm --dts --external react",
     "dev": "npm run build -- --watch",
     "bump-version": "npm version",
-    "publish-package": "npm publish",
+    "publish-package": "echo \"npm publish\"",
     "test": "jest"
   },
   "devDependencies": {
