@@ -14,7 +14,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <Wizard noBackground>
+      <Wizard $noBackground>
         <Story />
       </Wizard>
     ),

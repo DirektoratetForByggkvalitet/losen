@@ -5,19 +5,21 @@ import { PrimitiveProps } from "../styles";
 
 type Props = PrimitiveProps;
 
-const Figure = injectStyles(styled.figure<Props>`${({ styles, debug }) => `
+const Figure = injectStyles(styled.figure<Props>`
+  ${({ $styles, $debug }) => `
   padding: 0;
   position: relative;
-  margin: ${styles.padding.small} 0;
+  margin: ${$styles.padding.small} 0;
   
   figcaption {
-    font-style: ${styles.text.caption.fontStyle};
-    font-size: ${styles.text.caption.fontSize};
-    font-weight: ${styles.text.caption.fontWeight};
-    line-height: ${styles.text.caption.lineHeight};
-    letter-spacing: ${styles.text.caption.letterSpacing};
+    font-style: ${$styles.text.caption.fontStyle};
+    font-size: ${$styles.text.caption.fontSize};
+    font-weight: ${$styles.text.caption.fontWeight};
+    line-height: ${$styles.text.caption.lineHeight};
+    letter-spacing: ${$styles.text.caption.letterSpacing};
   }
-  ${debug
+  ${
+    $debug
       ? `
   :before {
     content: attr(data-id);
@@ -30,7 +32,9 @@ const Figure = injectStyles(styled.figure<Props>`${({ styles, debug }) => `
     font-size: 14px;
     padding: 2px 6px;
   }`
-  : ""}
-`}`);
+      : ""
+  }
+`}
+`);
 
 export default Figure;

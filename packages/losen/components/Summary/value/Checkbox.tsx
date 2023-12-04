@@ -21,8 +21,8 @@ function Sum({ node, node: { allMandatory, currentValue = {}, errors } }: any) {
   return (
     <div>
       <SpecificBlock
-        grouped
-        error={allMandatory && errors.required}
+        $grouped
+        $error={allMandatory && errors.required}
       >
         <small>
           {matchingItems === 0 && (

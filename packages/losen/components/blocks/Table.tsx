@@ -22,7 +22,7 @@ function TableHeader({ simple, ...props }: CellProps) {
 /* eslint-disable react/no-array-index-key */
 export default function Table({ cells, debug, simple }: RenderWithData<'Table'>) {
   return (
-    <TableContainer simple={simple}>
+    <TableContainer $simple={simple}>
       <table data-debug={debug}>
         <tbody>
           {cells.map((row, rowKey) => (

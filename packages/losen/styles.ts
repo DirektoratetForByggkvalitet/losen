@@ -113,8 +113,8 @@ const styles = {
 };
 
 export type PrimitiveProps<T extends {} = {}> = {
-  styles: typeof styles;
-  debug?: boolean;
+  $styles: typeof styles;
+  $debug?: boolean;
 } & T;
 
 export type StylesProps = {

@@ -26,7 +26,6 @@ export default function CheckboxInput({
 }: Props) {
   const message = messages?.[0];
 
-
   return (
     <div>
       <Input
@@ -39,7 +38,7 @@ export default function CheckboxInput({
         checked={checked}
       />
 
-      <Label htmlFor={id} warning={message?.warning} debug={debug}>
+      <Label htmlFor={id} $warning={message?.warning} $debug={debug}>
         <div data-id={id}>
           <div>
             {heading && !text ? heading : null}

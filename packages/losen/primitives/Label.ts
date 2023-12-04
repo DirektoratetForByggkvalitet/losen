@@ -4,13 +4,15 @@ import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
 export const Label = injectStyles(styled.label<
-  PrimitiveProps<{ warning?: boolean }>
->`${({ styles, debug, warning }) => `
+  PrimitiveProps<{ $warning?: boolean }>
+>`
+  ${({ $styles, $debug, $warning }) => `
   display: block;
   position: relative;
-  background: ${warning ? "rgba(255, 0, 0, 0.05)" : "transparent"};
-  margin-bottom: ${styles.padding.xSmall} !important; 
-  ${debug
+  background: ${$warning ? "rgba(255, 0, 0, 0.05)" : "transparent"};
+  margin-bottom: ${$styles.padding.xSmall} !important; 
+  ${
+    $debug
       ? `
   > div {
     :before {
@@ -25,8 +27,10 @@ export const Label = injectStyles(styled.label<
       padding: 2px 6px;
     }
   }`
-      : ""};
-`}`);
+      : ""
+  };
+`}
+`);
 
 export const SRLabel = injectStyles(styled.label`
   position: absolute;

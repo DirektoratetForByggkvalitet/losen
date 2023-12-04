@@ -4,26 +4,25 @@ import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
 type Props = PrimitiveProps<{
-  grouped?: boolean;
+  $grouped?: boolean;
 }>;
 
-const StyledErrorBlock = injectStyles(
-  styled.div<Props>`
-    ${({ styles, grouped }) => `
-  padding: ${styles.padding.large} 0;
+const StyledErrorBlock = injectStyles(styled.div<Props>`
+  ${({ $styles, $grouped }) => `
+  padding: ${$styles.padding.large} 0;
   width: 100%;
   ${
-    grouped
-      ? `&:not(last-child) { margin-bottom: ${styles.padding.xLarge} ; }`
+    $grouped
+      ? `&:not(last-child) { margin-bottom: ${$styles.padding.xLarge} ; }`
       : ""
   };
 
   svg {
     position: absolute;
-    top: ${styles.padding.large};
-    left: ${styles.padding.large};
-    width: ${styles.iconSize.medium};
-    height: ${styles.iconSize.medium};
+    top: ${$styles.padding.large};
+    left: ${$styles.padding.large};
+    width: ${$styles.iconSize.medium};
+    height: ${$styles.iconSize.medium};
     display: inline-block;
     vertical-align: middle;
   }
@@ -34,13 +33,13 @@ const StyledErrorBlock = injectStyles(
 
   > div:first-of-type {
     position: relative;
-    border-left: 4px solid ${styles.color2.negative};
-    background: ${styles.color2.negativeXLight};
-    padding: ${styles.padding.large};
-    padding-left: calc(${styles.padding.large} + 1.2em +  ${
-      styles.padding.large
+    border-left: 4px solid ${$styles.color2.negative};
+    background: ${$styles.color2.negativeXLight};
+    padding: ${$styles.padding.large};
+    padding-left: calc(${$styles.padding.large} + 1.2em +  ${
+      $styles.padding.large
     });
-    animation: messageIn 1000ms ${styles.easing.easeOut};
+    animation: messageIn 1000ms ${$styles.easing.easeOut};
   }
 
   > div:nth-of-type(2) {
@@ -60,7 +59,6 @@ const StyledErrorBlock = injectStyles(
     0% { opacity: 0; transform: translateY(2em); }
   }
 `}
-  `
-);
+`);
 
 export default StyledErrorBlock;

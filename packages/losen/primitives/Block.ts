@@ -4,25 +4,24 @@ import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
 type Props = PrimitiveProps<{
-  grouped?: boolean;
-  error?: boolean;
-  groupedSimple?: boolean;
-  type?: string;
+  $grouped?: boolean;
+  $error?: boolean;
+  $groupedSimple?: boolean;
+  $type?: string;
 }>;
 
-export const SpecificBlock = injectStyles(
-  styled.div<Props>`
-    ${({ styles, debug, grouped, error, groupedSimple, type }) => `
+export const SpecificBlock = injectStyles(styled.div<Props>`
+  ${({ $styles, $debug, $grouped, $error, $groupedSimple, $type }) => `
   position: relative;
-  padding: ${grouped ? styles.padding.large : styles.padding.large} 0;
-  ${error ? `background: ${styles.color2.negativeXLight};` : ""}
+  padding: ${$grouped ? $styles.padding.large : $styles.padding.large} 0;
+  ${$error ? `background: ${$styles.color2.negativeXLight};` : ""}
   > img:first-child {
-    margin-bottom: ${styles.padding.large};
+    margin-bottom: ${$styles.padding.large};
     width: 100%;
-    max-width: ${styles.size.imageWidth};
+    max-width: ${$styles.size.imageWidth};
   }
   ${
-    debug
+    $debug
       ? `
   :before {
     content: attr(data-id);
@@ -37,8 +36,8 @@ export const SpecificBlock = injectStyles(
   }`
       : ""
   } ${
-      groupedSimple
-        ? `
+    $groupedSimple
+      ? `
   margin-bottom: 26px;
   padding: 0;
   background: none;
@@ -46,21 +45,21 @@ export const SpecificBlock = injectStyles(
   &:nth-child(even) {
     background: none;
   }`
-        : " "
-    } ${
-      type === "Table"
-        ? `
+      : " "
+  } ${
+    $type === "Table"
+      ? `
   table {
     text-align: center;
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${styles.color2.secondary};
+    border: 1px solid ${$styles.color2.secondary};
     border-collapse: collapse;
     th {
       font-weight: inherit;
     }
     th, td {
-      border: 1px solid ${styles.color2.secondary};
+      border: 1px solid ${$styles.color2.secondary};
       padding: 10px;
     }
     th > *,
@@ -71,7 +70,7 @@ export const SpecificBlock = injectStyles(
     }
     td,th {
       ${
-        debug
+        $debug
           ? `
       :hover {
         position: relative;
@@ -93,30 +92,28 @@ export const SpecificBlock = injectStyles(
     }
   }
   `
-        : " "
-    } 
+      : " "
+  } 
 
   @media print {
     page-break-inside: avoid;
   }
 
 `}
-  `
-);
+`);
 
-export const TextBlock = injectStyles(
-  styled.div<
-    PrimitiveProps<{
-      groupedSimple?: boolean;
-      printonly?: boolean;
-      printhide?: boolean;
-      small?: boolean;
-    }>
-  >`
-    ${({ styles, debug, groupedSimple, printonly, printhide, small }) => `
-padding: ${styles.padding.large} 0 ${styles.padding.small};
+export const TextBlock = injectStyles(styled.div<
+  PrimitiveProps<{
+    $groupedSimple?: boolean;
+    $printonly?: boolean;
+    $printhide?: boolean;
+    $small?: boolean;
+  }>
+>`
+  ${({ $styles, $debug, $groupedSimple, $printonly, $printhide, $small }) => `
+padding: ${$styles.padding.large} 0 ${$styles.padding.small};
   ${
-    groupedSimple
+    $groupedSimple
       ? ""
       : `
     padding: 0;
@@ -124,7 +121,7 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
   };
   width: 100%;
   ${
-    debug
+    $debug
       ? `
   position: relative;
   :before {
@@ -147,7 +144,7 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
   }
 
   ${
-    printonly
+    $printonly
       ? `
     display: none;
     margin-top: 10px;
@@ -160,7 +157,7 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
   };
 
   ${
-    printhide
+    $printhide
       ? `
         @media print {
           display: none;
@@ -169,51 +166,50 @@ padding: ${styles.padding.large} 0 ${styles.padding.small};
   };
 
   h1 {
-    font-family: ${styles.font.headline};
-    font-size: ${small ? styles.text.h3.fontSize : styles.text.h1.fontSize};
-    font-weight: ${styles.text.h1.fontWeight};
-    line-height: ${styles.text.h1.lineHeight};
-    letter-spacing: ${styles.text.h1.letterSpacing};
-    margin: 0 0 ${styles.padding.large};
+    font-family: ${$styles.font.headline};
+    font-size: ${$small ? $styles.text.h3.fontSize : $styles.text.h1.fontSize};
+    font-weight: ${$styles.text.h1.fontWeight};
+    line-height: ${$styles.text.h1.lineHeight};
+    letter-spacing: ${$styles.text.h1.letterSpacing};
+    margin: 0 0 ${$styles.padding.large};
   }
 
   h2 {
-    font-family: ${styles.font.headline};
-    font-size: ${styles.text.h2.fontSize};
-    font-weight: ${styles.text.h2.fontWeight};
-    line-height: ${styles.text.h2.lineHeight};
-    letter-spacing: ${styles.text.h2.letterSpacing};
-    margin: 0 0 ${styles.padding.small};
+    font-family: ${$styles.font.headline};
+    font-size: ${$styles.text.h2.fontSize};
+    font-weight: ${$styles.text.h2.fontWeight};
+    line-height: ${$styles.text.h2.lineHeight};
+    letter-spacing: ${$styles.text.h2.letterSpacing};
+    margin: 0 0 ${$styles.padding.small};
   }
 
   h3 {
-    font-family: ${styles.font.headline};
-    font-size: ${styles.text.h3.fontSize};
-    font-weight: ${styles.text.h3.fontWeight};
-    line-height: ${styles.text.h3.lineHeight};
-    letter-spacing: ${styles.text.h3.letterSpacing};
-    margin: 0 0 ${styles.padding.xSmall};
+    font-family: ${$styles.font.headline};
+    font-size: ${$styles.text.h3.fontSize};
+    font-weight: ${$styles.text.h3.fontWeight};
+    line-height: ${$styles.text.h3.lineHeight};
+    letter-spacing: ${$styles.text.h3.letterSpacing};
+    margin: 0 0 ${$styles.padding.xSmall};
   }
 
   h4 {
-    font-family: ${styles.font.body};
-    font-size: ${styles.text.subHeading.fontSize};
-    font-weight: ${styles.text.subHeading.fontWeight};
-    line-height: ${styles.text.subHeading.lineHeight};
-    letter-spacing: ${styles.text.subHeading.letterSpacing};
-    text-transform: ${styles.text.subHeading.textTransform};
-    margin: 0 0 ${styles.padding.xSmall};
+    font-family: ${$styles.font.body};
+    font-size: ${$styles.text.subHeading.fontSize};
+    font-weight: ${$styles.text.subHeading.fontWeight};
+    line-height: ${$styles.text.subHeading.lineHeight};
+    letter-spacing: ${$styles.text.subHeading.letterSpacing};
+    text-transform: ${$styles.text.subHeading.textTransform};
+    margin: 0 0 ${$styles.padding.xSmall};
   }
 
   p {
-    font-family: ${styles.font.body};
-    font-size: ${styles.text.body.fontSize};
-    font-weight: ${styles.text.body.fontWeight};
-    line-height: ${styles.text.body.lineHeight};
-    letter-spacing: ${styles.text.body.letterSpacing};
-    margin: 0 0 ${styles.padding.large};
+    font-family: ${$styles.font.body};
+    font-size: ${$styles.text.body.fontSize};
+    font-weight: ${$styles.text.body.fontWeight};
+    line-height: ${$styles.text.body.lineHeight};
+    letter-spacing: ${$styles.text.body.letterSpacing};
+    margin: 0 0 ${$styles.padding.large};
     max-width: 600px;
   }
 `}
-  `
-);
+`);

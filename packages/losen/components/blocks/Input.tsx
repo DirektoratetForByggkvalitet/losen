@@ -38,7 +38,7 @@ export default function Input({
         placeholder={placeholder}
         autoComplete={autocomplete}
         type={inputType}
-        validation={errors?.validation}
+        $validation={errors?.validation}
         value={currentValue}
       />
 

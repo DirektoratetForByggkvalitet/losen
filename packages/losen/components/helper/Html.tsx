@@ -34,8 +34,8 @@ export default function Html({ id, text, inline, margins, h2, h3 }: Props) {
   return (
     <StyledHtml
       id={id}
-      inline={inline}
-      margins={margins}
+      $inline={inline}
+      $margins={margins}
       dangerouslySetInnerHTML={{ __html: text }}
     />
   );

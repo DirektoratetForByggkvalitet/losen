@@ -5,7 +5,7 @@ import { PrimitiveProps } from "../../styles";
 
 export const Simple = injectStyles(styled.div<
   PrimitiveProps<{
-    padItems?: boolean;
+    $padItems?: boolean;
   }>
 >`
   display: flex;
@@ -13,8 +13,8 @@ export const Simple = injectStyles(styled.div<
   max-width: 1280px;
   margin: 0 auto;
 
-  ${({ padItems }) =>
-    padItems
+  ${({ $padItems }) =>
+    $padItems
       ? `
     > * {
       margin-right: 1px !important;

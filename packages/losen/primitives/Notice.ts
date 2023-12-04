@@ -4,7 +4,7 @@ import injectStyles from "../utils/inject-styles";
 import { PrimitiveProps } from "../styles";
 
 const Notice = injectStyles(styled.div<PrimitiveProps>`
-  background: ${({ styles }) => styles.color2.positiveXLight};
+  background: ${({ $styles }) => $styles.color2.positiveXLight};
   font-weight: 300;
   font-size: 14px;
   margin: 20px 0 0;

@@ -39,7 +39,7 @@ export default function Page({
   summary = "",
 }: Props) {
   return (
-    <Grid.Main debug={debug} data-id={pageid} id="main">
+    <Grid.Main $debug={debug} data-id={pageid} id="main">
       <Heading.H1>{heading}</Heading.H1>
       {lead && <Paragraphs.Lead>
         <Html text={lead} />

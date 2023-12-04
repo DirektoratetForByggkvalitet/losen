@@ -3,11 +3,12 @@ import styled from "styled-components";
 import injectStyles from "../../utils/inject-styles";
 import { PrimitiveProps } from "../../styles";
 
-export const Main = injectStyles(styled.main<PrimitiveProps>`${({styles, debug}) => `
-  background: ${styles.color2.sectionBackground};
-  padding: ${styles.padding.xLarge};
-  margin-left: ${styles.padding.large};
-  border-radius: ${styles.borderRadius.large};
+export const Main = injectStyles(styled.main<PrimitiveProps>`
+  ${({ $styles, $debug }) => `
+  background: ${$styles.color2.sectionBackground};
+  padding: ${$styles.padding.xLarge};
+  margin-left: ${$styles.padding.large};
+  border-radius: ${$styles.borderRadius.large};
   overflow: hidden;
 
   @media print {
@@ -19,7 +20,9 @@ export const Main = injectStyles(styled.main<PrimitiveProps>`${({styles, debug})
     margin-top: 0;
   }
 
-  ${debug ? `
+  ${
+    $debug
+      ? `
   position: relative;
 
   :before {
@@ -33,12 +36,14 @@ export const Main = injectStyles(styled.main<PrimitiveProps>`${({styles, debug})
     font-size: 14px;
     padding: 2px 6px;
   }`
-  : ""} 
+      : ""
+  } 
   
   @media screen and (max-width: 900px) {
     width: 100%;
-    padding: ${styles.padding.xLarge} ${styles.padding.medium};
+    padding: ${$styles.padding.xLarge} ${$styles.padding.medium};
     margin: 0 auto;
   }
 
-`}`);
+`}
+`);

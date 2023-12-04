@@ -40,13 +40,13 @@ export default function RadioInput({
         onChange={onChange}
       />
 
-      <Label htmlFor={id} warning={message?.warning} debug={debug}>
+      <Label htmlFor={id} $warning={message?.warning} $debug={debug}>
         <div data-id={id}>
           {heading && !text ? `${heading} ` : null}
           {heading && text ? <H3>{heading}</H3> : null}
 
           {message ? (
-            <SoftWarning warning={message.warning}>
+            <SoftWarning $warning={message.warning}>
               {message.message}
             </SoftWarning>
           ) : null}

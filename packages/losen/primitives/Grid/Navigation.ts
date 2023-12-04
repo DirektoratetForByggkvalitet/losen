@@ -6,5 +6,5 @@ import { PrimitiveProps } from "../../styles";
 export const Navigation = injectStyles(styled.main<PrimitiveProps>`
   display: flex;
   margin-bottom: 50px;
-  max-width: ${({ styles }) => styles.size.blockWidth};
+  max-width: ${({ $styles }) => $styles.size.blockWidth};
 `);

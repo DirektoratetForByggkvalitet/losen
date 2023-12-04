@@ -5,11 +5,11 @@ import { PrimitiveProps } from "../styles";
 
 const OptionWrapper = injectStyles(styled.div<
   PrimitiveProps<{
-    grid?: boolean;
+    $grid?: boolean;
   }>
 >`
-  ${(props) =>
-    props.grid
+  ${({ $grid }) =>
+    $grid
       ? `
     display: flex;
     flex-wrap: wrap;

@@ -5,7 +5,7 @@ import { PrimitiveProps } from "../styles";
 
 const TableContainer = injectStyles(styled.div<
   PrimitiveProps<{
-    simple?: boolean;
+    $simple?: boolean;
   }>
 >`
   overflow: auto;
@@ -14,12 +14,12 @@ const TableContainer = injectStyles(styled.div<
     text-align: center;
     width: 100%;
     font-size: 14px;
-    border: 1px solid ${(props) => props.styles.color2.secondary};
+    border: 1px solid ${({ $styles }) => $styles.color2.secondary};
     border-collapse: collapse;
     th {
       font-weight: inherit;
-      ${(props) =>
-        props.simple
+      ${({ $simple }) =>
+        $simple
           ? `
         text-align: left;
         text-transform: uppercase;
@@ -30,7 +30,7 @@ const TableContainer = injectStyles(styled.div<
     }
     th,
     td {
-      border: 1px solid ${(props) => props.styles.color2.secondary};
+      border: 1px solid ${({ $styles }) => $styles.color2.secondary};
       padding: 10px;
     }
     th > *,
@@ -41,8 +41,8 @@ const TableContainer = injectStyles(styled.div<
     }
     td,
     th {
-      ${(props) =>
-        props.debug
+      ${({ $debug }) =>
+        $debug
           ? `
         :hover {
           position: relative;
