@@ -1,8 +1,8 @@
 # Losen - a flexible wizard framework
 
-> [![Build Status](https://github.com/DirektoratetForByggkvalitet/losen/actions/workflows/ci.yml/badge.svg)](https://github.com/DirektoratetForByggkvalitet/losen)
+[![Build Status](https://github.com/DirektoratetForByggkvalitet/losen/actions/workflows/ci.yml/badge.svg)](https://github.com/DirektoratetForByggkvalitet/losen)
 
-From Norwegian _los_: a pilot (person who guides ships in and out of a harbour)
+> From Norwegian _los_: a pilot (person who guides ships in and out of a harbour)
 
 The wizard framework contains the logic and building blocks necessary to building wizards large and small. The framework is built with React, Redux and styled-components.
 
