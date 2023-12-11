@@ -102,6 +102,7 @@ export type Page = NodeBase<"Page"> & {
   type: "Page";
   heading: string;
   lead?: string;
+  details?: string;
   children: Node[];
 };
 
