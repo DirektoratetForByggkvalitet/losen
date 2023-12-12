@@ -420,6 +420,23 @@ const schema: WizardDefinition = {
               text: 'Husk å beregne tid til å spise og sove for både deg og katten! <a href="/somewhere">Les mer om mat</a>',
             },
             {
+              type: "Sum",
+              id: "cuddle.hours.sum",
+              property: "cuddle.sum",
+              heading: "Dobbelt av kosetid",
+              operations: ["-", "-"],
+              values: ["cuddle.hours", 100],
+            },
+            {
+              type: "Evaluation",
+              id: "cuddle.hours.eval",
+              happy: "Bra!",
+              sad: "Det er ikke nok tid til å kose med katten",
+              showValue: true,
+              unit: "timer",
+              testing: ["cuddle.hours", "cuddle.sum"],
+            },
+            {
               id: "cuddle.image",
               type: "Image",
               text: "Noen ganger er det kanskje behov for et bilde for å demonstrere. Det er det egentlig ikke her.",

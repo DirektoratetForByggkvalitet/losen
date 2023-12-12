@@ -281,8 +281,6 @@ export type Evaluation = NodeBase<"Evaluation"> & {
    */
   happy: string;
 
-  final: boolean;
-
   showValue?: boolean;
   unit?: string;
   optional?: boolean;

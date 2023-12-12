@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { get } from 'lodash';
 
 import StyledSum from '../../primitives/Sum';
@@ -44,9 +44,17 @@ export default function Sum({
   heading,
   unit,
   summary,
-  details
+  details,
+  property,
+  setData
 }: Props) {
   const sum = calculateSum(data, values, operations, minimum);
+  const currentValue = get(data, property)
+
+  useEffect(() => {
+    if (sum === currentValue) { return }
+    setData(property, 4)
+  }, [setData, sum, currentValue])
 
   return (
     <StyledSum $groupedSimple={groupedSimple}>

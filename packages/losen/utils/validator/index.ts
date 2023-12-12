@@ -33,7 +33,7 @@ const requiredProperties: Record<NodeType, string[]> = {
   Number: inputRequiredProperties,
   Textarea: inputRequiredProperties,
   FetchOrg: [...inputRequiredProperties, "source"],
-  Evaluation: ["id", "sad", "happy", "final"],
+  Evaluation: ["id", "sad", "happy"],
   Heading: ["id", "text"],
   Signature: ["id"],
   Sum: ["id", "heading", "values", "operations"],

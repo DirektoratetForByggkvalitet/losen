@@ -9,7 +9,6 @@ import { RenderWithData } from '../../index';
 export default function Evaluation({
   data,
   testing,
-  final,
   groupedSimple,
   happy,
   sad,
