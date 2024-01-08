@@ -5,7 +5,7 @@ import { PrimitiveProps } from "../styles";
 
 type Props = PrimitiveProps;
 
-const Figure = injectStyles(styled.figure<Props>`
+export const Figure = injectStyles(styled.figure<Props>`
   ${({ $styles, $debug }) => `
   padding: 0;
   position: relative;
@@ -36,5 +36,3 @@ const Figure = injectStyles(styled.figure<Props>`
   }
 `}
 `);
-
-export default Figure;
