@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 
+import { ExportButtonWrapper } from '../primitives/Export';
 import { MainButton } from "../primitives/Button";
 import { getData } from "../utils/get-data";
 import { State } from "../index";
-import { ExportButtonWrapper } from 'primitives/Export';
 
 type Props = {
   data?: any

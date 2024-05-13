@@ -4,7 +4,7 @@ import Spinner from '../primitives/Spinner';
 import createPDF from '../utils/create-pdf';
 import { MainButton } from '../primitives/Button';
 import { trackEvent } from '../utils/tracking';
-import { ExportButtonWrapper } from 'primitives/Export';
+import { ExportButtonWrapper } from '../primitives/Export';
 
 type Props = {
   pdfServiceUrl: string,
