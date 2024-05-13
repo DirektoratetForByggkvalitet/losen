@@ -4,6 +4,7 @@ import Spinner from '../primitives/Spinner';
 import createPDF from '../utils/create-pdf';
 import { MainButton } from '../primitives/Button';
 import { trackEvent } from '../utils/tracking';
+import { ExportButtonWrapper } from 'primitives/Export';
 
 type Props = {
   pdfServiceUrl: string,
@@ -34,7 +35,7 @@ export default function PDFButton({
   }
 
   return (
-    <div>
+    <ExportButtonWrapper>
       <MainButton
         type="button"
         onClick={handleClick}
@@ -45,6 +46,6 @@ export default function PDFButton({
       </MainButton>
 
       {errorMessage && <p>Noe gikk galt. Prøv igjen.</p>}
-    </div>
+    </ExportButtonWrapper>
   );
 }

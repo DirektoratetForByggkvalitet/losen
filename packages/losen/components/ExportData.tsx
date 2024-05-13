@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { MainButton } from "../primitives/Button";
 import { getData } from "../utils/get-data";
 import { State } from "../index";
+import { ExportButtonWrapper } from 'primitives/Export';
 
 type Props = {
   data?: any
@@ -60,7 +61,7 @@ function ExportData({ data }: Props) {
     : "Kopier svarene til et fagsystem";
 
   return (
-    <div>
+    <ExportButtonWrapper>
       <MainButton
         aria-live={copied ? "assertive" : undefined}
         $copied={copied}
@@ -68,7 +69,7 @@ function ExportData({ data }: Props) {
       >
         {buttonText}
       </MainButton>
-    </div>
+    </ExportButtonWrapper>
   );
 }
 

@@ -17,6 +17,7 @@ import { TextBlock } from "../primitives/Block";
 import { Export, Grid } from "../primitives";
 import PDFButton from "./PDFButton";
 import { RenderableNode, State, WizardDefinition } from "../index";
+import { ExportButtonWrapper } from 'primitives/Export';
 
 type Props = {
   children: RenderableNode[]
@@ -111,15 +112,19 @@ function Result(props: Props) {
         ) : null}
 
         {pdfServiceUrl && localStorageKey ? (
-          <PDFButton
-            pdfServiceUrl={pdfServiceUrl}
-            localStorageKey={localStorageKey}
-            pageHeading={resultHeading}
-          />
+          <ExportButtonWrapper>
+            <PDFButton
+              pdfServiceUrl={pdfServiceUrl}
+              localStorageKey={localStorageKey}
+              pageHeading={resultHeading}
+            />
+          </ExportButtonWrapper>
         ) : (
-          <MainButton type="button" onClick={printPage}>
-            Skriv ut
-          </MainButton>
+          <ExportButtonWrapper>
+            <MainButton type="button" onClick={printPage}>
+              Skriv ut
+            </MainButton>
+          </ExportButtonWrapper>
         )}
       </Export>
     </Grid.Main>
