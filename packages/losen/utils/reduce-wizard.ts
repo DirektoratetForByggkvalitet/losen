@@ -39,6 +39,7 @@ const nonInteractiveTypes = [
   "Text",
   "Group",
   "Table",
+  "Information"
 ] satisfies Node["type"][];
 
 type NodeMap = Record<string, Node>;
