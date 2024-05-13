@@ -17,7 +17,7 @@ import { TextBlock } from "../primitives/Block";
 import { Export, Grid } from "../primitives";
 import PDFButton from "./PDFButton";
 import { RenderableNode, State, WizardDefinition } from "../index";
-import { ExportButtonWrapper } from 'primitives/Export';
+import { ExportButtonWrapper } from '../primitives/Export';
 
 type Props = {
   children: RenderableNode[]
