@@ -1,6 +1,6 @@
 {
   "name": "losen",
-  "version": "9.0.4",
+  "version": "9.0.5",
   "main": "./dist/index.ts",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
