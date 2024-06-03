@@ -45,14 +45,14 @@ export default function Sum({
   summary,
   details,
   property,
-  setData
+  setData,
+  currentValue
 }: Props) {
   const sum = calculateSum(data, values, operations, minimum);
-  const currentValue = get(data, property)
 
   useEffect(() => {
     if (sum === currentValue) { return }
-    setData(property, 4)
+    setData(property, sum)
   }, [setData, sum, currentValue])
 
   return (
