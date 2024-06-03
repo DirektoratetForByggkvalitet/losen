@@ -23,8 +23,7 @@ export const calculateSum = (data: State, values: Props["values"], operations: P
     } else if (operations && operations[currentIndex] === '/') {
       return Number(accumulator) / getValue(1);
     }
-
-    return accumulator + get(data, cur, 0);
+    return Number(accumulator) + getValue(0);
   }, ['+', '-'].indexOf(operations?.[0] ?? '+') > -1 ? 0 : 1);
 
   if (typeof minimum === 'number') {
