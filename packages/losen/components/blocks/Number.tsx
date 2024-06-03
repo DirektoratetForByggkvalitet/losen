@@ -68,7 +68,7 @@ export default function Number({
         step={step}
         type="number"
         $validation={errors?.validation}
-        value={currentValue}
+        value={currentValue || ""}
       />
 
       {unit ? <Html inline id={`${property}.unit`} text={unit} /> : null}

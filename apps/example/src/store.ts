@@ -2,7 +2,7 @@
 
 declare global {
   interface Window {
-    devToolsExtension?: any;
+    __REDUX_DEVTOOLS_EXTENSION__?: typeof compose;
   }
 }
 
@@ -29,7 +29,7 @@ const persistedReducer = persistReducer(
 const store = createStore(
   persistedReducer,
   undefined,
-  compose(window.devToolsExtension ? window.devToolsExtension() : (f: any) => f)
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 export const persistor = persistStore(store);

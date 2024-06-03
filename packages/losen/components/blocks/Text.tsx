@@ -21,8 +21,10 @@ export default function Text({
       $printhide={printhide}
     >
       {warning && <InfoIcon />}
-      <Html text={heading} h2 />
-      <Html text={text} />
+      <div>
+        <Html text={heading} h2 />
+        <Html text={text} />
+      </div>
     </TextBlock>
   );
 }

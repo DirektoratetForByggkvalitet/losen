@@ -112,6 +112,14 @@ export const TextBlock = injectStyles(styled.div<
 >`
   ${({ $styles, $debug, $groupedSimple, $printonly, $printhide, $small }) => `
 padding: ${$styles.padding.large} 0 ${$styles.padding.small};
+  display: flex;
+  flex-direction: row;
+  gap: ${$styles.padding.small};
+
+  svg {
+    flex-grow: 0;
+  }
+
   ${
     $groupedSimple
       ? ""
@@ -137,6 +145,11 @@ padding: ${$styles.padding.large} 0 ${$styles.padding.small};
   }`
       : ""
   } 
+
+  svg {
+    display: inline-block;
+  }
+
   p {
     margin: 1em 0;
     line-height: 1.6;
