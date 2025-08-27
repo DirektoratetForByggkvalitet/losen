@@ -44,10 +44,6 @@ const OptionWrapper = injectStyles(styled.div<
         font-size: 15px;
       }
 
-      label:before {
-        display: none;
-      }
-      
       @media screen and (max-width: 900px) {
         label img {
           margin-top: 0;

@@ -41,6 +41,7 @@ const schema: WizardDefinition = {
           type: "Radio",
           heading: "Er du glad i katter?",
           text: "Svar helt ærlig. Dette er viktig både for katten og deg.",
+          grid: true,
           options: [
             {
               id: "preferences.love.yes",
