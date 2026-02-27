@@ -1,7 +1,7 @@
 const styles = {
   font: {
-    headline: '"PP Mori", "Open Sans", arial, helvetika, sans-serif',
-    body: '"PP Mori", "Altis-Light", "Altis", "Open Sans", arial, sans-serif',
+    headline: '"PPMori", "Open Sans", arial, helvetika, sans-serif',
+    body: '"PPMori", "Altis-Light", "Altis", "Open Sans", arial, sans-serif',
   },
   color2: {
     pageBackground: "#ebf4fa", // Havblå 50
