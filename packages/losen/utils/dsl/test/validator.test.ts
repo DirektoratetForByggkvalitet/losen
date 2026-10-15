@@ -13,7 +13,7 @@ describe("DSL validator", () => {
         validateSimpleExpression({
           type: "and",
         } as any)
-      ).toThrowError(/Expected simple expression/);
+      ).toThrow(/Expected simple expression/);
     });
 
     it("throws error when operator is missing", () => {
@@ -21,7 +21,7 @@ describe("DSL validator", () => {
         validateSimpleExpression({
           field: "love.cats",
         } as any)
-      ).toThrowError(/has no operator/);
+      ).toThrow(/has no operator/);
     });
 
     it("throws error on unknown operator", () => {
@@ -30,7 +30,7 @@ describe("DSL validator", () => {
           field: "love.cats",
           operator: "foobar",
         } as unknown as SimpleExpression)
-      ).toThrowError(/Unknown operator foobar/);
+      ).toThrow(/Unknown operator foobar/);
     });
 
     it("throws error on malformed field reference value", () => {
@@ -40,7 +40,7 @@ describe("DSL validator", () => {
           operator: "gt",
           value: { fjasebengel: true },
         })
-      ).toThrowError(/supposed to be a reference to a field/);
+      ).toThrow(/supposed to be a reference to a field/);
     });
 
     it("validates valid expression", () => {
@@ -69,7 +69,7 @@ describe("DSL validator", () => {
           field: "love.cats",
           operator: "between",
         })
-      ).toThrowError(/must have a value property/);
+      ).toThrow(/must have a value property/);
     });
 
     it("throws error when value is missing for between operator", () => {
@@ -79,7 +79,7 @@ describe("DSL validator", () => {
           operator: "between",
           value: 4,
         })
-      ).toThrowError(/must have an array/);
+      ).toThrow(/must have an array/);
     });
 
     it("throws error when too many values is provided in the range array for between operator", () => {
@@ -89,7 +89,7 @@ describe("DSL validator", () => {
           operator: "between",
           value: [1, 2, 3],
         })
-      ).toThrowError(/array containing two values/);
+      ).toThrow(/array containing two values/);
     });
 
     it("throws error when non numbers is provided in the range array for between operator", () => {
@@ -99,7 +99,7 @@ describe("DSL validator", () => {
           operator: "between",
           value: [1, "apekatt"],
         })
-      ).toThrowError(/apekatt is not a valid number/);
+      ).toThrow(/apekatt is not a valid number/);
     });
 
     it("validates expression with between operator", () => {
@@ -119,7 +119,7 @@ describe("DSL validator", () => {
         validateComplexExpression({
           type: "apekatt",
         } as any)
-      ).toThrowError(/Unknown expression type/);
+      ).toThrow(/Unknown expression type/);
     });
 
     it("throws error on valid type missing clauses", () => {
@@ -127,7 +127,7 @@ describe("DSL validator", () => {
         validateComplexExpression({
           type: "and",
         } as any)
-      ).toThrowError(/Missing clauses/);
+      ).toThrow(/Missing clauses/);
     });
 
     it("validates a valid expression", () => {

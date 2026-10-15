@@ -24,7 +24,7 @@ npm run dev          # tsup --watch for losen + vite/storybook dev servers
 npm run build        # builds losen first (^build), then apps
 npm run lint         # type-check (tsc --noEmit) for losen/example; eslint for react-17
 npm test             # jest (only packages/losen has tests)
-npm run build -- --scope=storybook   # build a single workspace (as CI does)
+npm run build -- --filter=storybook   # build a single workspace (as CI does)
 ```
 
 Single test file / test name (from `packages/losen`):
