@@ -58,7 +58,7 @@ function Wizard({
     [NAME]: {}
   },
   debug = false,
-  warningBeforeUnload = true,
+  warningBeforeUnload = false,
   exports = {},
   showIntro = () => { },
   styles = {},
