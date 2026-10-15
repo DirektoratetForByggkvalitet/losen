@@ -9,7 +9,7 @@ export const MainButton = injectStyles(styled.button<
   }>
 >`
   ${({ $styles, $copied, disabled }) => `
-  padding: 16px ${$styles.padding.large};
+  padding: ${$styles.padding.small} ${$styles.padding.large};
   cursor: pointer;
   user-select: none;
   border: none;
@@ -79,7 +79,7 @@ export const MainButton = injectStyles(styled.button<
 
 export const SecondaryButton = injectStyles(styled.button<PrimitiveProps>`
   ${({ $styles }) => `
-  padding: 16px ${$styles.padding.large};
+  padding: ${$styles.padding.small} ${$styles.padding.large};
   cursor: pointer;
   user-select: none;
   border: none;

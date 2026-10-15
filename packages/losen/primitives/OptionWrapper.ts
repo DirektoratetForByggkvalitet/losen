@@ -41,7 +41,7 @@ const OptionWrapper = injectStyles(styled.div<
         width: 100%;
         padding: 2px;
         font-weight: 400;
-        font-size: 15px;
+        font-size: 20px;
       }
 
       @media screen and (max-width: 900px) {

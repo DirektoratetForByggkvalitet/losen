@@ -142,6 +142,7 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
       width: 218x;
       height: 18px;
       margin-right: ${$styles.padding.xxSmall};
+      margin-top: 3px;
     }
 
     > div {
@@ -176,7 +177,7 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
     content: " ";
     position: absolute;
     left: 4px;
-    top: calc(${$styles.padding.xxSmall} + 5px);
+    top: calc(${$styles.padding.xxSmall} + 8px);
     width: 8px;
     height: 4px;
     transform: rotate(-46deg);
@@ -238,7 +239,7 @@ export const Radio = injectStyles(styled.input.attrs({
       min-width: 18px;
       width: 18px;
       height: 18px;
-      margin-top: 3px;
+      margin-top: 5px;
       background: transparent;
       margin-right: ${$styles.padding.small};
       border: 1px solid ${$styles.color2.primary};
@@ -297,7 +298,7 @@ export const Radio = injectStyles(styled.input.attrs({
       content: " ";
       position: absolute;
       left: calc(${$styles.padding.medium} + 5px);
-      top: calc(${$styles.padding.medium} + 8px);
+      top: calc(${$styles.padding.medium} + 10px);
       width: 10px;
       height: 10px;
       transform: rotate(-46deg);
