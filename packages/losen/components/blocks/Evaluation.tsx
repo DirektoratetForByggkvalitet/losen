@@ -31,7 +31,7 @@ export default function Evaluation({
           <div>
             {sad}
             <span className="sad">
-              {absTestedValue} {unit ? <Html inline text={unit} /> : null}
+              {Number.isNaN(absTestedValue) ? '—' : absTestedValue} {unit ? <Html inline text={unit} /> : null}
             </span>
           </div>
         </StyledSum>
@@ -42,7 +42,7 @@ export default function Evaluation({
         <div>
           {happy}
           <span className="happy">
-            {testedValue} {unit ? <Html inline text={unit} /> : null}
+            {Number.isNaN(Number(testedValue)) ? '_' : testedValue} {unit ? <Html inline text={unit} /> : null}
           </span>
         </div>
       </StyledSum>

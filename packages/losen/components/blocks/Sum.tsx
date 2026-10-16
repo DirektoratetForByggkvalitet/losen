@@ -60,7 +60,7 @@ export default function Sum({
       <div>
         {heading}
         <span>
-          {sum} {unit ? <Html inline text={unit} /> : null}
+          {Number.isNaN(Number(sum)) ? '—' : sum} {unit ? <Html inline text={unit} /> : null}
         </span>
       </div>
       {summary && <SummaryDetails summary={summary} details={details} />}
