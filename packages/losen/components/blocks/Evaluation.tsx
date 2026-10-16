@@ -23,6 +23,11 @@ export default function Evaluation({
     testedValue = get(data, testing);
   }
 
+  // Missing or non-numeric input: don't claim a happy or sad outcome yet
+  if (Number.isNaN(Number(testedValue))) {
+    return null;
+  }
+
   const absTestedValue = Math.abs(testedValue);
   if (showValue) {
     if (testedValue < 0) {

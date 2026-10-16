@@ -85,7 +85,43 @@ function getBlock(type: RenderableNode["type"]) {
   }
 }
 
-export function PureBlock(props: any) {
+const defaultProps: Record<string, unknown> = {
+  children: [],
+  currentValue: undefined,
+  details: "",
+  disabled: false,
+  errorDescription: null,
+  errorPages: [],
+  errors: {},
+  grouped: false,
+  heading: "",
+  id: null,
+  image: {},
+  pages: [],
+  property: null,
+  setPage: () => { },
+  simple: false,
+  summary: "",
+  text: "",
+  validator: false,
+};
+
+/**
+ * Fill in defaults for props that are missing or undefined, matching how
+ * React's (deprecated) defaultProps behaved for function components.
+ */
+function withDefaults(props: any) {
+  const merged = { ...props };
+  Object.keys(defaultProps).forEach((key) => {
+    if (merged[key] === undefined) {
+      merged[key] = defaultProps[key];
+    }
+  });
+  return merged;
+}
+
+export function PureBlock(incomingProps: any) {
+  const props = withDefaults(incomingProps);
   const SpecificBlock = getBlock(props.type);
 
   if (props.type === "ErrorOk") {
@@ -217,28 +253,6 @@ export function PureBlock(props: any) {
     </StyledBlock>
   );
 }
-
-
-PureBlock.defaultProps = {
-  children: [],
-  currentValue: undefined,
-  details: "",
-  disabled: false,
-  errorDescription: null,
-  errorPages: [],
-  errors: {},
-  grouped: false,
-  heading: "",
-  id: null,
-  image: {},
-  pages: [],
-  property: null,
-  setPage: () => { },
-  simple: false,
-  summary: "",
-  text: "",
-  validator: false,
-};
 
 const ConnectedBlock = connect(
   (state: State, props: any) => ({

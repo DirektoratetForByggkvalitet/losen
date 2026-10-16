@@ -58,7 +58,7 @@ function Wizard({
     [NAME]: {}
   },
   debug = false,
-  warningBeforeUnload = true,
+  warningBeforeUnload = false,
   exports = {},
   showIntro = () => { },
   styles = {},
@@ -72,27 +72,33 @@ function Wizard({
 }: Props) {
   const [pageId, setPageId] = useState<string>(data[NAME].page || wizard.schema[0].id);
   const [showResetModal, setShowResetModal] = useState<boolean>();
+  const [scrollRequest, setScrollRequest] = useState<{ property?: string }>();
   const pageWrapper = useRef<HTMLDivElement>(null);
 
-  // @todo Consider finding a more elegant way for scrolling..?
   const setPage = (page: string, property?: string) => {
-    if (property) {
-      setImmediate(() => {
-        const element = document.getElementById(property);
-
-        if (!element) {
-          return;
-        }
-
-        window.scroll(0, element.offsetTop);
-      });
-    } else {
-      window.scrollTo(0, 0);
-    }
-    pageWrapper?.current?.focus()
     setData("page", page);
     setPageId(page);
+    setScrollRequest({ property });
   };
+
+  /**
+   * Scroll after the new page has rendered, so the target exists and the old
+   * page's height no longer matters. scrollIntoView works regardless of which
+   * element is the scroll container, and "instant" overrides any
+   * `scroll-behavior: smooth` set by the host page.
+   */
+  useEffect(() => {
+    if (!scrollRequest) {
+      return;
+    }
+
+    const wrapper = pageWrapper.current;
+    const target =
+      (scrollRequest.property && document.getElementById(scrollRequest.property)) || wrapper;
+
+    wrapper?.focus({ preventScroll: true });
+    target?.scrollIntoView({ block: "start", behavior: "instant" as ScrollBehavior });
+  }, [scrollRequest]);
 
   const trackPage = (isInitialRender: boolean) => {
     const firstPage = wizard.schema[0];

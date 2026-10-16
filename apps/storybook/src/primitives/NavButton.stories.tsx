@@ -7,7 +7,7 @@ import { NavButton } from 'losen/primitives/Button';
 const meta: Meta<typeof NavButton> = {
   component: NavButton,
   argTypes: {
-    next: { control: 'boolean' },
+    $next: { control: 'boolean' },
   },
 };
 
@@ -23,6 +23,6 @@ export const Default: Story = {
 export const Next: Story = {
   args: {
     children: 'Button',
-    next: true,
+    $next: true,
   },
 };

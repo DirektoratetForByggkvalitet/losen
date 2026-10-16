@@ -8,7 +8,7 @@ import Spinner from 'losen/primitives/Spinner';
 const meta: Meta<typeof MainButton> = {
   component: MainButton,
   argTypes: {
-    copied: { control: 'boolean' },
+    $copied: { control: 'boolean' },
   },
 };
 
@@ -24,7 +24,7 @@ export const Default: Story = {
 export const Copied: Story = {
   args: {
     children: 'Button',
-    copied: true
+    $copied: true
   },
 };
 

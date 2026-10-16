@@ -5,7 +5,6 @@ const meta: Meta<typeof Loading> = {
   component: Loading,
   argTypes: {
     children: { control: 'text' },
-    warning: { control: 'boolean' },
   },
 };
 

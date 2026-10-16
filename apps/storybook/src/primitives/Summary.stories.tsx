@@ -4,7 +4,7 @@ import { PageSummary } from 'losen/primitives/Summary';
 const meta: Meta<typeof PageSummary> = {
   component: PageSummary,
   argTypes: {
-    error: { control: 'boolean' },
+    $error: { control: 'boolean' },
   },
 };
 

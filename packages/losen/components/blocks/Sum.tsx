@@ -5,6 +5,7 @@ import StyledSum from '../../primitives/Sum';
 import SummaryDetails from './SummaryDetails';
 import Html from '../helper/Html';
 import { RenderWithData, State } from '../../index';
+import { formatNumber } from '../../utils/format-number';
 
 type Props = RenderWithData<"Sum">
 
@@ -60,7 +61,7 @@ export default function Sum({
       <div>
         {heading}
         <span>
-          {sum} {unit ? <Html inline text={unit} /> : null}
+          {formatNumber(sum)} {unit ? <Html inline text={unit} /> : null}
         </span>
       </div>
       {summary && <SummaryDetails summary={summary} details={details} />}

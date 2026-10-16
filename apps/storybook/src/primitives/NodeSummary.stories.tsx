@@ -4,7 +4,7 @@ import { NodeSummary } from 'losen/primitives/Summary';
 const meta: Meta<typeof NodeSummary> = {
   component: NodeSummary,
   argTypes: {
-    error: { control: 'boolean' },
+    $error: { control: 'boolean' },
   },
 };
 

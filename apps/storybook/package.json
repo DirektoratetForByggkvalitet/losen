@@ -13,25 +13,22 @@
     "losen": "*"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.3",
-    "@storybook/addon-interactions": "^7.6.3",
-    "@storybook/addon-links": "^7.6.3",
-    "@storybook/blocks": "^7.6.3",
-    "@storybook/cli": "^7.6.3",
-    "@storybook/react": "^7.6.3",
-    "@storybook/react-vite": "^7.6.3",
-    "@storybook/testing-library": "^0.2.2",
+    "@storybook/addon-essentials": "^8.6.19",
+    "@storybook/addon-links": "^8.6.19",
+    "@storybook/blocks": "^8.6.19",
+    "@storybook/react": "^8.6.19",
+    "@storybook/react-vite": "^8.6.19",
     "@types/react": "^18.2.40",
     "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "@vitejs/plugin-react": "^4.2.0",
-    "eslint": "^8.55.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "prop-types": "^15.8.1",
-    "storybook": "^7.6.3",
+    "storybook": "^8.6.19",
     "typescript": "^5.3.2",
-    "vite": "^5.0.4"
+    "vite": "^6.4.4"
   }
 }

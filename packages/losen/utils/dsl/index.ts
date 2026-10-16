@@ -373,7 +373,9 @@ export function buildValidatorForComplexExpression(
             : {
                 ...res.errors,
                 errors: [
-                  ...get(res.errors, "errors", []),
+                  ...(get(res.errors, "errors", []) as Array<
+                    ValidationError | ValidationResult
+                  >),
                   ...(Array.isArray(validationResult.errors)
                     ? validationResult.errors
                     : [validationResult.errors]),

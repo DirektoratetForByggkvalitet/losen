@@ -24,6 +24,9 @@ export const Wizard = injectStyles(styled.div<
     &:focus {
       outline-color: ${$styles.color2.outline};
     }
+    &::selection {
+      background-color: ${$styles.color2.secondaryXLight};
+    }
   }
   img {
     max-width: 100%;

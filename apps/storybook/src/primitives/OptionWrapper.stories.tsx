@@ -6,7 +6,7 @@ import { Radio } from 'losen/primitives/Input';
 const meta: Meta<typeof OptionWrapper> = {
   component: OptionWrapper,
   argTypes: {
-    grid: { control: 'boolean' },
+    $grid: { control: 'boolean' },
   },
 };
 
@@ -25,7 +25,7 @@ export const Default: Story = {
 
 export const Grid: Story = {
   args: {
-    grid: true,
+    $grid: true,
   },
   render: template,
 };

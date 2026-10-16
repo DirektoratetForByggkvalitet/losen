@@ -6,12 +6,14 @@ import { NAME } from "../../../state";
 import { Value as StyledValue } from "../../../primitives/Summary";
 import { RenderableNode, State } from "../../../index";
 import { isOfType } from "../../../utils/is-of-type";
+import { calculateSum } from "../../blocks/Sum";
+import { formatNumber } from "../../../utils/format-number";
 
-function hasAllValues(values: Array<string | number>, data: State) {
-  return values.reduce(
-    (acc, currentValue) => get(data, currentValue) !== undefined && acc,
-    true
-  );
+// Only field references need an answer; numeric constants are always present
+export function hasAllValues(values: Array<string | number>, data: State) {
+  return values
+    .filter((value): value is string => typeof value === 'string')
+    .every((field) => get(data, field) !== undefined);
 }
 
 type Props = {
@@ -30,18 +32,9 @@ function Sum({ node, data }: Props) {
     return <StyledValue missing>* Mangler verdi for utregning</StyledValue>;
   }
 
-  const sum = values.reduce<number>((accumulator, currentValue, currentIndex) => {
-    if (operations && operations[currentIndex] === "-") {
-      return Math.max(accumulator - get(data, currentValue), minimum!);
-    } else if (operations && operations[currentIndex] === "*") {
-      return Math.max(accumulator * get(data, currentValue), minimum!);
-    } else if (operations && operations[currentIndex] === "/") {
-      return Math.max(accumulator / get(data, currentValue), minimum!);
-    }
-    return Math.max(accumulator + get(data, currentValue), minimum!);
-  }, 0);
+  const sum = calculateSum(data, values, operations, minimum);
 
-  return <StyledValue>{sum}</StyledValue>;
+  return <StyledValue>{formatNumber(sum)}</StyledValue>;
 }
 
 const ConnectedSum = connect((state: State) => ({

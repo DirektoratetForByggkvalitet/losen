@@ -22,11 +22,11 @@ export const Default: Story = {
         Vis alle steg
       </ToggleButton>
     <Grid.Nav>
-      <Grid.NavSection large>Navigation</Grid.NavSection>
+      <Grid.NavSection $large>Navigation</Grid.NavSection>
     </Grid.Nav>
     <Grid.FocusWrapper>
       <Grid.Main>
-        <Grid.NavSection xLarge>
+        <Grid.NavSection $xLarge>
            Main content
         </Grid.NavSection>
       </Grid.Main>

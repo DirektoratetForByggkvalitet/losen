@@ -20,37 +20,39 @@ function Sum({ node, node: { allMandatory, currentValue = {}, errors } }: any) {
 
   return (
     <div>
-      <SpecificBlock
-        $grouped
-        $error={allMandatory && errors.required}
-      >
-        <small>
-          {matchingItems === 0 && (
-            <em>Du har ikke valgt noen alternativer, men for </em>
-          )}
-          {matchingItems > 0 && (
-            <em>
-              Du har {allMandatory && errors.required ? "kun" : ""} valgt{" "}
-              {numOfMatchingItemsInObject(currentValue, true)}
-              {" av "} {node.options.length} alternativer.
-            </em>
-          )}
-        </small>
+      <small>
+        {matchingItems === 0 && (
+          <em>Ingen alternativer valgt.</em>
+        )}
+        {matchingItems > 0 && (
+          <em>
+            Du har {allMandatory && errors.required ? "kun" : ""} valgt{" "}
+            {numOfMatchingItemsInObject(currentValue, true)}
+            {" av "} {node.options.length} alternativer.
+          </em>
+        )}
+      </small>
+      {(matchingItems > 0 || allMandatory) && (
+        <SpecificBlock
+          $grouped
+          $error={allMandatory && errors.required}
+        >
 
-        {node.options.map((item: any) => (
-          <div key={`${node.id}-${item.value}`}>
-            <Checkbox
-              type="checkbox"
-              id={`${node.id}-${item.value}`}
-              checked={currentValue[item.value] || false}
-              readOnly
-            />
-            <Label htmlFor={`${node.id}-${item.value}`}>
-              <div>{item.heading}</div>
-            </Label>
-          </div>
-        ))}
-      </SpecificBlock>
+          {node.options.map((item: any) => (
+            <div key={`${node.id}-${item.value}`}>
+              <Checkbox
+                type="checkbox"
+                id={`${node.id}-${item.value}`}
+                checked={currentValue[item.value] || false}
+                readOnly
+              />
+              <Label htmlFor={`${node.id}-${item.value}`}>
+                <div>{item.heading}</div>
+              </Label>
+            </div>
+          ))}
+        </SpecificBlock>
+      )}
     </div>
   );
 }

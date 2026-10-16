@@ -9,7 +9,7 @@ export const MainButton = injectStyles(styled.button<
   }>
 >`
   ${({ $styles, $copied, disabled }) => `
-  padding: 16px ${$styles.padding.large};
+  padding: ${$styles.padding.small} ${$styles.padding.large};
   cursor: pointer;
   user-select: none;
   border: none;
@@ -79,7 +79,7 @@ export const MainButton = injectStyles(styled.button<
 
 export const SecondaryButton = injectStyles(styled.button<PrimitiveProps>`
   ${({ $styles }) => `
-  padding: 16px ${$styles.padding.large};
+  padding: ${$styles.padding.small} ${$styles.padding.large};
   cursor: pointer;
   user-select: none;
   border: none;
@@ -200,6 +200,7 @@ export const NavButton = injectStyles(styled.button<
     display: inline-block;
     width: 0.5rem;
     height: 0.5rem;
+    margin-top: -4px;
     vertical-align: middle;
     transform: ${$next ? "rotate(45deg)" : "rotate(-135deg)"};
     border: 2px solid ${$styles.color2.textWhite};

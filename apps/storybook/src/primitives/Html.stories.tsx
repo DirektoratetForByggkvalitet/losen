@@ -4,7 +4,7 @@ import Html from 'losen/primitives/Html';
 const meta: Meta<typeof Html> = {
   component: Html,
   argTypes: {
-    inline: { control: 'boolean' },
+    $inline: { control: 'boolean' },
   },
 };
 
@@ -40,7 +40,7 @@ export const Default: Story = {
 
 export const Inline: Story = {
   args: {
-    inline: true,
+    $inline: true,
   },
   render: template,
 };

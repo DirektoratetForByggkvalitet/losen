@@ -1,33 +1,33 @@
 const styles = {
   font: {
-    headline: '"PP Mori", "Open Sans", arial, helvetika, sans-serif',
-    body: '"PP Mori", "Altis-Light", "Altis", "Open Sans", arial, sans-serif',
+    headline: '"PPMori", "Open Sans", arial, helvetika, sans-serif',
+    body: '"PPMori", "Altis-Light", "Altis", "Open Sans", arial, sans-serif',
   },
   color2: {
-    pageBackground: "#ebf4fa", // Havblå 50
+    pageBackground: "#ebf3ff", // blue-50
     sectionBackground: "#ffffff", // Hvit
-    textHeading: "#003045",
-    textDark: "#003045",
+    textHeading: "#003361", // blue-800
+    textDark: "#202020", // gray-800
     textWhite: "#ffffff",
-    link: "#005275",
+    link: "#025174", // blue-700
     visitedLink: "#551abb",
-    outline: "#003045", // Havblå 900
-    focus: "rgba(0, 92, 173, 0.4)", // Himmelblå 700 40%
-    primary: "#003045", // Havblå 900
-    primaryLight: "rgba(0, 48, 69, 0.85)",
-    primaryXLight: "rgba(0, 48, 69, 0.75)",
-    secondary: "#89bad6", // Havblå 300
-    secondaryLight: "#c7e0f2", // havblå 100
-    secondaryXLight: "#ebf4fa", // havblå 50
-    error: "#db0000", // Rød 700
-    errorLight: "#ffc5c2", // Rød 100
-    errorXLight: "#fceceb", // Rød 50
-    positive: "#177912", // Sindre
-    positiveLight: "#cbebb0", // Grønn 100
-    positiveXLight: "#f1fae3", // Grønn 50
-    negative: "#ffbe00", // oransje 200
-    negativeLight: "#fcefb6", // oransje 100
-    negativeXLight: "#fff8db", // oransje 50
+    outline: "#4899e0", // blue-500
+    focus: "#4899e0", // blue-500
+    primary: "#003361", // blue-800
+    primaryLight: "rgba(0, 51, 97, 0.85)",
+    primaryXLight: "rgba(0, 51, 97, 0.75)",
+    secondary: "#89bad6", // blue-300
+    secondaryLight: "#c6e0f2", // blue-100
+    secondaryXLight: "#ebf3ff", // blue-50
+    error: "#db0000", // red-700
+    errorLight: "#f7e5e5", // red-100
+    errorXLight: "#f5f0f0", // red-50
+    positive: "#1a8714", // green-900
+    positiveLight: "#cbebb0", // green-100
+    positiveXLight: "#f1fae3", // green-50
+    negative: "#ffe969", // yellow-100
+    negativeLight: "#fcefb6", // yellow-100a
+    negativeXLight: "#fff8db", // yellow-50
   },
   borderRadius: {
     small: "0px",
@@ -50,64 +50,64 @@ const styles = {
     mobileContentWidth: "100%",
   },
   iconSize: {
-    small: "20px",
-    medium: "24px",
+    small: "24px",
+    medium: "28px",
   },
   easing: {
     easeOut: "cubic-bezier(0.22, 1, 0.36, 1)",
   },
   text: {
     body: {
-      fontSize: "16px",
+      fontSize: "20px",
       fontWeight: "400",
       boldWeight: "600",
-      lineHeight: "24px",
-      letterSpacing: "0.01em",
+      lineHeight: "30px",
+      letterSpacing: "0",
     },
     lead: {
-      fontSize: "18px",
+      fontSize: "20px",
       fontWeight: "400",
       boldWeight: "600",
-      lineHeight: "26px",
-      letterSpacing: "0.01em",
+      lineHeight: "30px",
+      letterSpacing: "0",
     },
     h1: {
-      fontSize: "28px",
+      fontSize: "30px",
       fontWeight: "600",
-      lineHeight: "36px",
+      lineHeight: "41px",
       letterSpacing: "0",
     },
     h2: {
-      fontSize: "22px",
+      fontSize: "24px",
+      fontWeight: "600",
+      lineHeight: "32px",
+      letterSpacing: "0",
+    },
+    h3: {
+      fontSize: "20px",
       fontWeight: "600",
       lineHeight: "30px",
       letterSpacing: "0",
     },
-    h3: {
-      fontSize: "18px",
-      fontWeight: "600",
-      lineHeight: "24px",
-      letterSpacing: "0",
-    },
     subHeading: {
-      fontSize: "12px",
+      fontSize: "14px",
       fontWeight: "600",
-      lineHeight: "18px",
+      lineHeight: "20px",
       letterSpacing: "0",
       textTransform: "uppercase",
     },
     caption: {
-      fontSize: "14px",
+      fontSize: "16px",
       fontWeight: "400",
-      lineHeight: "20px",
+      lineHeight: "24px",
       letterSpacing: "0",
       fontStyle: "italic",
     },
     label: {
-      fontSize: "18px",
+      fontSize: "20px",
       fontWeight: "400",
-      lineHeight: "26px",
-      letterSpacing: "0.01em",
+      lineHeight: "32px",
+      letterSpacing: "0",
     },
   },
 };

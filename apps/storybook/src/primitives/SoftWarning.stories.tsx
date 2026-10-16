@@ -5,7 +5,7 @@ const meta: Meta<typeof SoftWarning> = {
   component: SoftWarning,
   argTypes: {
     children: { control: 'text' },
-    warning: { control: 'boolean' },
+    $warning: { control: 'boolean' },
   },
 };
 
@@ -22,6 +22,6 @@ export const Default: Story = {
 export const Warning: Story = {
   args: {
     children: "Paragraph",
-    warning: true,
+    $warning: true,
   },
 };

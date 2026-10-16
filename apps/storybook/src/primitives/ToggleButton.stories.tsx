@@ -4,7 +4,7 @@ import { ToggleButton } from 'losen/primitives/ToggleButton';
 const meta: Meta<typeof ToggleButton> = {
   component: ToggleButton,
   argTypes: {
-    visible: { control: 'boolean' },
+    $visible: { control: 'boolean' },
   },
 };
 
@@ -15,6 +15,6 @@ type Story = StoryObj<typeof ToggleButton>;
 export const Default: Story = {
   args: {
     children: "Caption",
-    visible: true
+    $visible: true
   },
 };

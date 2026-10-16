@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Table, TD } from 'losen/primitives/Table';
 
-const meta: Meta<typeof Table> = {
-  component: Table,
+const meta: Meta<typeof TD> = {
+  component: TD,
   argTypes: {
-    simple: { control: 'boolean' },
+    $simple: { control: 'boolean' },
     "data-inactive": { control: 'boolean' },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Table>;
+type Story = StoryObj<typeof TD>;
 
-const template = (args: any) => <Table {...args}>
+const template = (args: any) => <Table>
     <tr><TD {...args}>Table data</TD></tr>
   </Table>
 

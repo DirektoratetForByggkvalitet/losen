@@ -11,13 +11,12 @@
     "publish-packages": "turbo run publish-package --"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
-    "jest": "^29.7.0",
+    "jest": "^30.5.2",
     "prettier": "^3.1.0",
-    "turbo": "^1.10.16"
+    "turbo": "^2.11.8"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+    "@rollup/rollup-linux-x64-gnu": "4.64.7"
   },
   "name": "losen-monorepo",
   "packageManager": "npm@9.5.0",

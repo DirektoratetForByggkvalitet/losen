@@ -4,7 +4,6 @@ import StyledSumResult from 'losen/primitives/SumResult';
 const meta: Meta<typeof StyledSumResult> = {
   component: StyledSumResult,
   argTypes: {
-    error: { control: 'boolean' },
   },
 };
 
