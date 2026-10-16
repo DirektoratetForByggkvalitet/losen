@@ -133,17 +133,6 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
     line-height: ${$styles.text.body.lineHeight};
     letter-spacing: ${$styles.text.body.letterSpacing};
 
-    &:before {
-      content: " ";
-      display: inline-block;
-      vertical-align: middle;
-      min-width: 18px;
-      width: 218x;
-      height: 18px;
-      margin-right: ${$styles.padding.xxSmall};
-      margin-top: 3px;
-    }
-
     > div {
       flex: 1;
       font-size: ${$styles.text.label.fontSize};
@@ -187,8 +176,6 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
   @media screen and (max-width: 900px) {
     + label {
       flex-wrap: wrap;
-      &::before {
-      }
       div {
         flex: 1;
         div {
