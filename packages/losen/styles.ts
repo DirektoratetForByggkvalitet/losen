@@ -50,8 +50,8 @@ const styles = {
     mobileContentWidth: "100%",
   },
   iconSize: {
-    small: "20px",
-    medium: "24px",
+    small: "24px",
+    medium: "28px",
   },
   easing: {
     easeOut: "cubic-bezier(0.22, 1, 0.36, 1)",

@@ -175,10 +175,10 @@ export const CheckboxResultDisplay = injectStyles(styled.input.attrs({
   &:checked + label:after {
     content: " ";
     position: absolute;
-    left: 4px;
+    left: 2px;
     top: calc(${$styles.padding.xxSmall} + 8px);
-    width: 8px;
-    height: 4px;
+    width: 12px;
+    height: 6px;
     transform: rotate(-46deg);
     border-left: 3px solid ${$styles.color2.primary};
     border-bottom: 3px solid ${$styles.color2.primary};
