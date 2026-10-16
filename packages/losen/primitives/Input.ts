@@ -21,6 +21,7 @@ export const Checkbox = injectStyles(styled.input.attrs({
     padding: ${$styles.padding.medium};
     border: 1px solid ${$styles.color2.secondaryLight};
     border-radius: ${$styles.borderRadius.small};
+    outline: 1px solid transparent;
     transition: all 200ms ${$styles.easing.easeOut};
     font-size: ${$styles.text.body.fontSize};
     font-weight: ${$styles.text.body.fontWeight};
@@ -89,7 +90,8 @@ export const Checkbox = injectStyles(styled.input.attrs({
       background: ${$styles.color2.secondaryXLight};
     }
     &:focus-visible + label {
-      outline: 1px solid ${$styles.color2.outline};
+      border-color: ${$styles.color2.focus};
+      outline: 1px solid ${$styles.color2.focus};
     }
     &:checked + label:after {
       content: " ";
@@ -104,9 +106,6 @@ export const Checkbox = injectStyles(styled.input.attrs({
     }
     &:checked + label {
       background: ${$styles.color2.secondaryLight};
-    }
-    &:checked:focus + label {
-      background: ${$styles.color2.secondaryXLight};
     }
   `
   }
@@ -230,6 +229,7 @@ export const Radio = injectStyles(styled.input.attrs({
     padding: ${$styles.padding.medium};
     border: 1px solid ${$styles.color2.secondaryLight};
     border-radius: ${$styles.borderRadius.small};
+    outline: 1px solid transparent;
     transition: all 200ms ${$styles.easing.easeOut};
 
     &:before {
@@ -292,7 +292,8 @@ export const Radio = injectStyles(styled.input.attrs({
       background: ${$styles.color2.secondaryXLight};
     }
     &:focus-visible + label {
-      outline: 1px solid ${$styles.color2.outline};
+      border-color: ${$styles.color2.focus};
+      outline: 1px solid ${$styles.color2.focus};
     }
     &:checked + label:after {
       content: " ";
@@ -337,15 +338,18 @@ export const NumberInput = injectStyles(styled.input<
   min-width: 20%;
   margin-right: 0.5em;
   border: 1px solid ${
-    $validation?.error ? $styles.color2.error : $styles.color2.outline
-  } !important;
+    $validation?.error ? $styles.color2.error : $styles.color2.primary
+  } ${$validation?.error ? '!important' : ''};
   border-radius: ${$styles.borderRadius.small};
+  outline: 2px solid transparent;
+  transition: outline-color 200ms ${$styles.easing.easeOut}, border-color 200ms ${$styles.easing.easeOut};
   &::placeholder {
     font-color: inherit;
     opacity: 0.75;
   }
   &:focus {
-    outline: 3px solid ${$styles.color2.focus};
+    border-color: ${$styles.color2.focus};
+    outline: 2px solid ${$styles.color2.focus};
   }
 `}
 `);
@@ -366,16 +370,19 @@ export const TextInput = injectStyles(styled.input<
   min-width: 20%;
   margin-right: 0.5em;
   border: 1px solid ${
-    $validation?.error ? $styles.color2.error : $styles.color2.outline
-  } !important;
+      $validation?.error ? $styles.color2.error : $styles.color2.primary
+    } ${$validation?.error ? '!important' : ''};
   
   border-radius: ${$styles.borderRadius.small};
+  outline: 2px solid transparent;
+  transition: outline-color 200ms ${$styles.easing.easeOut}, border-color 200ms ${$styles.easing.easeOut};
   &::placeholder {
     font-color: inherit;
     opacity: 0.75;
   }
   &:focus {
-    outline: 3px solid ${$styles.color2.focus};
+    border-color: ${$styles.color2.focus};
+    outline: 2px solid ${$styles.color2.focus};
   }
   @media screen and (max-width: 360px) {
     width: 100%;
@@ -395,14 +402,17 @@ export const Textarea = injectStyles(styled.textarea<PrimitiveProps>`
   width: 100% !important;
   min-width: 20%;
   margin-right: 0.5em;
-  border: 1px solid ${$styles.color2.outline};
+  border: 1px solid ${$styles.color2.primary};
   border-radius: ${$styles.borderRadius.small};
+  outline: 2px solid transparent;
+  transition: outline-color 200ms ${$styles.easing.easeOut}, border-color 200ms ${$styles.easing.easeOut};
   &::placeholder {
     font-color: inherit;
     opacity: 0.75;
   }
   &:focus {
-    outline: 3px solid ${$styles.color2.focus};
+    border-color: ${$styles.color2.focus};
+    outline: 2px solid ${$styles.color2.focus};
   }
 `}
 `);
@@ -447,7 +457,8 @@ export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`
       background: ${$styles.color2.secondaryXLight};
     }
     &:focus {
-      outline-color: ${$styles.color2.outline};
+      border-color: ${$styles.color2.focus};
+      outline-color: ${$styles.color2.focus};
     }
   }
 `}
