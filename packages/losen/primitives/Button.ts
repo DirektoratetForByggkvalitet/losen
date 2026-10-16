@@ -200,6 +200,7 @@ export const NavButton = injectStyles(styled.button<
     display: inline-block;
     width: 0.5rem;
     height: 0.5rem;
+    margin-top: -4px;
     vertical-align: middle;
     transform: ${$next ? "rotate(45deg)" : "rotate(-135deg)"};
     border: 2px solid ${$styles.color2.textWhite};

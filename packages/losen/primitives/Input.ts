@@ -420,7 +420,7 @@ export const SelectWrapper = injectStyles(styled.div<PrimitiveProps>`
     top: 50%;
     width: 8px;
     height: 8px;
-    transform: translateY(-4px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
     border-left: 2px solid ${$styles.color2.primary};
     border-bottom: 2px solid ${$styles.color2.primary};
   }
