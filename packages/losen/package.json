@@ -6,8 +6,8 @@
   "module": "./dist/index.mjs",
   "license": "MIT",
   "engines": {
-    "node": "20",
-    "npm": "9"
+    "node": ">=20",
+    "npm": ">=9"
   },
   "scripts": {
     "lint": "tsc --noEmit",
