@@ -32,7 +32,7 @@ function Sum({ node, node: { allMandatory, currentValue = {}, errors } }: any) {
           </em>
         )}
       </small>
-      {matchingItems > 0 && (
+      {(matchingItems > 0 || allMandatory) && (
         <SpecificBlock
           $grouped
           $error={allMandatory && errors.required}
