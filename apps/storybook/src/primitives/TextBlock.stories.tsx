@@ -7,10 +7,10 @@ import { TextBlock } from 'losen/primitives/Block';
 const meta: Meta<typeof TextBlock> = {
   component: TextBlock,
   argTypes: {
-    small: { control: 'boolean' },
-    groupedSimple: { control: 'boolean' },
-    printonly: { control: 'boolean' },
-    printhide: { control: 'boolean' },
+    $small: { control: 'boolean' },
+    $groupedSimple: { control: 'boolean' },
+    $printonly: { control: 'boolean' },
+    $printhide: { control: 'boolean' },
   },
 };
 
@@ -26,27 +26,27 @@ export const Default: Story = {
 export const Small: Story = {
   args: {
     children: 'TextBlock',
-    small: true,
+    $small: true,
   },
 };
 
 export const GroupedSimple: Story = {
   args: {
     children: 'TextBlock',
-    groupedSimple: true,
+    $groupedSimple: true,
   },
 };
 
 export const PrintOnly: Story = {
   args: {
     children: 'TextBlock',
-    printonly: true,
+    $printonly: true,
   },
 };
 
 export const PrintHide: Story = {
   args: {
     children: 'TextBlock',
-    printhide: true,
+    $printhide: true,
   },
 };

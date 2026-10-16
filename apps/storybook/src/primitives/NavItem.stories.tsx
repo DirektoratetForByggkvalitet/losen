@@ -6,9 +6,9 @@ import EditIcon from 'losen/components/graphics/EditIcon';
 const meta: Meta<typeof NavItem> = {
   component: NavItem,
   argTypes: {
-    active: { control: 'boolean' },
-    errors: { control: 'boolean' },
-    done: { control: 'boolean' },
+    $active: { control: 'boolean' },
+    $errors: { control: 'boolean' },
+    $done: { control: 'boolean' },
   },
 };
 
@@ -20,7 +20,7 @@ const template = (args: any) => <NavItem
     >
       <span>14</span>
       <p>Label</p>
-      {args?.done ? <CheckIcon /> : <EditIcon />}
+      {args?.$done ? <CheckIcon /> : <EditIcon />}
     </NavItem>
 
 export const Default: Story = {
@@ -29,21 +29,21 @@ export const Default: Story = {
 
 export const Active: Story = {
   args: {
-    active: true,
+    $active: true,
   },
   render: template,
 };
 
 export const Done: Story = {
   args: {
-    done: true,
+    $done: true,
   },
   render: template,
 };
 
 export const Errors: Story = {
   args: {
-    errors: true,
+    $errors: true,
   },
   render: template,
 };

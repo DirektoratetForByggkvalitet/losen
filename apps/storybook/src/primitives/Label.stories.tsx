@@ -5,7 +5,7 @@ const meta: Meta<typeof Label> = {
   component: Label,
   argTypes: {
     children: { control: 'text' },
-    warning: { control: 'boolean' },
+    $warning: { control: 'boolean' },
   },
 };
 

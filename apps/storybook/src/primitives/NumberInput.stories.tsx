@@ -20,5 +20,5 @@ export const Default: Story = {
     placeholder: "0",
     disabled: false
   },
-  render: (args) => <><NumberInput {...args} /><StyledHtml inline>m²</StyledHtml></>,
+  render: (args) => <><NumberInput {...args} /><StyledHtml $inline>m²</StyledHtml></>,
 };

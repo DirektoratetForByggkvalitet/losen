@@ -2,15 +2,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Table, TD } from 'losen/primitives/Table';
 import TableContainer from 'losen/primitives/TableContainer';
 
-const meta: Meta<typeof Table> = {
-  component: Table,
+const meta: Meta<typeof TableContainer> = {
+  component: TableContainer,
   argTypes: {
-    simple: { control: 'boolean' },
+    $simple: { control: 'boolean' },
   },
 };
 
 export default meta;
-type Story = StoryObj<typeof Table>;
+type Story = StoryObj<typeof TableContainer>;
 
 const template = (args: any) => <TableContainer {...args}><Table>
     <tr><TD>Table header</TD><TD>Table header</TD><TD>Table header</TD></tr>

@@ -8,7 +8,7 @@ import InfoIcon from 'losen/components/graphics/InfoIcon';
 const meta: Meta<typeof StyledErrorBlock> = {
   component: StyledErrorBlock,
   argTypes: {
-    grouped: { control: 'boolean' },
+    $grouped: { control: 'boolean' },
   },
 };
 
@@ -25,6 +25,6 @@ export const Default: Story = {
 export const Grouped: Story = {
   args: {
     children: 'ErrorBlock',
-    grouped: true,
+    $grouped: true,
   },
 };
