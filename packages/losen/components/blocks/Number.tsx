@@ -33,11 +33,11 @@ export default function Number({
       value = Math.abs(value);
     }
 
-    if (maximum && maximum < value) {
+    if (maximum !== undefined && maximum < value) {
       value = maximum;
     }
 
-    if (minimum && minimum > value) {
+    if (minimum !== undefined && minimum > value) {
       value = minimum;
     }
 
@@ -68,7 +68,7 @@ export default function Number({
         step={step}
         type="number"
         $validation={errors?.validation}
-        value={currentValue || ""}
+        value={currentValue ?? ""}
       />
 
       {unit ? <Html inline id={`${property}.unit`} text={unit} /> : null}
