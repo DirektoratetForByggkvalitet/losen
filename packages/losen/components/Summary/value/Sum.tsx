@@ -7,6 +7,7 @@ import { Value as StyledValue } from "../../../primitives/Summary";
 import { RenderableNode, State } from "../../../index";
 import { isOfType } from "../../../utils/is-of-type";
 import { calculateSum } from "../../blocks/Sum";
+import { formatNumber } from "../../../utils/format-number";
 
 // Only field references need an answer; numeric constants are always present
 export function hasAllValues(values: Array<string | number>, data: State) {
@@ -33,7 +34,7 @@ function Sum({ node, data }: Props) {
 
   const sum = calculateSum(data, values, operations, minimum);
 
-  return <StyledValue>{Number.isNaN(Number(sum)) ? '—' : sum}</StyledValue>;
+  return <StyledValue>{formatNumber(sum)}</StyledValue>;
 }
 
 const ConnectedSum = connect((state: State) => ({
