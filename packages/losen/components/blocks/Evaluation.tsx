@@ -23,6 +23,11 @@ export default function Evaluation({
     testedValue = get(data, testing);
   }
 
+  // Missing or non-numeric input: don't claim a happy or sad outcome yet
+  if (Number.isNaN(Number(testedValue))) {
+    return null;
+  }
+
   const absTestedValue = Math.abs(testedValue);
   if (showValue) {
     if (testedValue < 0) {
@@ -31,7 +36,7 @@ export default function Evaluation({
           <div>
             {sad}
             <span className="sad">
-              {Number.isNaN(absTestedValue) ? '—' : absTestedValue} {unit ? <Html inline text={unit} /> : null}
+              {absTestedValue} {unit ? <Html inline text={unit} /> : null}
             </span>
           </div>
         </StyledSum>
@@ -42,7 +47,7 @@ export default function Evaluation({
         <div>
           {happy}
           <span className="happy">
-            {Number.isNaN(Number(testedValue)) ? '–' : testedValue} {unit ? <Html inline text={unit} /> : null}
+            {testedValue} {unit ? <Html inline text={unit} /> : null}
           </span>
         </div>
       </StyledSum>
